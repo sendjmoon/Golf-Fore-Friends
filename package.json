@@ -1,9 +1,10 @@
 {
   "name": "golf-four-friends",
-  "version": "1.0.0-alpha",
+  "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "",
   "scripts": {
+    "start": "nodemon ./api/bin/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "./node_modules/.bin/webpack-dev-server --inline --hot"
   },
@@ -28,11 +29,13 @@
     "babel-loader": "^7.1.0",
     "babel-preset-env": "^1.5.2",
     "css-loader": "^0.28.4",
+    "express": "^4.15.3",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
     "html-loader": "^0.4.5",
     "less": "^2.7.2",
     "less-loader": "^4.0.4",
+    "morgan": "^1.8.2",
     "postcss": "^6.0.2",
     "postcss-loader": "^2.0.6",
     "style-loader": "^0.18.2",
