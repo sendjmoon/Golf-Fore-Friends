@@ -1,6 +1,6 @@
 'use strict';
 const ExtractText = require('extract-text-webpack-plugin');
-const autoprefixer = require('autoprefixer');
+// const autoprefixer = require('autoprefixer');
 
 let plugins = [
   new ExtractText('bundle.css'),
@@ -13,15 +13,10 @@ module.exports = {
     path: `${__dirname}/build/`,
   },
 
-  postcss: () => {
-    return[autoprefixer];
-  },
-  
   plugins: plugins,
 
   module: {
     rules: [
-      //html loader
       {
         test: /\.html$/,
         exclude: /node_modules/,
@@ -29,16 +24,24 @@ module.exports = {
           loader: 'html-loader',
         },
       },
-      //less loader
       {
         test: /\.less$/,
-        exclude: /node_modules/,
         use: ExtractText.extract({
+          use: [
+            'css-loader', 'postcss-loader', 'less-loader',
+            // {
+            //   loader: 'css-loader',
+            // },
+            // {
+            //   loader: 'postcss-loader',
+            // },
+            // {
+            //   loader: 'less-loader',
+            // },
+          ],
           fallback: 'style-loader',
-          use: ['css-loader', 'less-loader'],
         }),
       },
-      //babel loader
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -49,14 +52,17 @@ module.exports = {
           },
         },
       },
-      //file loader
       {
         test: /\.(woff|svg|eot|ttf).*/,
-        loader: 'url-loader?limit=10000&name=font/[name].[ext]',
+        use: {
+          loader: 'url-loader?limit=10000&name=font/[name].[ext]',
+        },
       },
       {
         test: /\.(jpg|gif|png)$/,
-        loader: 'file-loader?name=image[hash]-[name].[ext]',
+        use: {
+          loader: 'file-loader?name=image[hash]-[name].[ext]',
+        },
       },
     ]
   },
