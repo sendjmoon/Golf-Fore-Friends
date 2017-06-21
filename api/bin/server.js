@@ -1,15 +1,11 @@
 'use strict';
 
-const express = require('express');
-const logger = require('morgan');
-const app = express();
+const app = require('../app');
+const http = require('http');
 
-const courseRouter = require('../routes/courses.js');
+const port = process.env.port || 3000;
+app.set('port', port);
 
-const PORT = process.env.PORT || 3000;
+const server = http.createServer(app);
 
-app.use(logger('dev'));
-
-app.use('/', courseRouter);
-
-app.listen(PORT, () => { console.log('server up on ' + PORT ); });
+server.listen(port, () => { console.log('server up on ' + port); });
