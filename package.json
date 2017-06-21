@@ -1,0 +1,39 @@
+{
+  "name": "golf-four-friends",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sendjmoon/GolfFourFriends.git"
+  },
+  "keywords": [
+    "golf",
+    "four",
+    "friends"
+  ],
+  "author": "James Moon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sendjmoon/GolfFourFriends/issues"
+  },
+  "homepage": "https://github.com/sendjmoon/GolfFourFriends#readme",
+  "dependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.0",
+    "babel-preset-env": "^1.5.2",
+    "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "file-loader": "^0.11.2",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.4",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.0.0"
+  },
+  "devDependencies": {
+    "html-loader": "^0.4.5"
+  }
+}
