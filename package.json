@@ -28,6 +28,8 @@
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.0",
     "babel-preset-env": "^1.5.2",
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.2",
     "css-loader": "^0.28.4",
     "express": "^4.15.3",
     "extract-text-webpack-plugin": "^2.1.2",
