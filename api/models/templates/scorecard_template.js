@@ -1,4 +1,5 @@
 'use strict';
+
 let holeTemplate = require('./hole_template');
 
 let scorecard = {
