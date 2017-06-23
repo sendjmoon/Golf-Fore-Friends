@@ -15,6 +15,14 @@ const CourseSchema = new Schema({
     required: true,
   },
   scorecard: scorecardTemplate,
+  createdAt: {
+    type: Number,
+    required: true,
+  },
+  updatedAt: {
+    type: Number,
+    required: true,
+  },
 },
 {
   collection: 'courses',
