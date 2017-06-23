@@ -1,4 +1,5 @@
 build
 node_modules
+testData
 .DS_Store
 .git

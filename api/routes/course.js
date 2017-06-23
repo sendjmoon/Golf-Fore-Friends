@@ -8,13 +8,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/create', function(req, res, next) {
-  courseService.create(req.body.name)
+  courseService.create(req.body.name, req.body.location, req.body.scorecard)
     .then((course) => {
       res.json(course);
     })
     .catch((err) => {
       res.status(500).json({
-        error: 'error creating course'
+        error: 'Error creating course. Try again.'
       });
     });
 });

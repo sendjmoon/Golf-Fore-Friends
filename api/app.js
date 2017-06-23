@@ -6,7 +6,7 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const errorHandler = require('./lib/error_handler');
 
-const courseRouter = require('./routes/courses');
+const courseRouter = require('./routes/course');
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/golf4friends-dev');
 
