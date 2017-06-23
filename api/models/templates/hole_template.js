@@ -1,4 +1,5 @@
 'use strict';
+
 let holeTemplate = {
   handicap: {
     mens: { type: Number },
