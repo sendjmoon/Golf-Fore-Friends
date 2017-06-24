@@ -24,6 +24,20 @@ module.exports = function(userDao) {
     });
   };
 
+  const authenticateUser = function(emailOrUsername, password) {
+    return new Promise((resolve, reject) => {
+      _userDao.getByEmailOrUsername(emailOrUsername)
+        .then((user) => {
+          isMatchPassword(password, user.password)
+            .then((isMatching) => {
+              isMatching ? resolve(user) : reject();
+            })
+            .catch(reject)
+        })
+        .catch(reject);
+    });
+  }
+
   const hashPassword = function(password) {
     return new Promise((resolve, reject) => {
       bcrypt.hash(password, 6)
@@ -32,7 +46,16 @@ module.exports = function(userDao) {
     });
   };
 
+  const isMatchingPassword = function(password) {
+    return new Promise((resolve, reject) => {
+      bcrypt.compare(password, hash)
+        .then(resolve)
+        .catch(reject)
+    });
+  };
+
   return {
     create: create,
+    authenticateUser: authenticateUser,
   };
 };
