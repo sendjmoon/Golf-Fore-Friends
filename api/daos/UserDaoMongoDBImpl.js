@@ -12,7 +12,7 @@ module.exports = function() {
       user.save()
       .then((createdUser) => {
         User.findById(createdUser.id)
-          .select('__-v')
+          .select('-__v')
           .exec()
           .then((newUser) => {
             resolve(newUser.toObject());

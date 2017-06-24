@@ -7,7 +7,8 @@ module.exports = function(userDao) {
 
   const create = function(username, email, password, firstName, lastName) {
     return new Promise((resolve, reject) => {
-      hashPassword.hash(password)
+      console.log('hash time');
+      hashPassword(password)
         .then((hashedPassword) => {
           const userData = {
             username: username,

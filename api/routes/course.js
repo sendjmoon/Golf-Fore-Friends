@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const courseService = require('../services/').courseService;
+const courseService = require('../services').courseService;
 
 router.get('/', function(req, res, next) {
   res.send('Courses Route: Response to GET request');

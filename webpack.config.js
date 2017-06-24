@@ -1,6 +1,5 @@
 'use strict';
 const ExtractText = require('extract-text-webpack-plugin');
-// const autoprefixer = require('autoprefixer');
 
 let plugins = [
   new ExtractText('bundle.css'),
@@ -27,18 +26,7 @@ module.exports = {
       {
         test: /\.less$/,
         use: ExtractText.extract({
-          use: [
-            'css-loader', 'postcss-loader', 'less-loader',
-            // {
-            //   loader: 'css-loader',
-            // },
-            // {
-            //   loader: 'postcss-loader',
-            // },
-            // {
-            //   loader: 'less-loader',
-            // },
-          ],
+          use: ['css-loader', 'postcss-loader', 'less-loader'],
           fallback: 'style-loader',
         }),
       },
