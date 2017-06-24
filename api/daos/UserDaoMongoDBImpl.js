@@ -10,14 +10,31 @@ module.exports = function() {
       user.createdAt = Date.now();
       user.updatedAt = Date.now();
       user.save()
-      .then((createdUser) => {
-        User.findById(createdUser.id)
-          .select('-__v')
-          .exec()
-          .then((newUser) => {
-            resolve(newUser.toObject());
+        .then((createdUser) => {
+          User.findById(createdUser.id)
+            .select('-__v')
+            .exec()
+            .then((newUser) => {
+              resolve(newUser.toObject());
+            })
+            .catch(reject)
           })
-          .catch(reject)
+          .catch(reject);
+    });
+  };
+
+  const getByEmailOrUsername = function(emailOrUsername) {
+    return new Promise((resolve, reject) => {
+      User.findOne({
+        $or: [
+          { email: emailOrUsername },
+          { username: emailOrUsername },
+        ],
+      })
+        .select('-__v')
+        .exec()
+        .then((user) => {
+          resolve(user.toObject());
         })
         .catch(reject);
     });
@@ -25,5 +42,6 @@ module.exports = function() {
 
   return {
     create: create,
+    getByEmailOrUsername: getByEmailOrUsername,
   };
 };
