@@ -10,19 +10,20 @@ const expect = chai.expect;
 
 process.env.NODE_ENV = 'test';
 
+const TEST_PORT = 8000;
 const TEST_DB_SERVER = 'mongodb://localhost/test_db';
 process.env.DB_SERVER = TEST_DB_SERVER;
 
 let app = require('../api/app');
 let server;
 
-let baseUrl = 'localhost:3000'
+let baseUrl = 'localhost:' + TEST_PORT;
 let testCourse = require('./testCourse');
 let testUser = require('./testUser');
 
 describe('testing routes', () => {
   before((done) => {
-    server = app.listen(3000, () => {
+    server = app.listen(TEST_PORT, () => {
       done();
     });
   });
@@ -37,7 +38,7 @@ describe('testing routes', () => {
     });
   });
 
-  it('course: GET should respond with a 404 error when request sent for an unknown route', (done) => {
+  it('should receive a 404 error for route that does not exist', (done) => {
     request(baseUrl)
       .get('/')
       .end((err, res) => {
@@ -47,7 +48,7 @@ describe('testing routes', () => {
       });
   });
 
-  it('course: GET should respond with 200', (done) => {
+  it('should make a successful GET request to /course', (done) => {
     request(baseUrl)
       .get('/course')
       .end((err, res) => {
@@ -57,7 +58,7 @@ describe('testing routes', () => {
       });
   });
 
-  it('course: POST should respond with new course', (done) => {
+  it('should create a new course, respond with the course object', (done) => {
     request(baseUrl)
       .post('/course/create')
       .send(testCourse)
@@ -68,7 +69,7 @@ describe('testing routes', () => {
       });
   });
 
-  it('course: POST should respond with an error when required data is missing', (done) => {
+  it('should respond with an error when required data is missing', (done) => {
     request(baseUrl)
       .post('/course/create')
       .send({ name: 'newcastle' })
@@ -79,7 +80,7 @@ describe('testing routes', () => {
       });
   });
 
-  it('user: POST to register a new user should respond with the user object', (done) => {
+  it('should register a new user and respond with the user object', (done) => {
     request(baseUrl)
       .post('/user/register')
       .send(testUser)
@@ -90,7 +91,7 @@ describe('testing routes', () => {
       });
   });
 
-  it('user: POST to register an existing user should respond with an error', (done) => {
+  it('should respond with an error when trying to register a duplicate user', (done) => {
     request(baseUrl)
       .post('/user/register')
       .send(testUser)
@@ -101,7 +102,7 @@ describe('testing routes', () => {
       });
   });
 
-  it('user: POST to login should respond with the user\'s name', (done) => {
+  it('successful login should respond with the user\'s name', (done) => {
     request(baseUrl)
       .post('/user/login')
       .send({
@@ -115,7 +116,7 @@ describe('testing routes', () => {
       });
   });
 
-  it('user: POST to login should fail and respond with an error', (done) => {
+  it('invalid login should fail and respond with an error', (done) => {
     request(baseUrl)
       .post('/user/login')
       .send({
