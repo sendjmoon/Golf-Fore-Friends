@@ -29,7 +29,8 @@ module.exports = function(userDao) {
         .then((user) => {
           isMatchingPassword(password, user.password)
             .then((isMatching) => {
-              isMatching ? resolve(user) : reject();
+              delete user.password;
+              isMatching ? resolve(user.firstName) : reject();
             })
             .catch(reject)
         })

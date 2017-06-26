@@ -23,8 +23,8 @@ router.post('/create', function(req, res, next) {
 
 router.post('/login', function(req, res, next) {
   userService.authenticateUser(req.body.emailOrUsername, req.body.password)
-    .then((isMatching) => {
-      res.send('Welcome back!');
+    .then((firstName) => {
+      res.send('Welcome back ' + firstName + '!');
     })
     .catch((err) => {
       res.status(400).json({
