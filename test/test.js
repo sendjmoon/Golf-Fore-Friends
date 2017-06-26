@@ -23,15 +23,17 @@ let testUser = require('./testUser');
 describe('testing routes', () => {
   before((done) => {
     server = app.listen(3000, () => {
-      console.log('test server up');
       done();
     });
   });
 
   after((done) => {
     mongoose.connection.db.dropDatabase(() => {
-      server.close();
-      done();
+      server.close(() => {
+        mongoose.connection.close(() => {
+          done();
+        });
+      });
     });
   });
 
