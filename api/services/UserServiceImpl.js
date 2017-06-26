@@ -7,7 +7,6 @@ module.exports = function(userDao) {
 
   const create = function(username, email, password, firstName, lastName) {
     return new Promise((resolve, reject) => {
-      console.log('hash time');
       hashPassword(password)
         .then((hashedPassword) => {
           const userData = {
@@ -28,11 +27,12 @@ module.exports = function(userDao) {
     return new Promise((resolve, reject) => {
       _userDao.getByEmailOrUsername(emailOrUsername)
         .then((user) => {
-          isMatchPassword(password, user.password)
+          isMatchingPassword(password, user.password)
             .then((isMatching) => {
-              isMatching ? resolve(user) : reject();
+              delete user.password;
+              isMatching ? resolve(user.firstName) : reject();
             })
-            .catch(reject)
+            .catch(reject);
         })
         .catch(reject);
     });
@@ -46,11 +46,11 @@ module.exports = function(userDao) {
     });
   };
 
-  const isMatchingPassword = function(password) {
+  const isMatchingPassword = function(password, hash) {
     return new Promise((resolve, reject) => {
       bcrypt.compare(password, hash)
         .then(resolve)
-        .catch(reject)
+        .catch(reject);
     });
   };
 

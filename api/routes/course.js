@@ -15,7 +15,7 @@ router.post('/create', function(req, res, next) {
     })
     .catch((err) => {
       res.status(500).json({
-        error: 'Error creating course. Try again.'
+        error: 'Error creating course. Try again.',
       });
     });
 });

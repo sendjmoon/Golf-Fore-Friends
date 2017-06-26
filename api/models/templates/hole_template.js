@@ -13,7 +13,6 @@ let holeTemplate = {
     blue: { type: Number },
     black: { type: Number },
   },
-  // par: { type: Number, required: true },
   par: { type: Number },
 };
 

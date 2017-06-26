@@ -17,9 +17,9 @@ module.exports = function() {
             .then((newUser) => {
               resolve(newUser.toObject());
             })
-            .catch(reject)
-          })
-          .catch(reject);
+            .catch(reject);
+        })
+        .catch(reject);
     });
   };
 
@@ -37,7 +37,7 @@ module.exports = function() {
           resolve(user.toObject());
         })
         .catch(reject);
-    });
+      });
   };
 
   return {
