@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "start": "nodemon ./api/bin/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "watch": "./node_modules/.bin/webpack-dev-server --inline --hot"
   },
   "repository": {
@@ -31,6 +31,8 @@
     "bcrypt": "^1.0.2",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
+    "chai": "^4.0.2",
+    "chai-http": "^3.0.0",
     "css-loader": "^0.28.4",
     "express": "^4.15.3",
     "extract-text-webpack-plugin": "^2.1.2",
@@ -38,6 +40,8 @@
     "html-loader": "^0.4.5",
     "less": "^2.7.2",
     "less-loader": "^4.0.4",
+    "mocha": "^3.4.2",
+    "mongoose": "^4.11.0",
     "morgan": "^1.8.2",
     "postcss": "^6.0.2",
     "postcss-loader": "^2.0.6",
