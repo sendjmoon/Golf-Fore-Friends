@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
   res.send('get route for user');
 });
 
-router.post('/create', function(req, res, next) {
+router.post('/register', function(req, res, next) {
   userService.create(req.body.username, req.body.email, req.body.password, req.body.firstName, req.body.lastName)
     .then((user) => {
       delete user.password;
@@ -24,11 +24,11 @@ router.post('/create', function(req, res, next) {
 router.post('/login', function(req, res, next) {
   userService.authenticateUser(req.body.emailOrUsername, req.body.password)
     .then((firstName) => {
-      res.send('Welcome back ' + firstName + '!');
+      res.json({ firstName: firstName });
     })
     .catch((err) => {
       res.status(400).json({
-        error: 'Authentication error. Try again.',
+        error: 'Incorrect username or password. Try again.',
       });
     });
 });
