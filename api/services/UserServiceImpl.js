@@ -32,7 +32,7 @@ module.exports = function(userDao) {
               delete user.password;
               isMatching ? resolve(user.firstName) : reject();
             })
-            .catch(reject)
+            .catch(reject);
         })
         .catch(reject);
     });
@@ -50,7 +50,7 @@ module.exports = function(userDao) {
     return new Promise((resolve, reject) => {
       bcrypt.compare(password, hash)
         .then(resolve)
-        .catch(reject)
+        .catch(reject);
     });
   };
 

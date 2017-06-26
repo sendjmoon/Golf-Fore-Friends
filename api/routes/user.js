@@ -16,7 +16,7 @@ router.post('/create', function(req, res, next) {
     })
     .catch((err) => {
       res.status(500).json({
-        error: 'Error creating user. Try again.'
+        error: 'Error creating user. Try again.',
       });
     });
 });
@@ -28,7 +28,7 @@ router.post('/login', function(req, res, next) {
     })
     .catch((err) => {
       res.status(400).json({
-        error: 'Authentication error. Try again.'
+        error: 'Authentication error. Try again.',
       });
     });
 });
