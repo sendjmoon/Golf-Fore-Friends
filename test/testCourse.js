@@ -4,9 +4,9 @@ module.exports = {
   scorecard: {
     holeOne: {
       distance: {
-        red: 115
+        red: 115,
       },
-      par: 4
-    }
-  }
+      par: 4,
+    },
+  },
 };
