@@ -5,7 +5,7 @@ const router = express.Router();
 const courseService = require('../services').courseService;
 
 router.get('/', function(req, res, next) {
-  res.send('Courses Route: Response to GET request');
+  res.send('GET request: success');
 });
 
 router.post('/create', function(req, res, next) {

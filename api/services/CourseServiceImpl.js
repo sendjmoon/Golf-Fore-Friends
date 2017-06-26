@@ -8,9 +8,9 @@ module.exports = function(courseDao) {
     const courseData = {
       name: name,
       location: location,
-      scorecard: JSON.parse(scorecard),
+      scorecard: scorecard,
     };
-    
+
     return _courseDao.create(courseData);
   };
 
