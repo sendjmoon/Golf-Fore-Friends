@@ -37,6 +37,14 @@ const UserSchema = new Schema({
     type: Number,
     required: true,
   },
+  gameIds: {
+    type: Array,
+    unique: false,
+  },
+  friendIds: {
+    type: Array,
+    unique: false,
+  },
 });
 
 module.exports = mongoose.model('User', UserSchema);

@@ -10,7 +10,7 @@ module.exports = function(courseDao) {
       location: location,
       scorecard: scorecard,
     };
-
+    
     return _courseDao.create(courseData);
   };
 
