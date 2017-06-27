@@ -5,7 +5,16 @@ const router = express.Router();
 const gameService = require('../services').gameService;
 
 router.post('/create', function(req, res, next) {
-  gameService.create(req.body.name, req.body.course)
+  const gameData = {};
+  gameData.name = req.body.name;
+  gameData.course = req.body.course;
+  gameData.players = [];
+  gameData.players[0] = {
+    player: req.session.user._id,
+    score: 100,
+  };
+
+  gameService.create(gameData.name, gameData.course, gameData.players)
     .then((game) => {
       res.json(game);
     })
