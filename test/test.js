@@ -48,19 +48,9 @@ describe('testing routes', () => {
       });
   });
 
-  it('should make a successful GET request to /course', (done) => {
-    request(baseUrl)
-      .get('/course')
-      .end((err, res) => {
-        expect(res).to.have.status(200);
-        expect(res.text).to.include('success');
-        done();
-      });
-  });
-
   it('should create a new course, respond with the course object', (done) => {
     request(baseUrl)
-      .post('/course/create')
+      .post('/courses/create')
       .send(testCourse)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -71,7 +61,7 @@ describe('testing routes', () => {
 
   it('should respond with an error when required data is missing', (done) => {
     request(baseUrl)
-      .post('/course/create')
+      .post('/courses/create')
       .send({ name: 'newcastle' })
       .end((err, res) => {
         expect(err).to.have.status(500);
@@ -82,7 +72,7 @@ describe('testing routes', () => {
 
   it('should register a new user and respond with the user object', (done) => {
     request(baseUrl)
-      .post('/user/register')
+      .post('/users/register')
       .send(testUser)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -93,7 +83,7 @@ describe('testing routes', () => {
 
   it('should respond with an error when trying to register a duplicate user', (done) => {
     request(baseUrl)
-      .post('/user/register')
+      .post('/users/register')
       .send(testUser)
       .end((err, res) => {
         expect(err).to.have.status(500);
@@ -104,7 +94,7 @@ describe('testing routes', () => {
 
   it('successful login should respond with the user\'s name', (done) => {
     request(baseUrl)
-      .post('/user/login')
+      .post('/users/login')
       .send({
         emailOrUsername: testUser.username,
         password: testUser.password ,
@@ -118,7 +108,7 @@ describe('testing routes', () => {
 
   it('invalid login should fail and respond with an error', (done) => {
     request(baseUrl)
-      .post('/user/login')
+      .post('/users/login')
       .send({
         emailOrUsername: testUser.username,
         password: 'wrongPassword'

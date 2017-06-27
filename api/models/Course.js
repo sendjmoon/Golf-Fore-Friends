@@ -25,6 +25,11 @@ const CourseSchema = new Schema({
     type: Number,
     required: true,
   },
+  games : {
+    type: Array,
+    required: false,
+    unique: false,
+  },
 },
 {
   collection: 'courses',

@@ -8,8 +8,9 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const errorHandler = require('./lib/error_handler');
 
-const courseRouter = require('./routes/course');
-const userRouter = require('./routes/user');
+const courseRouter = require('./routes/courses');
+const gameRouter = require('./routes/games');
+const userRouter = require('./routes/users');
 
 if (process.env.NODE_ENV === 'test')
   mongoose.connect(process.env.DB_SERVER);
@@ -23,8 +24,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/course', courseRouter);
-app.use('/user', userRouter);
+app.use('/courses', courseRouter);
+app.use('/games', gameRouter);
+app.use('/users', userRouter);
 
 app.use(function(req, res, next) {
   const err = new Error('Not Found');
