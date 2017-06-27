@@ -19,6 +19,18 @@ const GameSchema = new Schema({
     type: Number,
     unique: false,
   },
+  players: [
+    {
+      player: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+      score: {
+        type: Number,
+        unique: false,
+      },
+    },
+  ],
 },
 {
   collection: 'games',

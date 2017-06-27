@@ -8,6 +8,7 @@ router.post('/register', function(req, res, next) {
   userService.create(req.body.username, req.body.email, req.body.password, req.body.firstName, req.body.lastName)
     .then((user) => {
       delete user.password;
+      req.session.user = user;
       res.json(user);
     })
     .catch((err) => {
@@ -19,14 +20,23 @@ router.post('/register', function(req, res, next) {
 
 router.post('/login', function(req, res, next) {
   userService.authenticateUser(req.body.emailOrUsername, req.body.password)
-    .then((firstName) => {
-      res.json({ firstName: firstName });
+    .then((user) => {
+      delete user.password;
+      req.session.user = user;
+      res.json(user);
     })
     .catch((err) => {
       res.status(400).json({
         error: 'Incorrect username or password. Try again.',
       });
     });
+});
+
+router.get('/signout', function(req, res, next) {
+  req.session.user = null;
+  res.json({
+    message: 'signed out'
+  });
 });
 
 module.exports = router;
