@@ -1,12 +1,18 @@
 'use strict';
 const ExtractText = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+
+const API_URL = process.env.API_URL || 'http://localhost:3000';
 
 let plugins = [
   new ExtractText('bundle.css'),
+  // new webpack.DefinePlugin({
+  //   __API_URL__: API_URL
+  // }),
 ];
 
 module.exports = {
-  entry: `${__dirname}/app/entry.js`,
+  entry: `${__dirname}/app/index.js`,
   output: {
     filename: 'bundle.js',
     path: `${__dirname}/build/`,
