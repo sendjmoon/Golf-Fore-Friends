@@ -12,7 +12,7 @@ module.exports = function() {
         .then((createdGame) => {
           Game.findById(createdGame.id)
             .select('_id -__v')
-            .populate('players.player', '-_id username email')
+            .populate('players.player', '-_id username email firstName lastName')
             .exec()
             .then((newGame) => {
               resolve(newGame.toObject());
