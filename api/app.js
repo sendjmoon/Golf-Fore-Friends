@@ -34,7 +34,7 @@ const sessionOptions = {
   saveUninitialized: true,
   resave: true,
   cookie: {
-    maxAge: 86400 * 365,
+    maxAge: 86400 * 365
   },
 };
 

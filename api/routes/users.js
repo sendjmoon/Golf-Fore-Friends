@@ -9,6 +9,7 @@ router.post('/register', function(req, res, next) {
     .then((user) => {
       delete user.password;
       req.session.user = user;
+      console.log(req.session.user);
       res.json(user);
     })
     .catch((err) => {
@@ -18,7 +19,7 @@ router.post('/register', function(req, res, next) {
     });
 });
 
-router.post('/login', function(req, res, next) {
+router.post('/signin', function(req, res, next) {
   userService.authenticateUser(req.body.emailOrUsername, req.body.password)
     .then((user) => {
       delete user.password;
@@ -33,7 +34,7 @@ router.post('/login', function(req, res, next) {
 });
 
 router.get('/signout', function(req, res, next) {
-  req.session.user = null;
+  req.session = null;
   res.json({
     message: 'signed out'
   });
