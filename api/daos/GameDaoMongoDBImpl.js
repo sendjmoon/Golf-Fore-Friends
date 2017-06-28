@@ -11,7 +11,8 @@ module.exports = function() {
       game.save()
         .then((createdGame) => {
           Game.findById(createdGame.id)
-            .select('-__v')
+            .select('_id -__v')
+            .populate('players.player', '-_id username email firstName lastName')
             .exec()
             .then((newGame) => {
               resolve(newGame.toObject());
