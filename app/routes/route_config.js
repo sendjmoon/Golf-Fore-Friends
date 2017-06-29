@@ -5,6 +5,9 @@ module.exports = function($routeProvider) {
     .when('/home', {
       template: require('../html/home.html'),
     })
+    .when('/signup', {
+      template: require('../html/signup.html'),
+    })
     .otherwise({
       redirectTo: '/home',
     });

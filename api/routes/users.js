@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const userService = require('../services').userService;
 
-router.post('/register', function(req, res, next) {
+router.post('/signup', function(req, res, next) {
   userService.create(req.body.username, req.body.email, req.body.password, req.body.firstName, req.body.lastName)
     .then((user) => {
       delete user.password;
