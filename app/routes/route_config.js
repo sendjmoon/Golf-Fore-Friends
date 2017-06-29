@@ -6,6 +6,6 @@ module.exports = function($routeProvider) {
       template: require('../html/home.html'),
     })
     .otherwise({
-      redirectTo: '/',
+      redirectTo: '/home',
     });
 };

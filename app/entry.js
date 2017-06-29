@@ -1,6 +1,10 @@
 'use strict';
 
+require('!!file-loader?name=[name].[ext]!./html/index.html');
+require('./less/base.less');
+
 const angular = require('angular');
+
 const golfApp = angular.module('golfApp', [require('angular-route')]);
 
 require('./controllers')(golfApp);
