@@ -34,6 +34,7 @@ router.post('/signin', function(req, res, next) {
 });
 
 router.get('/signout', function(req, res, next) {
+  console.log(req.session);
   req.session = null;
   res.json({
     message: 'signed out'
