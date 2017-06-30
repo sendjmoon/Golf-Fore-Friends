@@ -9,7 +9,6 @@ router.post('/signup', function(req, res, next) {
     .then((user) => {
       delete user.password;
       req.session.user = user;
-      console.log(req.session.user);
       res.json(user);
     })
     .catch((err) => {

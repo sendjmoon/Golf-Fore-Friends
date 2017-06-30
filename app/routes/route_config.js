@@ -8,7 +8,10 @@ module.exports = function($routeProvider) {
     .when('/signup', {
       template: require('../html/signup.html'),
     })
+    .when('/signin', {
+      template: require('../html/signin.html'),
+    })
     .otherwise({
-      redirectTo: '/home',
+      redirectTo: '/signup',
     });
 };
