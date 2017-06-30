@@ -1,0 +1,11 @@
+<h1>Signup</h1>
+<form name="signup" data-ng-submit="$ctrl.signup($ctrl.user)">
+  <input type="text" required placeholder="username" data-ng-model="$ctrl.user.username"></input>
+  <input type="text" required placeholder="email" data-ng-model="$ctrl.user.email"></input>
+  <input type="password" required placeholder="password" data-ng-model="$ctrl.user.password"></input>
+  <input type="text" required placeholder="First Name" data-ng-model="$ctrl.user.firstName"></input>
+  <input type="text" required placeholder="Last Name" data-ng-model="$ctrl.user.lastName"></input>
+  <button type="submit">Signup</button>
+</form>
+
+<p>Already have an account? <a href="/#!/signin">Click Here.</a></p>

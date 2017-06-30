@@ -4,12 +4,11 @@ const express = require('express');
 const router = express.Router();
 const userService = require('../services').userService;
 
-router.post('/register', function(req, res, next) {
+router.post('/signup', function(req, res, next) {
   userService.create(req.body.username, req.body.email, req.body.password, req.body.firstName, req.body.lastName)
     .then((user) => {
       delete user.password;
       req.session.user = user;
-      console.log(req.session.user);
       res.json(user);
     })
     .catch((err) => {
@@ -34,6 +33,7 @@ router.post('/signin', function(req, res, next) {
 });
 
 router.get('/signout', function(req, res, next) {
+  console.log(req.session);
   req.session = null;
   res.json({
     message: 'signed out'
