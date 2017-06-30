@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 
 const redis = require('redis');
 const redisClient = redis.createClient();
@@ -14,6 +15,7 @@ const RedisStore = require('connect-redis')(session);
 const logger = require('morgan');
 const errorHandler = require('./lib/error_handler');
 
+const index = require('./routes/index');
 const coursesRouter = require('./routes/courses');
 const gamesRouter = require('./routes/games');
 const usersRouter = require('./routes/users');
@@ -25,6 +27,9 @@ if (process.env.NODE_ENV !== 'test')
   mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/golf4friends-dev');
 
 const app = express();
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
 
 const sessionOptions = {
   secret: '1337',
@@ -49,6 +54,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
 
+app.use('/', index);
 app.use('/courses', coursesRouter);
 app.use('/games', gamesRouter);
 app.use('/users', usersRouter);
