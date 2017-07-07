@@ -3,6 +3,11 @@
 const express = require('express');
 const router = express.Router();
 const userService = require('../services').userService;
+const checkSessionExists = require('../lib/check_session_exists');
+
+router.get('/', checkSessionExists, function(req, res, next) {
+  res.send('users get request');
+});
 
 router.post('/signup', function(req, res, next) {
   userService.create(req.body.username, req.body.email, req.body.password, req.body.firstName, req.body.lastName)
