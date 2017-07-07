@@ -3,9 +3,11 @@ const ExtractText = require('extract-text-webpack-plugin');
 
 const API_URL = process.env.API_URL || 'http://localhost:3000';
 
-// let plugins = [
-//   new ExtractText(`${__dirname}/api/public/stylesheets/bundle.css`),
-// ];
+const extractSCSS = new ExtractText('../stylesheets/bundle.css');
+
+let plugins = [
+  extractSCSS,
+];
 
 module.exports = {
   entry: `${__dirname}/app/angular/entry.js`,
@@ -14,7 +16,7 @@ module.exports = {
     path: `${__dirname}/app/public/javascripts`,
   },
 
-  // plugins: plugins,
+  plugins: plugins,
 
   module: {
     rules: [
@@ -25,13 +27,25 @@ module.exports = {
           loader: 'html-loader',
         },
       },
-      // {
-      //   test: /\.less$/,
-      //   use: ExtractText.extract({
-      //     use: ['css-loader', 'postcss-loader', 'less-loader'],
-      //     fallback: 'style-loader',
-      //   }),
-      // },
+      {
+        test: /\.scss$/,
+        use: extractSCSS.extract({
+          use: [{
+            loader: 'css-loader', options: {
+              sourceMap: true,
+            },
+          }, {
+            loader: 'postcss-loader', options: {
+              sourceMap: true,
+            },
+          }, {
+            loader: 'sass-loader', options: {
+              sourceMap: true,
+            },
+          }],
+          fallback: 'style-loader',
+        }),
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,

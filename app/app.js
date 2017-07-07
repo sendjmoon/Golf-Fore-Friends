@@ -32,14 +32,6 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-app.use(lessMiddleware(__dirname + '/less', {
-  debug: true,
-  dest: __dirname + '/public',
-  force: true
-}));
-
-app.use(express.static(__dirname + '/public'));
-
 const sessionOptions = {
   secret: '1337',
   store: new RedisStore({
@@ -62,6 +54,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
+
+app.use(require('node-sass-middleware')({
+  src: path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  indentedSyntax: true,
+  sourceMap: true
+}));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/courses', coursesRouter);
