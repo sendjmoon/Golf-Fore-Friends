@@ -3,18 +3,18 @@ const ExtractText = require('extract-text-webpack-plugin');
 
 const API_URL = process.env.API_URL || 'http://localhost:3000';
 
-let plugins = [
-  new ExtractText('bundle.css'),
-];
+// let plugins = [
+//   new ExtractText(`${__dirname}/api/public/stylesheets/bundle.css`),
+// ];
 
 module.exports = {
-  entry: `${__dirname}/app/entry.js`,
+  entry: `${__dirname}/app/angular/entry.js`,
   output: {
     filename: 'bundle.js',
-    path: `${__dirname}/build/`,
+    path: `${__dirname}/app/public/javascripts`,
   },
 
-  plugins: plugins,
+  // plugins: plugins,
 
   module: {
     rules: [
@@ -25,13 +25,13 @@ module.exports = {
           loader: 'html-loader',
         },
       },
-      {
-        test: /\.less$/,
-        use: ExtractText.extract({
-          use: ['css-loader', 'postcss-loader', 'less-loader'],
-          fallback: 'style-loader',
-        }),
-      },
+      // {
+      //   test: /\.less$/,
+      //   use: ExtractText.extract({
+      //     use: ['css-loader', 'postcss-loader', 'less-loader'],
+      //     fallback: 'style-loader',
+      //   }),
+      // },
       {
         test: /\.js$/,
         exclude: /node_modules/,

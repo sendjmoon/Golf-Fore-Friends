@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const lessMiddleware = require('less-middleware');
 
 const redis = require('redis');
 const redisClient = redis.createClient();
@@ -30,6 +31,14 @@ const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+app.use(lessMiddleware(__dirname + '/less', {
+  debug: true,
+  dest: __dirname + '/public',
+  force: true
+}));
+
+app.use(express.static(__dirname + '/public'));
 
 const sessionOptions = {
   secret: '1337',

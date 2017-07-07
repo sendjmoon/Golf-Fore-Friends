@@ -4,7 +4,7 @@
   "description": "",
   "main": "",
   "scripts": {
-    "start": "nodemon ./api/bin/server.js",
+    "start": "nodemon ./app/bin/server.js",
     "test": "mocha",
     "watch": "./node_modules/.bin/webpack-dev-server --inline --hot"
   },
@@ -47,6 +47,7 @@
     "html-loader": "^0.4.5",
     "less": "^2.7.2",
     "less-loader": "^4.0.4",
+    "less-middleware": "^2.2.0",
     "mocha": "^3.4.2",
     "mongoose": "^4.11.0",
     "morgan": "^1.8.2",

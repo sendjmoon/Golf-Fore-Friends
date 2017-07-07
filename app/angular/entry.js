@@ -1,7 +1,7 @@
 'use strict';
 
-require('!!file-loader?name=[name].[ext]!./html/index.html');
-require('./less/base.less');
+// require('!!file-loader?name=[name].[ext]!./html/index.html');
+// require('./less/base.less');
 
 const angular = require('angular');
 
