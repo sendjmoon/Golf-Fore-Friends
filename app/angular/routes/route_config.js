@@ -5,13 +5,13 @@ module.exports = function($routeProvider) {
     .when('/home', {
       template: require('../html/home.html'),
     })
-    .when('/signup', {
-      template: require('../html/signup.html'),
+    .when('/register', {
+      template: require('../html/register.html'),
     })
     .when('/signin', {
       template: require('../html/signin.html'),
     })
     .otherwise({
-      redirectTo: '/signup',
+      redirectTo: '/register',
     });
 };

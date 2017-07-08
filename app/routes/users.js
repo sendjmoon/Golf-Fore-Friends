@@ -9,7 +9,7 @@ router.get('/', checkSessionExists, function(req, res, next) {
   res.send('users get request');
 });
 
-router.post('/signup', function(req, res, next) {
+router.post('/register', function(req, res, next) {
   userService.create(req.body.username, req.body.email, req.body.password, req.body.firstName, req.body.lastName)
     .then((user) => {
       delete user.password;
@@ -41,7 +41,7 @@ router.get('/signout', function(req, res, next) {
   console.log(req.session);
   req.session = null;
   res.json({
-    message: 'signed out'
+    message: 'signed out',
   });
 });
 
