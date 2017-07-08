@@ -1,7 +1,19 @@
-h1 {
-  color: #c1c1c1;
+a {
+  color: $link-primary-color;
+
+  &:hover, &:active, &:focus, &:visited {
+    color: $link-primary-color;
+  }
 }
 
-a {
-  color: red;
+.register-layout {
+  color: #fff;
+
+  h3 {
+    color: $green-primary;
+  }
+
+  a {
+    color: $orange-primary;
+  }
 }
