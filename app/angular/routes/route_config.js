@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function($routeProvider) {
+module.exports = function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/home', {
       template: require('../html/home.html'),
@@ -14,4 +14,9 @@ module.exports = function($routeProvider) {
     .otherwise({
       redirectTo: '/signup',
     });
+
+  // $locationProvider.html5Mode({
+  //   enabled: true,
+  //   requireBase: false,
+  // });
 };
