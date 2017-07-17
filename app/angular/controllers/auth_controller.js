@@ -3,8 +3,8 @@
 module.exports = function(app) {
   app.controller('AuthController', ['$http', '$location', function($http, $location) {
 
-    this.register = function(userData) {
-      $http.post(`${this.baseUrl}/users/register`, userData)
+    this.signup = function(userData) {
+      $http.post(`${this.baseUrl}/users/signup`, userData)
         .then((res) => {
           delete res.config.data.password;
           $location.path('/home');
