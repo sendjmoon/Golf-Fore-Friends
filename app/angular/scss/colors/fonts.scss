@@ -1,5 +1,5 @@
 a {
-  color: $link-primary-color;
+  color: $link-secondary-color;
 
   &:hover, &:active, &:focus, &:visited {
     color: $link-primary-color;
@@ -14,6 +14,20 @@ a {
   }
 
   a {
-    color: $orange-primary;
+    color: $link-secondary-color;
+  }
+
+  .left-container {
+
+    p {
+      color: $green-primary;
+    }
+  }
+
+  .right-container {
+
+    p {
+      color: $font-color-dark;
+    }
   }
 }

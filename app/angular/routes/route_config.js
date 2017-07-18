@@ -14,9 +14,4 @@ module.exports = function($routeProvider, $locationProvider) {
     .otherwise({
       redirectTo: '/signup',
     });
-
-  // $locationProvider.html5Mode({
-  //   enabled: true,
-  //   requireBase: false,
-  // });
 };
