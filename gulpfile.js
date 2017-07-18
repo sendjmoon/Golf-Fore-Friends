@@ -14,14 +14,3 @@ gulp.task('sass', function() {
       .pipe(gulp.dest('./app/public/stylesheets'));
   });
 });
-
-gulp.task('html', function() {
-  console.log('watching html files')
-  return watch(['./app/angular/**/*.html'], function() {
-    console.log('gulp');
-    gulp.src('./app/angular/**/*.html')
-      .pipe(shell([
-        'echo webpack',
-      ]));
-  });
-});
