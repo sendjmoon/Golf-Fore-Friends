@@ -1,8 +1,12 @@
 <form name="signin" data-ng-submit="$ctrl.signin($ctrl.user)">
-  <p><i class="fa fa-user" aria-hidden="true"></i> EMAIL or USERNAME</p>
-  <input type="text" placeholder="Email / Username" data-ng-model="$ctrl.user.emailOrUsername"></input>
-  <p><i class="fa fa-lock" aria-hidden="true"></i> PASSWORD</p>
-  <input type="password" placeholder="password" data-ng-model="$ctrl.user.password"></input>
+  <div class="input-container">
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <input type="text" placeholder="Email or Username" data-ng-model="$ctrl.user.emailOrUsername"></input>
+  </div>
+  <div class="input-container">
+    <i class="fa fa-lock" aria-hidden="true"></i>
+    <input type="password" placeholder="password" data-ng-model="$ctrl.user.password"></input>
+  </div>
   <button type="submit">SIGNIN</button>
 </form>
 <p>Not registered? <a href="/#!/signup">Click Here</a></p>
