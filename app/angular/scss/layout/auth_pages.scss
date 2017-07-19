@@ -89,7 +89,7 @@
         }
 
         &:hover, &:focus {
-          color: $font-color-light;
+          color: $font-color-dark;
           outline: none;
           border: 1px solid $orange-primary;
         }
@@ -104,14 +104,18 @@
       }
 
       button {
-        padding: 6px;
         margin: 15px 0px 10px 0px;
-        border: 1px solid $border-invis;
-        border-radius: 5px;
+        padding: 6px;
         background-color: $button-primary-bg;
+        border: 2px solid $border-invis;
+        border-radius: 5px;
+        transition: all 0.15s ease;
 
         &:hover {
-          background-color: $orange-primary;
+          color: $orange-primary;
+          background: none;
+          border: 2px solid $orange-primary;
+          transition: all 0.15s ease;
         }
 
         &:focus {
