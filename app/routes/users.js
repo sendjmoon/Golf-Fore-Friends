@@ -6,7 +6,7 @@ const userService = require('../services').userService;
 const checkSessionExists = require('../lib/check_session_exists');
 
 router.get('/', function(req, res, next) {
-  userService.getAllUsers()
+  userService.getAllUsers(req.session.user)
     .then((users) => {
       res.json(users);
     })

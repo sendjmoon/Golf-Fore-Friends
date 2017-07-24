@@ -5,16 +5,6 @@ const bcrypt = require('bcrypt');
 module.exports = function(userDao) {
   const _userDao = userDao;
 
-  const getAllUsers = function() {
-    return new Promise((resolve, reject) => {
-      _userDao.getUsers()
-        .then((users) => {
-          resolve(users);
-        })
-        .catch(reject);
-    });
-  };
-
   const create = function(username, fullName, email, password) {
     return new Promise((resolve, reject) => {
       hashPassword(password)
@@ -63,9 +53,19 @@ module.exports = function(userDao) {
     });
   };
 
+  const getAllUsers = function(currentUser) {
+    return new Promise((resolve, reject) => {
+      _userDao.getUsers(currentUser)
+        .then((users) => {
+          resolve(users);
+        })
+        .catch(reject);
+    });
+  };
+
   return {
-    getAllUsers: getAllUsers,
     create: create,
     authenticateUser: authenticateUser,
+    getAllUsers: getAllUsers,
   };
 };

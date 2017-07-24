@@ -40,10 +40,15 @@ module.exports = function() {
       });
   };
 
-  const getUsers = function() {
+  const getUsers = function(currentUser) {
     return new Promise((resolve, reject) => {
-        User.find({})
-          .select('_id username fullName email')
+        User.find({
+          username: { $ne: currentUser },
+        },
+        {
+          password: 0,
+        })
+          .select('-__v')
           .exec()
           .then((users) => {
             resolve(users);
