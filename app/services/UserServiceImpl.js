@@ -5,16 +5,15 @@ const bcrypt = require('bcrypt');
 module.exports = function(userDao) {
   const _userDao = userDao;
 
-  const create = function(username, email, password, firstName, lastName) {
+  const create = function(username, fullName, email, password) {
     return new Promise((resolve, reject) => {
       hashPassword(password)
         .then((hashedPassword) => {
           const userData = {
             username: username,
+            fullName: fullName,
             email: email,
             password: hashedPassword,
-            firstName: firstName,
-            lastName: lastName,
           };
           return _userDao.create(userData);
         })
@@ -27,10 +26,11 @@ module.exports = function(userDao) {
     return new Promise((resolve, reject) => {
       _userDao.getByEmailOrUsername(emailOrUsername)
         .then((user) => {
+          // console.log(user);
           isMatchingPassword(password, user.password)
             .then((isMatching) => {
               delete user.password;
-              isMatching ? resolve(user.firstName) : reject();
+              isMatching ? resolve(user.fullName) : reject();
             })
             .catch(reject);
         })

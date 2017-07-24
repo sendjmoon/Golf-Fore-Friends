@@ -9,8 +9,8 @@ router.get('/', checkSessionExists, function(req, res, next) {
   res.send('users get request');
 });
 
-router.post('/register', function(req, res, next) {
-  userService.create(req.body.username, req.body.email, req.body.password, req.body.firstName, req.body.lastName)
+router.post('/signup', function(req, res, next) {
+  userService.create(req.body.username, req.body.email, req.body.password, req.body.fullName)
     .then((user) => {
       delete user.password;
       req.session.user = user;
