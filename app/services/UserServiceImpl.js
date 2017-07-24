@@ -9,7 +9,6 @@ module.exports = function(userDao) {
     return new Promise((resolve, reject) => {
       _userDao.getUsers()
         .then((users) => {
-          console.log(users);
           resolve(users);
         })
         .catch(reject);

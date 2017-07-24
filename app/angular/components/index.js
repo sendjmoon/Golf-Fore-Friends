@@ -5,4 +5,5 @@ module.exports = function(app) {
   require('./signup')(app);
   require('./signin')(app);
   require('./signout')(app);
+  require('./friends')(app);
 };
