@@ -40,8 +40,21 @@ module.exports = function() {
       });
   };
 
+  const getUsers = function() {
+    return new Promise((resolve, reject) => {
+        User.find({})
+          .select('_id username fullName email')
+          .exec()
+          .then((users) => {
+            resolve(users);
+          })
+          .catch(reject);
+    });
+  };
+
   return {
     create: create,
     getByEmailOrUsername: getByEmailOrUsername,
+    getUsers: getUsers,
   };
 };

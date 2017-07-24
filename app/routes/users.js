@@ -5,8 +5,16 @@ const router = express.Router();
 const userService = require('../services').userService;
 const checkSessionExists = require('../lib/check_session_exists');
 
-router.get('/', checkSessionExists, function(req, res, next) {
-  res.send('users get request');
+router.get('/', function(req, res, next) {
+  userService.getAllUsers()
+    .then((users) => {
+      res.json(users);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: 'Error getting users.'
+      });
+    });
 });
 
 router.post('/signup', function(req, res, next) {
