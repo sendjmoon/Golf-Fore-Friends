@@ -5,12 +5,20 @@ const router = express.Router();
 const userService = require('../services').userService;
 const checkSessionExists = require('../lib/check_session_exists');
 
-router.get('/', checkSessionExists, function(req, res, next) {
-  res.send('users get request');
+router.get('/', function(req, res, next) {
+  userService.getAllUsers(req.session.user)
+    .then((users) => {
+      res.json(users);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: 'Error getting users.'
+      });
+    });
 });
 
 router.post('/signup', function(req, res, next) {
-  userService.create(req.body.username, req.body.email, req.body.password, req.body.fullName)
+  userService.create(req.body.username, req.body.fullName, req.body.email, req.body.password)
     .then((user) => {
       delete user.password;
       req.session.user = user;
@@ -33,6 +41,19 @@ router.post('/signin', function(req, res, next) {
     .catch((err) => {
       res.status(400).json({
         error: 'Incorrect username or password. Try again.',
+      });
+    });
+});
+
+router.post('/friends/add', function(req, res, next) {
+  userService.addFriend(req.body._id, req.session.user)
+    .then((friend) => {
+      console.log(friend);
+      res.json(friend);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: 'Error adding friend.'
       });
     });
 });
