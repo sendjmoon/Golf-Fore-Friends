@@ -1,6 +1,7 @@
 <h1>friends component</h1>
-<div ng-init="$ctrl.getUsers()">
-  <div ng-repeat="user in $ctrl.users">
-    <h4>{{user.username}}</h4>
-  </div>
-</div>
+<form ng-init="$ctrl.getUsers()" ng-submit="$ctrl.addFriend($ctrl.friend._id)">
+  <select data-ng-model="$ctrl.friend._id">
+    <option ng-repeat="user in $ctrl.users" value="{{user._id}}">{{user.username}}</option>
+  </select>
+  <button type="submit">Add Friend</button>
+</form>

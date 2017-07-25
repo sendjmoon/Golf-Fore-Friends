@@ -29,7 +29,7 @@ module.exports = function(userDao) {
           isMatchingPassword(password, user.password)
             .then((isMatching) => {
               delete user.password;
-              isMatching ? resolve(user.fullName) : reject();
+              isMatching ? resolve(user) : reject();
             })
             .catch(reject);
         })
@@ -63,9 +63,20 @@ module.exports = function(userDao) {
     });
   };
 
+  const addFriend = function(friendId, userId) {
+    return new Promise((resolve, reject) => {
+      _userDao.addFriend(friendId, userId)
+        .then((friend) => {
+          resolve(friend);
+        })
+        .catch(reject);
+    });
+  };
+
   return {
     create: create,
     authenticateUser: authenticateUser,
     getAllUsers: getAllUsers,
+    addFriend: addFriend,
   };
 };

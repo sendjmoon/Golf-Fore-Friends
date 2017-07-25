@@ -42,24 +42,45 @@ module.exports = function() {
 
   const getUsers = function(currentUser) {
     return new Promise((resolve, reject) => {
-        User.find({
-          username: { $ne: currentUser },
-        },
-        {
-          password: 0,
+      User.find({
+        fullName: { $ne: currentUser },
+      },
+      {
+        password: 0,
+      })
+        .select('-__v')
+        .exec()
+        .then((users) => {
+          resolve(users);
         })
-          .select('-__v')
-          .exec()
-          .then((users) => {
-            resolve(users);
-          })
-          .catch(reject);
+        .catch(reject);
     });
   };
+
+  const addFriend = function(friendId, user) {
+    return new Promise((resolve, reject) => {
+      User.findById(user._id)
+        .then((user) => {
+          let friendsArray = user.friendIds;
+          friendsArray.push(friendId);
+          user.update({ friendIds: friendsArray })
+          .then((res) => {
+            User.findById(friendId)
+              .then((friend) => {
+                resolve(friend);
+              })
+              .catch(reject);
+          })
+          .catch(reject);
+        })
+        .catch(reject);
+    })
+  }
 
   return {
     create: create,
     getByEmailOrUsername: getByEmailOrUsername,
     getUsers: getUsers,
+    addFriend: addFriend,
   };
 };

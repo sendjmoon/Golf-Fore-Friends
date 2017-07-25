@@ -13,5 +13,17 @@ module.exports = function(app) {
           alert('error getting users');
         });
     };
+
+    this.addFriend = function(friendId) {
+      let friend = {};
+      friend._id = friendId;
+      $http.post(`${this.baseUrl}/users/friends/add`, friend)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          alert('error adding friend');
+        });
+    };
   }]);
 };
