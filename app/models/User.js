@@ -36,10 +36,11 @@ const UserSchema = new Schema({
     type: Array,
     unique: false,
   },
-  friendIds: {
-    type: Array,
-    unique: false,
-  },
+  friendIds: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    unique: true,
+  }],
 });
 
 module.exports = mongoose.model('User', UserSchema);
