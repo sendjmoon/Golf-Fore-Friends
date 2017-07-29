@@ -63,11 +63,22 @@ module.exports = function(userDao) {
     });
   };
 
-  const addFriend = function(friendId, userId) {
+  const checkFriendExists = function() {
+
+  };
+
+  const addFriend = function(friendEmailOrUsername, userEmailOrUsername) {
     return new Promise((resolve, reject) => {
-      _userDao.addFriend(friendId, userId)
-        .then((friend) => {
-          resolve(friend);
+      _userDao.getByEmailOrUsername(userEmailOrUsername)
+        .then((user) => {
+          _userDao.getByEmailOrUsername(friendEmailOrUsername)
+          .then((friend) => {
+            console.log('user');
+            console.log(user);
+            console.log('friend');
+            console.log(friend);
+          })
+          .catch(reject);
         })
         .catch(reject);
     });
