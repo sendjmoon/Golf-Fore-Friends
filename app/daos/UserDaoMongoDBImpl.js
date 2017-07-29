@@ -57,16 +57,29 @@ module.exports = function() {
     });
   };
 
-  const addFriend = function(friendId, user) {
+  const getFriend = function(friendId) {
+    return new Promise((resolve, reject) => {
+      User.findOne({ _id: friendId })
+        .select('-__v')
+        .exec()
+        .then((friend) => {
+          resolve(friend.toObject());
+        })
+        .catch(reject);
+    });
+  };
+
+  const addFriend = function(friendEmailOrUsername, userEmailOrUsername) {
     return new Promise((resolve, reject) => {
       User.findById(user._id)
         .then((user) => {
           let friendsArray = user.friendIds;
-          friendsArray.push(friendId);
+          friendsArray.indexOf(friendId) === -1 ? friendsArray.push(friendId) : reject('friend already exists');
           user.update({ friendIds: friendsArray })
           .then((res) => {
             User.findById(friendId)
               .then((friend) => {
+                delete friend.password;
                 resolve(friend);
               })
               .catch(reject);
@@ -82,5 +95,6 @@ module.exports = function() {
     getByEmailOrUsername: getByEmailOrUsername,
     getUsers: getUsers,
     addFriend: addFriend,
+    getFriend: getFriend,
   };
 };

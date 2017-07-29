@@ -46,9 +46,8 @@ router.post('/signin', function(req, res, next) {
 });
 
 router.post('/friends/add', function(req, res, next) {
-  userService.addFriend(req.body._id, req.session.user)
+  userService.addFriend(req.body.friendEmailOrUsername, req.session.user)
     .then((friend) => {
-      console.log(friend);
       res.json(friend);
     })
     .catch((err) => {
