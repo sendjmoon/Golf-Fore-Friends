@@ -37,13 +37,13 @@ module.exports = function() {
           resolve(user.toObject());
         })
         .catch(reject);
-      });
+    });
   };
 
-  const getUsers = function(currentUser) {
+  const getAllUsers = function(currentUser) {
     return new Promise((resolve, reject) => {
       User.find({
-        fullName: { $ne: currentUser },
+        fullName: { $ne: currentUser.fullName },
       },
       {
         password: 0,
@@ -57,44 +57,23 @@ module.exports = function() {
     });
   };
 
-  const getFriend = function(friendId) {
+  const addFriend = function(user, friendId) {
     return new Promise((resolve, reject) => {
-      User.findOne({ _id: friendId })
-        .select('-__v')
-        .exec()
-        .then((friend) => {
-          resolve(friend.toObject());
+      User.update(
+        { email: user.email },
+        { $addToSet: {friendIds: friendId }, }
+      )
+        .then((res) => {
+          resolve(res);
         })
         .catch(reject);
     });
   };
 
-  const addFriend = function(friendEmailOrUsername, userEmailOrUsername) {
-    return new Promise((resolve, reject) => {
-      User.findById(user._id)
-        .then((user) => {
-          let friendsArray = user.friendIds;
-          friendsArray.indexOf(friendId) === -1 ? friendsArray.push(friendId) : reject('friend already exists');
-          user.update({ friendIds: friendsArray })
-          .then((res) => {
-            User.findById(friendId)
-              .then((friend) => {
-                delete friend.password;
-                resolve(friend);
-              })
-              .catch(reject);
-          })
-          .catch(reject);
-        })
-        .catch(reject);
-    })
-  }
-
   return {
     create: create,
     getByEmailOrUsername: getByEmailOrUsername,
-    getUsers: getUsers,
+    getAllUsers: getAllUsers,
     addFriend: addFriend,
-    getFriend: getFriend,
   };
 };

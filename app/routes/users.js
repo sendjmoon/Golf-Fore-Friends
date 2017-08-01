@@ -46,19 +46,18 @@ router.post('/signin', function(req, res, next) {
 });
 
 router.post('/friends/add', function(req, res, next) {
-  userService.addFriend(req.body.friendEmailOrUsername, req.session.user)
+  userService.addFriend(req.session.user, req.body)
     .then((friend) => {
       res.json(friend);
     })
     .catch((err) => {
       res.status(500).json({
-        error: 'Error adding friend.'
+        error: 'Error adding friend.',
       });
     });
 });
 
 router.get('/signout', function(req, res, next) {
-  console.log(req.session);
   req.session = null;
   res.json({
     message: 'signed out',
