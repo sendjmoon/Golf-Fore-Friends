@@ -55,7 +55,7 @@ module.exports = function(userDao) {
 
   const getAllUsers = function(currentUser) {
     return new Promise((resolve, reject) => {
-      _userDao.getUsers(currentUser)
+      _userDao.getAllUsers(currentUser)
         .then((users) => {
           resolve(users);
         })
@@ -63,22 +63,11 @@ module.exports = function(userDao) {
     });
   };
 
-  const checkFriendExists = function() {
-
-  };
-
-  const addFriend = function(friendEmailOrUsername, userEmailOrUsername) {
+  const addFriend = function(user, friendId) {
     return new Promise((resolve, reject) => {
-      _userDao.getByEmailOrUsername(userEmailOrUsername)
-        .then((user) => {
-          _userDao.getByEmailOrUsername(friendEmailOrUsername)
-          .then((friend) => {
-            console.log('user');
-            console.log(user);
-            console.log('friend');
-            console.log(friend);
-          })
-          .catch(reject);
+      _userDao.addFriend(user, friendId)
+        .then((res) => {
+          res.nModified === 0 ? reject() : resolve(res);
         })
         .catch(reject);
     });
