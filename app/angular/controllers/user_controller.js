@@ -19,12 +19,22 @@ module.exports = function(app) {
       friendData._id = friendId;
       $http.post(`${this.baseUrl}/users/friends/add`, friendData)
         .then((res) => {
-          console.log('added friend');
+          res.data === false ? alert('that friend\'s already on your list') : true;
         })
         .catch((err) => {
-          console.log(err);
           alert('error adding friend');
         });
     };
+
+    this.getFriends = function() {
+      $http.get(`${this.baseUrl}/users/friends/all`)
+        .then((friends) => {
+          console.log(friends);
+        })
+        .catch((err) => {
+          alert('error getting friends list');
+        });
+    };
+    
   }]);
 };
