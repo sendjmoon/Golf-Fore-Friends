@@ -44,8 +44,7 @@ module.exports = function() {
     return new Promise((resolve, reject) => {
       User.find({
         fullName: { $ne: currentUser.fullName },
-      },
-      {
+      }, {
         password: 0,
       })
         .select('-__v')
@@ -59,12 +58,24 @@ module.exports = function() {
 
   const addFriend = function(user, friendId) {
     return new Promise((resolve, reject) => {
-      User.update(
-        { email: user.email },
-        { $addToSet: {friendIds: friendId }, }
-      )
+      User.update({
+        email: user.email,
+      }, {
+        $addToSet: { friendIds: friendId },
+      })
         .then((res) => {
           resolve(res);
+        })
+        .catch(reject);
+    });
+  };
+
+  const getAllFriends = function(emailOrUsername) {
+    return new Promise((resolve, reject) => {
+      getByEmailOrUsername(emailOrUsername)
+        .then((user) => {
+          console.log(user);
+          resolve(user);
         })
         .catch(reject);
     });
@@ -75,5 +86,6 @@ module.exports = function() {
     getByEmailOrUsername: getByEmailOrUsername,
     getAllUsers: getAllUsers,
     addFriend: addFriend,
+    getAllFriends: getAllFriends,
   };
 };

@@ -26,7 +26,7 @@ module.exports = function(userDao) {
     return new Promise((resolve, reject) => {
       _userDao.getByEmailOrUsername(emailOrUsername)
         .then((user) => {
-          isMatchingPassword(password, user.password)
+          return isMatchingPassword(password, user.password)
             .then((isMatching) => {
               delete user.password;
               isMatching ? resolve(user) : reject();
@@ -67,16 +67,27 @@ module.exports = function(userDao) {
     return new Promise((resolve, reject) => {
       _userDao.addFriend(user, friendId)
         .then((res) => {
-          res.nModified === 0 ? reject() : resolve(res);
+          resolve(res.nModified === 0 ? false : true);
         })
         .catch(reject);
     });
   };
+
+  const getAllFriends = function(emailOrUsername) {
+    return new Promise((resolve, reject) => {
+      _userDao.getAllFriends(emailOrUsername)
+        .then((res) => {
+          resolve()
+        })
+        .catch(reject);
+    })
+  }
 
   return {
     create: create,
     authenticateUser: authenticateUser,
     getAllUsers: getAllUsers,
     addFriend: addFriend,
+    getAllFriends,
   };
 };
