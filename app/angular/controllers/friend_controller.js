@@ -1,7 +1,8 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('FriendController', ['$http', function($http) {
+  app.controller('FriendController', ['$rootScope', '$http', function($rs, $http) {
+    this.baseUrl = $rs.baseUrl;
 
     this.getAllUsers = function() {
       $http.get(`${this.baseUrl}/users`)

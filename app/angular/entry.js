@@ -6,6 +6,7 @@ const angular = require('angular');
 
 const golfApp = angular.module('golfApp', [require('angular-route')]);
 
+require('./services')(golfApp);
 require('./controllers')(golfApp);
 require('./components')(golfApp);
 

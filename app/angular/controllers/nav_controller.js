@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('NavController', ['$location', function($location) {
-    console.log('nav controller');
+  app.controller('NavController', ['$rootScope', 'AuthService', function($rs, AuthService) {
+    this.signout = AuthService.signout;
   }]);
 };
