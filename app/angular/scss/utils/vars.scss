@@ -1,9 +1,11 @@
 //general colors
 $green-primary: #53b93a;
+$green-light: #87ff69;
 $green-opaque: rgba(83, 185, 58, 0.8);
 $light-blue-primary: #2dbfe9;
 $light-blue-secondary: #5adaff;
-$orange-primary: rgba(254, 172, 0, 0.8);
+$orange-primary: rgba(254, 172, 0, 1.0);
+$orange-light-opaque: rgba(254, 172, 0, 0.8);
 $orange-opaque: rgba(254, 172, 0, 0.5);
 
 //fonts
@@ -13,21 +15,21 @@ $font-color-dark: #000;
 //links
 $link-primary-color: $light-blue-primary;
 $link-secondary-color: $light-blue-secondary;
-$link-tertiary-color: $orange-primary;
+$link-tertiary-color: $orange-light-opaque;
 
 //nav
 $nav-bg-dark-primary-color: rgba(0, 0, 0, 0.8);
 $nav-link-primary-color: #fff;
-$nav-link-hover-primary-color: $orange-primary;
+$nav-link-hover-primary-color: $green-light;
 
 //panels
 $panel-bg-dark-primary: rgba(0, 0, 0, 0.8);
 
 //misc
-$header-color-orange: $orange-primary;
+$header-color-orange: $orange-light-opaque;
 
 //buttons
-$button-primary-bg: $orange-primary;
+$button-primary-bg: $orange-light-opaque;
 $button-primary-bg-hover: rgba(0, 0, 0, 0.5);
 
 //borders

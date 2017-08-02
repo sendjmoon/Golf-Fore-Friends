@@ -99,7 +99,7 @@
 
         &:hover, &:focus {
           color: $font-color-dark;
-          border: 1px solid $orange-primary;
+          border: 1px solid $orange-light-opaque;
           outline: none;
         }
 
@@ -121,9 +121,9 @@
         transition: all 0.15s ease;
 
         &:hover {
-          border: 2px solid $orange-primary;
+          border: 2px solid $orange-light-opaque;
           background: none;
-          color: $orange-primary;
+          color: $orange-light-opaque;
           transition: all 0.15s ease;
         }
 

@@ -1,11 +1,11 @@
 <form name="signin" data-ng-submit="ac.signin(ac.user)">
   <div class="input-container">
     <i class="fa fa-user" aria-hidden="true"></i>
-    <input type="text" placeholder="Email or Username" data-ng-model="ac.user.emailOrUsername"></input>
+    <input type="text" required placeholder="Email or Username" data-ng-model="ac.user.emailOrUsername"></input>
   </div>
   <div class="input-container">
     <i class="fa fa-lock" aria-hidden="true"></i>
-    <input type="password" placeholder="password" data-ng-model="ac.user.password"></input>
+    <input type="password" required placeholder="password" data-ng-model="ac.user.password"></input>
   </div>
   <button type="submit">SIGNIN</button>
 </form>
