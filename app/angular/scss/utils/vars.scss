@@ -1,5 +1,4 @@
 //general colors
-// $green-primary: #4ea13a;
 $green-primary: #53b93a;
 $green-opaque: rgba(83, 185, 58, 0.8);
 $light-blue-primary: #2dbfe9;
@@ -15,6 +14,14 @@ $font-color-dark: #000;
 $link-primary-color: $light-blue-primary;
 $link-secondary-color: $light-blue-secondary;
 $link-tertiary-color: $orange-primary;
+
+//nav
+$nav-bg-dark-primary-color: rgba(0, 0, 0, 0.8);
+$nav-link-primary-color: #fff;
+$nav-link-hover-primary-color: $orange-primary;
+
+//panels
+$panel-bg-dark-primary: rgba(0, 0, 0, 0.8);
 
 //misc
 $header-color-orange: $orange-primary;

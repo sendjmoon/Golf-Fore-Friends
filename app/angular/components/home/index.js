@@ -5,8 +5,5 @@ module.exports = function(app) {
     template: require('./home-template.html'),
     controller: 'HomeController',
     controllerAs: 'hc',
-    bindings: {
-      baseUrl: '<',
-    },
   });
 };
