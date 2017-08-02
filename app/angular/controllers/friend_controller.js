@@ -9,33 +9,28 @@ module.exports = function(app) {
           this.allUsers = res.data;
         })
         .catch((err) => {
-          alert({
-            error: 'error getting users',
-          });
+          alert('error getting users');
         });
     };
 
-    this.getAllFriends = function() {
-      $http.get(`${this.baseUrl}/friends/all`)
-        .then((friendsList) => {
-          this.friendsList = friendsList;
+    this.getFriendList = function() {
+      $http.get(`${this.baseUrl}/friends/list`)
+        .then((friendList) => {
+          console.log(friendList);
+          this.friendList = friendList;
         })
         .catch((err) => {
-          alert({
-            error: 'error getting friends list',
-          });
+          alert('error getting friends list');
         });
     };
 
     this.addFriend = function() {
-      $http.post(`${this.baseUrl}/friends/all`)
+      $http.post(`${this.baseUrl}/friends`)
         .then((res) => {
           res.data === false ? alert('friend already exists') : console.log('added friend');
         })
         .catch((err) => {
-          alert({
-            error: 'error adding friend',
-          });
+          alert('error adding friend');
         });
     };
   }]);

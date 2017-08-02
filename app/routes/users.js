@@ -45,30 +45,30 @@ router.post('/signin', function(req, res, next) {
     });
 });
 
-router.get('friends/all'), function(req, res, next) {
-  userService.getAllFriends(req.session.user.email)
-    .then((res) => {
-      console.log('got friends');
-      res.json(res);
-    })
-    .catch((err) => {
-      res.status(500).json({
-        error: 'Error trying to get friends list.',
-      });
-    });
-};
+// router.get('friends/all'), function(req, res, next) {
+//   userService.getAllFriends(req.session.user.email)
+//     .then((res) => {
+//       console.log('got friends');
+//       res.json(res);
+//     })
+//     .catch((err) => {
+//       res.status(500).json({
+//         error: 'Error trying to get friends list.',
+//       });
+//     });
+// };
 
-router.post('/friends/add', function(req, res, next) {
-  userService.addFriend(req.session.user, req.body)
-    .then((friend) => {
-      res.json(friend);
-    })
-    .catch((err) => {
-      res.status(500).json({
-        error: 'Error adding friend.',
-      });
-    });
-});
+// router.post('/friends/add', function(req, res, next) {
+//   userService.addFriend(req.session.user, req.body)
+//     .then((friend) => {
+//       res.json(friend);
+//     })
+//     .catch((err) => {
+//       res.status(500).json({
+//         error: 'Error adding friend.',
+//       });
+//     });
+// });
 
 router.get('/signout', function(req, res, next) {
   req.session = null;
