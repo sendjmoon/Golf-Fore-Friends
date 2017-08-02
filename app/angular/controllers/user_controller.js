@@ -2,7 +2,6 @@
 
 module.exports = function(app) {
   app.controller('UserController', ['$http', function($http) {
-    console.log('user controller');
 
     this.getAllUsers = function() {
       $http.get(`${this.baseUrl}/users`)
@@ -35,6 +34,6 @@ module.exports = function(app) {
           alert('error getting friends list');
         });
     };
-    
+
   }]);
 };

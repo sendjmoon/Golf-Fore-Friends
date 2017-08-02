@@ -20,6 +20,7 @@ const index = require('./routes/index');
 const coursesRouter = require('./routes/courses');
 const gamesRouter = require('./routes/games');
 const usersRouter = require('./routes/users');
+const friendsRouter = require('./routes/friends');
 
 if (process.env.NODE_ENV === 'test')
   mongoose.connect(process.env.DB_SERVER);
@@ -67,6 +68,7 @@ app.use('/', index);
 app.use('/courses', coursesRouter);
 app.use('/games', gamesRouter);
 app.use('/users', usersRouter);
+app.use('/friends', friendsRouter);
 
 app.use(function(req, res, next) {
   const err = new Error('Not Found');
