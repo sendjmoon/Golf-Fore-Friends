@@ -12,14 +12,54 @@
     text-align: center;
 
     li {
-      margin: 10px 0;
       font-size: 30px;
+
+      &:hover {
+
+        .link-name-container {
+          display: flex;
+          align-items: center;
+
+          &:hover {
+            display: none;
+          }
+        }
+      }
 
       a {
         color: $nav-link-primary-color;
 
         &:hover {
-          color: $nav-link-hover-primary-color;
+          color: #fff;
+          cursor: pointer;
+
+          .nav-tab {
+            background-color: $green-primary;
+          }
+        }
+
+        .nav-tab {
+          padding: 2px 0;
+        }
+      }
+
+      .link-name-container {
+        position: absolute;
+        top: 0;
+        left: 50px;
+        display: none;
+
+        height: 46px;
+        padding: 10px;
+
+        background: $nav-bg-dark-primary-color;
+        color: #fff;
+        font-size: 20px;
+
+        h4 {
+          vertical-align: middle;
+          margin: 0;
+          white-space: nowrap;
         }
       }
     }
