@@ -2,6 +2,12 @@
   position: fixed;
   width: 50px;
   height: 100vh;
+  transition: width 0.2s ease;
+
+  &:hover {
+    width: 60px;
+    transition: width 0.2s ease;
+  }
 
   ul {
     margin: 0;
@@ -39,7 +45,7 @@
       .link-name-container {
         position: absolute;
         top: 0;
-        left: 50px;
+        left: 60px;
         display: none;
         height: 46px;
         padding: 10px;
