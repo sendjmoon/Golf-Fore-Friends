@@ -1,25 +1,28 @@
-.gff-logo-container {
-  position: fixed;
-  right: 0;
-  display: table;
-  padding: 5px 10px;
-  background-color: $panel-bg-dark-primary;
-  color: #fff;
+.dashboard-content {
+  padding-top: 80px;
+  margin-left: 65px;
+  margin-right: 15px;
 
-  h4 {
-    display: table-cell;
-    vertical-align: middle;
-    margin: 0;
-    padding-left: 8px;
+  .dash-widget-container {
+    margin-bottom: 30px;
 
-    span {
-      color: $orange-primary;
+    .widget-panel {
+      min-height: 200px;
+      // color: #fff;
+      color: #000;
+      // background-color: $panel-bg-dark-opaque;
+      background-color: $panel-bg-white-opaque;
+
+      h2 {
+        // color: $orange-primary;
+        color: $green-primary;
+      }
+
+      &:hover {
+        // background-color: $panel-bg-dark-primary;
+        background: #fff;
+        cursor: pointer;
+      }
     }
-  }
-
-  .gff-logo-full {
-    display: inline-block;
-    border: 2px solid #fff;
-    border-radius: 5px;
   }
 }

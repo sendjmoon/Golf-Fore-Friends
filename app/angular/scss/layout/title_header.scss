@@ -1,0 +1,25 @@
+.gff-logo-container {
+  position: fixed;
+  right: 0;
+  display: table;
+  padding: 5px 10px;
+  background-color: $panel-bg-dark-primary;
+  color: #fff;
+
+  h4 {
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0;
+    padding-left: 8px;
+
+    span {
+      color: $orange-primary;
+    }
+  }
+
+  .gff-logo-full {
+    display: inline-block;
+    border: 2px solid #fff;
+    border-radius: 5px;
+  }
+}
