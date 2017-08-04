@@ -1,0 +1,26 @@
+.gff-nav {
+  background-color: $nav-bg-dark-primary-color;
+
+  ul {
+
+    li {
+
+      a {
+        color: $nav-link-primary-color;
+
+        &:hover {
+          color: #fff;
+
+          .nav-tab {
+            background-color: $green-primary;
+          }
+        }
+      }
+
+      .link-name-container {
+        background-color: $nav-bg-dark-primary-color;
+        color: #fff;
+      }
+    }
+  }
+}
