@@ -20,14 +20,15 @@ $link-secondary-color: $light-blue-secondary;
 $link-tertiary-color: $orange-light-opaque;
 
 //nav
-$nav-bg-dark-primary-color: rgba(0, 0, 0, 0.8);
+$nav-bg-dark-primary-color: rgba(54, 57, 65, 0.8);
 $nav-link-primary-color: #fff;
 $nav-link-hover-primary-color: $green-primary;
 
 //panels
-$panel-bg-dark-primary: rgba(0, 0, 0, 0.8);
-$panel-bg-dark-opaque: rgba(0, 0, 0, 0.5);
-$panel-bg-white: rgba(255, 255, 255, 1.0);
+$panel-bg-dark-primary: rgba(54, 57, 65, 0.8);
+$panel-bg-dark-opaque: rgba(54, 57, 65, 0.8);
+// $panel-bg-white: rgba(255, 255, 255, 1.0);
+$panel-bg-white: #eee;
 $panel-bg-white-opaque: rgba(255, 255, 255, 0.8);
 
 //misc
