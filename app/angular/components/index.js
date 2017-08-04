@@ -6,4 +6,5 @@ module.exports = function(app) {
   require('./signin')(app);
   require('./friends')(app);
   require('./nav')(app);
+  require('./title-header')(app);
 };
