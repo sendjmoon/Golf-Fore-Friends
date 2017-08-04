@@ -9,19 +9,15 @@
         color: $nav-link-primary-color;
 
         &:hover {
-          // color: #fff;
           color: $green-primary;
 
           .nav-tab {
-            // background-color: $green-primary;
             background-color: #fff;
           }
         }
       }
 
       .link-name-container {
-        // background-color: $nav-bg-dark-primary-color;
-        // color: #fff;
         background-color: #fff;
         color: $green-primary;
       }
