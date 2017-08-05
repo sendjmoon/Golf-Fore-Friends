@@ -7,7 +7,7 @@ module.exports = function(app) {
       $http.post(`${$rs.baseUrl}/users/signup`, userData)
         .then((res) => {
           delete res.config.data.password;
-          $location.path('/home');
+          $location.path('/dashboard');
         })
         .catch((err) => {
           alert('Error creating user.');
@@ -18,7 +18,7 @@ module.exports = function(app) {
       $http.post(`${$rs.baseUrl}/users/signin`, userData)
         .then((res) => {
           delete res.config.data.password;
-          $location.path('/home');
+          $location.path('/dashboard');
         })
         .catch((err) => {
           alert('Error signing in.');

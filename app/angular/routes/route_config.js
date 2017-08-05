@@ -2,8 +2,8 @@
 
 module.exports = function($routeProvider, $locationProvider) {
   $routeProvider
-    .when('/home', {
-      template: require('../html/home.html'),
+    .when('/dashboard', {
+      template: require('../html/dashboard.html'),
     })
     .when('/signup', {
       template: require('../html/signup.html'),
