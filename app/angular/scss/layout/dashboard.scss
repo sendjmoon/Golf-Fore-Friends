@@ -28,7 +28,7 @@
 
         &:hover {
           background: $panel-bg-white;
-          background: #eee;
+          background: #f7f7f7;
           cursor: pointer;
 
           .widget-base {
@@ -46,6 +46,7 @@
           }
 
           p {
+            width: 80%;
             display: block;
             color: #363941;
           }

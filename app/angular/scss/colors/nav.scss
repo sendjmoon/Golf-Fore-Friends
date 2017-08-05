@@ -19,9 +19,10 @@
       }
 
       .link-name-container {
-        background-color: #fff;
+        // background-color: #fff;
         // color: $orange-primary;
-        color: #363941;
+        background-color: $nav-bg-dark-primary-color;
+        color: #fff;
       }
     }
   }
