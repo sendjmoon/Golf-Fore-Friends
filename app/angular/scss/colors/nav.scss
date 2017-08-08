@@ -6,21 +6,18 @@
     li {
 
       a {
-        color: $nav-link-primary-color;
+        color: #fff;
 
         &:hover {
           color: $orange-primary;
 
           .nav-tab {
-            background-color: #fff;
-            background-color: #363941;
+            // background-color: #343e47;
           }
         }
       }
 
       .link-name-container {
-        // background-color: #fff;
-        // color: $orange-primary;
         background-color: $nav-bg-dark-primary-color;
         color: #fff;
       }

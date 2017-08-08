@@ -1,11 +1,15 @@
+title-header {
+  width: auto;
+}
+
 .gff-logo-container {
-  position: fixed;
-  right: 0;
+  // position: fixed;
+  // left: 0;
   z-index: 20;
   display: table;
   padding: 5px 10px;
-  border-bottom-left-radius: 10px;
-  background-color: $panel-bg-dark-primary;
+  // border-bottom-left-radius: 10px;
+  // background-color: $panel-bg-dark-primary;
   color: #fff;
 
   h4 {
