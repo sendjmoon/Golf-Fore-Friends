@@ -68,34 +68,38 @@
 }
 
 @media screen and (max-width: 991px) {
-  
+
   .gff-nav {
 
+    .nav-container {
+      justify-content: center;
+    }
+
     .nav-menu {
-      display: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
       position: fixed;
       top: 100px;
-      right: 0;
-      width: 100%;
+      left: 0;
       height: 0;
+      overflow: hidden;
+      padding: 0;
       background-color: #263238;
-      opacity: 0;
       transition: all 0.3s ease;
 
-      &.open {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        width: auto;
-        height: calc(100vh - 100px);
-        overflow: hidden;
-        opacity: 1.0;
-        transition: all 0.3s ease;
+      li {
+        width: 100%;
+        height: auto;
+        padding: 7px 15px;
 
-        li {
-          height: auto;
-          padding-top: 15px;
+        &:nth-child(1) {
+          margin-top: 0px;
+        }
+
+        &:hover {
+          background-color: #374a54;
         }
 
         a {
@@ -105,6 +109,13 @@
             color: $orange-primary;
           }
         }
+      }
+
+      &.open {
+        height: 100%;
+        max-height: calc(100vh - 100px);
+        overflow: hidden;
+        transition: all 0.3s ease;
       }
     }
   }
