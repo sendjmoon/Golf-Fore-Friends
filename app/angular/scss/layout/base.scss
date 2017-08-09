@@ -5,3 +5,13 @@ main {
 html, body, main {
   height: 100%;
 }
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+.gff-container {
+  max-width: 1660px;
+  margin: 0 auto;
+  padding: 15px;
+}

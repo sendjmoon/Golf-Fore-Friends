@@ -5,13 +5,10 @@ module.exports = function($routeProvider, $locationProvider) {
     .when('/dashboard', {
       template: require('../html/dashboard.html'),
     })
-    .when('/signup', {
-      template: require('../html/signup.html'),
-    })
-    .when('/signin', {
-      template: require('../html/signin.html'),
+    .when('/', {
+      template: require('../html/landing.html'),
     })
     .otherwise({
-      redirectTo: '/signup',
+      redirectTo: '/',
     });
 };
