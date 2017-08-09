@@ -1,75 +1,51 @@
 <nav class="gff-nav">
-  <ul>
-    <li>
-      <a>
-        <div class="nav-tab">
-          <i class="fa fa-home"></i>
-        </div>
-      </a>
-      <div class="link-name-container">
-        <h4>DASHBOARD</h4>
-      </div>
-    </li>
-    <li>
-      <a>
-        <div class="nav-tab">
-          <i class="fa fa-pie-chart"></i>
-        </div>
-      </a>
-      <div class="link-name-container">
-        <h4>STATS</h4>
-      </div>
-    </li>
-    <li>
-      <a>
-        <div class="nav-tab">
-          <i class="fa fa-users"></i>
-        </div>
-      </a>
-      <div class="link-name-container">
-        <h4>FRIENDS</h4>
-      </div>
-    </li>
-    <li>
-      <a>
-        <div class="nav-tab">
-          <i class="fa fa-server"></i>
-        </div>
-        <div class="link-name-container">
-          <h4>GAMES</h4>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a>
-        <div class="nav-tab">
-          <i class="fa fa-fort-awesome"></i>
-        </div>
-        <div class="link-name-container">
-          <h4>COURSES</h4>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a>
-        <div class="nav-tab">
-          <i class="fa fa-cogs"></i>
-        </div>
-      </a>
-      <div class="link-name-container">
-        <h4>ACCOUNT SETTINGS</h4>
-      </div>
-    </li>
+  <div class="nav-container">
 
-    <li>
-      <a ng-click="nc.signout();">
+    <title-header></title-header>
+
+    <ul>
+      <li>
         <div class="nav-tab">
-          <i class="fa fa-sign-out"></i>
+          <a><i class="fa fa-home"></i><p>Dashboard</p></a>
         </div>
-      </a>
-      <div class="link-name-container">
-        <h4>SIGNOUT</h4>
-      </div>
-    </li>
-  </ul>
+      </li>
+
+      <li>
+        <div class="nav-tab">
+          <a><i class="fa fa-pie-chart"></i><p>Stats</p></a>
+        </div>
+      </li>
+
+      <li>
+        <div class="nav-tab">
+          <a><i class="fa fa-users"></i><p>Friends</p></a>
+        </div>
+      </li>
+
+      <li>
+        <div class="nav-tab">
+          <a><i class="fa fa-server"></i><p>Games</p></a>
+        </div>
+      </li>
+
+      <li>
+        <div class="nav-tab">
+          <a><i class="fa fa-fort-awesome"></i><p>Courses</p></a>
+        </div>
+      </li>
+
+      <li>
+        <div class="nav-tab">
+          <a><i class="fa fa-cogs"></i><p>Settings</p></a>
+        </div>
+      </li>
+
+      <li>
+        <div class="nav-tab">
+          <a ng-click="nc.signout();"><i class="fa fa-sign-out"></i><p>Signout</p></a>
+        </div>
+      </li>
+
+    </ul>
+  </div>
 </nav>

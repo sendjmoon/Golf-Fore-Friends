@@ -1,0 +1,12 @@
+<div class="auth-container">
+  <div class="auth-layout">
+    <div class="form-container" ng-hide="registered">
+      <signup></signup>
+      <p>Already registered? <a href="" ng-click="registered=true">Click Here</a></p>
+    </div>
+    <div class="form-container" ng-show="registered">
+      <signin></signin>
+      <p>Not registered? <a href="" ng-click="registered=false">Click Here</a></p>
+    </div>
+  </div>
+</div>
