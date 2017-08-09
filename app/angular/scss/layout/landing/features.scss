@@ -1,20 +1,26 @@
 .features-section {
+  width: 100%;
   display: table;
+  margin: 0 auto;
+  background-color: #343e47;
 
-  h1 {
+  h2 {
+    color: #fff;
     text-align: center;
   }
 
-  hr {
-    width: 25%;
-    border-color: $orange-primary;
-  }
-
   .feature-container {
+    margin-bottom: 30px;
+    padding: 0 60px;
 
     h4 {
       margin-bottom: 5px;
+      color: $orange-primary;
       text-align: center;
+    }
+
+    p {
+      color: #fff;
     }
   }
 }

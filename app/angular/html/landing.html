@@ -3,25 +3,26 @@
     <div class="title">
       <h1>Golf Four Friends</h1>
     </div>
-    <div class="description">
+    <div class="description" ng-hide="auth">
       <p>PLAN, TRACK, AND CHAT EVERYTHING GOLF.</p>
     </div>
+    <button ng-click="auth=true" ng-hide="auth">SIGNUP</button>
+    <auth ng-show="auth"></auth>
   </div>
-  <!-- <div class="title-bg-overlay"></div> -->
 </div>
 
-<div class="subcontent-container">
-  <div class="about-section gff-container">
-    <h1>ABOUT</h1>
-    <hr></hr>
+<div class="about-section subcontent-container">
+  <div class="gff-container">
+    <h2>ABOUT</h2>
+    <hr class="landing-bar">
     <p><strong><em>Golf Four Friends</em></strong> is dedicated to helping golfers stay connected with the game and each other. We all love (or hate) looking at scorecards but saving those cards isn't terribly convenient. Well, we're here to mitigate that burden and give players the opportunity to record and review said scores.</p>
   </div>
 </div>
 
-<div class="subcontent-container bg-img-one">
-  <div class="features-section gff-container">
-    <h1>FEATURES</h1>
-    <hr></hr>
+<div class="features-section subcontent-container">
+  <div class="gff-container">
+    <h2>FEATURES</h2>
+    <hr class="landing-bar">
     <div class="feature-container col-md-4">
       <h4>Games</h4>
       <p>Create and edit games to keep track of scores. Choose an existing game format or suggest your own.</p>
@@ -35,6 +36,4 @@
       <p>Check out course information and scorecards. If a course isn't on the list, suggest it and we'll add it in!</p>
     </div>
   </div>
-  <!-- <div class="title-bg-overlay"></div> -->
 </div>
-<!-- <auth></auth> -->
