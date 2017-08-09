@@ -1,5 +1,5 @@
 <form name="signup" data-ng-submit="ac.signup(ac.user)">
-  <div class="input-container">
+  <div class="input-container first">
     <i class="fa fa-tag" aria-hidden="true"></i>
     <input type="text" required placeholder="Username" data-ng-model="ac.user.username"></input>
   </div>
@@ -11,7 +11,7 @@
     <i class="fa fa-envelope" aria-hidden="true"></i>
     <input type="text" required placeholder="Email" data-ng-model="ac.user.email"></input>
   </div>
-  <div class="input-container">
+  <div class="input-container last">
     <i class="fa fa-lock gff-last" aria-hidden="true"></i>
     <input class="gff-last" type="password" required placeholder="Password" data-ng-model="ac.user.password"></input>
   </div>
