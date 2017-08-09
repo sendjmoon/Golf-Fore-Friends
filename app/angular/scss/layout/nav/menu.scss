@@ -22,7 +22,7 @@
   ul {
     width: auto;
     height: 100%;
-    padding: 0;
+    padding: 0 15px;
     margin: 0;
     list-style: none;
     text-align: center;
@@ -63,6 +63,19 @@
           font-size: 14px;
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .gff-nav {
+
+    .hamburger-menu-icon {
+      display: inline-block;
+    }
+
+    .nav-menu {
+      display: none;
     }
   }
 }
