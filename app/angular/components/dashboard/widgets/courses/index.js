@@ -1,11 +1,9 @@
 'use strict';
 
 module.exports = function(app) {
-  app.component('dashboard', {
-    template: require('./dashboard-template.html'),
+  app.component('coursesWidget', {
+    template: require('./courses-widget-template.html'),
     controller: 'DashboardController',
     controllerAs: 'dc',
   });
-
-  require('./widgets')(app);
 };
