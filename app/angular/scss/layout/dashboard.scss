@@ -1,7 +1,9 @@
 .dashboard-main {
 
   .dashboard-container {
+    border-top: 1px solid #ccc;
     background-color: #ecf1f7;
+    box-shadow: 0 4px 4px -2px #ccc;
 
     h1 {
       margin-top: 0px;
