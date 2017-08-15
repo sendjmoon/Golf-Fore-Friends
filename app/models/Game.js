@@ -10,12 +10,16 @@ const GameSchema = new Schema({
     required: true,
     unique: false,
   },
-  course: {
-    type: String,
-    required: true,
+  // course: {
+  //   type: String,
+  //   required: true,
+  //   unique: false,
+  // },
+  createdAt: {
+    type: Number,
     unique: false,
   },
-  createdAt: {
+  updatedAt: {
     type: Number,
     unique: false,
   },
@@ -28,6 +32,7 @@ const GameSchema = new Schema({
       type: Number,
       unique: false,
     },
+    required: true,
   }],
 },
 {
