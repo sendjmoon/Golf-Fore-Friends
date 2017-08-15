@@ -56,21 +56,9 @@ module.exports = function() {
     });
   };
 
-  // const getAllFriends = function(emailOrUsername) {
-  //   return new Promise((resolve, reject) => {
-  //     getByEmailOrUsername(emailOrUsername)
-  //       .then((user) => {
-  //         console.log(user);
-  //         resolve(user);
-  //       })
-  //       .catch(reject);
-  //   });
-  // };
-
   return {
     create: create,
     getByEmailOrUsername: getByEmailOrUsername,
     getAllUsers: getAllUsers,
-    // getAllFriends: getAllFriends,
   };
 };
