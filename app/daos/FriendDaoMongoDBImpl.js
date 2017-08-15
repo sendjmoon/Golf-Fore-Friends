@@ -4,9 +4,6 @@ const Promise = require('bluebird');
 const User = require('../models/User');
 
 module.exports = function() {
-  const addFriend = function() {
-
-  };
 
   const getFriendList = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
@@ -28,7 +25,22 @@ module.exports = function() {
       });
   };
 
+  const addFriend = function(user, friendId) {
+    return new Promise((resolve, reject) => {
+      User.update({
+        email: user.email,
+      }, {
+        $addToSet: { friendIds: friendId },
+      })
+        .then((res) => {
+          resolve(res);
+        })
+        .catch(reject);
+    });
+  };
+
   return {
     getFriendList: getFriendList,
+    addFriend: addFriend,
   };
 };
