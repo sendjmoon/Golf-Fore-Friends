@@ -32,7 +32,6 @@ const GameSchema = new Schema({
       type: Number,
       unique: false,
     },
-    required: true,
   }],
 },
 {
