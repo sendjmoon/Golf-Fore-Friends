@@ -5,6 +5,9 @@ module.exports = function($routeProvider, $locationProvider) {
     .when('/dashboard', {
       template: require('../html/dashboard.html'),
     })
+    .when('/friends', {
+      template: require('../html/friends.html'),
+    })
     .when('/', {
       template: require('../html/landing.html'),
     })

@@ -2,10 +2,9 @@
 
 module.exports = function(app) {
   app.controller('FriendController', ['$rootScope', '$http', function($rs, $http) {
-    this.baseUrl = $rs.baseUrl;
 
     this.getAllUsers = function() {
-      $http.get(`${this.baseUrl}/users`)
+      $http.get(`/users`)
         .then((res) => {
           this.allUsers = res.data;
         })
@@ -15,7 +14,7 @@ module.exports = function(app) {
     };
 
     this.getFriendList = function() {
-      $http.get(`${this.baseUrl}/friends/list`)
+      $http.get(`/friends/list`)
         .then((friendList) => {
           console.log(friendList);
           this.friendList = friendList;
@@ -26,7 +25,7 @@ module.exports = function(app) {
     };
 
     this.addFriend = function() {
-      $http.post(`${this.baseUrl}/friends`)
+      $http.post(`/friends`)
         .then((res) => {
           res.data === false ? alert('friend already exists') : console.log('added friend');
         })
