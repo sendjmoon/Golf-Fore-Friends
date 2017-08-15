@@ -8,6 +8,9 @@ module.exports = function($routeProvider, $locationProvider) {
     .when('/friends', {
       template: require('../html/friends.html'),
     })
+    .when('/games', {
+      template: require('../html/games.html'),
+    })
     .when('/', {
       template: require('../html/landing.html'),
     })
