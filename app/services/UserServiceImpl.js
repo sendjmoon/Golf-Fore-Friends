@@ -63,20 +63,9 @@ module.exports = function(userDao) {
     });
   };
 
-  // const addFriend = function(user, friendId) {
-  //   return new Promise((resolve, reject) => {
-  //     _userDao.addFriend(user, friendId)
-  //       .then((res) => {
-  //         resolve(res.nModified === 0 ? false : true);
-  //       })
-  //       .catch(reject);
-  //   });
-  // };
-
   return {
     create: create,
     authenticateUser: authenticateUser,
     getAllUsers: getAllUsers,
-    // addFriend: addFriend,
   };
 };

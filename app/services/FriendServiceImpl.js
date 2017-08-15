@@ -9,7 +9,21 @@ module.exports = function(friendDao) {
     return new Promise((resolve, reject) => {
       _friendDao.getFriendList(emailOrUsername)
         .then((friendList) => {
+          friendList = friendList.filter((user) => {
+            user.password = '';
+            return user;
+          });
           resolve(friendList);
+        })
+        .catch(reject);
+    });
+  };
+
+  const addFriend = function(user, friendId) {
+    return new Promise((resolve, reject) => {
+      _friendDao.addFriend(user, friendId)
+        .then((res) => {
+          resolve(res.nModified === 0 ? false : true);
         })
         .catch(reject);
     });
@@ -17,5 +31,6 @@ module.exports = function(friendDao) {
 
   return {
     getFriendList: getFriendList,
+    addFriend: addFriend,
   }
 };
