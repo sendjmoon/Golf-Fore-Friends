@@ -16,7 +16,6 @@ module.exports = function(app) {
     this.getFriendList = function() {
       $http.get(`/friends/list`)
         .then((friendList) => {
-          console.log(friendList.data);
           this.friendList = friendList.data;
         })
         .catch((err) => {
