@@ -8,11 +8,12 @@ module.exports = function() {
     return new Promise((resolve, reject) => {
       const game = new Game(gameData);
       game.createdAt = Date.now();
+      game.updatedAt = Date.now();
       game.save()
-        .then((createdGame) => {
-          Game.findById(createdGame.id)
+        .then((game) => {
+          Game.findById(game.id)
             .select('_id -__v')
-            .populate('players', '-_id fullName email username')
+            // .populate('players', '-_id fullName email username')
             .exec()
             .then((newGame) => {
               resolve(newGame.toObject());
