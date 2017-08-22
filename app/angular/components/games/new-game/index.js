@@ -5,5 +5,8 @@ module.exports = function(app) {
     template: require('./new-game-template.html'),
     controller: 'GamesController',
     controllerAs: 'gc',
+    bindings: {
+      friendsList: '=',
+    },
   });
 };

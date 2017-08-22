@@ -1,7 +1,7 @@
 <form name="new-game" data-ng-submit="gc.createGame(gc.game)">
   <input type="text" placeholder="Game Name" ng-model="gc.game.name"></input>
-  <select ng-model="friend">
-    <option ng-repeat="friend in gc.friendsList" value="{{friend._id}}">{{friend.fullName}}</option>
+  <select ng-model="player">
+    <option ng-repeat="friend in gc.friendsList">{{friend.fullName}}</option>
   </select>
   <button type="submit">Submit</button>
 </form>
