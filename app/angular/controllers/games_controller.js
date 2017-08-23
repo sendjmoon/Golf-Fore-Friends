@@ -31,7 +31,7 @@ module.exports = function(app) {
     };
 
     this.createGame = function(game) {
-      console.log(game);
+      // console.log(game);
     };
   }]);
 };
