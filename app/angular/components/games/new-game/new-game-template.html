@@ -1,7 +1,21 @@
+<div>
+  <h3>Current Players</h3>
+  <ul>
+    <li ng-repeat="player in gc.game.players">{{player.fullName}}</li>
+  </ul>
+</div>
+
+<div>
+  <h3>add player</h3>
+  <form name="add-player" data-ng-submit="gc.addPlayer(player)">
+    <select ng-model="player">
+      <option ng-repeat="friend in gc.friendsList" value="{{friend}}">{{friend.fullName}}</option>
+    </select>
+    <button type="submit">Add Player</button>
+  </form>
+</div>
+
 <form name="new-game" data-ng-submit="gc.createGame(gc.game)">
   <input type="text" placeholder="Game Name" ng-model="gc.game.name"></input>
-  <select ng-model="friend">
-    <option ng-repeat="friend in gc.friendsList" value="{{friend._id}}">{{friend.fullName}}</option>
-  </select>
   <button type="submit">Submit</button>
 </form>
