@@ -4,6 +4,7 @@ module.exports = function(app) {
   app.controller('GamesController', ['$rootScope', '$http', function($rs, $http) {
     this.game = {};
     this.game.players = [];
+    this.game.players[0] = $rs.user;
     this.friendsList = [];
 
     this.getFriendsList = function() {
