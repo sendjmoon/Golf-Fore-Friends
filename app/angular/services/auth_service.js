@@ -2,11 +2,13 @@
 
 module.exports = function(app) {
   app.service('AuthService', ['$rootScope', '$http', '$location', function($rs, $http, $location) {
+    $rs.user = {};
 
     this.signup = function(userData) {
       $http.post(`${$rs.baseUrl}/users/signup`, userData)
         .then((res) => {
           delete res.config.data.password;
+          $rs.user = res.data;
           $location.path('/dashboard');
         })
         .catch((err) => {
@@ -18,6 +20,7 @@ module.exports = function(app) {
       $http.post(`${$rs.baseUrl}/users/signin`, userData)
         .then((res) => {
           delete res.config.data.password;
+          $rs.user = res.data;
           $location.path('/dashboard');
         })
         .catch((err) => {
