@@ -2,33 +2,35 @@
 
 module.exports = function(app) {
   app.controller('GamesController', ['$rootScope', '$http', function($rs, $http) {
-    this.players = [];
+    this.game = {};
+    this.game.players = [];
     this.friendsList = [];
 
     this.getFriendsList = function() {
-      console.log('get friends list function');
       $http.get('/friends/list')
         .then((friendsList) => {
+          friendsList.data.forEach((friend) => {
+            delete friend.password;
+            delete friend.$$hashKey;
+          });
           this.friendsList = friendsList.data;
-        })
-        .then(() => {
-          console.log(this.friendsList);
         })
         .catch((err) => {
           alert('error getting friends list');
         });
     };
 
-    this.addToGame = function(user) {
-      this.players.push(user);
-      console.log(this.players);
+    this.addPlayer = function(user) {
+      if (user === undefined || user === null) return;
+      user = JSON.parse(user);
+      this.game.players.push(user);
+      this.friendsList = this.friendsList.filter((friend) => {
+        return friend._id !== user._id;
+      });
     };
 
-    this.createGame = function() {
-      console.log('this.players');
-      console.log(this.players);
-      console.log('new game function');
-      console.log(this.friendsList);
+    this.createGame = function(game) {
+      console.log(game);
     };
   }]);
 };
