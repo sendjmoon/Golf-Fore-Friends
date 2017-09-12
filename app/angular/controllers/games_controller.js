@@ -31,7 +31,14 @@ module.exports = function(app) {
     };
 
     this.createGame = function(game) {
-      
+      console.log(game);
+      $http.post('/games/create', game)
+        .then((newGame) => {
+          console.log(newGame);
+        })
+        .catch((err) => {
+          alert('error creating game');
+        });
     };
   }]);
 };

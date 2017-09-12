@@ -30,6 +30,7 @@ const GameSchema = new Schema({
     },
     score: {
       type: Number,
+      required: true,
       unique: false,
     },
   }],
