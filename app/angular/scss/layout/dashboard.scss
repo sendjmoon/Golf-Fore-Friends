@@ -1,8 +1,8 @@
 .dashboard-main {
 
   .dashboard-container {
+    margin-bottom: 50px;
     border-top: 1px solid #ccc;
-    background-color: #ecf1f7;
     box-shadow: 0 4px 4px -2px #ccc;
 
     h1 {
@@ -12,7 +12,6 @@
     .dashboard-content {
       max-width: 1660px;
       margin: 0 auto;
-      margin-bottom: 50px;
       padding: 15px;
     }
   }

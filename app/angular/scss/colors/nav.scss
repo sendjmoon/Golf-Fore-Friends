@@ -1,5 +1,5 @@
 .gff-nav {
-  background-color: #263238;
+  background-color: $nav-bg-dark-primary-color;
 
   ul {
 
@@ -14,9 +14,12 @@
       }
 
       .link-name-container {
-        background-color: $nav-bg-dark-primary-color;
         color: #fff;
       }
     }
+  }
+
+  .nav-menu {
+    background-color: $nav-bg-dark-primary-color;
   }
 }
