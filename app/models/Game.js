@@ -11,9 +11,8 @@ const GameSchema = new Schema({
     unique: false,
   },
   // course: {
-  //   type: String,
-  //   required: true,
-  //   unique: false,
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Course',
   // },
   createdAt: {
     type: Number,
