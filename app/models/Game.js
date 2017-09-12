@@ -26,6 +26,7 @@ const GameSchema = new Schema({
     player: {
       type: Schema.Types.ObjectId,
       ref: 'User',
+      unique: true,
     },
     score: {
       type: Number,
