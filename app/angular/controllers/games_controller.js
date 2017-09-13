@@ -30,8 +30,14 @@ module.exports = function(app) {
       });
     };
 
-    this.createGame = function(game) {
-      // console.log(game);
+    this.createGame = function(gameData) {
+      $http.post('/games/create', gameData)
+        .then((newGame) => {
+          console.log(newGame.data);
+        })
+        .catch((err) => {
+          alert('error creating game');
+        });
     };
   }]);
 };

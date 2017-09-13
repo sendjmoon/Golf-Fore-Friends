@@ -8,7 +8,7 @@ router.post('/create', function(req, res, next) {
   const gameData = {};
   gameData.name = req.body.name;
   gameData.players = req.body.players;
-  gameService.create(gameData)
+  gameService.create(gameData.name, gameData.players)
     .then((game) => {
       res.json(game);
     })

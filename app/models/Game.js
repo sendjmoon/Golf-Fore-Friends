@@ -1,7 +1,6 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const Promise = require('bluebird');
 const Schema = mongoose.Schema;
 
 const GameSchema = new Schema({
@@ -11,27 +10,28 @@ const GameSchema = new Schema({
     unique: false,
   },
   // course: {
-  //   type: String,
-  //   required: true,
-  //   unique: false,
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'Course',
   // },
-  createdAt: {
+  updatedAt: {
     type: Number,
     unique: false,
   },
-  updatedAt: {
+  createdAt: {
     type: Number,
     unique: false,
   },
   players: [{
     player: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
+      unique: true,
     },
-    score: {
-      type: Number,
-      unique: false,
-    },
+    // score: {
+    //   type: Number,
+    //   required: true,
+    //   unique: false,
+    // },
   }],
 },
 {

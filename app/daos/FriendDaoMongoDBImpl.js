@@ -4,7 +4,6 @@ const Promise = require('bluebird');
 const User = require('../models/User');
 
 module.exports = function() {
-
   const getFriendList = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
       User.findOne({

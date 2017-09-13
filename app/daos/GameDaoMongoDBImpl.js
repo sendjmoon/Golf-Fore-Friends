@@ -9,11 +9,12 @@ module.exports = function() {
       const game = new Game(gameData);
       game.createdAt = Date.now();
       game.updatedAt = Date.now();
+      console.log(game);
       game.save()
-        .then((game) => {
-          Game.findById(game.id)
-            .select('_id -__v')
-            // .populate('players', '-_id fullName email username')
+        .then((createdGame) => {
+          console.log('what');
+          Game.findById(createdGame.id)
+            .select('-__v')
             .exec()
             .then((newGame) => {
               resolve(newGame.toObject());
