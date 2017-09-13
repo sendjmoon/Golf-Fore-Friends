@@ -30,9 +30,8 @@ module.exports = function(app) {
       });
     };
 
-    this.createGame = function(game) {
-      console.log(game);
-      $http.post('/games/create', game)
+    this.createGame = function(gameData) {
+      $http.post('/games/create', gameData)
         .then((newGame) => {
           console.log(newGame);
         })

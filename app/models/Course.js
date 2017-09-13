@@ -17,11 +17,11 @@ const CourseSchema = new Schema({
     unique: false,
   },
   scorecard: scorecardTemplate,
-  createdAt: {
+  updatedAt: {
     type: Number,
     required: true,
   },
-  updatedAt: {
+  createdAt: {
     type: Number,
     required: true,
   },

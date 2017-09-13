@@ -11,28 +11,28 @@ const GameSchema = new Schema({
     unique: false,
   },
   // course: {
-  //   type: Schema.Types.ObjectId,
+  //   type: mongoose.Schema.Types.ObjectId,
   //   ref: 'Course',
   // },
-  createdAt: {
+  updatedAt: {
     type: Number,
     unique: false,
   },
-  updatedAt: {
+  createdAt: {
     type: Number,
     unique: false,
   },
   players: [{
     player: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       unique: true,
     },
-    score: {
-      type: Number,
-      required: true,
-      unique: false,
-    },
+    // score: {
+    //   type: Number,
+    //   required: true,
+    //   unique: false,
+    // },
   }],
 },
 {
