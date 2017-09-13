@@ -1,7 +1,6 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const Promise = require('bluebird');
 const Schema = mongoose.Schema;
 
 const GameSchema = new Schema({
