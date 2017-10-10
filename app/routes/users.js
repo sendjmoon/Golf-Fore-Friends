@@ -18,7 +18,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/signup', function(req, res, next) {
-  userService.create(req.body.username, req.body.fullName, req.body.email, req.body.password)
+  userService.create(
+      req.body.username,
+      req.body.fullName,
+      req.body.email,
+      req.body.password
+    )
     .then((user) => {
       delete user.password;
       req.session.user = user;
@@ -32,7 +37,10 @@ router.post('/signup', function(req, res, next) {
 });
 
 router.post('/signin', function(req, res, next) {
-  userService.authenticateUser(req.body.emailOrUsername, req.body.password)
+  userService.authenticateUser(
+      req.body.emailOrUsername,
+      req.body.password
+    )
     .then((user) => {
       delete user.password;
       req.session.user = user;

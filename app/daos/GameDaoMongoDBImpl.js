@@ -9,10 +9,8 @@ module.exports = function() {
       const game = new Game(gameData);
       game.createdAt = Date.now();
       game.updatedAt = Date.now();
-      console.log(game);
       game.save()
         .then((createdGame) => {
-          console.log('what');
           Game.findById(createdGame.id)
             .select('-__v')
             .exec()
@@ -21,7 +19,10 @@ module.exports = function() {
             })
             .catch(reject);
         })
-        .catch(reject);
+        .catch((err) => {
+          console.log(err);
+          reject();
+        });
     });
   };
 

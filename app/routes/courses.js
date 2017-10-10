@@ -5,7 +5,11 @@ const router = express.Router();
 const courseService = require('../services').courseService;
 
 router.post('/create', function(req, res, next) {
-  courseService.create(req.body.name, req.body.location, req.body.scorecard)
+  courseService.create(
+      req.body.name,
+      req.body.location,
+      req.body.scorecard
+    )
     .then((course) => {
       res.json(course);
     })
