@@ -33,8 +33,6 @@ const UserSchema = new Schema({
     required: true,
   },
   gameIds: [{
-    // type: Array,
-    // unique: false,
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Game',
     unique: true,
