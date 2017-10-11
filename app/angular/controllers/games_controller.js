@@ -30,6 +30,13 @@ module.exports = function(app) {
       });
     };
 
+    this.removePlayer = function(user) {
+      let playersArray = this.game.players;
+      let userIndex = playersArray.indexOf(user);
+      this.friendsList.push(playersArray[userIndex]);
+      playersArray.splice(userIndex, 1);
+    };
+
     this.createGame = function(gameData) {
       $http.post('/games/create', gameData)
         .then((newGame) => {
