@@ -30,6 +30,10 @@ module.exports = function(app) {
       });
     };
 
+    this.updatePlayer = function(player) {
+      console.log(player);
+    };
+
     this.removePlayer = function(user) {
       let playersArray = this.game.players;
       let userIndex = playersArray.indexOf(user);

@@ -15,7 +15,7 @@ module.exports = function() {
             .select('-__v')
             .exec()
             .then((newGame) => {
-              resolve(newGame.toObject());
+              resolve(newGame);
             })
             .catch(reject);
         })

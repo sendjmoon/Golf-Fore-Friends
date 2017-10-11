@@ -26,16 +26,12 @@ const GameSchema = new Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       unique: true,
-      score: {
-        type: Number,
-        unique: false,
-      }
     },
-    // score: {
-    //   type: Number,
-    //   required: true,
-    //   unique: false,
-    // },
+    score: {
+      type: Number,
+      required: true,
+      unique: false,
+    },
   }],
 },
 {
