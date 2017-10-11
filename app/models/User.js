@@ -32,10 +32,11 @@ const UserSchema = new Schema({
     type: Number,
     required: true,
   },
-  gameIds: {
-    type: Array,
-    unique: false,
-  },
+  gameIds: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Game',
+    unique: true,
+  }],
   friendIds: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

@@ -1,16 +1,23 @@
 <div>
   <h3>Current Players</h3>
   <ul>
-    <li ng-repeat="player in gc.game.players">{{player.fullName}}</li>
+    <li ng-repeat="player in gc.game.players">
+      <p>{{player.fullName}}</p>
+      <p ng-hide="editing"><strong>Out:</strong> {{player.score}}</p>
+      <input type="text" required placeholder="101" ng-model="player.score" ng-show="editing"></input>
+      <button ng-hide="editing" ng-click="editing=true">Edit</button>
+      <p>test</p>
+      <button ng-click="gc.removePlayer(player)">X</button>
+      <button ng-hide="!editing" ng-click="gc.updatePlayer(player); editing=false">Save</button>
+    </li>
   </ul>
 </div>
 
 <div>
   <h3>add player</h3>
-  <form name="add-player" data-ng-submit="gc.addPlayer(player)">
-    <select ng-model="player">
+  <form name="add-player" data-ng-submit="gc.addPlayer(gc.player)">
+    <select ng-model="gc.player">
       <option ng-repeat="friend in gc.friendsList" value="{{friend}}">{{friend.fullName}}</option>
-      <!-- <input type="text" placeholder="Score" ng-model="player.score"></input> -->
     </select>
     <button type="submit">Add Player</button>
   </form>

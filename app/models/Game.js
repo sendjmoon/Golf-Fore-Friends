@@ -27,11 +27,11 @@ const GameSchema = new Schema({
       ref: 'User',
       unique: true,
     },
-    // score: {
-    //   type: Number,
-    //   required: true,
-    //   unique: false,
-    // },
+    score: {
+      type: Number,
+      required: true,
+      unique: false,
+    },
   }],
 },
 {
