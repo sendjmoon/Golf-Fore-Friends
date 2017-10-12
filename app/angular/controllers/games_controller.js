@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('GamesController', ['$rootScope', '$http', '$location', '$route', function($rs, $http, $location, $route) {
-    $rs.user === undefined ? $location.path('/') : this.user = $rs.user;
-    this.user._id === undefined ? $location.path('/') : true;
+  app.controller('GamesController', ['$rootScope', '$http', '$location', '$route', 'AuthService', function($rs, $http, $location, $route, AuthService) {
+
+    AuthService.checkSessionExists();
 
     this.game = {};
     this.game.players = [];
@@ -65,5 +65,6 @@ module.exports = function(app) {
           alert('error creating game');
         });
     };
+    
   }]);
 };
