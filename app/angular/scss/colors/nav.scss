@@ -1,5 +1,5 @@
 .gff-nav {
-  // background-color: $nav-bg-dark-primary-color;
+  background-color: #f1f1f1;
 
   ul {
 
@@ -9,7 +9,7 @@
         color: #1f1f1f;
 
         &:hover {
-          color: $orange-primary;
+          color: $green-primary;
         }
       }
 
@@ -17,9 +17,5 @@
         color: #1f1f1f;
       }
     }
-  }
-
-  .nav-menu {
-    // background-color: $nav-bg-dark-primary-color;
   }
 }
