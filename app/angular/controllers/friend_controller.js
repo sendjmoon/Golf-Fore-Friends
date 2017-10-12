@@ -1,7 +1,9 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('FriendController', ['$rootScope', '$http', function($rs, $http) {
+  app.controller('FriendController', ['$rootScope', '$http', '$location', function($rs, $http, $location) {
+    $rs.user === undefined ? $location.path('/') : this.user = $rs.user;
+    this.user._id === undefined ? $location.path('/') : true;
 
     this.getAllUsers = function() {
       $http.get(`/users`)
