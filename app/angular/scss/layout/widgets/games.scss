@@ -1,0 +1,33 @@
+games-widget {
+  display: flex;
+  justify-content: space-around;
+
+  .game-box {
+    display: table;
+    width: 33%;
+
+    p {
+
+      span {
+        position: relative;
+        top: -5px;
+        font-size: 9px;
+        font-weight: bold;
+      }
+    }
+
+    .game-box-left, .game-box-right {
+      display: table-cell;
+      vertical-align: middle;
+      padding: 15px;
+    }
+
+    .game-box-right {
+      text-align: center;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
