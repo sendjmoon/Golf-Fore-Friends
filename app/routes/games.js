@@ -5,11 +5,9 @@ const router = express.Router();
 const gameService = require('../services').gameService;
 
 router.post('/create', function(req, res, next) {
-  gameService.create(
-      req.body.name,
-      req.body.players
-    )
+  gameService.create(req.body.name, req.body.players)
     .then((game) => {
+      console.log('game created');
       res.json(game);
     })
     .catch((err) => {

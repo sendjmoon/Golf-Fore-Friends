@@ -28,8 +28,10 @@ module.exports = function() {
     return new Promise((resolve, reject) => {
       User.update({
         email: user.email,
-      }, {
-        $addToSet: { friendIds: friendId },
+      },{
+        $addToSet: {
+          friendIds: friendId
+        },
       })
         .then((res) => {
           resolve(res);

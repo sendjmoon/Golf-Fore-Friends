@@ -13,6 +13,7 @@ module.exports = function(gameDao) {
       };
       _gameDao.create(gameData)
         .then((game) => {
+          console.log('resolved');
           resolve(game);
         })
         .catch(reject);

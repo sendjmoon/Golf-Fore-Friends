@@ -17,9 +17,15 @@ module.exports = function() {
             .then((newUser) => {
               resolve(newUser.toObject());
             })
-            .catch(reject)
+            .catch((err) => {
+              console.log(err);
+              reject();
+            });
         })
-        .catch(reject);
+        .catch((err) => {
+          console.log(err);
+          reject();
+        });
     });
   };
 
