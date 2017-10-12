@@ -11,7 +11,7 @@ module.exports = function(app) {
       console.log('get games fxn');
       $http.get('/games/all')
         .then((games) => {
-          console.log(games);
+          this.allGames = games.data;
         })
         .catch((err) => {
           alert('error getting games');
