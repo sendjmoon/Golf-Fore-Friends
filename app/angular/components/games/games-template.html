@@ -1,4 +1,4 @@
-<div class="games-container" ng-hide="newGame">
+<div class="games-container" ng-hide="newGame" ng-init="gc.getGames()">
   <h1>Recent Games</h1>
   <button ng-click="newGame=true; gc.getFriendsList()">Add a New Game</button>
 </div>

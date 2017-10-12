@@ -7,6 +7,17 @@ module.exports = function(app) {
     this.game.players[0] = $rs.user;
     this.friendsList = [];
 
+    this.getGames = function() {
+      console.log('get games fxn');
+      $http.get('/games/all')
+        .then((games) => {
+          console.log(games);
+        })
+        .catch((err) => {
+          alert('error getting games');
+        });
+    };
+
     this.getFriendsList = function() {
       $http.get('/friends/list')
         .then((friendsList) => {

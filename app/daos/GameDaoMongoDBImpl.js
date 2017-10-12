@@ -42,7 +42,6 @@ module.exports = function() {
           },
         })
           .then((res) => {
-            console.log(res);
             resolve(res);
           })
           .catch(reject);
@@ -50,24 +49,27 @@ module.exports = function() {
     });
   };
 
-  const addToUser = function(user, game) {
+  const getGames = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
-      User.update({
-        _id: user._id,
+      User.findOne({
+        $or: [
+          { email: emailOrUsername },
+          { username: emailOrUsername },
+        ],
       },{
-        $addToSet: {
-          gameIds: game._id,
-        },
+        password: 0,
       })
-        .then((res) => {
-          console.log(res);
-          resolve(res);
+        .populate('gameIds')
+        .exec()
+        .then((user) => {
+          resolve(user.gameIds);
         })
         .catch(reject);
-    });
+      });
   };
 
   return {
     create: create,
+    getGames: getGames,
   };
 };

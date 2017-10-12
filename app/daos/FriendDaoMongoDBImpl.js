@@ -11,7 +11,7 @@ module.exports = function() {
           { email: emailOrUsername },
           { username: emailOrUsername },
         ],
-      }, {
+      },{
         password: 0,
       })
         .populate('friendIds')
