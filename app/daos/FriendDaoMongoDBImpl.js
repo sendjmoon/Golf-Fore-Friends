@@ -11,7 +11,7 @@ module.exports = function() {
           { email: emailOrUsername },
           { username: emailOrUsername },
         ],
-      }, {
+      },{
         password: 0,
       })
         .populate('friendIds')
@@ -28,8 +28,10 @@ module.exports = function() {
     return new Promise((resolve, reject) => {
       User.update({
         email: user.email,
-      }, {
-        $addToSet: { friendIds: friendId },
+      },{
+        $addToSet: {
+          friendIds: friendId
+        },
       })
         .then((res) => {
           resolve(res);

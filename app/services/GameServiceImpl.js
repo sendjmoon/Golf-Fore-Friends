@@ -19,7 +19,18 @@ module.exports = function(gameDao) {
     });
   };
 
+  const getGames = function(emailOrUsername) {
+    return new Promise((resolve, reject) => {
+      _gameDao.getGames(emailOrUsername)
+        .then((games) => {
+          resolve(games);
+        })
+        .catch(reject);
+    });
+  }
+
   return {
     create: create,
+    getGames: getGames,
   };
 };

@@ -16,15 +16,13 @@ module.exports = function() {
             .select('-__v')
             .exec()
             .then((newGame) => {
-              console.log('entering foreach');
-              newGame.players.forEach((player) => {
-                console.log('foreach');
-                console.log(player);
-                addToUser(player, newGame);
-              })
-              .then(resolve(newGame));
+              addToUsers(newGame);
+              resolve();
             })
-            .catch(reject);
+            .catch((err) => {
+              console.log(err);
+              reject();
+            });
         })
         .catch((err) => {
           console.log(err);
@@ -33,28 +31,45 @@ module.exports = function() {
     });
   };
 
-  const addToUser = function(user, game) {
-    let gameId = game._id;
-    console.log(gameId);
-    console.log('userid');
-    console.log(user._id);
+  const addToUsers = function(game) {
+    game.players.forEach((player) => {
+      return new Promise((resolve, reject) => {
+        User.update({
+          _id: player._id,
+        },{
+          $addToSet: {
+            gameIds: game._id,
+          },
+        })
+          .then((res) => {
+            resolve(res);
+          })
+          .catch(reject);
+      });
+    });
+  };
+
+  const getGames = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
-      User.update({
-        _id: user._id,
-      }, {
-        $addToSet: {
-          gameIds: gameId,
-        }
+      User.findOne({
+        $or: [
+          { email: emailOrUsername },
+          { username: emailOrUsername },
+        ],
+      },{
+        password: 0,
       })
-        .then((res) => {
-          console.log(res);
-          resolve(res);
+        .populate('gameIds')
+        .exec()
+        .then((user) => {
+          resolve(user.gameIds);
         })
         .catch(reject);
-    });
+      });
   };
 
   return {
     create: create,
+    getGames: getGames,
   };
 };
