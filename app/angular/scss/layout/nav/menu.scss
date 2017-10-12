@@ -81,15 +81,15 @@
       justify-content: flex-start;
       align-items: center;
       position: fixed;
-      top: 58px;
-      left: 65px;
+      top: 18px;
+      left: 67px;
       height: 0;
       width: 1px;
       overflow: hidden;
       padding: 0;
       transition: all 0.3s ease;
 
-      background-color: #1f1f1f;
+      background-color: rgba(31, 31, 31, 0.95);
 
       li {
         width: 100%;
@@ -101,14 +101,14 @@
         }
 
         &:hover {
-          background-color: #374a54;
+          background-color: #000;
         }
 
         a {
           color: #fff;
 
           &:hover {
-            color: $orange-primary;
+            color: $green-primary;
           }
         }
       }
