@@ -1,0 +1,19 @@
+games-widget {
+  display: flex;
+  justify-content: space-around;
+
+  .game-box {
+    display: table;
+    width: 33%;
+
+    .game-box-left, .game-box-right {
+      display: table-cell;
+      vertical-align: middle;
+      padding: 15px;
+    }
+
+    .game-box-right {
+      text-align: center;
+    }
+  }
+}

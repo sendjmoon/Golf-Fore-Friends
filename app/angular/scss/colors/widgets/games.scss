@@ -1,0 +1,18 @@
+games-widget {
+
+  .game-box {
+    // background-color: #ecf1f7;
+    background-color: #1f1f1f;
+    // border: 1px solid #fff;
+
+    &:hover {
+      background-color: #fff;
+      color: #1f1f1f;
+      cursor: pointer;
+    }
+
+    h3 {
+      color: $orange-primary;
+    }
+  }
+}
