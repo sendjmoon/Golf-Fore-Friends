@@ -32,6 +32,11 @@ const UserSchema = new Schema({
     type: Number,
     required: true,
   },
+  handicap: {
+    type: Number,
+    required: false,
+    unique: false,
+  },
   gameIds: [{
     gameId: {
       type: mongoose.Schema.Types.ObjectId,
