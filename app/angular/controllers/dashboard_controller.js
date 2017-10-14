@@ -14,7 +14,7 @@ module.exports = function(app) {
       total = total / gamesArray.length;
     };
 
-    this.calcHandicap();
     AuthService.checkSessionExists();
+    this.calcHandicap();
   }]);
 };
