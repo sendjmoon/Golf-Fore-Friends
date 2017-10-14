@@ -7,7 +7,6 @@ const gameService = require('../services').gameService;
 router.get('/all', function(req, res, next) {
   gameService.getGames(req.session.user.email)
     .then((games) => {
-      console.log(games);
       res.json(games);
     })
     .catch((err) => {

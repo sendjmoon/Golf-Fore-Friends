@@ -1,14 +1,18 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('GamesController', ['$rootScope', '$http', function($rs, $http) {
+  app.controller('GamesController', ['$rootScope', '$http', '$location', '$route', 'AuthService', function($rs, $http, $location, $route, AuthService) {
+
+    AuthService.checkSessionExists();
+
     this.game = {};
     this.game.players = [];
-    this.game.players[0] = $rs.user;
     this.friendsList = [];
+    this.allGames = [];
+
+    this.game.players[0] = $rs.user;
 
     this.getGames = function() {
-      console.log('get games fxn');
       $http.get('/games/all')
         .then((games) => {
           this.allGames = games.data;
@@ -55,11 +59,12 @@ module.exports = function(app) {
     this.createGame = function(gameData) {
       $http.post('/games/create', gameData)
         .then((newGame) => {
-          console.log(newGame.data);
+          $route.reload();
         })
         .catch((err) => {
           alert('error creating game');
         });
     };
+    
   }]);
 };

@@ -1,8 +1,9 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('DashboardController', ['$rootScope', function($rs) {
-    console.log('dash controller');
-    console.log($rs.user);
+  app.controller('DashboardController', ['$rootScope', '$location', 'AuthService', function($rs, $location, AuthService) {
+
+    AuthService.checkSessionExists();
+    
   }]);
 };

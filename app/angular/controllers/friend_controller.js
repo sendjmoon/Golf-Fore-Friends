@@ -1,7 +1,9 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('FriendController', ['$rootScope', '$http', function($rs, $http) {
+  app.controller('FriendController', ['$rootScope', '$http', '$location', 'AuthService', function($rs, $http, $location, AuthService) {
+
+    AuthService.checkSessionExists();
 
     this.getAllUsers = function() {
       $http.get(`/users`)
@@ -34,5 +36,6 @@ module.exports = function(app) {
           alert('error adding friend');
         });
     };
+    
   }]);
 };

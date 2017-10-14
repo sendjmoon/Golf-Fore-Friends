@@ -38,7 +38,10 @@ module.exports = function() {
           _id: player._id,
         },{
           $addToSet: {
-            gameIds: game._id,
+            gameIds: {
+              game: game._id,
+              score: player.score,
+            },
           },
         })
           .then((res) => {

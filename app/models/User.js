@@ -33,9 +33,16 @@ const UserSchema = new Schema({
     required: true,
   },
   gameIds: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Game',
-    unique: true,
+    gameId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Game',
+      unique: true,
+    },
+    score: {
+      type: Number,
+      required: true,
+      unique: false,
+    }
   }],
   friendIds: [{
     type: mongoose.Schema.Types.ObjectId,
