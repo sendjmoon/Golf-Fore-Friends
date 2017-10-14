@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
     })
     .catch((err) => {
       res.status(500).json({
-        error: 'Error getting users.'
+        error: 'Error getting users.',
       });
     });
 });
