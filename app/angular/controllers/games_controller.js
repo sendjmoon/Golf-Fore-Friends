@@ -65,6 +65,6 @@ module.exports = function(app) {
           alert('error creating game');
         });
     };
-    
+
   }]);
 };
