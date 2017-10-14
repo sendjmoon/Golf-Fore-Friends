@@ -39,15 +39,15 @@ module.exports = function(app) {
     };
 
     this.checkSessionExists = function() {
-      // let isLoggedIn = false;
-      //
-      // for (var prop in $rs.user) {
-      //   if ($rs.user.hasOwnProperty(prop)) {
-      //     isLoggedIn = true;
-      //   }
-      // };
-      //
-      // isLoggedIn ? true : $location.path('/');
+      let isLoggedIn = false;
+
+      for (var prop in $rs.user) {
+        if ($rs.user.hasOwnProperty(prop)) {
+          isLoggedIn = true;
+        }
+      };
+
+      isLoggedIn ? true : $location.path('/');
     };
 
   }]);
