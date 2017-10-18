@@ -13,7 +13,7 @@ module.exports = function(app) {
           handicap += game.score;
         });
 
-        handicap = handicap / gamesArray.length;
+        handicap = Math.round(handicap / gamesArray.length);
         resolve(handicap);
       });
     };
