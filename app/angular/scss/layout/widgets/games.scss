@@ -3,8 +3,10 @@ games-widget {
   justify-content: space-around;
 
   .game-box {
-    display: table;
-    width: 33%;
+    display: table-cell;
+    width: 25%;
+    margin: 0 5px;
+    border: 1px solid rgba(0, 0, 0, 0);
 
     p {
 

@@ -9,6 +9,8 @@
     }
 
     .dashboard-content {
+      display: flex;
+      justify-content: flex-start;
       max-width: 1660px;
       margin: 0 auto;
       padding: 15px 0;
