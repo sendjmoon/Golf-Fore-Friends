@@ -17,7 +17,7 @@ module.exports = function() {
             .exec()
             .then((newGame) => {
               addToUsers(newGame);
-              resolve();
+              resolve(newGame);
             })
             .catch((err) => {
               console.log(err);

@@ -13,10 +13,6 @@ module.exports = function(app) {
       });
       total = total / gamesArray.length;
       this.updateHandicap(total)
-        .then((res) => {
-          console.log('updated handicap');
-          console.log(res);
-        })
         .catch((err) => {
           alert('error updating handicap');
         });
@@ -27,10 +23,7 @@ module.exports = function(app) {
       handicap.new = newHandicap;
       return new Promise((resolve, reject) => {
         $http.post('/users/update/handicap', handicap)
-          .then((res) => {
-            console.log(res);
-            resolve();
-          })
+          .then(resolve)
           .catch((err) => {
             alert('error posting updated handicap');
             reject();
