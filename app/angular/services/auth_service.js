@@ -2,13 +2,13 @@
 
 module.exports = function(app) {
   app.service('AuthService', ['$rootScope', '$http', '$location', function($rs, $http, $location) {
-    $rs.user = {};
 
     this.signup = function(userData) {
       $http.post(`${$rs.baseUrl}/users/signup`, userData)
         .then((res) => {
           delete res.config.data.password;
           $rs.user = res.data;
+          window.sessionStorage.setItem('currentUser', JSON.stringify(res.data));
           $location.path('/dashboard');
         })
         .catch((err) => {
@@ -21,6 +21,7 @@ module.exports = function(app) {
         .then((res) => {
           delete res.config.data.password;
           $rs.user = res.data;
+          window.sessionStorage.setItem('currentUser', JSON.stringify(res.data));
           $location.path('/dashboard');
         })
         .catch((err) => {
@@ -31,6 +32,7 @@ module.exports = function(app) {
     this.signout = function() {
       $http.get(`${$rs.baseUrl}/users/signout`)
         .then((res) => {
+          window.sessionStorage.removeItem('currentUser');
           $location.path('/signin');
         })
         .catch((err) => {
@@ -39,15 +41,8 @@ module.exports = function(app) {
     };
 
     this.checkSessionExists = function() {
-      // let isLoggedIn = false;
-      //
-      // for (var prop in $rs.user) {
-      //   if ($rs.user.hasOwnProperty(prop)) {
-      //     isLoggedIn = true;
-      //   }
-      // };
-      //
-      // isLoggedIn ? true : $location.path('/');
+      let currentUser = window.sessionStorage.getItem('currentUser');
+      currentUser === null ? $location.path('/') : true;
     };
 
   }]);
