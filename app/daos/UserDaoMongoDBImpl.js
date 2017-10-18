@@ -62,9 +62,32 @@ module.exports = function() {
     });
   };
 
+  const updateHandicap = function(emailOrUsername, newHandicap) {
+    return new Promise((resolve, reject) => {
+      User.findOneAndUpdate({
+        $or: [
+          { email: emailOrUsername },
+          { username: emailOrUsername },
+        ],
+      }, {
+        handicap: newHandicap,
+      })
+        .select('-__v')
+        .exec()
+        .then((user) => {
+          resolve(user.handicap);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject();
+        });
+    });
+  };
+
   return {
     create: create,
     getByEmailOrUsername: getByEmailOrUsername,
     getAllUsers: getAllUsers,
+    updateHandicap: updateHandicap,
   };
 };

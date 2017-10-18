@@ -37,10 +37,7 @@ router.post('/signup', function(req, res, next) {
 });
 
 router.post('/signin', function(req, res, next) {
-  userService.authenticateUser(
-      req.body.emailOrUsername,
-      req.body.password
-    )
+  userService.authenticateUser(req.body.emailOrUsername, req.body.password)
     .then((user) => {
       delete user.password;
       req.session.user = user;
@@ -49,6 +46,18 @@ router.post('/signin', function(req, res, next) {
     .catch((err) => {
       res.status(400).json({
         error: 'Incorrect username or password. Try again.',
+      });
+    });
+});
+
+router.post('/update/handicap', function(req, res, next) {
+  userService.updateHandicap(req.session.user.email, req.body.new)
+    .then((newHandicap) => {
+      res.json(newHandicap);
+    })
+    .catch((err) => {
+      res.status(400).json({
+        error: 'Error updating user.',
       });
     });
 });

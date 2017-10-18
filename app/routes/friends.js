@@ -17,10 +17,7 @@ router.get('/list', function(req, res, next) {
 });
 
 router.post('/add', function(req, res, next) {
-  friendService.addFriend(
-      req.session.user,
-      req.body
-    )
+  friendService.addFriend(req.session.user, req.body)
     .then((friend) => {
       res.json(friend);
     })
