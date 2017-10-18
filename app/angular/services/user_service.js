@@ -21,9 +21,9 @@ module.exports = function(app) {
     };
 
     this.updateHandicap = function(handicap) {
-      let handicapData = {};
-      handicapData.handicap = handicap;
       return new Promise((resolve, reject) => {
+        let handicapData = {};
+        handicapData.handicap = handicap;
         $http.post('users/handicap/update', handicapData)
           .then(resolve)
           .catch((err) => {
