@@ -50,8 +50,8 @@ router.post('/signin', function(req, res, next) {
     });
 });
 
-router.post('/update/handicap', function(req, res, next) {
-  userService.updateHandicap(req.session.user.email, req.body.new)
+router.post('/handicap/update', function(req, res, next) {
+  userService.updateHandicap(req.session.user.email, req.body.handicap)
     .then((newHandicap) => {
       res.json(newHandicap);
     })
