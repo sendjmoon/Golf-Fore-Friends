@@ -6,6 +6,6 @@ module.exports = function(app) {
     this.user = $rs.user;
 
     AuthService.checkSessionExists();
-    UserService.calcHandicap();
+    UserService.updateHandicap(this.user);
   }]);
 };
