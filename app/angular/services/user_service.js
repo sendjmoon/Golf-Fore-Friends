@@ -6,14 +6,15 @@ module.exports = function(app) {
     this.calcHandicap = function(gamesArray) {
       return new Promise((resolve, reject) => {
         let handicap = 0;
+
+        if (gamesArray === undefined) return reject();
+
         gamesArray.forEach((game) => {
           handicap += game.score;
         });
+
         handicap = handicap / gamesArray.length;
         resolve(handicap);
-        reject(() => {
-          alert('error calculating handicap');
-        });
       });
     };
 
