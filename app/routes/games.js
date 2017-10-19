@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const gameService = require('../services').gameService;
+const userService = require('../services').userService;
 
 router.get('/all', function(req, res, next) {
   gameService.getGames(req.session.user.email)
@@ -19,7 +20,15 @@ router.get('/all', function(req, res, next) {
 router.post('/create', function(req, res, next) {
   gameService.create(req.body.name, req.body.players)
     .then((game) => {
-      res.json(game);
+      userService.getUser(req.session.user.email)
+        .then((user) => {
+          res.json(user);
+        })
+        .catch((err) => {
+          res.status(500).json({
+            error: 'error getting user',
+          })
+        });
     })
     .catch((err) => {
       res.status(500).json({

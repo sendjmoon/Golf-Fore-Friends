@@ -74,9 +74,7 @@ module.exports = function() {
       })
         .select('-__v')
         .exec()
-        .then((user) => {
-          resolve(user.handicap);
-        })
+        .then(resolve(newHandicap))
         .catch((err) => {
           console.log(err);
           reject();

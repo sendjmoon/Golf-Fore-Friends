@@ -63,6 +63,16 @@ module.exports = function(userDao) {
     });
   };
 
+  const getUser = function(emailOrUsername) {
+    return new Promise((resolve, reject) => {
+      _userDao.getByEmailOrUsername(emailOrUsername)
+        .then((user) => {
+          resolve(user);
+        })
+        .catch(reject);
+    });
+  };
+
   const updateHandicap = function(emailOrUsername, newHandicap) {
     return new Promise((resolve, reject) => {
       _userDao.updateHandicap(emailOrUsername, newHandicap)
@@ -77,6 +87,7 @@ module.exports = function(userDao) {
     create: create,
     authenticateUser: authenticateUser,
     getAllUsers: getAllUsers,
+    getUser: getUser,
     updateHandicap: updateHandicap,
   };
 };

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('GamesController', ['$rootScope', '$http', '$location', '$route', 'AuthService', function($rs, $http, $location, $route, AuthService) {
+  app.controller('GamesController', ['$rootScope', '$http', '$location', '$route', 'AuthService', 'UserService', function($rs, $http, $location, $route, AuthService, UserService) {
 
     AuthService.checkSessionExists();
 
@@ -12,9 +12,30 @@ module.exports = function(app) {
 
     this.game.players[0] = $rs.user;
 
+    this.createGame = function(gameData) {
+      $http.post('/games/create', gameData)
+        .then((userData) => {
+          $rs.user = userData.data;
+          UserService.updateHandicap(userData.data)
+            .then((handicap) => {
+              console.log(handicap.data);
+              $rs.user.handicap = handicap.data;
+              window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
+              $route.reload();
+            })
+            .catch((err) => {
+              alert('error updating user\'s handicap');
+            })
+        })
+        .catch((err) => {
+          alert('error creating game');
+        });
+    };
+
     this.getGames = function() {
       $http.get('/games/all')
         .then((games) => {
+          $rs.user.gameIds = games.data;
           this.allGames = games.data;
         })
         .catch((err) => {
@@ -54,16 +75,6 @@ module.exports = function(app) {
       let userIndex = playersArray.indexOf(user);
       this.friendsList.push(playersArray[userIndex]);
       playersArray.splice(userIndex, 1);
-    };
-
-    this.createGame = function(gameData) {
-      $http.post('/games/create', gameData)
-        .then((newGame) => {
-          $route.reload();
-        })
-        .catch((err) => {
-          alert('error creating game');
-        });
     };
 
   }]);

@@ -8,9 +8,6 @@ module.exports = function(app) {
     this.user = $rs.user;
 
     UserService.updateHandicap(this.user)
-      .then((res) => {
-        console.log('updated handicap');
-      })
       .catch((err) => {
         console.log('error updating handicap');
       });
