@@ -17,6 +17,18 @@ router.get('/all', function(req, res, next) {
     });
 });
 
+router.get('/', function(req, res, next) {
+  userService.getUser(req.body.user)
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: 'Error getting user.',
+      });
+    });
+});
+
 router.post('/signup', function(req, res, next) {
   userService.create(
       req.body.username,
