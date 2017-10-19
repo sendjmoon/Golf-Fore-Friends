@@ -46,6 +46,23 @@ module.exports = function() {
     });
   };
 
+  const updateUser = function(emailOrUsername, newData) {
+    User.findOneAndUpdate({
+      $or: [
+        { email: emailOrUsername },
+        { username: emailOrUsername },
+      ],
+    }, newData)
+      .select('-__v')
+      .exec()
+      .then((user) => {
+        console.log('updateUser function');
+        console.log(user);
+        resolve(user);
+      })
+      .catch(reject);
+  };
+
   const getAllUsers = function(currentUser) {
     return new Promise((resolve, reject) => {
       User.find({
@@ -62,30 +79,10 @@ module.exports = function() {
     });
   };
 
-  const updateHandicap = function(emailOrUsername, newHandicap) {
-    return new Promise((resolve, reject) => {
-      User.findOneAndUpdate({
-        $or: [
-          { email: emailOrUsername },
-          { username: emailOrUsername },
-        ],
-      }, {
-        handicap: newHandicap,
-      })
-        .select('-__v')
-        .exec()
-        .then(resolve(newHandicap))
-        .catch((err) => {
-          console.log(err);
-          reject();
-        });
-    });
-  };
-
   return {
     create: create,
     getByEmailOrUsername: getByEmailOrUsername,
     getAllUsers: getAllUsers,
-    updateHandicap: updateHandicap,
+    updateUser: updateUser,
   };
 };
