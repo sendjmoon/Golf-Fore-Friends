@@ -25,7 +25,9 @@ module.exports = function(app) {
             let handicapData = {};
             handicapData.handicap = handicap;
             $http.post('users/handicap/update', handicapData)
-              .then(resolve)
+              .then((newHandicap) => {
+                resolve(newHandicap);
+              })
               .catch((err) => {
                 alert('error posting handicap data');
                 reject();

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('GamesController', ['$rootScope', '$http', '$location', '$route', 'AuthService', function($rs, $http, $location, $route, AuthService) {
+  app.controller('GamesController', ['$rootScope', '$http', '$location', '$route', 'AuthService', 'UserService', function($rs, $http, $location, $route, AuthService, UserService) {
 
     AuthService.checkSessionExists();
 
@@ -16,8 +16,16 @@ module.exports = function(app) {
       $http.post('/games/create', gameData)
         .then((userData) => {
           $rs.user = userData.data;
-          window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
-          $route.reload();
+          UserService.updateHandicap(userData.data)
+            .then((handicap) => {
+              console.log(handicap.data);
+              $rs.user.handicap = handicap.data;
+              window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
+              $route.reload();
+            })
+            .catch((err) => {
+              alert('error updating user\'s handicap');
+            })
         })
         .catch((err) => {
           alert('error creating game');
