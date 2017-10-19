@@ -14,7 +14,9 @@ module.exports = function(app) {
 
     this.createGame = function(gameData) {
       $http.post('/games/create', gameData)
-        .then((newGame) => {
+        .then((userData) => {
+          $rs.user = userData.data;
+          window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
           $route.reload();
         })
         .catch((err) => {
