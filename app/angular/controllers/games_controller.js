@@ -7,10 +7,10 @@ module.exports = function(app) {
 
     this.game = {};
     this.game.players = [];
+    this.game.players[0] = $rs.user;
+
     this.friendsList = [];
     this.allGames = [];
-
-    this.game.players[0] = $rs.user;
 
     this.createGame = function(gameData) {
       $http.post('/games/create', gameData)
@@ -18,7 +18,6 @@ module.exports = function(app) {
           $rs.user = userData.data;
           UserService.updateHandicap(userData.data)
             .then((handicap) => {
-              console.log(handicap.data);
               $rs.user.handicap = handicap.data;
               window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
               $route.reload();
@@ -60,6 +59,7 @@ module.exports = function(app) {
     this.addPlayer = function(user) {
       if (user === undefined || user === null) return;
       user = JSON.parse(user);
+      delete user.password;
       this.game.players.push(user);
       this.friendsList = this.friendsList.filter((friend) => {
         return friend._id !== user._id;
@@ -67,7 +67,7 @@ module.exports = function(app) {
     };
 
     this.updatePlayer = function(player) {
-      console.log(player);
+      // console.log(player);
     };
 
     this.removePlayer = function(user) {

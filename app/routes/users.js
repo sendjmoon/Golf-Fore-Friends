@@ -5,7 +5,7 @@ const router = express.Router();
 const userService = require('../services').userService;
 const checkSessionExists = require('../lib/check_session_exists');
 
-router.get('/', function(req, res, next) {
+router.get('/all', function(req, res, next) {
   userService.getAllUsers(req.session.user)
     .then((users) => {
       res.json(users);
@@ -13,6 +13,18 @@ router.get('/', function(req, res, next) {
     .catch((err) => {
       res.status(500).json({
         error: 'Error getting users.',
+      });
+    });
+});
+
+router.get('/', function(req, res, next) {
+  userService.getUser(req.body.user)
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: 'Error getting user.',
       });
     });
 });

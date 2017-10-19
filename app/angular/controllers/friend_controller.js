@@ -6,7 +6,7 @@ module.exports = function(app) {
     AuthService.checkSessionExists();
 
     this.getAllUsers = function() {
-      $http.get(`/users`)
+      $http.get(`/users/all`)
         .then((res) => {
           this.allUsers = res.data;
         })
@@ -36,6 +36,6 @@ module.exports = function(app) {
           alert('error adding friend');
         });
     };
-    
+
   }]);
 };
