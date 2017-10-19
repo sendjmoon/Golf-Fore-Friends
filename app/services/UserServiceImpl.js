@@ -67,6 +67,7 @@ module.exports = function(userDao) {
     return new Promise((resolve, reject) => {
       _userDao.getByEmailOrUsername(emailOrUsername)
         .then((user) => {
+          delete user.password;
           resolve(user);
         })
         .catch(reject);
