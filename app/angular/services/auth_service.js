@@ -42,7 +42,7 @@ module.exports = function(app) {
 
     this.checkSessionExists = function() {
       let currentUser = window.sessionStorage.getItem('currentUser');
-      currentUser === null ? $location.path('/') : true;
+      currentUser === null ? $location.path('/') : $rs.user = JSON.parse(currentUser);
     };
 
   }]);
