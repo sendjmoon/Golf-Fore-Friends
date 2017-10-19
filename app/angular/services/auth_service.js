@@ -8,7 +8,7 @@ module.exports = function(app) {
         .then((res) => {
           delete res.config.data.password;
           $rs.user = res.data;
-          window.sessionStorage.setItem('currentUser', JSON.stringify(res.data));
+          window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
           $location.path('/dashboard');
         })
         .catch((err) => {
@@ -21,7 +21,7 @@ module.exports = function(app) {
         .then((res) => {
           delete res.config.data.password;
           $rs.user = res.data;
-          window.sessionStorage.setItem('currentUser', JSON.stringify(res.data));
+          window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
           $location.path('/dashboard');
         })
         .catch((err) => {
