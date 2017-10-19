@@ -43,11 +43,11 @@ const UserSchema = new Schema({
       ref: 'Game',
       unique: true,
     },
-    score: {
+    strokes: {
       type: Number,
       required: true,
       unique: false,
-    }
+    },
   }],
   friendIds: [{
     type: mongoose.Schema.Types.ObjectId,
