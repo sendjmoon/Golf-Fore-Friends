@@ -17,8 +17,8 @@ router.get('/all', function(req, res, next) {
     });
 });
 
-router.get('/', function(req, res, next) {
-  userService.getUser(req.body.user)
+router.post('/', function(req, res, next) {
+  userService.getUser(req.body.email)
     .then((user) => {
       res.json(user);
     })
@@ -62,8 +62,8 @@ router.post('/signin', function(req, res, next) {
     });
 });
 
-router.post('/handicap/update', function(req, res, next) {
-  userService.updateHandicap(req.session.user.email, req.body.handicap)
+router.post('/update', function(req, res, next) {
+  userService.updateUser(req.body.emailOrUsername, req.body.handicap)
     .then((newHandicap) => {
       res.json(newHandicap);
     })
