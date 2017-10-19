@@ -3,26 +3,28 @@
 module.exports = function(app) {
   app.service('UserService', ['$rootScope', '$http', function($rs, $http) {
 
-    this.calcHandicap = function(gamesArray) {
+    this.calcHandicap = function(user) {
       return new Promise((resolve, reject) => {
+        let gameIds = user.gameIds;
         let handicap = 0;
 
-        if (gamesArray === undefined) return reject();
+        if (gameIds === undefined) return reject();
 
-        gamesArray.forEach((game) => {
+        gameIds.forEach((game) => {
           handicap += game.score;
         });
 
-        handicap = handicap / gamesArray.length;
+        handicap = handicap / gameIds.length;
         resolve(handicap);
       });
     };
 
     this.updateHandicap = function(user) {
       return new Promise((resolve, reject) => {
-        this.calcHandicap(user.gameIds)
+        this.calcHandicap(user)
           .then((handicap) => {
             let handicapData = {};
+            handicapData.user = user;
             handicapData.handicap = handicap;
             $http.post('users/handicap/update', handicapData)
               .then((newHandicap) => {
