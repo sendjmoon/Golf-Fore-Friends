@@ -12,9 +12,20 @@ module.exports = function(app) {
 
     this.game.players[0] = $rs.user;
 
+    this.createGame = function(gameData) {
+      $http.post('/games/create', gameData)
+        .then((newGame) => {
+          $route.reload();
+        })
+        .catch((err) => {
+          alert('error creating game');
+        });
+    };
+
     this.getGames = function() {
       $http.get('/games/all')
         .then((games) => {
+          $rs.user.gameIds = games.data;
           this.allGames = games.data;
         })
         .catch((err) => {
@@ -54,16 +65,6 @@ module.exports = function(app) {
       let userIndex = playersArray.indexOf(user);
       this.friendsList.push(playersArray[userIndex]);
       playersArray.splice(userIndex, 1);
-    };
-
-    this.createGame = function(gameData) {
-      $http.post('/games/create', gameData)
-        .then((newGame) => {
-          $route.reload();
-        })
-        .catch((err) => {
-          alert('error creating game');
-        });
     };
 
   }]);
