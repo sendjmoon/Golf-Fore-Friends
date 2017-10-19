@@ -8,7 +8,7 @@ module.exports = function(app) {
     this.game = {};
     this.game.players = [];
     this.game.players[0] = $rs.user;
-    
+
     this.friendsList = [];
     this.allGames = [];
 
