@@ -3,7 +3,7 @@
   <div ng-repeat="game in gc.allGames">
     <h3>{{game}}</h3>
   </div>
-  <button ng-click="newGame=true">Add a New Game</button>
+  <button ng-click="newGame=true; gc.getFriendsList();">Add a New Game</button>
 </div>
 
-<new-game ng-show="newGame"></new-game>
+<new-game ng-show="newGame" data-friends-list="gc.friendsList"></new-game>
