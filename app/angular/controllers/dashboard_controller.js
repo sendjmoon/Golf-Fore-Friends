@@ -5,12 +5,5 @@ module.exports = function(app) {
 
     AuthService.checkSessionExists();
     this.user = $rs.user;
-    UserService.updateHandicap($rs.user)
-      .then(() => {
-        this.user = $rs.user;
-      })
-      .catch((err) => {
-        console.log('error updating handicap');
-      });
   }]);
 };

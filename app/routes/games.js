@@ -20,15 +20,7 @@ router.get('/all', function(req, res, next) {
 router.post('/create', function(req, res, next) {
   gameService.create(req.body.name, req.body.players)
     .then((game) => {
-      userService.getUser(req.session.user.email)
-        .then((user) => {
-          res.json(user);
-        })
-        .catch((err) => {
-          res.status(500).json({
-            error: 'error getting user',
-          })
-        });
+      res.json(game);
     })
     .catch((err) => {
       res.status(500).json({

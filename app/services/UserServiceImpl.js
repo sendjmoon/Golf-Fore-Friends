@@ -53,14 +53,6 @@ module.exports = function(userDao) {
     });
   };
 
-  const updateUser = function(emailOrUsername) {
-    _userDao.updateUser(emailOrUsername, newData)
-      .then((user) => {
-        resolve(user);
-      })
-      .catch(reject);
-  };
-
   const getAllUsers = function(currentUser) {
     return new Promise((resolve, reject) => {
       _userDao.getAllUsers(currentUser)
@@ -82,15 +74,12 @@ module.exports = function(userDao) {
     });
   };
 
-  const updateHandicap = function(emailOrUsername, newHandicap) {
+  const updateUser = function(emailOrUsername, newData) {
     return new Promise((resolve, reject) => {
-      _userDao.getByEmailOrUsername(emailOrUsername)
+      _userDao.updateUser(emailOrUsername, newData)
         .then((user) => {
-
-        })
-      _userDao.updateHandicap(emailOrUsername)
-        .then((handicap) => {
-          resolve(handicap);
+          delete user.password;
+          resolve(user);
         })
         .catch(reject);
     });
@@ -101,6 +90,6 @@ module.exports = function(userDao) {
     authenticateUser: authenticateUser,
     getAllUsers: getAllUsers,
     getUser: getUser,
-    updateHandicap: updateHandicap,
+    updateUser: updateUser,
   };
 };
