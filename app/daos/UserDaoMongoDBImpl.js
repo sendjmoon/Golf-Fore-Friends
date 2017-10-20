@@ -47,20 +47,24 @@ module.exports = function() {
   };
 
   const updateUser = function(emailOrUsername, newData) {
-    User.findOneAndUpdate({
-      $or: [
-        { email: emailOrUsername },
-        { username: emailOrUsername },
-      ],
-    }, newData)
-      .select('-__v')
-      .exec()
-      .then((user) => {
-        console.log('updateUser function');
-        console.log(user);
-        resolve(user);
-      })
-      .catch(reject);
+    return new Promise((resolve, reject) => {
+      User.findOneAndUpdate({
+        $or: [
+          { email: emailOrUsername },
+          { username: emailOrUsername },
+        ],
+      }, newData)
+        .select('-__v')
+        .exec()
+        .then(() => {
+          getByEmailOrUsername(emailOrUsername)
+            .then((user) => {
+              resolve(user);
+            })
+            .catch(reject);
+        })
+        .catch(reject);
+    });
   };
 
   const getAllUsers = function(currentUser) {
