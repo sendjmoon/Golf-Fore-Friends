@@ -40,7 +40,7 @@ module.exports = function() {
           $addToSet: {
             gameIds: {
               game: game._id,
-              score: player.score,
+              strokes: player.strokes,
             },
           },
         })
