@@ -5,9 +5,9 @@ const router = express.Router();
 const friendService = require('../services').friendService;
 
 router.get('/list', function(req, res, next) {
-  friendService.getFriendList(req.session.user.email)
-    .then((friendList) => {
-      res.json(friendList);
+  friendService.getFriendsList(req.session.user.email)
+    .then((friendsList) => {
+      res.json(friendsList);
     })
     .catch((err) => {
       res.status(500).json({

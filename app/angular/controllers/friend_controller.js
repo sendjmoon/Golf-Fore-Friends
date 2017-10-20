@@ -26,8 +26,9 @@ module.exports = function(app) {
     };
 
     this.addFriend = function(friendId) {
-      let friendData = {};
-      friendData._id = friendId;
+      let friendData = {
+        _id: friendId,
+      };
       $http.post(`/friends/add`, friendData)
         .then((res) => {
           res.data === false ? alert('friend already exists') : true;

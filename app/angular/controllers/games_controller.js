@@ -24,8 +24,8 @@ module.exports = function(app) {
                   if (playerData.data.email === $rs.user.email) {
                     $rs.user = playerData.data;
                     window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
-                    $route.reload();
                   }
+                  $route.reload();
                   resolve();
                 })
                 .catch((err) => {
