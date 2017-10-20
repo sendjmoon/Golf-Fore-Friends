@@ -53,14 +53,6 @@ module.exports = function(userDao) {
     });
   };
 
-  const updateUser = function(emailOrUsername, newData) {
-    _userDao.updateUser(emailOrUsername, newData)
-      .then((user) => {
-        resolve(user);
-      })
-      .catch(reject);
-  };
-
   const getAllUsers = function(currentUser) {
     return new Promise((resolve, reject) => {
       _userDao.getAllUsers(currentUser)
@@ -74,6 +66,17 @@ module.exports = function(userDao) {
   const getUser = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
       _userDao.getByEmailOrUsername(emailOrUsername)
+        .then((user) => {
+          delete user.password;
+          resolve(user);
+        })
+        .catch(reject);
+    });
+  };
+
+  const updateUser = function(emailOrUsername, newData) {
+    return new Promise((resolve, reject) => {
+      _userDao.updateUser(emailOrUsername, newData)
         .then((user) => {
           delete user.password;
           resolve(user);
