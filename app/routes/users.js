@@ -18,7 +18,7 @@ router.get('/all', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  userService.getUser(req.body.email)
+  userService.getUser(req.body.emailOrUsername)
     .then((user) => {
       res.json(user);
     })
@@ -63,9 +63,9 @@ router.post('/signin', function(req, res, next) {
 });
 
 router.post('/update', function(req, res, next) {
-  userService.updateUser(req.body.emailOrUsername, req.body.handicap)
-    .then((newHandicap) => {
-      res.json(newHandicap);
+  userService.updateUser(req.body.emailOrUsername, req.body.newData)
+    .then((user) => {
+      res.json(user);
     })
     .catch((err) => {
       res.status(400).json({
