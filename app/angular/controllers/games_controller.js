@@ -4,42 +4,55 @@ module.exports = function(app) {
   app.controller('GamesController', ['$rootScope', '$http', '$location', '$route', 'AuthService', 'UserService', function($rs, $http, $location, $route, AuthService, UserService) {
 
     AuthService.checkSessionExists();
+    this.user = $rs.user;
 
     this.game = {};
     this.game.players = [];
     this.game.players[0] = $rs.user;
 
     this.friendsList = [];
-    this.allGames = [];
+    this.allGames = $rs.user.gameIds;
 
     this.createGame = function(gameData) {
-      $http.post('/games/create', gameData)
-        .then((userData) => {
-          $rs.user = userData.data;
-          UserService.updateHandicap(userData.data)
-            .then((handicap) => {
-              $rs.user.handicap = handicap.data;
-              window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
-              $route.reload();
-            })
-            .catch((err) => {
-              alert('error updating user\'s handicap');
-            })
-        })
-        .catch((err) => {
-          alert('error creating game');
-        });
+      new Promise((resolve, reject) => {
+        $http.post('/games/create', gameData)
+          .then((game) => {
+            let playersArray = game.data.players;
+            playersArray.forEach((player) => {
+              this.updatePlayer(player)
+                .then((playerData) => {
+                  if (playerData.data.email === $rs.user.email) {
+                    $rs.user = playerData.data;
+                    window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
+                    $route.reload();
+                  }
+                  resolve();
+                })
+                .catch((err) => {
+                  alert('error creating game');
+                  reject();
+                });
+            });
+            resolve();
+          })
+          .catch((err) => {
+            alert('error creating game');
+            reject();
+          });
+      })
     };
 
-    this.getGames = function() {
-      $http.get('/games/all')
-        .then((games) => {
-          $rs.user.gameIds = games.data;
-          this.allGames = games.data;
-        })
-        .catch((err) => {
-          alert('error getting games');
-        });
+    this.getGames = function(emailOrUsername) {
+      new Promise((resolve, reject) => {
+        $http.get('/games/all')
+          .then((games) => {
+            resolve(games);
+          })
+          .catch((err) => {
+            alert('error getting games');
+            reject();
+          });
+      })
     };
 
     this.getFriendsList = function() {
@@ -59,15 +72,11 @@ module.exports = function(app) {
     this.addPlayer = function(user) {
       if (user === undefined || user === null) return;
       user = JSON.parse(user);
-      delete user.password;
+      // delete user.password;
       this.game.players.push(user);
       this.friendsList = this.friendsList.filter((friend) => {
         return friend._id !== user._id;
       });
-    };
-
-    this.updatePlayer = function(player) {
-      // console.log(player);
     };
 
     this.removePlayer = function(user) {
@@ -75,6 +84,30 @@ module.exports = function(app) {
       let userIndex = playersArray.indexOf(user);
       this.friendsList.push(playersArray[userIndex]);
       playersArray.splice(userIndex, 1);
+    };
+
+    this.updatePlayer = function(player) {
+      return new Promise((resolve, reject) => {
+        let playerData = {
+          emailOrUsername: player.email,
+        };
+        $http.post('/users', playerData)
+          .then((user) => {
+            UserService.calcHandicap(user.data)
+              .then((handicap) => {
+                let handicapData = {
+                  handicap: handicap,
+                };
+                UserService.updateUser(playerData, handicapData)
+                  .then((user) => {
+                    resolve(user);
+                  })
+                  .catch(reject);
+              })
+              .catch(reject);
+          })
+          .catch(reject);
+      });
     };
 
   }]);
