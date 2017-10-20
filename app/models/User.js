@@ -41,7 +41,7 @@ const UserSchema = new Schema({
     gameId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Game',
-      unique: true,
+      unique: false,
     },
     strokes: {
       type: Number,
@@ -52,7 +52,7 @@ const UserSchema = new Schema({
   friendIds: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    unique: true,
+    unique: false,
   }],
 },
 {

@@ -22,12 +22,17 @@ const GameSchema = new Schema({
     unique: false,
   },
   players: [{
-    player: {
+    email: {
+      type: String,
+      required: true,
+      unique: false,
+    },
+    _id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-      unique: true,
+      unique: false,
     },
-    score: {
+    strokes: {
       type: Number,
       required: true,
       unique: false,
