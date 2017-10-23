@@ -6,7 +6,7 @@ module.exports = function(app) {
     AuthService.checkSessionExists();
 
     this.getAllUsers = function() {
-      $http.get(`/users/all`)
+      $http.get($rs.baseUrl + '/users/all')
         .then((res) => {
           this.allUsers = res.data;
         })
@@ -16,7 +16,7 @@ module.exports = function(app) {
     };
 
     this.getFriendList = function() {
-      $http.get(`/friends/list`)
+      $http.get($rs.baseUrl + '/friends/list')
         .then((friendList) => {
           this.friendList = friendList.data;
         })
@@ -29,9 +29,9 @@ module.exports = function(app) {
       let friendData = {
         _id: friendId,
       };
-      $http.post(`/friends/add`, friendData)
+      $http.post($rs.baseUrl + '/friends/add', friendData)
         .then((res) => {
-          res.data === false ? alert('friend already exists') : true;
+          res.data.nModified === 0 ? alert('friend already exists') : true;
         })
         .catch((err) => {
           alert('error adding friend');
