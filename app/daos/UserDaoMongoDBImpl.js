@@ -72,8 +72,6 @@ module.exports = function() {
     return new Promise((resolve, reject) => {
       User.find({
         fullName: { $ne: currentUser.fullName },
-      }, {
-        password: 0,
       })
         .select('-__v -password')
         .exec()
