@@ -52,10 +52,6 @@ module.exports = function(app) {
     this.getFriendsList = function() {
       $http.get('/friends/list')
         .then((friendsList) => {
-          friendsList.data.forEach((friend) => {
-            delete friend.password;
-            delete friend.$$hashKey;
-          });
           this.friendsList = friendsList.data;
         })
         .catch((err) => {
