@@ -15,11 +15,15 @@ module.exports = function(friendDao) {
     });
   };
 
-  const addFriend = function(emailOrUsername, friendId) {
+  const addFriend = function(userId, friendId) {
     return new Promise((resolve, reject) => {
-      _friendDao.addFriend(emailOrUsername, friendId)
+      _friendDao.addFriend(userId, friendId)
         .then((res) => {
-          resolve(res.nModified === 0 ? false : true);
+          _friendDao.addFriend(friendId, userId)
+            .then((res) => {
+              resolve(res);
+            })
+            .catch(reject);
         })
         .catch(reject);
     });
