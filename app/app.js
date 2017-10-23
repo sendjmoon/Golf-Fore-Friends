@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-const lessMiddleware = require('less-middleware');
 
 const redis = require('redis');
 const redisClient = redis.createClient();
@@ -21,6 +20,8 @@ const coursesRouter = require('./routes/courses');
 const gamesRouter = require('./routes/games');
 const usersRouter = require('./routes/users');
 const friendsRouter = require('./routes/friends');
+
+mongoose.Promise = require('bluebird');
 
 if (process.env.NODE_ENV === 'test')
   mongoose.connect(process.env.DB_SERVER);
