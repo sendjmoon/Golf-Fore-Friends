@@ -21,17 +21,33 @@ module.exports = function() {
       });
   };
 
-  const addFriend = function(user, friendId) {
+  const addFriend = function(emailOrUsername, friendId) {
     return new Promise((resolve, reject) => {
-      User.update({
-        email: user.email,
+      User.findOneAndUpdate({
+        $or: [
+          { email: emailOrUsername },
+          { username: emailOrUsername },
+        ],
       },{
         $addToSet: {
-          friendIds: friendId
+          friendIds: friendId,
         },
       })
-        .then((res) => {
-          resolve(res);
+        .populate('_id', '-password -__v')
+        .exec()
+        .then((user) => {
+          User.findOneAndUpdate({
+            _id: friendId,
+          }, {
+            $addToSet: {
+              friendIds: user._id,
+            },
+          })
+            .then((res) => {
+              console.log(res);
+              resolve(res);
+            })
+            .catch(reject);
         })
         .catch(reject);
     });
