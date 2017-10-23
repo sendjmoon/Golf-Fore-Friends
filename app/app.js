@@ -21,6 +21,8 @@ const gamesRouter = require('./routes/games');
 const usersRouter = require('./routes/users');
 const friendsRouter = require('./routes/friends');
 
+mongoose.Promise = require('bluebird');
+
 if (process.env.NODE_ENV === 'test')
   mongoose.connect(process.env.DB_SERVER);
 
