@@ -4,42 +4,36 @@ module.exports = function(app) {
   app.controller('GamesController', ['$rootScope', '$http', '$location', '$route', 'AuthService', 'UserService', function($rs, $http, $location, $route, AuthService, UserService) {
 
     AuthService.checkSessionExists();
-    this.user = $rs.user;
 
-    this.game = {};
-    this.game.players = [];
+    this.user = $rs.user;
+    this.allGames = $rs.user.gameIds;
+    this.friendsList = [];
+    this.game = {
+      players: [],
+    };
     this.game.players[0] = $rs.user;
 
-    this.friendsList = [];
-    this.allGames = $rs.user.gameIds;
-
     this.createGame = function(gameData) {
-      new Promise((resolve, reject) => {
-        $http.post('/games/create', gameData)
-          .then((game) => {
-            let playersArray = game.data.players;
-            playersArray.forEach((player) => {
-              this.updatePlayer(player)
-                .then((playerData) => {
-                  if (playerData.data.email === $rs.user.email) {
-                    $rs.user = playerData.data;
-                    window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
-                  }
-                  $route.reload();
-                  resolve();
-                })
-                .catch((err) => {
-                  alert('error creating game');
-                  reject();
-                });
-            });
-            resolve();
-          })
-          .catch((err) => {
-            alert('error creating game');
-            reject();
+      $http.post('/games/create', gameData)
+        .then((game) => {
+          let playersArray = game.data.players;
+          playersArray.forEach((player) => {
+            this.updatePlayer(player)
+              .then((playerData) => {
+                if (playerData.data.email === $rs.user.email) {
+                  $rs.user = playerData.data;
+                  window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
+                }
+                $route.reload();
+              })
+              .catch((err) => {
+                alert('error creating game');
+              });
           });
-      })
+        })
+        .catch((err) => {
+          alert('error creating game');
+        });
     };
 
     this.getGames = function(emailOrUsername) {
@@ -58,10 +52,6 @@ module.exports = function(app) {
     this.getFriendsList = function() {
       $http.get('/friends/list')
         .then((friendsList) => {
-          friendsList.data.forEach((friend) => {
-            delete friend.password;
-            delete friend.$$hashKey;
-          });
           this.friendsList = friendsList.data;
         })
         .catch((err) => {
@@ -72,7 +62,6 @@ module.exports = function(app) {
     this.addPlayer = function(user) {
       if (user === undefined || user === null) return;
       user = JSON.parse(user);
-      // delete user.password;
       this.game.players.push(user);
       this.friendsList = this.friendsList.filter((friend) => {
         return friend._id !== user._id;

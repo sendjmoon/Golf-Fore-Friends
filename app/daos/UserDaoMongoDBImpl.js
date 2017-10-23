@@ -54,11 +54,12 @@ module.exports = function() {
           { username: emailOrUsername },
         ],
       }, newData)
-        .select('-__v')
+        .select('-__v -password')
         .exec()
         .then(() => {
           getByEmailOrUsername(emailOrUsername)
             .then((user) => {
+              delete user.password;
               resolve(user);
             })
             .catch(reject);
@@ -71,10 +72,8 @@ module.exports = function() {
     return new Promise((resolve, reject) => {
       User.find({
         fullName: { $ne: currentUser.fullName },
-      }, {
-        password: 0,
       })
-        .select('-__v')
+        .select('-__v -password')
         .exec()
         .then((users) => {
           resolve(users);
