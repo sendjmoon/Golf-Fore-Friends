@@ -9,10 +9,6 @@ module.exports = function(friendDao) {
     return new Promise((resolve, reject) => {
       _friendDao.getFriendsList(emailOrUsername)
         .then((friendsList) => {
-          friendsList = friendsList.filter((user) => {
-            user.password = '';
-            return user;
-          });
           resolve(friendsList);
         })
         .catch(reject);

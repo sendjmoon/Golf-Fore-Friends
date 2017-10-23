@@ -54,11 +54,12 @@ module.exports = function() {
           { username: emailOrUsername },
         ],
       }, newData)
-        .select('-__v')
+        .select('-__v -password')
         .exec()
         .then(() => {
           getByEmailOrUsername(emailOrUsername)
             .then((user) => {
+              delete user.password;
               resolve(user);
             })
             .catch(reject);
@@ -74,7 +75,7 @@ module.exports = function() {
       }, {
         password: 0,
       })
-        .select('-__v')
+        .select('-__v -password')
         .exec()
         .then((users) => {
           resolve(users);

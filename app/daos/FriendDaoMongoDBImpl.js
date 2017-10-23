@@ -11,14 +11,11 @@ module.exports = function() {
           { email: emailOrUsername },
           { username: emailOrUsername },
         ],
-      },{
-        password: 0,
       })
-        .populate('friendIds')
+        .populate('friendIds', '-password')
         .exec()
         .then((user) => {
-          let friendList = user.friendIds;
-          resolve(friendList);
+          resolve(user.friendIds);
         })
         .catch(reject);
       });
