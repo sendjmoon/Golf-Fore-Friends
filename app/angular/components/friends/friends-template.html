@@ -1,2 +1,13 @@
-<friends-list></friends-list>
-<add-friend></add-friend>
+<ul ng-init="fc.getFriendsList()">
+  <li ng-repeat="friend in fc.friendsList">
+    <h5>{{friend}}</h5>
+  </li>
+</ul>
+
+<h1>add friend component</h1>
+<form ng-init="fc.getAllUsers()" ng-submit="fc.addFriend(fc.userToAdd)">
+  <select data-ng-model="fc.userToAdd">
+    <option ng-repeat="user in fc.allUsers" value="{{user._id}}">{{user.fullName}}</option>
+  </select>
+  <button type="submit">Add Friend</button>
+</form>

@@ -15,10 +15,10 @@ module.exports = function(app) {
         });
     };
 
-    this.getFriendList = function() {
+    this.getFriendsList = function() {
       $http.get($rs.baseUrl + '/friends/list')
-        .then((friendList) => {
-          this.friendList = friendList.data;
+        .then((friendsList) => {
+          this.friendsList = friendsList.data;
         })
         .catch((err) => {
           alert('error getting friends list');
