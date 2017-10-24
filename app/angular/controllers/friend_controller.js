@@ -3,22 +3,36 @@
 module.exports = function(app) {
   app.controller('FriendController', ['$rootScope', '$http', '$location', 'AuthService', function($rs, $http, $location, AuthService) {
 
+    this.usersArray = [];
+    this.friendsArray = [];
+    // this.usersMap = new Map();
+    // this.friendsMap = new Map();
+
     AuthService.checkSessionExists();
 
     this.getAllUsers = function() {
       $http.get($rs.baseUrl + '/users/all')
-        .then((res) => {
-          this.allUsers = res.data;
+        .then((allUsers) => {
+          this.usersArray = allUsers.data;
+          // this.usersArray.forEach((user) => {
+          //   this.usersMap.set(user.email, user);
+          // });
         })
         .catch((err) => {
           alert('error getting users');
         });
     };
 
-    this.getFriendsList = function() {
+    this.getAllFriends = function() {
       $http.get($rs.baseUrl + '/friends/list')
-        .then((friendsList) => {
-          this.friendsList = friendsList.data;
+        .then((allFriends) => {
+          this.friendsArray = allFriends.data;
+          // this.friendsArray.forEach((friend) => {
+          //   this.usersMap.delete(friend.email);
+          // });
+          this.friendsArray.forEach((friend) => {
+            this.usersArray.splice(this.usersArray.indexOf(friend), 1);
+          });
         })
         .catch((err) => {
           alert('error getting friends list');
