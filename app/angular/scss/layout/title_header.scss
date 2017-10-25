@@ -6,17 +6,12 @@ title-header {
   z-index: 20;
   display: table;
   padding: 5px 15px;
-  color: #fff;
 
   h4 {
     display: table-cell;
     vertical-align: middle;
     margin: 0;
     padding-left: 8px;
-
-    span {
-      color: $green-primary;
-    }
   }
 
   .gff-logo-full {
