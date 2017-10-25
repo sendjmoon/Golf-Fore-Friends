@@ -27,6 +27,65 @@
 
   .landing-bar {
     width: 100px;
-    border-top: 2px solid $green-primary;
+    border-top: 2px solid $orange-primary;
   }
 }
+
+//features section
+.features-section {
+  display: table;
+  width: 100%;
+  margin: 0 auto;
+  background-color: $bg-dark-primary;
+
+  h2 {
+    color: #fff;
+    text-align: center;
+  }
+
+  .feature-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 60px;
+
+    i {
+      margin-bottom: 15px;
+      font-size: 46px;
+      color: #fff;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.2);
+        transition: transform 0.2s ease;
+      }
+    }
+
+    h4 {
+      margin-bottom: 5px;
+      color: $orange-primary;
+      text-align: center;
+    }
+
+    p {
+      color: #fff;
+    }
+  }
+}
+//end of features section
+
+//about section
+.about-section {
+
+  h2 {
+    color: #263238;
+    text-align: center;
+  }
+
+  p {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+//end of about section
