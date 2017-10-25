@@ -1,20 +1,16 @@
 .gff-nav {
-  background-color: #1f1f1f;
+  background-color: $nav-bg-primary-color;
 
   ul {
 
     li {
 
       a {
-        color: #fff;
+        color: $nav-link-primary-color;
 
         &:hover {
           color: $green-primary;
         }
-      }
-
-      .link-name-container {
-        color: #fff;
       }
     }
   }

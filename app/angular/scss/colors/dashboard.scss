@@ -2,14 +2,10 @@
 
   .dashboard-container {
     background: none;
-    color: #1f1f1f;
+    color: $font-color-dark;
 
     h2 {
-      color: #1f1f1f;
+      color: $font-color-dark;
     }
-  }
-
-  .dashboard-content {
-
   }
 }
