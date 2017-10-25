@@ -31,6 +31,21 @@
   }
 }
 
+//about section
+.about-section {
+
+  h2 {
+    color: #263238;
+    text-align: center;
+  }
+
+  p {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+//end of about section
+
 //features section
 .features-section {
   display: table;
@@ -74,18 +89,3 @@
   }
 }
 //end of features section
-
-//about section
-.about-section {
-
-  h2 {
-    color: #263238;
-    text-align: center;
-  }
-
-  p {
-    width: 80%;
-    margin: 0 auto;
-  }
-}
-//end of about section
