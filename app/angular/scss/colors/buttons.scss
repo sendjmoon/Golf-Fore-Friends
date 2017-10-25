@@ -1,0 +1,13 @@
+button {
+  background: none;
+  color: #fff;
+  border-color: $orange-primary;
+
+  &:hover {
+    background: $orange-primary;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
