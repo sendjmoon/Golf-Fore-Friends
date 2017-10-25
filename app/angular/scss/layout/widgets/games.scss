@@ -7,6 +7,17 @@ games-widget {
     width: 25%;
     margin: 0 5px;
     border: 1px solid rgba(0, 0, 0, 0);
+    box-shadow:
+      0 2px 2px 0 rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        box-shadow:
+          // 0 3px 8px 0 rgba(72, 163, 50, 0.5),
+          // 0 0 0 1px rgba(72, 163, 50, 0.3);
+          0 3px 6px 0 rgba(0, 0, 0, 0.3),
+          0 0 0 1px rgba(0, 0, 0, 0.1);
+      }
 
     p {
 
