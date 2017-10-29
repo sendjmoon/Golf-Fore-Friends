@@ -13,10 +13,6 @@ dashboard {
     background: #fff;
     color: $font-color-dark;
 
-    .dashboard-content {
-      background: #fff;
-    }
-
     &.stats {
       background: none;
 
@@ -24,6 +20,11 @@ dashboard {
 
         .handicap-content {
           background: $bg-dark-primary;
+          color: #fff;
+
+          p {
+            color: #fff;
+          }
 
           h3 {
             color: $font-color-light;

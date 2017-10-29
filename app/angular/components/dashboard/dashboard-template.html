@@ -3,21 +3,40 @@
 <div class="dashboard-main">
 
   <div class="dashboard-container stats">
-    <div class="handicap-container">
+    <div class="handicap-container col-md-2 col-sm-6">
       <div class="handicap-content">
-        <h3>Handicap:</h3>
+        <h4>Your Handicap:</h4>
         <h3><span class="color-green">{{dc.user.handicap}}</span></h3>
       </div>
     </div>
-    <div class="dashboard-content">
-      <h2>Your Stats</h2>
+    <div class="leaderboard-container col-md-5 col-sm-6">
+      <div class="leaderboard-content">
+        <div class="lb-header">
+          <h4>Leaderboard</h4>
+        </div>
+        <ul class="lb-list">
+          <li>
+            <span class="color-orange">1st</span>
+            <span class="color-white">Player Name</span>
+            <span class="color-green">12</span>
+          </li>
+          <li>
+            <span class="color-orange">2nd</span>
+            <span class="color-white">Player Name</span>
+            <span class="color-green">12</span>
+          </li>
+          <li>
+            <span class="color-orange">3rd</span>
+            <span class="color-white">Player Name</span>
+            <span class="color-green">12</span>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-
-  <div class="dashboard-container">
-    <h2>Recent Games</h2>
-    <div class="dashboard-content">
-      <games-widget></games-widget>
+    <div class="recent-game-container col-md-5 col-sm-12">
+      <div class="recent-game-content">
+        <h4>Most Recent Game</h4>
+      </div>
     </div>
   </div>
 
@@ -29,10 +48,17 @@
   </div>
 
   <div class="dashboard-container">
+    <h2>Recent Games</h2>
+    <div class="dashboard-content">
+      <games-widget></games-widget>
+    </div>
+  </div>
+
+  <!-- <div class="dashboard-container">
     <h2>Courses</h2>
     <div class="dashboard-content">
       <courses-widget></courses-widget>
     </div>
-  </div>
+  </div> -->
 
 </div>

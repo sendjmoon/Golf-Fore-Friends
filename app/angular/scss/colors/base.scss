@@ -7,4 +7,12 @@ span {
   &.color-green {
     color: $green-primary;
   }
+
+  &.color-white {
+    color: #fff;
+  }
+
+  &.color-orange {
+    color: $orange-primary;
+  }
 }
