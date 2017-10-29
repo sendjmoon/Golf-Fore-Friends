@@ -58,23 +58,4 @@
       }
     }
   }
-
-  button {
-    margin: 15px 0px 10px 0px;
-    padding: 7px 20px;
-    border-radius: 2px;
-    border: none;
-    background: rgba(83, 185, 58, 0.8);
-    color: #fff;
-    border-color: $green-primary;
-    font-size: 22px;
-
-    &:hover {
-      background: $green-primary;
-    }
-
-    &:focus {
-      outline: none;
-    }
-  }
 }
