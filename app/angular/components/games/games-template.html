@@ -1,7 +1,10 @@
 <div class="games-container" ng-hide="newGame">
   <h2>Recent Games</h2>
-  <div ng-repeat="game in gc.allGames">
-    <h3>{{game}}</h3>
+  <ul ng-init="gc.getGames()">
+    <li ng-repeat="game in gc.games">
+      <h3>{{game}}</h3>
+      <a ng-click="gc.getById(game._id)">{{game.strokes}}</a>
+    </li>
   </div>
   <button ng-click="newGame=true; gc.getFriendsList();">Add a New Game</button>
 </div>

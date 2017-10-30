@@ -1,12 +1,12 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('GamesController', ['$rootScope', '$http', '$location', '$route', 'AuthService', 'UserService', function($rs, $http, $location, $route, AuthService, UserService) {
+  app.controller('GamesController', ['$rootScope', '$http', '$location', '$route', 'AuthService', 'UserService', 'GameService', function($rs, $http, $location, $route, AuthService, UserService, GameService) {
 
     AuthService.checkSessionExists();
 
     this.user = $rs.user;
-    this.allGames = $rs.user.gameIds;
+    this.games = [];
     this.friendsList = [];
     this.game = {
       players: [],
@@ -36,17 +36,20 @@ module.exports = function(app) {
         });
     };
 
-    this.getGames = function(emailOrUsername) {
+    this.getById = GameService.getById;
+
+    this.getGames = function() {
       new Promise((resolve, reject) => {
         $http.get('/games/all')
           .then((games) => {
-            resolve(games);
+            this.games = games.data;
+            resolve();
           })
           .catch((err) => {
             alert('error getting games');
             reject();
           });
-      })
+      });
     };
 
     this.getFriendsList = function() {
