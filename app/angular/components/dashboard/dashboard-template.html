@@ -3,17 +3,21 @@
 <div class="dashboard-main">
 
   <div class="dashboard-container stats">
+
     <div class="handicap-container col-md-2 col-sm-6">
-      <div class="hc-header">
-        <div class="t-block orange"></div><h4>Handicap</h4>
-      </div>
-      <div class="hc-content">
-        <h3><span class="color-green">+</span>{{dc.user.handicap}}</h3>
+      <div class="handicap-content">
+        <div class="header">
+          <div class="t-block orange"></div><h4>Handicap</h4>
+        </div>
+        <div class="score-box">
+          <h3><span class="color-green">+</span>{{dc.user.handicap}}</h3>
+        </div>
       </div>
     </div>
+
     <div class="leaderboard-container col-md-5 col-sm-6">
       <div class="leaderboard-content">
-        <div class="lb-header">
+        <div class="header">
           <div class="t-block orange"></div><h4>Leaderboard</h4>
         </div>
         <ul class="lb-list">
@@ -52,15 +56,16 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div><!-- /leaderboard-container -->
+
     <div class="recent-game-container col-md-5 col-sm-12">
       <div class="recent-game-content">
-        <div class="rg-header">
+        <div class="header">
           <div class="t-block orange"></div><h4>Most Recent Game</h4>
         </div>
       </div>
     </div>
-  </div>
+  </div><!-- /dashboard-container -->
 
   <div class="dashboard-container">
     <h2>Friends</h2>
