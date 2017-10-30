@@ -31,6 +31,21 @@ module.exports = function() {
     });
   };
 
+  const getById = function(gameId) {
+    return new Promise((resolve, reject) => {
+      Game.findById(gameId)
+        .select('-__v')
+        .exec()
+        .then((game) => {
+          resolve(game);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject();
+        });
+    });
+  };
+
   const addToUsers = function(game) {
     game.players.forEach((player) => {
       return new Promise((resolve, reject) => {
@@ -65,6 +80,7 @@ module.exports = function() {
         .populate('gameIds')
         .exec()
         .then((user) => {
+          console.log(user);
           resolve(user.gameIds);
         })
         .catch(reject);
@@ -73,6 +89,7 @@ module.exports = function() {
 
   return {
     create: create,
+    getById: getById,
     getGames: getGames,
   };
 };

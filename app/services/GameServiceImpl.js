@@ -19,6 +19,16 @@ module.exports = function(gameDao) {
     });
   };
 
+  const getById = function(gameId) {
+      return new Promise((resolve, reject) => {
+        _gameDao.getById(gameId)
+          .then((game) => {
+            resolve(game);
+          })
+          .catch(reject);
+      });
+  };
+
   const getGames = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
       _gameDao.getGames(emailOrUsername)
@@ -31,6 +41,7 @@ module.exports = function(gameDao) {
 
   return {
     create: create,
+    getById: getById,
     getGames: getGames,
   };
 };

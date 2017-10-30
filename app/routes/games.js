@@ -17,6 +17,19 @@ router.get('/all', function(req, res, next) {
     });
 });
 
+router.post('/', function(req, res, next) {
+  gameService.getById(req.body._id)
+    .then((game) => {
+      console.log(game);
+      res.json(game);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: 'error getting game',
+      });
+    });
+});
+
 router.post('/create', function(req, res, next) {
   gameService.create(req.body.name, req.body.players)
     .then((game) => {
