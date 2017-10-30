@@ -17,8 +17,9 @@ router.get('/all', function(req, res, next) {
     });
 });
 
-router.post('/', function(req, res, next) {
-  gameService.getById(req.body._id)
+router.get('/:publicId', function(req, res, next) {
+  console.log(req.params.publicId);
+  gameService.getByPublicId(req.params.publicId)
     .then((game) => {
       console.log(game);
       res.json(game);

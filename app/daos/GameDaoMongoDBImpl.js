@@ -46,24 +46,22 @@ module.exports = function() {
     });
   };
 
-  const addToUsers = function(game) {
-    game.players.forEach((player) => {
-      return new Promise((resolve, reject) => {
-        User.update({
-          _id: player._id,
-        },{
-          $addToSet: {
-            gameIds: {
-              game: game._id,
-              strokes: player.strokes,
-            },
-          },
+  const getByPublicId = function(publicId) {
+    return new Promise((resolve, reject) => {
+      Game.findOne({
+        publicId: publicId,
+      })
+        .select('-__v')
+        .exec()
+        .then((game) => {
+          console.log('found game');
+          console.log(game);
+          resolve(game);
         })
-          .then((res) => {
-            resolve(res);
-          })
-          .catch(reject);
-      });
+        .catch((err) => {
+          console.log(err);
+          reject();
+        });
     });
   };
 
@@ -87,9 +85,32 @@ module.exports = function() {
       });
   };
 
+  const addToUsers = function(game) {
+    game.players.forEach((player) => {
+      return new Promise((resolve, reject) => {
+        User.update({
+          _id: player._id,
+        },{
+          $addToSet: {
+            gameIds: {
+              game: game._id,
+              publicId: game.publicId,
+              strokes: player.strokes,
+            },
+          },
+        })
+          .then((res) => {
+            resolve(res);
+          })
+          .catch(reject);
+      });
+    });
+  };
+
   return {
     create: create,
     getById: getById,
+    getByPublicId: getByPublicId,
     getGames: getGames,
   };
 };

@@ -22,13 +22,23 @@ module.exports = function(gameDao) {
   };
 
   const getById = function(gameId) {
-      return new Promise((resolve, reject) => {
-        _gameDao.getById(gameId)
-          .then((game) => {
-            resolve(game);
-          })
-          .catch(reject);
-      });
+    return new Promise((resolve, reject) => {
+      _gameDao.getById(gameId)
+        .then((game) => {
+          resolve(game);
+        })
+        .catch(reject);
+    });
+  };
+
+  const getByPublicId = function(publicId) {
+    return new Promise((resolve, reject) => {
+      _gameDao.getByPublicId(publicId)
+        .then((game) => {
+          resolve(game);
+        })
+        .catch(reject);
+    });
   };
 
   const getGames = function(emailOrUsername) {
@@ -44,6 +54,7 @@ module.exports = function(gameDao) {
   return {
     create: create,
     getById: getById,
+    getByPublicId: getByPublicId,
     getGames: getGames,
   };
 };

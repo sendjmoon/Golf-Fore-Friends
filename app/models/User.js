@@ -44,6 +44,11 @@ const UserSchema = new Schema({
       ref: 'Game',
       unique: false,
     },
+    publicId: {
+      type: String,
+      required: true,
+      unique: false,
+    },
     strokes: {
       type: Number,
       required: true,
