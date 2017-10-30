@@ -90,17 +90,6 @@
     .leaderboard-content,
     .recent-game-content {
 
-      .header {
-        display: inline-block;
-        position: relative;
-        padding: 7px 0;
-
-        h4 {
-          position: relative;
-          transition: color 0.2s ease;
-        }
-      }
-
       &:hover {
 
         h4 {
@@ -110,7 +99,19 @@
 
         .t-block {
           width: calc(100% + 16px);
-          transition: width 0.2s ease;
+          height: 27px;
+          transition: all 0.2s ease;
+        }
+      }
+
+      .header {
+        display: inline-block;
+        position: relative;
+        padding: 7px 0;
+
+        h4 {
+          position: relative;
+          transition: color 0.2s ease;
         }
       }
     }
