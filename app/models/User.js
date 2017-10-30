@@ -34,6 +34,7 @@ const UserSchema = new Schema({
   },
   handicap: {
     type: Number,
+    default: 0,
     required: false,
     unique: false,
   },
