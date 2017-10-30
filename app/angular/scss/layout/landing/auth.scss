@@ -15,9 +15,10 @@ auth {
     p {
       color: #fff;
       text-align: center;
+      font-weight: 500;
 
       a {
-        font-weight: bold;
+        font-weight: 600;
       }
     }
 
@@ -30,7 +31,7 @@ auth {
       button {
         margin: 0 auto;
         margin-top: 15px;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
       }
 
       .input-container {
