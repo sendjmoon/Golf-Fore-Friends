@@ -17,3 +17,15 @@ h1, h2, h3, h4, h5, h6, p {
   margin: 0 auto;
   padding: 15px;
 }
+
+h4 {
+  margin-left: 15px;
+}
+
+.t-block {
+  position: absolute;
+  // left: 0;
+  height: 20px;
+  width: 7px;
+  border-radius: 2px;
+}
