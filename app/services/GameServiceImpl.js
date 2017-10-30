@@ -1,6 +1,7 @@
 'use strict';
 
 const Promise = require('bluebird');
+const utils = require('../utils');
 
 module.exports = function(gameDao) {
   const _gameDao = gameDao;
@@ -10,6 +11,7 @@ module.exports = function(gameDao) {
       const gameData = {
         name: name,
         players: players,
+        publicId: `${utils.generateHash(4)}-${name.toLowerCase().split(' ').join('-')}`,
       };
       _gameDao.create(gameData)
         .then((game) => {
