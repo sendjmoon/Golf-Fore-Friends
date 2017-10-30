@@ -1,6 +1,5 @@
 auth {
-  padding: 60px;
-  background-color: #fff;
+  padding: 15px;
   border-radius: 2px;
 }
 
@@ -14,12 +13,12 @@ auth {
   .form-container {
 
     p {
-      color: #263238;
+      color: #fff;
       text-align: center;
+      font-weight: 500;
 
       a {
-        color: $green-primary;
-        font-weight: bold;
+        font-weight: 600;
       }
     }
 
@@ -32,44 +31,76 @@ auth {
       button {
         margin: 0 auto;
         margin-top: 15px;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
       }
 
       .input-container {
+        display: table;
         width: 100%;
-        padding: 15px;
-        border: 1px solid #eee;
+        border: 1px solid rgba(0, 0, 0, 0);
         border-bottom: none;
         white-space: nowrap;
+
+        .icon-box {
+          display: table-cell;
+          width: 50px;
+          border-right: 1px solid rgba(0, 0, 0, 0);
+          background: $green-primary;
+          text-align: center;
+
+          i {
+            color: #fff;
+            font-size: 18px;
+          }
+        }
 
         &.first {
           border-top-left-radius: 5px;
           border-top-right-radius: 5px;
+
+          .icon-box {
+            border-top-left-radius: 5px;
+          }
+
+          input {
+            border-top-right-radius: 5px;
+          }
         }
 
         &.last {
           border-bottom-left-radius: 5px;
           border-bottom-right-radius: 5px;
-          border-bottom: 1px solid #eee;
-        }
+          border-bottom: 1px solid rgba(0, 0, 0, 0);
 
-        i {
-          color: #263238;
+          .icon-box {
+            border-bottom-left-radius: 5px;
+          }
+
+          input {
+            border-bottom-right-radius: 5px;
+          }
         }
 
         input {
-          margin-left: 5px;
+          display: table-cell;
+          padding: 15px;
           border: none;
-          color: #263238;
-          font-size: 16px;
+          background-color: rgba(0, 0, 0, 0.5);
+          color: #fff;
+          font-size: 14px;
           outline: none;
 
           &::placeholder {
             color: #ccc;
           }
 
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+          }
+
           &:focus {
-            color: $green-primary;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: $orange-primary;
           }
         }
       }

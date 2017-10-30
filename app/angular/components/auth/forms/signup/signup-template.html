@@ -1,18 +1,26 @@
 <form name="signup" data-ng-submit="ac.signup(ac.user)">
   <div class="input-container first">
-    <i class="fa fa-tag" aria-hidden="true"></i>
+    <div class="icon-box">
+      <i class="fa fa-tag" aria-hidden="true"></i>
+    </div>
     <input type="text" required placeholder="Username" data-ng-model="ac.user.username"></input>
   </div>
   <div class="input-container">
-    <i class="fa fa-user" aria-hidden="true"></i>
+    <div class="icon-box">
+      <i class="fa fa-user" aria-hidden="true"></i>
+    </div>
     <input type="text" required placeholder="Full Name (First &amp; Last)" data-ng-model="ac.user.fullName"></input>
   </div>
   <div class="input-container">
-    <i class="fa fa-envelope" aria-hidden="true"></i>
+    <div class="icon-box">
+      <i class="fa fa-envelope" aria-hidden="true"></i>
+    </div>
     <input type="text" required placeholder="Email" data-ng-model="ac.user.email"></input>
   </div>
   <div class="input-container last">
-    <i class="fa fa-lock gff-last" aria-hidden="true"></i>
+    <div class="icon-box">
+      <i class="fa fa-lock gff-last" aria-hidden="true"></i>
+    </div>
     <input class="gff-last" type="password" required placeholder="Password" data-ng-model="ac.user.password"></input>
   </div>
   <button type="submit">SIGNUP</button>
