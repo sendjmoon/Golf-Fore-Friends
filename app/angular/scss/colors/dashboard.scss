@@ -18,26 +18,26 @@ dashboard {
     }
   }
 
-  .hc-header {
-    color: $font-color-light;
-  }
-
-  .hc-content {
+  .score-box {
     background: $bg-dark-opaque;
     color: #fff;
   }
 
   .leaderboard-content {
 
-    .lb-header {
-      color: $font-color-light;
-    }
-
     .lb-list {
 
       li {
         background: $bg-dark-opaque;
+        color: #fff;
       }
+    }
+  }
+
+  .recent-game-content {
+
+    .rg-header {
+      color: $font-color-light;
     }
   }
 }

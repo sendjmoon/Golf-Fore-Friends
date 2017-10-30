@@ -16,3 +16,15 @@ span {
     color: $orange-primary;
   }
 }
+
+.t-block {
+  background: $bg-dark-opaque;
+
+  &.green {
+    background: $green-primary;
+  }
+
+  &.orange {
+    background: $orange-primary;
+  }
+}

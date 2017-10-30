@@ -24,24 +24,17 @@
       .handicap-container {
         padding: 0 15px 30px 0;
 
-        .hc-header {
-          padding: 7px 0;
-        }
-
-        .hc-content {
+        .score-box {
           padding: 23px;
           border-radius: 2px;
           text-align: center;
         }
       }
+      //handicap-container
 
       .leaderboard-container {
 
         .leaderboard-content {
-
-          .lb-header {
-            padding: 7px 0;
-          }
 
           .lb-list {
             padding: 0;
@@ -77,8 +70,53 @@
               }
             }
           }
+          //lb-list
+        }
+        //leaderboard-content
+      }
+      //leaderboard-container
+
+      .recent-game-container {
+
+        .recent-game-content {
+
+        }
+        //recent-game-content
+      }
+      //recent-game-container
+    }
+
+    .handicap-content,
+    .leaderboard-content,
+    .recent-game-content {
+
+      &:hover {
+
+        h4 {
+          color: #fff;
+          transition: color 0.2s ease;
+        }
+
+        .t-block {
+          width: calc(100% + 16px);
+          height: 27px;
+          transition: all 0.2s ease;
+        }
+      }
+
+      .header {
+        display: inline-block;
+        position: relative;
+        padding: 7px 0;
+
+        h4 {
+          position: relative;
+          transition: color 0.2s ease;
         }
       }
     }
+    //stats
   }
+  //dashboard-container
 }
+//dashboard-main

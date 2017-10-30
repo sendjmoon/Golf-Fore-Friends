@@ -3,18 +3,22 @@
 <div class="dashboard-main">
 
   <div class="dashboard-container stats">
+
     <div class="handicap-container col-md-2 col-sm-6">
-      <div class="hc-header">
-        <h4>Handicap</h4>
-      </div>
-      <div class="hc-content">
-        <h3><span class="color-green">+{{dc.user.handicap}}</span></h3>
+      <div class="handicap-content">
+        <div class="header">
+          <div class="t-block orange"></div><h4>Handicap</h4>
+        </div>
+        <div class="score-box">
+          <h3><span class="color-green">+</span>{{dc.user.handicap}}</h3>
+        </div>
       </div>
     </div>
+
     <div class="leaderboard-container col-md-5 col-sm-6">
       <div class="leaderboard-content">
-        <div class="lb-header">
-          <h4>Leaderboard</h4>
+        <div class="header">
+          <div class="t-block orange"></div><h4>Leaderboard</h4>
         </div>
         <ul class="lb-list">
           <li>
@@ -25,7 +29,7 @@
               <span class="color-white">Player Name</span>
             </div>
             <div class="handicap-box">
-              <span class="color-green">+12</span>
+              <p><span class="color-green">+</span>12</p>
             </div>
           </li>
           <li>
@@ -36,7 +40,7 @@
               <span class="color-white">Player Name</span>
             </div>
             <div class="handicap-box">
-              <span class="color-green">+15</span>
+              <p><span class="color-green">+</span>15</p>
             </div>
           </li>
           <li>
@@ -47,18 +51,21 @@
               <span class="color-white">Player Name</span>
             </div>
             <div class="handicap-box">
-              <span class="color-green">+18</span>
+              <p><span class="color-green">+</span>18</p>
             </div>
           </li>
         </ul>
       </div>
-    </div>
+    </div><!-- /leaderboard-container -->
+
     <div class="recent-game-container col-md-5 col-sm-12">
       <div class="recent-game-content">
-        <h4>Most Recent Game</h4>
+        <div class="header">
+          <div class="t-block orange"></div><h4>Most Recent Game</h4>
+        </div>
       </div>
     </div>
-  </div>
+  </div><!-- /dashboard-container -->
 
   <div class="dashboard-container">
     <h2>Friends</h2>
