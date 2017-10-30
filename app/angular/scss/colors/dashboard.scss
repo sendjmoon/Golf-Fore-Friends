@@ -5,34 +5,39 @@ dashboard {
 
 .dashboard-main {
 
-  h2 {
-    color: $font-color-dark;
-  }
-
   .dashboard-container {
     background: #fff;
     color: $font-color-dark;
 
-    &.stats {
-      background: none;
-
-      .handicap-container {
-
-        .hc-content {
-          background: $bg-dark-primary;
-          color: #fff;
-
-          p {
-            color: #fff;
-          }
-
-          h3 {
-            color: $font-color-light;
-          }
-        }
-      }
+    h4 {
+      color: $font-color-light;
     }
 
+    &.stats {
+      background: none;
+    }
+  }
 
+  .hc-header {
+    color: $font-color-light;
+  }
+
+  .hc-content {
+    background: $bg-dark-opaque;
+    color: #fff;
+  }
+
+  .leaderboard-content {
+
+    .lb-header {
+      color: $font-color-light;
+    }
+
+    .lb-list {
+
+      li {
+        background: $bg-dark-opaque;
+      }
+    }
   }
 }
