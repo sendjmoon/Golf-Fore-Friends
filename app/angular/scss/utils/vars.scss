@@ -10,7 +10,7 @@ $orange-opaque: rgba(254, 172, 0, 0.5);
 $white-light-opaque: rgba(255, 255, 255, 0.9);
 
 //backgrounds
-$bg-primary-color: #fff;
+$bg-primary-color: #555;
 $bg-dark-primary: #1f1f1f;
 
 //fonts
@@ -23,9 +23,9 @@ $link-secondary-color: $light-blue-secondary;
 $link-tertiary-color: $orange-light-opaque;
 
 //nav
-$nav-bg-primary-color: #fff;
+$nav-bg-primary-color: #1f1f1f;
 $nav-bg-dark-primary-color: $bg-dark-primary;
-$nav-link-primary-color: #525252;
+$nav-link-primary-color: #fff;
 $nav-link-hover-primary-color: $green-primary;
 
 //panels

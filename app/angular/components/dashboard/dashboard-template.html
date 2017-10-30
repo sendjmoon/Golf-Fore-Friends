@@ -2,17 +2,61 @@
 
 <div class="dashboard-main">
 
-  <div class="dashboard-container">
-    <h2>Your Stats</h2>
-    <div class="dashboard-content">
-      <h3>Handicap: <span>{{dc.user.handicap}}</span></h3>
+  <div class="dashboard-container stats">
+    <div class="handicap-container col-md-2 col-sm-6">
+      <div class="hc-header">
+        <h4>Handicap</h4>
+      </div>
+      <div class="hc-content">
+        <h3><span class="color-green">+{{dc.user.handicap}}</span></h3>
+      </div>
     </div>
-  </div>
-
-  <div class="dashboard-container">
-    <h2>Recent Games</h2>
-    <div class="dashboard-content">
-      <games-widget></games-widget>
+    <div class="leaderboard-container col-md-5 col-sm-6">
+      <div class="leaderboard-content">
+        <div class="lb-header">
+          <h4>Leaderboard</h4>
+        </div>
+        <ul class="lb-list">
+          <li>
+            <div class="pos-box">
+              <span class="color-orange">1st</span>
+            </div>
+            <div class="name-box">
+              <span class="color-white">Player Name</span>
+            </div>
+            <div class="handicap-box">
+              <span class="color-green">+12</span>
+            </div>
+          </li>
+          <li>
+            <div class="pos-box">
+              <span class="color-orange">2nd</span>
+            </div>
+            <div class="name-box">
+              <span class="color-white">Player Name</span>
+            </div>
+            <div class="handicap-box">
+              <span class="color-green">+15</span>
+            </div>
+          </li>
+          <li>
+            <div class="pos-box">
+              <span class="color-orange">3rd</span>
+            </div>
+            <div class="name-box">
+              <span class="color-white">Player Name</span>
+            </div>
+            <div class="handicap-box">
+              <span class="color-green">+18</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="recent-game-container col-md-5 col-sm-12">
+      <div class="recent-game-content">
+        <h4>Most Recent Game</h4>
+      </div>
     </div>
   </div>
 
@@ -24,10 +68,17 @@
   </div>
 
   <div class="dashboard-container">
+    <h2>Recent Games</h2>
+    <div class="dashboard-content">
+      <games-widget></games-widget>
+    </div>
+  </div>
+
+  <!-- <div class="dashboard-container">
     <h2>Courses</h2>
     <div class="dashboard-content">
       <courses-widget></courses-widget>
     </div>
-  </div>
+  </div> -->
 
 </div>

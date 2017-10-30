@@ -1,3 +1,18 @@
 body, main {
   background-color: $bg-primary-color;
 }
+
+span {
+
+  &.color-green {
+    color: $green-primary;
+  }
+
+  &.color-white {
+    color: #fff;
+  }
+
+  &.color-orange {
+    color: $orange-primary;
+  }
+}
