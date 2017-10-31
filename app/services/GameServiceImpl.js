@@ -6,11 +6,12 @@ const utils = require('../utils');
 module.exports = function(gameDao) {
   const _gameDao = gameDao;
 
-  const create = function(name, players) {
+  const create = function(name, players, datePlayed) {
     return new Promise((resolve, reject) => {
       const gameData = {
         name: name,
         players: players,
+        datePlayed: datePlayed,
         publicId: `${utils.generateHash(4)}-${name.toLowerCase().split(' ').join('-')}`,
       };
       _gameDao.create(gameData)
@@ -41,6 +42,16 @@ module.exports = function(gameDao) {
     });
   };
 
+  const getAllByPublicId = function(publicIdArray) {
+    return new Promise((resolve, reject) => {
+      _gameDao.getAllByPublicId(publicIdArray)
+        .then((games) => {
+          resolve(games);
+        })
+        .catch(reject);
+    });
+  };
+
   const getGames = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
       _gameDao.getGames(emailOrUsername)
@@ -55,6 +66,7 @@ module.exports = function(gameDao) {
     create: create,
     getById: getById,
     getByPublicId: getByPublicId,
+    getAllByPublicId: getAllByPublicId,
     getGames: getGames,
   };
 };

@@ -54,14 +54,31 @@ module.exports = function() {
         .select('-__v')
         .exec()
         .then((game) => {
-          console.log('found game');
-          console.log(game);
           resolve(game);
         })
         .catch((err) => {
           console.log(err);
           reject();
         });
+    });
+  };
+
+  const getAllByPublicId = function(publicIdArray) {
+    return new Promise((resolve, reject) => {
+        Game.find({
+          publicId: {
+            $in: publicIdArray,
+          },
+        })
+          .select('-__v')
+          .exec()
+          .then((games) => {
+            resolve(games);
+          })
+          .catch((err) => {
+            console.log(err);
+            reject();
+          });
     });
   };
 
@@ -78,7 +95,6 @@ module.exports = function() {
         .populate('gameIds')
         .exec()
         .then((user) => {
-          console.log(user);
           resolve(user.gameIds);
         })
         .catch(reject);
@@ -111,6 +127,7 @@ module.exports = function() {
     create: create,
     getById: getById,
     getByPublicId: getByPublicId,
+    getAllByPublicId: getAllByPublicId,
     getGames: getGames,
   };
 };

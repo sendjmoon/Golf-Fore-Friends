@@ -26,6 +26,10 @@ const GameSchema = new Schema({
     type: Number,
     unique: false,
   },
+  datePlayed: {
+    type: String,
+    unique: false,
+  },
   players: [{
     email: {
       type: String,
