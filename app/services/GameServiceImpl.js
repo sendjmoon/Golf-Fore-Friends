@@ -41,6 +41,16 @@ module.exports = function(gameDao) {
     });
   };
 
+  const getAllByPublicId = function(publicIdArray) {
+    return new Promise((resolve, reject) => {
+      _gameDao.getAllByPublicId(publicIdArray)
+        .then((games) => {
+          resolve(games);
+        })
+        .catch(reject);
+    });
+  };
+
   const getGames = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
       _gameDao.getGames(emailOrUsername)
@@ -55,6 +65,7 @@ module.exports = function(gameDao) {
     create: create,
     getById: getById,
     getByPublicId: getByPublicId,
+    getAllByPublicId: getAllByPublicId,
     getGames: getGames,
   };
 };
