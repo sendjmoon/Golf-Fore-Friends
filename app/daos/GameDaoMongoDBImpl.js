@@ -54,8 +54,6 @@ module.exports = function() {
         .select('-__v')
         .exec()
         .then((game) => {
-          console.log('found game');
-          console.log(game);
           resolve(game);
         })
         .catch((err) => {
@@ -75,7 +73,6 @@ module.exports = function() {
           .select('-__v')
           .exec()
           .then((games) => {
-            console.log(games);
             resolve(games);
           })
           .catch((err) => {

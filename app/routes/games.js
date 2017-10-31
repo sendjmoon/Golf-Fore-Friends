@@ -20,7 +20,6 @@ router.get('/all', function(req, res, next) {
 router.get('/:publicId', function(req, res, next) {
   gameService.getByPublicId(req.params.publicId)
     .then((game) => {
-      console.log(game);
       res.json(game);
     })
     .catch((err) => {

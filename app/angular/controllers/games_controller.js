@@ -45,26 +45,11 @@ module.exports = function(app) {
     this.getById = GameService.getById;
     GameService.getAllByPublicId(this.publicIds)
       .then((games) => {
-        console.log(games);
         this.games = games.data;
       })
       .catch(() => {
-        alert('uh oh');
+        alert('error getting all games');
       });
-
-    // this.getGames = function() {
-    //   new Promise((resolve, reject) => {
-    //     $http.get('/games/all')
-    //       .then((games) => {
-    //         this.games = games.data;
-    //         resolve();
-    //       })
-    //       .catch(() => {
-    //         alert('error getting games');
-    //         reject();
-    //       });
-    //   });
-    // };
 
     this.getFriendsList = function() {
       $http.get('/friends/list')
