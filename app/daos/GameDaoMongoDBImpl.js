@@ -130,6 +130,7 @@ module.exports = function() {
     create: create,
     getById: getById,
     getByPublicId: getByPublicId,
+    getAllByPublicId: getAllByPublicId,
     getGames: getGames,
   };
 };
