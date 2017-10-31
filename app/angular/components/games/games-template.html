@@ -1,16 +1,16 @@
-<div class="games-container" ng-hide="newGame">
+<!-- <div class="games-container" ng-hide="newGame">
   <h2>Games</h2>
-  <div class="">
-    <ul>
+  <div class=""> -->
+    <!-- <ul>
       <li ng-repeat="game in gc.games">
         <h3>{{game}}</h3>
         <a ng-click="gc.getById(game.publicId)">{{game.name}}</a>
       </li>
-    <ul>
-    <button class="gff-btn" ng-click="newGame=true; gc.getFriendsList();">Add a New Game</button>
-  </div>
+    <ul> -->
+    <!-- <button class="gff-btn" ng-click="newGame=true; gc.getFriendsList();">Create Game</button>
+  </div> -->
 
-  <div class="game-box primary col-md-6">
+  <!-- <div class="game-box primary col-md-6">
     <a href="">
       <div class="game-box-content">
         <div class="bg-overlay"></div>
@@ -88,7 +88,7 @@
         </div>
       </div>
     </a>
-  </div>
+  </div> -->
 </div><!-- .games-container -->
 
-<new-game ng-show="newGame" data-friends-list="gc.friendsList"></new-game>
+<new-game data-friends-list="gc.friendsList"></new-game>

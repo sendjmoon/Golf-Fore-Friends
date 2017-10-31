@@ -6,11 +6,12 @@ const utils = require('../utils');
 module.exports = function(gameDao) {
   const _gameDao = gameDao;
 
-  const create = function(name, players) {
+  const create = function(name, players, datePlayed) {
     return new Promise((resolve, reject) => {
       const gameData = {
         name: name,
         players: players,
+        datePlayed: datePlayed,
         publicId: `${utils.generateHash(4)}-${name.toLowerCase().split(' ').join('-')}`,
       };
       _gameDao.create(gameData)
