@@ -1,4 +1,5 @@
 main {
+  display: table;
   z-index: 1;
 }
 
@@ -9,6 +10,10 @@ html, body, main {
 
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
+}
+
+h2 {
+  padding: 0 15px;
 }
 
 .gff-container {

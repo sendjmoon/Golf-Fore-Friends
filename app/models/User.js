@@ -34,6 +34,7 @@ const UserSchema = new Schema({
   },
   handicap: {
     type: Number,
+    default: 0,
     required: false,
     unique: false,
   },
@@ -41,6 +42,11 @@ const UserSchema = new Schema({
     gameId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Game',
+      unique: false,
+    },
+    publicId: {
+      type: String,
+      required: true,
       unique: false,
     },
     strokes: {
