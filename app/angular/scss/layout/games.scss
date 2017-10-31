@@ -1,5 +1,8 @@
+.games-container {
+  padding: 15px;
+}
+
 .game-box {
-  display: table;
   padding: 0 15px;
   margin: 15px 0;
   height: 250px;
@@ -29,6 +32,7 @@
         height: auto;
         position: absolute;
         top: 80px;
+        color: #fff;
 
         p {
           text-align: center;
@@ -41,9 +45,9 @@
 
           p {
             display: inline-block;
-            border-top: 3px solid rgba(0, 0, 0, 0);
-            border-bottom: 3px solid rgba(0, 0, 0, 0);
-            transition: all 0.2s ease;
+            border-top: 2px solid rgba(0, 0, 0, 0);
+            border-bottom: 2px solid $orange-primary;
+            transition: all 0.3s ease;
           }
         }
 
@@ -53,15 +57,33 @@
           padding: 5px;
           background: rgba(0, 0, 0, 0.5);
           text-align: center;
-          transition: color 0.2s ease;
+          transition: color 0.3s ease;
+        }
+
+        .score-box {
+          // margin-top: 3px;
+          margin-bottom: 2px;
+          display: flex;
+          justify-content: center;
+          line-height: 14px;
+
+          p {
+            display: inline-block;
+          }
+
+          span {
+
+            &.color-orange {
+              margin: 0 5px;
+            }
+          }
         }
 
         .date-box {
           position: relative;
 
           p {
-            font-size: 20px;
-            font-weight: 600;
+            font-weight: 500;
             text-align: center;
           }
         } //date-box
@@ -71,7 +93,7 @@
 
         .bg-overlay {
           background: rgba(0, 0, 0, 0.2);
-          transition: all 0.2s ease;
+          transition: all 0.3s ease;
         }
 
         .title-box {
@@ -79,14 +101,14 @@
           .loc-box {
 
             p {
-              border-top: 3px solid $orange-primary;
-              transition: all 0.2s ease;
+              // border-top: 2px solid $orange-primary;
+              transition: all 0.3s ease;
             }
           }
 
           h3 {
-            color: $orange-primary;
-            transition: color 0.2s ease;
+            background-color: $orange-opaque;
+            transition: color 0.3s ease;
           }
         }
       } //:hover
