@@ -13,5 +13,21 @@ module.exports = function(app) {
           alert('error getting game by id');
         });
     };
+
+    this.getAllByPublicId = function(publicIdArray) {
+      return new Promise((resolve, reject) => {
+        let publicIdData = {
+          publicIdArray: publicIdArray,
+        };
+        $http.post($rs.baseUrl + '/games/all', publicIdData)
+          .then((games) => {
+            resolve(games);
+          })
+          .catch(() => {
+            alert('error getting games');
+            reject();
+          });
+      });
+    };
   }]);
 };

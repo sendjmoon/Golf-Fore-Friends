@@ -1,7 +1,7 @@
 <div class="games-container" ng-hide="newGame">
   <h2>Games</h2>
   <div class="">
-    <ul ng-init="gc.getGames()">
+    <ul>
       <li ng-repeat="game in gc.games">
         <h3>{{game}}</h3>
         <a ng-click="gc.getById(game.publicId)">{{game.name}}</a>

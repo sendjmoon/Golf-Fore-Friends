@@ -22,15 +22,13 @@ module.exports = function(app) {
 
     this.calcHandicap = function(user) {
       return new Promise((resolve, reject) => {
+        if (gameIds === undefined) return reject();
         let gameIds = user.gameIds;
         let handicap = 0;
-
-        if (gameIds === undefined) return reject();
-
+        
         gameIds.forEach((game) => {
           handicap += game.strokes;
         });
-
         handicap = handicap / gameIds.length;
         resolve(handicap);
       });

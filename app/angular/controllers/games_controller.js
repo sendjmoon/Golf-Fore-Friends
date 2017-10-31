@@ -8,11 +8,16 @@ module.exports = function(app) {
     this.user = $rs.user;
     this.gameData = $rs.gameData;
     this.games = [];
+    this.publicIds = [];
     this.friendsList = [];
     this.game = {
       players: [],
     };
     this.game.players[0] = $rs.user;
+
+    $rs.user.gameIds.forEach((game) => {
+      this.publicIds.push(game.publicId);
+    });
 
     this.createGame = function(gameData) {
       $http.post('/games/create', gameData)
@@ -38,20 +43,28 @@ module.exports = function(app) {
     };
 
     this.getById = GameService.getById;
-
-    this.getGames = function() {
-      new Promise((resolve, reject) => {
-        $http.get('/games/all')
-          .then((games) => {
-            this.games = games.data;
-            resolve();
-          })
-          .catch((err) => {
-            alert('error getting games');
-            reject();
-          });
+    GameService.getAllByPublicId(this.publicIds)
+      .then((games) => {
+        console.log(games);
+        this.games = games.data;
+      })
+      .catch(() => {
+        alert('uh oh');
       });
-    };
+
+    // this.getGames = function() {
+    //   new Promise((resolve, reject) => {
+    //     $http.get('/games/all')
+    //       .then((games) => {
+    //         this.games = games.data;
+    //         resolve();
+    //       })
+    //       .catch(() => {
+    //         alert('error getting games');
+    //         reject();
+    //       });
+    //   });
+    // };
 
     this.getFriendsList = function() {
       $http.get('/friends/list')

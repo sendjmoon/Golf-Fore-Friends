@@ -18,7 +18,6 @@ router.get('/all', function(req, res, next) {
 });
 
 router.get('/:publicId', function(req, res, next) {
-  console.log(req.params.publicId);
   gameService.getByPublicId(req.params.publicId)
     .then((game) => {
       console.log(game);
@@ -27,6 +26,18 @@ router.get('/:publicId', function(req, res, next) {
     .catch((err) => {
       res.status(500).json({
         error: 'error getting game',
+      });
+    });
+});
+
+router.post('/all', function(req, res, next) {
+  gameService.getAllByPublicId(req.body.publicIdArray)
+    .then((games) => {
+      res.json(games);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: 'error getting games',
       });
     });
 });
