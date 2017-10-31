@@ -6,6 +6,7 @@ module.exports = function(app) {
     this.getById = function(gameId) {
       $http.get($rs.baseUrl + '/games/' + gameId)
         .then((game) => {
+          $rs.gameData = game.data;
           console.log(game);
         })
         .catch((err) => {

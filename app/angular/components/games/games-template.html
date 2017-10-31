@@ -1,5 +1,5 @@
 <div class="games-container" ng-hide="newGame">
-  <h2>Recent Games</h2>
+  <h2>Games</h2>
   <ul ng-init="gc.getGames()">
     <li ng-repeat="game in gc.games">
       <h3>{{game}}</h3>
@@ -8,5 +8,22 @@
   </div>
   <button ng-click="newGame=true; gc.getFriendsList();">Add a New Game</button>
 </div>
+
+<a href="">
+  <div class="game-box primary col-md-6">
+    <div class="game-box-content">
+      <div class="bg-overlay"></div>
+      <div class="title-box">
+        <div class="loc-box">
+          <p class="loc">NEWCASTLE, WA</p>
+        </div>
+        <h3>NEWCASTLE - CHINA CREEK</h3>
+        <div class="date-box">
+          <p>OCT 29 2017</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>
 
 <new-game ng-show="newGame" data-friends-list="gc.friendsList"></new-game>

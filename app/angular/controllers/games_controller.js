@@ -6,6 +6,7 @@ module.exports = function(app) {
     AuthService.checkSessionExists();
 
     this.user = $rs.user;
+    this.gameData = $rs.gameData;
     this.games = [];
     this.friendsList = [];
     this.game = {
