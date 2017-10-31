@@ -65,6 +65,26 @@ module.exports = function() {
     });
   };
 
+  const getAllByPublicId = function(publicIdArray) {
+    return new Promise((resolve, reject) => {
+        Game.find({
+          publicId: {
+            $in: publicIdArray,
+          },
+        })
+          .select('-__v')
+          .exec()
+          .then((games) => {
+            console.log(games);
+            resolve(games);
+          })
+          .catch((err) => {
+            console.log(err);
+            reject();
+          });
+    });
+  };
+
   const getGames = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
       User.findOne({
@@ -78,7 +98,6 @@ module.exports = function() {
         .populate('gameIds')
         .exec()
         .then((user) => {
-          console.log(user);
           resolve(user.gameIds);
         })
         .catch(reject);
