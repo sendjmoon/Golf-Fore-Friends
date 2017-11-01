@@ -14,6 +14,11 @@ const GameSchema = new Schema({
     required: true,
     unique: false,
   },
+  location: {
+    type: String,
+    required: true,
+    unique: false,
+  },
   // course: {
   //   type: mongoose.Schema.Types.ObjectId,
   //   ref: 'Course',
