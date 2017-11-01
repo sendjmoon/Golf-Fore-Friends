@@ -12,7 +12,7 @@ module.exports = function(gameDao) {
         name: name,
         location: location,
         players: players,
-        datePlayed: datePlayed,
+        datePlayed: `${utils.parseDate(datePlayed)}`,
         publicId: `${utils.generateHash(4)}-${name.toLowerCase().split(' ').join('-')}`,
       };
       _gameDao.create(gameData)
