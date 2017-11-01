@@ -7,7 +7,6 @@ module.exports = function(app) {
       $http.get($rs.baseUrl + '/games/' + gameId)
         .then((game) => {
           $rs.gameData = game.data;
-          console.log(game);
         })
         .catch((err) => {
           alert('error getting game by id');
@@ -21,7 +20,7 @@ module.exports = function(app) {
         };
         $http.post($rs.baseUrl + '/games/all', publicIdData)
           .then((games) => {
-            resolve(games);
+            resolve(games.data);
           })
           .catch(() => {
             alert('error getting games');

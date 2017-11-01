@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('GamesController', ['$rootScope', '$http', '$location', '$route', 'AuthService', 'UserService', 'GameService', function($rs, $http, $location, $route, AuthService, UserService, GameService) {
+  app.controller('GamesController', ['$rootScope', '$scope', '$http', '$location', '$route', 'AuthService', 'UserService', 'GameService', function($rs, $scope, $http, $location, $route, AuthService, UserService, GameService) {
 
     AuthService.checkSessionExists();
 
@@ -18,6 +18,27 @@ module.exports = function(app) {
     $rs.user.gameIds.forEach((game) => {
       this.publicIds.push(game.publicId);
     });
+
+    this.getAllByPublicId = function(publicIds) {
+      GameService.getAllByPublicId(publicIds)
+        .then((games) => {
+          this.games = games;
+          this.games.forEach((game) => {
+            game.totalGolfers = game.players.length;
+            game.players.forEach((player) => {
+              if ($rs.user.email === player.email) {
+                game.yourStrokes = player.strokes
+                game.yourScore = game.yourStrokes + 72;
+              }
+            });
+          });
+        })
+        .catch(() => {
+          alert('error getting games');
+        });
+    };
+
+    this.getAllByPublicId(this.publicIds);
 
     this.createGame = function(gameData) {
       $http.post('/games/create', gameData)
@@ -43,13 +64,6 @@ module.exports = function(app) {
     };
 
     this.getById = GameService.getById;
-    GameService.getAllByPublicId(this.publicIds)
-      .then((games) => {
-        this.games = games.data;
-      })
-      .catch(() => {
-        alert('error getting all games');
-      });
 
     this.getFriendsList = function() {
       $http.get('/friends/list')

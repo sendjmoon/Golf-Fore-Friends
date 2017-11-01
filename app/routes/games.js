@@ -42,7 +42,7 @@ router.post('/all', function(req, res, next) {
 });
 
 router.post('/create', function(req, res, next) {
-  gameService.create(req.body.name, req.body.players, req.body.datePlayed)
+  gameService.create(req.body.name, req.body.location, req.body.players, req.body.datePlayed)
     .then((game) => {
       res.json(game);
     })
