@@ -19,14 +19,26 @@ module.exports = function(app) {
       this.publicIds.push(game.publicId);
     });
 
-    this.getAllByPublicId = GameService.getAllByPublicId;
-    this.getAllByPublicId(this.publicIds)
-      .then((games) => {
-        this.games = games;
-      })
-      .catch(() => {
-        alert('error getting games');
-      });
+    this.getAllByPublicId = function(publicIds) {
+      GameService.getAllByPublicId(publicIds)
+        .then((games) => {
+          this.games = games;
+          this.games.forEach((game) => {
+            game.totalGolfers = game.players.length;
+            game.players.forEach((player) => {
+              if ($rs.user.email === player.email) {
+                game.yourStrokes = player.strokes
+                game.yourScore = game.yourStrokes + 72;
+              }
+            });
+          });
+        })
+        .catch(() => {
+          alert('error getting games');
+        });
+    };
+
+    this.getAllByPublicId(this.publicIds);
 
     this.createGame = function(gameData) {
       $http.post('/games/create', gameData)
