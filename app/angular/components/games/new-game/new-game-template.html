@@ -5,7 +5,7 @@
 
 <form class="new-game-form col-md-12" name="new-game" ng-submit="gc.createGame(gc.game)">
   <div class="create-game-container">
-    <div class="course-box">
+    <div class="course-container">
       <p>Course Played</p>
       <div class="gff-select course">
         <select ng-model="gc.game.name">
@@ -15,27 +15,36 @@
       </div>
     </div>
 
-    <div class="location-box">
+    <div class="location-container">
       <p>City, State</p>
-      <input type="text" ng-model="gc.game.location"></input>
+      <input type="text" required ng-model="gc.game.location" placeholder="Seattle, WA"></input>
     </div>
 
-    <div class="date-box">
+    <div class="date-container">
       <p>Date Played</p>
-      <input ng-model="gc.game.datePlayed" type="date" name="date" required>
+      <input type="date" required ng-model="gc.game.datePlayed">
     </div>
 
-    <div class="players-box">
+    <div class="players-container">
       <p>Players</p>
-      <ul>
+      <ul class="player-list">
         <li ng-repeat="player in gc.game.players">
-          <p>{{player.fullName}}</p>
-          <p ng-hide="editing"><strong>Total Strokes:</strong> {{player.strokes}}</p>
-          <input type="text" required placeholder="101" ng-model="player.strokes" ng-show="editing"></input>
-          <a ng-hide="editing" ng-click="editing=true">Edit</a>
-          <p>test</p>
-          <a ng-click="gc.removePlayer(player)">X</a>
-          <a ng-hide="!editing" ng-click="editing=false">Save</a>
+          <div class="player-box">
+            <div class="title-box">
+              <p>{{player.fullName}}</p>
+            </div>
+            <div class="strokes-box" ng-hide="editing">
+              <p><strong><span class="color-green">+</span></strong>{{player.strokes}}</p>
+            </div>
+            <div class="edit-box">
+              <a ng-hide="editing" ng-click="editing=true"><i class="fa fa-pencil"></i></a>
+              <input type="text" required ng-model="player.strokes" placeholder="{{player.strokes}}" maxlength="2" ng-show="editing"></input>
+              <a ng-hide="!editing" ng-click="editing=false"><i class="fa fa-floppy-o"></i></a>
+            </div>
+            <div class="remove-box">
+              <a ng-click="gc.removePlayer(player)"><i class="fa fa-minus-circle"></i></a>
+            </div>
+          </div>
         </li>
       </ul>
       <div>
@@ -48,7 +57,7 @@
         </div>
       </div>
     </div>
-    
+
   </div>
   <button type="submit">Submit</button>
 </form>

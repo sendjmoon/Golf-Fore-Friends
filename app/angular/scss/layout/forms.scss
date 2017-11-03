@@ -1,5 +1,7 @@
 input {
   height: 40px;
+  border: 1px solid #f1f1f1;
+  border-radius: 2px;
 }
 
 .gff-select {
@@ -20,6 +22,82 @@ input {
 
     &:focus {
       outline: none;
+    }
+  }
+}
+
+.new-game-form {
+  font-size: 16px;
+
+  p {
+    font-weight: 600;
+  }
+
+  .course-container, .location-container, .date-container {
+    display: inline-block;
+    margin-right: 30px;
+  }
+
+  .players-container {
+    margin-top: 30px;
+
+    .player-list {
+      padding: 0;
+      list-style: none;
+
+      li {
+        display: inline-block;
+      }
+
+      .player-box {
+        display: flex;
+        flex-direction: row;
+        border-radius: 2px;
+        background: $bg-dark-opaque;
+        color: #fff;
+
+        .title-box {
+          padding: 15px;
+          padding-right: 30px;
+          border-right: 1px solid #555;
+        }
+
+        .strokes-box {
+          padding: 15px;
+          border-right: 1px solid #555;
+        }
+
+        .edit-box {
+          padding: 15px;
+          border-right: 1px solid #555;
+
+          a {
+            color: $orange-primary;
+          }
+
+          input {
+            width: 35px;
+            height: auto;
+            margin-right: 10px;
+            border: none;
+            background: rgba(100, 100, 100, 0.2);
+            text-align: center;
+            font-weight: 600;
+          }
+        }
+
+        .remove-box {
+          padding: 15px;
+
+          &:hover {
+            background: red;
+          }
+
+          a {
+            color: #dc1616;
+          }
+        }
+      }
     }
   }
 }
