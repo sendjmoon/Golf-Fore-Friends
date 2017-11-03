@@ -16,6 +16,10 @@ h2 {
   padding: 0 15px;
 }
 
+h4 {
+  margin-left: 15px;
+}
+
 .gff-container {
   display: table;
   max-width: 1660px;
@@ -23,8 +27,12 @@ h2 {
   padding: 15px;
 }
 
-h4 {
-  margin-left: 15px;
+.intro-container {
+
+  p {
+    padding: 0 15px;
+    font-size: 18px;
+  }
 }
 
 .t-block {
