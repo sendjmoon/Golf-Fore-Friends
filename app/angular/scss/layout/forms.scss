@@ -1,13 +1,30 @@
 input {
   height: 40px;
+  padding: 5px;
   border: 1px solid #f1f1f1;
   border-radius: 2px;
+
+  &::placeholder {
+    color: #d1d1d1;
+  }
+
+  &:hover {
+    border-color: #d1d1d1;
+  }
+
+  &:focus {
+    outline-color: $green-opaque;
+  }
 }
 
 .gff-select {
   border: 1px solid #f1f1f1;
   border-radius: 2px;
   background: #fff;
+
+  &:hover {
+    border-color: #d1d1d1;
+  }
 
   select {
     width: 100%;
@@ -21,7 +38,7 @@ input {
     }
 
     &:focus {
-      outline: none;
+      outline-color: $green-primary;
     }
   }
 }
@@ -50,29 +67,52 @@ input {
       }
 
       .player-box {
-        display: flex;
-        flex-direction: row;
+        display: table;
         border-radius: 2px;
         background: $bg-dark-opaque;
         color: #fff;
 
+        i {
+          font-size: 18px;
+        }
+
+        .title-box,
+        .strokes-box,
+        .edit-box,
+        .remove-box {
+          display: table-cell;
+          padding: 10px 15px;
+        }
+
         .title-box {
-          padding: 15px;
           padding-right: 30px;
           border-right: 1px solid #555;
         }
 
         .strokes-box {
-          padding: 15px;
           border-right: 1px solid #555;
         }
 
         .edit-box {
-          padding: 15px;
+          border-top: 5px solid rgba(0, 0, 0, 0);
           border-right: 1px solid #555;
+          border-bottom: 5px solid rgba(0, 0, 0, 0);
+          transition: all 0.2s ease;
+
+          &:hover {
+            border-bottom-color: $orange-primary;
+            color: $orange-primary;
+            transition: all 0.2s ease;
+          }
 
           a {
-            color: $orange-primary;
+            color: #fff;
+            text-decoration: none;
+
+            &:hover {
+              color: $orange-primary;
+              text-decoration: none;
+            }
           }
 
           input {
@@ -80,24 +120,26 @@ input {
             height: auto;
             margin-right: 10px;
             border: none;
-            background: rgba(100, 100, 100, 0.2);
+            background: #555;
+            color: #fff;
             text-align: center;
             font-weight: 600;
           }
         }
 
         .remove-box {
-          padding: 15px;
+          border-top-right-radius: 2px;
+          border-bottom-right-radius: 2px;
+          color: #dc1616;
+          transition: all 0.2s ease;
 
           &:hover {
-            background: red;
-          }
-
-          a {
-            color: #dc1616;
+            background: #dc1616;
+            color: #fff;
+            transition: all 0.2s ease;
           }
         }
-      }
-    }
-  }
-}
+      } //.player-box
+    } //.player-list
+  } //.player-container
+} //.new-game-form

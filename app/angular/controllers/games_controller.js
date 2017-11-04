@@ -6,18 +6,23 @@ module.exports = function(app) {
     AuthService.checkSessionExists();
 
     this.user = $rs.user;
+    this.editing = false;
     this.gameData = $rs.gameData;
-    this.games = [];
-    this.publicIds = [];
-    this.friendsList = [];
     this.game = {
       players: [],
     };
     this.game.players[0] = $rs.user;
+    this.games = [];
+    this.publicIds = [];
+    this.friendsList = [];
 
     $rs.user.gameIds.forEach((game) => {
       this.publicIds.push(game.publicId);
     });
+
+    this.toggleEdit = function(isEditing) {
+      isEditing === true ? this.editing = false : this.editing = true;
+    };
 
     this.getAllByPublicId = function(publicIds) {
       GameService.getAllByPublicId(publicIds)

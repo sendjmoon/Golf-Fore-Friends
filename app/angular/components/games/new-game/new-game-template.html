@@ -28,23 +28,23 @@
     <div class="players-container">
       <p>Players</p>
       <ul class="player-list">
-        <li ng-repeat="player in gc.game.players">
-          <div class="player-box">
-            <div class="title-box">
-              <p>{{player.fullName}}</p>
-            </div>
-            <div class="strokes-box" ng-hide="editing">
-              <p><strong><span class="color-green">+</span></strong>{{player.strokes}}</p>
-            </div>
-            <div class="edit-box">
-              <a ng-hide="editing" ng-click="editing=true"><i class="fa fa-pencil"></i></a>
-              <input type="text" required ng-model="player.strokes" placeholder="{{player.strokes}}" maxlength="2" ng-show="editing"></input>
-              <a ng-hide="!editing" ng-click="editing=false"><i class="fa fa-floppy-o"></i></a>
-            </div>
-            <div class="remove-box">
-              <a ng-click="gc.removePlayer(player)"><i class="fa fa-minus-circle"></i></a>
-            </div>
+        <li class="player-box" ng-repeat="player in gc.game.players">
+          <div class="title-box">
+            <p>{{player.fullName}}</p>
           </div>
+          <div class="strokes-box" ng-hide="gc.editing">
+            <p><strong><span class="color-green">+</span></strong>{{player.strokes}}</p>
+          </div>
+          <div class="edit-box" ng-hide="gc.editing">
+            <a ng-click="gc.toggleEdit(gc.editing)"<i class="fa fa-pencil"></i></a>
+          </div>
+          <div class="edit-box" ng-show="gc.editing">
+            <input type="text" required ng-model="player.strokes" placeholder="{{player.strokes}}" maxlength="2"></input>
+            <a ng-click="gc.toggleEdit(gc.editing)"><i class="fa fa-floppy-o"></i></a>
+          </div>
+          <a class="remove-box" ng-click="gc.removePlayer(player)">
+            <i class="fa fa-minus-circle"></i>
+          </a>
         </li>
       </ul>
       <div>
@@ -52,8 +52,8 @@
         <div class="">
           <select ng-model="gc.player">
             <option ng-repeat="friend in gc.friendsList" value="{{friend}}">{{friend.fullName}}</option>
-            <a ng-click="gc.addPlayer(gc.player)">Add Player</a>
           </select>
+          <a ng-click="gc.addPlayer(gc.player)">Add Player</a>
         </div>
       </div>
     </div>
