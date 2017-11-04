@@ -82,7 +82,6 @@ module.exports = function(app) {
 
     this.addPlayer = function(user) {
       if (user === undefined || user === null) return;
-      user = JSON.parse(user);
       this.game.players.push(user);
       this.friendsList = this.friendsList.filter((friend) => {
         return friend._id !== user._id;
