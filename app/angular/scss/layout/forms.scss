@@ -63,15 +63,19 @@ input {
     }
 
     .player-list {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
       padding: 0;
       list-style: none;
 
-      li {
-        display: inline-block;
-      }
+      // li {
+      //   display: inline-block;
+      // }
 
       .player-box {
         display: table;
+        margin-right: 15px;
         border-radius: 2px;
         background: $bg-dark-opaque;
         color: #fff;
