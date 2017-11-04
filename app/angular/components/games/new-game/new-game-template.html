@@ -48,14 +48,18 @@
         </li>
       </ul>
 
-      <div>
-        <h3>add player</h3>
-        <div class="">
-          <select ng-model="gc.player">
-            <option ng-repeat="friend in gc.friendsList" value="{{friend}}">{{friend.fullName}}</option>
-          </select>
-          <a ng-click="gc.addPlayer(gc.player)">Add Player</a>
-        </div>
+      <div class="add-players-container">
+        <p>Add More Players</p>
+        <ul class="player-list">
+          <li class="player-box" ng-repeat="friend in gc.friendsList">
+            <div class="title-box">
+              <p>{{friend.fullName}}</p>
+            </div>
+            <a class="add-box" ng-click="gc.addPlayer(friend)">
+              <i class="fa fa-plus"></i>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
 
