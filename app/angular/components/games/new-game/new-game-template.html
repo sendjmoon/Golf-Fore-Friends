@@ -28,7 +28,7 @@
     <div class="players-container">
       <p>Players</p>
       <ul class="player-list">
-        <li class="player-box" ng-repeat="player in gc.game.players">
+        <li class="player-box" ng-repeat="player in gc.game.players" ng-init="player.strokes=0;">
           <div class="title-box">
             <p>{{player.fullName}}</p>
           </div>
@@ -47,6 +47,7 @@
           </a>
         </li>
       </ul>
+
       <div>
         <h3>add player</h3>
         <div class="">
