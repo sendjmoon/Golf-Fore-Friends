@@ -130,12 +130,12 @@ input {
         .remove-box {
           border-top-right-radius: 2px;
           border-bottom-right-radius: 2px;
-          color: #dc1616;
+          background: $red-opaque;
+          color: #fff;
           transition: all 0.2s ease;
 
           &:hover {
-            background: #dc1616;
-            color: #fff;
+            background: $red-primary;
             transition: all 0.2s ease;
           }
         }
