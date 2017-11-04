@@ -1,45 +1,63 @@
-<div>
+<div class="intro-container">
   <h2>Create a Game</h2>
-  <h3>Please enter game information below.</h3>
-
-  <div class="create-game-container">
-    <p>Course Played</p>
-    <select ng-model="gc.game.name">
-      <option value="Newcastle GC - China Creek">Newcastle GC - China Creek</option>
-      <option value="Newcastle GC - Coal Creek">Newcastle GC - Coal Creek</option>
-    </select>
-
-    <p>City, State</p>
-    <input type="text" ng-model="gc.game.location"></input>
-
-    <p>Date Played</p>
-    <input ng-model="gc.game.datePlayed" type="date" name="date" required>
-    <p>Players</p>
-
-  </div>
-
-  <ul>
-    <li ng-repeat="player in gc.game.players">
-      <p>{{player.fullName}}</p>
-      <p ng-hide="editing"><strong>Total Strokes:</strong> {{player.strokes}}</p>
-      <input type="text" required placeholder="101" ng-model="player.strokes" ng-show="editing"></input>
-      <button ng-hide="editing" ng-click="editing=true">Edit</button>
-      <p>test</p>
-      <button ng-click="gc.removePlayer(player)">X</button>
-      <button ng-hide="!editing" ng-click="editing=false">Save</button>
-    </li>
-  </ul>
-  <div>
-    <h3>add player</h3>
-    <form name="add-player" ng-submit="gc.addPlayer(gc.player)">
-      <select ng-model="gc.player">
-        <option ng-repeat="friend in gc.friendsList" value="{{friend}}">{{friend.fullName}}</option>
-      </select>
-      <button type="submit">Add Player</button>
-    </form>
-  </div>
+  <p>Please enter game information below.</p>
 </div>
 
-<form name="new-game" ng-submit="gc.createGame(gc.game)">
+<form class="new-game-form col-md-12" name="new-game" ng-submit="gc.createGame(gc.game)">
+  <div class="create-game-container">
+    <div class="course-container">
+      <p>Course Played</p>
+      <div class="gff-select course">
+        <select ng-model="gc.game.name">
+          <option value="Newcastle GC - China Creek">Newcastle GC - China Creek</option>
+          <option value="Newcastle GC - Coal Creek">Newcastle GC - Coal Creek</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="location-container">
+      <p>City, State</p>
+      <input type="text" required ng-model="gc.game.location" placeholder="Seattle, WA"></input>
+    </div>
+
+    <div class="date-container">
+      <p>Date Played</p>
+      <input type="date" required ng-model="gc.game.datePlayed">
+    </div>
+
+    <div class="players-container">
+      <p>Players</p>
+      <ul class="player-list">
+        <li class="player-box" ng-repeat="player in gc.game.players">
+          <div class="title-box">
+            <p>{{player.fullName}}</p>
+          </div>
+          <div class="strokes-box" ng-hide="gc.editing">
+            <p><strong><span class="color-green">+</span></strong>{{player.strokes}}</p>
+          </div>
+          <div class="edit-box" ng-hide="gc.editing">
+            <a ng-click="gc.toggleEdit(gc.editing)"<i class="fa fa-pencil"></i></a>
+          </div>
+          <div class="edit-box" ng-show="gc.editing">
+            <input type="text" required ng-model="player.strokes" placeholder="{{player.strokes}}" maxlength="2"></input>
+            <a ng-click="gc.toggleEdit(gc.editing)"><i class="fa fa-floppy-o"></i></a>
+          </div>
+          <a class="remove-box" ng-click="gc.removePlayer(player)">
+            <i class="fa fa-minus-circle"></i>
+          </a>
+        </li>
+      </ul>
+      <div>
+        <h3>add player</h3>
+        <div class="">
+          <select ng-model="gc.player">
+            <option ng-repeat="friend in gc.friendsList" value="{{friend}}">{{friend.fullName}}</option>
+          </select>
+          <a ng-click="gc.addPlayer(gc.player)">Add Player</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
   <button type="submit">Submit</button>
 </form>

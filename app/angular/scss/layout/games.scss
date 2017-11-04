@@ -1,6 +1,8 @@
 games {
 
   .games-container {
+    display: table;
+    width: 100%;
     padding: 15px;
   }
 
@@ -113,3 +115,13 @@ games {
     } //.primary
   } //.game-box
 } //games
+
+new-game {
+  display: table;
+  width: 100%;
+  padding: 15px;
+
+  .intro-container {
+    margin-bottom: 45px;
+  }
+}
