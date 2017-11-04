@@ -58,6 +58,10 @@ input {
   .players-container {
     margin-top: 30px;
 
+    .add-players-container {
+      margin-top: 30px;
+    }
+
     .player-list {
       padding: 0;
       list-style: none;
@@ -79,6 +83,7 @@ input {
         .title-box,
         .strokes-box,
         .edit-box,
+        .add-box,
         .remove-box {
           display: table-cell;
           padding: 10px 15px;
@@ -124,6 +129,19 @@ input {
             color: #fff;
             text-align: center;
             font-weight: 600;
+          }
+        }
+
+        .add-box {
+          border-top-right-radius: 2px;
+          border-bottom-right-radius: 2px;
+          background: $green-opaque;
+          color: #fff;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background: $green-primary;
+            transition: all 0.2s ease;
           }
         }
 
