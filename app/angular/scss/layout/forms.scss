@@ -58,16 +58,20 @@ input {
   .players-container {
     margin-top: 30px;
 
+    .add-players-container {
+      margin-top: 30px;
+    }
+
     .player-list {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
       padding: 0;
       list-style: none;
 
-      li {
-        display: inline-block;
-      }
-
       .player-box {
         display: table;
+        margin-right: 15px;
         border-radius: 2px;
         background: $bg-dark-opaque;
         color: #fff;
@@ -79,6 +83,7 @@ input {
         .title-box,
         .strokes-box,
         .edit-box,
+        .add-box,
         .remove-box {
           display: table-cell;
           padding: 10px 15px;
@@ -127,15 +132,28 @@ input {
           }
         }
 
-        .remove-box {
+        .add-box {
           border-top-right-radius: 2px;
           border-bottom-right-radius: 2px;
-          color: #dc1616;
+          background: $green-opaque;
+          color: #fff;
           transition: all 0.2s ease;
 
           &:hover {
-            background: #dc1616;
-            color: #fff;
+            background: $green-primary;
+            transition: all 0.2s ease;
+          }
+        }
+
+        .remove-box {
+          border-top-right-radius: 2px;
+          border-bottom-right-radius: 2px;
+          background: $red-opaque;
+          color: #fff;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background: $red-primary;
             transition: all 0.2s ease;
           }
         }
