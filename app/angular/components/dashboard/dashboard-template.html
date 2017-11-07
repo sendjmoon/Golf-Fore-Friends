@@ -20,38 +20,16 @@
         <div class="header">
           <div class="t-block orange"></div><h4>Leaderboard</h4>
         </div>
-        <ul class="lb-list">
-          <li>
+        <ul class="lb-list" ng-init="dc.rankPlayers()">
+          <li ng-repeat="friend in dc.rankArray">
             <div class="pos-box">
-              <span class="color-orange">1st</span>
+              <span class="color-orange">{{$index + 1}}</span>
             </div>
             <div class="name-box">
-              <span class="color-white">Player Name</span>
+              <span class="color-white">{{friend.fullName}}</span>
             </div>
             <div class="handicap-box">
-              <p><span class="color-green">+</span>12</p>
-            </div>
-          </li>
-          <li>
-            <div class="pos-box">
-              <span class="color-orange">2nd</span>
-            </div>
-            <div class="name-box">
-              <span class="color-white">Player Name</span>
-            </div>
-            <div class="handicap-box">
-              <p><span class="color-green">+</span>15</p>
-            </div>
-          </li>
-          <li>
-            <div class="pos-box">
-              <span class="color-orange">3rd</span>
-            </div>
-            <div class="name-box">
-              <span class="color-white">Player Name</span>
-            </div>
-            <div class="handicap-box">
-              <p><span class="color-green">+</span>18</p>
+              <p><span class="color-green">+</span>{{friend.handicap}}</p>
             </div>
           </li>
         </ul>
@@ -80,12 +58,5 @@
       <games-widget></games-widget>
     </div>
   </div>
-
-  <!-- <div class="dashboard-container">
-    <h2>Courses</h2>
-    <div class="dashboard-content">
-      <courses-widget></courses-widget>
-    </div>
-  </div> -->
 
 </div>
