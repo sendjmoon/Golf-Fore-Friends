@@ -4,7 +4,7 @@ testData
 .DS_Store
 .git
 npm-debug.log
-
+todo.md
 bundle.js
 bundle.css
 base.css
