@@ -47,20 +47,39 @@ module.exports = function(app) {
       return new Promise((resolve, reject) => {
         this.getAllFriends()
           .then((allFriends) => {
-            let friendsArray = allFriends;
-            let rankedArray = [];
-            rankedArray.push($rs.user);
-            friendsArray.length < 1 ? resolve(rankedArray) : true;
-            for (let i = 0; i < friendsArray.length; i++) {
-              if (friendsArray[i].handicap < rankedArray[i].handicap) {
-                rankedArray.unshift(friendsArray[i]);
-              } else {
-                rankedArray.push(friendsArray[i]);
-              }
-            }
-            resolve(rankedArray);
+            allFriends.push($rs.user);
+            this.sortByLowest(allFriends)
+              .then((sortedArray) => {
+                resolve(sortedArray);
+              })
+              .catch(reject);
           })
           .catch(reject);
+      });
+    };
+
+    this.sortByLowest = function(array) {
+      return new Promise((resolve, reject) => {
+        let dummyUser = {
+          fullName: 'N/A',
+          handicap: 'N/A',
+        };
+        if (array.length < 3) {
+          if (array.length < 1) reject();
+          let emptyPlaces = 3 - array.length;
+          for (let i = 0; i < emptyPlaces; i++) {
+            array.push(dummyUser);
+          }
+        }
+        for (let i = 1; i < array.length; i++) {
+          if (array[i - 1].handicap > array[i].handicap) {
+            let temp = array[i - 1];
+            array[i - 1] = array[i];
+            array[i] = temp;
+            i--;
+          }
+        }
+        resolve(array);
       });
     };
   }]);
