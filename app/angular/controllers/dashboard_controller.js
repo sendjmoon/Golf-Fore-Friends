@@ -5,23 +5,17 @@ module.exports = function(app) {
 
     AuthService.checkSessionExists();
     this.user = $rs.user;
-    this.rankArray = [];
+    this.leaderboardArray = [];
 
-    this.rankPlayers = function() {
-      GameService.getAllFriends()
-        .then((allFriends) => {
-          GameService.rankPlayers(allFriends)
-            .then((rankData) => {
-              $rs.$apply(() => {
-                this.rankArray = rankData;
-              });
-            })
-            .catch((err) => {
-              console.log('error ranking players');
-            });
+    this.rankFriends = function() {
+      GameService.rankFriends()
+        .then((sortedFriends) => {
+          $rs.$apply(() => {
+            this.leaderboardArray = sortedFriends;
+          });
         })
         .catch((err) => {
-          console.log('error getting all friends');
+          console.log('error ranking players');
         });
     };
   }]);

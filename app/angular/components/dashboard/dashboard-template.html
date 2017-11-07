@@ -20,8 +20,8 @@
         <div class="header">
           <div class="t-block orange"></div><h4>Leaderboard</h4>
         </div>
-        <ul class="lb-list" ng-init="dc.rankPlayers()">
-          <li ng-repeat="friend in dc.rankArray">
+        <ul class="lb-list" ng-init="dc.rankFriends()">
+          <li ng-repeat="friend in dc.leaderboardArray track by $index|limitTo:3">
             <div class="pos-box">
               <span class="color-orange">{{$index + 1}}</span>
             </div>

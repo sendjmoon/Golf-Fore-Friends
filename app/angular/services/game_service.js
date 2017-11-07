@@ -43,18 +43,43 @@ module.exports = function(app) {
       });
     };
 
-    this.rankPlayers = function(playersArray) {
+    this.rankFriends = function() {
       return new Promise((resolve, reject) => {
-        let rankedArray = [];
-        rankedArray.push($rs.user);
-        for (let i = 0; i < playersArray.length; i++) {
-          if (playersArray[i].handicap < rankedArray[i].handicap) {
-            rankedArray.unshift(playersArray[i]);
-          } else {
-            rankedArray.push(playersArray[i]);
+        this.getAllFriends()
+          .then((allFriends) => {
+            allFriends.push($rs.user);
+            this.sortByLowest(allFriends)
+              .then((sortedArray) => {
+                resolve(sortedArray);
+              })
+              .catch(reject);
+          })
+          .catch(reject);
+      });
+    };
+
+    this.sortByLowest = function(array) {
+      return new Promise((resolve, reject) => {
+        let dummyUser = {
+          fullName: 'N/A',
+          handicap: 'N/A',
+        };
+        if (array.length < 3) {
+          if (array.length < 1) reject();
+          let emptyPlaces = 3 - array.length;
+          for (let i = 0; i < emptyPlaces; i++) {
+            array.push(dummyUser);
           }
         }
-        resolve(rankedArray);
+        for (let i = 1; i < array.length; i++) {
+          if (array[i - 1].handicap > array[i].handicap) {
+            let temp = array[i - 1];
+            array[i - 1] = array[i];
+            array[i] = temp;
+            i--;
+          }
+        }
+        resolve(array);
       });
     };
   }]);
