@@ -5,8 +5,6 @@ module.exports = function(app) {
 
     this.usersArray = [];
     this.friendsArray = [];
-    // this.usersMap = new Map();
-    // this.friendsMap = new Map();
 
     AuthService.checkSessionExists();
 
@@ -14,9 +12,6 @@ module.exports = function(app) {
       $http.get($rs.baseUrl + '/users/all')
         .then((allUsers) => {
           this.usersArray = allUsers.data;
-          // this.usersArray.forEach((user) => {
-          //   this.usersMap.set(user.email, user);
-          // });
         })
         .catch((err) => {
           alert('error getting users');
@@ -27,9 +22,6 @@ module.exports = function(app) {
       $http.get($rs.baseUrl + '/friends/list')
         .then((allFriends) => {
           this.friendsArray = allFriends.data;
-          // this.friendsArray.forEach((friend) => {
-          //   this.usersMap.delete(friend.email);
-          // });
           this.friendsArray.forEach((friend) => {
             this.usersArray.splice(this.usersArray.indexOf(friend), 1);
           });
