@@ -12,9 +12,9 @@ module.exports = function(app) {
         .then((allFriends) => {
           GameService.rankPlayers(allFriends)
             .then((rankData) => {
-              console.log('great success');
-              console.log(rankData);
-              this.rankArray = rankData;
+              $rs.$apply(() => {
+                this.rankArray = rankData;
+              });
             })
             .catch((err) => {
               console.log('error ranking players');
@@ -24,8 +24,5 @@ module.exports = function(app) {
           console.log('error getting all friends');
         });
     };
-
-    this.rankPlayers();
-    console.log(this.rankArray);
   }]);
 };
