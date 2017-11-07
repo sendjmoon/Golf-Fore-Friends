@@ -103,10 +103,7 @@ module.exports = function(app) {
         $http.post('/users', playerData)
           .then((user) => {
             UserService.calcHandicap(user.data)
-              .then((handicap) => {
-                let handicapData = {
-                  handicap: handicap,
-                };
+              .then((handicapData) => {
                 UserService.updateUser(playerData, handicapData)
                   .then((user) => {
                     resolve(user);
