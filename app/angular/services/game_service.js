@@ -34,8 +34,7 @@ module.exports = function(app) {
         //TODO: change list to all
         $http.get('/friends/list')
           .then((allFriends) => {
-            this.friendsArray = allFriends.data;
-            resolve(this.friendsArray);
+            resolve(allFriends.data);
           })
           .catch((err) => {
             alert('error getting friends list');
