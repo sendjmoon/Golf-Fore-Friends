@@ -9,9 +9,9 @@ module.exports = function(app) {
 
     this.rankFriends = function() {
       GameService.rankFriends()
-        .then((rankData) => {
+        .then((sortedFriends) => {
           $rs.$apply(() => {
-            this.leaderboardArray = rankData;
+            this.leaderboardArray = sortedFriends;
           });
         })
         .catch((err) => {
