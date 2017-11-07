@@ -43,18 +43,24 @@ module.exports = function(app) {
       });
     };
 
-    this.rankPlayers = function(playersArray) {
+    this.rankFriends = function() {
       return new Promise((resolve, reject) => {
-        let rankedArray = [];
-        rankedArray.push($rs.user);
-        for (let i = 0; i < playersArray.length; i++) {
-          if (playersArray[i].handicap < rankedArray[i].handicap) {
-            rankedArray.unshift(playersArray[i]);
-          } else {
-            rankedArray.push(playersArray[i]);
-          }
-        }
-        resolve(rankedArray);
+        this.getAllFriends()
+          .then((allFriends) => {
+            let friendsArray = allFriends;
+            let rankedArray = [];
+            rankedArray.push($rs.user);
+            friendsArray.length < 1 ? resolve(rankedArray) : true;
+            for (let i = 0; i < friendsArray.length; i++) {
+              if (friendsArray[i].handicap < rankedArray[i].handicap) {
+                rankedArray.unshift(friendsArray[i]);
+              } else {
+                rankedArray.push(friendsArray[i]);
+              }
+            }
+            resolve(rankedArray);
+          })
+          .catch(reject);
       });
     };
   }]);
