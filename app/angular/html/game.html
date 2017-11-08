@@ -1,5 +1,6 @@
 <nav-bar></nav-bar>
-<div class="game-page-container">
+<div class="game-page-container" ng-init="gc.getByPublicId(gc.publicId)">
+  <p>{{gc.gameData}}</p>
   <div class="game-header">
     <div class="bg-overlay"></div>
     <div class="header-content">
