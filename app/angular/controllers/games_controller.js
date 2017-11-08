@@ -1,10 +1,11 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('GamesController', ['$rootScope', '$scope', '$http', '$location', '$route', 'AuthService', 'UserService', 'GameService', function($rs, $scope, $http, $location, $route, AuthService, UserService, GameService) {
+  app.controller('GamesController', ['$rootScope', '$scope', '$http', '$location', '$route', '$routeParams', 'AuthService', 'UserService', 'GameService', function($rs, $scope, $http, $location, $route, $routeParams, AuthService, UserService, GameService) {
 
     AuthService.checkSessionExists();
 
+    this.publicId = $routeParams.publicId;
     this.baseUrl = $rs.baseUrl;
     this.user = $rs.user;
     this.editing = false;
