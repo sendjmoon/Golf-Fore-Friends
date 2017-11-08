@@ -1,6 +1,10 @@
 main {
   display: table;
   z-index: 1;
+  background-image: url('http://localhost:3000/imgs/golf-green-ball-blur.jpg');
+  background-size: cover;
+  background-position: fixed;
+  background-repeat: no-repeat;
 }
 
 html, body, main {
@@ -8,16 +12,8 @@ html, body, main {
   height: 100%;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-  // margin: 0;
-}
-
-h2 {
-  // padding: 0 15px;
-}
-
-h4 {
-  // margin-left: 15px;
+h1, h2 {
+  margin: 0;
 }
 
 a {
