@@ -70,7 +70,17 @@ module.exports = function(app) {
         });
     };
 
-    this.getById = GameService.getById;
+    this.getByPublicId = function(publicId) {
+      GameService.getByPublicId(publicId)
+        .then((gameData) => {
+          $rs.$apply(() => {
+            this.gameData = gameData;
+          });
+        })
+        .catch((err) => {
+          alert('error getting game data');
+        });
+    };
 
     this.getFriendsList = function() {
       $http.get('/friends/list')
