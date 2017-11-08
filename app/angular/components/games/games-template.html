@@ -1,26 +1,30 @@
 <div class="games-container" ng-hide="newGame">
-  <h2>Games</h2>
-  <button class="gff-btn" ng-hide="newGame" ng-click="newGame=true; gc.getFriendsList();">Create Game</button>
+  <div class="page-header col-md-12">
+    <h2>Games</h2>
+    <button class="gff-btn" ng-hide="newGame" ng-click="newGame=true; gc.getFriendsList();">Create Game</button>
+  </div>
 
-  <div class="game-box primary col-md-6" ng-repeat="game in gc.games">
-    <a href="">
-      <div class="game-box-content">
-        <div class="bg-overlay"></div>
-        <div class="info-box">
-          <p><span class="color-green">+</span>{{game.yourStrokes}}</p> <span class="color-orange">|</span> <p>{{game.yourScore}}</p> <span class="color-orange">|</span> <p><i class="fa fa-user"></i>{{game.totalGolfers}}</p>
-        </div>
-        <div class="title-box">
-          <div class="loc-box">
-            <p class="loc">{{game.location}}</p>
+  <div class="game-box-container col-md-6 col-sm-12 col-xs-12" ng-repeat="game in gc.games">
+    <a class="game-box primary" href="{{gc.baseUrl}}/games/{{gc.game.publicId}}">
+      <!-- <div class="game-box primary"> -->
+        <div class="game-box-content">
+          <div class="bg-overlay"></div>
+          <div class="info-box">
+            <p><span class="color-green">+</span>{{game.yourStrokes}}</p> <span class="color-orange">|</span> <p>{{game.yourScore}}</p> <span class="color-orange">|</span> <p><i class="fa fa-user"></i>{{game.totalGolfers}}</p>
           </div>
-          <h3>{{game.name}}</h3>
-          <div class="date-box">
-            <p>{{game.datePlayed}}</p>
+          <div class="title-box">
+            <div class="loc-box">
+              <p class="loc">{{game.location}}</p>
+            </div>
+            <h3>{{game.name}}</h3>
+            <div class="date-box">
+              <p>{{game.datePlayed}}</p>
+            </div>
           </div>
         </div>
-      </div>
     </a>
-  </div><!-- .game-box -->
+  </div><!-- .game-box-container -->
+
 
 </div><!-- .games-container -->
 

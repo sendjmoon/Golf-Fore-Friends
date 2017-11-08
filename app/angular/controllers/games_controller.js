@@ -5,6 +5,7 @@ module.exports = function(app) {
 
     AuthService.checkSessionExists();
 
+    this.baseUrl = $rs.baseUrl;
     this.user = $rs.user;
     this.editing = false;
     this.gameData = $rs.gameData;
@@ -32,7 +33,7 @@ module.exports = function(app) {
             game.totalGolfers = game.players.length;
             game.players.forEach((player) => {
               if ($rs.user.email === player.email) {
-                game.yourStrokes = player.strokes
+                game.yourStrokes = player.strokes;
                 game.yourScore = game.yourStrokes + 72;
               }
             });

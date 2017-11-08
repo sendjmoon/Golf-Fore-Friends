@@ -6,9 +6,13 @@ games {
     padding: 15px;
   }
 
+  .game-box-container {
+    display: table;
+    padding: 15px;
+  }
+
   .game-box {
-    padding: 0 15px;
-    margin: 15px 0;
+    display: table-cell;
     height: 250px;
 
     &.primary {

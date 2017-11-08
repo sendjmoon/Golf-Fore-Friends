@@ -48,3 +48,16 @@ a {
   border-radius: 2px;
   transition: all 0.2s ease;
 }
+
+.page-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  border-bottom: none;
+
+  h2 {
+    padding: 0;
+  }
+}
