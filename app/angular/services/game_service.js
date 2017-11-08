@@ -32,7 +32,9 @@ module.exports = function(app) {
     this.getFromLocalByPublicId = function(publicId) {
       return new Promise((resolve, reject) => {
         let gameData = JSON.parse(window.localStorage.getItem(publicId));
-        if (gameData.publicId !== publicId) reject(console.log('error getting from local storage'));
+        if (!gameData.publicId)
+          reject(console.log('error getting from local storage'));
+
         resolve(gameData);
       });
     };
