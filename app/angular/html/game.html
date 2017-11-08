@@ -1,18 +1,20 @@
 <nav-bar></nav-bar>
-<div class="game-page-container" ng-init="gc.getByPublicId(gc.publicId)">
+<div class="game-page-container" ng-init="gc.getFromLocalByPublicId(gc.publicId)">
   <p>{{gc.gameData}}</p>
   <div class="game-header">
     <div class="bg-overlay"></div>
     <div class="header-content">
       <div class="course-box">
         <div class="loc-box">
-          <h3><i class="fa fa-map-marker"></i> Newcastle, WA</h3>
+          <h3><i class="fa fa-map-marker"></i> {{gc.gameData.location}}</h3>
         </div>
         <div class="title-box">
-          <h2>Newcastle Golf Course - China Creek</h2>
+          <h2>{{gc.gameData.name}}</h2>
         </div>
       </div>
     </div>
+
+    <p>{{gc.game}}</p>
 
   </div>
   <div class="game-content col-md-12">

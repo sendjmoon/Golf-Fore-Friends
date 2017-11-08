@@ -26,6 +26,18 @@ module.exports = function(app) {
       isEditing === true ? this.editing = false : this.editing = true;
     };
 
+    this.getByPublicId = function(publicId) {
+      GameService.getByPublicId(publicId)
+        .then((gameData) => {
+          $rs.$apply(() => {
+            this.gameData = gameData;
+          });
+        })
+        .catch((err) => {
+          alert('error getting game data');
+        });
+    };
+
     this.getAllByPublicId = function(publicIds) {
       GameService.getAllByPublicId(publicIds)
         .then((games) => {
@@ -38,10 +50,23 @@ module.exports = function(app) {
                 game.yourScore = game.yourStrokes + 72;
               }
             });
+            window.localStorage.setItem(game.publicId, JSON.stringify(game));
           });
         })
         .catch(() => {
           alert('error getting games');
+        });
+    };
+
+    this.getFromLocalByPublicId = function(publicId) {
+      GameService.getFromLocalByPublicId(publicId)
+        .then((gameData) => {
+          $rs.$apply(() => {
+            this.gameData = gameData;
+          });
+        })
+        .catch(() => {
+          console.log('error getting from local storage');
         });
     };
 
@@ -67,18 +92,6 @@ module.exports = function(app) {
         })
         .catch((err) => {
           alert('error creating game');
-        });
-    };
-
-    this.getByPublicId = function(publicId) {
-      GameService.getByPublicId(publicId)
-        .then((gameData) => {
-          $rs.$apply(() => {
-            this.gameData = gameData;
-          });
-        })
-        .catch((err) => {
-          alert('error getting game data');
         });
     };
 
