@@ -73,8 +73,9 @@ module.exports = function(app) {
           }
         }
 
-        let done = true;
+        let done = false;
         while(!done) {
+          done = true;
           for (let i = 1; i < array.length; i++) {
             if (array[i - 1].handicap > array[i].handicap) {
               let temp = array[i - 1];
