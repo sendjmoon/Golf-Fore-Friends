@@ -3,14 +3,14 @@
 module.exports = function(app) {
   app.service('GameService', ['$rootScope', '$http', function($rs, $http) {
 
-    this.getById = function(gameId) {
-      $http.get($rs.baseUrl + '/games/' + gameId)
-        .then((game) => {
-          $rs.gameData = game.data;
-        })
-        .catch((err) => {
-          alert('error getting game by id');
-        });
+    this.getByPublicId = function(gameId) {
+      return new Promise((resolve, reject) => {
+        $http.get($rs.baseUrl + '/games/' + gameId)
+          .then((game) => {
+            resolve(game.data);
+          })
+          .catch(reject);
+      });
     };
 
     this.getAllByPublicId = function(publicIdArray) {
