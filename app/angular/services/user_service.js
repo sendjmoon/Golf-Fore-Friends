@@ -25,12 +25,15 @@ module.exports = function(app) {
         if (user.gameIds === undefined) return reject();
         let gameIds = user.gameIds;
         let handicap = 0;
-
         gameIds.forEach((game) => {
           handicap += game.strokes;
         });
         handicap = handicap / gameIds.length;
-        resolve(handicap);
+        let handicapData = {
+          handicapActual: Math.round(handicap * 1000) / 1000,
+          handicap: Math.round(handicap),
+        };
+        resolve(handicapData);
       });
     };
 

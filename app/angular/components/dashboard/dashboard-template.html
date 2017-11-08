@@ -7,7 +7,7 @@
     <div class="handicap-container col-md-2 col-sm-6">
       <div class="handicap-content">
         <div class="header">
-          <div class="t-block orange"></div><h4>Handicap</h4>
+          <div class="t-block green"></div><h4>Handicap</h4>
         </div>
         <div class="score-box">
           <h3><span class="color-green">+</span>{{dc.user.handicap}}</h3>
@@ -18,7 +18,7 @@
     <div class="leaderboard-container col-md-5 col-sm-6">
       <div class="leaderboard-content">
         <div class="header">
-          <div class="t-block orange"></div><h4>Leaderboard</h4>
+          <div class="t-block green"></div><h4>Leaderboard</h4>
         </div>
         <ul class="lb-list" ng-init="dc.rankFriends()">
           <li ng-repeat="friend in dc.leaderboardArray track by $index|limitTo:3">
@@ -39,7 +39,7 @@
     <div class="recent-game-container col-md-5 col-sm-12">
       <div class="recent-game-content">
         <div class="header">
-          <div class="t-block orange"></div><h4>Most Recent Game</h4>
+          <div class="t-block green"></div><h4>Most Recent Game</h4>
         </div>
       </div>
     </div>

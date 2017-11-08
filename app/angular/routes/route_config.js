@@ -9,7 +9,12 @@ module.exports = function($routeProvider, $locationProvider) {
       template: require('../html/friends.html'),
     })
     .when('/games', {
-      template: require('../html/games.html'),
+      template: require('../html/games-list.html'),
+    })
+    .when('/games/public/:publicId', {
+      template: require('../html/game.html'),
+      controller: 'GamesController',
+      controllerAs: 'gc',
     })
     .when('/', {
       template: require('../html/landing.html'),

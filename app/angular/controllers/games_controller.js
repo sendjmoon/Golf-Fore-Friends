@@ -1,10 +1,12 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('GamesController', ['$rootScope', '$scope', '$http', '$location', '$route', 'AuthService', 'UserService', 'GameService', function($rs, $scope, $http, $location, $route, AuthService, UserService, GameService) {
+  app.controller('GamesController', ['$rootScope', '$scope', '$http', '$location', '$route', '$routeParams', 'AuthService', 'UserService', 'GameService', function($rs, $scope, $http, $location, $route, $routeParams, AuthService, UserService, GameService) {
 
     AuthService.checkSessionExists();
 
+    this.publicId = $routeParams.publicId;
+    this.baseUrl = $rs.baseUrl;
     this.user = $rs.user;
     this.editing = false;
     this.gameData = $rs.gameData;
@@ -32,7 +34,7 @@ module.exports = function(app) {
             game.totalGolfers = game.players.length;
             game.players.forEach((player) => {
               if ($rs.user.email === player.email) {
-                game.yourStrokes = player.strokes
+                game.yourStrokes = player.strokes;
                 game.yourScore = game.yourStrokes + 72;
               }
             });
@@ -103,10 +105,7 @@ module.exports = function(app) {
         $http.post('/users', playerData)
           .then((user) => {
             UserService.calcHandicap(user.data)
-              .then((handicap) => {
-                let handicapData = {
-                  handicap: handicap,
-                };
+              .then((handicapData) => {
                 UserService.updateUser(playerData, handicapData)
                   .then((user) => {
                     resolve(user);

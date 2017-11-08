@@ -64,6 +64,7 @@ module.exports = function(app) {
           fullName: 'N/A',
           handicap: 'N/A',
         };
+
         if (array.length < 3) {
           if (array.length < 1) reject();
           let emptyPlaces = 3 - array.length;
@@ -71,14 +72,20 @@ module.exports = function(app) {
             array.push(dummyUser);
           }
         }
-        for (let i = 1; i < array.length; i++) {
-          if (array[i - 1].handicap > array[i].handicap) {
-            let temp = array[i - 1];
-            array[i - 1] = array[i];
-            array[i] = temp;
-            i--;
+
+        let done = false;
+        while(!done) {
+          done = true;
+          for (let i = 1; i < array.length; i++) {
+            if (array[i - 1].handicap > array[i].handicap) {
+              let temp = array[i - 1];
+              array[i - 1] = array[i];
+              array[i] = temp;
+              done = false;
+            }
           }
         }
+
         resolve(array);
       });
     };

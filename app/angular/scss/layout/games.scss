@@ -6,9 +6,13 @@ games {
     padding: 15px;
   }
 
+  .game-box-container {
+    display: table;
+    padding: 15px;
+  }
+
   .game-box {
-    padding: 0 15px;
-    margin: 15px 0;
+    display: table-cell;
     height: 250px;
 
     &.primary {
@@ -25,18 +29,19 @@ games {
         color: #fff;
 
         p {
+          margin-bottom: 0;
           font-weight: 500;
           text-align: center;
         }
 
-        .bg-overlay {
-          width: 100%;
-          height: 100%;
-          border-radius: 2px;
-          position: absolute;
-          background: rgba(0, 0, 0, 0.5);
-          transition: all 0.2s ease;
-        }
+        // .bg-overlay {
+        //   width: 100%;
+        //   height: 100%;
+        //   border-radius: 2px;
+        //   position: absolute;
+        //   background: rgba(0, 0, 0, 0.5);
+        //   transition: all 0.2s ease;
+        // }
 
         .info-box {
           margin-bottom: 2px;
@@ -125,3 +130,51 @@ new-game {
     margin-bottom: 45px;
   }
 }
+
+.game-page-container {
+  display: table;
+  width: 100%;
+
+  .game-header {
+    height: 100vh;
+    max-height: 300px;
+    margin-bottom: 30px;
+    position: relative;
+    background-image: url('http://localhost:3000/imgs/golf-green-edge-ball.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+
+    .bg-overlay {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .header-content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      h2, h3 {
+        margin: 0;
+      }
+
+      .course-box {
+        position: absolute;
+        bottom: 0;
+
+        .loc-box {
+          display: inline-block;
+          padding: 15px 30px;
+          background: $green-opaque;
+        }
+
+        .title-box {
+          display: block;
+          padding: 15px 30px;
+          background: rgba(0, 0, 0, 0.7);
+        }
+      }
+    }
+  }
+};
