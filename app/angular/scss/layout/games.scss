@@ -25,6 +25,14 @@ games {
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+
+      .page-title {
+        position: absolute;
+        top: 0;
+        left: 30px;
+        padding: 5px;
+        background: #1f1f1f;
+      }
     }
 
     &.main {
@@ -37,19 +45,17 @@ games {
         width: 100%;
         min-height: 150px;
         color: $font-color-dark;
-        // background: rgba(255, 255, 255, 0.5);
         transition: all 0.5s ease;
+
+        p {
+          margin: 0;
+        }
 
         &:hover {
 
           .info-box {
             border-color: #3d3d3d;
             transition: all 0.5s ease;
-
-            .golfers, .total, .overall {
-              // border-color: #3d3d3d;
-              // transition: all 0.5s ease;
-            }
           }
         }
 
@@ -60,7 +66,14 @@ games {
           color: #fff;
 
           .course-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             padding: 15px 30px;
+
+            h3 {
+              margin-bottom: 3px;
+            }
           }
 
           .date-box {
@@ -87,13 +100,7 @@ games {
             text-align: center;
             background: #1f1f1f;
             color: #fff;
-            // border-top: 1px solid #3d3d3d;
             transition: all 0.1s ease;
-
-            &:hover {
-              // background: #fff;
-              // color: #1f1f1f;
-            }
           }
 
           .total {
@@ -167,11 +174,7 @@ games {
 
       .title-box {
         width: 100%;
-        // margin: auto;
-        // height: auto;
         position: relative;
-        // position: absolute;
-        // top: 80px;
         color: #fff;
 
         .loc-box {
