@@ -1,13 +1,54 @@
-<div class="games-container" ng-hide="newGame">
-  <div class="page-header col-md-12">
-    <h2>Games</h2>
-    <button class="gff-btn" ng-hide="newGame" ng-click="newGame=true; gc.getFriendsList();">Create Game</button>
+<nav-bar></nav-bar>
+<div class="games-content" ng-hide="newGame">
+
+  <div class="game-box main col-md-8 col-xs-12">
+    <div class="box-content">
+      <h1>GAMES</h1>
+      <div class="content-bottom">
+        <div class="title-box">
+          <div class="course-box">
+            <h2>Newcastle - China Creek</h2>
+            <h4><i class="fa fa-map-marker"></i> Newcastle, WA</h4>
+          </div>
+          <div class="date-box">
+            <h3>OCT</h3>
+            <h2>17</h2>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <div class="golfers col-xs-4">
+            <h3>Golfers</h3>
+            <h1><i class="fa fa-user"></i> 3</h1>
+          </div>
+          <div class="total col-xs-4">
+            <h3>Total</h3>
+            <h1><span class="color-green">+</span>22</h1>
+          </div>
+          <div class="overall col-xs-4">
+            <h3>Overall</h3>
+            <h1>94</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- .game-box main-->
+
+  <div class="game-stats-box col-md-4">
+    <h3>Best Game</h3>
   </div>
 
-  <div class="game-box-container col-md-4 col-sm-12 col-xs-12" ng-repeat="game in gc.games">
-    <a class="game-box primary" href="{{gc.baseUrl}}/#!/games/public/{{game.publicId}}">
-      <div class="game-box-content">
-        <div class="bg-overlay"></div>
+  <!-- <div class="page-header col-md-12">
+    <button class="gff-btn" ng-hide="newGame" ng-click="newGame=true; gc.getFriendsList();">Create Game</button>
+  </div> -->
+
+  <div class="game-list col-md-8 col-xs-12">
+    <div class="game-box alt list-item col-md-4 col-xs-6">
+      <h3>MORE GAMES ></h3>
+    </div>
+
+    <a class="game-box list-item col-md-4 col-xs-6" href="{{gc.baseUrl}}/#!/games/public/{{game.publicId}}" ng-repeat="game in gc.games">
+        <div ng-class-odd="'bg-overlay odd'" ng-class-even="'bg-overlay even'"></div>
         <div class="info-box">
           <p><span class="color-green">+</span>{{game.yourStrokes}}</p> <span class="color-orange">|</span> <p>{{game.yourScore}}</p> <span class="color-orange">|</span> <p><i class="fa fa-user"></i>{{game.totalGolfers}}</p>
         </div>
@@ -20,11 +61,8 @@
             <p>{{game.datePlayed}}</p>
           </div>
         </div>
-      </div>
-    </a>
-  </div><!-- .game-box-container -->
-
-
-</div><!-- .games-container -->
+      </a>
+    </div><!-- .game-list -->
+</div><!-- .games-content -->
 
 <new-game data-friends-list="gc.friendsList" ng-show="newGame"></new-game>
