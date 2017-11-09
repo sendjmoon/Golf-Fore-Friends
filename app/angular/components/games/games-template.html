@@ -37,9 +37,10 @@
       </div>
     </div>
   </div><!-- .game-box main-->
+
   <!-- <div class="page-header col-md-12">
-  <button class="gff-btn" ng-hide="newGame" ng-click="newGame=true; gc.getFriendsList();">Create Game</button>
-</div> -->
+    <button class="gff-btn" ng-hide="newGame" ng-click="newGame=true; gc.getFriendsList();">Create Game</button>
+  </div> -->
 
   <div class="game-list">
     <div class="game-box list-item col-md-4 col-sm-6 col-xs-6">
@@ -48,26 +49,22 @@
       </a>
     </div>
 
-    <div class="game-box list-item col-md-4 col-sm-6 col-xs-6" ng-repeat="game in gc.games">
-      <a class="game-link" href="{{gc.baseUrl}}/#!/games/public/{{game.publicId}}">
-        <div class="game-box-content">
-          <div class="bg-overlay"></div>
-          <div class="info-box">
-            <p><span class="color-green">+</span>{{game.yourStrokes}}</p> <span class="color-orange">|</span> <p>{{game.yourScore}}</p> <span class="color-orange">|</span> <p><i class="fa fa-user"></i>{{game.totalGolfers}}</p>
+    <a class="game-box list-item col-md-4 col-sm-6 col-xs-6" href="{{gc.baseUrl}}/#!/games/public/{{game.publicId}}" ng-repeat="game in gc.games">
+        <div ng-class-odd="'bg-overlay odd'" ng-class-even="'bg-overlay even'"></div>
+        <div class="info-box">
+          <p><span class="color-green">+</span>{{game.yourStrokes}}</p> <span class="color-orange">|</span> <p>{{game.yourScore}}</p> <span class="color-orange">|</span> <p><i class="fa fa-user"></i>{{game.totalGolfers}}</p>
+        </div>
+        <div class="title-box">
+          <div class="loc-box">
+            <p class="loc">{{game.location}}</p>
           </div>
-          <div class="title-box">
-            <div class="loc-box">
-              <p class="loc">{{game.location}}</p>
-            </div>
-            <h3>{{game.name}}</h3>
-            <div class="date-box">
-              <p>{{game.datePlayed}}</p>
-            </div>
+          <h3>{{game.name}}</h3>
+          <div class="date-box">
+            <p>{{game.datePlayed}}</p>
           </div>
         </div>
       </a>
-    </div>
-  </div>
-</div><!-- .games-container -->
+    </div><!-- .game-list -->
+</div><!-- .games-content -->
 
 <new-game data-friends-list="gc.friendsList" ng-show="newGame"></new-game>

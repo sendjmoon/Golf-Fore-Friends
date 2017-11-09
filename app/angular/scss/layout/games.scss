@@ -7,9 +7,15 @@ games {
     width: 100%;
   }
 
-  .game-box-container {
+  // .game-box-container {
+  //   display: table;
+  //   padding: 15px;
+  // }
+
+  .game-list {
     display: table;
-    padding: 15px;
+    width: 100%;
+    background: #1f1f1f;
   }
 
   .game-box {
@@ -105,6 +111,7 @@ games {
     } //.main
 
     &.list-item {
+      display: table-cell;
       padding: 0;
       color: #fff;
       background-image: url('http://localhost:3000/imgs/golf-green-edge-ball.jpg');
@@ -112,93 +119,99 @@ games {
       background-position: bottom;
       background-repeat: no-repeat;
 
-      .game-box-content {
-        height: 100%;
-        border-radius: 2px;
-        position: relative;
-        color: #fff;
 
-        p {
-          margin-bottom: 0;
-          font-weight: 500;
-          text-align: center;
+      p {
+        margin-bottom: 0;
+        font-weight: 500;
+        text-align: center;
+      }
+
+      .bg-overlay {
+        border-radius: 0;
+
+        &.odd {
+          background: #000;
         }
 
-        .info-box {
-          margin-bottom: 2px;
+        &.even {
+          background: #1f1f1f;
+        }
+      }
+
+      .info-box {
+        margin-bottom: 2px;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        line-height: 14px;
+
+        span {
+
+          &.color-orange {
+            margin: 0 8px;
+            font-size: 8px;
+            font-weight: 700;
+          }
+        }
+
+        i {
+          margin-right: 3px;
+          font-size: 16px;
+          line-height: 12px;
+        }
+      } //info-box
+
+      .title-box {
+        width: 100%;
+        margin: auto;
+        height: auto;
+        position: absolute;
+        top: 80px;
+        color: #fff;
+
+        .loc-box {
           display: flex;
           justify-content: center;
-          position: absolute;
-          top: 10px;
-          left: 10px;
-          line-height: 14px;
 
-          span {
-
-            &.color-orange {
-              margin: 0 8px;
-              font-size: 8px;
-              font-weight: 700;
-            }
+          p {
+            border-top: 2px solid rgba(0, 0, 0, 0);
+            border-bottom: 2px solid $orange-primary;
+            transition: all 0.3s ease;
           }
+        }
 
-          i {
-            margin-right: 3px;
-            font-size: 16px;
-            line-height: 12px;
-          }
-        } //info-box
+        h3 {
+          margin-top: 5px;
+          margin-bottom: 5px;
+          padding: 5px;
+          background: rgba(0, 0, 0, 0.5);
+          text-align: center;
+          transition: all 0.3s ease;
+        }
+
+        .date-box {
+          position: relative;
+        } //.date-box
+      } //.title-box
+
+      &:hover {
+
+        .bg-overlay {
+          background: rgba(0, 0, 0, 0.3);
+          transition: all 0.3s ease;
+        }
 
         .title-box {
-          width: 100%;
-          margin: auto;
-          height: auto;
-          position: absolute;
-          top: 80px;
-          color: #fff;
-
-          .loc-box {
-            display: flex;
-            justify-content: center;
-
-            p {
-              border-top: 2px solid rgba(0, 0, 0, 0);
-              border-bottom: 2px solid $orange-primary;
-              transition: all 0.3s ease;
-            }
-          }
 
           h3 {
-            margin-top: 5px;
-            margin-bottom: 5px;
-            padding: 5px;
-            background: rgba(0, 0, 0, 0.5);
-            text-align: center;
+            background: $orange-opaque;
             transition: all 0.3s ease;
           }
-
-          .date-box {
-            position: relative;
-          } //.date-box
-        } //.title-box
-
-        &:hover {
-
-          .bg-overlay {
-            background: rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-          }
-
-          .title-box {
-
-            h3 {
-              background: $orange-opaque;
-              transition: all 0.3s ease;
-            }
-          }
-        } // :hover
-      } //.game-box-content
-    } //.primary
+        }
+      } // :hover
+    } // .list-item
   } //.game-box
 } // games
 
@@ -226,10 +239,6 @@ new-game {
     background-position: center;
     background-repeat: no-repeat;
     color: #fff;
-
-    .bg-overlay {
-      background: rgba(0, 0, 0, 0.2);
-    }
 
     .header-content {
       position: relative;
