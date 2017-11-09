@@ -42,36 +42,27 @@ a {
 
 hr {
 
-  &.full {
-    margin: 0;
-    border-top: 5px solid #fff;
-    transition: all 0.3s ease;
+  &.default-bar {
+    width: 100px;
+    border-top: 2px solid #fff;
+    margin: 0 auto;
+  }
 
-    &.top {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-    }
-
-    &.green {
-      border-color: $green-primary;
-    }
+  &.landing-bar {
+    width: 100px;
+    border-top: 2px solid $orange-primary;
   }
 
   &.fill {
+    position: absolute;
     width: 0;
     margin: 0;
-    transition: all 0.5s ease;
+    border-top: 5px solid $green-primary;
+    transition: all 0.4s ease;
 
-    &.top {
-      position: absolute;
+    &.middle-top {
       top: 0;
       left: 50%;
-    }
-
-    &.green {
-      border-top: 5px solid $green-primary;
     }
   }
 }

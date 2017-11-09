@@ -34,29 +34,71 @@ games {
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-
-        .date-box {
-
-          h1, h2 {
-            display: block;
-            text-align: center;
-          }
-        }
       }
 
       .content-bottom {
         position: relative;
         min-height: 250px;
-        padding: 30px;
         color: $font-color-light;
         background: $bg-dark-primary;
         transition: all 0.5s ease;
 
         &:hover {
 
-          hr {
-            width: 100%;
-            left: 0;
+          .info-box {
+            border-color: #3d3d3d;
+            transition: all 0.5s ease;
+
+            .golfers, .total, .overall {
+              border-color: #3d3d3d;
+              transition: all 0.5s ease;
+            }
+          }
+        }
+
+        .title-box {
+          display: flex;
+          justify-content: space-between;
+
+          .course-box {
+            padding: 30px;
+          }
+
+          .date-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: $green-primary;
+            text-align: center;
+            padding: 15px;
+          }
+        }
+
+        .info-box {
+          display: table;
+          width: 100%;
+          transition: all 0.1s ease;
+
+          .golfers, .total, .overall {
+            display: table-cell;
+            height: 100%;
+            padding: 30px;
+            text-align: center;
+            background: #1f1f1f;
+            color: #fff;
+            border-top: 1px solid #3d3d3d;
+            transition: all 0.1s ease;
+
+            &:hover {
+              background: #fff;
+              color: #1f1f1f;
+            }
+          }
+
+          .total {
+            border-right: 1px solid #3d3d3d;
+            border-left: 1px solid #3d3d3d;
           }
         }
       }
