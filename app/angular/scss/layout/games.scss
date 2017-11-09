@@ -5,48 +5,39 @@ games {
   .games-content {
     display: table;
     width: 100%;
+    background: #1f1f1f;
   }
 
-  // .game-box-container {
-  //   display: table;
-  //   padding: 15px;
-  // }
-
   .game-list {
-    display: table;
-    width: 100%;
+    padding: 0;
     background: #1f1f1f;
   }
 
   .game-box {
-    display: table;
-    height: 100%;
     min-height: 250px;
     color: #fff;
 
+    .box-content {
+      position: relative;
+      min-height: 500px;
+      padding: 30px;
+      background-image: url('http://localhost:3000/imgs/golf-green-edge-ball.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
     &.main {
-      display: table;
-      width: 100%;
       padding: 0;
 
-      .content-top {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        height: 100%;
-        min-height: 250px;
-        padding: 30px;
-        background-image: url('http://localhost:3000/imgs/golf-green-edge-ball.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-
       .content-bottom {
-        position: relative;
-        min-height: 250px;
-        color: $font-color-light;
-        background: $bg-dark-primary;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        min-height: 150px;
+        color: $font-color-dark;
+        // background: rgba(255, 255, 255, 0.5);
         transition: all 0.5s ease;
 
         &:hover {
@@ -56,8 +47,8 @@ games {
             transition: all 0.5s ease;
 
             .golfers, .total, .overall {
-              border-color: #3d3d3d;
-              transition: all 0.5s ease;
+              // border-color: #3d3d3d;
+              // transition: all 0.5s ease;
             }
           }
         }
@@ -65,9 +56,11 @@ games {
         .title-box {
           display: flex;
           justify-content: space-between;
+          background: rgba(0, 0, 0, 0.7);
+          color: #fff;
 
           .course-box {
-            padding: 30px;
+            padding: 15px 30px;
           }
 
           .date-box {
@@ -75,7 +68,8 @@ games {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: $green-primary;
+            background: $green-opaque;
+            color: #fff;
             text-align: center;
             padding: 15px;
           }
@@ -89,16 +83,16 @@ games {
           .golfers, .total, .overall {
             display: table-cell;
             height: 100%;
-            padding: 30px;
+            padding: 15px 30px;
             text-align: center;
             background: #1f1f1f;
             color: #fff;
-            border-top: 1px solid #3d3d3d;
+            // border-top: 1px solid #3d3d3d;
             transition: all 0.1s ease;
 
             &:hover {
-              background: #fff;
-              color: #1f1f1f;
+              // background: #fff;
+              // color: #1f1f1f;
             }
           }
 
@@ -111,13 +105,21 @@ games {
     } //.main
 
     &.list-item {
-      display: table-cell;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 0;
       color: #fff;
       background-image: url('http://localhost:3000/imgs/golf-green-edge-ball.jpg');
       background-size: cover;
       background-position: bottom;
       background-repeat: no-repeat;
+
+      &.alt {
+        display: flex;
+        align-items: center;
+        background: #343434;
+      }
 
 
       p {
@@ -130,11 +132,11 @@ games {
         border-radius: 0;
 
         &.odd {
-          background: #000;
+          background: rgba(0, 0, 0, 0.7);
         }
 
         &.even {
-          background: #1f1f1f;
+          background: rgba(0, 0, 0, 0.7);
         }
       }
 
@@ -165,10 +167,11 @@ games {
 
       .title-box {
         width: 100%;
-        margin: auto;
-        height: auto;
-        position: absolute;
-        top: 80px;
+        // margin: auto;
+        // height: auto;
+        position: relative;
+        // position: absolute;
+        // top: 80px;
         color: #fff;
 
         .loc-box {
@@ -197,6 +200,7 @@ games {
       } //.title-box
 
       &:hover {
+        text-decoration: none;
 
         .bg-overlay {
           background: rgba(0, 0, 0, 0.3);
