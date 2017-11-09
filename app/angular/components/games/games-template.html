@@ -1,10 +1,24 @@
-<div class="games-container" ng-hide="newGame">
-  <div class="page-header col-md-12">
-    <h2>Games</h2>
-    <button class="gff-btn" ng-hide="newGame" ng-click="newGame=true; gc.getFriendsList();">Create Game</button>
-  </div>
+<nav-bar></nav-bar>
+<div class="games-content" ng-hide="newGame">
 
-  <div class="game-box-container col-md-4 col-sm-12 col-xs-12" ng-repeat="game in gc.games">
+  <div class="game-box main col-md-12">
+    <div class="box-content">
+      <div class="content-top">
+        <h1>GAMES</h1>
+      </div>
+      <div class="content-bottom">
+        <hr class="fill top green">
+        <h2>Newcastle Golf Course</h2>
+        <h4><i class="fa fa-map-marker"></i> Newcastle, WA</h4>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="page-header col-md-12">
+  <h2>Games</h2>
+  <button class="gff-btn" ng-hide="newGame" ng-click="newGame=true; gc.getFriendsList();">Create Game</button>
+</div> -->
+
+  <div class="game-box list-item col-md-4 col-sm-12 col-xs-12" ng-repeat="game in gc.games">
     <a class="game-box primary" href="{{gc.baseUrl}}/#!/games/public/{{game.publicId}}">
       <div class="game-box-content">
         <div class="bg-overlay"></div>

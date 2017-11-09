@@ -6,13 +6,9 @@ html, body, main {
 main {
   display: table;
   z-index: 1;
-  background-image: url('http://localhost:3000/imgs/golf-green-ball-blur.jpg');
-  background-size: cover;
-  background-position: fixed;
-  background-repeat: no-repeat;
 }
 
-h1, h2 {
+h1, h2, h3 {
   margin: 0;
 }
 
@@ -41,6 +37,42 @@ a {
   p {
     padding: 0 15px;
     font-size: 18px;
+  }
+}
+
+hr {
+
+  &.full {
+    margin: 0;
+    border-top: 5px solid #fff;
+    transition: all 0.3s ease;
+
+    &.top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    &.green {
+      border-color: $green-primary;
+    }
+  }
+
+  &.fill {
+    width: 0;
+    margin: 0;
+    transition: all 0.5s ease;
+
+    &.top {
+      position: absolute;
+      top: 0;
+      left: 50%;
+    }
+
+    &.green {
+      border-top: 5px solid $green-primary;
+    }
   }
 }
 

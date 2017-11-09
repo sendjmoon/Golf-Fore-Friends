@@ -1,13 +1,10 @@
 games {
   display: table;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
 
-  .games-container {
+  .games-content {
     display: table;
     width: 100%;
-    padding: 15px;
   }
 
   .game-box-container {
@@ -16,8 +13,54 @@ games {
   }
 
   .game-box {
-    display: table-cell;
-    height: 250px;
+    display: table;
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+    color: #fff;
+
+    &.main {
+      display: table;
+      padding: 0;
+
+      .content-top {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100%;
+        min-height: 250px;
+        padding: 30px;
+        background-image: url('http://localhost:3000/imgs/golf-green-edge-ball.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        .date-box {
+
+          h1, h2 {
+            display: block;
+            text-align: center;
+          }
+        }
+      }
+
+      .content-bottom {
+        position: relative;
+        min-height: 250px;
+        padding: 30px;
+        color: $font-color-light;
+        background: $bg-dark-primary;
+        transition: all 0.5s ease;
+
+        &:hover {
+
+          hr {
+            width: 100%;
+            left: 0;
+          }
+        }
+      }
+    } //.main
 
     &.primary {
       color: #fff;
@@ -37,15 +80,6 @@ games {
           font-weight: 500;
           text-align: center;
         }
-
-        // .bg-overlay {
-        //   width: 100%;
-        //   height: 100%;
-        //   border-radius: 2px;
-        //   position: absolute;
-        //   background: rgba(0, 0, 0, 0.5);
-        //   transition: all 0.2s ease;
-        // }
 
         .info-box {
           margin-bottom: 2px;
@@ -102,8 +136,8 @@ games {
 
           .date-box {
             position: relative;
-          } //date-box
-        } //title-box
+          } //.date-box
+        } //.title-box
 
         &:hover {
 
@@ -119,11 +153,11 @@ games {
               transition: all 0.3s ease;
             }
           }
-        } //:hover
+        } // :hover
       } //.game-box-content
     } //.primary
   } //.game-box
-} //games
+} // games
 
 new-game {
   display: table;
