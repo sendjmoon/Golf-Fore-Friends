@@ -5,4 +5,17 @@
   border: 2px solid;
   font-size: 22px;
   font-weight: 600;
+
+  &.search {
+    margin: 0;
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $orange-primary;
+      transition: all 0.2s ease;
+    }
+  }
 }

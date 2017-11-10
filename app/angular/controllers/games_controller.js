@@ -101,6 +101,18 @@ module.exports = function(app) {
       });
     };
 
+    this.searchClickHandler = function() {
+      let $searchBtn = $('#search-btn');
+      $searchBtn.on('click', () => {
+        $searchBtn.parent('.search-container').toggleClass('open');
+        $searchBtn.find('.fa').toggleClass('fa fa-search, fa fa-ban');
+        $('#game-name-input').val('');
+        $rs.$apply(() => {
+          this.searchResults = [];
+        });
+      });
+    };
+
     this.createGame = function(gameData) {
       $http.post('/games/create', gameData)
         .then((game) => {
