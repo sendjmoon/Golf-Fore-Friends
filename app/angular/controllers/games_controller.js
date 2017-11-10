@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('GamesController', ['$rootScope', '$scope', '$http', '$location', '$route', '$routeParams', 'AuthService', 'UserService', 'GameService', function($rs, $scope, $http, $location, $route, $routeParams, AuthService, UserService, GameService) {
+  app.controller('GamesController', ['$rootScope', '$scope', '$http', '$location', '$route', '$routeParams', 'AuthService', 'UserService', 'GameService', 'SearchService', function($rs, $scope, $http, $location, $route, $routeParams, AuthService, UserService, GameService, SearchService) {
 
     AuthService.checkSessionExists();
 
@@ -17,6 +17,7 @@ module.exports = function(app) {
     this.games = [];
     this.publicIds = [];
     this.friendsList = [];
+    this.searchResults = [];
 
     $rs.user.gameIds.forEach((game) => {
       this.publicIds.push(game.publicId);
@@ -41,16 +42,19 @@ module.exports = function(app) {
     this.getAllByPublicId = function(publicIds) {
       GameService.getAllByPublicId(publicIds)
         .then((games) => {
-          this.games = games;
-          this.games.forEach((game) => {
-            game.totalGolfers = game.players.length;
-            game.players.forEach((player) => {
-              if ($rs.user.email === player.email) {
-                game.yourStrokes = player.strokes;
-                game.yourScore = game.yourStrokes + 72;
-              }
+          $rs.$apply(() => {
+            this.games = games;
+            // this.searchListener('game-search', this.games);
+            this.games.forEach((game) => {
+              game.totalGolfers = game.players.length;
+              game.players.forEach((player) => {
+                if ($rs.user.email === player.email) {
+                  game.yourStrokes = player.strokes;
+                  game.yourScore = game.yourStrokes + 72;
+                }
+              });
+              window.localStorage.setItem('games', JSON.stringify(this.games));
             });
-            window.localStorage.setItem(game.publicId, JSON.stringify(game));
           });
         })
         .catch(() => {
@@ -71,6 +75,36 @@ module.exports = function(app) {
     };
 
     this.getAllByPublicId(this.publicIds);
+
+    this.searchListener = function(inputId) {
+      let array = JSON.parse(window.localStorage.getItem('games'));
+      let searchBox = document.getElementById(inputId);
+      searchBox.addEventListener('keyup', () => {
+        let input = searchBox.value;
+        console.log(input);
+        let results = array.filter((game) => {
+          if (input.length < 1) {
+            $rs.$apply(() => {
+              this.searchResults = [];
+            });
+          }
+          if (game.name.indexOf(input) > - 1) {
+            $rs.$apply(() => {
+              if (this.searchResults.indexOf(game) > -1) return;
+              else this.searchResults.push(game);
+            });
+            return game;
+          }
+          if (game.name.indexOf(input) < 0) {
+            $rs.$apply(() => {
+              this.searchResults.splice(this.searchResults.indexOf(game), 1);
+            });
+            return game;
+          }
+        });
+
+      });
+    };
 
     this.createGame = function(gameData) {
       $http.post('/games/create', gameData)
