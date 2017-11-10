@@ -107,6 +107,7 @@ games {
 
           input {
             width: 0;
+            padding: 0;
             background: none;
             border: none;
             transition: all 0.4s ease;
@@ -131,6 +132,7 @@ games {
 
             input {
               width: 250px;
+              padding: 5px 10px;
               margin-bottom: 1px;
               border-top-left-radius: 0;
               border-bottom-left-radius: 0;

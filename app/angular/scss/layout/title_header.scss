@@ -5,6 +5,8 @@ title-header {
 .gff-logo-container {
   display: flex;
   align-items: center;
+  width: 285px;
+  height: 40px;
   margin: 0;
   padding: 0 30px 0 15px;
   border-right: 1px solid #c5c5c5;
@@ -15,7 +17,7 @@ title-header {
     display: table-cell;
     vertical-align: middle;
     margin: 0;
-    padding-left: 8px;
+    padding-left: 15px;
   }
 
   .gff-logo-full {
