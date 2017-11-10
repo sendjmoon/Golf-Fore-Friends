@@ -81,14 +81,14 @@ module.exports = function(app) {
       let searchBox = document.getElementById(inputId);
       searchBox.addEventListener('keyup', () => {
         let input = searchBox.value;
-        console.log(input);
         let results = array.filter((game) => {
           if (input.length < 1) {
             $rs.$apply(() => {
               this.searchResults = [];
             });
+            return game;
           }
-          if (game.name.indexOf(input) > - 1) {
+          if (game.name.indexOf(input) > -1) {
             $rs.$apply(() => {
               if (this.searchResults.indexOf(game) > -1) return;
               else this.searchResults.push(game);
@@ -97,7 +97,8 @@ module.exports = function(app) {
           }
           if (game.name.indexOf(input) < 0) {
             $rs.$apply(() => {
-              this.searchResults.splice(this.searchResults.indexOf(game), 1);
+              if (this.searchResults.indexOf(game) > -1)
+                this.searchResults.splice(this.searchResults.indexOf(game), 1);
             });
             return game;
           }

@@ -42,8 +42,9 @@
     <button class="gff-btn" ng-click="gc.searchListener('game-search'); searching=true" ng-hide="searching">Search</button>
     <div class="search-container" ng-show="searching">
       <input type="text" name="game-search" id="game-search" placeholder="search games"></input>
+
       <ul>
-        <li ng-repeat="game in gc.searchResults track by $index">{{game.name}}</li>
+        <li ng-repeat="game in gc.searchResults">{{game.name}}</li>
       </ul>
     </div>
   </div>
