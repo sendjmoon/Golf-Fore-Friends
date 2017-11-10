@@ -8,4 +8,5 @@ module.exports = function(app) {
   });
 
   require('./new-game')(app);
+  require('./game-chart')(app);
 };
