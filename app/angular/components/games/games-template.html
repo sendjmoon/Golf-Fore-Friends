@@ -3,7 +3,34 @@
 
   <div class="game-box main col-md-8 col-xs-12">
     <div class="box-content col-md-12">
-      <h3 class="page-title">GAMES</h3>
+      <!-- <h3 class="page-title">GAMES</h3> -->
+
+      <div class="info-box">
+        <div class="golfers">
+          <p class="box-header">Golfers</p>
+          <h3><i class="fa fa-user"></i> 3</h3>
+        </div>
+        <div class="total">
+          <p class="box-header">Total</p>
+          <h3>+22</h3>
+        </div>
+        <div class="overall">
+          <p class="box-header">Overall</p>
+          <h3>94</h3>
+        </div>
+      </div>
+
+      <div class="title-box">
+        <div class="course-box">
+          <h3>Newcastle - China Creek</h3>
+          <p><i class="fa fa-map-marker"></i> Newcastle, WA</p>
+        </div>
+        <div class="date-box">
+          <p class="month">OCT</hp>
+          <h2 class="date">17</h2>
+          <p class="year">2017</p>
+        </div>
+      </div>
 
       <div class="search-container" ng-init="gc.searchClickHandler(); gc.searchListener('game-name-input');">
         <button class="gff-btn search" id="search-btn"><i class="fa fa-search"></i></button>
@@ -12,35 +39,6 @@
           <ul>
             <li ng-repeat="game in gc.searchResults">{{game.name}}</li>
           </ul>
-        </div>
-      </div>
-
-      <div class="content-bottom">
-        <div class="title-box">
-          <div class="course-box">
-            <h3>Newcastle - China Creek</h3>
-            <p><i class="fa fa-map-marker"></i> Newcastle, WA</p>
-          </div>
-          <div class="date-box">
-            <h3>OCT</h3>
-            <h3>17</h3>
-            <p>2017</p>
-          </div>
-        </div>
-
-        <div class="info-box">
-          <div class="golfers col-xs-4">
-            <h3 class="box-header">Golfers</h3>
-            <h3><i class="fa fa-user"></i> 3</h3>
-          </div>
-          <div class="total col-xs-4">
-            <h3 class="box-header">Total</h3>
-            <h3><span class="color-green">+</span>22</h3>
-          </div>
-          <div class="overall col-xs-4">
-            <h3 class="box-header">Overall</h3>
-            <h3>94</h3>
-          </div>
         </div>
       </div>
     </div>
@@ -53,7 +51,7 @@
   </div>
 
   <div class="game-list-container col-md-8 col-xs-12">
-    <div class="game-list col-xs-12">
+    <div class="game-list-content col-xs-12">
       <div class="game-box alt list-item col-md-4 col-xs-6">
         <h3>MORE GAMES ></h3>
       </div>

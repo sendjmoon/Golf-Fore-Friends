@@ -3,10 +3,11 @@ title-header {
 }
 
 .gff-logo-container {
-  z-index: 20;
-  display: table;
-  padding: 5px 15px;
+  display: flex;
+  align-items: center;
+  padding: 0px 15px;
   border-right: 1px solid #c5c5c5;
+  z-index: 20;
   transition: all 0.4s ease;
 
   h4 {
