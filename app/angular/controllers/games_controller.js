@@ -82,28 +82,21 @@ module.exports = function(app) {
       searchBox.addEventListener('keyup', () => {
         let input = searchBox.value;
         let results = array.filter((game) => {
-          if (input.length < 1) {
-            $rs.$apply(() => {
+          $rs.$apply(() => {
+            if (input.length < 1) {
               this.searchResults = [];
-            });
-            return game;
-          }
-          if (game.name.indexOf(input) > -1) {
-            $rs.$apply(() => {
+              return game;
+            }
+            if (game.name.indexOf(input) > -1) {
               if (this.searchResults.indexOf(game) > -1) return;
               else this.searchResults.push(game);
-            });
-            return game;
-          }
-          if (game.name.indexOf(input) < 0) {
-            $rs.$apply(() => {
+            }
+            if (game.name.indexOf(input) < 0) {
               if (this.searchResults.indexOf(game) > -1)
                 this.searchResults.splice(this.searchResults.indexOf(game), 1);
-            });
-            return game;
-          }
+            }
+          });
         });
-
       });
     };
 

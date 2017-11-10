@@ -43,6 +43,7 @@
     <div class="search-container" ng-show="searching">
       <input type="text" name="game-search" id="game-search" placeholder="search games"></input>
 
+      <p>Search results...</p>
       <ul>
         <li ng-repeat="game in gc.searchResults">{{game.name}}</li>
       </ul>
