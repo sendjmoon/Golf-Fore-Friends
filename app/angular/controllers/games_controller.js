@@ -80,18 +80,18 @@ module.exports = function(app) {
       let array = JSON.parse(window.localStorage.getItem('games'));
       let searchBox = document.getElementById(inputId);
       searchBox.addEventListener('keyup', () => {
-        let input = searchBox.value;
+        let input = searchBox.value.toUpperCase();
         let results = array.filter((game) => {
           $rs.$apply(() => {
             if (input.length < 1) {
               this.searchResults = [];
               return;
             }
-            if (game.name.indexOf(input) > -1) {
+            if (game.name.toUpperCase().indexOf(input) > -1) {
               if (this.searchResults.indexOf(game) > -1) return;
               else this.searchResults.push(game);
             }
-            if (game.name.indexOf(input) < 0) {
+            if (game.name.toUpperCase().indexOf(input) < 0) {
               if (this.searchResults.indexOf(game) > -1) {
                 this.searchResults.splice(this.searchResults.indexOf(game), 1);
               }
