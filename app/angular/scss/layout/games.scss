@@ -202,10 +202,16 @@ games {
           .month {
             font-size: 20px;
             font-weight: 500;
+            line-height: 16px;
           }
 
           .date {
             font-size: 36px;
+            line-height: 34px;
+          }
+
+          .year {
+            line-height: 11px;
           }
         }
       }
