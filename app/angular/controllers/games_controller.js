@@ -85,15 +85,16 @@ module.exports = function(app) {
           $rs.$apply(() => {
             if (input.length < 1) {
               this.searchResults = [];
-              return game;
+              return;
             }
             if (game.name.indexOf(input) > -1) {
               if (this.searchResults.indexOf(game) > -1) return;
               else this.searchResults.push(game);
             }
             if (game.name.indexOf(input) < 0) {
-              if (this.searchResults.indexOf(game) > -1)
+              if (this.searchResults.indexOf(game) > -1) {
                 this.searchResults.splice(this.searchResults.indexOf(game), 1);
+              }
             }
           });
         });
