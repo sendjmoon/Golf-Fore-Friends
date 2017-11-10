@@ -1,16 +1,26 @@
 .gff-nav {
-  background-color: $nav-bg-primary-color;
 
   ul {
 
     li {
 
       a {
-        color: $nav-link-primary-color;
+        color: #4b4e54;
 
         &:hover {
           color: $orange-primary;
         }
+      }
+    }
+  }
+
+  .gff-logo-container {
+    color: $font-color-dark;
+
+    h4 {
+
+      span {
+        color: $green-primary;
       }
     }
   }

@@ -6,6 +6,8 @@ title-header {
   z-index: 20;
   display: table;
   padding: 5px 15px;
+  border-right: 1px solid #c5c5c5;
+  transition: all 0.4s ease;
 
   h4 {
     display: table-cell;
@@ -17,5 +19,15 @@ title-header {
   .gff-logo-full {
     display: inline-block;
     border-radius: 5px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+
+  .gff-logo-container {
+    padding: 10px 0;
+    border-right: none;
+    border-bottom: 1px solid #c5c5c5;
+    transition: all 0.4s ease;
   }
 }

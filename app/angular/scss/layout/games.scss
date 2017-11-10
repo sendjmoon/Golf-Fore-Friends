@@ -1,16 +1,30 @@
 games {
-  display: table;
-  width: 100%;
+  padding: 15px;
 
   .games-content {
     display: table;
     width: 100%;
-    background: #1f1f1f;
+  }
+
+  .game-list-container {
+    margin-bottom: 30px;
+    padding: 15px;
   }
 
   .game-list {
     padding: 0;
     background: #1f1f1f;
+  }
+
+  .game-stats-container {
+    padding: 15px;
+  }
+
+  .game-stats-content {
+    padding: 15px;
+    border-radius: 2px;
+    background: #fff;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
   }
 
   .game-box {
@@ -19,8 +33,10 @@ games {
 
     .box-content {
       position: relative;
-      min-height: 500px;
+      min-height: 450px;
       padding: 30px;
+      border-radius: 2px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
       background-image: url('http://localhost:3000/imgs/golf-green-edge-ball.jpg');
       background-size: cover;
       background-position: center;
@@ -28,10 +44,10 @@ games {
 
       .page-title {
         position: absolute;
-        top: 0;
-        left: 30px;
+        top: 15px;
+        left: 15px;
         padding: 5px;
-        background: #1f1f1f;
+        // background: $green-opaque;
       }
 
       .search-container {
@@ -109,7 +125,7 @@ games {
     }
 
     &.main {
-      padding: 0;
+      padding: 15px;
 
       .content-bottom {
         position: absolute;
@@ -171,14 +187,18 @@ games {
             height: 100%;
             padding: 15px 30px;
             text-align: center;
-            background: #1f1f1f;
-            color: #fff;
+            background: #fff;
+            color: $font-color-dark;
             transition: all 0.1s ease;
+
+            .box-header {
+              color: #4dbb33;
+            }
           }
 
           .total {
-            border-right: 1px solid #3d3d3d;
-            border-left: 1px solid #3d3d3d;
+            border-right: 1px solid #e5e5e5;
+            border-left: 1px solid #e5e5e5;
           }
         }
       }
@@ -198,7 +218,8 @@ games {
       &.alt {
         display: flex;
         align-items: center;
-        background: #343434;
+        background: #fff;
+        color: $font-color-dark;
       }
 
 
