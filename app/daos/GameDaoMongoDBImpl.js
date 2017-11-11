@@ -71,6 +71,7 @@ module.exports = function() {
           },
         })
           .select('-__v')
+          .sort({ playedOn: -1 })
           .exec()
           .then((games) => {
             resolve(games);

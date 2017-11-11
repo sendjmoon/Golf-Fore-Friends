@@ -29,12 +29,10 @@ module.exports = function(app) {
       });
     };
 
-    this.getFromLocalByPublicId = function(publicId) {
+    this.getAllFromLocalStorage = function() {
       return new Promise((resolve, reject) => {
-        let gameData = JSON.parse(window.localStorage.getItem(publicId));
-        if (!gameData.publicId)
-          reject(console.log('error getting from local storage'));
-
+        let gameData = JSON.parse(window.localStorage.getItem('games'));
+        if (gameData.length < 1) reject();
         resolve(gameData);
       });
     };

@@ -1,7 +1,7 @@
 <nav-bar class="col-xs-12"></nav-bar>
-<div class="games-content" ng-hide="newGame">
+<div class="games-content" ng-init="gc.getAllByPublicId(gc.publicIds)" ng-hide="newGame">
 
-  <div class="game-box main col-md-8 col-xs-12">
+  <div class="game-box main col-md-7 col-xs-12">
     <div class="box-content col-md-12">
 
       <div class="info-box">
@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <div class="search-container" ng-init="gc.searchClickHandler(); gc.searchListener('game-name-input');">
+      <div class="search-container" ng-init="gc.searchClickHandler(); gc.searchListener('game-name-input')">
         <button class="gff-btn search" id="search-btn"><i class="fa fa-search"></i></button>
         <div class="search-content" id="search-content">
           <input id="game-name-input" type="text" placeholder="search games"></input>
@@ -43,13 +43,14 @@
     </div>
   </div><!-- .game-box main-->
 
-  <div class="game-stats-container col-md-4 col-xs-12">
-    <div class="game-stats-content">
+  <div class="game-stats-container pull-right col-md-5 col-xs-12">
+    <div class="game-stats-content col-xs-12">
       <button class="gff-btn" ng-hide="newGame" ng-click="newGame=true; gc.getFriendsList();">Create Game</button>
+      <game-chart class="col-xs-12"></game-chart>
     </div>
   </div>
 
-  <div class="game-list-container col-md-8 col-xs-12">
+  <div class="game-list-container col-md-7 col-xs-12">
     <div class="game-list-content col-xs-12">
       <div class="game-box alt list-item col-md-4 col-xs-6">
         <h3>MORE GAMES ></h3>
@@ -65,7 +66,7 @@
           </div>
           <h3>{{game.name}}</h3>
           <div class="date-box">
-            <p>{{game.datePlayed}}</p>
+            <p>{{game.playedOn}}</p>
           </div>
         </div>
       </a>
