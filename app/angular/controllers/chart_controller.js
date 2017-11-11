@@ -74,6 +74,7 @@ module.exports = function(app) {
         type: 'line',
         data: chartData,
         options: {
+          defaultFontColor: '#fff',
           responsive: true,
           layout: {
             padding: {
@@ -85,11 +86,24 @@ module.exports = function(app) {
           },
           legend: {
             display: false,
-            labels: {
-              boxWidth: 5,
-              padding: 15,
-              fontSize: 14,
-            },
+          },
+          scales: {
+            xAxes: [{
+              gridLines: {
+                color: 'rgba(75, 78, 84, 0.1)',
+              },
+              ticks: {
+                fontColor: '#4b4e54',
+              },
+            }],
+            yAxes: [{
+              gridLines: {
+                color: 'rgba(75, 78, 84, 0.1)',
+              },
+              ticks: {
+                fontColor: '#4b4e54',
+              }
+            }],
           },
           elements: {
             line: {
