@@ -43,7 +43,7 @@ module.exports = function(app) {
         if (!gameArray.length) reject;
         let results = [];
         gameArray.forEach((game, index) => {
-          results[gameArray.length - index - 1] = game.playedOn;
+          results[gameArray.length - index - 1] = game.playedOn.substr(0, game.playedOn.length - 5);
         });
         dateData = results;
         resolve(results);
@@ -62,9 +62,9 @@ module.exports = function(app) {
         datasets: [
           {
             label: 'Strokes',
-            backgroundColor: 'rgba(77, 187, 51, 0.2)',
-            borderColor: 'rgba(77, 187, 51, 1)',
-            borderWidth: 2,
+            // backgroundColor: 'rgba(75, 78, 84, 1)',
+            // borderColor: 'rgba(75, 78, 84, 1)',
+            borderWidth: 3,
             data: strokeData,
           },
         ],
@@ -75,13 +75,48 @@ module.exports = function(app) {
         data: chartData,
         options: {
           responsive: true,
+          layout: {
+            padding: {
+              top: 30,
+              right: 15,
+              bottom: 15,
+              left: 15,
+            },
+          },
           legend: {
-            position: 'bottom',
+            display: false,
+            labels: {
+              boxWidth: 5,
+              padding: 15,
+              fontSize: 14,
+            },
           },
           elements: {
             line: {
               tension: 0.1,
+              fill: false,
+              borderColor: 'rgba(75, 78, 84, 0.9)',
+              pointBackgroundColor: 'rgba(254, 172, 0, 1)',
+              pointBorderColor: 'rgba(254, 172, 0, 1)',
             },
+            point: {
+              radius: 3,
+              hoverRadius: 5,
+              backgroundColor: 'rgba(254, 172, 0, 0.8)',
+              borderColor: 'rgba(254, 172, 0, 0.8)',
+            },
+          },
+          tooltips: {
+            xPadding: 10,
+            yPadding: 10,
+            cornerRadius: 2,
+            caretSize: 8,
+            backgroundColor: 'rgba(75, 78, 84, 0.8)',
+            titleFontSize: 14,
+            titleSpacing: 4,
+            titleMarginBottom: 10,
+            bodyFontSize: 14,
+            bodySpacing: 4,
           },
           annotation: {
             drawTime: 'afterDatasetsDraw',
@@ -92,13 +127,13 @@ module.exports = function(app) {
               mode: 'horizontal',
               scaleID: 'y-axis-0',
               value: userHandicap,
-              borderColor: 'rgba(254, 172, 0, 0.6)',
+              borderColor: 'rgba(77, 187, 51, 0.3)',
               borderWidth: 5,
               label: {
-                backgroundColor: 'rgba(254, 172, 0, 1)',
+                backgroundColor: 'rgba(77, 187, 51, 0.4)',
                 position: 'center',
                 enabled: true,
-                content: 'Handicap',
+                content: 'Handicap: ' + userHandicap,
               },
             }],
           },
