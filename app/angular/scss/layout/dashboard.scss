@@ -1,136 +1,78 @@
-dashboard {
-  display: table;
-  width: 100%;
-}
+.dashboard-content {
+  color: $font-color-light;
 
-.dashboard-main {
-  padding: 30px;
+  .handicap-container,
+  .leaderboard-container,
+  .recent-game-container {
+    padding: 0;
 
-  h4 {
-    margin-left: 15px;
-    margin-bottom: 0;
+    .title {
+      display: inline-block;
+      width: 100%;
+      color: $font-color-dark;
+    }
   }
 
-  .dashboard-container {
-    display: table;
-    width: 100%;
-    margin-bottom: 0px;
-    // padding: 15px;
-    border-bottom: 1px solid #f1f1f1;
+  .handicap-container {
 
-    h1 {
-      margin-top: 0px;
+    .handicap-content {
+      padding-left: 0;
     }
 
-    .dashboard-content {
-      // max-width: 1660px;
-      // margin: 0 auto;
-      padding: 15px 0;
-    }
+    .score-box {
+      display: inline-block;
+      width: 100%;
+      padding: 15px;
+      border-radius: 2px;
+      background: $panel-bg-color-dark;
+      text-align: center;
 
-    &.stats {
+      h3 {
+        margin: 0;
+      }
+    }
+  }
+
+  .leaderboard-container {
+
+    .leaderboard-list {
       padding: 0;
+      margin: 0;
+      list-style: none;
 
-      .handicap-container {
-        padding: 0 15px 30px 0;
+      li {
+        display: table;
+        width: 100%;
+        margin-bottom: 5px;
+        border-radius: 2px;
+        background: $panel-bg-color-dark;
 
-        .score-box {
-          padding: 27px;
-          border-radius: 2px;
+        p {
+          margin: 0;
+        }
+
+        .position-box,
+        .name-box,
+        .handicap-box {
+          display: table-cell;
+          padding: 10px;
           text-align: center;
-
-          h3 {
-            margin: 0;
-          }
-        }
-      }
-      //handicap-container
-
-      .leaderboard-container {
-
-        .leaderboard-content {
-
-          .lb-list {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-
-            li {
-              display: table;
-              width: 100%;
-              padding: 0;
-              border-radius: 2px;
-              margin-bottom: 5px;
-
-              .pos-box {
-                display: table-cell;
-                width: 10%;
-                padding: 7px 0;
-                border-right: 1px solid #555;
-                text-align: center;
-              }
-
-              .name-box {
-                display: table-cell;
-                width: 80%;
-                padding: 0 15px;
-                border-right: 1px solid #555;
-              }
-
-              .handicap-box {
-                display: table-cell;
-                width: 10%;
-                text-align: center;
-              }
-            }
-          }
-          //lb-list
-        }
-        //leaderboard-content
-      }
-      //leaderboard-container
-
-      .recent-game-container {
-
-        .recent-game-content {
-
-        }
-        //recent-game-content
-      }
-      //recent-game-container
-    }
-
-    .handicap-content,
-    .leaderboard-content,
-    .recent-game-content {
-
-      &:hover {
-
-        h4 {
-          color: #fff;
-          transition: color 0.2s ease;
         }
 
-        .t-block {
-          width: calc(100% + 16px);
-          height: 27px;
-          transition: all 0.2s ease;
+        .position-box {
+          width: 50px;
+          border-right: 1px solid $border-color-light;
         }
-      }
 
-      .header {
-        display: inline-block;
-        position: relative;
-        padding: 7px 0;
+        .name-box {
+          border-right: 1px solid $border-color-light;
+          text-align: left;
+        }
 
-        h4 {
-          position: relative;
-          transition: color 0.2s ease;
+        .handicap-box {
+          width: 60px;
         }
       }
     }
-    //stats
   }
-  //dashboard-container
 }
-//dashboard-main
