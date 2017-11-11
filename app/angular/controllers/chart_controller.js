@@ -4,58 +4,77 @@ module.exports = function(app) {
   app.controller('ChartController', ['$rootScope', 'GameService', function($rs, GameService) {
 
     this.games = [];
+    let nameData, strokeData, dateData = [];
+
     this.getAllFromLocalStorage = function() {
       GameService.getAllFromLocalStorage()
         .then((gameData) => {
-          $rs.$apply(() => this.games = gameData);
+          this.sortAllData(gameData)
+            .then(this.loadChart());
         })
         .catch(() => {
-          alert('error getting chart data');
+          console.log('error getting data');
         });
     };
 
-    let Chart = require('chart.js');
-    let ctx = document.getElementById('gameChart');
+    this.sortAllData = function(gameArray) {
+      return new Promise((resolve, reject) => {
+        this.sortStrokeData(gameArray)
+          .then(this.sortDateData(gameArray))
+              .then(resolve)
+                .catch(reject);
+      });
+    };
 
-    // let chartOptions = {
-    //   type: 'line',
-    //   data: {
-    //     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    //     datasets: [{
-    //       label: 'games',
-    //       data: [12, 19, 3, 5, 2, 12],
-    //       backgroundColor: [
-    //         'rgba(255, 99, 132, 0.2)',
-    //         'rgba(54, 162, 235, 0.2)',
-    //         'rgba(255, 206, 86, 0.2)',
-    //         'rgba(75, 192, 192, 0.2)',
-    //         'rgba(153, 102, 255, 0.2)',
-    //         'rgba(255, 159, 64, 0.2)',
-    //       ],
-    //       borderColor: [
-    //         'rgba(255,99,132,1)',
-    //         'rgba(54, 162, 235, 1)',
-    //         'rgba(255, 206, 86, 1)',
-    //         'rgba(75, 192, 192, 1)',
-    //         'rgba(153, 102, 255, 1)',
-    //         'rgba(255, 159, 64, 1)',
-    //       ],
-    //       borderWidth: 1,
-    //     }],
-    //   },
-    //   options: {
-    //     scales: {
-    //       yAxes: [{
-    //         ticks: {
-    //           beginAtZero: true,
-    //         },
-    //       }],
-    //     },
-    //   },
-    // };
-    //
-    // let myChart = new Chart(ctx, chartOptions);
+    this.sortStrokeData = function(gameArray) {
+      return new Promise((resolve, reject) => {
+        if (!gameArray.length) reject;
+        let results = [];
+        gameArray.forEach((game, index) => {
+          results[gameArray.length - index - 1] = game.yourStrokes;
+        });
+        strokeData = results;
+        resolve(results);
+      });
+    };
 
+    this.sortDateData = function(gameArray) {
+      return new Promise((resolve, reject) => {
+        if (!gameArray.length) reject;
+        let results = [];
+        gameArray.forEach((game, index) => {
+          results[gameArray.length - index - 1] = game.playedOn;
+        });
+        dateData = results;
+        resolve(results);
+      });
+    };
+
+    this.loadChart = function() {
+      let Chart = require('chart.js');
+      let ctx = document.getElementById('gameChart');
+      let chartOptions = {
+        type: 'line',
+        data: {
+          labels: dateData,
+          datasets: [{
+            label: 'Strokes',
+            data: strokeData,
+            options: {
+              reverse: true,
+            },
+            backgroundColor: [
+              'rgba(77, 187, 51, 0.2)',
+            ],
+            borderColor: [
+              'rgba(77, 187, 51, 1)',
+            ],
+            borderWidth: 1,
+          }],
+        },
+      };
+      let myChart = new Chart(ctx, chartOptions);
+    }
 
   }]);
 };

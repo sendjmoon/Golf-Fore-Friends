@@ -57,6 +57,6 @@ const GameSchema = new Schema({
   collection: 'games',
 });
 
-GameSchema.index({ playedOn: 1 });
+GameSchema.index({ playedOn: -1 });
 
 module.exports = mongoose.model('Game', GameSchema);
