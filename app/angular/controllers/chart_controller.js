@@ -43,7 +43,7 @@ module.exports = function(app) {
         if (!gameArray.length) reject;
         let results = [];
         gameArray.forEach((game, index) => {
-          results[gameArray.length - index - 1] = game.playedOn;
+          results[gameArray.length - index - 1] = game.playedOn.substr(0, game.playedOn.length - 5);
         });
         dateData = results;
         resolve(results);
@@ -52,57 +52,19 @@ module.exports = function(app) {
 
     this.loadChart = function() {
       let Chart = require('chart.js');
-      let canvas = document.getElementById('gameChart')
-      let ctx = canvas.getContext('2d');
+      let ctx = document.getElementById('gameChart').getContext('2d');
+      let chartjsPluginAnnotation = require('chartjs-plugin-annotation');
+      Chart.pluginService.register(chartjsPluginAnnotation);
+
       let userHandicap = JSON.parse(window.sessionStorage.getItem('currentUser')).handicap;
-
-      let handicapLinePlugin = {
-        afterDraw: function(chartInstance) {
-          let yScale = chartInstance.scales['y-axis-0'];
-          let canvas = chartInstance.chart;
-          let ctx = canvas.ctx;
-          let index;
-          let line;
-          let style;
-          let yValue;
-
-          if (chartInstance.options.horizontalLine) {
-            for (index = 0; index < chartInstance.options.horizontalLine.length; index++) {
-              line = chartInstance.options.horizontalLine[index];
-
-              !line.style ? style = 'rgba(169, 169, 169, 0.6)' : style = line.style;
-              line.y ? yValue = yScale.getPixelForValue(line.y) : yValue = 0;
-
-              ctx.lineWidth = 4;
-
-              if (yValue) {
-                ctx.beginPath();
-                ctx.moveTo(38, yValue);
-                ctx.lineTo(canvas.width - 36, yValue);
-                ctx.strokeStyle = style;
-                ctx.stroke();
-              }
-
-              if (line.text) {
-                ctx.fillStyle = style;
-                ctx.fillText(line.text, 0, yValue + ctx.lineWidth);
-              }
-            }
-            return;
-          }
-        }
-      };
-
-      Chart.pluginService.register(handicapLinePlugin);
-
       let chartData = {
         labels: dateData,
         datasets: [
           {
             label: 'Strokes',
-            backgroundColor: 'rgba(77, 187, 51, 0.2)',
-            borderColor: 'rgba(77, 187, 51, 1)',
-            borderWidth: 2,
+            // backgroundColor: 'rgba(75, 78, 84, 1)',
+            // borderColor: 'rgba(75, 78, 84, 1)',
+            borderWidth: 3,
             data: strokeData,
           },
         ],
@@ -112,19 +74,83 @@ module.exports = function(app) {
         type: 'line',
         data: chartData,
         options: {
+          defaultFontColor: '#fff',
           responsive: true,
+          layout: {
+            padding: {
+              top: 30,
+              right: 15,
+              bottom: 15,
+              left: 15,
+            },
+          },
           legend: {
-            position: 'bottom',
+            display: false,
+          },
+          scales: {
+            xAxes: [{
+              gridLines: {
+                color: 'rgba(75, 78, 84, 0.1)',
+              },
+              ticks: {
+                fontColor: '#4b4e54',
+              },
+            }],
+            yAxes: [{
+              gridLines: {
+                color: 'rgba(75, 78, 84, 0.1)',
+              },
+              ticks: {
+                fontColor: '#4b4e54',
+              }
+            }],
           },
           elements: {
             line: {
               tension: 0.1,
+              fill: false,
+              borderColor: 'rgba(75, 78, 84, 0.9)',
+              pointBackgroundColor: 'rgba(254, 172, 0, 1)',
+              pointBorderColor: 'rgba(254, 172, 0, 1)',
+            },
+            point: {
+              radius: 3,
+              hoverRadius: 5,
+              backgroundColor: 'rgba(254, 172, 0, 0.8)',
+              borderColor: 'rgba(254, 172, 0, 0.8)',
             },
           },
-          horizontalLine: [{
-            y: userHandicap,
-            style: 'rgba(254, 172, 0, 0.5)',
-          }],
+          tooltips: {
+            xPadding: 10,
+            yPadding: 10,
+            cornerRadius: 2,
+            caretSize: 8,
+            backgroundColor: 'rgba(75, 78, 84, 0.8)',
+            titleFontSize: 14,
+            titleSpacing: 4,
+            titleMarginBottom: 10,
+            bodyFontSize: 14,
+            bodySpacing: 4,
+          },
+          annotation: {
+            drawTime: 'afterDatasetsDraw',
+            annotations: [{
+              drawTime: 'afterDatasetsDraw',
+              id: 'h-line-1',
+              type: 'line',
+              mode: 'horizontal',
+              scaleID: 'y-axis-0',
+              value: userHandicap,
+              borderColor: 'rgba(77, 187, 51, 0.3)',
+              borderWidth: 5,
+              label: {
+                backgroundColor: 'rgba(77, 187, 51, 0.4)',
+                position: 'center',
+                enabled: true,
+                content: 'Handicap: ' + userHandicap,
+              },
+            }],
+          },
         },
       });
     };

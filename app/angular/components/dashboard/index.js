@@ -6,6 +6,4 @@ module.exports = function(app) {
     controller: 'DashboardController',
     controllerAs: 'dc',
   });
-
-  require('./widgets')(app);
 };

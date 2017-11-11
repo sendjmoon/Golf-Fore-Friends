@@ -26,17 +26,9 @@ $link-primary-color: $orange-primary;
 $link-secondary-color: $light-blue-secondary;
 $link-tertiary-color: $orange-light-opaque;
 
-//nav
-$nav-bg-primary-color: #1f1f1f;
-$nav-bg-dark-primary-color: $bg-dark-primary;
-$nav-link-primary-color: #fff;
-$nav-link-hover-primary-color: $green-primary;
-
 //panels
-$panel-bg-dark-primary: rgba(54, 57, 65, 0.8);
-$panel-bg-dark-opaque: rgba(54, 57, 65, 0.8);
-$panel-bg-white: #eee;
-$panel-bg-white-opaque: rgba(255, 255, 255, 0.8);
+$panel-bg-color-dark: #4b4e54;
+$panel-bg-color-light: #fff;
 
 //misc
 $header-color-orange: $orange-light-opaque;
@@ -46,6 +38,7 @@ $button-primary-bg: $orange-light-opaque;
 $button-primary-bg-hover: rgba(0, 0, 0, 0.5);
 
 //borders
+$border-color-light: #c5c5c5;
 $border-invis: rgba(0, 0, 0, 0.0);
 
 //sizes

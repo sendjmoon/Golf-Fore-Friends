@@ -1,62 +1,43 @@
-<nav-bar></nav-bar>
+<div class="dashboard-content top col-xs-12">
 
-<div class="dashboard-main">
-
-  <div class="dashboard-container stats">
-
-    <div class="handicap-container col-md-2 col-sm-6">
-      <div class="handicap-content">
-        <div class="header">
-          <div class="t-block green"></div><h4>Handicap</h4>
-        </div>
-        <div class="score-box">
-          <h3><span class="color-green">+</span>{{dc.user.handicap}}</h3>
-        </div>
+  <div class="handicap-container col-md-2 col-xs-6">
+    <div class="handicap-content col-xs-12">
+      <div class="title">
+        <h4>Handicap</h4>
       </div>
-    </div>
-
-    <div class="leaderboard-container col-md-5 col-sm-6">
-      <div class="leaderboard-content">
-        <div class="header">
-          <div class="t-block green"></div><h4>Leaderboard</h4>
-        </div>
-        <ul class="lb-list" ng-init="dc.rankFriends()">
-          <li ng-repeat="friend in dc.leaderboardArray track by $index|limitTo:3">
-            <div class="pos-box">
-              <span class="color-orange">{{$index + 1}}</span>
-            </div>
-            <div class="name-box">
-              <span class="color-white">{{friend.fullName}}</span>
-            </div>
-            <div class="handicap-box">
-              <p><span class="color-green">+</span>{{friend.handicap}}</p>
-            </div>
-          </li>
-        </ul>
+      <div class="score-box">
+        <h3><span class="color-green">+</span>{{dc.user.handicap}}</h3>
       </div>
-    </div><!-- /leaderboard-container -->
-
-    <div class="recent-game-container col-md-5 col-sm-12">
-      <div class="recent-game-content">
-        <div class="header">
-          <div class="t-block green"></div><h4>Most Recent Game</h4>
-        </div>
-      </div>
-    </div>
-  </div><!-- /dashboard-container -->
-
-  <div class="dashboard-container">
-    <h2>Friends</h2>
-    <div class="dashboard-content">
-      <friends-widget></friends-widget>
     </div>
   </div>
 
-  <div class="dashboard-container">
-    <h2>Recent Games</h2>
-    <div class="dashboard-content">
-      <games-widget></games-widget>
+  <div class="leaderboard-container col-md-5 col-xs-6">
+    <div class="leaderboard-content col-xs-12" ng-init="dc.rankFriends();">
+      <div class="title">
+        <h4>Leaderboard</h4>
+      </div>
+      <ul class="leaderboard-list">
+        <li ng-repeat="friend in dc.leaderboardArray track by $index|limitTo:3">
+          <div class="position-box">
+            <p>{{$index + 1}}</p>
+          </div>
+          <div class="name-box">
+            <p>{{friend.fullName}}</p>
+          </div>
+          <div class="handicap-box">
+            <p><span class="color-green">+</span>{{friend.handicap}}</p>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 
+  <div class="recent-game-container col-md-5 col-xs-12">
+    <div class="recent-game-content col-xs-12">
+      <div class="title">
+        <h4>Most Recent Game</h4>
+      </div>
+    </div>
+  </div>
+  
 </div>
