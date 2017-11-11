@@ -44,7 +44,6 @@ module.exports = function(app) {
         .then((games) => {
           $rs.$apply(() => {
             this.games = games;
-            // this.searchListener('game-search', this.games);
             this.games.forEach((game) => {
               game.totalGolfers = game.players.length;
               game.players.forEach((player) => {
@@ -61,20 +60,6 @@ module.exports = function(app) {
           alert('error getting games');
         });
     };
-
-    this.getFromLocalByPublicId = function(publicId) {
-      GameService.getFromLocalByPublicId(publicId)
-        .then((gameData) => {
-          $rs.$apply(() => {
-            this.gameData = gameData;
-          });
-        })
-        .catch(() => {
-          console.log('error getting from local storage');
-        });
-    };
-
-    this.getAllByPublicId(this.publicIds);
 
     this.searchListener = function(inputId) {
       let array = JSON.parse(window.localStorage.getItem('games'));

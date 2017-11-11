@@ -5,5 +5,8 @@ module.exports = function(app) {
     template: require('./game-chart-template.html'),
     controller: 'ChartController',
     controllerAs: 'cc',
+    bindings: {
+      games: '<',
+    }
   });
 };

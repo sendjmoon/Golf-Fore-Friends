@@ -1,5 +1,5 @@
 <nav-bar class="col-xs-12"></nav-bar>
-<div class="games-content" ng-hide="newGame">
+<div class="games-content" ng-init="gc.getAllByPublicId(gc.publicIds)" ng-hide="newGame">
 
   <div class="game-box main col-md-7 col-xs-12">
     <div class="box-content col-md-12">
@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <div class="search-container" ng-init="gc.searchClickHandler(); gc.searchListener('game-name-input');">
+      <div class="search-container" ng-init="gc.searchClickHandler(); gc.searchListener('game-name-input')">
         <button class="gff-btn search" id="search-btn"><i class="fa fa-search"></i></button>
         <div class="search-content" id="search-content">
           <input id="game-name-input" type="text" placeholder="search games"></input>
