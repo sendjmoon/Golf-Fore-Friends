@@ -52,9 +52,10 @@ games {
         .overall {
           min-width: 125px;
           padding: 15px 30px;
+          border-radius: 2px;
           // background: rgba(255, 255, 255, 0.9);
           // color: $font-color-dark;
-          background: $green-opaque;
+          background: rgba(0, 0, 0, 0.5);
           color: $font-color-light;
           text-align: center;
 
@@ -67,7 +68,7 @@ games {
           }
 
           .box-header {
-            // color: $green-primary;
+            color: $green-primary;
             font-size: 18px;
             font-weight: 500;
           }
@@ -176,7 +177,7 @@ games {
           flex-direction: column;
           justify-content: center;
           width: 100%;
-          background: rgba(0, 0, 0, 0.7);
+          background: rgba(0, 0, 0, 0.6);
           padding: 15px 30px;
 
           h3 {
