@@ -12,7 +12,7 @@ $light-blue-secondary: #5adaff;
 $white-light-opaque: rgba(255, 255, 255, 0.9);
 
 //backgrounds
-$bg-primary-color: #fff;
+$bg-color-primary: #f7f7f7;
 $bg-light-opaque: rgba(255, 255, 255, 0.6);
 $bg-dark-primary: #1f1f1f;
 $bg-dark-opaque: rgba(0, 0, 0, 0.8);
@@ -22,9 +22,7 @@ $font-color-light: #fff;
 $font-color-dark: #4b4e54;
 
 //links
-$link-primary-color: $orange-primary;
-$link-secondary-color: $light-blue-secondary;
-$link-tertiary-color: $orange-light-opaque;
+$link-color-primary: $orange-primary;
 
 //panels
 $panel-bg-color-dark: #4b4e54;

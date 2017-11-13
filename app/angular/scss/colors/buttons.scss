@@ -1,6 +1,6 @@
 .gff-btn {
   background: $orange-primary;
-  color: #fff;
+  color: $font-color-light;
   border-color: $orange-primary;
 
   &:focus {
@@ -9,7 +9,7 @@
 
   &.ghost {
     background: none;
-    color: #fff;
+    color: $font-color-light;
     border-color: $orange-primary;
 
     &:hover {
