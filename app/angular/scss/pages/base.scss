@@ -10,24 +10,6 @@ main {
   background: $bg-color-light;
 }
 
-h1, h2, h3 {
-  margin: 0;
-}
-
-a {
-  cursor: pointer;
-}
-
-.bg-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 2px;
-
-  background: rgba(0, 0, 0, 0.5);
-  transition: all 0.2s ease;
-}
-
 .gff-container {
   display: table;
   max-width: 1200px;
@@ -35,38 +17,11 @@ a {
   padding: 15px;
 }
 
-.intro-container {
-
-  p {
-    padding: 0 15px;
-    font-size: 18px;
-  }
-}
-
 hr {
-
-  &.default-bar {
-    width: 100px;
-    margin: 0 auto;
-    border-top: 2px solid #fff;
-  }
 
   &.landing-bar {
     width: 100px;
     border-top: 2px solid $orange-primary;
-  }
-
-  &.fill {
-    position: absolute;
-    width: 0;
-    margin: 0;
-    border-top: 5px solid $green-primary;
-    transition: all 0.4s ease;
-
-    &.middle-top {
-      top: 0;
-      left: 50%;
-    }
   }
 }
 
@@ -80,20 +35,6 @@ hr {
   border-radius: 2px;
 
   transition: all 0.2s ease;
-}
-
-.page-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  margin: 0;
-  border-bottom: none;
-
-  h2 {
-    padding: 0;
-  }
 }
 
 [class*="col-md"] {

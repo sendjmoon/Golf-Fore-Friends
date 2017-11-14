@@ -265,15 +265,13 @@ games {
       }
 
       .bg-overlay {
-        border-radius: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 2px;
 
-        &.odd {
-          background: rgba(0, 0, 0, 0.7);
-        }
-
-        &.even {
-          background: rgba(0, 0, 0, 0.7);
-        }
+        background: rgba(0, 0, 0, 0.5);
+        transition: all 0.2s ease;
       }
 
       .info-box {
