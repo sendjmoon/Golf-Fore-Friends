@@ -1,13 +1,13 @@
 .gff-btn {
   margin: 15px 0px 10px 0px;
-  padding: 7px 20px;
-  border-radius: 2px;
+  padding: 0;
+  // border-radius: 2px;
   border: 2px solid $orange-primary;
 
   background: $orange-primary;
   color: $font-color-light;
 
-  font-size: 20px;
+  font-size: 18px;
 
   &:focus {
     outline: none;
@@ -18,12 +18,72 @@
     background: none;
     color: $font-color-light;
 
-    &:hover {
-      background: $orange-primary;
+    &.default {
+
+      &:hover {
+        background: $orange-primary;
+      }
+
+      &:focus {
+        outline: none;
+      }
     }
 
-    &:focus {
-      outline: none;
+    &.fill {
+      background: $orange-opaque-dbl;
+
+      .btn-content {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        .gff-fill {
+          width: 25px;
+          height: 100%;
+
+          position: absolute;
+          display: inherit;
+          align-items: center;
+          justify-content: center;
+
+          background: $orange-primary;
+          transition: all 0.2s ease;
+
+          .fa-pencil {
+            font-size: 16px;
+          }
+
+          .fa-caret-right {
+            position: absolute;
+            right: -5px;
+            color: $orange-primary;
+          }
+        }
+
+        .btn-text {
+          margin: 0;
+          padding: 3px 15px 3px 37px;
+          transition: all 0.2s ease;
+          visibility: visible;
+        }
+      }
+
+      &:hover {
+
+        .gff-fill {
+          width: 100%;
+          transition: all 0.2s ease;
+
+          .fa-caret-right {
+            visibility: hidden;
+          }
+        }
+
+        .btn-text {
+          visibility: hidden;
+          transition: all 0.2s ease;
+        }
+      }
     }
   }
 
