@@ -64,8 +64,6 @@
   }
 
   p {
-    width: 80%;
-    margin: 0 auto;
     font-size: 16px;
     line-height: 26px;
   }
@@ -83,6 +81,8 @@
   }
 
   .feature-container {
+    padding: 0 45px;
+    margin-bottom: 30px;
     color: $font-color-light;
     text-align: center;
 
