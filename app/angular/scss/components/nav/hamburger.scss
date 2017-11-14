@@ -1,7 +1,7 @@
 .icon-container {
   padding: 10px 15px 0 17px;
   border-radius: 2px;
-  border-left: 1px solid $border-color-light;
+  border-left: 1px solid $border-color-semi-dark;
 }
 
 .hamburger-menu-icon {
@@ -14,10 +14,11 @@
   span {
     display: block;
     position: absolute;
+
     width: 50%;
     height: 4px;
+
     background: $panel-bg-color-dark;
-    opacity: 1;
     transform: rotate(0deg);
     transition: 0.25s ease-in-out;
 

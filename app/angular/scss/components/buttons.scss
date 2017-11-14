@@ -1,0 +1,42 @@
+.gff-btn {
+  margin: 15px 0px 10px 0px;
+  padding: 7px 20px;
+  border-radius: 2px;
+  border: 2px solid $orange-primary;
+
+  background: $orange-primary;
+  color: $font-color-light;
+
+  font-size: 20px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.ghost {
+    border-color: $orange-primary;
+    background: none;
+    color: $font-color-light;
+
+    &:hover {
+      background: $orange-primary;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &.search {
+    margin: 0;
+    padding: 5px 10px;
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $orange-primary;
+      transition: all 0.2s ease;
+    }
+  }
+}
