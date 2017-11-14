@@ -1,0 +1,26 @@
+span {
+
+  &.color-green {
+    color: $green-primary;
+  }
+
+  &.color-white {
+    color: #fff;
+  }
+
+  &.color-orange {
+    color: $orange-primary;
+  }
+}
+
+.t-block {
+  background: $bg-dark-opaque;
+
+  &.green {
+    background: $green-primary;
+  }
+
+  &.orange {
+    background: $orange-primary;
+  }
+}
