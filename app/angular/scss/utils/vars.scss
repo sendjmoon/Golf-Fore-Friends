@@ -1,21 +1,19 @@
 //general colors
 $green-primary: #4dbb33;
-$green-light: #87ff69;
 $green-opaque: rgba(77, 187, 51, 0.8);
+
 $orange-primary: #feac00;
-$orange-light-opaque: rgba(254, 172, 0, 0.8);
 $orange-opaque: rgba(254, 172, 0, 0.5);
+
 $red-primary: #dc1616;
 $red-opaque: rgba(220, 22, 22, 0.7);
-$light-blue-primary: #2dbfe9;
-$light-blue-secondary: #5adaff;
-$white-light-opaque: rgba(255, 255, 255, 0.9);
+
 
 //backgrounds
-$bg-color-primary: #f7f7f7;
-$bg-light-opaque: rgba(255, 255, 255, 0.6);
-$bg-dark-primary: #1f1f1f;
-$bg-dark-opaque: rgba(0, 0, 0, 0.8);
+$bg-color-light-primary: #f7f7f7;
+
+$bg-color-dark-primary: #1f1f1f;
+$bg-color-dark-opaque: rgba(0, 0, 0, 0.8);
 
 //fonts
 $font-color-light: #fff;
@@ -28,16 +26,6 @@ $link-color-primary: $orange-primary;
 $panel-bg-color-dark: #4b4e54;
 $panel-bg-color-light: #fff;
 
-//misc
-$header-color-orange: $orange-light-opaque;
-
-//buttons
-$button-primary-bg: $orange-light-opaque;
-$button-primary-bg-hover: rgba(0, 0, 0, 0.5);
-
 //borders
 $border-color-light: #c5c5c5;
 $border-invis: rgba(0, 0, 0, 0.0);
-
-//sizes
-$col-one: 8.333%;
