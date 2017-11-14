@@ -1,0 +1,108 @@
+.new-game-form {
+
+  .course-container,
+  .location-container,
+  .date-container {
+    display: inline-block;
+    margin-right: 30px;
+  }
+
+  .players-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    .player-list {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+
+      margin-bottom: 30px;
+      padding: 0;
+
+      list-style: none;
+
+      .player-box {
+        display: flex;
+        margin-right: 15px;
+        border-radius: 2px;
+
+        background: $panel-bg-color-dark;
+        color: $font-color-light;
+
+        p {
+          margin: 0;
+        }
+
+        i {
+          font-size: 18px;
+        }
+
+        .title-box,
+        .strokes-box,
+        .edit-box,
+        .add-box,
+        .remove-box {
+          display: flex;
+          align-items: center;
+
+          height: 100%;
+          padding: 10px 15px;
+          border-right: 1px solid $border-color-dark;
+
+          transition: background 0.2s ease;
+        }
+
+        .title-box {
+          padding-right: 30px;
+        }
+
+        .edit-box {
+
+          &:hover {
+            border-bottom-color: $orange-primary;
+          }
+
+          a {
+            color: $font-color-light;
+
+            &:hover {
+              color: $orange-primary;
+              text-decoration: none;
+            }
+          }
+
+          input {
+            width: 35px;
+            height: 20px;
+            margin-right: 10px;
+            border: none;
+
+            color: $font-color-dark;
+            text-align: center;
+          }
+        }
+
+        .add-box,
+        .remove-box {
+          border-right: none;
+          border-top-right-radius: 2px;
+          border-bottom-right-radius: 2px;
+          background: $green-opaque;
+          color: $font-color-light;
+
+          &:hover {
+            background: $green-primary;
+          }
+        }
+
+        .remove-box {
+          background: $red-opaque;
+
+          &:hover {
+            background: $red-primary;
+          }
+        }
+      } //.player-box
+    } //.player-list
+  } //.player-container
+} //.new-game-form

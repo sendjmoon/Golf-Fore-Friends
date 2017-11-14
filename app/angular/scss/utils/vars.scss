@@ -10,13 +10,14 @@ $red-opaque: rgba(220, 22, 22, 0.7);
 
 
 //backgrounds
-$bg-color-light-primary: #f7f7f7;
+$bg-color-light: #f7f7f7;
 
-$bg-color-dark-primary: #1f1f1f;
+$bg-color-dark: #1f1f1f;
 $bg-color-dark-opaque: rgba(0, 0, 0, 0.8);
 
 //fonts
 $font-color-light: #fff;
+$font-color-semi-light: #d1d1d1;
 $font-color-dark: #4b4e54;
 
 //links
@@ -27,5 +28,7 @@ $panel-bg-color-dark: #4b4e54;
 $panel-bg-color-light: #fff;
 
 //borders
-$border-color-light: #c5c5c5;
-$border-invis: rgba(0, 0, 0, 0.0);
+$border-color-light: #f1f1f1;
+$border-color-semi-dark: #c5c5c5;
+$border-color-dark: #5f646d;
+$border-invis: rgba(0, 0, 0, 0);

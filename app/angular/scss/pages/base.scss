@@ -1,13 +1,13 @@
 html, body, main {
-  width: 100%;
   min-width: 768px;
+  width: 100%;
   height: 100%;
 }
 
 main {
   display: table;
   z-index: 1;
-  background: $bg-color-light-primary;
+  background: $bg-color-light;
 }
 
 h1, h2, h3 {
@@ -19,10 +19,11 @@ a {
 }
 
 .bg-overlay {
+  position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 2px;
-  position: absolute;
+
   background: rgba(0, 0, 0, 0.5);
   transition: all 0.2s ease;
 }
@@ -46,8 +47,8 @@ hr {
 
   &.default-bar {
     width: 100px;
-    border-top: 2px solid #fff;
     margin: 0 auto;
+    border-top: 2px solid #fff;
   }
 
   &.landing-bar {
@@ -73,9 +74,11 @@ hr {
   position: absolute;
   bottom: 3px;
   z-index: 0;
+
   height: 27px;
   width: 7px;
   border-radius: 2px;
+
   transition: all 0.2s ease;
 }
 
@@ -84,6 +87,7 @@ hr {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
   margin: 0;
   border-bottom: none;
 

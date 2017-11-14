@@ -9,6 +9,7 @@
     .title {
       display: inline-block;
       width: 100%;
+
       color: $font-color-dark;
     }
   }
@@ -24,11 +25,13 @@
       width: 100%;
       padding: 15px;
       border-radius: 2px;
+
       background: $panel-bg-color-dark;
       text-align: center;
 
       h3 {
         margin: 0;
+        font-size: 60px;
       }
     }
   }

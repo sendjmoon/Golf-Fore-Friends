@@ -1,0 +1,46 @@
+input {
+  height: 40px;
+  padding: 5px;
+  border: 1px solid $border-color-light;
+  border-radius: 2px;
+
+  &::placeholder {
+    color: $font-color-semi-light;
+  }
+
+  &:hover {
+    border-color: $orange-opaque;
+  }
+
+  &:focus {
+    outline-color: $orange-opaque;
+  }
+}
+
+.gff-select {
+  border: 1px solid $border-color-light;
+  border-radius: 2px;
+  
+  background: $panel-bg-color-light;
+
+  &:hover {
+    border-color: $orange-opaque;
+  }
+
+  select {
+    width: 100%;
+    height: 40px;
+    padding: 20px;
+    border: none;
+
+    background: none;
+
+    &:active {
+      outline: none;
+    }
+
+    &:focus {
+      outline-color: $orange-opaque;
+    }
+  }
+}

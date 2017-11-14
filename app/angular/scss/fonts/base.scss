@@ -20,23 +20,6 @@ h2 {
   font-size: 42px;
 }
 
-.gff-nav {
-
-  i {
-    font-size: 18px;
-  }
-}
-
-.handicap-container {
-
-  .score-box {
-
-    h3 {
-      font-size: 60px;
-    }
-  }
-}
-
 // color
 main {
   color: $font-color-dark;
@@ -47,5 +30,6 @@ a {
 
   &:hover, &:active, &:focus, &:visited {
     color: $link-color-primary;
+    text-decoration: none;
   }
 }
