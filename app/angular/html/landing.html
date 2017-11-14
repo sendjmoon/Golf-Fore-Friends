@@ -19,23 +19,21 @@
 
         <ul class="nav-menu">
           <li>
-            <a ng-click="auth=true"><h4>SIGNUP</h4></a>
+            <a ng-click="auth=true; clicked='signup'"><h4>SIGNUP</h4></a>
           </li>
           <li class="gff-divider">
             <h4>|</h4>
           </li>
           <li>
-            <a ng-click="auth=true"><h4>SIGNIN</h4></a>
+            <a ng-click="auth=true; clicked='signin'"><h4>SIGNIN</h4></a>
           </li>
         </ul>
-      <!-- </div> -->
-      <!-- <button class="gff-btn ghost" ng-click="auth=true" ng-hide="auth">SIGNUP</button> -->
     </nav>
 
     <div class="description" ng-hide="auth">
       <p>TRACK AND CHAT GOLF</p>
     </div>
-    <auth ng-show="auth"></auth>
+    <auth ng-show="auth" data-clicked="clicked"></auth>
   </div>
 </div>
 
