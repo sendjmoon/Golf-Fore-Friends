@@ -25,6 +25,7 @@ $link-color-primary: $orange-primary;
 
 //panels
 $panel-bg-color-dark: #4b4e54;
+$panel-bg-color-dark-opaque: rgba(75, 78, 84, 0.8);
 $panel-bg-color-light: #fff;
 
 //borders
@@ -32,3 +33,5 @@ $border-color-light: #f1f1f1;
 $border-color-semi-dark: #c5c5c5;
 $border-color-dark: #5f646d;
 $border-invis: rgba(0, 0, 0, 0);
+
+$box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
