@@ -12,9 +12,9 @@
     width: 100%;
     height: 100%;
 
-    background-image: url('http://localhost:3000/imgs/golf-green-ball.jpg');
+    background-image: url('http://localhost:3000/imgs/sunset-ball-hole.jpg');
     background-attachment: fixed;
-    background-position: bottom;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -23,26 +23,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: space-between;
     position: relative;
-    top: 0;
-    left: 0;
 
     height: 100%;
 
     transform: translateZ(0);
-
-    .title {
-      margin-bottom: 15px;
-      padding: 15px;
-      border-radius: 2px;
-
-      background-color: #222;
-      color: $font-color-light;
-
-      text-align: center;
-      white-space: nowrap;
-    }
 
     .description {
       padding: 15px;
@@ -57,7 +43,7 @@
 }
 
 .subcontent-container {
-  padding: 60px 0px;
+  padding: 60px;
 
   h2 {
     text-align: center;
@@ -74,7 +60,7 @@
 }
 
 .features-section {
-  background-color: $bg-color-dark;
+  background-color: $panel-bg-color-dark;
 
   h2 {
     color: $font-color-light;

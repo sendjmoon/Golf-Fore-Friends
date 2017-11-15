@@ -3,64 +3,118 @@ nav-bar {
 }
 
 .gff-nav {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
 
   .gff-logo-container {
+    height: 40px;
+    margin: 0;
+    padding-right: 15px;
     display: flex;
     align-items: center;
 
-    width: 270px;
-    height: 40px;
-    margin: 0;
-    padding: 0 15px;
     border-right: 1px solid $border-color-semi-dark;
+  }
 
-    h4 {
-      padding-left: 15px;
+  &.landing {
+    width: auto;
+    padding: 0 15px;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 30px;
+
+    .gff-logo-container {
+      width: auto;
+      border: none;
+      color: $font-color-light;
+    }
+
+    .nav-menu {
+      padding: 0;
+      list-style: none;
+
+      li {
+        display: inline-block;
+
+        a {
+          position: relative;
+          text-decoration: none;
+
+          &:before {
+            width: 100%;
+            height: 2px;
+
+            position: absolute;
+            bottom: -7px;
+            left: 0;
+
+            background-color: $orange-primary;
+            content: '';
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.2s ease;
+          }
+
+          &:hover {
+
+            &:before {
+              visibility: visible;
+              transform: scaleX(1);
+            }
+          }
+        }
+
+        &.gff-divider {
+          padding: 0 10px;
+        }
+      }
     }
   }
 
-  .nav-menu {
-    display: inherit;
-    position: absolute;
-    right: 78px;
-    height: 40px;
+  &.default {
 
-    width: 0;
-    padding: 0;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
+    .nav-menu {
+      width: 0;
+      padding: 0;
 
-    list-style: none;
-    overflow: hidden;
-    transition: width 0.4s ease;
+      display: inherit;
+      position: absolute;
+      right: 78px;
+      height: 40px;
 
-    li {
-      font-size: 16px;
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+      list-style: none;
+      overflow: hidden;
+      transition: width 0.4s ease;
 
-      a {
-        display: inherit;
-        padding: 9px 15px;
-        color: $font-color-dark;
+      li {
+        font-size: 16px;
 
-        &:hover {
-          background: $orange-primary;
-          color: $font-color-light;
+        a {
+          padding: 9px 15px;
+          display: inherit;
+          color: $font-color-dark;
+
+          &:hover {
+            background: $orange-primary;
+            color: $font-color-light;
+          }
+        }
+
+        i {
+          font-size: 18px;
         }
       }
 
-      i {
-        font-size: 18px;
+      &.open {
+        width: 336px;
+        transition: width 0.4s ease;
       }
-    }
-
-    &.open {
-      width: 336px;
-      transition: width 0.4s ease;
     }
   }
 }
@@ -68,23 +122,23 @@ nav-bar {
 // hamburger icon
 .icon-container {
   padding: 10px 15px 0 17px;
-  border-radius: 2px;
   border-left: 1px solid $border-color-semi-dark;
+  border-radius: 2px;
 }
 
 .hamburger-menu-icon {
   width: 30px;
   height: 30px;
+  cursor: pointer;
   transform: rotate(0deg);
   transition: 0.25s ease-in-out;
-  cursor: pointer;
 
   span {
-    display: block;
-    position: absolute;
-
     width: 50%;
     height: 4px;
+
+    display: block;
+    position: absolute;
 
     background: $panel-bg-color-dark;
     transform: rotate(0deg);

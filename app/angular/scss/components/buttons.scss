@@ -1,12 +1,10 @@
 .gff-btn {
-  margin: 15px 0px 10px 0px;
-  padding: 7px 20px;
-  border-radius: 2px;
+  margin: 15px 0;
+  padding: 0;
   border: 2px solid $orange-primary;
 
   background: $orange-primary;
   color: $font-color-light;
-
   font-size: 20px;
 
   &:focus {
@@ -14,16 +12,74 @@
   }
 
   &.ghost {
-    border-color: $orange-primary;
     background: none;
     color: $font-color-light;
+    border-color: $orange-primary;
 
-    &:hover {
-      background: $orange-primary;
+    &.default {
+
+      &:hover {
+        background: $orange-primary;
+      }
+
+      &:focus {
+        outline: none;
+      }
     }
 
-    &:focus {
-      outline: none;
+    &.fill {
+      background: $orange-opaque-dbl;
+
+      .btn-content {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        .gff-fill {
+          width: 40px;
+          height: 100%;
+
+          position: absolute;
+          display: inherit;
+          align-items: center;
+          justify-content: flex-start;
+
+          background: $orange-primary;
+          transition: all 0.3s ease;
+
+          .gff-icon {
+            padding-left: 12px;
+            font-size: 18px;
+          }
+
+          .fa-caret-right {
+            position: absolute;
+            right: -5px;
+            color: $orange-primary;
+          }
+        }
+
+        .btn-text {
+          position: relative;
+          margin: 0;
+          padding: 8px 30px 8px 67px;
+          font-size: 20px;
+          transition: all 0.3s ease;
+          z-index: 1;
+        }
+      }
+
+      &:hover {
+
+        .gff-fill {
+          width: 100%;
+          transition: all 0.3s ease;
+
+          .fa-caret-right {
+            visibility: hidden;
+          }
+        }
+      }
     }
   }
 

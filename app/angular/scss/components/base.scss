@@ -1,11 +1,21 @@
-h1, h2, h3 {
+/* ----- headers ----- */
+h1, h2, h3, h4, h5 {
   margin: 0;
 }
 
+/* ----- links ----- */
 a {
   cursor: pointer;
+  font-weight: 400;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $orange-primary;
+    transition: color 0.2s ease;
+  }
 }
 
+/* ----- misc ----- */
 span {
 
   &.color-green {
@@ -18,16 +28,5 @@ span {
 
   &.color-orange {
     color: $orange-primary;
-  }
-}
-
-.t-block {
-
-  &.green {
-    background: $green-primary;
-  }
-
-  &.orange {
-    background: $orange-primary;
   }
 }

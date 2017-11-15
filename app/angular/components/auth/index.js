@@ -5,6 +5,9 @@ module.exports = function(app) {
     template: require('./auth-template.html'),
     controller: 'AuthController',
     controllerAs: 'ac',
+    bindings: {
+      clicked: '<',
+    },
   });
 
   require('./forms')(app);
