@@ -1,12 +1,10 @@
 .gff-btn {
   margin: 15px 0px 10px 0px;
   padding: 0;
-  // border-radius: 2px;
   border: 2px solid $orange-primary;
 
   background: $orange-primary;
   color: $font-color-light;
-
   font-size: 18px;
 
   &:focus {
@@ -14,9 +12,9 @@
   }
 
   &.ghost {
-    border-color: $orange-primary;
     background: none;
     color: $font-color-light;
+    border-color: $orange-primary;
 
     &.default {
 
