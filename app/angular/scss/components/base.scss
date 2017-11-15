@@ -2,14 +2,18 @@
 h1, h2, h3, h4, h5 {
   margin: 0;
 }
-/* ----- headers ----- */
 
 /* ----- links ----- */
 a {
   cursor: pointer;
   font-weight: 400;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $orange-primary;
+    transition: color 0.2s ease;
+  }
 }
-/* ----- links ----- */
 
 /* ----- misc ----- */
 span {
@@ -26,4 +30,3 @@ span {
     color: $orange-primary;
   }
 }
-/* ----- misc ----- */
