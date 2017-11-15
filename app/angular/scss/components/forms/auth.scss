@@ -1,22 +1,23 @@
 auth {
+  height: 100%;
+  padding: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  padding: 15px;
 
   .form-container {
-    text-align: center;
     color: $font-color-light;
+    text-align: center;
 
     .input-container {
-      display: table;
       width: 100%;
+      min-width: 235px;
       margin-bottom: 1px;
+      display: table;
 
       .icon-box {
-        display: table-cell;
         width: 50px;
+        display: table-cell;
         background: $orange-opaque;
 
         i {
@@ -26,13 +27,14 @@ auth {
       }
 
       input {
+        width: 100%;
         padding: 15px;
         border: none;
         border-radius: 0;
-        outline: none;
 
         background-color: rgba(0, 0, 0, 0.5);
         color: $font-color-light;
+        outline: none;
 
         &:hover {
           background-color: rgba(0, 0, 0, 0.6);
