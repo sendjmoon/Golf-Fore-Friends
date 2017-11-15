@@ -32,16 +32,16 @@ auth {
         border: none;
         border-radius: 0;
 
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.7);
         color: $font-color-light;
         outline: none;
 
         &:hover {
-          background-color: rgba(0, 0, 0, 0.6);
+          background-color: rgba(0, 0, 0, 0.8);
         }
 
         &:focus {
-          background-color: rgba(0, 0, 0, 0.7);
+          background-color: rgba(0, 0, 0, 0.9);
           color: $orange-primary;
         }
       }
@@ -53,6 +53,10 @@ auth {
         .icon-box {
           border-top-left-radius: 2px;
         }
+
+        input {
+          border-top-right-radius: 2px;
+        }
       }
 
       &.last {
@@ -62,6 +66,10 @@ auth {
 
         .icon-box {
           border-bottom-left-radius: 2px;
+        }
+
+        input {
+          border-bottom-right-radius: 2px;
         }
       }
     }
