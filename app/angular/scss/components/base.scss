@@ -1,11 +1,17 @@
+/* ----- headers ----- */
 h1, h2, h3, h4, h5 {
   margin: 0;
 }
+/* ----- headers ----- */
 
+/* ----- links ----- */
 a {
   cursor: pointer;
+  font-weight: 400;
 }
+/* ----- links ----- */
 
+/* ----- misc ----- */
 span {
 
   &.color-green {
@@ -20,14 +26,4 @@ span {
     color: $orange-primary;
   }
 }
-
-.t-block {
-
-  &.green {
-    background: $green-primary;
-  }
-
-  &.orange {
-    background: $orange-primary;
-  }
-}
+/* ----- misc ----- */

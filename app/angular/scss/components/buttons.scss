@@ -5,7 +5,7 @@
 
   background: $orange-primary;
   color: $font-color-light;
-  font-size: 18px;
+  font-size: 20px;
 
   &:focus {
     outline: none;
@@ -36,19 +36,20 @@
         position: relative;
 
         .gff-fill {
-          width: 25px;
+          width: 40px;
           height: 100%;
 
           position: absolute;
           display: inherit;
           align-items: center;
-          justify-content: center;
+          justify-content: flex-start;
 
           background: $orange-primary;
-          transition: all 0.2s ease;
+          transition: all 0.3s ease;
 
-          .fa-pencil {
-            font-size: 16px;
+          .gff-icon {
+            padding-left: 12px;
+            font-size: 18px;
           }
 
           .fa-caret-right {
@@ -59,10 +60,12 @@
         }
 
         .btn-text {
+          position: relative;
           margin: 0;
-          padding: 3px 15px 3px 37px;
-          transition: all 0.2s ease;
-          visibility: visible;
+          padding: 8px 30px 8px 67px;
+          font-size: 20px;
+          transition: all 0.3s ease;
+          z-index: 1;
         }
       }
 
@@ -70,16 +73,11 @@
 
         .gff-fill {
           width: 100%;
-          transition: all 0.2s ease;
+          transition: all 0.3s ease;
 
           .fa-caret-right {
             visibility: hidden;
           }
-        }
-
-        .btn-text {
-          visibility: hidden;
-          transition: all 0.2s ease;
         }
       }
     }

@@ -1,17 +1,18 @@
-// face
+/* ----- face -----*/
 h1, h2, h3, h4, h5, h6, a, p, input, button {
   font-family: 'Lato', sans-serif;
 }
 
+/* ----- weight ----- */
 h1, h2, h3, h4, h5, h6, a {
   font-weight: 300;
 }
 
-p, a, button, input {
+p, a, input {
   font-weight: 300;
 }
 
-// size
+/* ----- size ----- */
 h1 {
   font-size: 48px;
   line-height: 48px;
@@ -22,7 +23,12 @@ h2 {
   line-height: 42px;
 }
 
-// color
+p, a {
+  font-size: 16px;
+  line-height: 16px;
+}
+
+/* ----- color -----*/
 main {
   color: $font-color-dark;
 }

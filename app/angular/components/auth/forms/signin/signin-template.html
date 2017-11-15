@@ -1,23 +1,27 @@
 <form name="signin" data-ng-submit="ac.signin(ac.user)">
+
   <div class="input-container first">
     <div class="icon-box">
       <i class="fa fa-user" aria-hidden="true"></i>
     </div>
     <input type="text" required placeholder="Email or Username" data-ng-model="ac.user.emailOrUsername"></input>
   </div>
+
   <div class="input-container last">
     <div class="icon-box">
       <i class="fa fa-lock" aria-hidden="true"></i>
     </div>
     <input type="password" required placeholder="password" data-ng-model="ac.user.password"></input>
   </div>
+
   <button class="gff-btn ghost fill" type="submit" name="signup-btn">
     <div class="btn-content">
       <div class="gff-fill">
-        <i class="fa fa-pencil"></i>
+        <i class="gff-icon fa fa-pencil"></i>
         <i class="fa fa-caret-right"></i>
       </div>
       <p class="btn-text">SIGNIN</p>
     </div>
   </button>
+
 </form>

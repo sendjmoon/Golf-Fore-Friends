@@ -27,11 +27,10 @@ nav-bar {
     position: absolute;
     top: 30px;
 
-    color: $font-color-light;
-
     .gff-logo-container {
       width: auto;
       border: none;
+      color: $font-color-light;
     }
 
     .nav-menu {
@@ -41,9 +40,8 @@ nav-bar {
       li {
         display: inline-block;
 
-        h4 {
+        a {
           position: relative;
-          color: $font-color-light;
           text-decoration: none;
 
           &:before {
