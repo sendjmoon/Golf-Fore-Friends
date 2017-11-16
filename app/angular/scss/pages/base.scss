@@ -20,6 +20,7 @@ hr {
 
 .gff-header {
   height: 250px;
+  padding: 0;
   background-image: url('http://localhost:3000/imgs/sunset-ball-hole.jpg');
   background-position: center;
   background-size: cover;
@@ -34,9 +35,17 @@ hr {
   padding: 45px 15px 45px 15px;
 
   display: table;
+  position: relative;
 
   background: $panel-bg-color-light;
   box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.3);
+
+  .page-title {
+    position: absolute;
+    top: -30px;
+    left: 30px;
+    color: $font-color-light;
+  }
 }
 
 .t-block {
