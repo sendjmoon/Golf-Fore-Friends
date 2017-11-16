@@ -6,6 +6,9 @@ auth {
   align-items: center;
 
   .form-container {
+    padding: 30px;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.3);
     color: $font-color-light;
     text-align: center;
 
