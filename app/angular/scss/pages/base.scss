@@ -40,6 +40,33 @@ hr {
   background: $panel-bg-color-light;
   box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.3);
 
+  .page-accent {
+    width: 100%;
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &.top {
+
+      .accent {
+        height: 15px;
+      }
+
+      .green {
+        background: $green-primary;
+      }
+
+      .green-opaque {
+        background: $green-opaque;
+      }
+
+      .green-opaque-light {
+        background: rgba(77, 187, 51, 0.3);
+      }
+    }
+  }
+
   .page-title {
     position: absolute;
     top: -30px;
