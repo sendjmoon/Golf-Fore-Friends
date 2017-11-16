@@ -7,17 +7,26 @@
     padding: 0;
 
     .title {
-      display: inline-block;
-      width: 100%;
+      padding: 5px 20px;
 
-      color: $font-color-dark;
+      display: inline-block;
+      position: absolute;
+      top: -15px;
+      left: 30px;
+
+      color: $font-color-light;
+      background: $panel-bg-color-dark;
     }
   }
 
   .handicap-container {
+    padding: 0 15px;
 
     .handicap-content {
       padding-left: 0;
+      padding-top: 10px;
+      background: #fff;
+      box-shadow: $box-shadow;
     }
 
     .score-box {
@@ -26,7 +35,7 @@
       padding: 15px;
       border-radius: 2px;
 
-      background: $panel-bg-color-dark;
+      color: $font-color-dark;
       text-align: center;
 
       h3 {
@@ -37,6 +46,13 @@
   }
 
   .leaderboard-container {
+    padding: 0 15px;
+
+    .leaderboard-content {
+      padding: 30px;
+      background: #fff;
+      box-shadow: $box-shadow;
+    }
 
     .leaderboard-list {
       padding: 0;
@@ -48,7 +64,8 @@
         width: 100%;
         margin-bottom: 5px;
         border-radius: 2px;
-        background: $panel-bg-color-dark;
+        color: $font-color-dark;
+        border: 1px solid $border-color-light;
 
         p {
           margin: 0;
