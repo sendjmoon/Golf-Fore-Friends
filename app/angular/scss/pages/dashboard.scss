@@ -1,3 +1,8 @@
+dashboard {
+  display: table;
+  width: 100%;
+}
+
 .dashboard-content {
   color: $font-color-light;
 
@@ -15,7 +20,7 @@
       left: 30px;
 
       color: $font-color-light;
-      background: $panel-bg-color-dark;
+      background: $panel-bg-color-dark-primary;
     }
   }
 

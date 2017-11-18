@@ -1,33 +1,58 @@
-<div class="page-container">
-  <div class="page-title">
-    <h4>Dashboard</h4>
-  </div>
+<div class="banner-container">
+  <div class="banner-image">
+    <div class="banner-content">
 
-  <div class="handicap-container col-md-2 col-xs-6">
-    <div class="handicap-content col-xs-12">
-      <div class="title">
-        <h4>Handicap</h4>
+    </div>
+  </div>
+</div>
+
+<div class="page-container">
+
+  <div class="gff-container col-md-6 col-xs-12 pull-left">
+    <div class="gff-content col-xs-12">
+
+      <div class="gff-box stats bg-white col-xs-12">
+        <div class="box-content">
+          <div class="score-box">
+            <p>Handicap</p>
+            <h3><span class="color-green">+</span>{{dc.user.handicap}}</h3>
+          </div>
+        </div>
       </div>
-      <div class="score-box">
-        <h3><span class="color-green">+</span>{{dc.user.handicap}}</h3>
+      <div class="gff-box stats bg-white col-xs-12">
+        <div class="box-content">
+          <div class="score-box">
+            <p>Wins</p>
+            <h3>3</h3>
+          </div>
+        </div>
       </div>
+      <div class="gff-box stats bg-white col-xs-12">
+        <div class="box-content">
+          <div class="score-box">
+            <p>Games Played</p>
+            <h3>12</h3>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <div class="leaderboard-container col-md-5 col-xs-6">
-    <div class="leaderboard-content col-xs-12" ng-init="dc.rankFriends();">
+  <div class="gff-container col-md-6 col-xs-6 pull-right">
+    <div class="gff-content bg-white col-xs-12" ng-init="dc.rankFriends();">
       <div class="title">
-        <h4>Leaderboard</h4>
+        <h4>LEADERBOARD</h4>
       </div>
-      <ul class="leaderboard-list">
-        <li ng-repeat="friend in dc.leaderboardArray track by $index|limitTo:3">
-          <div class="position-box">
+      <ul class="leaderboard-list col-xs-12">
+        <li ng-class-odd="'odd'" ng-class-even="'even'" ng-repeat="friend in dc.leaderboardArray track by $index|limitTo:3">
+          <div class="box small">
             <p>{{$index + 1}}</p>
           </div>
-          <div class="name-box">
+          <div class="box full">
             <p>{{friend.fullName}}</p>
           </div>
-          <div class="handicap-box">
+          <div class="box small">
             <p><span class="color-green">+</span>{{friend.handicap}}</p>
           </div>
         </li>
@@ -35,11 +60,30 @@
     </div>
   </div>
 
-  <div class="recent-game-container col-md-5 col-xs-12">
-    <div class="recent-game-content col-xs-12">
+  <div class="gff-container col-md-6 col-xs-6 pull-right">
+    <div class="gff-content col-xs-12" ng-init="dc.rankFriends();">
       <div class="title">
-        <h4>Most Recent Game</h4>
+        <h4>RECENT GAMES</h4>
       </div>
+      <ul class="leaderboard-list col-xs-12">
+        <li class="bg-dark" ng-repeat="friend in dc.leaderboardArray track by $index|limitTo:3">
+          <div class="box small">
+            <p>{{$index + 1}}</p>
+          </div>
+          <div class="box full">
+            <p>{{friend.fullName}}</p>
+          </div>
+          <div class="box small">
+            <p><span class="color-green">+</span>{{friend.handicap}}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="gff-container col-md-6 col-xs-12 pull-left">
+    <div class="gff-content col-xs-12">
+      <game-chart class="bg-light-opaque"></game-chart>
     </div>
   </div>
 

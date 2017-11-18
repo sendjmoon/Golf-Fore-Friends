@@ -3,7 +3,7 @@
 }
 
 .color-green {
-  color: $green-primary;
+  color: $green-secondary;
 }
 
 .color-white {
@@ -12,4 +12,26 @@
 
 .weight-normal {
   font-weight: 300;
+}
+
+.bg-white {
+  background: #fff;
+  color: #4b4e45;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 1);
+    transition: all 0.2s ease;
+  }
+}
+
+.bg-dark {
+  background: #4b4e45;
+  color: #fff;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #686d5f;
+    transition: all 0.2s ease;
+  }
 }

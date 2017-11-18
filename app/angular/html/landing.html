@@ -1,4 +1,4 @@
-<div class="title-container">
+<div class="title-container" id="title-container">
   <div class="title-background"></div>
   <div class="title-content">
 
@@ -30,7 +30,7 @@
     </nav>
 
     <div class="description" ng-hide="auth">
-      <p>TRACK AND CHAT GOLF</p>
+      <p>GOLF. GOLF. GOLF.</p>
       </div>
       <auth ng-show="auth" data-clicked="clicked"></auth>
     </div>
@@ -41,7 +41,7 @@
   <div class="gff-container">
     <h2>ABOUT</h2>
     <hr class="landing-bar">
-    <p><strong><em>Golf Four Friends</em></strong> is dedicated to helping golfers stay connected with the game and each other. We all love (or hate) looking at scorecards but saving those cards isn't terribly convenient. Well, we're here to mitigate that burden and give players the opportunity to record and review said scores.</p>
+    <p><strong><em>Golf Four Friends</em></strong> is dedicated to helping golfers stay connected with the game and each other. <a href="#title-container" class="gff-link" ng-click="auth=true; clicked='signup'">Signup now</a> to keep track of game history and utilize tools to your advantage to see how you've progressed throughout the season or your career.</p>
   </div>
 </div>
 

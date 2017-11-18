@@ -1,19 +1,19 @@
 nav-bar {
   width: 100%;
-  height: 250px;
+  height: 80px;
   display: table;
+  background: #fff;
 }
 
 .gff-nav {
   width: 100%;
-  padding: 15px 30px;
+  height: 100%;
+  padding: 0 45px;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-  background: rgba(0, 0, 0, 0.3);
 
   .gff-logo-container {
     height: 40px;
@@ -24,7 +24,7 @@ nav-bar {
 
     h4 {
       padding-right: 15px;
-      border-right: 1px solid $orange-primary;
+      border-right: 1px solid #ddd;
     }
   }
 
@@ -90,21 +90,35 @@ nav-bar {
   &.default {
 
     h4 {
-      color: $font-color-light;
+      color: $font-color-dark;
     }
 
     .nav-menu {
-      width: 0;
+      width: 1px;
       padding: 0;
+      margin: 0;
 
-      display: inherit;
+      display: flex;
+      align-items: center;
       position: absolute;
-      right: 78px;
+      right: 107px;
       height: 40px;
+      // border-left: 1px solid #6e7265;
 
       list-style: none;
       overflow: hidden;
       transition: width 0.4s ease;
+
+      .menu-border {
+        width: 1px;
+        height: 20px;
+        border-left: 1px solid #ddd;
+
+        &.last {
+          position: absolute;
+          right: 0;
+        }
+      }
 
       li {
         font-size: 16px;
@@ -112,7 +126,7 @@ nav-bar {
         a {
           padding: 9px 15px;
           display: inherit;
-          color: $font-color-light;
+          color: $font-color-gray;
 
           &:hover {
             background: $orange-primary;
@@ -126,7 +140,7 @@ nav-bar {
       }
 
       &.open {
-        width: 336px;
+        width: 338px;
         transition: width 0.4s ease;
       }
     }
@@ -136,7 +150,6 @@ nav-bar {
 // hamburger icon
 .icon-container {
   padding: 10px 15px 0 17px;
-  // border-left: 1px solid $border-color-semi-dark;
 }
 
 .hamburger-menu-icon {
@@ -153,18 +166,16 @@ nav-bar {
     display: block;
     position: absolute;
 
-    background: $panel-bg-color-light;
+    background: $green-secondary;
     transform: rotate(0deg);
     transition: 0.25s ease-in-out;
 
     &:nth-child(even) {
       left: 50%;
-      border-radius: 0 2px 2px 0;
     }
 
     &:nth-child(odd) {
       left: 0;
-      border-radius: 2px 0 0 2px;
     }
 
     &:nth-child(1), &:nth-child(2) {
