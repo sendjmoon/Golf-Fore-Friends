@@ -11,17 +11,20 @@
 .gff-container {
   padding: 7.5px;
 
-  .title {
-    padding: 15px;
-
-    h4 {
-      padding-left: 15px;
-      border-left: 2px solid $green-secondary;
-    }
-  }
-
   .gff-content {
     padding: 0;
+
+    .title {
+      padding: 15px;
+      margin-bottom: 15px;
+      display: inline-block;
+      background: $green-secondary;
+      color: $font-color-light;
+
+      h4 {
+        display: inline;
+      }
+    }
   }
 
   .gff-content-bg {
