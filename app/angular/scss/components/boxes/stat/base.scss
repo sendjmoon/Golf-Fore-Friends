@@ -1,15 +1,5 @@
 .gff-box {
 
-  .title {
-    color: #fff;
-
-    h4 {
-      display: inline;
-      padding-bottom: 5px;
-      // border-bottom: 1px solid #4dbb33;
-    }
-  }
-
   &.stats {
     padding: 30px;
 
@@ -28,19 +18,5 @@
     &:nth-child(2) {
       margin: 1px 0;
     }
-  }
-}
-
-@media screen and (max-width: 991px) {
-
-  .stat-box {
-
-    // &:nth-child(2) {
-    //   border-right: none;
-    // }
-    //
-    // &:last-child {
-    //   border-top: 1px solid #4b4e45;
-    // }
   }
 }

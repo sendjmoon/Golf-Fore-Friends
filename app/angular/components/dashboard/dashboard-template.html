@@ -11,7 +11,7 @@
   <div class="gff-container col-md-6 col-xs-12 pull-left">
     <div class="gff-content col-xs-12">
 
-      <div class="gff-box stats bg-dark-opaque col-xs-12">
+      <div class="gff-box stats bg-white col-xs-12">
         <div class="box-content">
           <div class="score-box">
             <p>Handicap</p>
@@ -19,7 +19,7 @@
           </div>
         </div>
       </div>
-      <div class="gff-box stats bg-dark-opaque col-xs-12">
+      <div class="gff-box stats bg-white col-xs-12">
         <div class="box-content">
           <div class="score-box">
             <p>Wins</p>
@@ -27,7 +27,7 @@
           </div>
         </div>
       </div>
-      <div class="gff-box stats bg-dark-opaque col-xs-12">
+      <div class="gff-box stats bg-white col-xs-12">
         <div class="box-content">
           <div class="score-box">
             <p>Games Played</p>
@@ -40,12 +40,12 @@
   </div>
 
   <div class="gff-container col-md-6 col-xs-6 pull-right">
-    <div class="gff-content col-xs-12" ng-init="dc.rankFriends();">
-      <ul class="leaderboard-list gff-box bg-dark-opaque col-xs-12">
-        <div class="title">
-          <h4>LEADERBOARD</h4>
-        </div>
-        <li class="bg-green-opaque" ng-repeat="friend in dc.leaderboardArray track by $index|limitTo:3">
+    <div class="gff-content bg-white col-xs-12" ng-init="dc.rankFriends();">
+      <div class="title">
+        <h4>LEADERBOARD</h4>
+      </div>
+      <ul class="leaderboard-list col-xs-12">
+        <li ng-class-odd="'odd'" ng-class-even="'even'" ng-repeat="friend in dc.leaderboardArray track by $index|limitTo:3">
           <div class="box small">
             <p>{{$index + 1}}</p>
           </div>
@@ -61,11 +61,11 @@
   </div>
 
   <div class="gff-container col-md-6 col-xs-6 pull-right">
-    <div class="gff-content col-xs-12">
-      <ul class="leaderboard-list">
-        <div class="title bg-dark">
-          <h4>Recent Games</h4>
-        </div>
+    <div class="gff-content col-xs-12" ng-init="dc.rankFriends();">
+      <div class="title">
+        <h4>RECENT GAMES</h4>
+      </div>
+      <ul class="leaderboard-list col-xs-12">
         <li class="bg-dark" ng-repeat="friend in dc.leaderboardArray track by $index|limitTo:3">
           <div class="box small">
             <p>{{$index + 1}}</p>

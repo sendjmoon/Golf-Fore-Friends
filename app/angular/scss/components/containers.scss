@@ -1,9 +1,23 @@
+.page-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 45px;
+
+  display: table;
+  position: relative;
+}
+
 .gff-container {
-  padding: 15px;
+  padding: 7.5px;
 
   .title {
-    // padding: 15px;
-    padding-bottom: 15px;
+    padding: 15px;
+
+    h4 {
+      padding-left: 15px;
+      border-left: 2px solid $green-secondary;
+    }
   }
 
   .gff-content {

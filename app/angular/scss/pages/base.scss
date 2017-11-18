@@ -7,7 +7,7 @@ html, body, main {
 main {
   display: table;
   z-index: 1;
-  background: #fff;
+  background: #eee;
 }
 
 hr {
@@ -16,16 +16,6 @@ hr {
     width: 100px;
     border-top: 2px solid $orange-primary;
   }
-}
-
-.page-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  margin-bottom: 45px;
-
-  display: table;
-  position: relative;
 }
 
 .t-block {
