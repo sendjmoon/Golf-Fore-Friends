@@ -1,9 +1,4 @@
 .gff-box {
   padding: 15px;
-
-  .box-content {
-    padding: 15px;
-    border-radius: 2px;
-    box-shadow: $box-shadow;
-  }
+  z-index: 2;
 }

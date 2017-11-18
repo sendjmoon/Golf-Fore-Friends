@@ -1,22 +1,33 @@
-.stat-box {
-  padding: 30px;
+.gff-box {
 
-  .box-content {
-    text-align: center;
+  .title {
+    color: #fff;
 
-    h2 {
-      font-size: 34px;
-    }
-
-    p {
-      margin: 0;
-      white-space: nowrap;
+    h4 {
+      display: inline;
+      padding-bottom: 5px;
+      // border-bottom: 1px solid #4dbb33;
     }
   }
 
-  &:nth-child(2) {
-    border-left: 1px solid #4b4e45;
-    border-right: 1px solid #4b4e45;
+  &.stats {
+    padding: 30px;
+
+    .box-content {
+
+      h3 {
+        font-weight: 400;
+      }
+
+      p {
+        margin: 0;
+        white-space: nowrap;
+      }
+    }
+
+    &:nth-child(2) {
+      margin: 1px 0;
+    }
   }
 }
 
@@ -24,12 +35,12 @@
 
   .stat-box {
 
-    &:nth-child(2) {
-      border-right: none;
-    }
-
-    &:last-child {
-      border-top: 1px solid #4b4e45;
-    }
+    // &:nth-child(2) {
+    //   border-right: none;
+    // }
+    //
+    // &:last-child {
+    //   border-top: 1px solid #4b4e45;
+    // }
   }
 }
