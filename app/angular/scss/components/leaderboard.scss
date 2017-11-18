@@ -1,0 +1,29 @@
+.leaderboard-list {
+  padding: 15px 30px;
+  list-style: none;
+
+  li {
+    width: 100%;
+    margin-bottom: 5px;
+    display: flex;
+
+    .box {
+      padding: 10px;
+
+      p {
+        margin-bottom: 0;
+      }
+
+      &.small {
+        width: 70px;
+        text-align: center;
+      }
+
+      &.full {
+        width: 100%;
+        border-left: 1px solid #fff;
+        border-right: 1px solid #fff;
+      }
+    }
+  }
+}

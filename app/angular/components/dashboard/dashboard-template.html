@@ -33,14 +33,14 @@
         <h4>Leaderboard</h4>
       </div>
       <ul class="leaderboard-list">
-        <li ng-repeat="friend in dc.leaderboardArray track by $index|limitTo:3">
-          <div class="position-box">
+        <li class="bg-dark" ng-repeat="friend in dc.leaderboardArray track by $index|limitTo:3">
+          <div class="box small">
             <p>{{$index + 1}}</p>
           </div>
-          <div class="name-box">
+          <div class="box full">
             <p>{{friend.fullName}}</p>
           </div>
-          <div class="handicap-box">
+          <div class="box small">
             <p><span class="color-green">+</span>{{friend.handicap}}</p>
           </div>
         </li>
