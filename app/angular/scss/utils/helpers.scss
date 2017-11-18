@@ -13,3 +13,8 @@
 .weight-normal {
   font-weight: 300;
 }
+
+.bg-dark {
+  background: $panel-bg-color-dark-primary !important;
+  color: $font-color-light;
+}
