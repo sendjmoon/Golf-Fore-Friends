@@ -62,8 +62,6 @@ module.exports = function(app) {
         datasets: [
           {
             label: 'Strokes',
-            // backgroundColor: 'rgba(75, 78, 84, 1)',
-            // borderColor: 'rgba(75, 78, 84, 1)',
             borderWidth: 3,
             data: strokeData,
           },
@@ -75,7 +73,7 @@ module.exports = function(app) {
         data: chartData,
         options: {
           defaultFontColor: '#fff',
-          responsive: true,
+          responsive: false,
           layout: {
             padding: {
               top: 30,
@@ -90,7 +88,7 @@ module.exports = function(app) {
           scales: {
             xAxes: [{
               gridLines: {
-                color: 'rgba(75, 78, 84, 0.1)',
+                color: '#f1f1f1',
               },
               ticks: {
                 fontColor: '#4b4e54',
@@ -98,7 +96,7 @@ module.exports = function(app) {
             }],
             yAxes: [{
               gridLines: {
-                color: 'rgba(75, 78, 84, 0.1)',
+                color: '#f1f1f1',
               },
               ticks: {
                 fontColor: '#4b4e54',
