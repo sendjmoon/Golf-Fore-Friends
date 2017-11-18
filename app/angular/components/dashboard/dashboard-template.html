@@ -3,18 +3,36 @@
     <h4>Dashboard</h4>
   </div>
 
-  <div class="handicap-container col-md-2 col-xs-6">
-    <div class="handicap-content col-xs-12">
-      <div class="title">
-        <h4>Handicap</h4>
+  <div class="gff-container col-xs-12">
+    <div class="stat-box col-md-4 col-xs-6">
+      <div class="box-content col-xs-12">
+        <div class="score-box">
+          <h2><span class="color-green">+</span>{{dc.user.handicap}}</h2>
+          <h4 class="title">Handicap</h4>
+        </div>
       </div>
-      <div class="score-box">
-        <h3><span class="color-green">+</span>{{dc.user.handicap}}</h3>
+    </div>
+
+    <div class="stat-box col-md-4 col-xs-6">
+      <div class="box-content col-xs-12">
+        <div class="box-title">
+          <h2>3</h2>
+          <h4 class="title">Wins</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-box col-md-4 col-xs-12">
+      <div class="box-content col-xs-12">
+        <h2>12</h2>
+        <h4 class="title">Games Played</h4>
       </div>
     </div>
   </div>
 
-  <div class="leaderboard-container col-md-5 col-xs-6">
+
+
+  <!-- <div class="leaderboard-container col-md-5 col-xs-6">
     <div class="leaderboard-content col-xs-12" ng-init="dc.rankFriends();">
       <div class="title">
         <h4>Leaderboard</h4>
@@ -33,14 +51,6 @@
         </li>
       </ul>
     </div>
-  </div>
-
-  <div class="recent-game-container col-md-5 col-xs-12">
-    <div class="recent-game-content col-xs-12">
-      <div class="title">
-        <h4>Most Recent Game</h4>
-      </div>
-    </div>
-  </div>
+  </div> -->
 
 </div>
