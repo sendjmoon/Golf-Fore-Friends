@@ -5,41 +5,28 @@ module.exports = function(chartData, userHandicap) {
     type: 'line',
     data: chartData,
     options: {
-      defaultFontColor: '#fff',
-      responsive: true,
-      layout: {
-        padding: {
-          top: 30,
-          right: 15,
-          bottom: 15,
-          left: 15,
-        },
-      },
+      defaultFontColor: '#4b4e54',
+      responsive: false,
       legend: {
         display: false,
       },
       scales: {
         xAxes: [{
           gridLines: {
-            color: 'rgba(75, 78, 84, 0.1)',
-          },
-          ticks: {
-            fontColor: '#4b4e54',
+            color: '#f1f1f1',
           },
         }],
         yAxes: [{
           gridLines: {
-            color: 'rgba(75, 78, 84, 0.1)',
+            color: '#f1f1f1',
           },
-          ticks: {
-            fontColor: '#4b4e54',
-          }
         }],
       },
       elements: {
         line: {
           tension: 0.1,
           fill: false,
+          borderWidth: 2,
           borderColor: 'rgba(75, 78, 84, 0.9)',
           pointBackgroundColor: 'rgba(254, 172, 0, 1)',
           pointBorderColor: 'rgba(254, 172, 0, 1)',
@@ -56,7 +43,7 @@ module.exports = function(chartData, userHandicap) {
         yPadding: 10,
         cornerRadius: 2,
         caretSize: 8,
-        backgroundColor: 'rgba(75, 78, 84, 0.8)',
+        backgroundColor: 'rgba(75, 78, 84, 0.6)',
         titleFontSize: 14,
         titleSpacing: 4,
         titleMarginBottom: 10,

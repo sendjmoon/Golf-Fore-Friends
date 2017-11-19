@@ -62,7 +62,6 @@ module.exports = function(app) {
         datasets: [
           {
             label: 'Strokes',
-            borderWidth: 3,
             data: strokeData,
           },
         ],
@@ -71,6 +70,5 @@ module.exports = function(app) {
       Chart.pluginService.register(chartjsPluginAnnotation);
       let gameChart = new Chart(ctx, chartConfig(chartData, userHandicap));
     };
-
   }]);
 };
