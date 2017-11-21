@@ -1,7 +1,20 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('ChartController', ['$rootScope', 'GameService', function($rs, GameService) {
+  app.controller('ChartController', ['$rootScope', 'GameService', 'ChartService', function($rs, GameService, ChartService) {
+
+    this.gameData;
+
+    this.getGameData = function() {
+      ChartService.getGameData()
+        .then((gameData) => {
+          this.gameData = gameData;
+          console.log(gameData);
+        })
+        .catch(() => {
+          console.log('Chart Controller Error: Error getting game data.');
+        });
+    };
 
     this.games = [];
     let nameData, strokeData, dateData = [];
