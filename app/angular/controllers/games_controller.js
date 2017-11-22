@@ -156,7 +156,7 @@ module.exports = function(app) {
         };
         $http.post('/users', playerData)
           .then((user) => {
-            UserService.calcHandicap(user.data)
+            UserService.calcHandicap(user.data, player.strokes)
               .then((handicapData) => {
                 UserService.updateUser(playerData, handicapData)
                   .then((user) => {
