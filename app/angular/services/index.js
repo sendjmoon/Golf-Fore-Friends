@@ -5,4 +5,5 @@ module.exports = function(app) {
   require('./user_service')(app);
   require('./game_service')(app);
   require('./search_service')(app);
+  require('./chart_service')(app);
 };
