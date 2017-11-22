@@ -1,0 +1,22 @@
+<nav-bar data-page-title="'Settings'"></nav-bar>
+
+<div class="banner-container">
+  <div class="banner-image">
+    <div class="banner-content"></div>
+  </div>
+</div>
+
+<div class="page-container">
+  <div class="gff-box bg-white">
+    <h3>Account Information</h3>
+    <h4>Avatar</h4>
+    <input class="gff-upload-btn" type="file" id="avatar-input" name="avatar-input" accept=".jpg, .jpeg, .bmp, .png">
+    <h4>Name</h4>
+    <input type="text" name="fullName" value="{{sc.user.fullName}}"></input>
+    <h4>Email</h4>
+    <input type="text" name="email" value="{{sc.user.email}}"></input>
+    <h4>Password</h4>
+    <p>****</p>
+    <button class="gff-btn" type="button" name="change-password-btn">Change Password</button>
+  </div>
+</div>
