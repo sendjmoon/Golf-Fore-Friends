@@ -6,7 +6,7 @@ module.exports = function(app) {
     controller: 'ChartController',
     controllerAs: 'cc',
     bindings: {
-      games: '<',
-    }
+      chartType: '<',
+    },
   });
 };
