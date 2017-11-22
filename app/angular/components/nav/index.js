@@ -5,5 +5,8 @@ module.exports = function(app) {
     template: require('./nav-template.html'),
     controller: 'NavController',
     controllerAs: 'nc',
+    bindings: {
+      pageTitle: '<',
+    },
   });
 };

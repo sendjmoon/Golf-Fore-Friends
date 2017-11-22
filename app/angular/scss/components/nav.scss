@@ -22,9 +22,14 @@ nav-bar {
     display: flex;
     align-items: center;
 
-    h4 {
+    .main-title {
       padding-right: 15px;
       border-right: 1px solid #ddd;
+    }
+
+    .page-title {
+      padding-left: 15px;
+      color: $green-secondary;
     }
   }
 
