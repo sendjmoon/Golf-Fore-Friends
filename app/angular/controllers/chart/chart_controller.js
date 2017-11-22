@@ -4,20 +4,19 @@ module.exports = function(app) {
   app.controller('ChartController', ['$rootScope', 'GameService', 'ChartService', function($rs, GameService, ChartService) {
 
     this.gameData;
-
-    this.getGameData = function() {
-      ChartService.getGameData()
-        .then((gameData) => {
-          this.gameData = gameData;
-          console.log(gameData);
-        })
-        .catch(() => {
-          console.log('Chart Controller Error: Error getting game data.');
-        });
-    };
-
     this.games = [];
     let nameData, strokeData, dateData = [];
+
+    // this.getGameData = function() {
+    //   ChartService.getGameData()
+    //     .then((gameData) => {
+    //       this.gameData = gameData;
+    //       console.log(gameData);
+    //     })
+    //     .catch(() => {
+    //       console.log('Chart Controller Error: Error getting game data.');
+    //     });
+    // };
 
     this.getAllFromLocalStorage = function() {
       GameService.getAllFromLocalStorage()
@@ -67,7 +66,7 @@ module.exports = function(app) {
       let Chart = require('chart.js');
       let ctx = document.getElementById('gameChart').getContext('2d');
       let chartjsPluginAnnotation = require('chartjs-plugin-annotation');
-      let chartConfig = require('./chart_config');
+      let lineChartConfig = require('./line_chart_config');
 
       let userHandicap = JSON.parse(window.sessionStorage.getItem('currentUser')).handicap;
       let chartData = {
@@ -81,7 +80,7 @@ module.exports = function(app) {
       };
 
       Chart.pluginService.register(chartjsPluginAnnotation);
-      let gameChart = new Chart(ctx, chartConfig(chartData, userHandicap));
+      let gameChart = new Chart(ctx, lineChartConfig(chartData, userHandicap));
     };
   }]);
 };
