@@ -20,19 +20,23 @@ module.exports = function(app) {
       });
     };
 
-    this.calcHandicap = function(user) {
+    this.calcHandicap = function(user, newHandicap) {
       return new Promise((resolve, reject) => {
-        if (user.gameIds === undefined) return reject();
-        let gameIds = user.gameIds;
+        let gameIdsArray = user.gameIds;
         let handicap = 0;
-        gameIds.forEach((game) => {
-          handicap += game.strokes;
-        });
-        handicap = handicap / gameIds.length;
-        let handicapData = {
-          handicapActual: Math.round(handicap * 1000) / 1000,
-          handicap: Math.round(handicap),
-        };
+        let handicapData = {};
+
+        if (gameIdsArray.length < 1) resolve();
+        if (gameIdsArray.length === 1) {
+          handicap = gameIdsArray[0].handicap;
+          handicapData.handicapActual = handicap;
+          handicapData.handicap = handicap,
+          resolve(handicapData);
+        }
+
+        handicap = ((user.handicap * gameIdsArray.length - 1 + newHandicap) / gameIdsArray.length);
+        handicapData.handicapActual = Math.round(handicap * 1000) / 1000;
+        handicapData.handicap = Math.round(handicap);
         resolve(handicapData);
       });
     };
