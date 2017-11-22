@@ -7,8 +7,12 @@ module.exports = function(chartData) {
     options: {
       responsive: false,
       cutoutPercentage: 50,
+      rotation: 0.5 * Math.PI,
       animation: {
         animateScale: true,
+      },
+      legend: {
+        position: 'bottom',
       },
     },
   };

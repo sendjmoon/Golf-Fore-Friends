@@ -82,7 +82,11 @@ module.exports = function(app) {
       let winChartData = {
         labels: ['Wins', 'Losses'],
         datasets: [{
-          data: [20, 30],
+          data: [2, 3],
+          backgroundColor: [
+            '#89c97a',
+            '#ddd',
+          ],
         }],
       };
 
