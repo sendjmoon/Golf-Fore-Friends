@@ -26,7 +26,6 @@ module.exports = function(app) {
           this.friendsArray.forEach((friend) => {
             this.usersArray.splice(this.usersArray.indexOf(friend), 1);
           });
-          console.log(this.friendsArray);
           this.searchListener(this.usersArray, 'user-email-input');
         })
         .catch((err) => {
