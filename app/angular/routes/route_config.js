@@ -16,6 +16,11 @@ module.exports = function($routeProvider, $locationProvider) {
       controller: 'GamesController',
       controllerAs: 'gc',
     })
+    .when('/settings', {
+      template: require('../html/settings.html'),
+      controller: 'SettingsController',
+      controllerAs: 'sc',
+    })
     .when('/', {
       template: require('../html/landing.html'),
     })
