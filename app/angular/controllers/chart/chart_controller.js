@@ -64,23 +64,31 @@ module.exports = function(app) {
 
     this.loadChart = function() {
       let Chart = require('chart.js');
-      let ctx = document.getElementById('gameChart').getContext('2d');
+      let gameCtx = document.getElementById('gameChart').getContext('2d');
+      let winCtx = document.getElementById('winChart').getContext('2d');
       let chartjsPluginAnnotation = require('chartjs-plugin-annotation');
-      let lineChartConfig = require('./line_chart_config');
-
+      let gameChartConfig = require('./game_chart_config');
+      let winChartConfig = require('./win_chart_config');
       let userHandicap = JSON.parse(window.sessionStorage.getItem('currentUser')).handicap;
-      let chartData = {
+
+      let gameChartData = {
         labels: dateData,
-        datasets: [
-          {
-            label: 'Strokes',
-            data: strokeData,
-          },
-        ],
+        datasets: [{
+          label: 'Strokes',
+          data: strokeData,
+          }],
+      };
+
+      let winChartData = {
+        labels: ['Wins', 'Losses'],
+        datasets: [{
+          data: [20, 30],
+        }],
       };
 
       Chart.pluginService.register(chartjsPluginAnnotation);
-      let gameChart = new Chart(ctx, lineChartConfig(chartData, userHandicap));
+      let gameChart = new Chart(gameCtx, gameChartConfig(gameChartData, userHandicap));
+      let winChart = new Chart(winCtx, winChartConfig(winChartData));
     };
   }]);
 };
