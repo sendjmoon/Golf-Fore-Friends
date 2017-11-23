@@ -25,24 +25,20 @@ module.exports = function(app) {
         let gameIdsArray = user.gameIds;
         let handicap = 0;
         let handicapData = {};
-        console.log('calc handicap function');
-        console.log(user);
-        if (gameIdsArray.length < 1) resolve();
+
+        if (gameIdsArray.length < 1) return resolve();
         if (gameIdsArray.length === 1) {
-          console.log('length is 1');
           handicap = gameIdsArray[0].strokes;
-          console.log(handicap);
           handicapData.handicapActual = handicap;
           handicapData.handicap = handicap,
           resolve(handicapData);
+          return;
         }
-        if (gameIdsArray.length > 1) {
-          handicap = ((user.handicap * gameIdsArray.length - 1 + newHandicap) / gameIdsArray.length);
-          handicapData.handicapActual = Math.round(handicap * 1000) / 1000;
-          handicapData.handicap = Math.round(handicap);
-          console.log(handicapData);
-          resolve(handicapData);
-        }
+
+        handicap = ((user.handicap * (gameIdsArray.length - 1) + newHandicap) / gameIdsArray.length);
+        handicapData.handicapActual = Math.round(handicap * 1000) / 1000;
+        handicapData.handicap = Math.round(handicap);
+        resolve(handicapData);
       });
     };
 
