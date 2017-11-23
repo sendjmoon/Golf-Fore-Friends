@@ -1,75 +1,26 @@
 <div class="games-content col-xs-12" ng-init="gc.getAllByPublicId(gc.publicIds)" ng-hide="newGame">
 
   <div class="gff-box col-md-7 col-xs-12">
-    <div class="box-content game main col-xs-12">
-
-      <div class="info-container">
-        <div class="info-box first">
-          <h4>Golfers</h4>
-          <h3><i class="fa fa-user"></i> 3</h3>
-        </div>
-        <div class="info-box">
-          <h4>Total</h4>
-          <h3>+22</h3>
-        </div>
-        <div class="info-box last">
-          <h4>Overall</h4>
-          <h3>94</h3>
-        </div>
-      </div>
-
-      <div class="title-container">
-        <div class="course-box">
-          <h3>Newcastle - China Creek</h3>
-          <p><i class="fa fa-map-marker"></i> Newcastle, WA</p>
-        </div>
-        <div class="date-box">
-          <h4>OCT</h4>
-          <h2>17</h2>
-          <h5>2017</h5>
-        </div>
-      </div>
+    <div class="box-content game list col-xs-12">
+      <ul>
+        <li ng-repeat="game in gc.games">{{game}}</li>
+      </ul>
     </div>
   </div><!-- /gff-box -->
 
-      <!-- <div class="search-container" ng-init="gc.searchClickHandler(); gc.searchListener('game-name-input')">
-        <button class="gff-btn search" id="search-btn"><i class="fa fa-search"></i></button>
-        <div class="search-content" id="search-content">
-          <input id="game-name-input" type="text" placeholder="search games"></input>
-          <ul>
-            <li ng-repeat="game in gc.searchResults">{{game.name}}</li>
-          </ul>
-        </div>
-      </div>
-    </div> -->
+  <div class="search-container" ng-init="gc.searchClickHandler(); gc.searchListener('game-name-input')">
+    <button class="gff-btn search" id="search-btn"><i class="fa fa-search"></i></button>
+    <div class="search-content" id="search-content">
+      <input id="game-name-input" type="text" placeholder="search games"></input>
+      <ul>
+        <li ng-repeat="game in gc.searchResults">{{game.name}}</li>
+      </ul>
+    </div>
+  </div>
 
   <div class="gff-box pull-right col-md-5 col-xs-12">
     <div class="box-content col-xs-12">
       <button class="gff-btn" ng-hide="newGame" ng-click="newGame=true; gc.getFriendsList();">Create Game</button>
-      <game-chart class="col-xs-12"></game-chart>
-    </div>
-  </div><!-- /gff-box -->
-
-  <div class="gff-box col-md-7 col-xs-12">
-    <div class="box-content game list col-xs-12">
-      <div class="game-box list-item alt col-md-4 col-xs-6">
-        <h3>MORE GAMES ></h3>
-      </div>
-      <a class="game-box list-item col-md-4 col-xs-6" data-name="{{game.name}}" href="{{gc.baseUrl}}/#!/games/public/{{game.publicId}}" ng-repeat="game in gc.games">
-        <div class="bg-overlay"></div>
-        <div class="info-container">
-          <p><span class="color-green">+</span>{{game.yourStrokes}}</p> <span class="color-orange">|</span> <p>{{game.yourScore}}</p> <span class="color-orange">|</span> <p><i class="fa fa-user"></i>{{game.totalGolfers}}</p>
-        </div>
-        <div class="title-container">
-          <div class="loc-box">
-            <p class="loc">{{game.location}}</p>
-          </div>
-          <h3>{{game.name}}</h3>
-          <div class="date-box">
-            <p>{{game.playedOn}}</p>
-          </div>
-        </div>
-      </a>
     </div>
   </div><!-- /gff-box -->
 

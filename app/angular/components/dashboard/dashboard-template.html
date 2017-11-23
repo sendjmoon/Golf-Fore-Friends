@@ -7,7 +7,7 @@
         <div class="box-content">
           <div class="score-box">
             <p>Handicap</p>
-            <h3><span class="color-green">+</span>{{dc.user.handicap}}</h3>
+            <h3><span class="color-green">+</span>{{dc.user.stats.handicap}}</h3>
           </div>
         </div>
       </div>
@@ -15,15 +15,15 @@
         <div class="box-content gff-row">
           <div class="score-box">
             <p>Wins</p>
-            <h3>{{dc.user.wins}}</h3>
+            <h3>{{dc.user.stats.wins}}</h3>
           </div>
           <div class="score-box">
             <p>Losses</p>
-            <h3>{{dc.user.losses}}</h3>
+            <h3>{{dc.user.stats.losses}}</h3>
           </div>
           <div class="score-box">
             <p>Ties</p>
-            <h3>{{dc.user.ties}}</h3>
+            <h3>{{dc.user.stats.ties}}</h3>
           </div>
         </div>
         <div class="box-content">
@@ -58,7 +58,7 @@
             <p>{{friend.fullName}}</p>
           </div>
           <div class="box small">
-            <p><span class="color-green">+</span>{{friend.handicap}}</p>
+            <p><span class="color-green">+</span>{{friend.stats.handicap}}</p>
           </div>
         </li>
       </ul>
@@ -79,7 +79,7 @@
             <p>{{friend.fullName}}</p>
           </div>
           <div class="box small">
-            <p><span class="color-green">+</span>{{friend.handicap}}</p>
+            <p><span class="color-green">+</span>{{friend.stats.handicap}}</p>
           </div>
         </li>
       </ul>
