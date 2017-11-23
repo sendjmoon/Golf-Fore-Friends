@@ -66,6 +66,36 @@ module.exports = function(app) {
       });
     };
 
+    this.findWinner = function(array) {
+      return new Promise((resolve, reject) => {
+        if (array.length === 1) {
+          resolve(array);
+          return;
+        }
+
+        array.sort(function(a, b) {
+          return a.strokes - b.strokes;
+        });
+
+        let foundTie = false;
+
+        for (let i = 1; i < array.length; i++) {
+          if (array[0].strokes === array[i].strokes) {
+            array[0].tie = true;
+            array[i].tie = true;
+            foundTie = true;
+          } else if (foundTie) {
+            array[i].loss = true;
+          } else {
+            array[0].win = true;
+            array[i].loss = true;
+          }
+        }
+
+        resolve(array);
+      });
+    };
+
     this.sortByLowest = function(array) {
       return new Promise((resolve, reject) => {
         let dummyUser = {

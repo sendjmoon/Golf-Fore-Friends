@@ -102,25 +102,29 @@ module.exports = function(app) {
     };
 
     this.createGame = function(gameData) {
-      $http.post('/games/create', gameData)
-        .then((game) => {
-          let playersArray = game.data.players;
-          playersArray.forEach((player) => {
-            this.updatePlayer(player)
-              .then((playerData) => {
-                if (playerData.data.email === $rs.user.email) {
-                  $rs.user = playerData.data;
-                  window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
-                }
-                $route.reload();
-              })
-              .catch((err) => {
-                alert('error creating game');
+      GameService.findWinner(gameData.players)
+        .then((newPlayersData) => {
+          gameData.players = newPlayersData;
+          $http.post('/games/create', gameData)
+            .then((game) => {
+              let playersArray = game.data.players;
+              playersArray.forEach((player) => {
+                this.updatePlayer(player)
+                  .then((playerData) => {
+                    if (playerData.data.email === $rs.user.email) {
+                      $rs.user = playerData.data;
+                      window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
+                    }
+                    $route.reload();
+                  })
+                  .catch((err) => {
+                    alert('error creating game');
+                  });
               });
-          });
-        })
-        .catch((err) => {
-          alert('error creating game');
+            })
+            .catch((err) => {
+              alert('error creating game');
+            });
         });
     };
 
