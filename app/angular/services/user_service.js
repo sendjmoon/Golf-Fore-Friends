@@ -11,7 +11,7 @@ module.exports = function(app) {
         };
         $http.post('/users/update', userData)
           .then((user) => {
-            resolve(user);
+            resolve(user.data);
           })
           .catch((err) => {
             alert('error updating user');
@@ -20,26 +20,28 @@ module.exports = function(app) {
       });
     };
 
-    this.calcHandicap = function(user, newHandicap) {
+    this.calcHandicap = function(totalGames, currentHandicap, strokes) {
       return new Promise((resolve, reject) => {
-        let gameIdsArray = user.gameIds;
-        let handicap = 0;
         let handicapData = {};
 
-        if (gameIdsArray.length < 1) return resolve();
-        if (gameIdsArray.length === 1) {
-          handicap = gameIdsArray[0].strokes;
-          handicapData.handicapActual = handicap;
-          handicapData.handicap = handicap,
+        if (totalGames < 1) return resolve();
+        if (totalGames === 1) {
+          handicapData.handicapActual = strokes;
+          handicapData.handicap = strokes,
           resolve(handicapData);
           return;
         }
 
-        handicap = ((user.handicap * (gameIdsArray.length - 1) + newHandicap) / gameIdsArray.length);
-        handicapData.handicapActual = Math.round(handicap * 1000) / 1000;
-        handicapData.handicap = Math.round(handicap);
+        let newHandicap = ((currentHandicap * (totalGames - 1) + strokes) / totalGames);
+        handicapData.handicapActual = Math.round(newHandicap * 1000) / 1000;
+        handicapData.handicap = Math.round(newHandicap);
         resolve(handicapData);
       });
+    };
+
+    this.calcWinRatio = function(user) {
+      console.log(user);
+
     };
 
   }]);
