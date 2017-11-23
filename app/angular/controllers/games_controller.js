@@ -111,8 +111,8 @@ module.exports = function(app) {
               playersArray.forEach((player) => {
                 this.updatePlayer(player)
                   .then((playerData) => {
-                    if (playerData.data.email === $rs.user.email) {
-                      $rs.user = playerData.data;
+                    if (playerData.email === $rs.user.email) {
+                      $rs.user = playerData;
                       window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
                     }
                     $route.reload();
@@ -160,13 +160,24 @@ module.exports = function(app) {
         };
         $http.post('/users', playerData)
           .then((user) => {
-            UserService.calcHandicap(user.data, player.strokes)
+            user = user.data;
+            UserService.calcHandicap(user, player.strokes)
               .then((handicapData) => {
-                UserService.updateUser(playerData, handicapData)
+                if (player.win) user.wins++;
+                if (player.loss) user.losses++;
+                if (player.tie) user.ties++;
+                let newData = {
+                  handicap: handicapData.handicap,
+                  handicapActual: handicapData.handicapActual,
+                  wins: user.wins,
+                  losses: user.losses,
+                  ties: user.ties,
+                }
+                UserService.updateUser(playerData, newData)
                   .then((user) => {
                     resolve(user);
-                  })
-              })
+                  });
+              });
           })
           .catch(reject);
       });

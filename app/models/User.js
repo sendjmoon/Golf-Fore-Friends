@@ -44,6 +44,21 @@ const UserSchema = new Schema({
     required: false,
     unique: false,
   },
+  wins: {
+    type: Number,
+    default: 0,
+    required: false,
+  },
+  losses: {
+    type: Number,
+    default: 0,
+    required: false,
+  },
+  ties: {
+    type: Number,
+    default: 0,
+    required: false,
+  },
   gameIds: [{
     gameId: {
       type: mongoose.Schema.Types.ObjectId,
