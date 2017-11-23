@@ -51,6 +51,24 @@ const GameSchema = new Schema({
       required: true,
       unique: false,
     },
+    win: {
+      type: Boolean,
+      required: false,
+      unique: false,
+      default: false,
+    },
+    loss: {
+      type: Boolean,
+      required: false,
+      unique: false,
+      default: false,
+    },
+    tie: {
+      type: Boolean,
+      required: false,
+      unique: false,
+      default: false,
+    }
   }],
 },
 {

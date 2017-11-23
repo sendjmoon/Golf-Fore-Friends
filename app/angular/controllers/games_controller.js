@@ -19,7 +19,7 @@ module.exports = function(app) {
     this.friendsList = [];
     this.searchResults = [];
 
-    $rs.user.gameIds.forEach((game) => {
+    this.user.gameIds.forEach((game) => {
       this.publicIds.push(game.publicId);
     });
 
@@ -41,19 +41,9 @@ module.exports = function(app) {
 
     this.getAllByPublicId = function(publicIds) {
       GameService.getAllByPublicId(publicIds)
-        .then((games) => {
+        .then((allGamesData) => {
           $rs.$apply(() => {
-            this.games = games;
-            this.games.forEach((game) => {
-              game.totalGolfers = game.players.length;
-              game.players.forEach((player) => {
-                if ($rs.user.email === player.email) {
-                  game.yourStrokes = player.strokes;
-                  game.yourScore = game.yourStrokes + 72;
-                }
-              });
-              window.localStorage.setItem('games', JSON.stringify(this.games));
-            });
+            this.games = allGamesData;
           });
         })
         .catch(() => {
@@ -102,25 +92,29 @@ module.exports = function(app) {
     };
 
     this.createGame = function(gameData) {
-      $http.post('/games/create', gameData)
-        .then((game) => {
-          let playersArray = game.data.players;
-          playersArray.forEach((player) => {
-            this.updatePlayer(player)
-              .then((playerData) => {
-                if (playerData.data.email === $rs.user.email) {
-                  $rs.user = playerData.data;
-                  window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
-                }
-                $route.reload();
-              })
-              .catch((err) => {
-                alert('error creating game');
+      GameService.findWinner(gameData.players)
+        .then((newPlayersData) => {
+          gameData.players = newPlayersData;
+          $http.post('/games/create', gameData)
+            .then((game) => {
+              let playersArray = game.data.players;
+              playersArray.forEach((player) => {
+                this.updatePlayer(player)
+                  .then((playerData) => {
+                    if (playerData.email === this.user.email) {
+                      $rs.$apply(() => {
+                        $rs.user = playerData;
+                        this.user = playerData;
+                        window.sessionStorage.setItem('currentUser', JSON.stringify(this.user));
+                      });
+                    }
+                    $route.reload();
+                  });
               });
-          });
-        })
-        .catch((err) => {
-          alert('error creating game');
+            })
+            .catch((err) => {
+              alert('error creating game');
+            });
         });
     };
 
@@ -154,15 +148,31 @@ module.exports = function(app) {
         let playerData = {
           emailOrUsername: player.email,
         };
+
         $http.post('/users', playerData)
           .then((user) => {
-            UserService.calcHandicap(user.data)
+            user = user.data;
+            UserService.calcHandicap(user.gameIds.length, user.stats.handicapActual, player.strokes)
               .then((handicapData) => {
-                UserService.updateUser(playerData, handicapData)
+                if (player.win) user.stats.wins++;
+                if (player.loss) user.stats.losses++;
+                if (player.tie) user.stats.ties++;
+
+                let newData = {
+                  stats: {
+                    handicap: handicapData.handicap,
+                    handicapActual: handicapData.handicapActual,
+                    wins: user.stats.wins,
+                    losses: user.stats.losses,
+                    ties: user.stats.ties,
+                  },
+                };
+
+                UserService.updateUser(playerData, newData)
                   .then((user) => {
                     resolve(user);
-                  })
-              })
+                  });
+              });
           })
           .catch(reject);
       });

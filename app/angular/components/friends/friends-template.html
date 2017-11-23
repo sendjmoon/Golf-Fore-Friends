@@ -12,7 +12,7 @@
   <ul ng-init="fc.getAllFriends()">
     <li ng-repeat="friend in fc.friendsArray">
       <h3>{{friend.fullName}}</h3>
-      <p><strong>Handicap:</strong> {{friend.handicap}}</p>
+      <p><strong>Handicap:</strong> {{friend.stats.handicap}}</p>
     </li>
   </ul>
 </div>
