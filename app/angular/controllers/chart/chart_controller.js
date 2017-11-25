@@ -5,36 +5,16 @@ module.exports = function(app) {
 
     this.gameData;
     this.games = [];
-    let nameData, strokeData, dateData = [];
+    let strokeData = [];
+    let dateData = [];
 
-    // this.getGameData = function() {
-    //   ChartService.getGameData()
-    //     .then((gameData) => {
-    //       this.gameData = gameData;
-    //       console.log(gameData);
-    //     })
-    //     .catch(() => {
-    //       console.log('Chart Controller Error: Error getting game data.');
-    //     });
-    // };
-
-    this.getAllFromLocalStorage = function() {
-      GameService.getAllFromLocalStorage()
-        .then((gameData) => {
-          this.sortAllData(gameData)
-            .then(this.loadChart());
-        })
-        .catch(() => {
-          console.log('error getting data');
-        });
-    };
-
-    this.sortAllData = function(gameArray) {
+    this.sortAllData = function() {
+      let gameArray = JSON.parse(localStorage.getItem('games'));
       return new Promise((resolve, reject) => {
         this.sortStrokeData(gameArray)
           .then(this.sortDateData(gameArray))
-              .then(resolve)
-                .catch(reject);
+            .then(resolve)
+              .catch(reject);
       });
     };
 
@@ -43,10 +23,10 @@ module.exports = function(app) {
         if (!gameArray.length) reject;
         let results = [];
         gameArray.forEach((game, index) => {
-          results[gameArray.length - index - 1] = game.yourStrokes;
+          results[gameArray.length - index - 1] = game.strokes;
         });
         strokeData = results;
-        resolve(results);
+        resolve();
       });
     };
 
@@ -58,7 +38,7 @@ module.exports = function(app) {
           results[gameArray.length - index - 1] = game.playedOn.substr(0, game.playedOn.length - 5);
         });
         dateData = results;
-        resolve(results);
+        resolve();
       });
     };
 

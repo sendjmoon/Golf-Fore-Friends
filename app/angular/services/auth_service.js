@@ -1,14 +1,14 @@
 'use strict';
 
 module.exports = function(app) {
-  app.service('AuthService', ['$rootScope', '$http', '$location', function($rs, $http, $location) {
+  app.service('AuthService', ['$rootScope', '$http', '$location', 'UserService', function($rs, $http, $location, UserService) {
 
     this.signup = function(userData) {
       $http.post(`${$rs.baseUrl}/users/signup`, userData)
-        .then((res) => {
-          delete res.config.data.password;
-          $rs.user = res.data;
-          window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
+        .then((user) => {
+          delete user.config.data.password;
+          UserService.user = user.data;
+          window.sessionStorage.setItem('user', user.data.username);
           $location.path('/dashboard');
         })
         .catch((err) => {
@@ -18,10 +18,10 @@ module.exports = function(app) {
 
     this.signin = function(userData) {
       $http.post(`${$rs.baseUrl}/users/signin`, userData)
-        .then((res) => {
-          delete res.config.data.password;
-          $rs.user = res.data;
-          window.sessionStorage.setItem('currentUser', JSON.stringify($rs.user));
+        .then((user) => {
+          delete user.config.data.password;
+          UserService.user = user.data;
+          window.sessionStorage.setItem('user', user.data.username);
           $location.path('/dashboard');
         })
         .catch((err) => {
@@ -32,7 +32,7 @@ module.exports = function(app) {
     this.signout = function() {
       $http.get(`${$rs.baseUrl}/users/signout`)
         .then((res) => {
-          window.sessionStorage.removeItem('currentUser');
+          window.sessionStorage.removeItem('user');
           $location.path('/signin');
         })
         .catch((err) => {
@@ -41,8 +41,22 @@ module.exports = function(app) {
     };
 
     this.checkSessionExists = function() {
-      let currentUser = window.sessionStorage.getItem('currentUser');
-      currentUser === null ? $location.path('/') : $rs.user = JSON.parse(currentUser);
+        let username = window.sessionStorage.getItem('user');
+        return new Promise((resolve, reject) => {
+        if (username === null) {
+          // $location.path('/');
+          reject($location.path('/'));
+        }
+
+        UserService.getByEmailOrUsername(username)
+          .then((user) => {
+            console.log('wtf');
+            UserService.user = user.data;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
     };
 
   }]);

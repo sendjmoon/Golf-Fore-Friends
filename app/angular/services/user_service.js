@@ -3,6 +3,22 @@
 module.exports = function(app) {
   app.service('UserService', ['$rootScope', '$http', function($rs, $http) {
 
+    this.user;
+
+    this.getByEmailOrUsername = function(emailOrUsername) {
+      return new Promise((resolve, reject) => {
+        let userData = {};
+        userData.emailOrUsername = emailOrUsername;
+        $http.post('/users', userData)
+          .then((user) => {
+            resolve(user);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    };
+
     this.updateUser = function(user, newData) {
       return new Promise((resolve, reject) => {
         let userData = {
