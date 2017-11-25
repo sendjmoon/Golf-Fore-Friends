@@ -1,11 +1,11 @@
 'use strict';
 
 module.exports = function(app) {
-  app.service('UserService', ['$rootScope', '$http', function($rs, $http) {
+  app.factory('UserService', ['$rootScope', '$http', function($rs, $http) {
 
-    this.user;
+    let user;
 
-    this.getByEmailOrUsername = function(emailOrUsername) {
+    let getByEmailOrUsername = function(emailOrUsername) {
       return new Promise((resolve, reject) => {
         let userData = {};
         userData.emailOrUsername = emailOrUsername;
@@ -19,7 +19,7 @@ module.exports = function(app) {
       });
     };
 
-    this.updateUser = function(user, newData) {
+    let updateUser = function(user, newData) {
       return new Promise((resolve, reject) => {
         let userData = {
           emailOrUsername: user.emailOrUsername,
@@ -36,7 +36,7 @@ module.exports = function(app) {
       });
     };
 
-    this.calcHandicap = function(totalGames, currentHandicap, strokes) {
+    let calcHandicap = function(totalGames, currentHandicap, strokes) {
       return new Promise((resolve, reject) => {
         let handicapData = {};
 
@@ -55,10 +55,17 @@ module.exports = function(app) {
       });
     };
 
-    this.calcWinRatio = function(user) {
+    let calcWinRatio = function(user) {
       console.log(user);
-
     };
+
+    return {
+      getByEmailOrUsername: getByEmailOrUsername,
+      updateUser: updateUser,
+      calcHandicap: calcHandicap,
+      calcWinRatio: calcWinRatio,
+      user: user,
+    }
 
   }]);
 };

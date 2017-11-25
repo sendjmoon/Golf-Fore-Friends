@@ -1,11 +1,9 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('DashboardController', ['$rootScope', '$location', '$http', 'AuthService', 'GameService', 'UserService', function($rs, $location, $http, AuthService, GameService, UserService) {
+  app.controller('DashboardController', ['$rootScope', '$location', '$http', 'GameService', 'UserService', function($rs, $location, $http, GameService, UserService) {
 
-    // AuthService.checkSessionExists();
-    this.user = UserService.user;
-    this.gamesPlayed = this.user.gameIds.length;
+    this.userStats = UserService.user.stats;
     this.leaderboardArray = [];
 
     this.rankFriends = function() {

@@ -1,13 +1,11 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('FriendController', ['$rootScope', '$http', '$location', 'AuthService', function($rs, $http, $location, AuthService) {
+  app.controller('FriendController', ['$rootScope', '$http', '$location', 'UserService', function($rs, $http, $location, UserService) {
 
     this.usersArray = [];
     this.friendsArray = [];
     this.searchResults = [];
-
-    // AuthService.checkSessionExists();
 
     this.getAllUsers = function() {
       $http.get($rs.baseUrl + '/users/all')

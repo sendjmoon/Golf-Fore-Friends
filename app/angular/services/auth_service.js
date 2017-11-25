@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = function(app) {
-  app.service('AuthService', ['$rootScope', '$http', '$location', 'UserService', function($rs, $http, $location, UserService) {
+  app.factory('AuthService', ['$rootScope', '$http', '$location', 'UserService', function($rs, $http, $location, UserService) {
 
-    this.signup = function(userData) {
+    let signup = function(userData) {
       $http.post(`${$rs.baseUrl}/users/signup`, userData)
         .then((user) => {
           delete user.config.data.password;
@@ -16,7 +16,7 @@ module.exports = function(app) {
         });
     };
 
-    this.signin = function(userData) {
+    let signin = function(userData) {
       $http.post(`${$rs.baseUrl}/users/signin`, userData)
         .then((user) => {
           delete user.config.data.password;
@@ -29,7 +29,7 @@ module.exports = function(app) {
         });
     };
 
-    this.signout = function() {
+    let signout = function() {
       $http.get(`${$rs.baseUrl}/users/signout`)
         .then((res) => {
           window.sessionStorage.removeItem('user');
@@ -40,24 +40,10 @@ module.exports = function(app) {
         });
     };
 
-    this.checkSessionExists = function() {
-        let username = window.sessionStorage.getItem('user');
-        return new Promise((resolve, reject) => {
-        if (username === null) {
-          // $location.path('/');
-          reject($location.path('/'));
-        }
-
-        UserService.getByEmailOrUsername(username)
-          .then((user) => {
-            console.log('wtf');
-            UserService.user = user.data;
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      });
+    return {
+      signup: signup,
+      signin: signin,
+      signout: signout,
     };
-
   }]);
 };
