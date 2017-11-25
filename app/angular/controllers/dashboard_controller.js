@@ -3,7 +3,7 @@
 module.exports = function(app) {
   app.controller('DashboardController', ['$rootScope', '$location', '$http', 'AuthService', 'GameService', 'UserService', function($rs, $location, $http, AuthService, GameService, UserService) {
 
-    AuthService.checkSessionExists();
+    // AuthService.checkSessionExists();
     this.user = UserService.user;
     this.gamesPlayed = this.user.gameIds.length;
     this.leaderboardArray = [];

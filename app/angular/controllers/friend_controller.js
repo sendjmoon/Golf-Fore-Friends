@@ -7,7 +7,7 @@ module.exports = function(app) {
     this.friendsArray = [];
     this.searchResults = [];
 
-    AuthService.checkSessionExists();
+    // AuthService.checkSessionExists();
 
     this.getAllUsers = function() {
       $http.get($rs.baseUrl + '/users/all')

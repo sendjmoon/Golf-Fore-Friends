@@ -3,7 +3,7 @@
 module.exports = function(app) {
   app.controller('GamesController', ['$rootScope', '$scope', '$http', '$location', '$route', '$routeParams', 'AuthService', 'UserService', 'GameService', 'SearchService', function($rs, $scope, $http, $location, $route, $routeParams, AuthService, UserService, GameService, SearchService) {
 
-    AuthService.checkSessionExists();
+    // AuthService.checkSessionExists();
 
     this.user = UserService.user;
     this.baseUrl = $rs.baseUrl;
