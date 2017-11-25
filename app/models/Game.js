@@ -31,10 +31,11 @@ const GameSchema = new Schema({
     type: String,
     unique: false,
   },
-  results: {
+  results: [{
     type: Schema.Types.ObjectId,
-
-  },
+    ref: 'GameResult',
+    required: true,
+  }],
 },
 {
   collection: 'games',
