@@ -6,7 +6,6 @@
   "scripts": {
     "start": "nodemon ./app/bin/server.js",
     "test": "mocha",
-    "watch": "./node_modules/.bin/webpack-dev-server --inline --hot"
   },
   "repository": {
     "type": "git",

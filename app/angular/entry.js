@@ -1,10 +1,11 @@
 'use strict';
 
-require('./scss/base.scss');
-
 const angular = require('angular');
 
-const golfApp = angular.module('golfApp', ['ngRoute']);
+require('angular-middleware');
+require('./scss/base.scss');
+
+const golfApp = angular.module('golfApp', ['ngRoute', 'ngRoute.middleware']);
 
 require('./services')(golfApp);
 require('./controllers')(golfApp);
