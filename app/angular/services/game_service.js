@@ -40,7 +40,7 @@ module.exports = function(app) {
     this.getAllFriends = function() {
       return new Promise((resolve, reject) => {
         //TODO: change list to all
-        $http.get('/friends/list')
+        $http.get($rs.baseUrl + '/friends/list')
           .then((allFriends) => {
             resolve(allFriends.data);
           })
