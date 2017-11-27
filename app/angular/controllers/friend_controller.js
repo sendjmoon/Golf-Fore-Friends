@@ -1,10 +1,10 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('FriendController', ['$rootScope', '$http', '$location', 'UserService', function($rs, $http, $location, UserService) {
+  app.controller('FriendController', ['$rootScope', '$http', 'FriendService', function($rs, $http, FriendService) {
 
     this.usersArray = [];
-    this.friendsArray = [];
+    this.friendsArray = FriendService.friendsArray;
     this.searchResults = [];
 
     this.getAllUsers = function() {
@@ -17,19 +17,19 @@ module.exports = function(app) {
         });
     };
 
-    this.getAllFriends = function() {
-      $http.get($rs.baseUrl + '/friends/list')
-        .then((allFriends) => {
-          this.friendsArray = allFriends.data;
-          this.friendsArray.forEach((friend) => {
-            this.usersArray.splice(this.usersArray.indexOf(friend), 1);
-          });
-          this.searchListener(this.usersArray, 'user-email-input');
-        })
-        .catch((err) => {
-          alert('error getting friends list');
-        });
-    };
+    // this.getAllFriends = function() {
+    //   $http.get($rs.baseUrl + '/friends/list')
+    //     .then((allFriends) => {
+    //       this.friendsArray = allFriends.data;
+    //       this.friendsArray.forEach((friend) => {
+    //         this.usersArray.splice(this.usersArray.indexOf(friend), 1);
+    //       });
+    //       this.searchListener(this.usersArray, 'user-email-input');
+    //     })
+    //     .catch((err) => {
+    //       alert('error getting friends list');
+    //     });
+    // };
 
     this.addFriend = function(friendId) {
       let friendData = {

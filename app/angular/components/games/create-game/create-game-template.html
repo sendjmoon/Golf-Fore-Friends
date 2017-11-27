@@ -1,4 +1,4 @@
-<div class="intro-container">
+<div class="intro-container" ng-init="gc.loadFriendsList();">
   <h2>Create a Game</h2>
   <p>Please enter game information below.</p>
 </div>
@@ -22,7 +22,7 @@
 
     <div class="date-container">
       <p>Date Played</p>
-      <input type="date" required ng-model="gc.game.playedOn">
+      <input type="date" required ng-model="gc.game.datePlayed">
     </div>
 
     <div class="players-container">
@@ -41,7 +41,7 @@
           </div>
           <div class="edit-box" ng-show="gc.editing">
             <input type="text" required ng-model="player.strokes" placeholder="{{player.strokes}}" maxlength="2"></input>
-            <a ng-click="gc.toggleEdit(gc.editing)"><i class="fa fa-floppy-o"></i></a>
+            <a ng-click="gc.editing=false"><i class="fa fa-floppy-o"></i></a>
           </div>
           <a class="remove-box" ng-click="gc.removePlayer(player)">
             <i class="fa fa-minus-circle"></i>

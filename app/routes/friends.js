@@ -4,14 +4,15 @@ const express = require('express');
 const router = express.Router();
 const friendService = require('../services').friendService;
 
-router.get('/list', function(req, res, next) {
-  friendService.getFriendsList(req.session.user.email)
-    .then((friendsList) => {
-      res.json(friendsList);
+router.post('/all', function(req, res, next) {
+  console.log(req.body);
+  friendService.getFriendsData(req.session.user.email, req.body.options)
+    .then((friendsData) => {
+      res.json(friendsData);
     })
     .catch((err) => {
       res.status(500).json({
-        error: 'error getting friends list',
+        error: 'error getting friends data',
       });
     });
 });

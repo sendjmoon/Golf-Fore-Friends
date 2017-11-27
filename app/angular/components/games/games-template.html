@@ -1,4 +1,4 @@
-<div class="games-content col-xs-12" ng-init="gc.getAllByPublicId(gc.publicIds)" ng-hide="newGame">
+<div class="games-content col-xs-12" ng-hide="createGame">
 
   <div class="gff-box col-md-7 col-xs-12">
     <div class="box-content game list col-xs-12">
@@ -8,7 +8,7 @@
     </div>
   </div><!-- /gff-box -->
 
-  <div class="search-container" ng-init="gc.searchClickHandler(); gc.searchListener('game-name-input')">
+  <!-- <div class="search-container" ng-init="gc.searchClickHandler(); gc.searchListener('game-name-input')">
     <button class="gff-btn search" id="search-btn"><i class="fa fa-search"></i></button>
     <div class="search-content" id="search-content">
       <input id="game-name-input" type="text" placeholder="search games"></input>
@@ -16,14 +16,14 @@
         <li ng-repeat="game in gc.searchResults">{{game.name}}</li>
       </ul>
     </div>
-  </div>
+  </div> -->
 
   <div class="gff-box pull-right col-md-5 col-xs-12">
     <div class="box-content col-xs-12">
-      <button class="gff-btn" ng-hide="newGame" ng-click="newGame=true; gc.getFriendsList();">Create Game</button>
+      <button class="gff-btn" ng-hide="createGame" ng-click="createGame=true">Create Game</button>
     </div>
   </div><!-- /gff-box -->
 
 </div><!-- .games-content -->
 
-<create-game data-friends-list="gc.friendsList" ng-show="newGame"></create-game>
+<create-game ng-show="createGame"></create-game>

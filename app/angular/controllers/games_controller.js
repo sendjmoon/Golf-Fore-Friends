@@ -3,54 +3,7 @@
 module.exports = function(app) {
   app.controller('GamesController', ['$rootScope', '$scope', '$http', '$location', '$route', '$routeParams', 'AuthService', 'UserService', 'GameService', 'SearchService', function($rs, $scope, $http, $location, $route, $routeParams, AuthService, UserService, GameService, SearchService) {
 
-    // AuthService.checkSessionExists();
-
-    this.user = UserService.user;
-    this.baseUrl = $rs.baseUrl;
     this.editing = false;
-    this.gameData = $rs.gameData;
-
-    this.game = {
-      players: [],
-    };
-    this.game.players[0] = $rs.user;
-    this.games = [];
-    this.publicIds = [];
-    this.friendsList = [];
-    this.searchResults = [];
-    // this.publicId = $routeParams.publicId;
-
-    this.user.gameIds.forEach((game) => {
-      this.publicIds.push(game.publicId);
-    });
-
-    this.toggleEdit = function(isEditing) {
-      isEditing === true ? this.editing = false : this.editing = true;
-    };
-
-    this.getByPublicId = function(publicId) {
-      GameService.getByPublicId(publicId)
-        .then((gameData) => {
-          $rs.$apply(() => {
-            this.gameData = gameData;
-          });
-        })
-        .catch((err) => {
-          alert('error getting game data');
-        });
-    };
-
-    this.getAllByPublicId = function(publicIds) {
-      GameService.getAllByPublicId(publicIds)
-        .then((allGamesData) => {
-          $rs.$apply(() => {
-            this.games = allGamesData;
-          });
-        })
-        .catch((err) => {
-          alert('error getting games');
-        });
-    };
 
     this.searchListener = function(inputId) {
       let gamesArray = JSON.parse(window.localStorage.getItem('games'));
@@ -94,31 +47,41 @@ module.exports = function(app) {
     };
 
     this.createGame = function(gameData) {
-      GameService.findWinner(gameData.players)
-        .then((newPlayersData) => {
-          gameData.players = newPlayersData;
-          $http.post('/games/create', gameData)
-            .then((game) => {
-              let playersArray = game.data.players;
-              playersArray.forEach((player) => {
-                this.updatePlayer(player)
-                  .then((playerData) => {
-                    if (playerData.email === this.user.email) {
-                      $rs.$apply(() => {
-                        $rs.user = playerData;
-                        this.user = playerData;
-                        window.sessionStorage.setItem('currentUser', JSON.stringify(this.user));
-                      });
-                    }
-                    $route.reload();
-                  });
-              });
-            })
-            .catch((err) => {
-              alert('error creating game');
-            });
-        });
+      GameService.createGame(gameData)
+        // .then(() => {
+        //
+        // })
+        // .catch((err) => {
+        //   console.log(err.message);
+        // });
     };
+
+    // this.createGame = function(gameData) {
+    //   GameService.findWinner(gameData.players)
+    //     .then((newPlayersData) => {
+    //       gameData.players = newPlayersData;
+    //       $http.post('/games/create', gameData)
+    //         .then((game) => {
+    //           let playersArray = game.data.players;
+    //           playersArray.forEach((player) => {
+    //             this.updatePlayer(player)
+    //               .then((playerData) => {
+    //                 if (playerData.email === this.user.email) {
+    //                   $rs.$apply(() => {
+    //                     $rs.user = playerData;
+    //                     this.user = playerData;
+    //                     window.sessionStorage.setItem('currentUser', JSON.stringify(this.user));
+    //                   });
+    //                 }
+    //                 $route.reload();
+    //               });
+    //           });
+    //         })
+    //         .catch((err) => {
+    //           alert('error creating game');
+    //         });
+    //     });
+    // };
 
     this.getFriendsList = function() {
       $http.get('/friends/list')

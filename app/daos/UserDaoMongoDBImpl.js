@@ -17,10 +17,6 @@ module.exports = function() {
             .then((newUser) => {
               resolve(newUser.toObject());
             })
-            .catch((err) => {
-              console.log(err);
-              reject();
-            });
         })
         .catch((err) => {
           console.log(err);
@@ -45,6 +41,18 @@ module.exports = function() {
         .catch(reject);
     });
   };
+
+  // const getByObjectId = function(objectId) {
+  //   return new Promise((resolve, reject) => {
+  //     User.findOne({ _id: objectId })
+  //       .select('-__v')
+  //       .exec()
+  //       .then((user) => {
+  //         resolve(user.toObject());
+  //       })
+  //       .catch(reject);
+  //   });
+  // };
 
   const updateUser = function(emailOrUsername, newData) {
     return new Promise((resolve, reject) => {
@@ -85,6 +93,7 @@ module.exports = function() {
   return {
     create: create,
     getByEmailOrUsername: getByEmailOrUsername,
+    // getByObjectId: getByObjectId,
     getAllUsers: getAllUsers,
     updateUser: updateUser,
   };

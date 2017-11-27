@@ -1,7 +1,16 @@
 'use strict';
 
 module.exports = function(app) {
-  app.service('GameService', ['$rootScope', '$http', function($rs, $http) {
+  app.service('GameService', ['$rootScope', '$http', 'FriendService', function($rs, $http, FriendService) {
+
+    this.publicIds;
+    this.allGamesData;
+    this.gameData;
+    this.friendsArray = FriendService.friendsArray;
+
+    this.createGame = function(gameData) {
+      console.log(gameData);
+    };
 
     this.getByPublicId = function(gameId) {
       return new Promise((resolve, reject) => {
@@ -37,19 +46,19 @@ module.exports = function(app) {
       });
     };
 
-    this.getAllFriends = function() {
-      return new Promise((resolve, reject) => {
-        //TODO: change list to all
-        $http.get($rs.baseUrl + '/friends/list')
-          .then((allFriends) => {
-            resolve(allFriends.data);
-          })
-          .catch((err) => {
-            alert('error getting friends list');
-            reject();
-          });
-      });
-    };
+    // this.getAllFriends = function() {
+    //   return new Promise((resolve, reject) => {
+    //     //TODO: change list to all
+    //     $http.get($rs.baseUrl + '/friends/list')
+    //       .then((allFriends) => {
+    //         resolve(allFriends.data);
+    //       })
+    //       .catch((err) => {
+    //         alert('error getting friends list');
+    //         reject();
+    //       });
+    //   });
+    // };
 
     this.rankFriends = function() {
       return new Promise((resolve, reject) => {
