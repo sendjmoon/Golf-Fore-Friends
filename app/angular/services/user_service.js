@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.factory('UserService', ['$rootScope', '$http', function($rs, $http) {
+  app.service('UserService', ['$rootScope', '$http', function($rs, $http) {
 
     let user;
 

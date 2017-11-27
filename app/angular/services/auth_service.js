@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.factory('AuthService', ['$rootScope', '$http', '$location', 'UserService', function($rs, $http, $location, UserService) {
+  app.service('AuthService', ['$rootScope', '$http', '$location', 'UserService', function($rs, $http, $location, UserService) {
 
     let signup = function(userData) {
       $http.post(`${$rs.baseUrl}/users/signup`, userData)

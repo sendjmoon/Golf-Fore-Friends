@@ -4,6 +4,7 @@ module.exports = function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/dashboard', {
       template: require('../html/dashboard.html'),
+      middleware: 'checkSessionExists',
     })
     .when('/friends', {
       template: require('../html/friends.html'),
