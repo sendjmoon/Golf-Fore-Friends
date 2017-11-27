@@ -3,13 +3,13 @@
 module.exports = function(app) {
   app.controller('GamesController', ['$rootScope', '$scope', '$http', '$location', '$route', '$routeParams', 'AuthService', 'UserService', 'GameService', 'SearchService', function($rs, $scope, $http, $location, $route, $routeParams, AuthService, UserService, GameService, SearchService) {
 
-    AuthService.checkSessionExists();
+    // AuthService.checkSessionExists();
 
-    this.publicId = $routeParams.publicId;
+    this.user = UserService.user;
     this.baseUrl = $rs.baseUrl;
-    this.user = $rs.user;
     this.editing = false;
     this.gameData = $rs.gameData;
+
     this.game = {
       players: [],
     };
@@ -18,6 +18,7 @@ module.exports = function(app) {
     this.publicIds = [];
     this.friendsList = [];
     this.searchResults = [];
+    // this.publicId = $routeParams.publicId;
 
     this.user.gameIds.forEach((game) => {
       this.publicIds.push(game.publicId);
@@ -46,30 +47,31 @@ module.exports = function(app) {
             this.games = allGamesData;
           });
         })
-        .catch(() => {
+        .catch((err) => {
           alert('error getting games');
         });
     };
 
     this.searchListener = function(inputId) {
-      let array = JSON.parse(window.localStorage.getItem('games'));
+      let gamesArray = JSON.parse(window.localStorage.getItem('games'));
       let searchBox = document.getElementById(inputId);
       searchBox.addEventListener('keyup', () => {
         let input = searchBox.value.toUpperCase();
-        let results = array.filter((game) => {
+        gamesArray = gamesArray.filter((game) => {
           $rs.$apply(() => {
             if (input.length < 1) {
               this.searchResults = [];
               return;
             }
             if (game.name.toUpperCase().indexOf(input) > -1) {
-              if (this.searchResults.indexOf(game) > -1) return;
-              else this.searchResults.push(game);
+              if (this.searchResults.indexOf(game) > -1)
+                return;
+              else
+                this.searchResults.push(game);
             }
             if (game.name.toUpperCase().indexOf(input) < 0) {
-              if (this.searchResults.indexOf(game) > -1) {
+              if (this.searchResults.indexOf(game) > -1)
                 this.searchResults.splice(this.searchResults.indexOf(game), 1);
-              }
             }
           });
         });
@@ -129,7 +131,8 @@ module.exports = function(app) {
     };
 
     this.addPlayer = function(user) {
-      if (user === undefined || user === null) return;
+      if (user === undefined || user === null)
+        return;
       this.game.players.push(user);
       this.friendsList = this.friendsList.filter((friend) => {
         return friend._id !== user._id;
@@ -152,11 +155,18 @@ module.exports = function(app) {
         $http.post('/users', playerData)
           .then((user) => {
             user = user.data;
-            UserService.calcHandicap(user.gameIds.length, user.stats.handicapActual, player.strokes)
+            UserService.calcHandicap(
+              user.gameIds.length,
+              user.stats.handicapActual,
+              player.strokes
+            )
               .then((handicapData) => {
-                if (player.win) user.stats.wins++;
-                if (player.loss) user.stats.losses++;
-                if (player.tie) user.stats.ties++;
+                if (player.win)
+                  user.stats.wins++;
+                if (player.loss)
+                  user.stats.losses++;
+                if (player.tie)
+                  user.stats.ties++;
 
                 let newData = {
                   stats: {

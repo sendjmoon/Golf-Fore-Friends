@@ -19,10 +19,6 @@ const GameSchema = new Schema({
     required: true,
     unique: false,
   },
-  // course: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'Course',
-  // },
   updatedAt: {
     type: Number,
     unique: false,
@@ -31,50 +27,20 @@ const GameSchema = new Schema({
     type: Number,
     unique: false,
   },
-  playedOn: {
+  datePlayed: {
     type: String,
     unique: false,
   },
-  players: [{
-    email: {
-      type: String,
-      required: true,
-      unique: false,
-    },
-    _id: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      unique: false,
-    },
-    strokes: {
-      type: Number,
-      required: true,
-      unique: false,
-    },
-    win: {
-      type: Boolean,
-      required: false,
-      unique: false,
-      default: false,
-    },
-    loss: {
-      type: Boolean,
-      required: false,
-      unique: false,
-      default: false,
-    },
-    tie: {
-      type: Boolean,
-      required: false,
-      unique: false,
-      default: false,
-    }
+  results: [{
+    type: Schema.Types.ObjectId,
+    ref: 'GameResult',
+    required: true,
   }],
 },
 {
   collection: 'games',
 });
 
-GameSchema.index({ playedOn: -1 });
+GameSchema.index({ datePlayed: -1 });
 
 module.exports = mongoose.model('Game', GameSchema);

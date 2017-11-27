@@ -40,7 +40,7 @@ module.exports = function(app) {
     this.getAllFriends = function() {
       return new Promise((resolve, reject) => {
         //TODO: change list to all
-        $http.get('/friends/list')
+        $http.get($rs.baseUrl + '/friends/list')
           .then((allFriends) => {
             resolve(allFriends.data);
           })
@@ -103,24 +103,15 @@ module.exports = function(app) {
           handicap: 'N/A',
         };
 
+        array.sort((a, b) => {
+          return a.stats.handicap - b.stats.handicap;
+        });
+
         if (array.length < 3) {
           if (array.length < 1) reject();
           let emptyPlaces = 3 - array.length;
           for (let i = 0; i < emptyPlaces; i++) {
             array.push(dummyUser);
-          }
-        }
-
-        let done = false;
-        while(!done) {
-          done = true;
-          for (let i = 1; i < array.length; i++) {
-            if (array[i - 1].handicap > array[i].handicap) {
-              let temp = array[i - 1];
-              array[i - 1] = array[i];
-              array[i] = temp;
-              done = false;
-            }
           }
         }
 

@@ -3,7 +3,23 @@
 module.exports = function(app) {
   app.service('UserService', ['$rootScope', '$http', function($rs, $http) {
 
-    this.updateUser = function(user, newData) {
+    let user;
+
+    let getByEmailOrUsername = function(emailOrUsername) {
+      return new Promise((resolve, reject) => {
+        let userData = {};
+        userData.emailOrUsername = emailOrUsername;
+        $http.post('/users', userData)
+          .then((user) => {
+            resolve(user);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    };
+
+    let updateUser = function(user, newData) {
       return new Promise((resolve, reject) => {
         let userData = {
           emailOrUsername: user.emailOrUsername,
@@ -20,7 +36,7 @@ module.exports = function(app) {
       });
     };
 
-    this.calcHandicap = function(totalGames, currentHandicap, strokes) {
+    let calcHandicap = function(totalGames, currentHandicap, strokes) {
       return new Promise((resolve, reject) => {
         let handicapData = {};
 
@@ -39,10 +55,17 @@ module.exports = function(app) {
       });
     };
 
-    this.calcWinRatio = function(user) {
+    let calcWinRatio = function(user) {
       console.log(user);
-
     };
+
+    return {
+      getByEmailOrUsername: getByEmailOrUsername,
+      updateUser: updateUser,
+      calcHandicap: calcHandicap,
+      calcWinRatio: calcWinRatio,
+      user: user,
+    }
 
   }]);
 };

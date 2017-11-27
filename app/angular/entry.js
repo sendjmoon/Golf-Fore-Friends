@@ -1,10 +1,11 @@
 'use strict';
 
-require('./scss/base.scss');
-
 const angular = require('angular');
 
-const golfApp = angular.module('golfApp', [require('angular-route')]);
+require('angular-middleware');
+require('./scss/base.scss');
+
+const golfApp = angular.module('golfApp', ['ngRoute', 'ngRoute.middleware']);
 
 require('./services')(golfApp);
 require('./controllers')(golfApp);
@@ -21,3 +22,4 @@ golfApp.run(['$rootScope', ($rs) => {
 }]);
 
 golfApp.config(require('./routes/route_config'));
+golfApp.config(require('./utils/check_session_exists'));
