@@ -16,6 +16,13 @@ module.exports = {
     path: `${__dirname}/app/public/javascripts`,
   },
 
+  watch: true,
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 1000,
+    ignored: /node_modules/,
+  },
+
   plugins: plugins,
 
   module: {
@@ -31,15 +38,18 @@ module.exports = {
         test: /\.scss$/,
         use: extractSCSS.extract({
           use: [{
-            loader: 'css-loader', options: {
+            loader: 'css-loader',
+            options: {
               sourceMap: true,
             },
           }, {
-            loader: 'postcss-loader', options: {
+            loader: 'postcss-loader',
+            options: {
               sourceMap: true,
             },
           }, {
-            loader: 'sass-loader', options: {
+            loader: 'sass-loader',
+            options: {
               sourceMap: true,
             },
           }],

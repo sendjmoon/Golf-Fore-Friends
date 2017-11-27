@@ -31,15 +31,16 @@ const GameSchema = new Schema({
     type: String,
     unique: false,
   },
-  results: {
+  results: [{
     type: Schema.Types.ObjectId,
-
-  },
+    ref: 'GameResult',
+    required: true,
+  }],
 },
 {
   collection: 'games',
 });
 
-GameSchema.index({ playedOn: -1 });
+GameSchema.index({ datePlayed: -1 });
 
 module.exports = mongoose.model('Game', GameSchema);
