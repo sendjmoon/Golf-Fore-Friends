@@ -7,6 +7,6 @@ module.exports = function(app) {
     controllerAs: 'gc',
   });
 
-  require('./new-game')(app);
+  require('./create-game')(app);
   require('./game-chart')(app);
 };
