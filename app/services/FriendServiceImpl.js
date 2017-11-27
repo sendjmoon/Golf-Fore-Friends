@@ -5,11 +5,11 @@ const Promise = require('promise');
 module.exports = function(friendDao) {
   const _friendDao = friendDao;
 
-  const getFriendsData = function(emailOrUsername, options) {
+  const getAllFriends = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
-      _friendDao.getFriendsData(emailOrUsername, options)
-        .then((friendsData) => {
-          resolve(friendsData);
+      _friendDao.getAllFriends(emailOrUsername)
+        .then((friends) => {
+          resolve(friends);
         })
         .catch(reject);
     });
@@ -30,7 +30,7 @@ module.exports = function(friendDao) {
   };
 
   return {
-    getFriendsData: getFriendsData,
+    getAllFriends: getAllFriends,
     addFriend: addFriend,
   }
 };

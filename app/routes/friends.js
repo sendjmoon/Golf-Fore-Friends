@@ -4,11 +4,10 @@ const express = require('express');
 const router = express.Router();
 const friendService = require('../services').friendService;
 
-router.post('/all', function(req, res, next) {
-  console.log(req.body);
-  friendService.getFriendsData(req.session.user.email, req.body.options)
-    .then((friendsData) => {
-      res.json(friendsData);
+router.get('/all', function(req, res, next) {
+  friendService.getAllFriends(req.session.user.email)
+    .then((friends) => {
+      res.json(friends);
     })
     .catch((err) => {
       res.status(500).json({

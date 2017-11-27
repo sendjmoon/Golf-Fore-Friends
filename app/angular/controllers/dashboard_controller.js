@@ -3,7 +3,6 @@
 module.exports = function(app) {
   app.controller('DashboardController', ['$rootScope', '$location', '$http', 'GameService', 'UserService', 'FriendService', function($rs, $location, $http, GameService, UserService, FriendService) {
 
-    // this.userStats = UserService.user.stats;
     this.leaderboardArray = [];
 
     this.getFriendsData = function(options) {

@@ -1,12 +1,12 @@
 <div class="page-container">
+  <h2>friends list</h2>
   <ul>
-    <li ng-repeat="friend in fc.friendsArray">
+    <li ng-repeat="friend in fc.allFriends.friends">
       <h3>{{friend.fullName}}</h3>
-      <p><strong>Handicap:</strong> {{friend.stats.handicap}}</p>
     </li>
   </ul>
 
-  <div class="search-container">
+  <!-- <div class="search-container">
     <form>
       <input id="user-email-input" type="text" placeholder="Search By Email"></input>
       <ul>
@@ -16,11 +16,13 @@
         </li>
       </ul>
     </form>
-  </div>
+  </div> -->
 
+  <h2>add more friends</h2>
   <ul>
     <li ng-repeat="user in fc.allUsers.users">
       <p>{{user.fullName}}</p>
+      <button class="gff-btn" ng-click="fc.addFriend(user._id)">Add to Friends</button>
     </li>
   </ul>
 </div>
