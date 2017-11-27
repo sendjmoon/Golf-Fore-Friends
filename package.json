@@ -1,5 +1,5 @@
 {
-  "name": "golf-four-friends",
+  "name": "golf-fore-friends",
   "version": "0.0.0",
   "description": "",
   "main": "",
@@ -9,19 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sendjmoon/GolfFourFriends.git"
+    "url": "git+https://github.com/sendjmoon/Golf-Fore-Friends.git"
   },
   "keywords": [
     "golf",
-    "four",
+    "fore",
     "friends"
   ],
   "author": "James Moon",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sendjmoon/GolfFourFriends/issues"
+    "url": "https://github.com/sendjmoon/Golf-Fore-Friends/issues"
   },
-  "homepage": "https://github.com/sendjmoon/GolfFourFriends#readme",
+  "homepage": "https://github.com/sendjmoon/Golf-Fore-Friends#readme",
   "dependencies": {
     "angular": "^1.6.6",
     "angular-middleware": "^2.1.9",
