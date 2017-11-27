@@ -2,8 +2,8 @@
 
 module.exports = function(app) {
   app.service('UserService', ['$rootScope', '$http', function($rs, $http) {
-
     let user;
+    let allUsers = {};
 
     let getByEmailOrUsername = function(emailOrUsername) {
       return new Promise((resolve, reject) => {
@@ -16,6 +16,17 @@ module.exports = function(app) {
           .catch((err) => {
             console.log(err);
           });
+      });
+    };
+
+    let getAllUsers = function() {
+      return new Promise((resolve, reject) => {
+        $http.get($rs.baseUrl + '/users/all')
+          .then((users) => {
+            allUsers.users = users.data;
+            resolve();
+          })
+          .catch(reject);
       });
     };
 
@@ -61,11 +72,14 @@ module.exports = function(app) {
 
     return {
       getByEmailOrUsername: getByEmailOrUsername,
+      getAllUsers: getAllUsers,
       updateUser: updateUser,
       calcHandicap: calcHandicap,
       calcWinRatio: calcWinRatio,
       user: user,
+      allUsers: {
+        data: allUsers,
+      },
     }
-
   }]);
 };

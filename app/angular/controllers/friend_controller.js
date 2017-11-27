@@ -1,21 +1,19 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('FriendController', ['$rootScope', '$http', 'FriendService', function($rs, $http, FriendService) {
+  app.controller('FriendController', ['$rootScope', '$scope', '$http', 'UserService', 'FriendService', function($rs, $scope, $http, UserService, FriendService) {
 
-    this.usersArray = [];
     this.friendsArray = FriendService.friendsArray;
-    this.searchResults = [];
+    this.allUsers = UserService.allUsers.data;
 
-    this.getAllUsers = function() {
-      $http.get($rs.baseUrl + '/users/all')
-        .then((allUsers) => {
-          this.usersArray = allUsers.data;
-        })
+    let getAllUsers = function() {
+      UserService.getAllUsers()
         .catch((err) => {
-          alert('error getting users');
+          console.log(err);
         });
     };
+
+    getAllUsers();
 
     // this.getAllFriends = function() {
     //   $http.get($rs.baseUrl + '/friends/list')

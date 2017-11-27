@@ -81,7 +81,7 @@ module.exports = function() {
       User.find({
         fullName: { $ne: currentUser.fullName },
       })
-        .select('-__v -password')
+        .select('_id fullName email')
         .exec()
         .then((users) => {
           resolve(users);

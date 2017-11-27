@@ -2,7 +2,6 @@
 
 module.exports = function(app) {
   app.service('GameService', ['$rootScope', '$http', 'FriendService', function($rs, $http, FriendService) {
-
     this.publicIds;
     this.allGamesData;
     this.gameData;
