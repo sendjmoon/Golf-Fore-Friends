@@ -19,16 +19,16 @@ const GameSchema = new Schema({
     required: true,
     unique: false,
   },
-  updatedAt: {
-    type: Number,
+  datePlayed: {
+    type: String,
     unique: false,
   },
   createdAt: {
     type: Number,
     unique: false,
   },
-  datePlayed: {
-    type: String,
+  updatedAt: {
+    type: Number,
     unique: false,
   },
   results: [{

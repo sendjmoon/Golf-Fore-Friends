@@ -4,7 +4,7 @@ const Promise = require('bluebird');
 const User = require('../models/User');
 
 module.exports = function() {
-  const getFriendsList = function(emailOrUsername) {
+  const getAllFriends = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
       User.findOne({
         $or: [
@@ -12,7 +12,10 @@ module.exports = function() {
           { username: emailOrUsername },
         ],
       })
-        .populate('friendIds', '-password')
+        .populate({
+          path: 'friendIds',
+          select: '_id fullName email'
+        })
         .exec()
         .then((user) => {
           resolve(user.friendIds);
@@ -27,7 +30,7 @@ module.exports = function() {
         _id: userId,
       },{
         $addToSet: {
-          friendIds: friendId,
+          friendIds: friendId
         },
       })
         .then((res) => {
@@ -38,7 +41,7 @@ module.exports = function() {
   };
 
   return {
-    getFriendsList: getFriendsList,
+    getAllFriends: getAllFriends,
     addFriend: addFriend,
   };
 };
