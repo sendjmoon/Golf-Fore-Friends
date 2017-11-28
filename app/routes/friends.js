@@ -4,8 +4,8 @@ const express = require('express');
 const router = express.Router();
 const friendService = require('../services').friendService;
 
-router.get('/all', function(req, res, next) {
-  friendService.getAllFriends(req.session.user.email)
+router.post('/all', function(req, res, next) {
+  friendService.getAllFriends(req.body.emailOrUsername)
     .then((friends) => {
       res.json(friends);
     })
@@ -18,8 +18,10 @@ router.get('/all', function(req, res, next) {
 
 router.post('/add', function(req, res, next) {
   friendService.addFriend(req.session.user._id, req.body._id)
-    .then((friend) => {
-      res.json(friend);
+    .then(() => {
+      res.status(200).json({
+        message: 'success',
+      });
     })
     .catch((err) => {
       res.status(500).json({

@@ -42,18 +42,6 @@ module.exports = function() {
     });
   };
 
-  // const getByObjectId = function(objectId) {
-  //   return new Promise((resolve, reject) => {
-  //     User.findOne({ _id: objectId })
-  //       .select('-__v')
-  //       .exec()
-  //       .then((user) => {
-  //         resolve(user.toObject());
-  //       })
-  //       .catch(reject);
-  //   });
-  // };
-
   const updateUser = function(emailOrUsername, newData) {
     return new Promise((resolve, reject) => {
       User.findOneAndUpdate({
@@ -76,10 +64,13 @@ module.exports = function() {
     });
   };
 
-  const getAllUsers = function(currentUser) {
+  const getAllUsers = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
       User.find({
-        fullName: { $ne: currentUser.fullName },
+        $or: [
+          { email: { $ne: emailOrUsername }},
+          { username: { $ne: emailOrUsername }},
+        ],
       })
         .select('_id fullName email')
         .exec()
@@ -93,7 +84,6 @@ module.exports = function() {
   return {
     create: create,
     getByEmailOrUsername: getByEmailOrUsername,
-    // getByObjectId: getByObjectId,
     getAllUsers: getAllUsers,
     updateUser: updateUser,
   };

@@ -6,7 +6,7 @@ module.exports = function($middlewareProvider) {
       ['$rootScope', '$http', 'UserService', function checkSessionExistsMiddleware($rs, $http, UserService) {
         $http.get($rs.baseUrl + '/users/check-session')
           .then((res) => {
-            UserService.user = res.data.user;
+            UserService.data.user = res.data.user;
             this.next();
           })
           .catch((err) => {
