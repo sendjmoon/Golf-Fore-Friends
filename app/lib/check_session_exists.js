@@ -1,5 +1,6 @@
 'use strict';
 
 module.exports = function(req, res, next) {
-  req.sessionID ? res.redirect('/#!/signin') : res.redirect('/#!/signup');
+  req.session.user ? console.log('session found') : console.log('no session found');
+  next();
 };

@@ -26,7 +26,9 @@ module.exports = function(app) {
             allUsers.users = users.data;
             resolve();
           })
-          .catch(reject);
+          .catch((err) => {
+            console.log(err);
+          });
       });
     };
 

@@ -1,6 +1,6 @@
 'use strict';
 
-const Promise = require('promise');
+const Promise = require('bluebird');
 
 module.exports = function(friendDao) {
   const _friendDao = friendDao;

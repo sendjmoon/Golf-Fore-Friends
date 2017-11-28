@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', function(req, res, next) {
   res.render('index', {
-    title: 'Golf Four Friends',
+    title: 'Golf Fore Friends',
   });
 });
 

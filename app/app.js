@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === 'test')
   mongoose.connect(process.env.DB_SERVER);
 
 if (process.env.NODE_ENV !== 'test')
-  mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/golf4friends-dev');
+  mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/gff-dev');
 
 const app = express();
 
@@ -39,7 +39,7 @@ const sessionOptions = {
   store: new RedisStore({
     client: redisClient,
   }),
-  name: 'GolfFourFriends',
+  name: 'GolfForeFriends',
   saveUninitialized: true,
   resave: true,
   cookie: {
