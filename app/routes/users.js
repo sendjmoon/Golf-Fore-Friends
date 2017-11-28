@@ -19,19 +19,6 @@ router.get('/check-session', function(req, res, next) {
   });
 });
 
-router.get('/all', function(req, res, next) {
-  userService.getAllUsers(req.body.emailOrUsername)
-    .then((users) => {
-      res.json(users);
-    })
-    .catch((err) => {
-      console.log('something went wrong');
-      res.status(500).json({
-        error: 'Error getting users.',
-      });
-    });
-});
-
 router.post('/', function(req, res, next) {
   userService.getUser(req.body.emailOrUsername)
     .then((user) => {
@@ -40,6 +27,19 @@ router.post('/', function(req, res, next) {
     .catch((err) => {
       res.status(500).json({
         error: 'Error getting user.',
+      });
+    });
+});
+
+router.post('/all', function(req, res, next) {
+  userService.getAllUsers(req.body.emailOrUsername)
+    .then((users) => {
+      res.json(users);
+    })
+    .catch((err) => {
+      console.log('something went wrong');
+      res.status(500).json({
+        error: 'Error getting users.',
       });
     });
 });
