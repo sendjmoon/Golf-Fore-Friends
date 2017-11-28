@@ -68,7 +68,7 @@ const UserSchema = new Schema({
   },
   gameIds: [{
     gameId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Game',
       unique: true,
     },
@@ -84,7 +84,7 @@ const UserSchema = new Schema({
     },
   }],
   friendIds: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User',
     unique: true,
   }],
