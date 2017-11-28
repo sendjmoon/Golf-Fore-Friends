@@ -16,6 +16,7 @@ module.exports = function(app) {
           })
           .catch((err) => {
             console.log(err);
+            reject();
           });
       });
     };
@@ -31,7 +32,7 @@ module.exports = function(app) {
             resolve(users.data);
           })
           .catch((err) => {
-            console.log(err);
+            console.log('Error getting all users.');
             reject();
           });
       });

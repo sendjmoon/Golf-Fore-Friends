@@ -19,14 +19,8 @@ module.exports = function(app) {
         .then(() => {
           UserService.getAllUsers(ctrl.user.email)
             .then((users) => {
-              ctrl.searchListener('email', users, 'search-input-users')
-                .then((res) => {
-                  console.log(res);
-                });
+              ctrl.searchListener('email', users, 'search-input-users');
             });
-        })
-        .catch((err) => {
-          console.log(err);
         });
     };
 
@@ -48,7 +42,7 @@ module.exports = function(app) {
               if (user[prop].indexOf(input) > -1 && ctrl.searchResults.indexOf(user) > -1) {
                 return;
               }
-              else if (user[prop].indexOf(input) < 0 && ctrl.searchResults.indexOf(user) > -1) {
+              if (user[prop].indexOf(input) < 0 && ctrl.searchResults.indexOf(user) > -1) {
                 ctrl.searchResults.splice(ctrl.searchResults.indexOf(user), 1);
               }
               else ctrl.searchResults.push(user);

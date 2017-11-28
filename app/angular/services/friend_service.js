@@ -16,7 +16,6 @@ module.exports = function(app) {
           })
           .catch((err) => {
             console.log('error getting all friends');
-            reject();
           });
       });
     }
