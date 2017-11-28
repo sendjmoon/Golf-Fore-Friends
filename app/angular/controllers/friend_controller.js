@@ -1,44 +1,60 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('FriendController', ['$rootScope', 'UserService', 'FriendService', function($rs, UserService, FriendService) {
+  app.controller('FriendController', ['$rootScope', 'UserService', 'FriendService', 'SearchService', function($rs, UserService, FriendService, SearchService) {
+    let ctrl = this;
 
-    this.allFriends = FriendService.data.allFriends;
-    this.allUsers = UserService.data.allUsers;
-    let user = UserService.data.user;
+    ctrl.allFriends = FriendService.data.allFriends;
+    ctrl.allUsers = UserService.data.allUsers;
+    ctrl.user = UserService.data.user;
+    ctrl.searchResults = [];
 
-    this.addFriend = function(friendId) {
+    ctrl.addFriend = function(friendId) {
       FriendService.addFriend(friendId);
       init();
     };
 
     let init = function() {
-      FriendService.getAllFriends(user.email);
-      UserService.getAllUsers(user.email);
-    }
+      FriendService.getAllFriends(ctrl.user.email)
+        .then(() => {
+          UserService.getAllUsers(ctrl.user.email)
+            .then((users) => {
+              ctrl.searchListener('email', users, 'search-input-users')
+                .then((res) => {
+                  console.log(res);
+                });
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
 
     init();
 
-    this.searchListener = function(userArray, inputId) {
-      let searchBox = document.getElementById(inputId);
-      searchBox.addEventListener('keyup', () => {
-        let input = searchBox.value.toUpperCase();
-        let results = userArray.filter((user) => {
-          $rs.$apply(() => {
-            if (input.length < 1) {
-              this.searchResults = [];
-              return;
-            }
-            if (user.email.toUpperCase().indexOf(input) > -1) {
-              if (this.searchResults.indexOf(user) > -1) return;
-              else this.searchResults.push(user);
-            }
-            if (user.email.toUpperCase().indexOf(input) < 0) {
-              if (this.searchResults.indexOf(user) > -1) {
-                this.searchResults.splice(this.searchResults.indexOf(user), 1);
+    ctrl.searchListener = function(prop, searchArray, inputId) {
+      return new Promise((resolve, reject) => {
+        let results = [];
+        let searchBox = document.getElementById(inputId);
+        searchBox.addEventListener('keyup', () => {
+          let input = searchBox.value.toUpperCase();
+          results = searchArray.filter((user) => {
+            user[prop] = user[prop].toUpperCase();
+            $rs.$apply(() => {
+              if (input.length < 1) {
+                ctrl.searchResults = [];
+                return;
               }
-            }
+              if (user[prop].indexOf(input) > -1 && ctrl.searchResults.indexOf(user) > -1) {
+                return;
+              }
+              else if (user[prop].indexOf(input) < 0 && ctrl.searchResults.indexOf(user) > -1) {
+                ctrl.searchResults.splice(ctrl.searchResults.indexOf(user), 1);
+              }
+              else ctrl.searchResults.push(user);
+            });
           });
+          resolve(results);
         });
       });
     };

@@ -5,16 +5,20 @@ module.exports = function(app) {
     let allFriends = {};
 
     let getAllFriends = function(emailOrUsername) {
-      let userData = {
-        emailOrUsername: emailOrUsername,
-      };
-      $http.post(`${$rs.baseUrl}/friends/all`, userData)
-        .then((friends) => {
-          allFriends.friends = friends.data;
-        })
-        .catch((err) => {
-          console.log('error getting all friends');
-        });
+      return new Promise((resolve, reject) => {
+        let userData = {
+          emailOrUsername: emailOrUsername,
+        };
+        $http.post(`${$rs.baseUrl}/friends/all`, userData)
+          .then((friends) => {
+            allFriends.friends = friends.data;
+            resolve();
+          })
+          .catch((err) => {
+            console.log('error getting all friends');
+            reject();
+          });
+      });
     }
 
     let addFriend = function(friendId) {
@@ -31,11 +35,11 @@ module.exports = function(app) {
     };
 
     return {
+      getAllFriends: getAllFriends,
+      addFriend: addFriend,
       data: {
         allFriends: allFriends,
       },
-      getAllFriends: getAllFriends,
-      addFriend: addFriend,
     }
   }]);
 }

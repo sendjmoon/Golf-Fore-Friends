@@ -28,10 +28,11 @@ module.exports = function(app) {
         $http.post($rs.baseUrl + '/users/all', userData)
           .then((users) => {
             allUsers.users = users.data;
-            resolve();
+            resolve(users.data);
           })
           .catch((err) => {
             console.log(err);
+            reject();
           });
       });
     };
@@ -77,15 +78,15 @@ module.exports = function(app) {
     };
 
     return {
-      data: {
-        user: user,
-        allUsers: allUsers,
-      },
       getByEmailOrUsername: getByEmailOrUsername,
       getAllUsers: getAllUsers,
       updateUser: updateUser,
       calcHandicap: calcHandicap,
       calcWinRatio: calcWinRatio,
+      data: {
+        user: user,
+        allUsers: allUsers,
+      },
     }
   }]);
 };
