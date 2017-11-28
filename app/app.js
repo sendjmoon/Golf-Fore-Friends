@@ -13,7 +13,6 @@ const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 
 const logger = require('morgan');
-const checkSessionExists = require('./lib/check_session_exists');
 const errorHandler = require('./lib/error_handler');
 
 const index = require('./routes/index');
