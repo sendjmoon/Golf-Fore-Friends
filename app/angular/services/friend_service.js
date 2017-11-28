@@ -7,7 +7,7 @@ module.exports = function(app) {
     let getFriendsData = function(options) {
       return new Promise((resolve, reject) => {
         options = options || [];
-        $http.post($rs.baseUrl + '/friends/all', options)
+        $http.post(`${$rs.baseUrl}/friends/all`, options)
           .then((friendsArray) => {
             console.log(friendsArray);
             resolve(friendsArray);
@@ -20,9 +20,12 @@ module.exports = function(app) {
     };
 
     //TODO: pass user email or username as argument
-    let getAllFriends = function() {
+    let getAllFriends = function(emailOrUsername) {
+      let userData = {
+        emailOrUsername: emailOrUsername,
+      };
       return new Promise((resolve, reject) => {
-        $http.get($rs.baseUrl + '/friends/all')
+        $http.post(`${$rs.baseUrl}/friends/all`, userData)
           .then((friends) => {
             allFriends.friends = friends.data;
           })
@@ -34,7 +37,7 @@ module.exports = function(app) {
 
     let addFriend = function(friendId) {
       return new Promise((resolve, reject) => {
-        $http.post($rs.baseUrl + '/friends/add', friendId)
+        $http.post(`${$rs.baseUrl}/friends/add`, friendId)
           .then((friend) => {
             console.log(friend);
             resolve();

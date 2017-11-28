@@ -6,23 +6,8 @@ module.exports = function(app) {
     this.allFriends = FriendService.allFriends.data;
     this.allUsers = UserService.allUsers.data;
 
-    let getAllUsers = function() {
-      UserService.getAllUsers()
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-
-    //TODO: pass user email or username as argument
-    let getAllFriends = function() {
-      FriendService.getAllFriends()
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-
     UserService.getAllUsers(UserService.user.email);
-    getAllFriends();
+    FriendService.getAllFriends(UserService.user.email);
 
     this.addFriend = function(friendId) {
       let friendData = {
