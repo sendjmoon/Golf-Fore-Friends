@@ -27,7 +27,6 @@ module.exports = function(app) {
     init();
 
     ctrl.searchListener = function(prop, searchArray, $input) {
-      let inputStr;
       let objIndex;
       let matchFound = false;
       let matchExists = false;
@@ -35,12 +34,12 @@ module.exports = function(app) {
       $input.on('keyup', () => {
         searchArray.filter((obj) => {
           $rs.$apply(() => {
-            inputStr = $input.val().toUpperCase();
+            let inputStr = $input.val().toUpperCase();
             objIndex = ctrl.searchResults.indexOf(obj);
             obj[prop] = obj[prop].toUpperCase();
 
             obj[prop].indexOf(inputStr) > -1 ? matchFound = true : matchFound = false;
-            objIndex  > -1 ? matchExists = true : matchExists = false;
+            objIndex  > -1 ?matchExists = true : matchExists = false;
 
             if (inputStr.length < 1) return ctrl.searchResults = [];
             if (matchFound === false && matchExists) ctrl.searchResults.splice(objIndex, 1);
