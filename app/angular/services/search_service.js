@@ -3,6 +3,8 @@
 module.exports = function(app) {
   app.service('SearchService', ['$rootScope', function($rs) {
 
+    let testVar = 0;
+
     let searchListener = function(inputEleId, searchArray) {
       let results = [];
       let searchBox = document.getElementById(inputEleId);
@@ -29,6 +31,7 @@ module.exports = function(app) {
 
     return {
       searchListener: searchListener,
+      testVar: testVar,
     }
   }]);
 };
