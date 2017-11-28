@@ -30,7 +30,7 @@ module.exports = function() {
         _id: userId,
       },{
         $addToSet: {
-          friendIds: friendId
+          friendIds: friendId,
         },
       })
         .then((res) => {

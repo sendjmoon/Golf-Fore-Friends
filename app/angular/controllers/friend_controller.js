@@ -2,29 +2,21 @@
 
 module.exports = function(app) {
   app.controller('FriendController', ['$rootScope', '$scope', '$http', 'UserService', 'FriendService', function($rs, $scope, $http, UserService, FriendService) {
-
+    
     this.allFriends = FriendService.allFriends.data;
     this.allUsers = UserService.allUsers.data;
 
-    UserService.getAllUsers(UserService.user.email);
-    FriendService.getAllFriends(UserService.user.email);
-
     this.addFriend = function(friendId) {
-      let friendData = {
-        _id: friendId,
-      };
-      $http.post($rs.baseUrl + '/friends/add', friendData)
-        .then((res) => {
-          if (res.data.nModified === 0) {
-            alert('friend already exists');
-          } else {
-            console.log('added friend');
-          }
-        })
-        .catch((err) => {
-          alert('error adding friend');
-        });
+      FriendService.addFriend(friendId);
+      init();
     };
+
+    let init = function() {
+      FriendService.getAllFriends(UserService.user.email);
+      UserService.getAllUsers(UserService.user.email);
+    }
+
+    init();
 
     this.searchListener = function(userArray, inputId) {
       let searchBox = document.getElementById(inputId);

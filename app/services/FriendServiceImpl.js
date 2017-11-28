@@ -17,13 +17,12 @@ module.exports = function(friendDao) {
 
   const addFriend = function(userId, friendId) {
     return new Promise((resolve, reject) => {
+      userId === friendId ? reject() : true;
       _friendDao.addFriend(userId, friendId)
         .then((res) => {
+          res.nModified === 0 ? reject() : true;
           _friendDao.addFriend(friendId, userId)
-            .then((res) => {
-              resolve(res);
-            })
-            .catch(reject);
+            .then(resolve);
         })
         .catch(reject);
     });

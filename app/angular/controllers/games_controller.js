@@ -48,40 +48,8 @@ module.exports = function(app) {
 
     this.createGame = function(gameData) {
       GameService.createGame(gameData)
-        // .then(() => {
-        //
-        // })
-        // .catch((err) => {
-        //   console.log(err.message);
-        // });
-    };
 
-    // this.createGame = function(gameData) {
-    //   GameService.findWinner(gameData.players)
-    //     .then((newPlayersData) => {
-    //       gameData.players = newPlayersData;
-    //       $http.post('/games/create', gameData)
-    //         .then((game) => {
-    //           let playersArray = game.data.players;
-    //           playersArray.forEach((player) => {
-    //             this.updatePlayer(player)
-    //               .then((playerData) => {
-    //                 if (playerData.email === this.user.email) {
-    //                   $rs.$apply(() => {
-    //                     $rs.user = playerData;
-    //                     this.user = playerData;
-    //                     window.sessionStorage.setItem('currentUser', JSON.stringify(this.user));
-    //                   });
-    //                 }
-    //                 $route.reload();
-    //               });
-    //           });
-    //         })
-    //         .catch((err) => {
-    //           alert('error creating game');
-    //         });
-    //     });
-    // };
+    };
 
     this.getFriendsList = function() {
       $http.get('/friends/list')

@@ -26,15 +26,5 @@ module.exports = function(app) {
         });
     };
 
-    this.getFriends = function() {
-      $http.get(`${this.baseUrl}/users/friends/all`)
-        .then((friends) => {
-          console.log(friends);
-        })
-        .catch((err) => {
-          alert('error getting friends list');
-        });
-    };
-
   }]);
 };
