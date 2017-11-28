@@ -22,4 +22,4 @@ golfApp.run(['$rootScope', ($rs) => {
 }]);
 
 golfApp.config(require('./routes/route_config'));
-golfApp.config(require('./utils/check_session_exists'));
+golfApp.config(require('./lib/check_session_exists'));

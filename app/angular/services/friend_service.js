@@ -4,7 +4,6 @@ module.exports = function(app) {
   app.service('FriendService', ['$rootScope', '$http', function($rs, $http) {
     let allFriends = {};
 
-    //TODO: pass user email or username as argument
     let getAllFriends = function(emailOrUsername) {
       let userData = {
         emailOrUsername: emailOrUsername,
@@ -32,8 +31,8 @@ module.exports = function(app) {
     };
 
     return {
-      allFriends: {
-        data: allFriends,
+      data: {
+        allFriends: allFriends,
       },
       getAllFriends: getAllFriends,
       addFriend: addFriend,

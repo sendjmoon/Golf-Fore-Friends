@@ -2,9 +2,11 @@
 
 module.exports = function(app) {
   app.controller('FriendController', ['$rootScope', '$scope', '$http', 'UserService', 'FriendService', function($rs, $scope, $http, UserService, FriendService) {
-    
-    this.allFriends = FriendService.allFriends.data;
-    this.allUsers = UserService.allUsers.data;
+
+    this.allFriends = FriendService.data.allFriends;
+    this.allUsers = UserService.data.allUsers;
+
+    let user = UserService.data.user;
 
     this.addFriend = function(friendId) {
       FriendService.addFriend(friendId);
@@ -12,8 +14,8 @@ module.exports = function(app) {
     };
 
     let init = function() {
-      FriendService.getAllFriends(UserService.user.email);
-      UserService.getAllUsers(UserService.user.email);
+      FriendService.getAllFriends(user.email);
+      UserService.getAllUsers(user.email);
     }
 
     init();

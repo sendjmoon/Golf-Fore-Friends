@@ -77,15 +77,15 @@ module.exports = function(app) {
     };
 
     return {
+      data: {
+        user: user,
+        allUsers: allUsers,
+      },
       getByEmailOrUsername: getByEmailOrUsername,
       getAllUsers: getAllUsers,
       updateUser: updateUser,
       calcHandicap: calcHandicap,
       calcWinRatio: calcWinRatio,
-      user: user,
-      allUsers: {
-        data: allUsers,
-      },
     }
   }]);
 };
