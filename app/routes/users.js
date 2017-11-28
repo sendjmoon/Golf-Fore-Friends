@@ -3,7 +3,21 @@
 const express = require('express');
 const router = express.Router();
 const userService = require('../services').userService;
-const checkSessionExists = require('../lib/check_session_exists');
+
+router.get('/check-session', function(req, res, next) {
+  if (req.session.user) {
+    res.json({
+      user: {
+        _id: req.session.user._id,
+        fullName: req.session.user.fullName,
+        email: req.session.user.email,
+      },
+    });
+  }
+  else res.status(401).json({
+    error: 'Unauthorized.',
+  });
+});
 
 router.get('/all', function(req, res, next) {
   userService.getAllUsers(req.session.user.email)
@@ -11,6 +25,7 @@ router.get('/all', function(req, res, next) {
       res.json(users);
     })
     .catch((err) => {
+      console.log('something went wrong');
       res.status(500).json({
         error: 'Error getting users.',
       });
@@ -75,7 +90,7 @@ router.post('/update', function(req, res, next) {
 });
 
 router.get('/signout', function(req, res, next) {
-  req.session = null;
+  req.session.user = null;
   res.json({
     message: 'signed out',
   });
