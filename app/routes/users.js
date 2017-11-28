@@ -20,7 +20,7 @@ router.get('/check-session', function(req, res, next) {
 });
 
 router.get('/all', function(req, res, next) {
-  userService.getAllUsers(req.session.user.email)
+  userService.getAllUsers(req.body.emailOrUsername)
     .then((users) => {
       res.json(users);
     })

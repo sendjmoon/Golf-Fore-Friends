@@ -53,9 +53,9 @@ module.exports = function(userDao) {
     });
   };
 
-  const getAllUsers = function(userEmailOrUsername) {
+  const getAllUsers = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
-      _userDao.getAllUsers(userEmailOrUsername)
+      _userDao.getAllUsers(emailOrUsername)
         .then((users) => {
           resolve(users);
         })
