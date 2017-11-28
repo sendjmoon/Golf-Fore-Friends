@@ -71,7 +71,7 @@ router.post('/signin', function(req, res, next) {
       delete user.password;
       req.session.user = user;
       res.status(200).json({
-        message: 'Signin success.',
+        message: 'Signin successful.',
       });
     })
     .catch((err) => {

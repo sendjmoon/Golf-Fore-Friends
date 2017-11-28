@@ -6,7 +6,7 @@ module.exports = function(app) {
     let signup = function(userData) {
       $http.post(`${$rs.baseUrl}/users/signup`, userData)
         .then((res) => {
-          console.log(res.message);
+          console.log(res.data.message);
           $location.path('/dashboard');
         })
         .catch((err) => {
@@ -17,7 +17,7 @@ module.exports = function(app) {
     let signin = function(userData) {
       $http.post(`${$rs.baseUrl}/users/signin`, userData)
         .then((res) => {
-          console.log(res.message);
+          console.log(res.data.message);
           $location.path('/dashboard');
         })
         .catch((err) => {
