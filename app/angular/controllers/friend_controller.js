@@ -1,11 +1,10 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('FriendController', ['$rootScope', '$scope', '$http', 'UserService', 'FriendService', function($rs, $scope, $http, UserService, FriendService) {
+  app.controller('FriendController', ['$rootScope', 'UserService', 'FriendService', function($rs, UserService, FriendService) {
 
     this.allFriends = FriendService.data.allFriends;
     this.allUsers = UserService.data.allUsers;
-
     let user = UserService.data.user;
 
     this.addFriend = function(friendId) {
