@@ -19,36 +19,36 @@ module.exports = function(app) {
         .then(() => {
           UserService.getAllUsers(ctrl.user.email)
             .then((users) => {
-              ctrl.searchListener('email', users, 'search-input-users');
+              ctrl.searchListener('email', users, $('#search-input-users'));
             });
         });
     };
 
     init();
 
-    ctrl.searchListener = function(prop, searchArray, inputId) {
-      return new Promise((resolve, reject) => {
-        let results = [];
-        let searchBox = document.getElementById(inputId);
-        searchBox.addEventListener('keyup', () => {
-          let input = searchBox.value.toUpperCase();
-          results = searchArray.filter((user) => {
-            user[prop] = user[prop].toUpperCase();
-            $rs.$apply(() => {
-              if (input.length < 1) {
-                ctrl.searchResults = [];
-                return;
-              }
-              if (user[prop].indexOf(input) > -1 && ctrl.searchResults.indexOf(user) > -1) {
-                return;
-              }
-              if (user[prop].indexOf(input) < 0 && ctrl.searchResults.indexOf(user) > -1) {
-                ctrl.searchResults.splice(ctrl.searchResults.indexOf(user), 1);
-              }
-              else ctrl.searchResults.push(user);
-            });
+    ctrl.searchListener = function(prop, searchArray, $input) {
+      let inputStr;
+      let objIndex;
+      let resultFound = false;
+      let resultExists = false;
+
+      $input.on('keyup', () => {
+        searchArray.filter((obj) => {
+          $rs.$apply(() => {
+            inputStr = $input.val().toUpperCase();
+            objIndex = ctrl.searchResults.indexOf(obj);
+            obj[prop] = obj[prop].toUpperCase();
+            obj[prop].indexOf(inputStr) < 0 ? resultFound = false : resultFound = true;
+            objIndex < 0 ? resultExists = false : resultExists = true;
+            if (inputStr.length < 1) return ctrl.searchResults = [];
+            if (resultFound === false && resultExists) {
+              ctrl.searchResults.splice(objIndex, 1);
+            }
+            if (resultFound) {
+              if (resultExists) return;
+              else ctrl.searchResults.push(obj);
+            }
           });
-          resolve(results);
         });
       });
     };
