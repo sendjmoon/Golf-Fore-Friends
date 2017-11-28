@@ -21,7 +21,7 @@ module.exports = function(app) {
         });
     };
 
-    getAllUsers();
+    UserService.getAllUsers(UserService.user.email);
     getAllFriends();
 
     this.addFriend = function(friendId) {

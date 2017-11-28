@@ -7,8 +7,9 @@ module.exports = function(app) {
 
     let getByEmailOrUsername = function(emailOrUsername) {
       return new Promise((resolve, reject) => {
-        let userData = {};
-        userData.emailOrUsername = emailOrUsername;
+        let userData = {
+          emailOrUsername: emailOrUsername,
+        };
         $http.post('/users', userData)
           .then((user) => {
             resolve(user);
@@ -19,9 +20,12 @@ module.exports = function(app) {
       });
     };
 
-    let getAllUsers = function() {
+    let getAllUsers = function(emailOrUsername) {
       return new Promise((resolve, reject) => {
-        $http.get($rs.baseUrl + '/users/all')
+        let userData = {
+          emailOrUsername: emailOrUsername,
+        };
+        $http.post($rs.baseUrl + '/users/all', userData)
           .then((users) => {
             allUsers.users = users.data;
             resolve();
