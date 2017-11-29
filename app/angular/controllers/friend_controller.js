@@ -6,7 +6,7 @@ module.exports = function(app) {
     let ctrl = this;
     ctrl.user = UserService.data.user;
     ctrl.allFriends = FriendService.allFriends;
-    ctrl.allUsers = UserService.data.allUsers;
+    ctrl.allUsers = UserService.allUsers;
     ctrl.searchResults = SearchService.searchResults;
     ctrl.$input = $('#search-input-users');
 

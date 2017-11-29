@@ -20,7 +20,7 @@
 
   <h2>add more friends</h2>
   <ul>
-    <li ng-repeat="user in fc.allUsers.users">
+    <li ng-repeat="user in fc.allUsers">
       <p>{{user.fullName}}</p>
       <button class="gff-btn" ng-click="fc.addFriend(user._id)">Add to Friends</button>
     </li>

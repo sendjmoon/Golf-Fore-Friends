@@ -1,12 +1,13 @@
 'use strict';
 
 module.exports = function(app) {
-  app.service('UserService', ['$rootScope', '$http', function($rs, $http) {
+  app.factory('UserService', ['$rootScope', '$http', function($rs, $http) {
 
     let data = {
       user: {},
-      allUsers: {},
     };
+
+    let allUsers = [];
 
     let getByEmailOrUsername = function(emailOrUsername) {
       return new Promise((resolve, reject) => {
@@ -27,9 +28,11 @@ module.exports = function(app) {
       let userData = {
         emailOrUsername: emailOrUsername,
       };
-      return $http.post($rs.baseUrl + '/users/all', userData)
+      return $http.post(`${$rs.baseUrl}/users/all`, userData)
         .then((users) => {
-          data.allUsers.users = users.data;
+          users.data.forEach((user) => {
+            allUsers.push(user);
+          });
         })
         .catch((err) => {
           console.log('Error getting all users.');
@@ -83,6 +86,7 @@ module.exports = function(app) {
       calcHandicap: calcHandicap,
       calcWinRatio: calcWinRatio,
       data: data,
+      allUsers: allUsers,
     }
   }]);
 };
