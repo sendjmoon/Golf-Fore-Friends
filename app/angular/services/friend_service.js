@@ -1,11 +1,9 @@
 'use strict';
 
 module.exports = function(app) {
-  app.service('FriendService', ['$rootScope', '$http', function($rs, $http) {
+  app.factory('FriendService', ['$rootScope', '$http', function($rs, $http) {
 
-    let data = {
-      allFriends: {},
-    };
+    let allFriends = [];
 
     let getAllFriends = function(emailOrUsername) {
       let userData = {
@@ -13,7 +11,9 @@ module.exports = function(app) {
       };
       return $http.post(`${$rs.baseUrl}/friends/all`, userData)
         .then((friends) => {
-          data.allFriends.friends = friends.data;
+          friends.data.forEach((friend) => {
+            allFriends.push(friend);
+          });
         })
         .catch((err) => {
           console.log('error getting all friends');
@@ -36,7 +36,7 @@ module.exports = function(app) {
     return {
       getAllFriends: getAllFriends,
       addFriend: addFriend,
-      data: data,
+      allFriends: allFriends,
     }
   }]);
 }

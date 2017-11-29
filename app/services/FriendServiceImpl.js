@@ -1,9 +1,26 @@
 'use strict';
 
 const Promise = require('bluebird');
+const utils = require('../utils');
 
 module.exports = function(friendDao) {
   const _friendDao = friendDao;
+
+  const createDoc = function(userId, friendId) {
+    return new Promise((resolve, reject) => {
+      const friendData = {
+        userId: userId,
+        friendId: friendId,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      };
+      _friendDao.create(friendData)
+        .then((friend) => {
+          resolve(friend);
+        })
+        .catch(reject);
+    });
+  };
 
   const getAllFriends = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
@@ -15,14 +32,21 @@ module.exports = function(friendDao) {
     });
   };
 
-  const addFriend = function(userId, friendId) {
+  const addFriend = function(userIdOne, userIdTwo) {
     return new Promise((resolve, reject) => {
-      userId === friendId ? reject() : true;
-      _friendDao.addFriend(userId, friendId)
-        .then((res) => {
-          res.nModified === 0 ? reject() : true;
-          _friendDao.addFriend(friendId, userId)
-            .then(resolve);
+      createDoc(userIdOne, userIdTwo)
+        .then((friendDocTwo) => {
+          _friendDao.addFriend(userIdOne, friendDocTwo._id)
+            .then((res) => {
+              if (res.nModified === 0) reject();
+              else createDoc(userIdTwo, userIdOne)
+                .then((friendDocOne) => {
+                  _friendDao.addFriend(userIdTwo, friendDocOne._id)
+                    .then((res) => {
+                      res.nModified === 0 ? reject() : resolve();
+                    });
+                });
+            });
         })
         .catch(reject);
     });
