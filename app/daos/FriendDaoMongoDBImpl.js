@@ -8,10 +8,9 @@ module.exports = function() {
   const create = function(friendData) {
     return new Promise((resolve, reject) => {
       const friend = new Friend(friendData);
-      console.log(friend);
       friend.save()
       .then((newFriend) => {
-        resolve(newFriend.toObject());
+        resolve(newFriend);
       })
       .catch(reject);
     })
@@ -22,7 +21,7 @@ module.exports = function() {
       console.log(friendId);
       User.update(
         { _id: userId },
-        { $addToSet: { friendId: friendId }}
+        { $addToSet: { friendIds: friendId }}
       )
         .then((res) => {
           resolve(res);

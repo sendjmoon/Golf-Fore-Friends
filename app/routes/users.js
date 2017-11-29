@@ -6,7 +6,6 @@ const userService = require('../services').userService;
 
 router.get('/check-session', function(req, res, next) {
   if (req.session.user) {
-    console.log(req.session.user);
     res.json({
       user: {
         _id: req.session.user._id,
