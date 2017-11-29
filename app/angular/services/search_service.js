@@ -1,37 +1,51 @@
 'use strict';
 
 module.exports = function(app) {
-  app.service('SearchService', ['$rootScope', function($rs) {
+  app.factory('SearchService', ['$rootScope', function($rs) {
 
-    let testVar = 0;
+    let searchResults = [];
 
-    let searchListener = function(inputEleId, searchArray) {
-      let results = [];
-      let searchBox = document.getElementById(inputEleId);
-      searchBox.addEventListener('keyup', function() {
-        let input = this.value.toUpperCase();
-        results = searchArray.filter((item) => {
-          if (input.length < 1) {
-            results = [];
-            return;
-          }
-          if (item.email.toUpperCase().indexOf(input) > -1) {
-            if (results.indexOf(item) > -1) return;
-            else results.push(item);
-          }
-          if (item.email.toUpperCase().indexOf(input) < 0) {
-            if (results.indexOf(item) > -1) {
-              results.splice(results.indexOf(item), 1);
+    let searchListener = function(prop, searchArray, $input) {
+      let inputStr;
+      let matchFound = false;
+      let matchExists = false;
+      let objIndex;
+
+      $input.on('keyup', () => {
+        searchArray.filter((obj) => {
+          inputStr = $input.val().toUpperCase();
+          objIndex = searchResults.indexOf(obj);
+          obj[prop] = obj[prop].toUpperCase();
+
+          obj[prop].indexOf(inputStr) > -1 ?
+            matchFound = true : matchFound = false;
+
+          objIndex  > -1 ?
+            matchExists = true : matchExists = false;
+
+          $rs.$apply(() => {
+            if (inputStr.length < 1) {
+              return searchResults.forEach((result) => {
+                searchResults.splice(searchResults.indexOf(result), 1);
+              });
             }
-          }
+
+            if (matchFound === false && matchExists)
+              searchResults.splice(objIndex, 1);
+
+            if (matchFound) {
+              if (matchExists) return;
+              searchResults.push(obj);
+            }
+          });
+          
         });
-        return results;
       });
     };
 
     return {
       searchListener: searchListener,
-      testVar: testVar,
+      searchResults: searchResults,
     }
   }]);
 };

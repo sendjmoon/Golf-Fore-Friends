@@ -6,15 +6,12 @@
     </li>
   </ul>
 
-  <button ng-click="fc.testFn()">click me</button>
-  <p>{{testVar}}</p>
-
   <div class="search-container">
     <form>
       <input id="search-input-users" type="text" placeholder="Search By Email"></input>
       <ul>
         <li ng-repeat="user in fc.searchResults">
-          <p>{{user.fullName}}</p>
+          <p>{{user}}</p>
           <button class="gff-btn" ng-click="fc.addFriend(user._id)">Add to Friends</button>
         </li>
       </ul>

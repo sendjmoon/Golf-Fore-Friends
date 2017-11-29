@@ -2,22 +2,12 @@
 
 module.exports = function(app) {
   app.controller('FriendController', ['$rootScope', '$scope', 'UserService', 'FriendService', 'SearchService', function($rs, $scope, UserService, FriendService, SearchService) {
-    let ctrl = this;
 
+    let ctrl = this;
+    ctrl.user = UserService.data.user;
     ctrl.allFriends = FriendService.data.allFriends;
     ctrl.allUsers = UserService.data.allUsers;
-    ctrl.user = UserService.data.user;
-    ctrl.searchResults = [];
-    $scope.SearchService = SearchService;
-    $scope.testVar = SearchService.testVar;
-
-    ctrl.testFn = function() {
-      SearchService.testVar++;
-    };
-
-    $scope.$watch('SearchService.testVar', function(newVal, oldVal) {
-      $scope.testVar = SearchService.testVar;
-    });
+    ctrl.searchResults = SearchService.searchResults;
 
     ctrl.addFriend = function(friendId) {
       FriendService.addFriend(friendId);
@@ -29,40 +19,12 @@ module.exports = function(app) {
         .then(() => {
           UserService.getAllUsers(ctrl.user.email)
             .then((users) => {
-              ctrl.searchListener('email', users, $('#search-input-users'));
-              SearchService.testVar++;
-              $scope.$digest();
+              SearchService.searchListener('email', users, $('#search-input-users'));
             });
         });
     };
 
     init();
-
-    ctrl.searchListener = function(prop, searchArray, $input) {
-      let objIndex;
-      let matchFound = false;
-      let matchExists = false;
-
-      $input.on('keyup', () => {
-        searchArray.filter((obj) => {
-          $rs.$apply(() => {
-            let inputStr = $input.val().toUpperCase();
-            objIndex = ctrl.searchResults.indexOf(obj);
-            obj[prop] = obj[prop].toUpperCase();
-
-            obj[prop].indexOf(inputStr) > -1 ? matchFound = true : matchFound = false;
-            objIndex  > -1 ?matchExists = true : matchExists = false;
-
-            if (inputStr.length < 1) return ctrl.searchResults = [];
-            if (matchFound === false && matchExists) ctrl.searchResults.splice(objIndex, 1);
-            if (matchFound) {
-              if (matchExists) return;
-              ctrl.searchResults.push(obj);
-            }
-          });
-        });
-      });
-    };
 
   }]);
 };
