@@ -25,14 +25,19 @@ const FriendSchema = new Schema({
   statsAgainst: {
     wins: {
       type: Number,
-      default: 0,
       required: true,
+      default: 0,
     },
     losses: {
       type: Number,
-      default: 0,
       required: true,
+      default: 0,
     },
+    ties: {
+      type: Number,
+      required: true,
+      default: 0,
+    }
   },
 });
 
