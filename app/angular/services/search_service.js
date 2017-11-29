@@ -35,10 +35,10 @@ module.exports = function(app) {
 
             if (matchFound) {
               if (matchExists) return;
-              searchResults.push(obj);
+              else searchResults.push(obj);
             }
           });
-          
+
         });
       });
     };

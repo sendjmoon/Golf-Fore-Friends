@@ -8,6 +8,7 @@ module.exports = function(app) {
     ctrl.allFriends = FriendService.data.allFriends;
     ctrl.allUsers = UserService.data.allUsers;
     ctrl.searchResults = SearchService.searchResults;
+    ctrl.$input = $('#search-input-users');
 
     ctrl.addFriend = function(friendId) {
       FriendService.addFriend(friendId);
@@ -16,15 +17,11 @@ module.exports = function(app) {
 
     let init = function() {
       FriendService.getAllFriends(ctrl.user.email)
-        .then(() => {
-          UserService.getAllUsers(ctrl.user.email)
-            .then((users) => {
-              SearchService.searchListener('email', users, $('#search-input-users'));
-            });
-        });
+        .then(UserService.getAllUsers(ctrl.user.email))
+        .then(SearchService.searchListener('email', ctrl.allUsers, ctrl.$input));
     };
 
     init();
 
   }]);
-};
+}
