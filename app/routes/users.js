@@ -37,7 +37,6 @@ router.post('/all', function(req, res, next) {
       res.json(users);
     })
     .catch((err) => {
-      console.log('something went wrong');
       res.status(500).json({
         error: 'Error getting users.',
       });

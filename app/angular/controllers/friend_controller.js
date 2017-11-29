@@ -1,48 +1,30 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('FriendController', ['$rootScope', '$scope', '$http', 'UserService', 'FriendService', function($rs, $scope, $http, UserService, FriendService) {
+  app.controller('FriendController', ['$rootScope', '$scope', 'UserService', 'FriendService', 'SearchService', function($rs, $scope, UserService, FriendService, SearchService) {
 
-    this.allFriends = FriendService.data.allFriends;
-    this.allUsers = UserService.data.allUsers;
+    let ctrl = this;
+    ctrl.user = UserService.data.user;
+    ctrl.allFriends = FriendService.data.allFriends;
+    ctrl.allUsers = UserService.data.allUsers;
+    ctrl.searchResults = SearchService.searchResults;
 
-    let user = UserService.data.user;
-
-    this.addFriend = function(friendId) {
+    ctrl.addFriend = function(friendId) {
       FriendService.addFriend(friendId);
       init();
     };
 
     let init = function() {
-      FriendService.getAllFriends(user.email);
-      UserService.getAllUsers(user.email);
-    }
+      FriendService.getAllFriends(ctrl.user.email)
+        .then(() => {
+          UserService.getAllUsers(ctrl.user.email)
+            .then((users) => {
+              SearchService.searchListener('email', users, $('#search-input-users'));
+            });
+        });
+    };
 
     init();
-
-    this.searchListener = function(userArray, inputId) {
-      let searchBox = document.getElementById(inputId);
-      searchBox.addEventListener('keyup', () => {
-        let input = searchBox.value.toUpperCase();
-        let results = userArray.filter((user) => {
-          $rs.$apply(() => {
-            if (input.length < 1) {
-              this.searchResults = [];
-              return;
-            }
-            if (user.email.toUpperCase().indexOf(input) > -1) {
-              if (this.searchResults.indexOf(user) > -1) return;
-              else this.searchResults.push(user);
-            }
-            if (user.email.toUpperCase().indexOf(input) < 0) {
-              if (this.searchResults.indexOf(user) > -1) {
-                this.searchResults.splice(this.searchResults.indexOf(user), 1);
-              }
-            }
-          });
-        });
-      });
-    };
 
   }]);
 };
