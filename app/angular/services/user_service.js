@@ -5,9 +5,8 @@ module.exports = function(app) {
 
     let data = {
       user: {},
-    };
-
-    let allUsers = [];
+      allUsers: {},
+    }
 
     let getByEmailOrUsername = function(emailOrUsername) {
       return new Promise((resolve, reject) => {
@@ -25,18 +24,19 @@ module.exports = function(app) {
     };
 
     let getAllUsers = function(emailOrUsername) {
-      let userData = {
-        emailOrUsername: emailOrUsername,
-      };
-      return $http.post(`${$rs.baseUrl}/users/all`, userData)
-        .then((users) => {
-          users.data.forEach((user) => {
-            allUsers.push(user);
+      return new Promise((resolve, reject) => {
+        let userData = {
+          emailOrUsername: emailOrUsername,
+        };
+        $http.post(`${$rs.baseUrl}/users/all`, userData)
+          .then((users) => {
+            data.allUsers.users = users.data;
+            resolve(users.data);
+          })
+          .catch((err) => {
+            console.log('Error getting all users.');
           });
-        })
-        .catch((err) => {
-          console.log('Error getting all users.');
-        });
+      });
     };
 
     let updateUser = function(user, newData) {
@@ -86,7 +86,6 @@ module.exports = function(app) {
       calcHandicap: calcHandicap,
       calcWinRatio: calcWinRatio,
       data: data,
-      allUsers: allUsers,
     }
   }]);
 };

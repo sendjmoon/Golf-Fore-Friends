@@ -67,26 +67,16 @@ const UserSchema = new Schema({
     },
   },
   gameIds: [{
-    gameId: {
-      type: Schema.Types.ObjectId,
-      ref: 'Game',
-      unique: true,
-    },
-    publicId: {
-      type: String,
-      required: true,
-      unique: false,
-    },
-    strokes: {
-      type: Number,
-      required: true,
-      unique: false,
-    },
+    type: Schema.Types.ObjectId,
+    ref: 'Game',
+    unique: true,
   }],
   friendIds: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Friend',
-    unique: true,
+    friendId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Friend',
+      unique: true,
+    },
   }],
 },
 {

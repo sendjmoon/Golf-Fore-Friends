@@ -36,6 +36,7 @@ module.exports = function(friendDao) {
     return new Promise((resolve, reject) => {
       createDoc(userIdOne, userIdTwo)
         .then((friendDocTwo) => {
+          console.log(friendDocTwo);
           _friendDao.addFriend(userIdOne, friendDocTwo._id)
             .then((res) => {
               if (res.nModified === 0) reject();

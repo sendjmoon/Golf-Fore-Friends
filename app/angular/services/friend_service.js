@@ -3,7 +3,9 @@
 module.exports = function(app) {
   app.factory('FriendService', ['$rootScope', '$http', function($rs, $http) {
 
-    let allFriends = [];
+    let data = {
+      allFriends: {},
+    };
 
     let getAllFriends = function(emailOrUsername) {
       let userData = {
@@ -11,9 +13,7 @@ module.exports = function(app) {
       };
       return $http.post(`${$rs.baseUrl}/friends/all`, userData)
         .then((friends) => {
-          friends.data.forEach((friend) => {
-            allFriends.push(friend);
-          });
+          data.allFriends.friends = friends.data;
         })
         .catch((err) => {
           console.log('error getting all friends');
@@ -36,7 +36,7 @@ module.exports = function(app) {
     return {
       getAllFriends: getAllFriends,
       addFriend: addFriend,
-      allFriends: allFriends,
+      data: data,
     }
   }]);
 }
