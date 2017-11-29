@@ -6,11 +6,11 @@ const utils = require('../utils');
 module.exports = function(friendDao) {
   const _friendDao = friendDao;
 
-  const createDoc = function(userId) {
+  const createDoc = function(userId, friendId) {
     return new Promise((resolve, reject) => {
       const friendData = {
-        friendId: userId,
-        publicId: `${utils.generateHash(4)}-fr`,
+        userId: userId,
+        friendId: friendId,
         createdAt: Date.now(),
         updatedAt: Date.now(),
       };
@@ -34,12 +34,12 @@ module.exports = function(friendDao) {
 
   const addFriend = function(userIdOne, userIdTwo) {
     return new Promise((resolve, reject) => {
-      createDoc(userIdTwo)
+      createDoc(userIdOne, userIdTwo)
         .then((friendDocTwo) => {
           _friendDao.addFriend(userIdOne, friendDocTwo._id)
             .then((res) => {
               if (res.nModified === 0) reject();
-              else createDoc(userIdOne)
+              else createDoc(userIdTwo, userIdOne)
                 .then((friendDocOne) => {
                   _friendDao.addFriend(userIdTwo, friendDocOne._id)
                     .then((res) => {

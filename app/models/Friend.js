@@ -4,15 +4,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const FriendSchema = new Schema({
-  friendId: {
+  userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true,
   },
-  publicId: {
-    type: String,
+  friendId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
     required: true,
-    unique: true,
   },
   createdAt: {
     type: Date,
@@ -36,6 +36,6 @@ const FriendSchema = new Schema({
   },
 });
 
-FriendSchema.index({ friendId: -1 }, { unique: true });
+FriendSchema.index({ userId: -1, friendId: -1 }, { unique: true });
 
 module.exports = mongoose.model('Friend', FriendSchema);

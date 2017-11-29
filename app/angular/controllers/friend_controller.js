@@ -5,14 +5,14 @@ module.exports = function(app) {
 
     let ctrl = this;
     ctrl.user = UserService.data.user;
-    ctrl.allFriends = FriendService.data.allFriends;
+    ctrl.allFriends = FriendService.allFriends;
     ctrl.allUsers = UserService.data.allUsers;
     ctrl.searchResults = SearchService.searchResults;
     ctrl.$input = $('#search-input-users');
 
     ctrl.addFriend = function(friendId) {
-      FriendService.addFriend(friendId);
-      init();
+      FriendService.addFriend(friendId)
+        .then(FriendService.getAllFriends(ctrl.user.email));
     };
 
     let init = function() {

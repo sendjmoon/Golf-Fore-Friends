@@ -39,7 +39,10 @@ module.exports = function() {
       })
         .populate({
           path: 'friendIds',
-          select: '_id fullName email'
+          populate: {
+            path: 'friendId',
+            select: '_id fullName email',
+          },
         })
         .exec()
         .then((user) => {
