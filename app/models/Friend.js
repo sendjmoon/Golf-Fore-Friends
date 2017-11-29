@@ -9,6 +9,11 @@ const FriendSchema = new Schema({
     ref: 'User',
     required: true,
   },
+  publicId: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   createdAt: {
     type: Date,
     required: true,

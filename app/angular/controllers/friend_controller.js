@@ -18,7 +18,7 @@ module.exports = function(app) {
     let init = function() {
       FriendService.getAllFriends(ctrl.user.email)
         .then(UserService.getAllUsers(ctrl.user.email))
-        .then(SearchService.searchListener('email', ctrl.allUsers, ctrl.$input));
+          .then(SearchService.searchListener('email', ctrl.allUsers, ctrl.$input));
     };
 
     init();
