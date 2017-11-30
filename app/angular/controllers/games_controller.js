@@ -1,64 +1,12 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('GamesController', ['$rootScope', '$scope', '$http', '$location', '$route', '$routeParams', 'AuthService', 'UserService', 'GameService', 'SearchService', function($rs, $scope, $http, $location, $route, $routeParams, AuthService, UserService, GameService, SearchService) {
+  app.controller('GamesController', ['$rootScope', '$scope', '$http', '$location', '$route', '$routeParams', 'UserService', 'FriendService', 'GameService', 'SearchService', function($rs, $scope, $http, $location, $route, $routeParams, UserService, GameService, SearchService) {
 
     this.editing = false;
 
-    this.searchListener = function(inputId) {
-      let gamesArray = JSON.parse(window.localStorage.getItem('games'));
-      let searchBox = document.getElementById(inputId);
-      searchBox.addEventListener('keyup', () => {
-        let input = searchBox.value.toUpperCase();
-        gamesArray = gamesArray.filter((game) => {
-          $rs.$apply(() => {
-            if (input.length < 1) {
-              this.searchResults = [];
-              return;
-            }
-            if (game.name.toUpperCase().indexOf(input) > -1) {
-              if (this.searchResults.indexOf(game) > -1)
-                return;
-              else
-                this.searchResults.push(game);
-            }
-            if (game.name.toUpperCase().indexOf(input) < 0) {
-              if (this.searchResults.indexOf(game) > -1)
-                this.searchResults.splice(this.searchResults.indexOf(game), 1);
-            }
-          });
-        });
-      });
-    };
-
-    this.searchClickHandler = function() {
-      let $searchBtn = $('#search-btn');
-      $searchBtn.on('click', () => {
-        $searchBtn.parent('.search-container')
-          .toggleClass('open');
-        $searchBtn.find('.fa')
-          .toggleClass('fa fa-search, fa fa-ban');
-
-        $('#game-name-input').val('');
-        $rs.$apply(() => {
-          this.searchResults = [];
-        });
-      });
-    };
-
     this.createGame = function(gameData) {
-      GameService.createGame(gameData)
-
-    };
-
-    this.getFriendsList = function() {
-      $http.get('/friends/list')
-        .then((friendsList) => {
-          this.friendsList = friendsList.data;
-        })
-        .catch((err) => {
-          alert('error getting friends list');
-        });
+      GameService.createGame(gameData);
     };
 
     this.addPlayer = function(user) {
