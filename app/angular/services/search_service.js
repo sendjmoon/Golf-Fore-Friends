@@ -5,46 +5,64 @@ module.exports = function(app) {
 
     let searchResults = [];
 
-    let searchListener = function(prop, searchArray, $input) {
+    let searchListener = function(options) {
       let inputStr;
       let matchFound = false;
       let matchExists = false;
-      let objIndex;
+      let matchObjIndex;
 
-      $input.on('keyup', () => {
-        searchArray.filter((obj) => {
-          inputStr = $input.val().toUpperCase();
-          objIndex = searchResults.indexOf(obj);
-          obj[prop] = obj[prop].toUpperCase();
+      let searchBy = options.searchBy;
+      let $input = $(`#${options.inputId}`);
+      let searchArray = options.searchArray;
+      let compareArray = options.compareArray;
+      let compareFn = options.compareFn;
 
-          obj[prop].indexOf(inputStr) > -1 ?
-            matchFound = true : matchFound = false;
+      $input
+        .unbind('keyup')
+        .on('keyup', () => {
+          searchArray.filter((searchObj) => {
+            inputStr = $input.val().toUpperCase();
+            matchObjIndex = searchResults.indexOf(searchObj);
 
-          objIndex  > -1 ?
-            matchExists = true : matchExists = false;
+            searchObj[searchBy].toUpperCase().indexOf(inputStr) > -1 ?
+              matchFound = true : matchFound = false;
 
-          $rs.$apply(() => {
-            if (inputStr.length < 1) {
-              return searchResults.forEach((result) => {
-                searchResults.splice(searchResults.indexOf(result), 1);
-              });
-            }
+            matchObjIndex > -1 ?
+              matchExists = true : matchExists = false;
 
-            if (matchFound === false && matchExists)
-              searchResults.splice(objIndex, 1);
+            $rs.$apply(() => {
+              if (inputStr.length < 1) {
+                return searchResults.forEach((result) => {
+                  searchResults.splice(searchResults.indexOf(result), 1);
+                });
+              }
 
-            if (matchFound) {
-              if (matchExists) return;
-              else searchResults.push(obj);
-            }
+              if (matchFound === false && matchExists)
+                searchResults.splice(matchObjIndex, 1);
+
+              if (matchFound) {
+                if (compareFn) compareFn(searchObj, compareArray);
+                if (matchExists) return;
+                else searchResults.push(searchObj);
+              }
+            });
+
           });
-
+          console.log(searchResults);
         });
+    };
+
+    let compareIfFriends = function(obj, compareArray) {
+      compareArray.forEach((compareObj) => {
+        if (obj.isFriend === true) return;
+        obj._id === compareObj.friendId._id ?
+          obj.isFriend = true : obj.isFriend = false;
       });
     };
 
     return {
       searchListener: searchListener,
+      compareIfFriends: compareIfFriends,
       searchResults: searchResults,
     }
   }]);

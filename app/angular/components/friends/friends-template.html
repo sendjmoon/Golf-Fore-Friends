@@ -2,7 +2,7 @@
   <h2>friends list</h2>
   <ul>
     <li ng-repeat="friend in friendsData.friends">
-      <h3>{{friend}}</h3>
+      <h3>{{friend.friendId.fullName}}</h3>
     </li>
   </ul>
 
@@ -10,9 +10,10 @@
     <form>
       <input id="search-input-users" type="text" placeholder="Search By Email"></input>
       <ul>
-        <li ng-repeat="user in fc.searchResults">
-          <p>{{user}}</p>
-          <button class="gff-btn" ng-click="fc.addFriend(user._id)">Add to Friends</button>
+        <li ng-repeat="user in searchResults">
+          <p>{{user.fullName}}</p>
+          <p>{{user.isFriend}}</p>
+          <button class="gff-btn" ng-hide="user.isFriend" ng-click="fc.addFriend(user._id); user.isFriend=true;">Add to Friends</button>
         </li>
       </ul>
     </form>
@@ -21,7 +22,7 @@
   <h2>add more friends</h2>
   <ul>
     <li ng-repeat="user in usersData.users">
-      <p>{{user.fullName}}</p>
+      <p>{{user}}</p>
       <button class="gff-btn" ng-click="fc.addFriend(user._id)">Add to Friends</button>
     </li>
   </ul>

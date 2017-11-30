@@ -8,29 +8,35 @@ module.exports = function(app) {
     };
 
     let getAllFriends = function(emailOrUsername) {
-      let userData = {
-        emailOrUsername: emailOrUsername,
-      };
-      return $http.post(`${$rs.baseUrl}/friends/all`, userData)
+      return new Promise((resolve, reject) => {
+        let userData = {
+          emailOrUsername: emailOrUsername,
+        };
+        $http.post(`${$rs.baseUrl}/friends/all`, userData)
         .then((friends) => {
           data.allFriends.friends = friends.data;
+          resolve();
         })
         .catch((err) => {
           console.log('error getting all friends');
         });
-    }
+      });
+    };
 
     let addFriend = function(friendId) {
-      let friendData = {
-        _id: friendId,
-      };
-      return $http.post(`${$rs.baseUrl}/friends/add`, friendData)
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err.data);
-        });
+      return new Promise((resolve, reject) => {
+        let friendData = {
+          _id: friendId,
+        };
+        $http.post(`${$rs.baseUrl}/friends/add`, friendData)
+          .then((res) => {
+            console.log(res.data);
+            resolve();
+          })
+          .catch((err) => {
+            console.log(err.data);
+          });
+      });
     };
 
     return {
@@ -39,4 +45,4 @@ module.exports = function(app) {
       data: data,
     }
   }]);
-}
+};

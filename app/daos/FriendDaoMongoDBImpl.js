@@ -12,13 +12,15 @@ module.exports = function() {
       .then((newFriend) => {
         resolve(newFriend);
       })
-      .catch(reject);
+      .catch((err) => {
+        console.log(err);
+        reject();
+      });
     })
   };
 
   const addFriend = function(userId, friendId) {
     return new Promise((resolve, reject) => {
-      console.log(friendId);
       User.update(
         { _id: userId },
         { $addToSet: { friendIds: friendId }}
