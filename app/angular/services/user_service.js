@@ -51,7 +51,7 @@ module.exports = function(app) {
           })
           .catch((err) => {
             alert('error updating user');
-            reject();
+            reject;
           });
       });
     };

@@ -38,12 +38,12 @@ module.exports = function(friendDao) {
         .then((friendDocTwo) => {
           _friendDao.addFriend(userIdOne, friendDocTwo._id)
             .then((res) => {
-              if (res.nModified === 0) reject();
+              if (res.nModified === 0) reject;
               else createDoc(userIdTwo, userIdOne)
                 .then((friendDocOne) => {
                   _friendDao.addFriend(userIdTwo, friendDocOne._id)
                     .then((res) => {
-                      res.nModified === 0 ? reject() : resolve();
+                      res.nModified === 0 ? reject : resolve();
                     });
                 });
             });

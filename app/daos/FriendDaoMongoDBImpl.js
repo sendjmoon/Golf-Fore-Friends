@@ -12,11 +12,8 @@ module.exports = function() {
       .then((newFriend) => {
         resolve(newFriend);
       })
-      .catch((err) => {
-        console.log(err);
-        reject();
-      });
-    })
+      .catch(reject);
+    });
   };
 
   const addFriend = function(userId, friendId) {
