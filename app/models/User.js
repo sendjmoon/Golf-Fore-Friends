@@ -69,18 +69,14 @@ const UserSchema = new Schema({
   gameIds: [{
     type: Schema.Types.ObjectId,
     ref: 'Game',
-    unique: true,
   }],
   friendIds: [{
     type: Schema.Types.ObjectId,
     ref: 'Friend',
-    unique: true,
   }],
 },
 {
   collection: 'users',
 });
-
-UserSchema.index({ email: -1, gameIds: -1, friendIds: -1 }, { unique: true });
 
 module.exports = mongoose.model('User', UserSchema);

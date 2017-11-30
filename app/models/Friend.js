@@ -41,6 +41,7 @@ const FriendSchema = new Schema({
   },
 });
 
-FriendSchema.index({ userId: -1, friendId: -1 }, { unique: true });
+FriendSchema.index({ userId: -1 });
+FriendSchema.index({ userId: 1, friendId: 1 }, { unique: true });
 
 module.exports = mongoose.model('Friend', FriendSchema);

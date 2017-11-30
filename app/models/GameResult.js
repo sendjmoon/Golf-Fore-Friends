@@ -32,6 +32,7 @@ const GameResultSchema = new Schema({
   },
 });
 
+GameResult.Schema.index({ gameId: -1 });
 GameResultSchema.index({ playerId: -1, gameId: 1 }, { unique: true });
 
 module.exports = mongoose.model('GameResult', GameResultSchema);
