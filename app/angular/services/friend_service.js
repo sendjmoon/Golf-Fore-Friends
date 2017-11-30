@@ -12,14 +12,14 @@ module.exports = function(app) {
         let userData = {
           emailOrUsername: emailOrUsername,
         };
-        $http.post(`${$rs.baseUrl}/friends/all`, userData)
-        .then((friends) => {
-          data.allFriends.friends = friends.data;
-          resolve();
-        })
-        .catch((err) => {
-          console.log('error getting all friends');
-        });
+          $http.post(`${$rs.baseUrl}/friends/all`, userData)
+          .then((friends) => {
+            data.allFriends.friends = friends.data;
+            resolve();
+          })
+          .catch((err) => {
+            console.log('error getting all friends');
+          });
       });
     };
 
