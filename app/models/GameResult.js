@@ -19,11 +19,11 @@ const GameResultSchema = new Schema({
     required: true,
   },
   createdAt: {
-    type: Number,
+    type: Date,
     required: true,
   },
   updatedAt: {
-    type: Number,
+    type: Date,
     required: true,
   },
   strokes: {
