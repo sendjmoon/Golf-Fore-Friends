@@ -12,7 +12,10 @@ module.exports = function() {
       .then((newFriend) => {
         resolve(newFriend);
       })
-      .catch(reject);
+      .catch((err) => {
+        console.log(err);
+        reject();
+      });
     })
   };
 

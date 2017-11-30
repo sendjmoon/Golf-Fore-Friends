@@ -25,17 +25,23 @@ const FriendSchema = new Schema({
   statsAgainst: {
     wins: {
       type: Number,
-      default: 0,
       required: true,
+      default: 0,
     },
     losses: {
       type: Number,
-      default: 0,
       required: true,
+      default: 0,
     },
+    ties: {
+      type: Number,
+      required: true,
+      default: 0,
+    }
   },
 });
 
-FriendSchema.index({ userId: -1, friendId: -1 }, { unique: true });
+FriendSchema.index({ userId: -1 });
+FriendSchema.index({ userId: 1, friendId: 1 }, { unique: true });
 
 module.exports = mongoose.model('Friend', FriendSchema);

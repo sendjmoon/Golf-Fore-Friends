@@ -45,20 +45,6 @@ module.exports = function(app) {
       });
     };
 
-    // this.getAllFriends = function() {
-    //   return new Promise((resolve, reject) => {
-    //     //TODO: change list to all
-    //     $http.get($rs.baseUrl + '/friends/list')
-    //       .then((allFriends) => {
-    //         resolve(allFriends.data);
-    //       })
-    //       .catch((err) => {
-    //         alert('error getting friends list');
-    //         reject();
-    //       });
-    //   });
-    // };
-
     this.rankFriends = function() {
       return new Promise((resolve, reject) => {
         this.getAllFriends()
