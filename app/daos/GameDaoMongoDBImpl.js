@@ -18,10 +18,6 @@ module.exports = function() {
             .then((newGame) => {
               addToUsers(newGame);
               resolve(newGame);
-            })
-            .catch((err) => {
-              console.log(err);
-              reject();
             });
         })
         .catch((err) => {

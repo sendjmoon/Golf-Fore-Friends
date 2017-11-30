@@ -17,7 +17,6 @@ module.exports = function() {
             .then((newCourse) => {
               resolve(newCourse.toObject());
             })
-            .catch(reject);
         })
         .catch(reject);
     });

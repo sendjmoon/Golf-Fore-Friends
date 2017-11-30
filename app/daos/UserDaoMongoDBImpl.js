@@ -20,7 +20,7 @@ module.exports = function() {
         })
         .catch((err) => {
           console.log(err);
-          reject();
+          reject;
         });
     });
   };
@@ -57,8 +57,7 @@ module.exports = function() {
             .then((user) => {
               delete user.password;
               resolve(user);
-            })
-            .catch(reject);
+            });
         })
         .catch(reject);
     });

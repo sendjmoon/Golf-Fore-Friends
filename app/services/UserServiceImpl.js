@@ -30,8 +30,7 @@ module.exports = function(userDao) {
             .then((isMatching) => {
               delete user.password;
               isMatching ? resolve(user) : reject();
-            })
-            .catch(reject);
+            });
         })
         .catch(reject);
     });
