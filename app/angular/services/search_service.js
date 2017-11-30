@@ -46,15 +46,13 @@ module.exports = function(app) {
                 else searchResults.push(searchObj);
               }
             });
-
           });
-          console.log(searchResults);
         });
     };
 
     let compareIfFriends = function(obj, compareArray) {
       compareArray.forEach((compareObj) => {
-        if (obj.isFriend === true) return;
+        if (obj.isFriend) return;
         obj._id === compareObj.friendId._id ?
           obj.isFriend = true : obj.isFriend = false;
       });
