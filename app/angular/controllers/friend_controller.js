@@ -35,6 +35,5 @@ module.exports = function(app) {
     };
 
     ctrl.init();
-
   }]);
 }

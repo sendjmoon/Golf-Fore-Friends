@@ -6,13 +6,14 @@ module.exports = function(app) {
     let data = {
       user: {},
       allUsers: {},
-    }
+    };
 
     let getByEmailOrUsername = function(emailOrUsername) {
       return new Promise((resolve, reject) => {
         let userData = {
           emailOrUsername: emailOrUsername,
         };
+
         $http.post('/users', userData)
           .then((user) => {
             resolve(user);
@@ -28,6 +29,7 @@ module.exports = function(app) {
         let userData = {
           emailOrUsername: emailOrUsername,
         };
+
         $http.post(`${$rs.baseUrl}/users/all`, userData)
           .then((users) => {
             data.allUsers.users = users.data;
@@ -45,6 +47,7 @@ module.exports = function(app) {
           emailOrUsername: user.emailOrUsername,
           newData: newData,
         };
+
         $http.post('/users/update', userData)
           .then((user) => {
             resolve(user.data);
