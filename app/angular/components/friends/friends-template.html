@@ -6,6 +6,7 @@
     </li>
   </ul>
 
+  <h2>add more friends</h2>
   <div class="search-container">
     <form>
       <input id="search-input-users" type="text" placeholder="Search By Email"></input>
@@ -19,11 +20,4 @@
     </form>
   </div>
 
-  <h2>add more friends</h2>
-  <ul>
-    <li ng-repeat="user in usersData.users">
-      <p>{{user}}</p>
-      <button class="gff-btn" ng-click="fc.addFriend(user._id)">Add to Friends</button>
-    </li>
-  </ul>
 </div>
