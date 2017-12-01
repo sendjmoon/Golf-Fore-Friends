@@ -6,13 +6,14 @@ module.exports = function(app) {
     let ctrl = this;
     $scope.FriendService = FriendService;
     $scope.allFriends = FriendService.data.allFriends;
-    ctrl.players = [];
 
     ctrl.user = UserService.data.user;
+    ctrl.players = [];
     ctrl.creating = false;
     ctrl.editing = false;
 
     ctrl.createGame = function(gameData) {
+      gameData.players = ctrl.players;
       GameService.createGame(gameData)
         .then((res) => {
           console.log(res);
@@ -22,13 +23,8 @@ module.exports = function(app) {
         });
     };
 
-    ctrl.addPlayer = function(user) {
-      if (user === undefined || user === null)
-        return;
-      ctrl.game.players.push(user);
-      ctrl.friendsList = ctrl.friendsList.filter((friend) => {
-        return friend._id !== user._id;
-      });
+    ctrl.addUserToGame = function(user) {
+      ctrl.players.push(user);
     };
 
     ctrl.removePlayer = function(user) {

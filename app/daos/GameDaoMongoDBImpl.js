@@ -12,11 +12,11 @@ module.exports = function() {
       game.updatedAt = Date.now();
       game.save()
         .then((createdGame) => {
-          Game.findById(createdGame.id)
+          Game.findById(createdGame._id)
             .select('-__v')
             .exec()
             .then((newGame) => {
-              resolve(newGame);
+              resolve(newGame.toObject());
             });
         })
         .catch((err) => {
@@ -26,16 +26,14 @@ module.exports = function() {
     });
   };
 
-  const updateByPublicId = function(publicId, updateData, options) {
-    //options would be { $addToSet: { results: { $each: [arrayOfResults] }}}
+  const updateByPublicId = function(publicId, queryOptions) {
+    console.log(queryOptions);
     return new Promise((resolve, reject) => {
-      Game.update({ publicId: publicId }, options)
-        .select()
+      Game.update({ publicId: publicId }, queryOptions)
         .exec()
-        .then((res) => {
-          console.log('updated game');
-          console.log(res);
-          resolve();
+        .then((updateData) => {
+          console.log('updated');
+          resolve(updateData);
         })
         .catch((err) => {
           console.log(err);
@@ -117,6 +115,7 @@ module.exports = function() {
 
   return {
     create: create,
+    updateByPublicId: updateByPublicId,
     getById: getById,
     getByPublicId: getByPublicId,
     getAllByPublicId: getAllByPublicId,

@@ -3,10 +3,18 @@
 module.exports = function(app) {
   app.factory('GameService', ['$rootScope', '$http', 'FriendService', function($rs, $http, FriendService) {
 
-    const createGame = function(gameData) {
+    let createGame = function(gameData) {
       return new Promise((resolve, reject) => {
-        $http.post(`${$rs.baseUrl}/games/create`)
-      })
+        // gameData.players.forEach((player) => {
+        //   player.playerId = player._id;
+        //   return delete player._id;
+        // });
+        $http.post(`${$rs.baseUrl}/games/create`, gameData)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch(reject);
+      });
     };
 
     this.getByPublicId = function(gameId) {

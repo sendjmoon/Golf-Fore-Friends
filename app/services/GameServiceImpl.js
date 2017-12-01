@@ -7,40 +7,54 @@ const moment = require('moment');
 module.exports = function(gameDao) {
   const _gameDao = gameDao;
 
-  const create = function(name, location, datePlayed) {
+  const create = function(name, location, datePlayed, playersArray) {
     return new Promise((resolve, reject) => {
-      const gameData = {
+      const newGameData = {
         name: name,
         location: location,
         datePlayed: new Date(datePlayed),
         publicId: `${utils.generateHash(4)}-${name.toLowerCase().split(' ').join('')}`,
       };
-      _gameDao.create(gameData)
-        .then((game) => {
-          resolve(game);
-        })
-        .catch(reject);
-    });
-  };
-
-  const update = function(publicId, updateData, options) {
-    return new Promise((resolve, reject) => {
-      const updateData = {
-        publicId: publicId,
-        updateData: updateData,
-        options: options,
-      };
-      _gameDao.update(updateData)
-        .then((res) => {
-          console.log('game service layer');
-          console.log(res);
-          resolve();
+      _gameDao.create(newGameData)
+        .then((newGame) => {
+          updateResults(newGame._id, newGame.publicId, playersArray)
+            .then((results) => {
+              console.log('updated');
+              console.log(results);
+              resolve(results);
+            })
         })
         .catch((err) => {
-          console.log('err in game service layer');
           console.log(err);
           reject;
         });
+    });
+  };
+
+  const updateResults = function(gameId, publicId, playersArray) {
+    return new Promise((resolve, reject) => {
+      console.log('huh?');
+      playersArray.forEach((player) => {
+        player.gameId = gameId;
+        player.playerId = player._id;
+        return delete player._id;
+      });
+
+      let queryOptions = {
+        $addToSet: {
+          results: {
+            $each: playersArray,
+          }
+        }
+      }
+
+      console.log(queryOptions);
+
+      _gameDao.updateByPublicId(publicId, queryOptions)
+      .then((updateData) => {
+        resolve(updatedData);
+      })
+      .catch(reject);
     });
   };
 
