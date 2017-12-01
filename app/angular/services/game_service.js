@@ -5,10 +5,6 @@ module.exports = function(app) {
 
     let createGame = function(gameData) {
       return new Promise((resolve, reject) => {
-        // gameData.players.forEach((player) => {
-        //   player.playerId = player._id;
-        //   return delete player._id;
-        // });
         $http.post(`${$rs.baseUrl}/games/create`, gameData)
           .then((res) => {
             console.log(res);

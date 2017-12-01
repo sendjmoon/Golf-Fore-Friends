@@ -2,7 +2,6 @@
 
 const Promise = require('bluebird');
 const utils = require('../utils');
-const moment = require('moment');
 
 module.exports = function(gameDao) {
   const _gameDao = gameDao;
@@ -17,12 +16,11 @@ module.exports = function(gameDao) {
       };
       _gameDao.create(newGameData)
         .then((newGame) => {
-          updateResults(newGame._id, newGame.publicId, playersArray)
+          createResults(newGame._id, playersArray)
             .then((results) => {
-              console.log('updated');
-              console.log(results);
-              resolve(results);
-            })
+              _gameDao.updateByPublicId(newGame.publicId, results, queryOptions)
+
+            });
         })
         .catch((err) => {
           console.log(err);
@@ -31,30 +29,23 @@ module.exports = function(gameDao) {
     });
   };
 
-  const updateResults = function(gameId, publicId, playersArray) {
+  const createResults = function(gameId, resultsData) {
     return new Promise((resolve, reject) => {
-      console.log('huh?');
-      playersArray.forEach((player) => {
-        player.gameId = gameId;
-        player.playerId = player._id;
-        return delete player._id;
-      });
-
-      let queryOptions = {
-        $addToSet: {
-          results: {
-            $each: playersArray,
-          }
-        }
+      if (resultsData.constructor === Array) {
+        resultsData.forEach((player) => {
+          player.gameId = gameId;
+          player.playerId = player._id;
+          player.createdAt = Date.now();
+          player.updatedAt = Date.now();
+          player.result = 'null';
+          return delete player._id;
+        });
       }
-
-      console.log(queryOptions);
-
-      _gameDao.updateByPublicId(publicId, queryOptions)
-      .then((updateData) => {
-        resolve(updatedData);
-      })
-      .catch(reject);
+      _gameDao.createResults(resultsData)
+        .then((newResults) => {
+          resolve(newResults);
+        })
+        .catch(reject);
     });
   };
 
