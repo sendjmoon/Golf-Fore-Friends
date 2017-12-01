@@ -27,17 +27,23 @@ module.exports = function() {
     });
   };
 
-  // const updateByPublicId = function(publicId, queryOptions) {
-  //   return new Promise((resolve, reject) => {
-  //     Game.update({ publicId: updateData.publicId })
-  //   });
-  // };
+  const updateByPublicId = function(publicId, queryOptions) {
+    return new Promise((resolve, reject) => {
+      Game.findOneAndUpdate({ publicId: publicId }, queryOptions, { new: true })
+        .then((updatedGame) => {
+          resolve(updatedGame);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject;
+        });
+    });
+  };
 
   const createResults = function(resultsData) {
     return new Promise((resolve, reject) => {
       GameResult.create(resultsData)
         .then((newResults) => {
-          // console.log('results inserted');
           resolve(newResults);
         })
         .catch((err) => {
@@ -120,6 +126,7 @@ module.exports = function() {
 
   return {
     create: create,
+    updateByPublicId: updateByPublicId,
     createResults: createResults,
     getById: getById,
     getByPublicId: getByPublicId,

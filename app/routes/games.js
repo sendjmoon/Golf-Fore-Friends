@@ -12,8 +12,6 @@ router.post('/create', function(req, res, next) {
     req.body.players
   )
     .then((game) => {
-      console.log('game created');
-      console.log(game);
       res.json(game);
     })
     .catch((err) => {

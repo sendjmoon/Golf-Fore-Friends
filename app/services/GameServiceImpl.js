@@ -17,9 +17,16 @@ module.exports = function(gameDao) {
       _gameDao.create(newGameData)
         .then((newGame) => {
           createResults(newGame._id, playersArray)
-            .then((results) => {
-              _gameDao.updateByPublicId(newGame.publicId, results, queryOptions)
-
+            .then((newResults) => {
+              let queryOptions = {
+                $pushAll: {
+                  results: newResults,
+                },
+              };
+              _gameDao.updateByPublicId(newGame.publicId, queryOptions)
+                .then((updatedGame) => {
+                  resolve(updatedGame);
+                });
             });
         })
         .catch((err) => {
