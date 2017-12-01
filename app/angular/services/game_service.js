@@ -4,8 +4,9 @@ module.exports = function(app) {
   app.factory('GameService', ['$rootScope', '$http', 'FriendService', function($rs, $http, FriendService) {
 
     const createGame = function(gameData) {
-      gameData.datePlayed = new Date(gameData.datePlayed);
-      console.log(gameData);
+      return new Promise((resolve, reject) => {
+        $http.post(`${$rs.baseUrl}/games/create`)
+      })
     };
 
     this.getByPublicId = function(gameId) {

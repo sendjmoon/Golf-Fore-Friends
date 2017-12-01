@@ -1,71 +1,58 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('GamesController', ['$rootScope', '$scope', '$http', '$location', '$route', '$routeParams', 'UserService', 'FriendService', 'GameService', 'SearchService', function($rs, $scope, $http, $location, $route, $routeParams, UserService, GameService, SearchService) {
+  app.controller('GamesController', ['$scope', 'UserService', 'FriendService', 'GameService', 'SearchService', function($scope, UserService, FriendService, GameService, SearchService) {
 
-    this.editing = false;
+    let ctrl = this;
+    $scope.FriendService = FriendService;
+    $scope.allFriends = FriendService.data.allFriends;
+    ctrl.players = [];
 
-    this.createGame = function(gameData) {
-      GameService.createGame(gameData);
+    ctrl.user = UserService.data.user;
+    ctrl.creating = false;
+    ctrl.editing = false;
+
+    ctrl.createGame = function(gameData) {
+      GameService.createGame(gameData)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     };
 
-    this.addPlayer = function(user) {
+    ctrl.addPlayer = function(user) {
       if (user === undefined || user === null)
         return;
-      this.game.players.push(user);
-      this.friendsList = this.friendsList.filter((friend) => {
+      ctrl.game.players.push(user);
+      ctrl.friendsList = ctrl.friendsList.filter((friend) => {
         return friend._id !== user._id;
       });
     };
 
-    this.removePlayer = function(user) {
-      let playersArray = this.game.players;
+    ctrl.removePlayer = function(user) {
+      let playersArray = ctrl.game.players;
       let userIndex = playersArray.indexOf(user);
-      this.friendsList.push(playersArray[userIndex]);
+      ctrl.friendsList.push(playersArray[userIndex]);
       playersArray.splice(userIndex, 1);
     };
 
-    this.updatePlayer = function(player) {
-      return new Promise((resolve, reject) => {
-        let playerData = {
-          emailOrUsername: player.email,
-        };
-
-        $http.post('/users', playerData)
-          .then((user) => {
-            user = user.data;
-            UserService.calcHandicap(
-              user.gameIds.length,
-              user.stats.handicapActual,
-              player.strokes
-            )
-              .then((handicapData) => {
-                if (player.win)
-                  user.stats.wins++;
-                if (player.loss)
-                  user.stats.losses++;
-                if (player.tie)
-                  user.stats.ties++;
-
-                let newData = {
-                  stats: {
-                    handicap: handicapData.handicap,
-                    handicapActual: handicapData.handicapActual,
-                    wins: user.stats.wins,
-                    losses: user.stats.losses,
-                    ties: user.stats.ties,
-                  },
-                };
-
-                UserService.updateUser(playerData, newData)
-                  .then((user) => {
-                    resolve(user);
-                  });
-              });
-          })
-          .catch(reject);
-      });
+    ctrl.initCreate = function() {
+      let userData = {
+        _id: ctrl.user._id,
+        fullName: ctrl.user.fullName,
+        email: ctrl.user.email,
+      };
+      FriendService.getAllFriends(ctrl.user.email);
+      ctrl.players.push(userData);
+      ctrl.creating = true;
     };
+
+    ctrl.init = function() {
+    };
+
+    // ctrl.init();
 
   }]);
 };
