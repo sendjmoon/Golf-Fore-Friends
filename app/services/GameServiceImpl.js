@@ -5,6 +5,7 @@ const utils = require('../utils');
 
 module.exports = function(gameDao) {
   const _gameDao = gameDao;
+  const queryOptions = {};
 
   const create = function(name, location, datePlayed, playersArray) {
     return new Promise((resolve, reject) => {
@@ -18,12 +19,10 @@ module.exports = function(gameDao) {
         .then((newGame) => {
           createResults(newGame._id, playersArray)
             .then((newResults) => {
-              let queryOptions = {
-                $pushAll: {
-                  results: newResults,
-                },
+              queryOptions.pushResults = {
+                $pushAll: { results: newResults },
               };
-              _gameDao.updateByPublicId(newGame.publicId, queryOptions)
+              _gameDao.updateByPublicId(newGame.publicId, queryOptions.pushResults)
                 .then((updatedGame) => {
                   resolve(updatedGame);
                 });
@@ -36,19 +35,16 @@ module.exports = function(gameDao) {
     });
   };
 
-  const createResults = function(gameId, resultsData) {
+  const createResults = function(gameId, resultsArray) {
     return new Promise((resolve, reject) => {
-      if (resultsData.constructor === Array) {
-        resultsData.forEach((player) => {
-          player.gameId = gameId;
-          player.playerId = player._id;
-          player.createdAt = Date.now();
-          player.updatedAt = Date.now();
-          player.result = 'null';
-          return delete player._id;
-        });
-      }
-      _gameDao.createResults(resultsData)
+      resultsArray.forEach((player) => {
+        player.gameId = gameId;
+        player.playerId = player._id;
+        player.createdAt = Date.now();
+        player.updatedAt = Date.now();
+        return delete player._id;
+      });
+      _gameDao.createResults(resultsArray)
         .then((newResults) => {
           resolve(newResults);
         })
