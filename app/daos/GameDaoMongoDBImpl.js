@@ -16,13 +16,30 @@ module.exports = function() {
             .select('-__v')
             .exec()
             .then((newGame) => {
-              addToUsers(newGame);
               resolve(newGame);
             });
         })
         .catch((err) => {
           console.log(err);
-          reject();
+          reject;
+        });
+    });
+  };
+
+  const updateByPublicId = function(publicId, updateData, options) {
+    //options would be { $addToSet: { results: { $each: [arrayOfResults] }}}
+    return new Promise((resolve, reject) => {
+      Game.update({ publicId: publicId }, options)
+        .select()
+        .exec()
+        .then((res) => {
+          console.log('updated game');
+          console.log(res);
+          resolve();
+        })
+        .catch((err) => {
+          console.log(err);
+          reject;
         });
     });
   };
@@ -37,7 +54,7 @@ module.exports = function() {
         })
         .catch((err) => {
           console.log(err);
-          reject();
+          reject;
         });
     });
   };
@@ -54,7 +71,7 @@ module.exports = function() {
         })
         .catch((err) => {
           console.log(err);
-          reject();
+          reject;
         });
     });
   };
@@ -74,7 +91,7 @@ module.exports = function() {
           })
           .catch((err) => {
             console.log(err);
-            reject();
+            reject;
           });
     });
   };
@@ -96,28 +113,6 @@ module.exports = function() {
         })
         .catch(reject);
       });
-  };
-
-  const addToUsers = function(game) {
-    game.players.forEach((player) => {
-      return new Promise((resolve, reject) => {
-        User.update({
-          _id: player._id,
-        },{
-          $addToSet: {
-            gameIds: {
-              game: game._id,
-              publicId: game.publicId,
-              strokes: player.strokes,
-            },
-          },
-        })
-          .then((res) => {
-            resolve(res);
-          })
-          .catch(reject);
-      });
-    });
   };
 
   return {

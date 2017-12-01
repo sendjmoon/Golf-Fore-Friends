@@ -7,21 +7,40 @@ const moment = require('moment');
 module.exports = function(gameDao) {
   const _gameDao = gameDao;
 
-  const create = function(name, location, players, playedOn) {
+  const create = function(name, location, datePlayed) {
     return new Promise((resolve, reject) => {
       const gameData = {
         name: name,
         location: location,
-        players: players,
-        playedOn: Date.parse(playedOn),
+        datePlayed: new Date(datePlayed),
         publicId: `${utils.generateHash(4)}-${name.toLowerCase().split(' ').join('')}`,
       };
       _gameDao.create(gameData)
         .then((game) => {
-          game.playedOn = moment(parseInt(game.playedOn)).format('MMM DD YYYY');
           resolve(game);
         })
         .catch(reject);
+    });
+  };
+
+  const update = function(publicId, updateData, options) {
+    return new Promise((resolve, reject) => {
+      const updateData = {
+        publicId: publicId,
+        updateData: updateData,
+        options: options,
+      };
+      _gameDao.update(updateData)
+        .then((res) => {
+          console.log('game service layer');
+          console.log(res);
+          resolve();
+        })
+        .catch((err) => {
+          console.log('err in game service layer');
+          console.log(err);
+          reject;
+        });
     });
   };
 
