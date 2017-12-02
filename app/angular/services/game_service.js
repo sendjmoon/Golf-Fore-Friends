@@ -1,14 +1,25 @@
 'use strict';
 
 module.exports = function(app) {
-  app.service('GameService', ['$rootScope', '$http', 'FriendService', function($rs, $http, FriendService) {
-    this.publicIds;
-    this.allGamesData;
-    this.gameData;
-    this.friendsArray = FriendService.friendsArray;
+  app.factory('GameService', ['$rootScope', '$http', 'FriendService', function($rs, $http, FriendService) {
 
-    this.createGame = function(gameData) {
-      console.log(gameData);
+    let updateData = {};
+
+    let createGame = function(gameData) {
+      return new Promise((resolve, reject) => {
+        $http.post(`${$rs.baseUrl}/games/create`, gameData)
+          .then((newGame) => {
+            updateData = {
+              usersArray: gameData.players,
+              updateQuery: {
+                $addToSet: { gameIds: newGame.data._id },
+              },
+            };
+            $http.post(`${$rs.baseUrl}/users/update-many`, updateData)
+              .then(resolve);
+          })
+          .catch(reject);
+      });
     };
 
     this.getByPublicId = function(gameId) {
@@ -34,29 +45,6 @@ module.exports = function(app) {
             alert('error getting games');
             reject();
           });
-      });
-    };
-
-    this.getAllFromLocalStorage = function() {
-      return new Promise((resolve, reject) => {
-        let gameData = JSON.parse(window.localStorage.getItem('games'));
-        if (gameData.length < 1) reject();
-        resolve(gameData);
-      });
-    };
-
-    this.rankFriends = function() {
-      return new Promise((resolve, reject) => {
-        this.getAllFriends()
-          .then((allFriends) => {
-            allFriends.push($rs.user);
-            this.sortByLowest(allFriends)
-              .then((sortedArray) => {
-                resolve(sortedArray);
-              })
-              .catch(reject);
-          })
-          .catch(reject);
       });
     };
 
@@ -102,7 +90,7 @@ module.exports = function(app) {
         });
 
         if (array.length < 3) {
-          if (array.length < 1) reject();
+          if (array.length < 1) reject;
           let emptyPlaces = 3 - array.length;
           for (let i = 0; i < emptyPlaces; i++) {
             array.push(dummyUser);
@@ -112,5 +100,9 @@ module.exports = function(app) {
         resolve(array);
       });
     };
+
+    return {
+      createGame: createGame,
+    }
   }]);
 };

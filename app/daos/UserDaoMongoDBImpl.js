@@ -63,6 +63,20 @@ module.exports = function() {
     });
   };
 
+  const updateManyById = function(usersArray, updateQuery) {
+    return new Promise((resolve, reject) => {
+      User.updateMany({ _id: { $in: usersArray }}, updateQuery)
+      .then((res) => {
+        console.log(res);
+        resolve(res);
+      })
+      .catch((err) => {
+        console.log('error updating many in dao');
+        console.log(err);
+      });
+    });
+  };
+
   const getAllUsers = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
       User.find({
@@ -85,5 +99,6 @@ module.exports = function() {
     getByEmailOrUsername: getByEmailOrUsername,
     getAllUsers: getAllUsers,
     updateUser: updateUser,
+    updateManyById: updateManyById,
   };
 };

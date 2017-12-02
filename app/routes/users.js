@@ -83,11 +83,25 @@ router.post('/signin', function(req, res, next) {
 router.post('/update', function(req, res, next) {
   userService.updateUser(req.body.emailOrUsername, req.body.newData)
     .then((user) => {
-      res.json(user);
+      res.status(200).json(user);
     })
     .catch((err) => {
-      res.status(400).json({
+      res.status(500).json({
         error: 'Error updating user.',
+      });
+    });
+});
+
+router.post('/update-many', function(req, res, next) {
+  userService.updateManyById(req.body.usersArray, req.body.updateQuery)
+    .then(() => {
+      res.status(200).json({
+        message: 'Great success',
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: 'Error updating users.',
       });
     });
 });

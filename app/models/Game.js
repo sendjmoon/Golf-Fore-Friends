@@ -20,15 +20,15 @@ const GameSchema = new Schema({
     unique: false,
   },
   datePlayed: {
-    type: String,
+    type: Date,
     unique: false,
   },
   createdAt: {
-    type: Number,
+    type: Date,
     unique: false,
   },
   updatedAt: {
-    type: Number,
+    type: Date,
     unique: false,
   },
   results: [{

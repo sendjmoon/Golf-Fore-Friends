@@ -6,7 +6,7 @@ module.exports = function(app) {
     controller: 'GamesController',
     controllerAs: 'gc',
     bindings: {
-      friendsList: '=',
+      players: '=',
     },
   });
 };

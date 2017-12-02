@@ -14,16 +14,16 @@ const GameResultSchema = new Schema({
     ref: 'User',
     required: true,
   },
-  result: {
-    type: String,
-    required: true,
-  },
+  // result: {
+  //   type: String,
+  //   required: true,
+  // },
   createdAt: {
-    type: Number,
+    type: Date,
     required: true,
   },
   updatedAt: {
-    type: Number,
+    type: Date,
     required: true,
   },
   strokes: {
@@ -32,7 +32,7 @@ const GameResultSchema = new Schema({
   },
 });
 
-GameResult.Schema.index({ gameId: -1 });
+GameResultSchema.index({ gameId: -1 });
 GameResultSchema.index({ playerId: -1, gameId: 1 }, { unique: true });
 
 module.exports = mongoose.model('GameResult', GameResultSchema);

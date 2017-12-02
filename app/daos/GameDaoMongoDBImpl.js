@@ -2,6 +2,7 @@
 
 const Promise = require('bluebird');
 const Game = require('../models/Game');
+const GameResult = require('../models/GameResult');
 const User = require('../models/User');
 
 module.exports = function() {
@@ -12,17 +13,42 @@ module.exports = function() {
       game.updatedAt = Date.now();
       game.save()
         .then((createdGame) => {
-          Game.findById(createdGame.id)
+          Game.findById(createdGame._id)
             .select('-__v')
             .exec()
             .then((newGame) => {
-              addToUsers(newGame);
-              resolve(newGame);
+              resolve(newGame.toObject());
             });
         })
         .catch((err) => {
           console.log(err);
-          reject();
+          reject;
+        });
+    });
+  };
+
+  const updateByPublicId = function(publicId, queryOptions) {
+    return new Promise((resolve, reject) => {
+      Game.findOneAndUpdate({ publicId: publicId }, queryOptions, { new: true })
+        .then((updatedGame) => {
+          resolve(updatedGame);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject;
+        });
+    });
+  };
+
+  const createResults = function(resultsData) {
+    return new Promise((resolve, reject) => {
+      GameResult.create(resultsData)
+        .then((newResults) => {
+          resolve(newResults);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject;
         });
     });
   };
@@ -37,7 +63,7 @@ module.exports = function() {
         })
         .catch((err) => {
           console.log(err);
-          reject();
+          reject;
         });
     });
   };
@@ -54,7 +80,7 @@ module.exports = function() {
         })
         .catch((err) => {
           console.log(err);
-          reject();
+          reject;
         });
     });
   };
@@ -74,7 +100,7 @@ module.exports = function() {
           })
           .catch((err) => {
             console.log(err);
-            reject();
+            reject;
           });
     });
   };
@@ -98,30 +124,10 @@ module.exports = function() {
       });
   };
 
-  const addToUsers = function(game) {
-    game.players.forEach((player) => {
-      return new Promise((resolve, reject) => {
-        User.update({
-          _id: player._id,
-        },{
-          $addToSet: {
-            gameIds: {
-              game: game._id,
-              publicId: game.publicId,
-              strokes: player.strokes,
-            },
-          },
-        })
-          .then((res) => {
-            resolve(res);
-          })
-          .catch(reject);
-      });
-    });
-  };
-
   return {
     create: create,
+    updateByPublicId: updateByPublicId,
+    createResults: createResults,
     getById: getById,
     getByPublicId: getByPublicId,
     getAllByPublicId: getAllByPublicId,

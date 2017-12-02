@@ -25,11 +25,11 @@ const UserSchema = new Schema({
     unique: false,
   },
   updatedAt: {
-    type: Number,
+    type: Date,
     required: true,
   },
   createdAt: {
-    type: Number,
+    type: Date,
     required: true,
   },
   stats: {

@@ -1,123 +1,51 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('GamesController', ['$rootScope', '$scope', '$http', '$location', '$route', '$routeParams', 'AuthService', 'UserService', 'GameService', 'SearchService', function($rs, $scope, $http, $location, $route, $routeParams, AuthService, UserService, GameService, SearchService) {
+  app.controller('GamesController', ['$scope', 'UserService', 'FriendService', 'GameService', 'SearchService', function($scope, UserService, FriendService, GameService, SearchService) {
 
-    this.editing = false;
+    let ctrl = this;
+    $scope.FriendService = FriendService;
+    $scope.allFriends = FriendService.data.allFriends;
 
-    this.searchListener = function(inputId) {
-      let gamesArray = JSON.parse(window.localStorage.getItem('games'));
-      let searchBox = document.getElementById(inputId);
-      searchBox.addEventListener('keyup', () => {
-        let input = searchBox.value.toUpperCase();
-        gamesArray = gamesArray.filter((game) => {
-          $rs.$apply(() => {
-            if (input.length < 1) {
-              this.searchResults = [];
-              return;
-            }
-            if (game.name.toUpperCase().indexOf(input) > -1) {
-              if (this.searchResults.indexOf(game) > -1)
-                return;
-              else
-                this.searchResults.push(game);
-            }
-            if (game.name.toUpperCase().indexOf(input) < 0) {
-              if (this.searchResults.indexOf(game) > -1)
-                this.searchResults.splice(this.searchResults.indexOf(game), 1);
-            }
-          });
-        });
-      });
-    };
+    ctrl.user = UserService.data.user;
+    ctrl.players = [];
+    ctrl.creating = false;
+    ctrl.editing = false;
 
-    this.searchClickHandler = function() {
-      let $searchBtn = $('#search-btn');
-      $searchBtn.on('click', () => {
-        $searchBtn.parent('.search-container')
-          .toggleClass('open');
-        $searchBtn.find('.fa')
-          .toggleClass('fa fa-search, fa fa-ban');
-
-        $('#game-name-input').val('');
-        $rs.$apply(() => {
-          this.searchResults = [];
-        });
-      });
-    };
-
-    this.createGame = function(gameData) {
+    ctrl.createGame = function(gameData) {
+      gameData.players = ctrl.players;
       GameService.createGame(gameData)
-
-    };
-
-    this.getFriendsList = function() {
-      $http.get('/friends/list')
-        .then((friendsList) => {
-          this.friendsList = friendsList.data;
-        })
         .catch((err) => {
-          alert('error getting friends list');
+          console.log('Error creating game.');
         });
     };
 
-    this.addPlayer = function(user) {
-      if (user === undefined || user === null)
-        return;
-      this.game.players.push(user);
-      this.friendsList = this.friendsList.filter((friend) => {
-        return friend._id !== user._id;
-      });
+    ctrl.addUserToGame = function(user) {
+      ctrl.players.push(user);
     };
 
-    this.removePlayer = function(user) {
-      let playersArray = this.game.players;
+    ctrl.removePlayer = function(user) {
+      let playersArray = ctrl.game.players;
       let userIndex = playersArray.indexOf(user);
-      this.friendsList.push(playersArray[userIndex]);
+      ctrl.friendsList.push(playersArray[userIndex]);
       playersArray.splice(userIndex, 1);
     };
 
-    this.updatePlayer = function(player) {
-      return new Promise((resolve, reject) => {
-        let playerData = {
-          emailOrUsername: player.email,
-        };
-
-        $http.post('/users', playerData)
-          .then((user) => {
-            user = user.data;
-            UserService.calcHandicap(
-              user.gameIds.length,
-              user.stats.handicapActual,
-              player.strokes
-            )
-              .then((handicapData) => {
-                if (player.win)
-                  user.stats.wins++;
-                if (player.loss)
-                  user.stats.losses++;
-                if (player.tie)
-                  user.stats.ties++;
-
-                let newData = {
-                  stats: {
-                    handicap: handicapData.handicap,
-                    handicapActual: handicapData.handicapActual,
-                    wins: user.stats.wins,
-                    losses: user.stats.losses,
-                    ties: user.stats.ties,
-                  },
-                };
-
-                UserService.updateUser(playerData, newData)
-                  .then((user) => {
-                    resolve(user);
-                  });
-              });
-          })
-          .catch(reject);
-      });
+    ctrl.initCreate = function() {
+      let userData = {
+        _id: ctrl.user._id,
+        fullName: ctrl.user.fullName,
+        email: ctrl.user.email,
+      };
+      FriendService.getAllFriends(ctrl.user.email);
+      ctrl.players.push(userData);
+      ctrl.creating = true;
     };
+
+    ctrl.init = function() {
+    };
+
+    // ctrl.init();
 
   }]);
 };
