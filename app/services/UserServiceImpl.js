@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 
 module.exports = function(userDao) {
   const _userDao = userDao;
+  const queryOptions = {};
 
   const create = function(username, fullName, email, password) {
     return new Promise((resolve, reject) => {
@@ -84,8 +85,8 @@ module.exports = function(userDao) {
     });
   };
 
-  const updateManyUsers = function(usersArray, updateData) {
-    return _userDao.updateManyUsers(usersArray, updateData);
+  const updateManyById = function(usersArray, updateQuery) {
+    return _userDao.updateManyById(usersArray, updateQuery);
   };
 
   return {
@@ -94,6 +95,6 @@ module.exports = function(userDao) {
     getAllUsers: getAllUsers,
     getUser: getUser,
     updateUser: updateUser,
-    updateManyUsers: updateManyUsers,
+    updateManyById: updateManyById,
   };
 };

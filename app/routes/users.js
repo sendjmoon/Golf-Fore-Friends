@@ -93,7 +93,7 @@ router.post('/update', function(req, res, next) {
 });
 
 router.post('/update-many', function(req, res, next) {
-  userService.updateManyUsers(req.body.players, req.body.gameId)
+  userService.updateManyById(req.body.usersArray, req.body.updateQuery)
     .then(() => {
       res.status(200).json({
         message: 'Great success',

@@ -3,13 +3,17 @@
 module.exports = function(app) {
   app.factory('GameService', ['$rootScope', '$http', 'FriendService', function($rs, $http, FriendService) {
 
+    let updateData = {};
+
     let createGame = function(gameData) {
       return new Promise((resolve, reject) => {
         $http.post(`${$rs.baseUrl}/games/create`, gameData)
           .then((newGame) => {
-            let updateData = {
-              players: gameData.players,
-              gameId: newGame.data._id,
+            updateData = {
+              usersArray: gameData.players,
+              updateQuery: {
+                $addToSet: { gameIds: newGame.data._id },
+              },
             };
             $http.post(`${$rs.baseUrl}/users/update-many`, updateData)
               .then(resolve);

@@ -63,14 +63,11 @@ module.exports = function() {
     });
   };
 
-  const updateManyUsers = function(usersArray, gameId) {
+  const updateManyById = function(usersArray, updateQuery) {
     return new Promise((resolve, reject) => {
-      User.updateMany({
-        _id: { $in: usersArray },
-      }, {
-        $addToSet: { gameIds: gameId }
-      })
+      User.updateMany({ _id: { $in: usersArray }}, updateQuery)
       .then((res) => {
+        console.log(res);
         resolve(res);
       })
       .catch((err) => {
@@ -102,6 +99,6 @@ module.exports = function() {
     getByEmailOrUsername: getByEmailOrUsername,
     getAllUsers: getAllUsers,
     updateUser: updateUser,
-    updateManyUsers: updateManyUsers,
+    updateManyById: updateManyById,
   };
 };

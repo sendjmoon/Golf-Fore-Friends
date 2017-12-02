@@ -56,7 +56,6 @@ module.exports = function(gameDao) {
     return new Promise((resolve, reject) => {
       _gameDao.getById(gameId)
         .then((game) => {
-          game.playedOn = moment(parseInt(game.playedOn)).format('MMM DD YYYY');
           resolve(game);
         })
         .catch(reject);
@@ -67,7 +66,6 @@ module.exports = function(gameDao) {
     return new Promise((resolve, reject) => {
       _gameDao.getByPublicId(publicId)
         .then((game) => {
-          game.playedOn = moment(parseInt(game.playedOn)).format('MMM DD YYYY');
           resolve(game);
         })
         .catch(reject);
@@ -79,8 +77,6 @@ module.exports = function(gameDao) {
       _gameDao.getAllByPublicId(publicIdArray)
         .then((games) => {
           games = games.filter((game) => {
-            let dateString = moment(parseInt(game.playedOn)).format('MMM DD YYYY');
-            game.playedOn = dateString;
             return game;
           });
           resolve(games);
