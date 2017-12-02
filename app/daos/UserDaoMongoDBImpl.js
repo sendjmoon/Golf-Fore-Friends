@@ -63,6 +63,23 @@ module.exports = function() {
     });
   };
 
+  const updateManyUsers = function(usersArray, gameId) {
+    return new Promise((resolve, reject) => {
+      User.updateMany({
+        _id: { $in: usersArray },
+      }, {
+        $addToSet: { gameIds: gameId }
+      })
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        console.log('error updating many in dao');
+        console.log(err);
+      });
+    });
+  };
+
   const getAllUsers = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
       User.find({
@@ -85,5 +102,6 @@ module.exports = function() {
     getByEmailOrUsername: getByEmailOrUsername,
     getAllUsers: getAllUsers,
     updateUser: updateUser,
+    updateManyUsers: updateManyUsers,
   };
 };

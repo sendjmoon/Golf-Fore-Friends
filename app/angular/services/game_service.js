@@ -6,8 +6,13 @@ module.exports = function(app) {
     let createGame = function(gameData) {
       return new Promise((resolve, reject) => {
         $http.post(`${$rs.baseUrl}/games/create`, gameData)
-          .then((res) => {
-            console.log(res);
+          .then((newGame) => {
+            let updateData = {
+              players: gameData.players,
+              gameId: newGame.data._id,
+            };
+            $http.post(`${$rs.baseUrl}/users/update-many`, updateData)
+              .then(resolve);
           })
           .catch(reject);
       });

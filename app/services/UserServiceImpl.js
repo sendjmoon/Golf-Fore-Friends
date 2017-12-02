@@ -84,11 +84,16 @@ module.exports = function(userDao) {
     });
   };
 
+  const updateManyUsers = function(usersArray, updateData) {
+    return _userDao.updateManyUsers(usersArray, updateData);
+  };
+
   return {
     create: create,
     authenticateUser: authenticateUser,
     getAllUsers: getAllUsers,
     getUser: getUser,
     updateUser: updateUser,
+    updateManyUsers: updateManyUsers,
   };
 };
