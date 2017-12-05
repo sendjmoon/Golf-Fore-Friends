@@ -36,7 +36,7 @@
                   <p><strong><span class="color-green">+</span></strong>{{player.strokes}}</p>
                 </div>
                 <div class="edit-box" ng-hide="gc.editing">
-                  <a ng-click="gc.toggleEdit(gc.editing)"<i class="fa fa-pencil"></i></a>
+                  <a ng-click="gc.editing=true"<i class="fa fa-pencil"></i></a>
                 </div>
                 <div class="edit-box" ng-show="gc.editing">
                   <input type="text" required ng-model="player.strokes" placeholder="{{player.strokes}}" maxlength="2"></input>
