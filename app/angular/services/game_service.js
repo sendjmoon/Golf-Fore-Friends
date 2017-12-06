@@ -5,21 +5,25 @@ module.exports = function(app) {
 
     let updateData = {};
 
-    let createGame = function(gameData) {
-      return new Promise((resolve, reject) => {
-        $http.post(`${$rs.baseUrl}/games/create`, gameData)
-          .then((newGame) => {
-            updateData = {
-              usersArray: gameData.players,
-              updateQuery: {
-                $addToSet: { gameIds: newGame.data._id },
-              },
-            };
-            $http.post(`${$rs.baseUrl}/users/update-many`, updateData)
-              .then(resolve);
-          })
-          .catch(reject);
-      });
+    const createGame = function(gameData) {
+      calcResults(gameData.players)
+        .then((results) => {
+          console.log(results);
+        });
+      // return new Promise((resolve, reject) => {
+      //   $http.post(`${$rs.baseUrl}/games/create`, gameData)
+      //     .then((newGame) => {
+      //       updateData = {
+      //         usersArray: gameData.players,
+      //         updateQuery: {
+      //           $addToSet: { gameIds: newGame.data._id },
+      //         },
+      //       };
+      //       $http.post(`${$rs.baseUrl}/users/update-many`, updateData)
+      //         .then(resolve);
+      //     })
+      //     .catch(reject);
+      // });
     };
 
     this.getByPublicId = function(gameId) {
@@ -43,59 +47,46 @@ module.exports = function(app) {
           })
           .catch(() => {
             alert('error getting games');
-            reject();
+            reject;
           });
       });
     };
 
-    this.findWinner = function(array) {
+    const calcResults = function(array) {
       return new Promise((resolve, reject) => {
-        if (array.length === 1) {
-          resolve(array);
-          return;
-        }
+        if (array.length <= 1) resolve(array);
 
-        array.sort(function(a, b) {
+        let winFound = false;
+        let tieFound = false;
+        let tieValue = 0;
+
+        array.sort((a, b) => {
           return a.strokes - b.strokes;
         });
 
-        let foundTie = false;
+        array.forEach((player, index) => {
+          let nextPlayer = array[index + 1];
 
-        for (let i = 1; i < array.length; i++) {
-          if (array[0].strokes === array[i].strokes) {
-            array[0].tie = true;
-            array[i].tie = true;
-            foundTie = true;
-          } else if (foundTie) {
-            array[i].loss = true;
-          } else {
-            array[0].win = true;
-            array[i].loss = true;
+          if (winFound) return;
+          if (tieFound) {
+            if (player.strokes === tieValue) player.result = 'tie';
+            return;
           }
-        }
 
-        resolve(array);
-      });
-    };
+          if (player.strokes < nextPlayer.strokes) {
+            player.result = 'win';
+            winFound = true;
+            return;
+          }
 
-    this.sortByLowest = function(array) {
-      return new Promise((resolve, reject) => {
-        let dummyUser = {
-          fullName: 'N/A',
-          handicap: 'N/A',
-        };
-
-        array.sort((a, b) => {
-          return a.stats.handicap - b.stats.handicap;
+          if (player.strokes === nextPlayer.strokes) {
+            player.result = 'tie';
+            nextPlayer.result = 'tie';
+            tieFound = true;
+            tieValue = player.strokes;
+            return;
+          }
         });
-
-        if (array.length < 3) {
-          if (array.length < 1) reject;
-          let emptyPlaces = 3 - array.length;
-          for (let i = 0; i < emptyPlaces; i++) {
-            array.push(dummyUser);
-          }
-        }
 
         resolve(array);
       });
