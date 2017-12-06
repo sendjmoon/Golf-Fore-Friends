@@ -1,29 +1,11 @@
-<div class="games-content col-xs-12" ng-hide="createGame">
-
-  <div class="gff-box col-md-7 col-xs-12">
-    <div class="box-content game list col-xs-12">
-      <ul>
-        <li ng-repeat="game in gc.games">{{game}}</li>
-      </ul>
-    </div>
-  </div><!-- /gff-box -->
-
-  <!-- <div class="search-container" ng-init="gc.searchClickHandler(); gc.searchListener('game-name-input')">
-    <button class="gff-btn search" id="search-btn"><i class="fa fa-search"></i></button>
-    <div class="search-content" id="search-content">
-      <input id="game-name-input" type="text" placeholder="search games"></input>
-      <ul>
-        <li ng-repeat="game in gc.searchResults">{{game.name}}</li>
-      </ul>
-    </div>
-  </div> -->
-
-  <div class="gff-box pull-right col-md-5 col-xs-12">
-    <div class="box-content col-xs-12">
-      <button class="gff-btn" ng-hide="gc.creating" ng-click="gc.initCreate()">Create Game</button>
-    </div>
-  </div><!--/gff-box-->
-
-</div><!--/games-content-->
+<div class="gff-container col-xs-12" ng-hide="gc.creating">
+  <div class="gff-content col-xs-12">
+    <div class="gff-box bg-white col-xs-12">
+      <div class="box-content col-xs-12">
+        <button class="gff-btn" ng-click="gc.initCreate()">Create Game</button>
+      </div>
+    </div><!--/gff-box-->
+  </div>
+</div>
 
 <create-game ng-show="gc.creating" data-players="gc.players"></create-game>
