@@ -17,14 +17,15 @@ module.exports = function(app) {
     };
 
     this.backgroundParallax = function() {
+      let normalOffset = $navBar.offset().top;
       let offsetTop = 0;
 
       $window.on('scroll', () => {
         offsetTop = $navBar.offset().top;
-        offsetTop = 15 - ((offsetTop - 15) * 0.2);
+        offsetTop = normalOffset - ((offsetTop - normalOffset) * 0.2);
 
         if (offsetTop < 0) offsetTop = 0;
-        if (offsetTop > 15) offsetTop = 15;
+        if (offsetTop > normalOffset) offsetTop = normalOffset;
 
         if (offsetTop === 0) {
           $gffNav.css('width', '100%');
