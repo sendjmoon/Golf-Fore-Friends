@@ -1,29 +1,30 @@
 'use strict';
 
 module.exports = function(app) {
-  app.factory('GameService', ['$rootScope', '$http', 'FriendService', function($rs, $http, FriendService) {
+  app.factory('GameService', ['$rootScope', '$http', 'FriendService', 'UserService', function($rs, $http, FriendService, UserService) {
 
     let updateData = {};
 
     const createGame = function(gameData) {
-      calcResults(gameData.players)
-        .then((results) => {
-          console.log(results);
-        });
-      // return new Promise((resolve, reject) => {
-      //   $http.post(`${$rs.baseUrl}/games/create`, gameData)
-      //     .then((newGame) => {
-      //       updateData = {
-      //         usersArray: gameData.players,
-      //         updateQuery: {
-      //           $addToSet: { gameIds: newGame.data._id },
-      //         },
-      //       };
-      //       $http.post(`${$rs.baseUrl}/users/update-many`, updateData)
-      //         .then(resolve);
-      //     })
-      //     .catch(reject);
-      // });
+      return new Promise((resolve, reject) => {
+        calcResults(gameData.players)
+          .then((results) => {
+            gameData.players = results;
+            $http.post(`${$rs.baseUrl}/games/create`, gameData)
+            .then((newGame) => {
+              updateData.usersArray = gameData.players;
+              updateData.updateQuery = {
+                $addToSet: { gameIds: newGame.data._id },
+              };
+              UserService.updateManyUsers(updateData)
+                .then(resolve);
+            })
+            .catch(() => {
+              console.log('Error creating game.');
+              reject;
+            });
+          });
+      });
     };
 
     this.getByPublicId = function(gameId) {
