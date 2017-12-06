@@ -24,10 +24,11 @@
       .player-box {
         display: flex;
         margin-right: 15px;
+        border: 1px solid $border-color-light;
         border-radius: 2px;
 
-        background: $panel-bg-color-dark-primary;
-        color: $font-color-light;
+        // background: $panel-bg-color-dark-primary;
+        color: $font-color-dark;
 
         p {
           margin: 0;
@@ -47,7 +48,7 @@
 
           height: 100%;
           padding: 10px 15px;
-          border-right: 1px solid $border-color-dark;
+          border-right: 1px solid $border-color-light;
 
           transition: background 0.2s ease;
         }
@@ -63,7 +64,7 @@
           }
 
           a {
-            color: $font-color-light;
+            color: $font-color-dark;
 
             &:hover {
               color: $orange-primary;
@@ -75,7 +76,7 @@
             width: 35px;
             height: 20px;
             margin-right: 10px;
-            border: none;
+            border: 1px solid $border-color-light;
 
             color: $font-color-dark;
             text-align: center;
