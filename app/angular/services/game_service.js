@@ -55,7 +55,10 @@ module.exports = function(app) {
 
     const calcResults = function(array) {
       return new Promise((resolve, reject) => {
-        if (array.length <= 1) resolve(array);
+        if (array.length <= 1) {
+          array[0].result = 'solo';
+          return resolve(array);
+        }
 
         let winFound = false;
         let tieFound = false;
@@ -68,7 +71,7 @@ module.exports = function(app) {
         array.forEach((player, index) => {
           let nextPlayer = array[index + 1];
 
-          if (winFound) return;
+          if (winFound) return player.result = 'loss';
           if (tieFound) {
             if (player.strokes === tieValue) player.result = 'tie';
             return;
