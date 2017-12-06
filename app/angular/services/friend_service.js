@@ -14,7 +14,9 @@ module.exports = function(app) {
         };
         $http.post(`${$rs.baseUrl}/friends/all`, userData)
           .then((friends) => {
-            data.allFriends.friends = friends.data;
+            data.allFriends.friends = friends.data.map((friend) => {
+              return friend.friendId;
+            });
             resolve();
           })
           .catch((err) => {

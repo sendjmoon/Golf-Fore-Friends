@@ -42,7 +42,7 @@
                   <input type="text" required ng-model="player.strokes" placeholder="{{player.strokes}}" maxlength="2"></input>
                   <a ng-click="gc.editing=false"><i class="fa fa-floppy-o"></i></a>
                 </div>
-                <a class="remove-box" ng-click="gc.removePlayer(player)">
+                <a class="remove-box" ng-click="gc.removeUser(player)">
                   <i class="fa fa-minus-circle"></i>
                 </a>
               </li>
@@ -53,9 +53,9 @@
               <ul class="player-list">
                 <li class="player-box" ng-repeat="friend in allFriends.friends">
                   <div class="title-box">
-                    <p>{{friend.friendId.fullName}}</p>
+                    <p>{{friend.fullName}}</p>
                   </div>
-                  <a class="add-box" ng-click="gc.addUserToGame(friend.friendId)">
+                  <a class="add-box" ng-click="gc.addUser(friend)">
                     <i class="fa fa-plus"></i>
                   </a>
                 </li>
