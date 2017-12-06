@@ -33,38 +33,8 @@ const UserSchema = new Schema({
     required: true,
   },
   stats: {
-    handicap: {
-      type: Number,
-      default: 0,
-      required: false,
-      unique: false,
-    },
-    handicapActual: {
-      type: Number,
-      default: 0,
-      required: false,
-      unique: false,
-    },
-    wins: {
-      type: Number,
-      default: 0,
-      required: true,
-    },
-    losses: {
-      type: Number,
-      default: 0,
-      required: true,
-    },
-    ties: {
-      type: Number,
-      default: 0,
-      required: true,
-    },
-    winRatio: {
-      type: Number,
-      default: 0,
-      required: true,
-    },
+    type: Schema.Types.ObjectId,
+    ref: 'UserStats',
   },
   gameIds: [{
     type: Schema.Types.ObjectId,
