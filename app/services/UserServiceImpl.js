@@ -16,9 +16,20 @@ module.exports = function(userDao) {
             email: email,
             password: hashedPassword,
           };
-          return _userDao.create(userData);
+          _userDao.create(userData)
+            .then((newUser) => {
+              _userDao.createUserStats(newUser._id)
+                .then((newUserStats) => {
+                  const userStatsData = {
+                    stats: newUserStats._id,
+                  };
+                  _userDao.updateUser(newUser.email, userStatsData)
+                    .then((updatedUser) => {
+                      resolve(updatedUser);
+                    });
+                });
+            });
         })
-        .then(resolve)
         .catch(reject);
     });
   };

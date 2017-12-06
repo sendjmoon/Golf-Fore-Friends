@@ -2,6 +2,7 @@
 
 const Promise = require('bluebird');
 const User = require('../models/User');
+const UserStats = require('../models/UserStats');
 
 module.exports = function() {
   const create = function(userData) {
@@ -16,13 +17,26 @@ module.exports = function() {
             .exec()
             .then((newUser) => {
               resolve(newUser.toObject());
-            })
+            });
         })
         .catch((err) => {
           console.log(err);
           reject;
         });
     });
+  };
+
+  const createUserStats = function(userId) {
+    return new Promise((resolve, reject) => {
+      UserStats.create({ userId: userId })
+        .then((newUserStats) => {
+          resolve(newUserStats);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject;
+        });
+    })
   };
 
   const getByEmailOrUsername = function(emailOrUsername) {
@@ -96,6 +110,7 @@ module.exports = function() {
 
   return {
     create: create,
+    createUserStats: createUserStats,
     getByEmailOrUsername: getByEmailOrUsername,
     getAllUsers: getAllUsers,
     updateUser: updateUser,

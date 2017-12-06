@@ -29,7 +29,6 @@ module.exports = function(app) {
         let userData = {
           emailOrUsername: emailOrUsername,
         };
-
         $http.post(`${$rs.baseUrl}/users/all`, userData)
           .then((users) => {
             data.allUsers.users = users.data;
@@ -41,13 +40,20 @@ module.exports = function(app) {
       });
     };
 
+    let updateManyUsers = function(updateData) {
+      return new Promise((resolve, reject) => {
+        $http.post(`${$rs.baseUrl}/users/update-many`, updateData)
+          .then(resolve)
+          .catch(reject);
+      });
+    }
+
     let updateUser = function(user, newData) {
       return new Promise((resolve, reject) => {
         let userData = {
           emailOrUsername: user.emailOrUsername,
           newData: newData,
         };
-
         $http.post('/users/update', userData)
           .then((user) => {
             resolve(user.data);
@@ -86,6 +92,7 @@ module.exports = function(app) {
       getByEmailOrUsername: getByEmailOrUsername,
       getAllUsers: getAllUsers,
       updateUser: updateUser,
+      updateManyUsers: updateManyUsers,
       calcHandicap: calcHandicap,
       calcWinRatio: calcWinRatio,
       data: data,

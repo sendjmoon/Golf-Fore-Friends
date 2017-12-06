@@ -14,10 +14,7 @@ module.exports = function(app) {
 
     ctrl.createGame = function(gameData) {
       gameData.players = ctrl.players;
-      GameService.createGame(gameData)
-        .catch((err) => {
-          console.log('Error creating game.');
-        });
+      GameService.createGame(gameData);
     };
 
     ctrl.addUserToGame = function(user) {

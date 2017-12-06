@@ -3,8 +3,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let scorecardTemplate = require('./templates/scorecard_template');
-
 const CourseSchema = new Schema({
   name: {
     type: String,
@@ -16,7 +14,6 @@ const CourseSchema = new Schema({
     required: true,
     unique: false,
   },
-  scorecard: scorecardTemplate,
   updatedAt: {
     type: Number,
     required: true,
