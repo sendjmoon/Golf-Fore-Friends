@@ -24,7 +24,9 @@ module.exports = function(userDao) {
                     stats: newUserStats._id,
                   };
                   _userDao.updateUser(newUser.email, userStatsData)
-                    .then(resolve);
+                    .then((updatedUser) => {
+                      resolve(updatedUser);
+                    });
                 });
             });
         })
