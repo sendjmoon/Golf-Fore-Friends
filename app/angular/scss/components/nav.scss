@@ -1,12 +1,18 @@
 nav-bar {
   width: 100%;
   height: 80px;
-  display: table;
-  background: #fff;
+
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 15px;
+  z-index: 10;
+
+  background: none;
 }
 
 .gff-nav {
-  width: 100%;
+  width: 97%;
   height: 100%;
   padding: 0 45px;
 
@@ -14,6 +20,8 @@ nav-bar {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  background: rgba(0, 0, 0, 0.8);
 
   .gff-logo-container {
     height: 40px;
@@ -24,12 +32,13 @@ nav-bar {
 
     .main-title {
       padding-right: 15px;
-      border-right: 1px solid #ddd;
+      border-right: 1px solid $green-secondary;
+      color: $font-color-light;
     }
 
     .page-title {
       padding-left: 15px;
-      color: $green-secondary;
+      color: $font-color-light;
     }
   }
 
@@ -119,7 +128,7 @@ nav-bar {
       .menu-border {
         width: 1px;
         height: 20px;
-        border-left: 1px solid #ddd;
+        border-left: 1px solid $green-secondary;
 
         &.last {
           position: absolute;
@@ -133,7 +142,7 @@ nav-bar {
         a {
           padding: 9px 15px;
           display: inherit;
-          color: $font-color-gray;
+          color: $font-color-light;
 
           &:hover {
             background: $orange-primary;
@@ -147,7 +156,7 @@ nav-bar {
       }
 
       &.open {
-        width: 240px;
+        width: 242px;
         transition: width 0.4s ease;
       }
     }
@@ -173,7 +182,7 @@ nav-bar {
     display: block;
     position: absolute;
 
-    background: $green-secondary;
+    background: $font-color-light;
     transform: rotate(0deg);
     transition: 0.25s ease-in-out;
 
