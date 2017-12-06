@@ -11,18 +11,18 @@ module.exports = function(app) {
           .then((results) => {
             gameData.players = results;
             $http.post(`${$rs.baseUrl}/games/create`, gameData)
-            .then((newGame) => {
-              updateData.usersArray = gameData.players;
-              updateData.updateQuery = {
-                $addToSet: { gameIds: newGame.data._id },
-              };
-              UserService.updateManyUsers(updateData)
-                .then(resolve);
-            })
-            .catch(() => {
-              console.log('Error creating game.');
-              reject;
-            });
+              .then((newGame) => {
+                updateData.usersArray = gameData.players;
+                updateData.updateQuery = {
+                  $addToSet: { gameIds: newGame.data._id },
+                };
+                UserService.updateManyUsers(updateData)
+                  .then(resolve);
+              })
+              .catch(() => {
+                console.log('Error creating game.');
+                reject;
+              });
           });
       });
     };
