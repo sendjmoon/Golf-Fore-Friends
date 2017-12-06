@@ -17,15 +17,17 @@ module.exports = function(app) {
       GameService.createGame(gameData);
     };
 
-    ctrl.addUserToGame = function(user) {
+    ctrl.addUser = function(user) {
+      $scope.allFriends.friends.splice($scope.allFriends.friends[$scope.allFriends.friends.indexOf(user)], 1);
       ctrl.players.push(user);
+      console.log(ctrl.players);
     };
 
-    ctrl.removePlayer = function(user) {
-      let playersArray = ctrl.game.players;
-      let userIndex = playersArray.indexOf(user);
-      ctrl.friendsList.push(playersArray[userIndex]);
-      playersArray.splice(userIndex, 1);
+    ctrl.removeUser = function(user) {
+      console.log(ctrl.players.indexOf(user));
+      console.log(ctrl.players);
+      ctrl.players.splice(ctrl.players[ctrl.players.indexOf(user)], 1);
+      $scope.allFriends.friends.push(user);
     };
 
     ctrl.initCreate = function() {

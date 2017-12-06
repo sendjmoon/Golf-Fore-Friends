@@ -69,7 +69,6 @@ module.exports = function() {
         .then(() => {
           getByEmailOrUsername(emailOrUsername)
             .then((user) => {
-              delete user.password;
               resolve(user);
             });
         })

@@ -11,18 +11,18 @@ module.exports = function(app) {
           .then((results) => {
             gameData.players = results;
             $http.post(`${$rs.baseUrl}/games/create`, gameData)
-            .then((newGame) => {
-              updateData.usersArray = gameData.players;
-              updateData.updateQuery = {
-                $addToSet: { gameIds: newGame.data._id },
-              };
-              UserService.updateManyUsers(updateData)
-                .then(resolve);
-            })
-            .catch(() => {
-              console.log('Error creating game.');
-              reject;
-            });
+              .then((newGame) => {
+                updateData.usersArray = gameData.players;
+                updateData.updateQuery = {
+                  $addToSet: { gameIds: newGame.data._id },
+                };
+                UserService.updateManyUsers(updateData)
+                  .then(resolve);
+              })
+              .catch(() => {
+                console.log('Error creating game.');
+                reject;
+              });
           });
       });
     };
@@ -55,21 +55,22 @@ module.exports = function(app) {
 
     const calcResults = function(array) {
       return new Promise((resolve, reject) => {
+        let nextPlayer;
+        let winFound = false;
+        let tieFound = false;
+        let tieValue = 0;
+
         if (array.length <= 1) {
           array[0].result = 'solo';
           return resolve(array);
         }
-
-        let winFound = false;
-        let tieFound = false;
-        let tieValue = 0;
 
         array.sort((a, b) => {
           return a.strokes - b.strokes;
         });
 
         array.forEach((player, index) => {
-          let nextPlayer = array[index + 1];
+          nextPlayer = array[index + 1];
 
           if (winFound) return player.result = 'loss';
           if (tieFound) {
