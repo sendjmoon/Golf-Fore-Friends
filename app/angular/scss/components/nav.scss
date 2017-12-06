@@ -10,6 +10,16 @@ nav-bar {
 
   background: none;
   transition: height 0.2s ease;
+
+  &.gff-full {
+    height: 60px;
+    transition: height 0.2s ease;
+
+    .gff-nav {
+      width: 100%;
+      transition: width 0.2s ease;
+    }
+  }
 }
 
 .gff-nav {

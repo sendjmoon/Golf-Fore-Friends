@@ -17,24 +17,21 @@ module.exports = function(app) {
     };
 
     this.backgroundParallax = function() {
-      let normalOffset = $navBar.offset().top;
+      let offsetStart = $navBar.offset().top;
       let offsetTop = 0;
 
       $window.on('scroll', () => {
         offsetTop = $navBar.offset().top;
-        offsetTop = normalOffset - ((offsetTop - normalOffset) * 0.2);
+        offsetTop = offsetStart - ((offsetTop - offsetStart) * 0.2);
 
-        if (offsetTop < 0) offsetTop = 0;
-        if (offsetTop > normalOffset) offsetTop = normalOffset;
+        offsetTop < 0 ?
+          offsetTop = 0 : offsetTop = offsetTop;
 
-        if (offsetTop === 0) {
-          $gffNav.css('width', '100%');
-          $navBar.css('height', '60px');
-        }
-        else {
-          $gffNav.css('width', '97%');
-          $navBar.css('height', '80px');
-        }
+        offsetTop > offsetStart ?
+          offsetTop = offsetStart : offsetTop = offsetTop;
+
+        offsetTop === 0 ?
+          $navBar.addClass('gff-full') : $navBar.removeClass('gff-full');
 
         $navBar.css('top', offsetTop + 'px');
       });
