@@ -53,7 +53,7 @@ module.exports = function(app) {
     let compareIfFriends = function(obj, compareArray) {
       compareArray.forEach((compareObj) => {
         if (obj.isFriend) return;
-        obj._id === compareObj.friendId._id ?
+        obj._id === compareObj._id ?
           obj.isFriend = true : obj.isFriend = false;
       });
     };
