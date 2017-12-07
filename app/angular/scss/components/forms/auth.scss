@@ -5,6 +5,19 @@ auth {
   justify-content: center;
   align-items: center;
 
+  // &.gff-fade {
+  //   transition: all 1s ease;
+  //
+  //   &.ng-hide {
+  //     opacity: 0;
+  //     transition: all 1s ease;
+  //   }
+  // }
+
+  .gff-btn {
+    margin: 15px 0;
+  }
+
   .form-container {
     padding: 30px;
     border-radius: 2px;
