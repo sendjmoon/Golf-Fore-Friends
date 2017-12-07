@@ -5,7 +5,7 @@ const angular = require('angular');
 require('angular-middleware');
 require('./scss/base.scss');
 
-const golfApp = angular.module('golfApp', ['ngRoute', 'ngRoute.middleware', 'ngAnimate']);
+const golfApp = angular.module('golfApp', ['ngRoute', 'ngRoute.middleware']);
 
 require('./services')(golfApp);
 require('./controllers')(golfApp);

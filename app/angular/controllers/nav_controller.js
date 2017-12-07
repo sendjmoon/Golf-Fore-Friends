@@ -2,21 +2,21 @@
 
 module.exports = function(app) {
   app.controller('NavController', ['$rootScope', 'AuthService', function($rs, AuthService) {
-    this.signout = AuthService.signout;
+
+    let ctrl = this;
+    ctrl.signout = AuthService.signout;
 
     let $window = $(window);
     let $hamMenu = $('#hamburger-menu-icon');
-    let $banner = $('.banner-container');
     let $navBar = $('nav-bar');
-    let $gffNav = $('.gff-nav');
     let $navMenu = $('#nav-menu');
 
-    this.toggleMenu = function($el) {
+    ctrl.toggleMenu = function($el) {
       $el.toggleClass('open');
       $navMenu.toggleClass('open');
     };
 
-    this.backgroundParallax = function() {
+    ctrl.scrollListener = function() {
       let offsetStart = $navBar.offset().top;
       let offsetTop = 0;
 
@@ -35,12 +35,19 @@ module.exports = function(app) {
 
         $navBar.css('top', offsetTop + 'px');
       });
-    }
+    };
 
-    $hamMenu.on('click', () => {
-      this.toggleMenu($hamMenu);
-    });
+    ctrl.menuListener = function() {
+      $hamMenu.on('click', () => {
+        ctrl.toggleMenu($hamMenu);
+      });
+    };
 
-    this.backgroundParallax();
+    ctrl.init = function() {
+      ctrl.scrollListener();
+      ctrl.menuListener();
+    };
+
+    ctrl.init();
   }]);
 };
