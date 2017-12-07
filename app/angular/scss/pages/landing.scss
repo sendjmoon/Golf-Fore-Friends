@@ -28,7 +28,7 @@
 
     height: 100%;
 
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
     transform: translateZ(0);
 
     .landing-content {
@@ -36,14 +36,13 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      // opacity: 1;
-      // transition: all 1s ease;
+    }
 
-      // &.ng-hide {
-      //   opacity: 0;
-      //   position: absolute;
-      //   transition: all 0.5s ease;
-      // }
+    .gff-logo-container {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .gff-logo-full {
@@ -54,15 +53,18 @@
     .title {
       margin: 5px;
       margin-bottom: 3px;
+      display: inline-block;
+
       color: $font-color-light;
       text-align: center;
       font-size: 32px;
       font-weight: 700;
+      line-height: 32px;
     }
 
     .description {
       margin: 0;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
       color: $font-color-light;
       font-size: 16px;
       font-weight: 300;
@@ -70,53 +72,10 @@
   }
 }
 
-.subcontent-container {
-  padding: 60px;
-  display: table;
+.buttons-container {
 
-  h2 {
-    text-align: center;
-  }
-
-  p {
-    font-size: 16px;
-    line-height: 26px;
-  }
-}
-
-.about-section {
-  background-color: $bg-color-light;
-
-  p {
-    width: 80%;
-    margin: 0 auto;
-  }
-}
-
-.features-section {
-
-  h2 {
-    color: $font-color-light;
-  }
-
-  .feature-container {
-    padding: 0 45px;
-    margin-bottom: 30px;
-    color: $font-color-light;
-    text-align: center;
-
-    i {
-      margin-bottom: 15px;
-      font-size: 46px;
-    }
-
-    h4 {
-      margin-bottom: 5px;
-      color: $orange-primary;
-    }
-
-    p {
-      text-align: left;
-    }
+  .gff-btn {
+    margin-right: 10px;
+    margin-left: 10px;
   }
 }

@@ -1,18 +1,8 @@
 auth {
-  height: 100%;
   padding: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  // &.gff-fade {
-  //   transition: all 1s ease;
-  //
-  //   &.ng-hide {
-  //     opacity: 0;
-  //     transition: all 1s ease;
-  //   }
-  // }
 
   .gff-btn {
     margin: 15px 0;
@@ -34,7 +24,7 @@ auth {
       .icon-box {
         width: 50px;
         display: table-cell;
-        background: $orange-opaque;
+        background: $green-opaque;
 
         i {
           color: $font-color-light;
