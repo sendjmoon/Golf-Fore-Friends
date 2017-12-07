@@ -1,9 +1,12 @@
 auth {
-  height: 100%;
   padding: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .gff-btn {
+    margin: 15px 0;
+  }
 
   .form-container {
     padding: 30px;
@@ -21,7 +24,7 @@ auth {
       .icon-box {
         width: 50px;
         display: table-cell;
-        background: $orange-opaque;
+        background: $green-opaque;
 
         i {
           color: $font-color-light;
