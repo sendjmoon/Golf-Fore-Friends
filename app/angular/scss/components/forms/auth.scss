@@ -9,7 +9,7 @@ auth {
   }
 
   .form-container {
-    padding: 30px;
+    padding: 30px 55px;
     // border-radius: 2px;
     background-color: rgba(0, 0, 0, 0.3);
     color: $font-color-light;
@@ -17,14 +17,14 @@ auth {
 
     .input-container {
       width: 100%;
-      min-width: 235px;
+      min-width: 260px;
       margin-bottom: 1px;
       display: table;
 
       .icon-box {
         width: 50px;
         display: table-cell;
-        background: $green-opaque;
+        background: $green-secondary;
 
         i {
           color: $font-color-light;

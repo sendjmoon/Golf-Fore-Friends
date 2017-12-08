@@ -44,7 +44,7 @@ module.exports = function(app) {
     };
 
     ctrl.init = function() {
-      ctrl.scrollListener();
+      // ctrl.scrollListener();
       ctrl.menuListener();
     };
 
