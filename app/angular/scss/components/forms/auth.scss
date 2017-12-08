@@ -9,15 +9,15 @@ auth {
   }
 
   .form-container {
-    padding: 30px 55px;
-    // border-radius: 2px;
+    padding: 30px 45px;
+    border-radius: 2px;
     background-color: rgba(0, 0, 0, 0.3);
     color: $font-color-light;
     text-align: center;
 
     .input-container {
       width: 100%;
-      min-width: 260px;
+      min-width: 230px;
       margin-bottom: 1px;
       display: table;
 
