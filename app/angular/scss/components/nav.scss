@@ -1,40 +1,25 @@
 nav-bar {
   width: 100%;
-  height: 70px;
-
+  height: 110px;
   display: flex;
   justify-content: center;
-  position: relative;
-  // top: 15px;
-  // z-index: 10;
+  z-index: 20;
+  padding: 0 15px;
 
-  background: none;
   transition: all 0.2s ease;
-
-  &.gff-full {
-    height: 60px;
-    transition: all 0.2s ease;
-
-    .gff-nav {
-      width: 100%;
-      // background: rgba(0, 0, 0, 0.8);
-      transition: all 0.2s ease;
-    }
-  }
 }
 
 .gff-nav {
   width: 100%;
+  max-width: 1200px;
   height: 100%;
-  padding: 0 45px;
+  padding: 0;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
-  // background: $green-opaque;
-  background: #222;
   transition: all 0.2s ease;
 
   .gff-logo-container {
@@ -42,10 +27,12 @@ nav-bar {
     margin: 0;
     display: flex;
     align-items: center;
+    position: absolute;
+    top: 15px;
 
     .gff-logo-full {
       margin-right: 10px;
-      border: 2px solid #fff;
+      border: 2px solid $green-secondary;
       border-radius: 5px;
     }
 
@@ -56,14 +43,8 @@ nav-bar {
     .main-title {
       padding-right: 15px;
       // border-right: 1px solid #eee;
-      color: $font-color-light;
+      color: $green-secondary;
       font-weight: 400;
-    }
-
-    .page-title {
-      padding-left: 15px;
-      color: $font-color-light;
-      font-weight: 300;
     }
   }
 
@@ -71,6 +52,64 @@ nav-bar {
 
     h4 {
       color: $font-color-dark;
+    }
+
+    .auth-menu {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      list-style: none;
+
+      a {
+        font-size: 22px;
+        color: $orange-secondary;
+
+        &:hover {
+          color: $orange-secondary;
+        }
+      }
+    }
+
+    .gff-menu {
+      height: 45px;
+      margin: 0;
+      padding: 0;
+      padding-right: 20%;
+      border-bottom: 1px solid $green-secondary;
+
+      display: flex;
+      align-items: center;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      list-style: none;
+
+      li {
+        height: 100%;
+        position: relative;
+        border-bottom: 2px solid rgba(0, 0, 0, 0);
+        transition: all 0.2s ease;
+
+        a {
+          height: calc(100% + 1px);
+          margin-top: 2px;
+          padding: 0 20px;
+          display: flex;
+          align-items: center;
+
+          color: #4b4e54;
+          font-size: 14px;
+          font-weight: 400;
+          border-bottom: 1px solid rgba(0, 0, 0, 0);
+          transition: all 0.2s ease;
+
+          &:hover {
+            background: $orange-primary;
+            border-bottom: $orange-primary;
+            transition: all 0.2s ease;
+          }
+        }
+      }
     }
 
     .nav-menu {
@@ -81,7 +120,7 @@ nav-bar {
       display: flex;
       align-items: center;
       position: absolute;
-      right: 85px;
+      right: 55px;
       height: 40px;
       // border-left: 1px solid #6e7265;
 
