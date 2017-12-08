@@ -9,7 +9,7 @@ auth {
   }
 
   .form-container {
-    padding: 30px;
+    padding: 30px 45px;
     border-radius: 2px;
     background-color: rgba(0, 0, 0, 0.3);
     color: $font-color-light;
@@ -17,14 +17,14 @@ auth {
 
     .input-container {
       width: 100%;
-      min-width: 235px;
+      min-width: 230px;
       margin-bottom: 1px;
       display: table;
 
       .icon-box {
         width: 50px;
         display: table-cell;
-        background: $green-opaque;
+        background: $green-secondary;
 
         i {
           color: $font-color-light;
@@ -48,34 +48,35 @@ auth {
 
         &:focus {
           background-color: rgba(0, 0, 0, 0.9);
-          color: $orange-primary;
+          color: $font-color-light;
+          border-right: 3px solid $orange-opaque;
         }
       }
 
       &.first {
-        border-top-left-radius: 2px;
-        border-top-right-radius: 2px;
+        // border-top-left-radius: 2px;
+        // border-top-right-radius: 2px;
 
         .icon-box {
-          border-top-left-radius: 2px;
+          // border-top-left-radius: 2px;
         }
 
         input {
-          border-top-right-radius: 2px;
+          // border-top-right-radius: 2px;
         }
       }
 
       &.last {
         border-bottom: 1px solid rgba(0, 0, 0, 0);
-        border-bottom-left-radius: 2px;
-        border-bottom-right-radius: 2px;
+        // border-bottom-left-radius: 2px;
+        // border-bottom-right-radius: 2px;
 
         .icon-box {
-          border-bottom-left-radius: 2px;
+          // border-bottom-left-radius: 2px;
         }
 
         input {
-          border-bottom-right-radius: 2px;
+          // border-bottom-right-radius: 2px;
         }
       }
     }

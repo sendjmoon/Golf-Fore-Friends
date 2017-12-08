@@ -2,33 +2,44 @@
   <div class="gff-logo-container">
     <?xml version="1.0" encoding="iso-8859-1"?>
     <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-    <svg class="gff-logo-full" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="35px" height="35px" viewBox="-0.258 -0.548 123.547 123.539" style="enable-background:new -0.258 -0.548 123.547 123.539;" xml:space="preserve">
+    <svg class="gff-logo-full" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="35px" height="35px" viewBox="-0.258 -0.548 123.547 123.539" style="background:#89c97a;" xml:space="preserve">
       <g>
-       <path style="fill:#87c97a;" d="M54.477,26.043c-4.469,0-8.078,3.57-8.078,7.961c0,4.406,3.609,7.969,8.078,7.969 c4.445,0,8.055-3.562,8.055-7.969C62.531,29.613,58.922,26.043,54.477,26.043z" />
-       <path style="fill:#87c97a;" d="M95.406,41.793c-0.305-1.719-1.711-2.695-1.797-2.758L46.188,7.77l-4.406,6.383 c-0.82,1.258-0.461,2.93,0.797,3.75c1.25,0.828,2.922,0.492,3.742-0.766l2.578-3.688l38.516,25.414l-31.555,5.68 c-2.234,0.375-3.852,2.609-3.352,4.797l6.867,26.547l-22.211,33.312c-1.328,2.273-0.523,5.188,1.773,6.492 c2.32,1.32,5.258,0.516,6.594-1.758c0,0,23.164-34.836,23.25-35.055c0,0,1.195,4.836,1.195,4.859L66.5,109.871 c-0.438,2.602,1.328,5.031,3.953,5.469s5.117-1.305,5.555-3.891l3.594-26.883c0.109-0.688-0.031-2.195-0.188-2.859L71.492,50.23 l20.609-3.711C94.305,46.129,95.797,44.004,95.406,41.793z" />
+       <path style="fill:#ffffff;" d="M54.477,26.043c-4.469,0-8.078,3.57-8.078,7.961c0,4.406,3.609,7.969,8.078,7.969 c4.445,0,8.055-3.562,8.055-7.969C62.531,29.613,58.922,26.043,54.477,26.043z" />
+       <path style="fill:#ffffff;" d="M95.406,41.793c-0.305-1.719-1.711-2.695-1.797-2.758L46.188,7.77l-4.406,6.383 c-0.82,1.258-0.461,2.93,0.797,3.75c1.25,0.828,2.922,0.492,3.742-0.766l2.578-3.688l38.516,25.414l-31.555,5.68 c-2.234,0.375-3.852,2.609-3.352,4.797l6.867,26.547l-22.211,33.312c-1.328,2.273-0.523,5.188,1.773,6.492 c2.32,1.32,5.258,0.516,6.594-1.758c0,0,23.164-34.836,23.25-35.055c0,0,1.195,4.836,1.195,4.859L66.5,109.871 c-0.438,2.602,1.328,5.031,3.953,5.469s5.117-1.305,5.555-3.891l3.594-26.883c0.109-0.688-0.031-2.195-0.188-2.859L71.492,50.23 l20.609-3.711C94.305,46.129,95.797,44.004,95.406,41.793z" />
       </g>
     </svg>
-    <h4 class="main-title">GOLF FOR<span class="color-green">e</span> FRIENDS</h4>
-    <h4 class="page-title">{{nc.pageTitle}}</h4>
+    <p class="main-title">GOLF FOR<span class="color-green">e</span> FRIENDS</p>
   </div>
 
-  <ul class="nav-menu" id="nav-menu">
+  <ul class="auth-menu">
+    <li>
+      <a ng-click="nc.signout()"><i class="fa fa-sign-out"></i></a>
+    </li>
+  </ul>
+
+  <ul class="gff-menu">
+    <li id="dashboard-link">
+      <a href="/#!/dashboard">Dashboard</a>
+    </li>
+    <li id="friends-link">
+      <a href="/#!/friends">Friends</a>
+    </li>
+    <li id="games-link">
+      <a href="/#!/games">Games</a>
+    </li>
+  </ul>
+
+  <!-- <ul class="nav-menu" id="nav-menu">
     <li class="menu-border"></li>
     <li>
       <a href="/#!/dashboard"><i class="fa fa-home"></i></a>
     </li>
-    <!-- <li>
-      <a><i class="fa fa-pie-chart"></i></a>
-    </li> -->
     <li>
       <a href="/#!/friends"><i class="fa fa-users"></i></a>
     </li>
     <li>
       <a href="/#!/games"><i class="fa fa-server"></i></a>
     </li>
-    <!-- <li>
-      <a><i class="fa fa-fort-awesome"></i></a>
-    </li> -->
     <li>
       <a href="/#!/settings"><i class="fa fa-cogs"></i></a>
     </li>
@@ -36,9 +47,9 @@
       <a ng-click="nc.signout();"><i class="fa fa-sign-out"></i></a>
     </li>
     <li class="menu-border last"></li>
-  </ul>
+  </ul> -->
 
-  <div class="icon-container">
+  <!-- <div class="icon-container">
     <div class="hamburger-menu-icon" id="hamburger-menu-icon">
       <span></span>
       <span></span>
@@ -47,5 +58,5 @@
       <span></span>
       <span></span>
     </div>
-  </div>
+  </div> -->
 </nav>

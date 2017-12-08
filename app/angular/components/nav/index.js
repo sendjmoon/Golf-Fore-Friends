@@ -6,7 +6,7 @@ module.exports = function(app) {
     controller: 'NavController',
     controllerAs: 'nc',
     bindings: {
-      pageTitle: '<',
+      pageTitle: '=',
     },
   });
 };
