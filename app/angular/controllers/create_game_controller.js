@@ -15,8 +15,9 @@ module.exports = function(app) {
     }
 
     ctrl.addUser = function(user) {
+      let friendsArray = ctrl.allFriends.friends;
       ctrl.players.push(user);
-      ctrl.allFriends.friends.splice(ctrl.allFriends.friends.indexOf(user), 1);
+      friendsArray.splice(friendsArray.indexOf(user), 1);
     }
 
     ctrl.removeUser = function(user) {
