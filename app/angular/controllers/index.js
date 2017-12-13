@@ -6,6 +6,7 @@ module.exports = function(app) {
   require('./friend_controller')(app);
   require('./nav_controller')(app);
   require('./games_controller')(app);
+  require('./create_game_controller')(app);
   require('./settings_controller')(app);
   require('./chart/chart_controller')(app);
 };

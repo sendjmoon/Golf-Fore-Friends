@@ -17,7 +17,7 @@ module.exports = function(gameDao) {
       };
       _gameDao.create(newGameData)
         .then((newGame) => {
-          createResults(newGame._id, playersArray)
+          createGameResults(newGame._id, playersArray)
             .then((newResults) => {
               queryOptions.pushResults = {
                 $pushAll: { results: newResults },
@@ -35,8 +35,10 @@ module.exports = function(gameDao) {
     });
   };
 
-  const createResults = function(gameId, resultsArray) {
+  const createGameResults = function(gameId, resultsArray) {
     return new Promise((resolve, reject) => {
+      console.log('results array');
+      console.log(resultsArray);
       resultsArray.forEach((player) => {
         player.gameId = gameId;
         player.playerId = player._id;
@@ -44,7 +46,7 @@ module.exports = function(gameDao) {
         player.updatedAt = Date.now();
         return delete player._id;
       });
-      _gameDao.createResults(resultsArray)
+      _gameDao.createGameResults(resultsArray)
         .then((newResults) => {
           resolve(newResults);
         })

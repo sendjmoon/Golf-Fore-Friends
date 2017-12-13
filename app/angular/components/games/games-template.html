@@ -2,10 +2,11 @@
   <div class="gff-content col-xs-12">
     <div class="gff-box bg-white col-xs-12">
       <div class="box-content col-xs-12">
-        <button class="gff-btn" ng-click="gc.initCreate()">Create Game</button>
+        <button class="gff-btn" ng-click="gc.creating=true">Create Game</button>
       </div>
     </div><!--/gff-box-->
   </div>
 </div>
 
-<create-game ng-show="gc.creating" data-players="gc.players"></create-game>
+<create-game ng-show="gc.creating"></create-game>
+<button class="gff-btn" ng-show="gc.creating" ng-click="gc.reloadPage()">Cancel</button>
