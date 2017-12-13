@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('CreateGameController', ['$rootScope', 'UserService', 'FriendService', 'GameService', function($rs, UserService, FriendService, GameService) {
+  app.controller('CreateGameController', ['$rootScope', '$route', 'UserService', 'FriendService', 'GameService', function($rs, $route, UserService, FriendService, GameService) {
 
     let ctrl = this;
     ctrl.user = UserService.data.user;
@@ -11,7 +11,10 @@ module.exports = function(app) {
 
     ctrl.createGame = function(gameData) {
       gameData.players = ctrl.players;
-      GameService.createGame(gameData);
+      GameService.createGame(gameData)
+        .then(() => {
+          $route.reload();
+        });
     }
 
     ctrl.addUser = function(user) {

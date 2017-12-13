@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.factory('GameService', ['$rootScope', '$http', 'FriendService', 'UserService', function($rs, $http, FriendService, UserService) {
+  app.factory('GameService', ['$rootScope', '$route', '$http', 'UserService', function($rs, $route, $http, UserService) {
 
     let updateData = {};
 
@@ -24,12 +24,15 @@ module.exports = function(app) {
                   },
                 };
                 UserService.updateManyUsers(updateUsersData)
-                  .then(resolve);
-              })
-              .catch(() => {
-                console.log('Error creating game.');
-                reject;
-              });
+                  .then(() => {
+                    $route.reload();
+                    resolve();
+                  });
+                });
+          })
+          .catch((err) => {
+            console.log(err);
+            reject(err);
           });
       });
     };
@@ -67,7 +70,8 @@ module.exports = function(app) {
         let tieFound = false;
         let tieValue = 0;
 
-        if (array.length <= 1) {
+        if (array.length < 1) return reject({ message: 'No players added to game.' });
+        if (array.length === 1) {
           array[0].result = 'solo';
           return resolve(array);
         }
