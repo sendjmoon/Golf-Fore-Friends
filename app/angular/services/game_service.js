@@ -8,15 +8,22 @@ module.exports = function(app) {
     const createGame = function(gameData) {
       return new Promise((resolve, reject) => {
         calcResults(gameData.players)
-          .then((results) => {
-            gameData.players = results;
-            $http.post(`${$rs.baseUrl}/games/create`, gameData)
+          .then((newPlayersArray) => {
+            let createGameData = {
+              name: gameData.name,
+              location: gameData.location,
+              datePlayed: gameData.datePlayed,
+              players: newPlayersArray,
+            };
+            $http.post(`${$rs.baseUrl}/games/create`, createGameData)
               .then((newGame) => {
-                updateData.usersArray = gameData.players;
-                updateData.updateQuery = {
-                  $addToSet: { gameIds: newGame.data._id },
+                let updateUsersData = {
+                  usersArray: createGameData.players,
+                  updateQuery: {
+                    $addToSet: { gameIds: newGame.data._id },
+                  },
                 };
-                UserService.updateManyUsers(updateData)
+                UserService.updateManyUsers(updateUsersData)
                   .then(resolve);
               })
               .catch(() => {

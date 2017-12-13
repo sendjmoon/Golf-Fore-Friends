@@ -40,7 +40,7 @@ module.exports = function() {
     });
   };
 
-  const createResults = function(resultsData) {
+  const createGameResults = function(resultsData) {
     return new Promise((resolve, reject) => {
       GameResult.create(resultsData)
         .then((newResults) => {
@@ -127,7 +127,7 @@ module.exports = function() {
   return {
     create: create,
     updateByPublicId: updateByPublicId,
-    createResults: createResults,
+    createGameResults: createGameResults,
     getById: getById,
     getByPublicId: getByPublicId,
     getAllByPublicId: getAllByPublicId,
