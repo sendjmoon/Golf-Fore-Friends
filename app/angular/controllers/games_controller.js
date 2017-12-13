@@ -6,9 +6,5 @@ module.exports = function(app) {
     let ctrl = this;
     ctrl.creating = false;
 
-    ctrl.initCreate = function() {
-      ctrl.creating = true;
-    }
-
   }]);
 };
