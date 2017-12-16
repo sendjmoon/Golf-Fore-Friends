@@ -1,22 +1,29 @@
 <div class="page-container">
-  <h2>friends list</h2>
-  <ul>
-    <li ng-repeat="friend in friendsData.friends">
-      <h3>{{friend.fullName}}</h3>
-    </li>
-  </ul>
 
-  <h2>add more friends</h2>
-  <div class="search-container">
-    <form autocomplete="off">
-      <input id="search-input-users" type="text" placeholder="Search By Email"></input>
-      <ul>
-        <li ng-repeat="user in searchResults">
-          <p>{{user.fullName}} <span ng-show="user.isFriend">- Already friends.</p>
-          <button class="gff-btn" ng-hide="user.isFriend" ng-click="fc.addFriend(user._id); user.isFriend=true;">Add to Friends</button>
-        </li>
-      </ul>
-    </form>
+  <div class="banner-container col-md-5 col-xs-6 pull-left">
+    <div class="banner-image"></div>
+  </div>
+
+  <div class="gff-container col-md-7 col-xs-6 pull-right">
+    <h2>friends list</h2>
+    <ul>
+      <li ng-repeat="friend in friendsData.friends">
+        <h3>{{friend.fullName}}</h3>
+      </li>
+    </ul>
+
+    <h2>add more friends</h2>
+    <div class="search-container">
+      <form autocomplete="off">
+        <input id="search-input-users" type="text" placeholder="Search By Email"></input>
+        <ul>
+          <li ng-repeat="user in searchResults">
+            <p>{{user.fullName}} <span ng-show="user.isFriend">- Already friends.</p>
+            <button class="gff-btn" ng-hide="user.isFriend" ng-click="fc.addFriend(user._id); user.isFriend=true;">Add to Friends</button>
+          </li>
+        </ul>
+      </form>
+    </div>
   </div>
 
 </div>
