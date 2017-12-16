@@ -4,11 +4,12 @@ nav-bar {
   padding: 0 15px;
   display: flex;
   justify-content: center;
-  position: absolute;
+  // position: fixed;
+  position: relative;
   z-index: 20;
 
-  background: #2e383d;
-  // background: rgba(46, 56, 61, 0.9);
+  // background: #2e383d;
+  background: rgba(46, 56, 61, 0.9);
   transition: all 0.2s ease;
 }
 
@@ -89,7 +90,7 @@ nav-bar {
             border: 1px solid $orange-primary;
           }
 
-          .fa-sign-out {
+          .fa {
             font-size: 18px;
           }
         }

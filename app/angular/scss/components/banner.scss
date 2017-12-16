@@ -1,14 +1,9 @@
 .banner-container {
-  height: 225px;
-  padding-bottom: 7.5px;
-  // overflow: hidden;
+  height: 300px;
+  margin: 0 auto;
 
   .banner-content {
-    width: 100%;
-    max-width: 1200px;
-    height: 100%;
     margin: 0 auto;
-
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -17,16 +12,14 @@
   }
 
   .banner-image {
-    width: 100%;
+    width: 300px;
     height: 100%;
+    margin: 0 auto;
+    
     display: block;
     position: relative;
-    background-image: url('http://localhost:3000/imgs/golf-hole-2-6k-200.png');
-    // background-image: url('http://localhost:3000/imgs/golf-ball-sunset-bw-40.jpg');
+    background-image: url('http://localhost:3000/imgs/golf-hole-iso.png');
     background-size: cover;
     background-position: center;
-
-    // filter: blur(4px);
-    // transform: scale(1.1);
   }
 }
