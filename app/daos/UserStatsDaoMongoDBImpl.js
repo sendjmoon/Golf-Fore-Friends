@@ -7,13 +7,13 @@ module.exports = function() {
   const create = function(userId) {
     return new Promise((resolve, reject) => {
       UserStats.create({ userId: userId })
-      .then((newUserStats) => {
-        resolve(newUserStats.toObject());
-      })
-      .catch((err) => {
-        console.log(err);
-        reject;
-      });
+        .then((newUserStats) => {
+          resolve(newUserStats.toObject());
+        })
+        .catch((err) => {
+          console.log(err);
+          reject();
+        });
     });
   };
 
