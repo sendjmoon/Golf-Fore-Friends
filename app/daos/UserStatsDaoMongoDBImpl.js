@@ -17,7 +17,28 @@ module.exports = function() {
     });
   };
 
+  const update = function(docOrUserId, updateOptions) {
+    return new Promise((resolve, reject) => {
+      UserStats.findOneAndUpdate(
+        {
+          $or: [
+            { _id: docOrUserId },
+            { userId: docOrUserId },
+          ],
+        },
+        updateOptions,
+        { new: true }
+      )
+        .then(resolve)
+        .catch((err) => {
+          console.log(err);
+          reject();
+        });
+    });
+  }
+
   return {
     create: create,
+    update: update,
   }
 }
