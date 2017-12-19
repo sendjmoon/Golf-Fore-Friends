@@ -58,7 +58,7 @@ module.exports = function(app) {
           })
           .catch(() => {
             alert('error getting games');
-            reject;
+            reject();
           });
       });
     };

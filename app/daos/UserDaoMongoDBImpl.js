@@ -2,7 +2,6 @@
 
 const Promise = require('bluebird');
 const User = require('../models/User');
-const UserStats = require('../models/UserStats');
 
 module.exports = function() {
   const create = function(userData) {
@@ -15,28 +14,30 @@ module.exports = function() {
           User.findById(createdUser.id)
             .select('-__v')
             .exec()
-            .then((newUser) => {
-              resolve(newUser.toObject());
-            });
+              .then((newUser) => {
+                resolve(newUser.toObject());
+              });
         })
         .catch((err) => {
           console.log(err);
-          reject;
+          reject();
         });
     });
   };
 
-  const createUserStats = function(userId) {
+  const update = function(emailOrUsername, updateData) {
     return new Promise((resolve, reject) => {
-      UserStats.create({ userId: userId })
-        .then((newUserStats) => {
-          resolve(newUserStats);
-        })
-        .catch((err) => {
-          console.log(err);
-          reject;
-        });
-    })
+      User.findOneAndUpdate({
+        $or: [
+          { email: emailOrUsername },
+          { username: emailOrUsername },
+        ],
+      }, updateData)
+        .select('-__v -password')
+        .exec()
+          .then(resolve)
+          .catch(reject);
+    });
   };
 
   const getByEmailOrUsername = function(emailOrUsername) {
@@ -49,30 +50,10 @@ module.exports = function() {
       })
         .select('-__v')
         .exec()
-        .then((user) => {
-          resolve(user.toObject());
-        })
-        .catch(reject);
-    });
-  };
-
-  const updateUser = function(emailOrUsername, newData) {
-    return new Promise((resolve, reject) => {
-      User.findOneAndUpdate({
-        $or: [
-          { email: emailOrUsername },
-          { username: emailOrUsername },
-        ],
-      }, newData)
-        .select('-__v -password')
-        .exec()
-        .then(() => {
-          getByEmailOrUsername(emailOrUsername)
-            .then((user) => {
-              resolve(user);
-            });
-        })
-        .catch(reject);
+          .then((user) => {
+            resolve(user.toObject());
+          })
+          .catch(reject);
     });
   };
 
@@ -86,6 +67,7 @@ module.exports = function() {
       .catch((err) => {
         console.log('error updating many in dao');
         console.log(err);
+        reject();
       });
     });
   };
@@ -109,10 +91,9 @@ module.exports = function() {
 
   return {
     create: create,
-    createUserStats: createUserStats,
+    update: update,
     getByEmailOrUsername: getByEmailOrUsername,
     getAllUsers: getAllUsers,
-    updateUser: updateUser,
     updateManyById: updateManyById,
   };
 };

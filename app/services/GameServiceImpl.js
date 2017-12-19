@@ -30,7 +30,7 @@ module.exports = function(gameDao) {
         })
         .catch((err) => {
           console.log(err);
-          reject;
+          reject();
         });
     });
   };

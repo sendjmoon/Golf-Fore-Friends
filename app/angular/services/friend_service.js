@@ -21,6 +21,7 @@ module.exports = function(app) {
           })
           .catch((err) => {
             console.log('error getting all friends');
+            reject();
           });
       });
     };
@@ -37,6 +38,7 @@ module.exports = function(app) {
           })
           .catch((err) => {
             console.log(err.data);
+            reject();
           });
       });
     };
