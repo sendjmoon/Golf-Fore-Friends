@@ -18,6 +18,19 @@ module.exports = function(app) {
       });
     }
 
+    const update = function(updateData) {
+      return new Promise((resolve, reject) => {
+        const newData = {
+          updateData: updateData,
+        };
+        $http.post(`${$rs.baseUrl}/users/update`, newData)
+          .then((res) => {
+            resolve(res.data);
+          })
+          .catch(reject);
+      });
+    }
+
     let getByEmailOrUsername = function(emailOrUsername) {
       return new Promise((resolve, reject) => {
         let userData = {
@@ -58,23 +71,6 @@ module.exports = function(app) {
       });
     }
 
-    let updateUser = function(user, newData) {
-      return new Promise((resolve, reject) => {
-        let userData = {
-          emailOrUsername: user.emailOrUsername,
-          newData: newData,
-        };
-        $http.post('/users/update', userData)
-          .then((user) => {
-            resolve(user.data);
-          })
-          .catch((err) => {
-            alert('error updating user');
-            reject();
-          });
-      });
-    };
-
     let calcHandicap = function(totalGames, currentHandicap, strokes) {
       return new Promise((resolve, reject) => {
         let handicapData = {};
@@ -100,9 +96,9 @@ module.exports = function(app) {
 
     return {
       create: create,
+      update: update,
       getByEmailOrUsername: getByEmailOrUsername,
       getAllUsers: getAllUsers,
-      updateUser: updateUser,
       updateManyUsers: updateManyUsers,
       calcHandicap: calcHandicap,
       calcWinRatio: calcWinRatio,

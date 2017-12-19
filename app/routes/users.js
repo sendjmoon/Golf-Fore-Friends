@@ -77,9 +77,11 @@ router.post('/signin', function(req, res, next) {
 });
 
 router.post('/update', function(req, res, next) {
-  userService.updateUser(req.body.emailOrUsername, req.body.newData)
-    .then((user) => {
-      res.status(200).json(user);
+  userService.update(req.session.user.email, req.body.updateData)
+    .then(() => {
+      res.status(200).json({
+        message: 'Update successful.',
+      });
     })
     .catch((err) => {
       res.status(500).json({
@@ -92,7 +94,7 @@ router.post('/update-many', function(req, res, next) {
   userService.updateManyById(req.body.usersArray, req.body.updateQuery)
     .then(() => {
       res.status(200).json({
-        message: 'Great success',
+        message: 'Successfully updated many.',
       });
     })
     .catch((err) => {
@@ -105,7 +107,7 @@ router.post('/update-many', function(req, res, next) {
 router.get('/signout', function(req, res, next) {
   req.session.user = null;
   res.json({
-    message: 'signed out',
+    message: 'Signed out.',
   });
 });
 

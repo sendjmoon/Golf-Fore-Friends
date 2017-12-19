@@ -22,18 +22,6 @@ module.exports = function(userDao) {
               resolve(newUser);
             })
             .catch(reject);
-            // .then((newUser) => {
-            //   _userDao.createUserStats(newUser._id)
-            //     .then((newUserStats) => {
-            //       const userStatsData = {
-            //         stats: newUserStats._id,
-            //       };
-            //       _userDao.updateUser(newUser.email, userStatsData)
-            //         .then((updatedUser) => {
-            //           resolve(updatedUser);
-            //         });
-            //     });
-            // });
         })
         .catch(reject);
     });
@@ -90,13 +78,10 @@ module.exports = function(userDao) {
     });
   };
 
-  const updateUser = function(emailOrUsername, newData) {
+  const update = function(emailOrUsername, updateData) {
     return new Promise((resolve, reject) => {
-      _userDao.updateUser(emailOrUsername, newData)
-        .then((user) => {
-          delete user.password;
-          resolve(user);
-        })
+      _userDao.update(emailOrUsername, updateData)
+        .then(resolve)
         .catch(reject);
     });
   };
@@ -110,7 +95,7 @@ module.exports = function(userDao) {
     authenticateUser: authenticateUser,
     getAllUsers: getAllUsers,
     getUser: getUser,
-    updateUser: updateUser,
+    update: update,
     updateManyById: updateManyById,
   };
 };
