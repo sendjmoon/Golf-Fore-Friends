@@ -7,7 +7,8 @@ const userStatsService = require('../services').userStatsService;
 router.post('/create', function(req, res, next) {
   userStatsService.create(req.body.userId)
     .then((userStatsId) => {
-      res.status(200).json(userStatsId);
+      console.log(userStatsId);
+      res.json(userStatsId);
     })
     .catch((err) => {
       res.status(500).json({

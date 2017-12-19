@@ -11,8 +11,8 @@ module.exports = function(app) {
     const create = function(userData) {
       return new Promise((resolve, reject) => {
         $http.post(`${$rs.baseUrl}/users/signup`, userData)
-          .then((newUser) => {
-            resolve(newUser.data.userId);
+          .then((newUserId) => {
+            resolve(newUserId.data);
           })
           .catch(reject);
       });

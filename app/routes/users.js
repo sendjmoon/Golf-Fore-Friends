@@ -52,9 +52,7 @@ router.post('/signup', function(req, res, next) {
     )
     .then((user) => {
       req.session.user = user;
-      res.json({
-        userId: user._id,
-      });
+      res.json(user._id);
     })
     .catch((err) => {
       res.status(500).json({
