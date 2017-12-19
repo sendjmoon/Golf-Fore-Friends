@@ -51,7 +51,6 @@ router.post('/signup', function(req, res, next) {
       req.body.password
     )
     .then((user) => {
-      delete user.password;
       req.session.user = user;
       res.status(200).json({
         message: 'Signup successful.',
@@ -67,7 +66,6 @@ router.post('/signup', function(req, res, next) {
 router.post('/signin', function(req, res, next) {
   userService.authenticateUser(req.body.emailOrUsername, req.body.password)
     .then((user) => {
-      delete user.password;
       req.session.user = user;
       res.status(200).json({
         message: 'Signin successful.',
