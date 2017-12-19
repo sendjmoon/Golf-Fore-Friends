@@ -52,8 +52,8 @@ router.post('/signup', function(req, res, next) {
     )
     .then((user) => {
       req.session.user = user;
-      res.status(200).json({
-        message: 'Signup successful.',
+      res.json({
+        userId: user._id,
       });
     })
     .catch((err) => {

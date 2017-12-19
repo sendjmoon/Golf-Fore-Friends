@@ -3,10 +3,20 @@
 module.exports = function(app) {
   app.factory('UserService', ['$rootScope', '$http', function($rs, $http) {
 
-    let data = {
+    const data = {
       user: {},
       allUsers: {},
     };
+
+    const create = function(userData) {
+      return new Promise((resolve, reject) => {
+        $http.post(`${$rs.baseUrl}/users/signup`, userData)
+          .then((newUser) => {
+            resolve(newUser.data.userId);
+          })
+          .catch(reject);
+      });
+    }
 
     let getByEmailOrUsername = function(emailOrUsername) {
       return new Promise((resolve, reject) => {
@@ -89,6 +99,7 @@ module.exports = function(app) {
     };
 
     return {
+      create: create,
       getByEmailOrUsername: getByEmailOrUsername,
       getAllUsers: getAllUsers,
       updateUser: updateUser,

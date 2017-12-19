@@ -1,16 +1,16 @@
 'use strict';
 
 module.exports = function(app) {
-  app.service('AuthService', ['$rootScope', '$http', '$location', function($rs, $http, $location) {
+  app.service('AuthService', ['$rootScope', '$http', '$location', 'UserService', function($rs, $http, $location, userService) {
 
     let signup = function(userData) {
-      $http.post(`${$rs.baseUrl}/users/signup`, userData)
-        .then((res) => {
-          console.log(res.data.message);
+      userService.create(userData)
+        .then((newUserId) => {
           $location.path('/dashboard');
+          $rs.$apply();
         })
-        .catch((err) => {
-          alert('Error creating user.');
+        .catch(() => {
+          console.log('error signing up');
         });
     };
 
