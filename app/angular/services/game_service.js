@@ -1,19 +1,19 @@
 'use strict';
 
 module.exports = function(app) {
-  app.factory('GameService', ['$rootScope', '$route', '$http', 'UserService', function($rs, $route, $http, UserService) {
+  app.factory('GameService', ['$rootScope', '$route', '$http', 'UserService', 'StatsService', function($rs, $route, $http, userService, statsService) {
 
     let updateData = {};
 
     const createGame = function(gameData) {
       return new Promise((resolve, reject) => {
         calcResults(gameData.players)
-          .then((newPlayersArray) => {
+          .then((resultsArray) => {
             let createGameData = {
               name: gameData.name,
               location: gameData.location,
               datePlayed: gameData.datePlayed,
-              players: newPlayersArray,
+              players: resultsArray,
             };
             $http.post(`${$rs.baseUrl}/games/create`, createGameData)
               .then((newGame) => {
@@ -23,8 +23,11 @@ module.exports = function(app) {
                     $addToSet: { gameIds: newGame.data._id },
                   },
                 };
-                UserService.updateManyUsers(updateUsersData)
+                userService.updateManyUsers(updateUsersData)
                   .then(() => {
+                    resultsArray.forEach((player) => {
+                      statsService.update(player._id, player.result);
+                    });
                     $route.reload();
                     resolve();
                   });
