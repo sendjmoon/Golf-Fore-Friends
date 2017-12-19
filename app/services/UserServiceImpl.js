@@ -18,17 +18,22 @@ module.exports = function(userDao) {
           };
           _userDao.create(userData)
             .then((newUser) => {
-              _userDao.createUserStats(newUser._id)
-                .then((newUserStats) => {
-                  const userStatsData = {
-                    stats: newUserStats._id,
-                  };
-                  _userDao.updateUser(newUser.email, userStatsData)
-                    .then((updatedUser) => {
-                      resolve(updatedUser);
-                    });
-                });
-            });
+              delete newUser.password;
+              resolve(newUser);
+            })
+            .catch(reject);
+            // .then((newUser) => {
+            //   _userDao.createUserStats(newUser._id)
+            //     .then((newUserStats) => {
+            //       const userStatsData = {
+            //         stats: newUserStats._id,
+            //       };
+            //       _userDao.updateUser(newUser.email, userStatsData)
+            //         .then((updatedUser) => {
+            //           resolve(updatedUser);
+            //         });
+            //     });
+            // });
         })
         .catch(reject);
     });
