@@ -19,6 +19,7 @@ const index = require('./routes/index');
 const coursesRouter = require('./routes/courses');
 const gamesRouter = require('./routes/games');
 const usersRouter = require('./routes/users');
+const userStatsRouter = require('./routes/user_stats');
 const friendsRouter = require('./routes/friends');
 
 mongoose.Promise = require('bluebird');
@@ -69,6 +70,7 @@ app.use('/', index);
 app.use('/courses', coursesRouter);
 app.use('/games', gamesRouter);
 app.use('/users', usersRouter);
+app.use('/users/stats', userStatsRouter);
 app.use('/friends', friendsRouter);
 
 app.use(function(req, res, next) {
