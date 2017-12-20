@@ -4,11 +4,12 @@ const Promise = require('bluebird');
 const GameResult = require('../models/GameResult');
 
 module.exports = function() {
-  const create = function(resultsData) {
+  const create = function(resultsArray) {
+    console.log(resultsArray);
     return new Promise((resolve, reject) => {
-      GameResult.create(resultsData)
+      GameResult.create(resultsArray)
         .then((newResults) => {
-          resolve(newResults.toObject());
+          resolve(newResults);
         })
         .catch((err) => {
           console.log(err);
