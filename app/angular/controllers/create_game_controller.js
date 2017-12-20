@@ -1,19 +1,34 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('CreateGameController', ['$rootScope', '$route', 'UserService', 'FriendService', 'GameService', function($rs, $route, UserService, FriendService, GameService) {
+  app.controller('CreateGameController', ['$rootScope', '$route', 'UserService', 'FriendService', 'GameService', 'ResultService', function($rs, $route, userService, friendService, gameService, resultService) {
 
-    let ctrl = this;
-    ctrl.user = UserService.data.user;
-    ctrl.allFriends = FriendService.data.allFriends;
+    const ctrl = this;
+    ctrl.user = userService.data.user;
+    ctrl.allFriends = friendService.data.allFriends;
     ctrl.players = [];
     ctrl.editing = false;
 
     ctrl.createGame = function(gameData) {
       gameData.players = ctrl.players;
-      GameService.createGame(gameData)
-        .then(() => {
-          $route.reload();
+      gameService.create(gameData)
+        .then((newGame) => {
+          resultService.calcResults(gameData.players)
+            .then((resultsArray) => {
+
+              let userUpdateData = {
+                usersArray: resultsArray,
+                updateQuery: { $addToSet: { gameIds: newGame._id }},
+              };
+              userService.updateMany(userUpdateData)
+              .then(() => {
+                gameService.
+                $route.reload();
+              });
+            })
+        })
+        .catch((err) => {
+          console.log(err);
         });
     }
 
@@ -34,9 +49,8 @@ module.exports = function(app) {
         fullName: ctrl.user.fullName,
         email: ctrl.user.email,
       };
-
       ctrl.players.push(userData);
-      FriendService.getAllFriends(ctrl.user.email);
+      friendService.getAllFriends(ctrl.user.email);
     }
 
     ctrl.init();

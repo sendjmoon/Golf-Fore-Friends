@@ -15,7 +15,16 @@ module.exports = function(userStatsDao) {
     });
   }
 
+  const update = function(docOrUserId, updateOptions) {
+    return new Promise((resolve, reject) => {
+      _userStatsDao.update(docOrUserId, updateOptions)
+        .then(resolve)
+        .catch(reject);
+    });
+  }
+
   return {
     create: create,
+    update: update,
   }
 }

@@ -6,6 +6,7 @@ module.exports = function(app) {
   require('./stats_service')(app);
   require('./friend_service')(app);
   require('./game_service')(app);
+  require('./result_service')(app);
   require('./search_service')(app);
   require('./chart_service')(app);
 };

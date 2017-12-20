@@ -2,7 +2,6 @@
 
 const Promise = require('bluebird');
 const Game = require('../models/Game');
-const GameResult = require('../models/GameResult');
 const User = require('../models/User');
 
 module.exports = function() {
@@ -40,18 +39,18 @@ module.exports = function() {
     });
   };
 
-  const createGameResults = function(resultsData) {
-    return new Promise((resolve, reject) => {
-      GameResult.create(resultsData)
-        .then((newResults) => {
-          resolve(newResults);
-        })
-        .catch((err) => {
-          console.log(err);
-          reject();
-        });
-    });
-  };
+  // const createGameResults = function(resultsData) {
+  //   return new Promise((resolve, reject) => {
+  //     GameResult.create(resultsData)
+  //       .then((newResults) => {
+  //         resolve(newResults);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //         reject();
+  //       });
+  //   });
+  // };
 
   const getById = function(gameId) {
     return new Promise((resolve, reject) => {
@@ -127,7 +126,7 @@ module.exports = function() {
   return {
     create: create,
     updateByPublicId: updateByPublicId,
-    createGameResults: createGameResults,
+    // createGameResults: createGameResults,
     getById: getById,
     getByPublicId: getByPublicId,
     getAllByPublicId: getAllByPublicId,
