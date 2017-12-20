@@ -7,26 +7,32 @@ module.exports = function(gameDao) {
   const _gameDao = gameDao;
   const queryOptions = {};
 
-  const create = function(name, location, datePlayed, playersArray) {
+  // const create = function(name, location, datePlayed, playersArray) {
+  const create = function(name, location, datePlayed) {
     return new Promise((resolve, reject) => {
-      const newGameData = {
+      const gameData = {
         name: name,
         location: location,
         datePlayed: new Date(datePlayed),
         publicId: `${utils.generateHash(4)}-${name.toLowerCase().split(' ').join('')}`,
       };
-      _gameDao.create(newGameData)
+      _gameDao.create(gameData)
         .then((newGame) => {
-          createGameResults(newGame._id, playersArray)
-            .then((newResults) => {
-              queryOptions.pushResults = {
-                $pushAll: { results: newResults },
-              };
-              _gameDao.updateByPublicId(newGame.publicId, queryOptions.pushResults)
-                .then((updatedGame) => {
-                  resolve(updatedGame);
-                });
-            });
+          const newGameData = {
+            _id: newGame._id,
+            publicId: newGame.publicId,
+          };
+          resolve(newGameData);
+          // createGameResults(newGame._id, playersArray)
+          //   .then((newResults) => {
+          //     queryOptions.pushResults = {
+          //       $pushAll: { results: newResults },
+          //     };
+          //     _gameDao.updateByPublicId(newGame.publicId, queryOptions.pushResults)
+          //       .then((updatedGame) => {
+          //         resolve(updatedGame);
+          //       });
+          //   });
         })
         .catch((err) => {
           console.log(err);
@@ -35,24 +41,24 @@ module.exports = function(gameDao) {
     });
   };
 
-  const createGameResults = function(gameId, resultsArray) {
-    return new Promise((resolve, reject) => {
-      console.log('results array');
-      console.log(resultsArray);
-      resultsArray.forEach((player) => {
-        player.gameId = gameId;
-        player.playerId = player._id;
-        player.createdAt = Date.now();
-        player.updatedAt = Date.now();
-        return delete player._id;
-      });
-      _gameDao.createGameResults(resultsArray)
-        .then((newResults) => {
-          resolve(newResults);
-        })
-        .catch(reject);
-    });
-  };
+  // const createGameResults = function(gameId, resultsArray) {
+  //   return new Promise((resolve, reject) => {
+  //     console.log('results array');
+  //     console.log(resultsArray);
+  //     resultsArray.forEach((player) => {
+  //       player.gameId = gameId;
+  //       player.playerId = player._id;
+  //       player.createdAt = Date.now();
+  //       player.updatedAt = Date.now();
+  //       return delete player._id;
+  //     });
+  //     _gameDao.createGameResults(resultsArray)
+  //       .then((newResults) => {
+  //         resolve(newResults);
+  //       })
+  //       .catch(reject);
+  //   });
+  // };
 
   const getById = function(gameId) {
     return new Promise((resolve, reject) => {

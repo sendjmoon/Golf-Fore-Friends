@@ -31,6 +31,14 @@ module.exports = function(app) {
       });
     }
 
+    const updateMany = function(updateData) {
+      return new Promise((resolve, reject) => {
+        $http.post(`${$rs.baseUrl}/users/update-many`, updateData)
+          .then(resolve)
+          .catch(reject);
+      });
+    }
+
     let getByEmailOrUsername = function(emailOrUsername) {
       return new Promise((resolve, reject) => {
         let userData = {
@@ -63,14 +71,6 @@ module.exports = function(app) {
       });
     };
 
-    let updateManyUsers = function(updateData) {
-      return new Promise((resolve, reject) => {
-        $http.post(`${$rs.baseUrl}/users/update-many`, updateData)
-          .then(resolve)
-          .catch(reject);
-      });
-    }
-
     let calcHandicap = function(totalGames, currentHandicap, strokes) {
       return new Promise((resolve, reject) => {
         let handicapData = {};
@@ -97,9 +97,9 @@ module.exports = function(app) {
     return {
       create: create,
       update: update,
+      updateMany: updateMany,
       getByEmailOrUsername: getByEmailOrUsername,
       getAllUsers: getAllUsers,
-      updateManyUsers: updateManyUsers,
       calcHandicap: calcHandicap,
       calcWinRatio: calcWinRatio,
       data: data,
