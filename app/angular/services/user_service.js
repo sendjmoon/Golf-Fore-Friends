@@ -16,7 +16,7 @@ module.exports = function(app) {
           })
           .catch(reject);
       });
-    }
+    };
 
     const update = function(updateData) {
       return new Promise((resolve, reject) => {
@@ -29,15 +29,15 @@ module.exports = function(app) {
           })
           .catch(reject);
       });
-    }
+    };
 
-    const updateMany = function(updateData) {
+    const updateManyById = function(updateData) {
       return new Promise((resolve, reject) => {
         $http.post(`${$rs.baseUrl}/users/update-many`, updateData)
           .then(resolve)
           .catch(reject);
       });
-    }
+    };
 
     let getByEmailOrUsername = function(emailOrUsername) {
       return new Promise((resolve, reject) => {
@@ -97,7 +97,7 @@ module.exports = function(app) {
     return {
       create: create,
       update: update,
-      updateMany: updateMany,
+      updateManyById: updateManyById,
       getByEmailOrUsername: getByEmailOrUsername,
       getAllUsers: getAllUsers,
       calcHandicap: calcHandicap,
