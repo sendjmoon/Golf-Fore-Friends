@@ -12,9 +12,10 @@ module.exports = function(app) {
               resultsArray: resultsArray,
             };
             $http.post(`${$rs.baseUrl}/games/result/create`, resultsData)
-            .then((results) => {
-              resolve(results.data);
-            });
+              .then((results) => {
+                resolve(results.data);
+              })
+              .catch(reject);
           })
           .catch(reject);
       });
