@@ -18,14 +18,11 @@ module.exports = function() {
                 resolve(newUser.toObject());
               });
         })
-        .catch((err) => {
-          console.log(err);
-          reject();
-        });
+        .catch(reject);
     });
   };
 
-  const update = function(emailOrUsername, updateData) {
+  const updateByEmailOrUsername = function(emailOrUsername, updateData) {
     return new Promise((resolve, reject) => {
       User.findOneAndUpdate({
         $or: [
@@ -37,6 +34,14 @@ module.exports = function() {
         .exec()
           .then(resolve)
           .catch(reject);
+    });
+  };
+
+  const updateManyById = function(userIds, updateOptions) {
+    return new Promise((resolve, reject) => {
+      User.updateMany({ _id: { $in: userIds }}, updateOptions)
+        .then(resolve)
+        .catch(reject);
     });
   };
 
@@ -57,20 +62,6 @@ module.exports = function() {
     });
   };
 
-  const updateManyById = function(usersArray, updateQuery) {
-    return new Promise((resolve, reject) => {
-      User.updateMany({ _id: { $in: usersArray }}, updateQuery)
-      .then((res) => {
-        console.log(res);
-        resolve(res);
-      })
-      .catch((err) => {
-        console.log('error updating many in dao');
-        console.log(err);
-        reject();
-      });
-    });
-  };
 
   const getAllUsers = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
@@ -82,18 +73,18 @@ module.exports = function() {
       })
         .select('_id fullName email')
         .exec()
-        .then((users) => {
-          resolve(users);
-        })
-        .catch(reject);
+          .then((users) => {
+            resolve(users);
+          })
+          .catch(reject);
     });
   };
 
   return {
     create: create,
-    update: update,
+    updateByEmailOrUsername: updateByEmailOrUsername,
+    updateManyById: updateManyById,
     getByEmailOrUsername: getByEmailOrUsername,
     getAllUsers: getAllUsers,
-    updateManyById: updateManyById,
   };
 };
