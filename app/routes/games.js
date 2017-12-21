@@ -21,4 +21,18 @@ router.post('/create', function(req, res, next) {
     });
 });
 
+router.post('/update', function(req, res, next) {
+  gameService.updateById(req.body.gameId, req.body.updateOptions)
+    .then(() => {
+      res.status(200).json({
+        message: 'Game update successful.',
+      });
+    })
+    .catch(() => {
+      res.status(500).json({
+        error: 'Error updating game.',
+      });
+    });
+});
+
 module.exports = router;

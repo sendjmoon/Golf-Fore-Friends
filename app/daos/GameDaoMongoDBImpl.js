@@ -26,110 +26,19 @@ module.exports = function() {
     });
   };
 
-  const updateByPublicId = function(publicId, queryOptions) {
+  //TODO: error handling. what if game is found but nothing is updated?
+  const updateById = function(gameId, updateOptions) {
     return new Promise((resolve, reject) => {
-      Game.findOneAndUpdate({ publicId: publicId }, queryOptions, { new: true })
-        .then((updatedGame) => {
-          resolve(updatedGame);
-        })
-        .catch((err) => {
-          console.log(err);
-          reject();
-        });
-    });
-  };
-
-  // const createGameResults = function(resultsData) {
-  //   return new Promise((resolve, reject) => {
-  //     GameResult.create(resultsData)
-  //       .then((newResults) => {
-  //         resolve(newResults);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //         reject();
-  //       });
-  //   });
-  // };
-
-  const getById = function(gameId) {
-    return new Promise((resolve, reject) => {
-      Game.findById(gameId)
-        .select('-__v')
-        .exec()
-        .then((game) => {
-          resolve(game);
-        })
-        .catch((err) => {
-          console.log(err);
-          reject();
-        });
-    });
-  };
-
-  const getByPublicId = function(publicId) {
-    return new Promise((resolve, reject) => {
-      Game.findOne({
-        publicId: publicId,
-      })
-        .select('-__v')
-        .exec()
-        .then((game) => {
-          resolve(game);
-        })
-        .catch((err) => {
-          console.log(err);
-          reject();
-        });
-    });
-  };
-
-  const getAllByPublicId = function(publicIdArray) {
-    return new Promise((resolve, reject) => {
-        Game.find({
-          publicId: {
-            $in: publicIdArray,
-          },
-        })
-          .select('-__v')
-          .sort({ playedOn: -1 })
-          .exec()
-          .then((games) => {
-            resolve(games);
-          })
-          .catch((err) => {
-            console.log(err);
-            reject();
-          });
-    });
-  };
-
-  const getGames = function(emailOrUsername) {
-    return new Promise((resolve, reject) => {
-      User.findOne({
-        $or: [
-          { email: emailOrUsername },
-          { username: emailOrUsername },
-        ],
-      },{
-        password: 0,
-      })
-        .populate('gameIds')
-        .exec()
-        .then((user) => {
-          resolve(user.gameIds);
+      Game.findOneAndUpdate({ _id: gameId }, updateOptions)
+        .then((res) => {
+          res === null ? reject() : resolve();
         })
         .catch(reject);
-      });
+    });
   };
 
   return {
     create: create,
-    updateByPublicId: updateByPublicId,
-    // createGameResults: createGameResults,
-    getById: getById,
-    getByPublicId: getByPublicId,
-    getAllByPublicId: getAllByPublicId,
-    getGames: getGames,
+    updateById: updateById,
   };
 };
