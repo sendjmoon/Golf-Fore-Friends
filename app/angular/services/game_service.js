@@ -7,7 +7,7 @@ module.exports = function(app) {
       return new Promise((resolve, reject) => {
         createGameAndResults(gameData)
           .then((newGameData) => {
-            updateGameAndUsers(newGameData)
+            updateGameAndUsers(newGameData.gameId, newGameData.results)
               .then(resolve)
               .catch(reject);
           })
@@ -33,28 +33,29 @@ module.exports = function(app) {
       });
     };
 
-    const updateGameAndUsers = function(updateData) {
+    const updateGameAndUsers = function(gameId, resultsArray) {
       return new Promise((resolve, reject) => {
         let resultIds = [];
         let userIds = [];
         let gameUpdateData = {};
         let userUpdateData = {};
 
-        resultIds = updateData.results.map((result) => {
+        resultIds = resultsArray.map((result) => {
           return result._id;
         });
-        userIds = updateData.results.map((result) => {
+
+        userIds = resultsArray.map((result) => {
           return result.playerId;
         })
 
-        gameUpdateData.gameId = updateData.gameId;
+        gameUpdateData.gameId = gameId;
         gameUpdateData.updateOptions = {
           $addToSet: { results: { $each: resultIds }},
         };
 
         userUpdateData.usersIds = userIds;
         userUpdateData.updateOptions = {
-          $addToSet: { gameIds: updateData.gameId },
+          $addToSet: { gameIds: gameId },
         };
 
         //TODO: refactor to mitigate callback hell.
@@ -62,12 +63,12 @@ module.exports = function(app) {
           .then(() => {
             userService.updateManyById(userUpdateData)
               .then(() => {
-                statsService.updateManyByDocOrUserId(updateData.results)
-                  .then(() => {
-                    resolve();
-                    $route.reload();
-                  })
-                  .catch(reject);
+                // statsService.updateManyByDocOrUserId(updateData.results)
+                //   .then(() => {
+                //     resolve();
+                //     $route.reload();
+                //   })
+                //   .catch(reject);
               })
               .catch(reject);
           })
