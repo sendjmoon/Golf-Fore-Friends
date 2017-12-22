@@ -57,10 +57,18 @@ module.exports = function(app) {
           $addToSet: { gameIds: updateData.gameId },
         };
 
+        //TODO: refactor to mitigate callback hell.
         update(gameUpdateData)
           .then(() => {
             userService.updateManyById(userUpdateData)
-              .then(resolve)
+              .then(() => {
+                statsService.updateManyByDocOrUserId(updateData.results)
+                  .then(() => {
+                    resolve();
+                    $route.reload();
+                  })
+                  .catch(reject);
+              })
               .catch(reject);
           })
           .catch(reject);
