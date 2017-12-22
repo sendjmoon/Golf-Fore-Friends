@@ -27,6 +27,14 @@ module.exports = function(userDao) {
     });
   };
 
+  const updateByEmailOrUsername = function(emailOrUsername, updateData) {
+    return _userDao.updateByEmailOrUsername(emailOrUsername, updateData);
+  };
+
+  const updateManyById = function(userIds, updateOptions) {
+    return _userDao.updateManyById(userIds, updateOptions);
+  };
+
   const authenticateUser = function(emailOrUsername, password) {
     return new Promise((resolve, reject) => {
       _userDao.getByEmailOrUsername(emailOrUsername)
@@ -78,24 +86,12 @@ module.exports = function(userDao) {
     });
   };
 
-  const update = function(emailOrUsername, updateData) {
-    return new Promise((resolve, reject) => {
-      _userDao.update(emailOrUsername, updateData)
-        .then(resolve)
-        .catch(reject);
-    });
-  };
-
-  const updateManyById = function(usersArray, updateQuery) {
-    return _userDao.updateManyById(usersArray, updateQuery);
-  };
-
   return {
     create: create,
+    updateByEmailOrUsername: updateByEmailOrUsername,
+    updateManyById: updateManyById,
     authenticateUser: authenticateUser,
     getAllUsers: getAllUsers,
     getUser: getUser,
-    update: update,
-    updateManyById: updateManyById,
   };
 };

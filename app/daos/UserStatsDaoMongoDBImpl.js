@@ -10,14 +10,11 @@ module.exports = function() {
         .then((newUserStats) => {
           resolve(newUserStats.toObject());
         })
-        .catch((err) => {
-          console.log(err);
-          reject();
-        });
+        .catch(reject);
     });
   };
 
-  const update = function(docOrUserId, updateOptions) {
+  const updateByDocOrUserId = function(docOrUserId, updateOptions) {
     return new Promise((resolve, reject) => {
       UserStats.findOneAndUpdate(
         {
@@ -30,15 +27,12 @@ module.exports = function() {
         { new: true }
       )
         .then(resolve)
-        .catch((err) => {
-          console.log(err);
-          reject();
-        });
+        .catch(reject);
     });
-  }
+  };
 
   return {
     create: create,
-    update: update,
+    updateByDocOrUserId: updateByDocOrUserId,
   }
 }

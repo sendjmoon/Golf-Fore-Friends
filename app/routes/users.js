@@ -62,7 +62,10 @@ router.post('/signup', function(req, res, next) {
 });
 
 router.post('/signin', function(req, res, next) {
-  userService.authenticateUser(req.body.emailOrUsername, req.body.password)
+  userService.authenticateUser(
+    req.body.emailOrUsername,
+    req.body.password
+  )
     .then((user) => {
       req.session.user = user;
       res.status(200).json({
@@ -77,7 +80,10 @@ router.post('/signin', function(req, res, next) {
 });
 
 router.post('/update', function(req, res, next) {
-  userService.update(req.session.user.email, req.body.updateData)
+  userService.updateByEmailOrUsername(
+    req.session.user.email,
+    req.body.updateData
+  )
     .then(() => {
       res.status(200).json({
         message: 'Update successful.',
@@ -91,7 +97,10 @@ router.post('/update', function(req, res, next) {
 });
 
 router.post('/update-many', function(req, res, next) {
-  userService.updateManyById(req.body.usersArray, req.body.updateQuery)
+  userService.updateManyById(
+    req.body.usersIds,
+    req.body.updateOptions
+  )
     .then(() => {
       res.status(200).json({
         message: 'Successfully updated many.',

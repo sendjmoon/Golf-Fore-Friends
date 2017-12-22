@@ -3,11 +3,19 @@
 module.exports = function(app) {
   app.factory('ResultService', ['$rootScope', '$http', function($rs, $http) {
 
-    const create = function(resultData) {
+    const create = function(gameId, playersArray) {
       return new Promise((resolve, reject) => {
-        $http.post(`${$rs.baseUrl}/games/result/create`, resultData)
-          .then((result) => {
-            resolve(result);
+        calcResults(playersArray)
+          .then((resultsArray) => {
+            const resultsData = {
+              gameId: gameId,
+              resultsArray: resultsArray,
+            };
+            $http.post(`${$rs.baseUrl}/games/result/create`, resultsData)
+              .then((results) => {
+                resolve(results.data);
+              })
+              .catch(reject);
           })
           .catch(reject);
       });

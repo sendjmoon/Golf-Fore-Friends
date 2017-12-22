@@ -16,12 +16,12 @@ module.exports = function(app) {
       });
     }
 
-    const update = function(docOrUserId, result) {
+    const updateByDocOrUserId = function(docOrUserId, result) {
       return new Promise((resolve, reject) => {
         let updateData = {};
         let updateOptions = {};
 
-        if (result === 'solo') return resolve();
+        if (result === 'solo') updateOptions = { $inc: { solo: 1}};
         if (result === 'win') updateOptions = { $inc: { wins: 1 }};
         if (result === 'loss') updateOptions = { $inc: { losses: 1 }};
         if (result === 'tie') updateOptions = { $inc: { ties: 1 }};
@@ -35,9 +35,20 @@ module.exports = function(app) {
       });
     }
 
+    //TODO: async forEach? return an error if any one of them has an error
+    const updateManyByDocOrUserId = function(resultsArray) {
+      return new Promise((resolve, reject) => {
+        resultsArray.forEach((result) => {
+          updateByDocOrUserId(result.playerId, result.result);
+        });
+        resolve();
+      });
+    }
+
     return {
       create: create,
-      update: update,
+      updateByDocOrUserId: updateByDocOrUserId,
+      updateManyByDocOrUserId: updateManyByDocOrUserId,
     }
   }]);
 }

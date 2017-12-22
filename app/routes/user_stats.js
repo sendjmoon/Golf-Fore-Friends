@@ -17,7 +17,10 @@ router.post('/create', function(req, res, next) {
 });
 
 router.post('/update', function(req, res, next) {
-  userStatsService.update(req.body.docOrUserId, req.body.updateOptions)
+  userStatsService.updateByDocOrUserId(
+    req.body.docOrUserId,
+    req.body.updateOptions
+  )
     .then((someData) => {
       res.status(200).json({
         message: 'User stats successfully updated.',

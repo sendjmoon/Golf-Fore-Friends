@@ -11,37 +11,23 @@ module.exports = function(app) {
 
     ctrl.createGame = function(gameData) {
       gameData.players = ctrl.players;
-      gameService.create(gameData)
-        .then((newGame) => {
-          resultService.calcResults(gameData.players)
-            .then((resultsArray) => {
-
-              let userUpdateData = {
-                usersArray: resultsArray,
-                updateQuery: { $addToSet: { gameIds: newGame._id }},
-              };
-              userService.updateMany(userUpdateData)
-              .then(() => {
-                gameService.
-                $route.reload();
-              });
-            })
-        })
+      gameService.newGame(gameData)
         .catch((err) => {
+          console.log('Error creating game.');
           console.log(err);
         });
-    }
+    };
 
     ctrl.addUser = function(user) {
       let friendsArray = ctrl.allFriends.friends;
       ctrl.players.push(user);
       friendsArray.splice(friendsArray.indexOf(user), 1);
-    }
+    };
 
     ctrl.removeUser = function(user) {
       ctrl.players.splice(ctrl.players.indexOf(user), 1);
       ctrl.allFriends.friends.push(user);
-    }
+    };
 
     ctrl.init = function() {
       let userData = {
