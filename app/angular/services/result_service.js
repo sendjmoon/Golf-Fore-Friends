@@ -22,6 +22,8 @@ module.exports = function(app) {
     };
 
     const calcResults = function(array) {
+      console.log('calcResults array');
+      console.log(array);
       return new Promise((resolve, reject) => {
         let nextPlayer;
         let winFound = false;
@@ -40,8 +42,11 @@ module.exports = function(app) {
 
         array.forEach((player, index) => {
           nextPlayer = array[index + 1];
+          player.strokes = parseInt(player.strokes);
+          if (nextPlayer) nextPlayer.strokes = parseInt(nextPlayer.strokes);
 
           if (winFound) return player.result = 'loss';
+
           if (tieFound) {
             if (player.strokes === tieValue) player.result = 'tie';
             return;
