@@ -21,6 +21,11 @@ const UserStatsSchema = new Schema({
     required: false,
     unique: false,
   },
+  solo: {
+    type: Number,
+    default: 0,
+    required: true,
+  },
   wins: {
     type: Number,
     default: 0,
