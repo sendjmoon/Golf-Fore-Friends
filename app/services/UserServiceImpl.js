@@ -28,7 +28,7 @@ module.exports = function(userDao) {
   };
 
   const updateByEmailOrUsername = function(emailOrUsername, updateData) {
-    return _userDao.update(emailOrUsername, updateData);
+    return _userDao.updateByEmailOrUsername(emailOrUsername, updateData);
   };
 
   const updateManyById = function(userIds, updateOptions) {
