@@ -63,8 +63,10 @@ module.exports = function(app) {
         aggregateData.options = JSON.stringify(aggregateData.options);
         $http.post(`${$rs.baseUrl}/games/result/aggregate`, aggregateData)
           .then((handicapActual) => {
+            handicapActual = handicapActual.data[0].handicapActual;
             let updateData = {
-              handicapActual: handicapActual.data[0].handicapActual,
+              handicap: Math.floor(handicapActual),
+              handicapActual: handicapActual,
             };
             updateByDocOrUserId(docOrUserId, updateData, true)
               .then(resolve)
