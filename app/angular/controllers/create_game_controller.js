@@ -13,13 +13,9 @@ module.exports = function(app) {
       gameData.players = ctrl.players;
       gameService.newGame(gameData)
         .then(() => {
-          statsService.updateHandicap(ctrl.user._id)
-            .then(() => {
-              console.log('worked');
-            })
-            .catch(() => {
-              console.log('Error updating handicap.');
-            })
+          gameData.players.forEach((player) => {
+            statsService.updateHandicap(player._id);
+          });
         })
         .catch((err) => {
           console.log('Error creating game.');
