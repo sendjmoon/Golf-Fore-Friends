@@ -63,12 +63,12 @@ module.exports = function(app) {
           .then(() => {
             userService.updateManyById(userUpdateData)
               .then(() => {
-                // statsService.updateManyByDocOrUserId(updateData.results)
-                //   .then(() => {
-                //     resolve();
-                //     $route.reload();
-                //   })
-                //   .catch(reject);
+                statsService.updateManyByDocOrUserId(resultsArray)
+                  .then(() => {
+                    resolve();
+                    $route.reload();
+                  })
+                  .catch(reject);
               })
               .catch(reject);
           })
