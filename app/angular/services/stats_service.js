@@ -70,7 +70,7 @@ module.exports = function(app) {
         let groupOptions = {
           _id: null,
           handicapActual: {
-            $sum: 1,
+            $avg: '$strokes',
           },
         };
         aggregate(matchOptions, groupOptions)
