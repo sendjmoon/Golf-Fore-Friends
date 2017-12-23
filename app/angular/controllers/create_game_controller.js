@@ -15,6 +15,7 @@ module.exports = function(app) {
         .then(() => {
           gameData.players.forEach((player) => {
             statsService.updateHandicap(player._id);
+            statsService.updateWinRatio(player._id);
           });
         })
         .catch((err) => {

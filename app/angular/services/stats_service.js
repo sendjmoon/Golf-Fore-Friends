@@ -27,7 +27,7 @@ module.exports = function(app) {
         if (result === 'win') updateOptions = { $inc: { wins: 1 }};
         if (result === 'loss') updateOptions = { $inc: { losses: 1 }};
         if (result === 'tie') updateOptions = { $inc: { ties: 1 }};
-        if (handicap) updateOptions = result;
+        if (handicap || result.winRatio) updateOptions = result;
 
         updateData.docOrUserId = docOrUserId;
         updateData.updateOptions = updateOptions;
@@ -90,19 +90,54 @@ module.exports = function(app) {
 
     const updateWinRatio = function(docOrUserId) {
       return new Promise((resolve, reject) => {
+        let totalWins = 0;
+        let totalLosses = 0;
+        let totalTies = 0;
+        let totalGames = 0;
+        let winRatio = 0;
+
         let matchOptions = {
             playerId: docOrUserId,
         };
         let groupOptions = {
           _id: null,
         };
+
         matchOptions.result = 'win';
         groupOptions.wins = { $sum: 1 };
         aggregate(matchOptions, groupOptions)
-          .then((totalWins) => {
-            console.log('wins');
-            console.log(totalWins);
-            resolve(totalWins);
+          .then((sumWins) => {
+            sumWins.length < 1 ?
+              totalWins = 0 : totalWins = sumWins[0].wins;
+
+            matchOptions.result = 'loss';
+            groupOptions.losses = { $sum: 1 };
+            aggregate(matchOptions, groupOptions)
+              .then((sumLosses) => {
+                sumLosses.length < 1 ?
+                  totalLosses = 0 : totalLosses = sumLosses[0].losses;
+
+                matchOptions.result = 'tie';
+                groupOptions.ties = { $sum: 1 };
+                aggregate(matchOptions, groupOptions)
+                  .then((sumTies) => {
+                    sumTies.length < 1 ?
+                      totalTies = 0 : totalTies = sumTies[0].ties;
+
+                    totalGames = totalWins + totalLosses + totalTies;
+                    winRatio = (totalWins + (0.5 * totalTies)) / totalGames;
+
+                    let updateData = {
+                      winRatio: winRatio,
+                    };
+
+                    updateByDocOrUserId(docOrUserId, updateData)
+                      .then(resolve)
+                      .catch(reject);
+                  })
+                  .catch(reject);
+              })
+              .catch(reject);
           })
           .catch(reject);
       });

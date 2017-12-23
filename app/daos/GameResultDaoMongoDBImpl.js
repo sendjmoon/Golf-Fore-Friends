@@ -8,11 +8,13 @@ module.exports = function() {
   const create = function(resultsArray) {
     return new Promise((resolve, reject) => {
       GameResult.create(resultsArray)
-        .exec()
-          .then((newResults) => {
-            resolve(newResults);
-          })
-          .catch(reject);
+        .then((newResults) => {
+          resolve(newResults);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject();
+        });
     });
   }
 
@@ -22,11 +24,10 @@ module.exports = function() {
         { $match: matchOptions },
         { $group: groupOptions }
       ])
-        .exec()
-          .then((aggregatedData) => {
-            resolve(aggregatedData);
-          })
-          .catch(reject);
+        .then((aggregatedData) => {
+          resolve(aggregatedData);
+        })
+        .catch(reject);
     });
   }
 
