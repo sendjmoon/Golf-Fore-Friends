@@ -22,7 +22,13 @@ module.exports = function(gameResultDao) {
     });
   };
 
+  const aggregate = function(userId, options) {
+    options = JSON.parse(options);
+    return _gameResultDao.aggregate(userId, options);
+  };
+
   return {
     create: create,
+    aggregate: aggregate,
   }
 }

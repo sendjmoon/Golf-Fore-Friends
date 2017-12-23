@@ -1,11 +1,11 @@
 'use strict';
 
 const Promise = require('bluebird');
+const mongoose = require('mongoose');
 const GameResult = require('../models/GameResult');
 
 module.exports = function() {
   const create = function(resultsArray) {
-    console.log(resultsArray);
     return new Promise((resolve, reject) => {
       GameResult.create(resultsArray)
         .then((newResults) => {
@@ -18,7 +18,22 @@ module.exports = function() {
     });
   }
 
+  const aggregate = function(userId, options) {
+    return new Promise((resolve, reject) => {
+      GameResult.aggregate([
+        { $match: { playerId: mongoose.Types.ObjectId(userId) }},
+        options,
+      ])
+        .exec()
+          .then((aggregatedData) => {
+            resolve(aggregatedData);
+          })
+          .catch(reject);
+    });
+  }
+
   return {
     create: create,
+    aggregate: aggregate,
   }
 }
