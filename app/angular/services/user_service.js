@@ -71,37 +71,12 @@ module.exports = function(app) {
       });
     };
 
-    let calcHandicap = function(totalGames, currentHandicap, strokes) {
-      return new Promise((resolve, reject) => {
-        let handicapData = {};
-
-        if (totalGames < 1) return resolve();
-        if (totalGames === 1) {
-          handicapData.handicapActual = strokes;
-          handicapData.handicap = strokes,
-          resolve(handicapData);
-          return;
-        }
-
-        let newHandicap = ((currentHandicap * (totalGames - 1) + strokes) / totalGames);
-        handicapData.handicapActual = Math.round(newHandicap * 1000) / 1000;
-        handicapData.handicap = Math.round(newHandicap);
-        resolve(handicapData);
-      });
-    };
-
-    let calcWinRatio = function(user) {
-      console.log(user);
-    };
-
     return {
       create: create,
       update: update,
       updateManyById: updateManyById,
       getByEmailOrUsername: getByEmailOrUsername,
       getAllUsers: getAllUsers,
-      calcHandicap: calcHandicap,
-      calcWinRatio: calcWinRatio,
       data: data,
     }
   }]);
