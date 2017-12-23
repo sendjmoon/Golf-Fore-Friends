@@ -3,12 +3,6 @@
 module.exports = function(app) {
   app.factory('StatsService', ['$rootScope', '$http', 'UserService', function($rs, $http, userService) {
 
-    const ctrl = this;
-    ctrl.user = userService.data.user;
-    const aggregateData = {
-      userId: userService.data.user._id,
-    };
-
     const create = function(userId) {
       return new Promise((resolve, reject) => {
         const userData = {
@@ -56,8 +50,10 @@ module.exports = function(app) {
 
     const updateHandicap = function(docOrUserId) {
       return new Promise((resolve, reject) => {
-        aggregateData.options = {
-          $group: { _id: null, handicapActual: { $avg: '$strokes' },
+        const aggregateData = {
+          userId: docOrUserId,
+          options: {
+            $group: { _id: null, handicapActual: { $avg: '$strokes' }},
           },
         };
         aggregateData.options = JSON.stringify(aggregateData.options);
