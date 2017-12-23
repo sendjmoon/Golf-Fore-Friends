@@ -1,6 +1,7 @@
 'use strict';
 
 const Promise = require('bluebird');
+const mongoose = require('mongoose');
 
 module.exports = function(gameResultDao) {
   const _gameResultDao = gameResultDao;
@@ -22,9 +23,11 @@ module.exports = function(gameResultDao) {
     });
   };
 
-  const aggregate = function(userId, options) {
-    options = JSON.parse(options);
-    return _gameResultDao.aggregate(userId, options);
+  const aggregate = function(matchOptions, groupOptions) {
+    matchOptions = JSON.parse(matchOptions);
+    groupOptions = JSON.parse(groupOptions);
+    matchOptions.playerId = mongoose.Types.ObjectId(matchOptions.playerId);
+    return _gameResultDao.aggregate(matchOptions, groupOptions);
   };
 
   return {

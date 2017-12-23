@@ -17,13 +17,13 @@ router.post('/create', function(req, res, next) {
 });
 
 router.post('/aggregate', function(req, res, next) {
-  gameResultService.aggregate(req.body.userId, req.body.options)
+  gameResultService.aggregate(req.body.matchOptions, req.body.groupOptions)
     .then((aggregatedData) => {
       res.json(aggregatedData);
     })
     .catch((err) => {
       res.status(500).json({
-        message: 'Error getting total.',
+        message: 'Error aggregating data.',
       });
     });
 });

@@ -8,21 +8,19 @@ module.exports = function() {
   const create = function(resultsArray) {
     return new Promise((resolve, reject) => {
       GameResult.create(resultsArray)
-        .then((newResults) => {
-          resolve(newResults);
-        })
-        .catch((err) => {
-          console.log(err);
-          reject();
-        });
+        .exec()
+          .then((newResults) => {
+            resolve(newResults);
+          })
+          .catch(reject);
     });
   }
 
-  const aggregate = function(userId, options) {
+  const aggregate = function(matchOptions, groupOptions) {
     return new Promise((resolve, reject) => {
       GameResult.aggregate([
-        { $match: { playerId: mongoose.Types.ObjectId(userId) }},
-        options,
+        { $match: matchOptions },
+        { $group: groupOptions }
       ])
         .exec()
           .then((aggregatedData) => {

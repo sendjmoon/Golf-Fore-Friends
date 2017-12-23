@@ -48,18 +48,34 @@ module.exports = function(app) {
       });
     };
 
+    const aggregate = function(matchOptions, groupOptions) {
+      return new Promise((resolve, reject) => {
+        let aggregateData = {
+          matchOptions: JSON.stringify(matchOptions),
+          groupOptions: JSON.stringify(groupOptions),
+        };
+        $http.post(`${$rs.baseUrl}/games/result/aggregate`, aggregateData)
+          .then((aggregatedData) => {
+            resolve(aggregatedData.data);
+          })
+          .catch(reject);
+      });
+    };
+
     const updateHandicap = function(docOrUserId) {
       return new Promise((resolve, reject) => {
-        const aggregateData = {
-          userId: docOrUserId,
-          options: {
-            $group: { _id: null, handicapActual: { $avg: '$strokes' }},
+        let matchOptions = {
+          playerId: docOrUserId,
+        };
+        let groupOptions = {
+          _id: null,
+          handicapActual: {
+            $sum: 1,
           },
         };
-        aggregateData.options = JSON.stringify(aggregateData.options);
-        $http.post(`${$rs.baseUrl}/games/result/aggregate`, aggregateData)
-          .then((handicapActual) => {
-            handicapActual = handicapActual.data[0].handicapActual;
+        aggregate(matchOptions, groupOptions)
+          .then((aggregatedData) => {
+            let handicapActual = aggregatedData[0].handicapActual;
             let updateData = {
               handicap: Math.floor(handicapActual),
               handicapActual: handicapActual,
@@ -72,11 +88,33 @@ module.exports = function(app) {
       });
     };
 
+    const updateWinRatio = function(docOrUserId) {
+      return new Promise((resolve, reject) => {
+        let matchOptions = {
+            playerId: docOrUserId,
+        };
+        let groupOptions = {
+          _id: null,
+        };
+        matchOptions.result = 'win';
+        groupOptions.wins = { $sum: 1 };
+        aggregate(matchOptions, groupOptions)
+          .then((totalWins) => {
+            console.log('wins');
+            console.log(totalWins);
+            resolve(totalWins);
+          })
+          .catch(reject);
+      });
+    };
+
     return {
       create: create,
       updateByDocOrUserId: updateByDocOrUserId,
       updateManyByDocOrUserId: updateManyByDocOrUserId,
+      aggregate: aggregate,
       updateHandicap: updateHandicap,
+      updateWinRatio: updateWinRatio,
     }
   }]);
 }
