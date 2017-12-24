@@ -27,7 +27,7 @@ module.exports = function(app) {
         if (result === 'win') updateOptions = { $inc: { wins: 1 }};
         if (result === 'loss') updateOptions = { $inc: { losses: 1 }};
         if (result === 'tie') updateOptions = { $inc: { ties: 1 }};
-        if (handicap || result.winRatio) updateOptions = result;
+        if (handicap || result.winRatio || result.winRatio === 0) updateOptions = result;
 
         updateData.docOrUserId = docOrUserId;
         updateData.updateOptions = updateOptions;
@@ -78,10 +78,6 @@ module.exports = function(app) {
       return new Promise((resolve, reject) => {
         let totalWins = 0;
         let totalLosses = 0;
-        let totalTies = 0;
-        let totalGames = 0;
-        let winRatio = 0;
-
         let matchOptions = {
             playerId: docOrUserId,
         };
@@ -103,24 +99,12 @@ module.exports = function(app) {
                 sumLosses.length < 1 ?
                   totalLosses = 0 : totalLosses = sumLosses[0].losses;
 
-                matchOptions.result = 'tie';
-                groupOptions.ties = { $sum: 1 };
-                resultService.aggregate(matchOptions, groupOptions)
-                  .then((sumTies) => {
-                    sumTies.length < 1 ?
-                      totalTies = 0 : totalTies = sumTies[0].ties;
+                let updateData = {
+                  winRatio: (totalWins / (totalWins + totalLosses)),
+                };
 
-                    totalGames = totalWins + totalLosses + totalTies;
-                    winRatio = (totalWins + (0.5 * totalTies)) / totalGames;
-
-                    let updateData = {
-                      winRatio: winRatio,
-                    };
-
-                    updateByDocOrUserId(docOrUserId, updateData)
-                      .then(resolve)
-                      .catch(reject);
-                  })
+                updateByDocOrUserId(docOrUserId, updateData)
+                  .then(resolve)
                   .catch(reject);
               })
               .catch(reject);
