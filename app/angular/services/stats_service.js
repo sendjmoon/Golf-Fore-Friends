@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.factory('StatsService', ['$rootScope', '$http', 'UserService', function($rs, $http, userService) {
+  app.factory('StatsService', ['$rootScope', '$http', 'UserService', 'ResultService', function($rs, $http, userService, resultService) {
 
     const create = function(userId) {
       return new Promise((resolve, reject) => {
@@ -48,20 +48,6 @@ module.exports = function(app) {
       });
     };
 
-    const aggregate = function(matchOptions, groupOptions) {
-      return new Promise((resolve, reject) => {
-        let aggregateData = {
-          matchOptions: JSON.stringify(matchOptions),
-          groupOptions: JSON.stringify(groupOptions),
-        };
-        $http.post(`${$rs.baseUrl}/games/result/aggregate`, aggregateData)
-          .then((aggregatedData) => {
-            resolve(aggregatedData.data);
-          })
-          .catch(reject);
-      });
-    };
-
     const updateHandicap = function(docOrUserId) {
       return new Promise((resolve, reject) => {
         let matchOptions = {
@@ -73,7 +59,7 @@ module.exports = function(app) {
             $avg: '$strokes',
           },
         };
-        aggregate(matchOptions, groupOptions)
+        resultService.aggregate(matchOptions, groupOptions)
           .then((aggregatedData) => {
             let handicapActual = aggregatedData[0].handicapActual;
             let updateData = {
@@ -105,21 +91,21 @@ module.exports = function(app) {
 
         matchOptions.result = 'win';
         groupOptions.wins = { $sum: 1 };
-        aggregate(matchOptions, groupOptions)
+        resultService.aggregate(matchOptions, groupOptions)
           .then((sumWins) => {
             sumWins.length < 1 ?
               totalWins = 0 : totalWins = sumWins[0].wins;
 
             matchOptions.result = 'loss';
             groupOptions.losses = { $sum: 1 };
-            aggregate(matchOptions, groupOptions)
+            resultService.aggregate(matchOptions, groupOptions)
               .then((sumLosses) => {
                 sumLosses.length < 1 ?
                   totalLosses = 0 : totalLosses = sumLosses[0].losses;
 
                 matchOptions.result = 'tie';
                 groupOptions.ties = { $sum: 1 };
-                aggregate(matchOptions, groupOptions)
+                resultService.aggregate(matchOptions, groupOptions)
                   .then((sumTies) => {
                     sumTies.length < 1 ?
                       totalTies = 0 : totalTies = sumTies[0].ties;
@@ -147,7 +133,6 @@ module.exports = function(app) {
       create: create,
       updateByDocOrUserId: updateByDocOrUserId,
       updateManyByDocOrUserId: updateManyByDocOrUserId,
-      aggregate: aggregate,
       updateHandicap: updateHandicap,
       updateWinRatio: updateWinRatio,
     }

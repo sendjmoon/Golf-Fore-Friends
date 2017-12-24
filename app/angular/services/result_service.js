@@ -21,6 +21,20 @@ module.exports = function(app) {
       });
     };
 
+    const aggregate = function(matchOptions, groupOptions) {
+      return new Promise((resolve, reject) => {
+        let aggregateData = {
+          matchOptions: JSON.stringify(matchOptions),
+          groupOptions: JSON.stringify(groupOptions),
+        };
+        $http.post(`${$rs.baseUrl}/games/result/aggregate`, aggregateData)
+          .then((aggregatedData) => {
+            resolve(aggregatedData.data);
+          })
+          .catch(reject);
+      });
+    };
+
     const calcResults = function(array) {
       return new Promise((resolve, reject) => {
         let nextPlayer;
@@ -72,6 +86,7 @@ module.exports = function(app) {
 
     return {
       create: create,
+      aggregate: aggregate,
       calcResults: calcResults,
     }
   }]);
