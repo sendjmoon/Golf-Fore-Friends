@@ -78,6 +78,7 @@ module.exports = function(app) {
       return new Promise((resolve, reject) => {
         let totalWins = 0;
         let totalLosses = 0;
+        let updateData = {};
         let matchOptions = {
             playerId: docOrUserId,
         };
@@ -85,24 +86,18 @@ module.exports = function(app) {
           _id: null,
         };
 
+        //TODO: make modular, mitigate redundancies
         matchOptions.result = 'win';
         groupOptions.wins = { $sum: 1 };
         resultService.aggregate(matchOptions, groupOptions)
           .then((sumWins) => {
-            sumWins.length < 1 ?
-              totalWins = 0 : totalWins = sumWins[0].wins;
-
+            sumWins.length < 1 ? totalWins = 0 : totalWins = sumWins[0].wins;
             matchOptions.result = 'loss';
             groupOptions.losses = { $sum: 1 };
             resultService.aggregate(matchOptions, groupOptions)
               .then((sumLosses) => {
-                sumLosses.length < 1 ?
-                  totalLosses = 0 : totalLosses = sumLosses[0].losses;
-
-                let updateData = {
-                  winRatio: (totalWins / (totalWins + totalLosses)),
-                };
-
+                sumLosses.length < 1 ? totalLosses = 0 : totalLosses = sumLosses[0].losses;
+                updateData.winRatio = (totalWins / (totalWins + totalLosses)),
                 updateByDocOrUserId(docOrUserId, updateData)
                   .then(resolve)
                   .catch(reject);
