@@ -1,14 +1,31 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('GamesController', ['$route', function($route) {
+  app.controller('GamesController', ['$route', '$scope', 'GameService', 'UserService', function($route, $scope, gameService, userService) {
 
     let ctrl = this;
+
+    $scope.gameService = gameService;
+    $scope.gamesData = gameService.data.allGames;
+    ctrl.user = userService.data.user;
     ctrl.creating = false;
+
+    ctrl.getGamesData = function() {
+      gameService.getAllById(ctrl.user.gameIds)
+        .catch((err) => {
+          console.log('Error getting games.');
+        });
+    };
 
     ctrl.reloadPage = function() {
       $route.reload();
     }
+
+    ctrl.init = function() {
+      ctrl.getGamesData();
+    };
+
+    ctrl.init();
 
   }]);
 };
