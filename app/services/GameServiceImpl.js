@@ -29,10 +29,15 @@ module.exports = function(gameDao) {
 
   const updateById = function(gameId, updateOptions) {
     return _gameDao.updateById(gameId, updateOptions);
-  }
+  };
+
+  const getAllById = function(gameIds) {
+    return _gameDao.getAllById(gameIds);
+  };
 
   return {
     create: create,
     updateById: updateById,
+    getAllById: getAllById,
   };
 };

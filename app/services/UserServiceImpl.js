@@ -27,6 +27,17 @@ module.exports = function(userDao) {
     });
   };
 
+  const getByEmailOrUsername = function(emailOrUsername) {
+    return new Promise((resolve, reject) => {
+      _userDao.getByEmailOrUsername(emailOrUsername)
+        .then((user) => {
+          delete user.password;
+          resolve(user);
+        })
+        .catch(reject);
+    });
+  };
+
   const updateByEmailOrUsername = function(emailOrUsername, updateData) {
     return _userDao.updateByEmailOrUsername(emailOrUsername, updateData);
   };
@@ -34,6 +45,7 @@ module.exports = function(userDao) {
   const updateManyById = function(userIds, updateOptions) {
     return _userDao.updateManyById(userIds, updateOptions);
   };
+
 
   const authenticateUser = function(emailOrUsername, password) {
     return new Promise((resolve, reject) => {
@@ -65,6 +77,7 @@ module.exports = function(userDao) {
     });
   };
 
+
   const getAllUsers = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
       _userDao.getAllUsers(emailOrUsername)
@@ -75,23 +88,13 @@ module.exports = function(userDao) {
     });
   };
 
-  const getUser = function(emailOrUsername) {
-    return new Promise((resolve, reject) => {
-      _userDao.getByEmailOrUsername(emailOrUsername)
-        .then((user) => {
-          delete user.password;
-          resolve(user);
-        })
-        .catch(reject);
-    });
-  };
 
   return {
     create: create,
+    getByEmailOrUsername: getByEmailOrUsername,
     updateByEmailOrUsername: updateByEmailOrUsername,
     updateManyById: updateManyById,
     authenticateUser: authenticateUser,
     getAllUsers: getAllUsers,
-    getUser: getUser,
   };
 };
