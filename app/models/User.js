@@ -44,6 +44,10 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Friend',
   }],
+  comments: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Comment',
+  }],
 },
 {
   collection: 'users',

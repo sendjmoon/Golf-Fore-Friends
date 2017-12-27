@@ -4,15 +4,26 @@ const express = require('express');
 const router = express.Router();
 const userService = require('../services').userService;
 
+//TODO: refactor to middleware. jwt-auth?
 router.get('/check-session', function(req, res, next) {
   if (req.session.user) {
-    res.json({
-      user: {
-        _id: req.session.user._id,
-        fullName: req.session.user.fullName,
-        email: req.session.user.email,
-      },
-    });
+    userService.getByEmailOrUsername(req.session.user.email)
+      .then((user) => {
+        req.session.user = user;
+        res.json({
+          userData: {
+            _id: user._id,
+            fullName: user.fullName,
+            email: user.email,
+            gameIds: user.gameIds,
+          },
+        });
+      })
+      .catch((err) => {
+        res.status(500).json({
+          error: 'Error getting user.',
+        });
+      });
   }
   else res.status(401).json({
     error: 'Unauthorized.',

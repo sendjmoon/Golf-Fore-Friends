@@ -21,6 +21,20 @@ module.exports = function(app) {
       });
     };
 
+    const aggregate = function(matchOptions, groupOptions) {
+      return new Promise((resolve, reject) => {
+        let aggregateData = {
+          matchOptions: JSON.stringify(matchOptions),
+          groupOptions: JSON.stringify(groupOptions),
+        };
+        $http.post(`${$rs.baseUrl}/games/result/aggregate`, aggregateData)
+          .then((aggregatedData) => {
+            resolve(aggregatedData.data);
+          })
+          .catch(reject);
+      });
+    };
+
     const calcResults = function(array) {
       return new Promise((resolve, reject) => {
         let nextPlayer;
@@ -40,10 +54,14 @@ module.exports = function(app) {
 
         array.forEach((player, index) => {
           nextPlayer = array[index + 1];
+          player.strokes = parseInt(player.strokes);
+          if (nextPlayer) nextPlayer.strokes = parseInt(nextPlayer.strokes);
 
           if (winFound) return player.result = 'loss';
+
           if (tieFound) {
             if (player.strokes === tieValue) player.result = 'tie';
+            if (player.strokes > tieValue) player.result = 'loss';
             return;
           }
 
@@ -68,6 +86,7 @@ module.exports = function(app) {
 
     return {
       create: create,
+      aggregate: aggregate,
       calcResults: calcResults,
     }
   }]);

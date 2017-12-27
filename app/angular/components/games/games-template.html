@@ -11,6 +11,18 @@
           <button class="gff-btn" ng-click="gc.creating=true">Create Game</button>
         </div>
       </div><!--/gff-box-->
+
+      <div class="gff-box bg-dark col-xs-12">
+        <div class="box-content col-xs-12">
+          <button class="gff-btn" ng-click="gc.getGames();">get games</button>
+          <ul>
+            <li ng-repeat="game in gamesData.games">
+              <p>{{game.name}}</p>
+              <p>{{game.location}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 

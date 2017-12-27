@@ -4,6 +4,18 @@ const express = require('express');
 const router = express.Router();
 const gameService = require('../services').gameService;
 
+router.post('/all', function(req, res, next) {
+  gameService.getAllById(req.body.gameIds)
+    .then((games) => {
+      res.json(games);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: 'Error getting games.',
+      });
+    });
+});
+
 router.post('/create', function(req, res, next) {
   gameService.create(
     req.body.name,
@@ -16,7 +28,7 @@ router.post('/create', function(req, res, next) {
     })
     .catch((err) => {
       res.status(500).json({
-        error: 'error creating game',
+        error: 'Error creating game.',
       });
     });
 });

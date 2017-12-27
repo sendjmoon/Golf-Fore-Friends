@@ -37,8 +37,27 @@ module.exports = function() {
     });
   };
 
+  const getAllById = function(gameIds) {
+    return new Promise((resolve, reject) => {
+      Game.find({
+        _id: { $in: gameIds },
+      })
+        .select('-__v')
+        .populate({
+          path: 'results',
+          select: '-__v',
+        })
+        .exec()
+          .then((games) => {
+            resolve(games);
+          })
+          .catch(reject);
+    });
+  }
+
   return {
     create: create,
     updateById: updateById,
+    getAllById: getAllById,
   };
 };

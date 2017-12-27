@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('CreateGameController', ['$rootScope', '$route', 'UserService', 'FriendService', 'GameService', 'ResultService', function($rs, $route, userService, friendService, gameService, resultService) {
+  app.controller('CreateGameController', ['$rootScope', '$route', 'UserService', 'FriendService', 'GameService', 'ResultService', 'StatsService', function($rs, $route, userService, friendService, gameService, resultService, statsService) {
 
     const ctrl = this;
     ctrl.user = userService.data.user;
@@ -12,6 +12,12 @@ module.exports = function(app) {
     ctrl.createGame = function(gameData) {
       gameData.players = ctrl.players;
       gameService.newGame(gameData)
+        .then(() => {
+          gameData.players.forEach((player) => {
+            statsService.updateHandicap(player._id);
+            statsService.updateWinRatio(player._id);
+          });
+        })
         .catch((err) => {
           console.log('Error creating game.');
           console.log(err);

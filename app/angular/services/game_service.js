@@ -3,11 +3,15 @@
 module.exports = function(app) {
   app.factory('GameService', ['$rootScope', '$route', '$http', 'ResultService', 'UserService', 'StatsService', function($rs, $route, $http, resultService, userService, statsService) {
 
+    const data = {
+      allGames: {},
+    };
+
     const newGame = function(gameData) {
       return new Promise((resolve, reject) => {
         createGameAndResults(gameData)
           .then((newGameData) => {
-            updateGameAndUsers(newGameData)
+            updateGameAndUsers(newGameData.gameId, newGameData.results)
               .then(resolve)
               .catch(reject);
           })
@@ -33,28 +37,29 @@ module.exports = function(app) {
       });
     };
 
-    const updateGameAndUsers = function(updateData) {
+    const updateGameAndUsers = function(gameId, resultsArray) {
       return new Promise((resolve, reject) => {
         let resultIds = [];
         let userIds = [];
         let gameUpdateData = {};
         let userUpdateData = {};
 
-        resultIds = updateData.results.map((result) => {
+        resultIds = resultsArray.map((result) => {
           return result._id;
         });
-        userIds = updateData.results.map((result) => {
+
+        userIds = resultsArray.map((result) => {
           return result.playerId;
         })
 
-        gameUpdateData.gameId = updateData.gameId;
+        gameUpdateData.gameId = gameId;
         gameUpdateData.updateOptions = {
           $addToSet: { results: { $each: resultIds }},
         };
 
         userUpdateData.usersIds = userIds;
         userUpdateData.updateOptions = {
-          $addToSet: { gameIds: updateData.gameId },
+          $addToSet: { gameIds: gameId },
         };
 
         //TODO: refactor to mitigate callback hell.
@@ -62,7 +67,7 @@ module.exports = function(app) {
           .then(() => {
             userService.updateManyById(userUpdateData)
               .then(() => {
-                statsService.updateManyByDocOrUserId(updateData.results)
+                statsService.updateManyByDocOrUserId(resultsArray)
                   .then(() => {
                     resolve();
                     $route.reload();
@@ -88,6 +93,24 @@ module.exports = function(app) {
       });
     };
 
+    const getAllById = function(gameIds) {
+      return new Promise((resolve, reject) => {
+        let gameIdData = {
+          gameIds: gameIds,
+        };
+        $http.post(`${$rs.baseUrl}/games/all`, gameIdData)
+        .then((games) => {
+          games = games.data;
+          data.allGames.games = games;
+          resolve();
+        })
+        .catch(() => {
+          alert('error getting games');
+          reject();
+        });
+      });
+    };
+
     const update = function(updateData) {
       return new Promise((resolve, reject) => {
         $http.post(`${$rs.baseUrl}/games/update`, updateData)
@@ -108,25 +131,12 @@ module.exports = function(app) {
       });
     };
 
-    this.getAllByPublicId = function(publicIdArray) {
-      return new Promise((resolve, reject) => {
-        let publicIdData = {
-          publicIdArray: publicIdArray,
-        };
-        $http.post($rs.baseUrl + '/games/all', publicIdData)
-          .then((games) => {
-            resolve(games.data);
-          })
-          .catch(() => {
-            alert('error getting games');
-            reject();
-          });
-      });
-    };
 
     return {
       create: create,
+      getAllById: getAllById,
       newGame: newGame,
+      data: data,
     }
   }]);
 };

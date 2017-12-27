@@ -36,6 +36,10 @@ const GameSchema = new Schema({
     ref: 'GameResult',
     required: true,
   }],
+  comments: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Comment',
+  }],
 },
 {
   collection: 'games',

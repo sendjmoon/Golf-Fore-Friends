@@ -21,7 +21,7 @@ router.post('/update', function(req, res, next) {
     req.body.docOrUserId,
     req.body.updateOptions
   )
-    .then((someData) => {
+    .then(() => {
       res.status(200).json({
         message: 'User stats successfully updated.',
       });
