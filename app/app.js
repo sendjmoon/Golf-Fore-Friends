@@ -16,6 +16,7 @@ const logger = require('morgan');
 const errorHandler = require('./lib/error_handler');
 
 const index = require('./routes/index');
+const commentsRouter = require('./routes/comments');
 const coursesRouter = require('./routes/courses');
 const gamesRouter = require('./routes/games');
 const gameResultRouter = require('./routes/game_result');
@@ -71,6 +72,7 @@ app.use('/', index);
 app.use('/courses', coursesRouter);
 app.use('/games', gamesRouter);
 app.use('/games/result', gameResultRouter);
+app.use('/games/comments', commentsRouter);
 app.use('/users', usersRouter);
 app.use('/users/stats', userStatsRouter);
 app.use('/friends', friendsRouter);
