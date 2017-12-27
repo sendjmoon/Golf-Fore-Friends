@@ -3,8 +3,7 @@
 module.exports = function(app) {
   app.controller('GamesController', ['$route', '$scope', 'GameService', 'UserService', function($route, $scope, gameService, userService) {
 
-    let ctrl = this;
-
+    const ctrl = this;
     $scope.gameService = gameService;
     $scope.gamesData = gameService.data.allGames;
     ctrl.user = userService.data.user;
