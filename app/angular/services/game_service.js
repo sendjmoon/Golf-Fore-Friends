@@ -3,6 +3,10 @@
 module.exports = function(app) {
   app.factory('GameService', ['$rootScope', '$route', '$http', 'ResultService', 'UserService', 'StatsService', function($rs, $route, $http, resultService, userService, statsService) {
 
+    const data = {
+      allGames: {},
+    };
+
     const newGame = function(gameData) {
       return new Promise((resolve, reject) => {
         createGameAndResults(gameData)
@@ -89,6 +93,24 @@ module.exports = function(app) {
       });
     };
 
+    const getAllById = function(gameIds) {
+      return new Promise((resolve, reject) => {
+        let gameIdData = {
+          gameIds: gameIds,
+        };
+        $http.post(`${$rs.baseUrl}/games/all`, gameIdData)
+        .then((games) => {
+          games = games.data;
+          data.allGames.games = games;
+          resolve();
+        })
+        .catch(() => {
+          alert('error getting games');
+          reject();
+        });
+      });
+    };
+
     const update = function(updateData) {
       return new Promise((resolve, reject) => {
         $http.post(`${$rs.baseUrl}/games/update`, updateData)
@@ -109,25 +131,12 @@ module.exports = function(app) {
       });
     };
 
-    this.getAllByPublicId = function(publicIdArray) {
-      return new Promise((resolve, reject) => {
-        let publicIdData = {
-          publicIdArray: publicIdArray,
-        };
-        $http.post($rs.baseUrl + '/games/all', publicIdData)
-          .then((games) => {
-            resolve(games.data);
-          })
-          .catch(() => {
-            alert('error getting games');
-            reject();
-          });
-      });
-    };
 
     return {
       create: create,
+      getAllById: getAllById,
       newGame: newGame,
+      data: data,
     }
   }]);
 };
