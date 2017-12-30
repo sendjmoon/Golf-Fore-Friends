@@ -5,6 +5,8 @@ module.exports = function(app) {
     template: require('./game-comment-template.html'),
     controller: 'CommentController',
     controllerAs: 'cc',
-    bindings: {},
+    bindings: {
+      gameId: '<',
+    },
   });
 };
