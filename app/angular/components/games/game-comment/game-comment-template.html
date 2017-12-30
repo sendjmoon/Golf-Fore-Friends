@@ -1,6 +1,6 @@
 <form>
-  <ul>
-    <li ng-repeat="comment in cc.comments">
+  <ul ng-init="cc.parseComments(cc.comments)">
+    <li ng-repeat="comment in cc.allComments">
       {{comment.content}}
     </li>
   </ul>

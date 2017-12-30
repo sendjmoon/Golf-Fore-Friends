@@ -5,6 +5,7 @@ module.exports = function(app) {
 
     let ctrl = this;
     ctrl.user = userService.data.user;
+    ctrl.allComments = [];
 
     ctrl.create = function(gameId, content) {
       commentService.create(gameId, ctrl.user._id, ctrl.user.fullName, content)
@@ -12,6 +13,7 @@ module.exports = function(app) {
           let updateOptions = {
             $addToSet: { comments: newComment._id },
           };
+          ctrl.allComments.push(newComment);
           gameService.updateById(gameId, updateOptions)
             .catch(() => {
               console.log('Error updating game.');
@@ -24,6 +26,12 @@ module.exports = function(app) {
         .catch((err) => {
           console.log('Error posting comment.');
         });
+    };
+
+    ctrl.parseComments = function(comments) {
+      ctrl.comments.forEach((comment) => {
+        ctrl.allComments.push(comment);
+      });
     };
   }]);
 };
