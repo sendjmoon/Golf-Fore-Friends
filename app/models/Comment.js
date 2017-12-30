@@ -40,6 +40,6 @@ const CommentSchema = new Schema({
   collection: 'comments',
 });
 
-CommentSchema.index({ publicId: 1 });
+CommentSchema.index({ createdAt: 1 });
 
 module.exports = mongoose.model('Comment', CommentSchema);
