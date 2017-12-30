@@ -13,7 +13,9 @@ module.exports = function(app) {
         };
 
         $http.post(`${$rs.baseUrl}/games/comments/create`, commentData)
-          .then(resolve)
+          .then((newComment) => {
+            resolve(newComment.data);
+          })
           .catch(reject);
       });
     };

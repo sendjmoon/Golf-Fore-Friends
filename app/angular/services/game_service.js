@@ -41,8 +41,8 @@ module.exports = function(app) {
       return new Promise((resolve, reject) => {
         let resultIds = [];
         let userIds = [];
-        let gameUpdateData = {};
-        let userUpdateData = {};
+        let gameUpdateOptions = {};
+        let userUpdateOptions = {};
 
         resultIds = resultsArray.map((result) => {
           return result._id;
@@ -52,20 +52,18 @@ module.exports = function(app) {
           return result.playerId;
         })
 
-        gameUpdateData.gameId = gameId;
-        gameUpdateData.updateOptions = {
+        gameUpdateOptions = {
           $addToSet: { results: { $each: resultIds }},
         };
 
-        userUpdateData.usersIds = userIds;
-        userUpdateData.updateOptions = {
+        userUpdateOptions = {
           $addToSet: { gameIds: gameId },
         };
 
         //TODO: refactor to mitigate callback hell.
-        update(gameUpdateData.gameId, gameUpdateData.updateOptions)
+        updateById(gameId, gameUpdateOptions)
           .then(() => {
-            userService.updateManyById(userUpdateData)
+            userService.updateManyById(userIds, userUpdateOptions)
               .then(() => {
                 statsService.updateManyByDocOrUserId(resultsArray)
                   .then(() => {
@@ -111,7 +109,7 @@ module.exports = function(app) {
       });
     };
 
-    const update = function(gameId, updateOptions) {
+    const updateById = function(gameId, updateOptions) {
       const updateData = {
         gameId: gameId,
         updateOptions: updateOptions,
@@ -139,7 +137,7 @@ module.exports = function(app) {
     return {
       create: create,
       getAllById: getAllById,
-      update: update,
+      updateById: updateById,
       newGame: newGame,
       data: data,
     }
