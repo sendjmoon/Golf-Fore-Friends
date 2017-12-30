@@ -7,6 +7,7 @@ module.exports = function(app) {
     controllerAs: 'cc',
     bindings: {
       gameId: '<',
+      comments: '<',
     },
   });
 };
