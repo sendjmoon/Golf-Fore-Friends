@@ -43,10 +43,15 @@ module.exports = function() {
         _id: { $in: gameIds },
       })
         .select('-__v')
-        .populate({
-          path: 'results',
-          select: '-__v',
-        })
+        .populate([
+          {
+            path: 'results',
+            select: '-__v',
+          }, {
+            path: 'comments',
+            select: '-__v -gameId',
+          }
+        ])
         .exec()
           .then((games) => {
             resolve(games);
