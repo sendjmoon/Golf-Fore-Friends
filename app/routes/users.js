@@ -63,7 +63,11 @@ router.post('/signup', function(req, res, next) {
     )
     .then((user) => {
       req.session.user = user;
-      res.json(user._id);
+      user = {
+        email: user.email,
+        _id: user._id,
+      }
+      res.json(user);
     })
     .catch((err) => {
       res.status(500).json({
@@ -92,8 +96,8 @@ router.post('/signin', function(req, res, next) {
 
 router.post('/update', function(req, res, next) {
   userService.updateByEmailOrUsername(
-    req.session.user.email,
-    req.body.updateData
+    req.body.emailOrUsername,
+    req.body.updateOptions
   )
     .then(() => {
       res.status(200).json({
@@ -109,7 +113,7 @@ router.post('/update', function(req, res, next) {
 
 router.post('/update-many', function(req, res, next) {
   userService.updateManyById(
-    req.body.usersIds,
+    req.body.userIds,
     req.body.updateOptions
   )
     .then(() => {

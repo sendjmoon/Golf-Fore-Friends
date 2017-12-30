@@ -22,14 +22,14 @@ module.exports = function() {
     });
   };
 
-  const updateByEmailOrUsername = function(emailOrUsername, updateData) {
+  const updateByEmailOrUsername = function(emailOrUsername, updateOptions) {
     return new Promise((resolve, reject) => {
       User.findOneAndUpdate({
         $or: [
           { email: emailOrUsername },
           { username: emailOrUsername },
         ],
-      }, updateData)
+      }, updateOptions)
         .select('-__v -password')
         .exec()
           .then(resolve)

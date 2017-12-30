@@ -38,8 +38,8 @@ module.exports = function(userDao) {
     });
   };
 
-  const updateByEmailOrUsername = function(emailOrUsername, updateData) {
-    return _userDao.updateByEmailOrUsername(emailOrUsername, updateData);
+  const updateByEmailOrUsername = function(emailOrUsername, updateOptions) {
+    return _userDao.updateByEmailOrUsername(emailOrUsername, updateOptions);
   };
 
   const updateManyById = function(userIds, updateOptions) {
