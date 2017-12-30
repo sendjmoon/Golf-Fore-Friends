@@ -43,6 +43,7 @@ module.exports = function() {
         _id: { $in: gameIds },
       })
         .select('-__v')
+        .sort({ datePlayed: -1 })
         .populate([
           {
             path: 'results',
@@ -50,6 +51,9 @@ module.exports = function() {
           }, {
             path: 'comments',
             select: '-__v -gameId',
+            options: {
+              sort: { createdAt: 1 },
+            },
           }
         ])
         .exec()
