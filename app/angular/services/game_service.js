@@ -63,7 +63,7 @@ module.exports = function(app) {
         };
 
         //TODO: refactor to mitigate callback hell.
-        update(gameUpdateData)
+        update(gameUpdateData.gameId, gameUpdateData.updateOptions)
           .then(() => {
             userService.updateManyById(userUpdateData)
               .then(() => {
@@ -111,7 +111,11 @@ module.exports = function(app) {
       });
     };
 
-    const update = function(updateData) {
+    const update = function(gameId, updateOptions) {
+      const updateData = {
+        gameId: gameId,
+        updateOptions: updateOptions,
+      }
       return new Promise((resolve, reject) => {
         $http.post(`${$rs.baseUrl}/games/update`, updateData)
           .then((newData) => {
@@ -135,6 +139,7 @@ module.exports = function(app) {
     return {
       create: create,
       getAllById: getAllById,
+      update: update,
       newGame: newGame,
       data: data,
     }
