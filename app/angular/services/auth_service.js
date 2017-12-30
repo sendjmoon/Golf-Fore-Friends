@@ -6,13 +6,13 @@ module.exports = function(app) {
     const signup = function(userData) {
       return new Promise((resolve, reject) => {
         userService.create(userData)
-          .then((newUserId) => {
-            statsService.create(newUserId)
+          .then((newUser) => {
+            statsService.create(newUser._id)
               .then((newStatsId) => {
-                const updateData = {
+                const updateOptions = {
                   stats: newStatsId,
                 };
-                userService.update(updateData)
+                userService.updateByEmailOrUsername(newUser.email, updateOptions)
                   .then(() => {
                     $location.path('/dashboard');
                     $rs.$apply();

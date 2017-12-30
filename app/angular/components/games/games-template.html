@@ -19,6 +19,10 @@
             <li ng-repeat="game in gamesData.games">
               <p>{{game.name}}</p>
               <p>{{game.location}}</p>
+              <p>{{game.datePlayed}}</p>
+              <ul>
+                <li><comment data-game-id="game._id" data-comments="game.comments"></comment></li>
+              </ul>
             </li>
           </ul>
         </div>

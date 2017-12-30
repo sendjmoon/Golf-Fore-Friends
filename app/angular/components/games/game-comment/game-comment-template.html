@@ -1,0 +1,9 @@
+<form>
+  <ul ng-init="cc.parseComments(cc.comments)">
+    <li ng-repeat="comment in cc.allComments">
+      {{comment.content}}
+    </li>
+  </ul>
+  <textarea ng-model="cc.content" placeholder="Add a comment..." style="color: black;"></textarea>
+  <button class="gff-btn" ng-click="cc.create(cc.gameId, cc.content)">submit</button>
+</form>

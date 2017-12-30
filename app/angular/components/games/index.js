@@ -8,5 +8,6 @@ module.exports = function(app) {
   });
 
   require('./create-game')(app);
+  require('./game-comment')(app);
   require('./game-chart')(app);
 };

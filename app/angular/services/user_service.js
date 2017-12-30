@@ -11,19 +11,21 @@ module.exports = function(app) {
     const create = function(userData) {
       return new Promise((resolve, reject) => {
         $http.post(`${$rs.baseUrl}/users/signup`, userData)
-          .then((newUserId) => {
-            resolve(newUserId.data);
+          .then((newUser) => {
+            resolve(newUser.data);
           })
           .catch(reject);
       });
     };
 
-    const update = function(updateData) {
+    //TODO: refactor arguments to be more specific
+    const updateByEmailOrUsername = function(emailOrUsername, updateOptions) {
       return new Promise((resolve, reject) => {
-        const newData = {
-          updateData: updateData,
+        let updateData = {
+          emailOrUsername: emailOrUsername,
+          updateOptions: updateOptions,
         };
-        $http.post(`${$rs.baseUrl}/users/update`, newData)
+        $http.post(`${$rs.baseUrl}/users/update`, updateData)
           .then((res) => {
             resolve(res.data);
           })
@@ -31,15 +33,19 @@ module.exports = function(app) {
       });
     };
 
-    const updateManyById = function(updateData) {
+    const updateManyById = function(userIds, updateOptions) {
       return new Promise((resolve, reject) => {
+        let updateData = {
+          userIds: userIds,
+          updateOptions: updateOptions,
+        };
         $http.post(`${$rs.baseUrl}/users/update-many`, updateData)
           .then(resolve)
           .catch(reject);
       });
     };
 
-    let getByEmailOrUsername = function(emailOrUsername) {
+    const getByEmailOrUsername = function(emailOrUsername) {
       return new Promise((resolve, reject) => {
         let userData = {
           emailOrUsername: emailOrUsername,
@@ -55,7 +61,7 @@ module.exports = function(app) {
       });
     };
 
-    let getAllUsers = function(emailOrUsername) {
+    const getAllUsers = function(emailOrUsername) {
       return new Promise((resolve, reject) => {
         let userData = {
           emailOrUsername: emailOrUsername,
@@ -73,7 +79,7 @@ module.exports = function(app) {
 
     return {
       create: create,
-      update: update,
+      updateByEmailOrUsername: updateByEmailOrUsername,
       updateManyById: updateManyById,
       getByEmailOrUsername: getByEmailOrUsername,
       getAllUsers: getAllUsers,

@@ -43,10 +43,19 @@ module.exports = function() {
         _id: { $in: gameIds },
       })
         .select('-__v')
-        .populate({
-          path: 'results',
-          select: '-__v',
-        })
+        .sort({ datePlayed: -1 })
+        .populate([
+          {
+            path: 'results',
+            select: '-__v',
+          }, {
+            path: 'comments',
+            select: '-__v -gameId',
+            options: {
+              sort: { createdAt: 1 },
+            },
+          }
+        ])
         .exec()
           .then((games) => {
             resolve(games);
