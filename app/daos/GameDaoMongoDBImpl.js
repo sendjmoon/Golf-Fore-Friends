@@ -33,7 +33,10 @@ module.exports = function() {
         .then((res) => {
           res === null ? reject() : resolve();
         })
-        .catch(reject);
+        .catch((err) => {
+          console.log(err);
+          reject();
+        });
     });
   };
 

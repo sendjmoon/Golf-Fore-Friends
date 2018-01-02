@@ -39,8 +39,17 @@ module.exports = function() {
     });
   };
 
+  const removeById = function(commentId) {
+    return new Promise((resolve, reject) => {
+      Comment.findOneAndRemove({ _id: commentId })
+        .then(resolve)
+        .catch(reject);
+    });
+  };
+
   return {
     create: create,
     updateByPublicId: updateByPublicId,
+    removeById: removeById,
   };
 };

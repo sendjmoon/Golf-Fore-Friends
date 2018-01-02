@@ -17,6 +17,7 @@ module.exports = function(app) {
             .catch((err) => {
               console.log('Error updating game.');
             });
+
           userService.updateByEmailOrUsername(ctrl.user.email, updateOptions)
             .catch((err) => {
               console.log('Error updating user.');
@@ -35,6 +36,31 @@ module.exports = function(app) {
         })
         .catch((err) => {
           console.log('Error updating comment.');
+        });
+    };
+
+    ctrl.remove = function(commentId, gameId) {
+      console.log('removing');
+      let updateOptions = {
+        $pull: { comments: commentId },
+      };
+
+      commentService.removeById(commentId)
+        .catch((err) => {
+          console.log('Error removing comment.');
+        });
+
+      gameService.updateById(gameId, updateOptions)
+        .then(() => {
+          gameService.getAllById(ctrl.user.gameIds);
+        })
+        .catch((err) => {
+          console.log('Error updating game.');
+        });
+
+      userService.updateByEmailOrUsername(ctrl.user.email, updateOptions)
+        .catch((err) => {
+          console.log('Error updating user.');
         });
     };
   }]);

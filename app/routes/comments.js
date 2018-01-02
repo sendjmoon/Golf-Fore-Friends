@@ -35,4 +35,18 @@ router.post('/update', function(req, res, next) {
     });
 });
 
+router.post('/remove', function(req, res, next) {
+  commentService.removeById(req.body.commentId)
+    .then(() => {
+      res.status(200).json({
+        message: 'Removed comment.'
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: 'Error removing comment.',
+      });
+    });
+});
+
 module.exports = router;

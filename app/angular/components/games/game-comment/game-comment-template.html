@@ -1,7 +1,10 @@
 <div ng-hide="cc.editing">
   <p><strong>{{cc.comment.authorName}}</strong> {{cc.comment.content}}</p>
   <p>{{cc.comment.createdAt}}</p>
-  <a ng-if="cc.user._id===cc.comment.authorId" ng-click="cc.editing=true">edit</a>
+  <div ng-if="cc.user._id === cc.comment.authorId">
+    <a ng-click="cc.editing=true">edit</a>
+    <a ng-click="cc.remove(cc.comment._id, cc.gameId)">remove</a>
+  </div>
 </div>
 
 <div ng-show="cc.editing">
