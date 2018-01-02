@@ -14,21 +14,27 @@
 
       <div class="gff-box bg-dark col-xs-12">
         <div class="box-content col-xs-12">
-          <button class="gff-btn" ng-click="gc.getGames();">get games</button>
+
           <ul>
             <li ng-repeat="game in gamesData.games">
               <p>{{game.name}}</p>
               <p>{{game.location}}</p>
               <p>{{game.datePlayed}}</p>
               <ul>
-                <li><comment data-game-id="game._id" data-comments="game.comments"></comment></li>
+                <li ng-repeat="comment in game.comments">
+                  <comment data-game-id="game._id" data-comment="comment"></comment>
+                </li>
+                <li>
+                  <new-comment data-game-id="game._id"></new-comment>
+                </li>
               </ul>
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+
+        </div><!--box-content-->
+      </div><!--gff-box-->
+    </div><!--gff-content-->
+  </div><!--gff-container-->
 
   <div class="gff-container col-md-7 col-xs-6 pull-right" ng-show="gc.creating">
     <create-game ng-show="gc.creating"></create-game>

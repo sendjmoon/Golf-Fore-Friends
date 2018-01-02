@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
+  //TODO: rename to GameController
   app.controller('GamesController', ['$route', '$scope', 'GameService', 'UserService', function($route, $scope, gameService, userService) {
 
     const ctrl = this;
