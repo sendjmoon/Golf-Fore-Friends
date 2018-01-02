@@ -10,19 +10,15 @@ module.exports = function(app) {
     ctrl.user = userService.data.user;
     ctrl.creating = false;
 
-    ctrl.getGamesData = function() {
+    ctrl.reloadPage = function() {
+      $route.reload();
+    };
+
+    ctrl.init = function() {
       gameService.getAllById(ctrl.user.gameIds)
         .catch((err) => {
           console.log('Error getting games.');
         });
-    };
-
-    ctrl.reloadPage = function() {
-      $route.reload();
-    }
-
-    ctrl.init = function() {
-      ctrl.getGamesData();
     };
 
     ctrl.init();

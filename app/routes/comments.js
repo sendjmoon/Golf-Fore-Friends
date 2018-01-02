@@ -21,4 +21,18 @@ router.post('/create', function(req, res, next) {
     });
 });
 
+router.post('/update', function(req, res, next) {
+  commentService.updateByPublicId(req.body.publicId, req.body.updateOptions)
+    .then(() => {
+      res.status(200).json({
+        message: 'Updated comment.',
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: 'Error updating comment.',
+      });
+    });
+});
+
 module.exports = router;

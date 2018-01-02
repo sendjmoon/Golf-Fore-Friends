@@ -1,12 +1,12 @@
-<div ng-hide="cc.edit">
+<div ng-hide="cc.editing">
   <p><strong>{{cc.comment.authorName}}</strong> {{cc.comment.content}}</p>
   <p>{{cc.comment.createdAt}}</p>
-  <a ng-if="cc.user._id===cc.comment.authorId" ng-click="cc.edit=true">edit</a>
+  <a ng-if="cc.user._id===cc.comment.authorId" ng-click="cc.editing=true">edit</a>
 </div>
 
-<div ng-show="cc.edit">
+<div ng-show="cc.editing">
   <p><strong>Editing comment</strong></p>
-  <textarea placeholder="{{cc.comment.content}}"></textarea>
-  <button class="gff-btn">Save</button>
+  <textarea ng-model="cc.comment.content" style="color:black"></textarea>
+  <button class="gff-btn" ng-click="cc.update(cc.comment.publicId, cc.comment.content)">Save</button>
   <button class="gff-btn">Cancel</button>
 </div>

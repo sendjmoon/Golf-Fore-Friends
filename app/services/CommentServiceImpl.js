@@ -23,7 +23,12 @@ module.exports = function(commentDao) {
     });
   };
 
+  const updateByPublicId = function(publicId, updateOptions) {
+    return _commentDao.updateByPublicId(publicId, updateOptions);
+  };
+
   return {
     create: create,
-  }
-}
+    updateByPublicId: updateByPublicId,
+  };
+};

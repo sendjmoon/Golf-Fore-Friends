@@ -13,19 +13,28 @@ module.exports = function(app) {
             $addToSet: { comments: newComment._id },
           };
           gameService.updateById(gameId, updateOptions)
-            .then(() => {
-              gameService.getAllById(ctrl.user.gameIds);
-            })
-            .catch(() => {
+            .then(gameService.getAllById(ctrl.user.gameIds))
+            .catch((err) => {
               console.log('Error updating game.');
             });
           userService.updateByEmailOrUsername(ctrl.user.email, updateOptions)
-            .catch(() => {
+            .catch((err) => {
               console.log('Error updating user.');
             });
         })
         .catch((err) => {
           console.log('Error posting comment.');
+        });
+    };
+
+    ctrl.update = function(publicId, content) {
+      commentService.updateByPublicId(publicId, content)
+        .then(() => {
+          gameService.getAllById(ctrl.user.gameIds);
+          ctrl.editing = false;
+        })
+        .catch((err) => {
+          console.log('Error updating comment.');
         });
     };
   }]);

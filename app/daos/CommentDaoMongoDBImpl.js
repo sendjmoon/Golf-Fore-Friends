@@ -29,7 +29,18 @@ module.exports = function() {
     });
   };
 
+  const updateByPublicId = function(publicId, updateOptions) {
+    return new Promise((resolve, reject) => {
+      Comment.findOneAndUpdate({ publicId: publicId }, updateOptions)
+        .then((res) => {
+          res === null ? reject() : resolve();
+        })
+        .catch(reject);
+    });
+  };
+
   return {
     create: create,
+    updateByPublicId: updateByPublicId,
   };
 };
