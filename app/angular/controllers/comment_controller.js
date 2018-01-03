@@ -40,7 +40,6 @@ module.exports = function(app) {
     };
 
     ctrl.remove = function(commentId, gameId) {
-      console.log('removing');
       let updateOptions = {
         $pull: { comments: commentId },
       };
