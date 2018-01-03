@@ -13,14 +13,19 @@ module.exports = function(userStatsDao) {
         })
         .catch(reject);
     });
-  }
+  };
+
+  const getByDocOrUserId = function(docOrUserId) {
+    return _userStatsDao.getByDocOrUserId(docOrUserId);
+  };
 
   const updateByDocOrUserId = function(docOrUserId, updateOptions) {
     return _userStatsDao.updateByDocOrUserId(docOrUserId, updateOptions);
-  }
+  };
 
   return {
     create: create,
+    getByDocOrUserId: getByDocOrUserId,
     updateByDocOrUserId: updateByDocOrUserId,
-  }
-}
+  };
+};

@@ -14,6 +14,21 @@ module.exports = function() {
     });
   };
 
+  const getByDocOrUserId = function(docOrUserId) {
+    return new Promise((resolve, reject) => {
+      UserStats.findOne({
+        $or: [
+          { _id: docOrUserId },
+          { userId: docOrUserId },
+        ],
+      })
+        .then((userStats) => {
+          resolve(userStats);
+        })
+        .catch(reject);
+    });
+  };
+
   const updateByDocOrUserId = function(docOrUserId, updateOptions) {
     return new Promise((resolve, reject) => {
       UserStats.findOneAndUpdate(
@@ -33,6 +48,7 @@ module.exports = function() {
 
   return {
     create: create,
+    getByDocOrUserId: getByDocOrUserId,
     updateByDocOrUserId: updateByDocOrUserId,
-  }
-}
+  };
+};
