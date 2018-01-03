@@ -100,6 +100,7 @@ module.exports = function(app) {
         .then((games) => {
           games = games.data;
           data.allGames.games = games;
+          console.log('got game data');
           resolve();
         })
         .catch(() => {

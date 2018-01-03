@@ -23,7 +23,17 @@ module.exports = function(commentDao) {
     });
   };
 
+  const updateByPublicId = function(publicId, updateOptions) {
+    return _commentDao.updateByPublicId(publicId, updateOptions);
+  };
+
+  const removeById = function(commentId) {
+    return _commentDao.removeById(commentId);
+  };
+
   return {
     create: create,
-  }
-}
+    updateByPublicId: updateByPublicId,
+    removeById: removeById,
+  };
+};

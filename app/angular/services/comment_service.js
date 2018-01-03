@@ -20,8 +20,33 @@ module.exports = function(app) {
       });
     };
 
+    const updateByPublicId = function(publicId, content) {
+      return new Promise((resolve, reject) => {
+        const updateData = {
+          publicId: publicId,
+          updateOptions: { content: content },
+        };
+        $http.post(`${$rs.baseUrl}/games/comments/update`, updateData)
+          .then(resolve)
+          .catch(reject);
+      });
+    };
+
+    const removeById = function(commentId) {
+      return new Promise((resolve, reject) => {
+        const removeData = {
+          _id: commentId,
+        };
+        $http.post(`${$rs.baseUrl}/games/comments/remove`, removeData)
+          .then(resolve)
+          .catch(reject);
+      });
+    };
+
     return {
       create: create,
+      updateByPublicId: updateByPublicId,
+      removeById: removeById,
     };
   }]);
 };

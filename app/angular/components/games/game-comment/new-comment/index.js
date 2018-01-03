@@ -1,15 +1,12 @@
 'use strict';
 
 module.exports = function(app) {
-  app.component('comment', {
-    template: require('./game-comment-template.html'),
+  app.component('newComment', {
+    template: require('./new-comment-template.html'),
     controller: 'CommentController',
     controllerAs: 'cc',
     bindings: {
       gameId: '<',
-      comment: '<',
     },
   });
-
-  require('./new-comment')(app);
 };

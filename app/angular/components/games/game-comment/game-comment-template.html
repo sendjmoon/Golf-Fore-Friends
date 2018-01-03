@@ -1,9 +1,15 @@
-<form>
-  <ul ng-init="cc.parseComments(cc.comments)">
-    <li ng-repeat="comment in cc.allComments">
-      {{comment.content}}
-    </li>
-  </ul>
-  <textarea ng-model="cc.content" placeholder="Add a comment..." style="color: black;"></textarea>
-  <button class="gff-btn" ng-click="cc.create(cc.gameId, cc.content)">submit</button>
-</form>
+<div ng-hide="cc.editing">
+  <p><strong>{{cc.comment.authorName}}</strong> {{cc.comment.content}}</p>
+  <p>{{cc.comment.createdAt}}</p>
+  <div ng-if="cc.user._id === cc.comment.authorId">
+    <a ng-click="cc.editing=true">edit</a>
+    <a ng-click="cc.remove(cc.comment._id, cc.gameId)">remove</a>
+  </div>
+</div>
+
+<div ng-show="cc.editing">
+  <p><strong>Editing comment</strong></p>
+  <textarea ng-model="cc.comment.content" style="color:black"></textarea>
+  <button class="gff-btn" ng-click="cc.update(cc.comment.publicId, cc.comment.content)">Save</button>
+  <button class="gff-btn">Cancel</button>
+</div>
