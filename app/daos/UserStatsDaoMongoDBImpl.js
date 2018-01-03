@@ -22,10 +22,12 @@ module.exports = function() {
           { userId: docOrUserId },
         ],
       })
-        .then((userStats) => {
-          resolve(userStats);
-        })
-        .catch(reject);
+        .select('-__v -_id -userId')
+        .exec()
+          .then((userStats) => {
+            resolve(userStats);
+          })
+          .catch(reject);
     });
   };
 
