@@ -3,6 +3,8 @@
 module.exports = function(app) {
   app.factory('StatsService', ['$rootScope', '$http', 'UserService', 'ResultService', function($rs, $http, userService, resultService) {
 
+    const data = {};
+
     const create = function(userId) {
       return new Promise((resolve, reject) => {
         const userData = {
@@ -11,6 +13,17 @@ module.exports = function(app) {
         $http.post(`${$rs.baseUrl}/users/stats/create`, userData)
           .then((newStatsId) => {
             resolve(newStatsId.data);
+          })
+          .catch(reject);
+      });
+    };
+
+    const getByDocOrUserId = function(docOrUserId) {
+      return new Promise((resolve, reject) => {
+        $http.get(`${$rs.baseUrl}/users/stats/${docOrUserId}`)
+          .then((userStats) => {
+            data.userStats = userStats.data;
+            resolve();
           })
           .catch(reject);
       });
@@ -110,10 +123,12 @@ module.exports = function(app) {
 
     return {
       create: create,
+      getByDocOrUserId: getByDocOrUserId,
       updateByDocOrUserId: updateByDocOrUserId,
       updateManyByDocOrUserId: updateManyByDocOrUserId,
       updateHandicap: updateHandicap,
       updateWinRatio: updateWinRatio,
-    }
+      data: data,
+    };
   }]);
-}
+};

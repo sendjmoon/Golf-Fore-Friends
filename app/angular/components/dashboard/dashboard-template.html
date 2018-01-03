@@ -11,7 +11,7 @@
         <div class="box-content">
           <div class="score-box">
             <p>Handicap</p>
-            <h3><span class="color-green">+</span>{{dc.userStats.handicap}}</h3>
+            <h3><span class="color-green">+</span>{{data.userStats.handicap}}</h3>
           </div>
         </div>
       </div>
@@ -19,15 +19,23 @@
         <div class="box-content gff-row">
           <div class="score-box">
             <p>Wins</p>
-            <h3>{{dc.userStats.wins}}</h3>
+            <h3>{{data.userStats.wins}}</h3>
           </div>
           <div class="score-box">
             <p>Losses</p>
-            <h3>{{dc.userStats.losses}}</h3>
+            <h3>{{data.userStats.losses}}</h3>
           </div>
           <div class="score-box">
             <p>Ties</p>
-            <h3>{{dc.userStats.ties}}</h3>
+            <h3>{{data.userStats.ties}}</h3>
+          </div>
+          <div class="score-box">
+            <p>Solo</p>
+            <h3>{{data.userStats.solo}}</h3>
+          </div>
+          <div class="score-box">
+            <p>Games Played</p>
+            <h3>{{dc.gamesPlayed}}</h3>
           </div>
         </div>
         <div class="box-content">
@@ -36,10 +44,6 @@
       </div>
       <div class="gff-box stats bg-white col-xs-12">
         <div class="box-content">
-          <div class="score-box">
-            <p>Games Played</p>
-            <h3>{{dc.gamesPlayed}}</h3>
-          </div>
           <div>
             <game-chart data-chart-name="'game'"></game-chart>
           </div>
