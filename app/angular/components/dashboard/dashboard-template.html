@@ -58,28 +58,7 @@
         <h4>LEADERBOARD</h4>
       </div>
       <ul class="leaderboard-list col-xs-12">
-        <li ng-class-odd="'odd'" ng-class-even="'even'" ng-repeat="friend in friendsData.friends track by $index|limitTo:3">
-          <div class="box small">
-            <p>{{$index + 1}}</p>
-          </div>
-          <div class="box full">
-            <p>{{friend.fullName}}</p>
-          </div>
-          <div class="box small">
-            <p><span class="color-green">+</span>{{friend.stats.handicap}}</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="gff-container col-md-5 col-xs-6 pull-right">
-    <div class="gff-content bg-dark col-xs-12">
-      <div class="title">
-        <h4>LEADERBOARD</h4>
-      </div>
-      <ul class="leaderboard-list col-xs-12">
-        <li ng-repeat="friend in dc.leaderboardArray track by $index|limitTo:3">
+        <li ng-class-odd="'odd'" ng-class-even="'even'" ng-repeat="friend in leaderboard track by $index|limitTo:3">
           <div class="box small">
             <p>{{$index + 1}}</p>
           </div>

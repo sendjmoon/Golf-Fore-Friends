@@ -52,11 +52,6 @@ module.exports = function() {
             path: 'friendId',
             select: '_id fullName email',
           }],
-          options: {
-            sort: {
-              handicapActual: -1,
-            },
-          }
         })
         .exec()
           .then((user) => {
