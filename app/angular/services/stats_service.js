@@ -76,7 +76,7 @@ module.exports = function(app) {
           .then((aggregatedData) => {
             let handicapActual = aggregatedData[0].handicapActual;
             let updateData = {
-              handicap: Math.floor(handicapActual),
+              handicap: Math.ceil(handicapActual),
               handicapActual: handicapActual,
             };
             updateByDocOrUserId(docOrUserId, updateData, true)
