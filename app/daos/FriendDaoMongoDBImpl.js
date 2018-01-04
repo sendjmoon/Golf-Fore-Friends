@@ -45,10 +45,18 @@ module.exports = function() {
       })
         .populate({
           path: 'friendIds',
-          populate: {
+          populate: [{
+            path: 'stats',
+            select: '-__v -_id -userId',
+          },{
             path: 'friendId',
             select: '_id fullName email',
-          },
+          }],
+          options: {
+            sort: {
+              handicapActual: -1,
+            },
+          }
         })
         .exec()
           .then((user) => {

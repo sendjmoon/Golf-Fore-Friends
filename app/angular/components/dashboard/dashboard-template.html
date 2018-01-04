@@ -58,7 +58,6 @@
         <h4>LEADERBOARD</h4>
       </div>
       <ul class="leaderboard-list col-xs-12">
-        <li>{{friendsData.friends}}</li>
         <li ng-class-odd="'odd'" ng-class-even="'even'" ng-repeat="friend in friendsData.friends track by $index|limitTo:3">
           <div class="box small">
             <p>{{$index + 1}}</p>

@@ -5,7 +5,7 @@ module.exports = function(app) {
 
     const ctrl = this;
     ctrl.user = userService.data.user;
-    ctrl.allFriends = friendService.data.allFriends;
+    ctrl.friendsData = friendService.data;
     ctrl.players = [];
     ctrl.editing = false;
 
@@ -25,14 +25,14 @@ module.exports = function(app) {
     };
 
     ctrl.addUser = function(user) {
-      let friendsArray = ctrl.allFriends.friends;
+      let friendsArray = ctrl.friendsData.friends;
       ctrl.players.push(user);
       friendsArray.splice(friendsArray.indexOf(user), 1);
     };
 
     ctrl.removeUser = function(user) {
       ctrl.players.splice(ctrl.players.indexOf(user), 1);
-      ctrl.allFriends.friends.push(user);
+      ctrl.friendsData.friends.push(user);
     };
 
     ctrl.init = function() {
