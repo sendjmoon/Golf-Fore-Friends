@@ -3,6 +3,7 @@
 module.exports = function(app) {
   app.factory('GameService', ['$rootScope', '$route', '$http', 'ResultService', 'UserService', 'StatsService', function($rs, $route, $http, resultService, userService, statsService) {
 
+    //TODO: remove property allGames from returned data obj
     const data = {
       allGames: {},
     };
@@ -100,7 +101,6 @@ module.exports = function(app) {
         .then((games) => {
           games = games.data;
           data.allGames.games = games;
-          console.log('got game data');
           resolve();
         })
         .catch(() => {

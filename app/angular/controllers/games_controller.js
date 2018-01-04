@@ -15,10 +15,7 @@ module.exports = function(app) {
     };
 
     ctrl.init = function() {
-      gameService.getAllById(ctrl.user.gameIds)
-        .catch((err) => {
-          console.log('Error getting games.');
-        });
+      gameService.getAllById(ctrl.user.gameIds);
     };
 
     ctrl.init();

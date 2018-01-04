@@ -5,13 +5,12 @@ module.exports = function(app) {
 
     const ctrl = this;
     ctrl.user = userService.data.user;
-    $scope.data = statsService.data;
+    $scope.stats = statsService.data;
+    $scope.friendsData = friendService.data;
 
     ctrl.init = function() {
-      statsService.getByDocOrUserId(ctrl.user._id)
-        .catch((err) => {
-          console.log('Error retrieving user\'s stats.');
-        });
+      statsService.getByDocOrUserId(ctrl.user._id);
+      friendService.getAllFriends(ctrl.user.email);
     };
 
     ctrl.init();

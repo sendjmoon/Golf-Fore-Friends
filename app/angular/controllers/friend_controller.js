@@ -7,13 +7,13 @@ module.exports = function(app) {
 
     $scope.FriendService = FriendService;
     $scope.UserService = UserService;
-    $scope.friendsData = FriendService.data.allFriends;
+    $scope.friendsData = FriendService.data;
     $scope.usersData = UserService.data.allUsers;
     $scope.searchResults = SearchService.searchResults;
     ctrl.user = UserService.data.user;
 
-    ctrl.addFriend = function(friendId) {
-      FriendService.addFriend(friendId)
+    ctrl.addFriend = function(userId, statsId) {
+      FriendService.addFriend(userId, statsId)
         .then(ctrl.init());
     };
 

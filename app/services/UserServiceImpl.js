@@ -79,13 +79,7 @@ module.exports = function(userDao) {
 
 
   const getAllUsers = function(emailOrUsername) {
-    return new Promise((resolve, reject) => {
-      _userDao.getAllUsers(emailOrUsername)
-        .then((users) => {
-          resolve(users);
-        })
-        .catch(reject);
-    });
+    return _userDao.getAllUsers(emailOrUsername);
   };
 
 
