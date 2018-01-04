@@ -14,7 +14,6 @@ module.exports = function(app) {
       gameService.newGame(gameData)
         .then(ctrl.updatePlayers(gameData.players))
         .catch((err) => {
-          console.log('Error creating game.');
           console.log(err);
         });
     };
