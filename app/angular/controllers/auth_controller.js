@@ -10,7 +10,7 @@ module.exports = function(app) {
         .catch(() => {
           console.log('Error signing up.');
         });
-    }
+    };
 
     this.signin = authService.signin;
     this.signout = authService.signout;

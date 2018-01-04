@@ -80,8 +80,7 @@ module.exports = function(app) {
               handicapActual: handicapActual,
             };
             updateByDocOrUserId(docOrUserId, updateData, true)
-              .then(resolve)
-              .catch(reject);
+              .then(resolve);
           })
           .catch(reject);
       });
@@ -113,10 +112,8 @@ module.exports = function(app) {
                 updateData.winRatio = (totalWins / (totalWins + totalLosses));
                 console.log(updateData.winRatio);
                 updateByDocOrUserId(docOrUserId, updateData)
-                  .then(resolve)
-                  .catch(reject);
+                  .then(resolve);
               })
-              .catch(reject);
           })
           .catch(reject);
       });

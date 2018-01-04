@@ -5,14 +5,10 @@ module.exports = function(app) {
   app.controller('GamesController', ['$route', '$scope', 'GameService', 'UserService', function($route, $scope, gameService, userService) {
 
     const ctrl = this;
+    ctrl.user = userService.data.user;
     $scope.gameService = gameService;
     $scope.gamesData = gameService.data.allGames;
-    ctrl.user = userService.data.user;
     ctrl.creating = false;
-
-    ctrl.reloadPage = function() {
-      $route.reload();
-    };
 
     ctrl.init = function() {
       gameService.getAllById(ctrl.user.gameIds);

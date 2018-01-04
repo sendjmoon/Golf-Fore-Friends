@@ -12,6 +12,7 @@ module.exports = function(app) {
     ctrl.createGame = function(gameData) {
       gameData.players = ctrl.players;
       gameService.newGame(gameData)
+        .then($route.reload)
         .catch((err) => {
           console.log(err);
         });

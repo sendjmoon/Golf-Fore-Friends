@@ -26,7 +26,7 @@ module.exports = function(app) {
       };
       FriendService.getAllFriends(ctrl.user.email)
         .then(UserService.getAllUsers(ctrl.user.email))
-          .then(SearchService.searchListener(searchOptions));
+        .then(SearchService.searchListener(searchOptions));
     };
 
     ctrl.init();

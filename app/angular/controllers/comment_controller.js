@@ -7,14 +7,15 @@ module.exports = function(app) {
     ctrl.user = userService.data.user;
 
     ctrl.create = function(gameId, content) {
+      let updateOptions = {
+        $addToSet: { comments: null },
+      };
       commentService.create(gameId, ctrl.user._id, ctrl.user.fullName, content)
         .then((newComment) => {
-          let updateOptions = {
-            $addToSet: { comments: newComment._id },
-          };
+          updateOptions.$addToSet.comments = newComment._id;
           userService.updateByEmailOrUsername(ctrl.user.email, updateOptions)
             .then(gameService.updateById(gameId, updateOptions))
-              .then(gameService.getAllById(ctrl.user.gameIds));
+            .then(gameService.getAllById(ctrl.user.gameIds));
         })
         .catch((err) => {
           console.log('Error posting comment.');
@@ -38,8 +39,8 @@ module.exports = function(app) {
       };
       commentService.removeByPublicId(publicId)
         .then(userService.updateByEmailOrUsername(ctrl.user.email, updateOptions))
-          .then(gameService.updateById(gameId, updateOptions))
-            .then(gameService.getAllById(ctrl.user.gameIds));
+        .then(gameService.updateById(gameId, updateOptions))
+        .then(gameService.getAllById(ctrl.user.gameIds));
     };
   }]);
 };

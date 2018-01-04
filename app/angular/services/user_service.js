@@ -3,6 +3,7 @@
 module.exports = function(app) {
   app.factory('UserService', ['$rootScope', '$http', function($rs, $http) {
 
+    //TODO: allUsers adds an unnecessary layer to the returned data obj
     const data = {
       user: {},
       allUsers: {},

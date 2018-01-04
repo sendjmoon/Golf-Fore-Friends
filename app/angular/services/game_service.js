@@ -59,16 +59,12 @@ module.exports = function(app) {
           $addToSet: { gameIds: gameId },
         };
 
-        //TODO: refactor to mitigate callback hell.
         updateById(gameId, gameUpdateOptions)
           .then(userService.updateManyById(userIds, userUpdateOptions))
-            .then(statsService.updateManyByDocOrUserId(resultsArray))
-              .then(updatePlayers(userIds))
-                .then(() => {
-                  resolve();
-                  $route.reload();
-                })
-                .catch(reject);
+          .then(statsService.updateManyByDocOrUserId(resultsArray))
+          .then(updatePlayers(userIds))
+          .then(resolve)
+          .catch(reject);
       });
     };
 
@@ -98,15 +94,15 @@ module.exports = function(app) {
           gameIds: gameIds,
         };
         $http.post(`${$rs.baseUrl}/games/all`, gameIdData)
-        .then((games) => {
-          games = games.data;
-          data.allGames.games = games;
-          resolve();
-        })
-        .catch(() => {
-          alert('error getting games');
-          reject();
-        });
+          .then((games) => {
+            games = games.data;
+            data.allGames.games = games;
+            resolve();
+          })
+          .catch(() => {
+            alert('error getting games');
+            reject();
+          });
       });
     };
 
