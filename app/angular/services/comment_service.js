@@ -32,10 +32,10 @@ module.exports = function(app) {
       });
     };
 
-    const removeById = function(commentId) {
+    const removeByPublicId = function(publicId) {
       return new Promise((resolve, reject) => {
         const removeData = {
-          _id: commentId,
+          publicId: publicId,
         };
         $http.post(`${$rs.baseUrl}/games/comments/remove`, removeData)
           .then(resolve)
@@ -46,7 +46,7 @@ module.exports = function(app) {
     return {
       create: create,
       updateByPublicId: updateByPublicId,
-      removeById: removeById,
+      removeByPublicId: removeByPublicId,
     };
   }]);
 };

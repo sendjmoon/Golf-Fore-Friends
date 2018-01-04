@@ -39,27 +39,16 @@ module.exports = function(app) {
         });
     };
 
-    ctrl.remove = function(commentId, gameId) {
+    ctrl.remove = function(publicId, commentId, gameId) {
       let updateOptions = {
         $pull: { comments: commentId },
       };
 
-      commentService.removeById(commentId)
-        .catch((err) => {
-          console.log('Error removing comment.');
-        });
-
+      commentService.removeByPublicId(publicId);
+      userService.updateByEmailOrUsername(ctrl.user.email, updateOptions);
       gameService.updateById(gameId, updateOptions)
         .then(() => {
           gameService.getAllById(ctrl.user.gameIds);
-        })
-        .catch((err) => {
-          console.log('Error updating game.');
-        });
-
-      userService.updateByEmailOrUsername(ctrl.user.email, updateOptions)
-        .catch((err) => {
-          console.log('Error updating user.');
         });
     };
   }]);

@@ -9,19 +9,25 @@ module.exports = function() {
     return new Promise((resolve, reject) => {
       const friend = new Friend(friendData);
       friend.save()
-      .then((newFriend) => {
-        resolve(newFriend);
-      })
-      .catch(reject);
+        .then((newFriend) => {
+          resolve(newFriend);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject();
+        });
     });
   };
 
-  const addFriend = function(userId, friendId) {
+  const addFriend = function(userId, userToAddId) {
     return new Promise((resolve, reject) => {
-      User.update(
-        { _id: userId },
-        { $addToSet: { friendIds: friendId }}
-      )
+      User.update({
+        _id: userId,
+      },{
+        $addToSet: {
+          friendIds: userToAddId,
+        },
+      })
         .then((res) => {
           resolve(res);
         })
@@ -39,16 +45,19 @@ module.exports = function() {
       })
         .populate({
           path: 'friendIds',
-          populate: {
+          populate: [{
+            path: 'stats',
+            select: '-__v -_id -userId',
+          },{
             path: 'friendId',
             select: '_id fullName email',
-          },
+          }],
         })
         .exec()
-        .then((user) => {
-          resolve(user.friendIds);
-        })
-        .catch(reject);
+          .then((user) => {
+            resolve(user.friendIds);
+          })
+          .catch(reject);
       });
   };
 

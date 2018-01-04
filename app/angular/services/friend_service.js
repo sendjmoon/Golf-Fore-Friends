@@ -3,19 +3,35 @@
 module.exports = function(app) {
   app.factory('FriendService', ['$rootScope', '$http', function($rs, $http) {
 
-    let data = {
-      allFriends: {},
+    const data = {};
+
+    const addFriend = function(userId, statsId) {
+      return new Promise((resolve, reject) => {
+        let friendData = {
+          userId: userId,
+          statsId: statsId,
+        };
+        $http.post(`${$rs.baseUrl}/friends/add`, friendData)
+        .then(resolve)
+        .catch(reject);
+      });
     };
 
-    let getAllFriends = function(emailOrUsername) {
+    const getAllFriends = function(emailOrUsername) {
       return new Promise((resolve, reject) => {
         let userData = {
           emailOrUsername: emailOrUsername,
         };
         $http.post(`${$rs.baseUrl}/friends/all`, userData)
           .then((friends) => {
-            data.allFriends.friends = friends.data.map((friend) => {
-              return friend.friendId;
+            data.friends = friends.data.map((friend) => {
+              friend = {
+                _id: friend.friendId._id,
+                fullName: friend.friendId.fullName,
+                email: friend.friendId.email,
+                stats: friend.stats,
+              };
+              return friend;
             });
             resolve();
           })
@@ -26,26 +42,9 @@ module.exports = function(app) {
       });
     };
 
-    let addFriend = function(friendId) {
-      return new Promise((resolve, reject) => {
-        let friendData = {
-          _id: friendId,
-        };
-        $http.post(`${$rs.baseUrl}/friends/add`, friendData)
-          .then((res) => {
-            console.log(res.data);
-            resolve();
-          })
-          .catch((err) => {
-            console.log(err.data);
-            reject();
-          });
-      });
-    };
-
     return {
-      getAllFriends: getAllFriends,
       addFriend: addFriend,
+      getAllFriends: getAllFriends,
       data: data,
     }
   }]);

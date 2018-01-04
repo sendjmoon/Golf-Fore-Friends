@@ -27,13 +27,13 @@ module.exports = function(commentDao) {
     return _commentDao.updateByPublicId(publicId, updateOptions);
   };
 
-  const removeById = function(commentId) {
-    return _commentDao.removeById(commentId);
+  const removeByPublicId = function(publicId) {
+    return _commentDao.removeByPublicId(publicId);
   };
 
   return {
     create: create,
     updateByPublicId: updateByPublicId,
-    removeById: removeById,
+    removeByPublicId: removeByPublicId,
   };
 };

@@ -71,7 +71,7 @@ module.exports = function() {
           { username: { $ne: emailOrUsername }},
         ],
       })
-        .select('_id fullName email')
+        .select('_id fullName email stats')
         .exec()
           .then((users) => {
             resolve(users);

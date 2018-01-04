@@ -22,6 +22,11 @@ const FriendSchema = new Schema({
     type: Date,
     required: true,
   },
+  stats: {
+    type: Schema.Types.ObjectId,
+    ref: 'UserStats',
+    required: true,
+  },
   statsAgainst: {
     wins: {
       type: Number,

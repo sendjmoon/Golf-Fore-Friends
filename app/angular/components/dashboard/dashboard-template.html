@@ -11,7 +11,7 @@
         <div class="box-content">
           <div class="score-box">
             <p>Handicap</p>
-            <h3><span class="color-green">+</span>{{dc.userStats.handicap}}</h3>
+            <h3><span class="color-green">+</span>{{stats.userStats.handicap}}</h3>
           </div>
         </div>
       </div>
@@ -19,16 +19,24 @@
         <div class="box-content gff-row">
           <div class="score-box">
             <p>Wins</p>
-            <h3>{{dc.userStats.wins}}</h3>
+            <h3>{{stats.userStats.wins}}</h3>
           </div>
           <div class="score-box">
             <p>Losses</p>
-            <h3>{{dc.userStats.losses}}</h3>
+            <h3>{{stats.userStats.losses}}</h3>
           </div>
           <div class="score-box">
             <p>Ties</p>
-            <h3>{{dc.userStats.ties}}</h3>
+            <h3>{{stats.userStats.ties}}</h3>
           </div>
+          <div class="score-box">
+            <p>Solo</p>
+            <h3>{{stats.userStats.solo}}</h3>
+          </div>
+          <!-- <div class="score-box">
+            <p>Games Played</p>
+            <h3>{{dc.gamesPlayed}}</h3>
+          </div> -->
         </div>
         <div class="box-content">
           <game-chart data-chart-name="'win'"></game-chart>
@@ -36,10 +44,6 @@
       </div>
       <div class="gff-box stats bg-white col-xs-12">
         <div class="box-content">
-          <div class="score-box">
-            <p>Games Played</p>
-            <h3>{{dc.gamesPlayed}}</h3>
-          </div>
           <div>
             <game-chart data-chart-name="'game'"></game-chart>
           </div>
@@ -54,28 +58,7 @@
         <h4>LEADERBOARD</h4>
       </div>
       <ul class="leaderboard-list col-xs-12">
-        <li ng-class-odd="'odd'" ng-class-even="'even'" ng-repeat="friend in dc.leaderboardArray track by $index|limitTo:3">
-          <div class="box small">
-            <p>{{$index + 1}}</p>
-          </div>
-          <div class="box full">
-            <p>{{friend.fullName}}</p>
-          </div>
-          <div class="box small">
-            <p><span class="color-green">+</span>{{friend.stats.handicap}}</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="gff-container col-md-5 col-xs-6 pull-right">
-    <div class="gff-content bg-dark col-xs-12">
-      <div class="title">
-        <h4>LEADERBOARD</h4>
-      </div>
-      <ul class="leaderboard-list col-xs-12">
-        <li ng-repeat="friend in dc.leaderboardArray track by $index|limitTo:3">
+        <li ng-class-odd="'odd'" ng-class-even="'even'" ng-repeat="friend in leaderboard track by $index|limitTo:3">
           <div class="box small">
             <p>{{$index + 1}}</p>
           </div>

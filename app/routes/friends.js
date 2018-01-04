@@ -17,7 +17,12 @@ router.post('/all', function(req, res, next) {
 });
 
 router.post('/add', function(req, res, next) {
-  friendService.addFriend(req.session.user._id, req.body._id)
+  friendService.addFriend(
+    req.session.user._id,
+    req.session.user.stats,
+    req.body.userId,
+    req.body.statsId
+  )
     .then(() => {
       res.status(200).json({
         message: 'success',

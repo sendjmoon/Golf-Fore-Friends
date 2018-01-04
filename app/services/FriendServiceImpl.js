@@ -6,11 +6,12 @@ const utils = require('../utils');
 module.exports = function(friendDao) {
   const _friendDao = friendDao;
 
-  const createDoc = function(userId, friendId) {
+  const createDoc = function(userId, newFriendId, newFriendStatsId) {
     return new Promise((resolve, reject) => {
       const friendData = {
         userId: userId,
-        friendId: friendId,
+        friendId: newFriendId,
+        stats: newFriendStatsId,
         createdAt: Date.now(),
         updatedAt: Date.now(),
       };
@@ -23,27 +24,22 @@ module.exports = function(friendDao) {
   };
 
   const getAllFriends = function(emailOrUsername) {
-    return new Promise((resolve, reject) => {
-      _friendDao.getAllFriends(emailOrUsername)
-        .then((friends) => {
-          resolve(friends);
-        })
-        .catch(reject);
-    });
+    return _friendDao.getAllFriends(emailOrUsername);
   };
 
-  const addFriend = function(userIdOne, userIdTwo) {
+  //TODO: refactor to avoid callback hell
+  const addFriend = function(userOneId, userOneStatsId, userTwoId, userTwoStatsId) {
     return new Promise((resolve, reject) => {
-      createDoc(userIdOne, userIdTwo)
+      createDoc(userOneId, userTwoId, userTwoStatsId)
         .then((friendDocTwo) => {
-          _friendDao.addFriend(userIdOne, friendDocTwo._id)
+          _friendDao.addFriend(userOneId, friendDocTwo._id)
             .then((res) => {
-              if (res.nModified === 0) reject;
-              else createDoc(userIdTwo, userIdOne)
+              if (res.nModified === 0) reject();
+              else createDoc(userTwoId, userOneId, userOneStatsId)
                 .then((friendDocOne) => {
-                  _friendDao.addFriend(userIdTwo, friendDocOne._id)
+                  _friendDao.addFriend(userTwoId, friendDocOne._id)
                     .then((res) => {
-                      res.nModified === 0 ? reject : resolve();
+                      res.nModified === 0 ? reject() : resolve();
                     });
                 });
             });

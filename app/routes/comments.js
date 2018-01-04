@@ -36,7 +36,7 @@ router.post('/update', function(req, res, next) {
 });
 
 router.post('/remove', function(req, res, next) {
-  commentService.removeById(req.body.commentId)
+  commentService.removeByPublicId(req.body.publicId)
     .then(() => {
       res.status(200).json({
         message: 'Removed comment.'
