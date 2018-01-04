@@ -6,6 +6,7 @@ module.exports = function(app) {
     const ctrl = this;
     $scope.stats = statsService.data;
     $scope.friendsData = friendService.data;
+    $scope.statsData = statsService.data;
     ctrl.user = userService.data.user;
     $scope.leaderboard = [];
 
@@ -13,10 +14,17 @@ module.exports = function(app) {
       statsService.getByDocOrUserId(ctrl.user._id);
       friendService.getAllFriends(ctrl.user.email)
         .then(() => {
-          $scope.leaderboard = $scope.friendsData.friends.sort((a, b) => {
-            return a.stats.handicapActual > b.stats.handicapActual;
-          });
-          $scope.$digest();
+          statsService.getByDocOrUserId(ctrl.user._id)
+            .then(() => {
+              //TODO: consider attaching user stats data onto user object in userService
+              ctrl.user.stats = $scope.statsData.userStats;
+              $scope.leaderboard = $scope.friendsData.friends;
+              $scope.leaderboard.push(ctrl.user);
+              $scope.leaderboard.sort((a, b) => {
+                return a.stats.handicapActual > b.stats.handicapActual;
+              });
+              $scope.$digest();
+            });
         });
     };
 
