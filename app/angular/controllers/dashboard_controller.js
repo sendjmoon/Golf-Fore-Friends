@@ -25,5 +25,9 @@ module.exports = function(app) {
     };
 
     ctrl.init();
+
+    ctrl.test = function() {
+      statsService.updateWinRatio(ctrl.user._id);
+    }
   }]);
 };
