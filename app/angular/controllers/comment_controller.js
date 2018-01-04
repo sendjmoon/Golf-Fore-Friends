@@ -12,16 +12,9 @@ module.exports = function(app) {
           let updateOptions = {
             $addToSet: { comments: newComment._id },
           };
-          gameService.updateById(gameId, updateOptions)
-            .then(gameService.getAllById(ctrl.user.gameIds))
-            .catch((err) => {
-              console.log('Error updating game.');
-            });
-
           userService.updateByEmailOrUsername(ctrl.user.email, updateOptions)
-            .catch((err) => {
-              console.log('Error updating user.');
-            });
+            .then(gameService.updateById(gameId, updateOptions))
+              .then(gameService.getAllById(ctrl.user.gameIds));
         })
         .catch((err) => {
           console.log('Error posting comment.');
@@ -43,13 +36,10 @@ module.exports = function(app) {
       let updateOptions = {
         $pull: { comments: commentId },
       };
-
-      commentService.removeByPublicId(publicId);
-      userService.updateByEmailOrUsername(ctrl.user.email, updateOptions);
-      gameService.updateById(gameId, updateOptions)
-        .then(() => {
-          gameService.getAllById(ctrl.user.gameIds);
-        });
+      commentService.removeByPublicId(publicId)
+        .then(userService.updateByEmailOrUsername(ctrl.user.email, updateOptions))
+          .then(gameService.updateById(gameId, updateOptions))
+            .then(gameService.getAllById(ctrl.user.gameIds));
     };
   }]);
 };
