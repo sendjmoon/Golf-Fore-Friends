@@ -12,12 +12,7 @@ module.exports = function(app) {
     ctrl.createGame = function(gameData) {
       gameData.players = ctrl.players;
       gameService.newGame(gameData)
-        .then(() => {
-          gameData.players.forEach((player) => {
-            statsService.updateHandicap(player._id);
-            statsService.updateWinRatio(player._id);
-          });
-        })
+        .then(ctrl.updatePlayers(gameData.players))
         .catch((err) => {
           console.log('Error creating game.');
           console.log(err);
@@ -26,13 +21,21 @@ module.exports = function(app) {
 
     ctrl.addUser = function(user) {
       let friendsArray = ctrl.friendsData.friends;
-      ctrl.players.push(user);
       friendsArray.splice(friendsArray.indexOf(user), 1);
+      ctrl.players.push(user);
     };
 
     ctrl.removeUser = function(user) {
       ctrl.players.splice(ctrl.players.indexOf(user), 1);
       ctrl.friendsData.friends.push(user);
+    };
+
+    //TODO: move to game service?
+    ctrl.updatePlayers = function(playersArray) {
+      playersArray.forEach((player) => {
+        statsService.updateHandicap(player._id)
+          .then(statsService.updateWinRatio(player._id));
+      });
     };
 
     ctrl.init = function() {
