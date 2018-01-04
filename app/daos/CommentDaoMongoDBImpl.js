@@ -39,9 +39,10 @@ module.exports = function() {
     });
   };
 
-  const removeById = function(commentId) {
+  const removeByPublicId = function(publicId) {
+    console.log(publicId);
     return new Promise((resolve, reject) => {
-      Comment.findOneAndRemove({ _id: commentId })
+      Comment.findOneAndRemove({ publicId: publicId })
         .then(resolve)
         .catch(reject);
     });
@@ -50,6 +51,6 @@ module.exports = function() {
   return {
     create: create,
     updateByPublicId: updateByPublicId,
-    removeById: removeById,
+    removeByPublicId: removeByPublicId,
   };
 };
