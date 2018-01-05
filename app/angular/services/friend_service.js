@@ -12,8 +12,8 @@ module.exports = function(app) {
           statsId: statsId,
         };
         $http.post(`${$rs.baseUrl}/friends/add`, friendData)
-        .then(resolve)
-        .catch(reject);
+          .then(resolve)
+          .catch(reject);
       });
     };
 
@@ -24,6 +24,7 @@ module.exports = function(app) {
         };
         $http.post(`${$rs.baseUrl}/friends/all`, userData)
           .then((friends) => {
+            //TODO: componentize into own function
             data.friends = friends.data.map((friend) => {
               friend = {
                 _id: friend.friendId._id,

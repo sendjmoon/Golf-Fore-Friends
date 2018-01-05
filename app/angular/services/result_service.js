@@ -5,17 +5,17 @@ module.exports = function(app) {
 
     const create = function(gameId, playersArray) {
       return new Promise((resolve, reject) => {
+        let resultsData = {
+          gameId: gameId,
+          resultsArray: [],
+        };
         calcResults(playersArray)
           .then((resultsArray) => {
-            const resultsData = {
-              gameId: gameId,
-              resultsArray: resultsArray,
-            };
+            resultsData.resultsArray = resultsArray;
             $http.post(`${$rs.baseUrl}/games/result/create`, resultsData)
               .then((results) => {
                 resolve(results.data);
               })
-              .catch(reject);
           })
           .catch(reject);
       });

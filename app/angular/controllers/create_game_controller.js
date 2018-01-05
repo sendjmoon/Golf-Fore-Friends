@@ -12,22 +12,16 @@ module.exports = function(app) {
     ctrl.createGame = function(gameData) {
       gameData.players = ctrl.players;
       gameService.newGame(gameData)
-        .then(() => {
-          gameData.players.forEach((player) => {
-            statsService.updateHandicap(player._id);
-            statsService.updateWinRatio(player._id);
-          });
-        })
+        .then($route.reload)
         .catch((err) => {
-          console.log('Error creating game.');
           console.log(err);
         });
     };
 
     ctrl.addUser = function(user) {
       let friendsArray = ctrl.friendsData.friends;
-      ctrl.players.push(user);
       friendsArray.splice(friendsArray.indexOf(user), 1);
+      ctrl.players.push(user);
     };
 
     ctrl.removeUser = function(user) {

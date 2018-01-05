@@ -7,13 +7,10 @@ module.exports = function(app) {
 
     ctrl.signup = function(userData) {
       authService.signup(userData)
-        .then(() => {
-          console.log('Signup successful.');
-        })
         .catch(() => {
           console.log('Error signing up.');
         });
-    }
+    };
 
     this.signin = authService.signin;
     this.signout = authService.signout;

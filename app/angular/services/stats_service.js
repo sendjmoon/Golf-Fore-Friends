@@ -22,7 +22,7 @@ module.exports = function(app) {
       return new Promise((resolve, reject) => {
         $http.get(`${$rs.baseUrl}/users/stats/${docOrUserId}`)
           .then((userStats) => {
-            data.userStats = userStats.data;
+            userService.data.user.stats = userStats.data;
             resolve();
           })
           .catch(reject);
@@ -80,8 +80,7 @@ module.exports = function(app) {
               handicapActual: handicapActual,
             };
             updateByDocOrUserId(docOrUserId, updateData, true)
-              .then(resolve)
-              .catch(reject);
+              .then(resolve);
           })
           .catch(reject);
       });
@@ -110,12 +109,11 @@ module.exports = function(app) {
             resultService.aggregate(matchOptions, groupOptions)
               .then((sumLosses) => {
                 sumLosses.length < 1 ? totalLosses = 0 : totalLosses = sumLosses[0].losses;
-                updateData.winRatio = (totalWins / (totalWins + totalLosses)),
+                updateData.winRatio = (totalWins / (totalWins + totalLosses));
+                console.log(updateData.winRatio);
                 updateByDocOrUserId(docOrUserId, updateData)
-                  .then(resolve)
-                  .catch(reject);
+                  .then(resolve);
               })
-              .catch(reject);
           })
           .catch(reject);
       });

@@ -13,8 +13,7 @@ module.exports = function(app) {
         createGameAndResults(gameData)
           .then((newGameData) => {
             updateGameAndUsers(newGameData.gameId, newGameData.results)
-              .then(resolve)
-              .catch(reject);
+              .then(resolve);
           })
           .catch(reject);
       });
@@ -31,8 +30,7 @@ module.exports = function(app) {
                   results: results,
                 };
                 resolve(newGameData);
-              })
-              .catch(reject);
+              });
           })
           .catch(reject);
       });
@@ -61,21 +59,19 @@ module.exports = function(app) {
           $addToSet: { gameIds: gameId },
         };
 
-        //TODO: refactor to mitigate callback hell.
         updateById(gameId, gameUpdateOptions)
-          .then(() => {
-            userService.updateManyById(userIds, userUpdateOptions)
-              .then(() => {
-                statsService.updateManyByDocOrUserId(resultsArray)
-                  .then(() => {
-                    resolve();
-                    $route.reload();
-                  })
-                  .catch(reject);
-              })
-              .catch(reject);
-          })
+          .then(userService.updateManyById(userIds, userUpdateOptions))
+          .then(statsService.updateManyByDocOrUserId(resultsArray))
+          .then(updatePlayers(userIds))
+          .then(resolve)
           .catch(reject);
+      });
+    };
+
+    const updatePlayers = function(userIds) {
+      userIds.forEach((userId) => {
+        statsService.updateHandicap(userId)
+          .then(statsService.updateWinRatio(userId));
       });
     };
 
@@ -98,15 +94,15 @@ module.exports = function(app) {
           gameIds: gameIds,
         };
         $http.post(`${$rs.baseUrl}/games/all`, gameIdData)
-        .then((games) => {
-          games = games.data;
-          data.allGames.games = games;
-          resolve();
-        })
-        .catch(() => {
-          alert('error getting games');
-          reject();
-        });
+          .then((games) => {
+            games = games.data;
+            data.allGames.games = games;
+            resolve();
+          })
+          .catch(() => {
+            alert('error getting games');
+            reject();
+          });
       });
     };
 

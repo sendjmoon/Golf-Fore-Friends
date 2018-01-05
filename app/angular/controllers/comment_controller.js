@@ -7,21 +7,15 @@ module.exports = function(app) {
     ctrl.user = userService.data.user;
 
     ctrl.create = function(gameId, content) {
+      let updateOptions = {
+        $addToSet: { comments: null },
+      };
       commentService.create(gameId, ctrl.user._id, ctrl.user.fullName, content)
         .then((newComment) => {
-          let updateOptions = {
-            $addToSet: { comments: newComment._id },
-          };
-          gameService.updateById(gameId, updateOptions)
-            .then(gameService.getAllById(ctrl.user.gameIds))
-            .catch((err) => {
-              console.log('Error updating game.');
-            });
-
+          updateOptions.$addToSet.comments = newComment._id;
           userService.updateByEmailOrUsername(ctrl.user.email, updateOptions)
-            .catch((err) => {
-              console.log('Error updating user.');
-            });
+            .then(gameService.updateById(gameId, updateOptions))
+            .then(gameService.getAllById(ctrl.user.gameIds));
         })
         .catch((err) => {
           console.log('Error posting comment.');
@@ -43,13 +37,10 @@ module.exports = function(app) {
       let updateOptions = {
         $pull: { comments: commentId },
       };
-
-      commentService.removeByPublicId(publicId);
-      userService.updateByEmailOrUsername(ctrl.user.email, updateOptions);
-      gameService.updateById(gameId, updateOptions)
-        .then(() => {
-          gameService.getAllById(ctrl.user.gameIds);
-        });
+      commentService.removeByPublicId(publicId)
+        .then(userService.updateByEmailOrUsername(ctrl.user.email, updateOptions))
+        .then(gameService.updateById(gameId, updateOptions))
+        .then(gameService.getAllById(ctrl.user.gameIds));
     };
   }]);
 };
