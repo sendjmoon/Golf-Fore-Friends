@@ -1,9 +1,40 @@
 <div class="page-container">
-  <!-- <div class="banner-container col-md-5 col-xs-6 pull-left">
-    <div class="banner-image"></div>
-  </div> -->
 
-  <div class="gff-container col-md-7 col-xs-6 pull-right">
+  <div class="gff-container col-xs-9">
+
+  </div>
+
+  <div class="gff-container col-xs-3">
+    <div class="user-container">
+      <div class="user-pic">
+        <i class="fa fa-user"></i>
+      </div>
+      <ul class="user-info">
+        <li class="name">
+          <h4>{{dc.user.fullName}}</h4>
+        </li>
+        <li>
+          <p>Handicap</p>
+          <h5><span class="color-green">+</span>{{dc.user.stats.handicap}}</h5>
+        </li>
+        <li>
+          <p>Wins</p>
+          <h5>{{dc.user.stats.wins}}</h5>
+        </li>
+        <li>
+          <p>Losses</p>
+          <h5>{{dc.user.stats.losses}}</h5>
+        </li>
+        <li>
+          <p>Win Ratio</p>
+          <h5>{{dc.user.stats.winRatio}}</h5>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- <div class="gff-container col-md-7 col-xs-6 pull-right">
     <div class="gff-content col-xs-12">
 
       <div class="gff-box stats bg-white col-xs-12">
@@ -32,10 +63,6 @@
             <p>Solo</p>
             <h3>{{dc.user.stats.solo}}</h3>
           </div>
-          <!-- <div class="score-box">
-            <p>Games Played</p>
-            <h3>{{dc.gamesPlayed}}</h3>
-          </div> -->
         </div>
         <div class="box-content">
           <game-chart data-chart-name="'win'"></game-chart>
@@ -70,6 +97,6 @@
         </li>
       </ul>
     </div>
-  </div>
+  </div> -->
 
 </div>

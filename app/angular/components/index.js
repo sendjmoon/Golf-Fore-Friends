@@ -1,9 +1,10 @@
 'use strict';
 
 module.exports = function(app) {
-  require('./dashboard')(app);
   require('./auth')(app);
+  require('./banner')(app);
+  require('./dashboard')(app);
   require('./friends')(app);
-  require('./nav')(app);
   require('./games')(app);
+  require('./nav')(app);
 };
