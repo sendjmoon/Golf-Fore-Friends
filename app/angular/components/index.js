@@ -6,5 +6,6 @@ module.exports = function(app) {
   require('./dashboard')(app);
   require('./friends')(app);
   require('./games')(app);
+  require('./logo')(app);
   require('./nav')(app);
 };
