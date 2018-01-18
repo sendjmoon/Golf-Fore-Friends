@@ -1,35 +1,46 @@
 <div class="page-container">
 
-  <div class="gff-container col-xs-9">
-
-  </div>
-
-  <div class="gff-container col-xs-3">
-    <div class="user-container">
-      <div class="user-pic">
-        <i class="fa fa-user"></i>
-      </div>
-      <ul class="user-info">
-        <li class="name">
-          <h4>{{dc.user.fullName}}</h4>
-        </li>
-        <li>
-          <p>Handicap</p>
-          <h5><span class="color-green">+</span>{{dc.user.stats.handicap}}</h5>
-        </li>
-        <li>
-          <p>Wins</p>
-          <h5>{{dc.user.stats.wins}}</h5>
-        </li>
-        <li>
-          <p>Losses</p>
-          <h5>{{dc.user.stats.losses}}</h5>
-        </li>
-        <li>
-          <p>Win Ratio</p>
-          <h5>{{dc.user.stats.winRatio}}</h5>
+  <div class="gff-container col-xs-12 col-sm-8">
+    <div class="gff-content">
+      <h1 class="page-title">Dashboard</h1>
+      <ul>
+        <li ng-repeat="user in leaderboard | limitTo:3">
+          {{$index + 1}}
+          {{user.fullName}}
+          {{user.stats.handicap}}
         </li>
       </ul>
+    </div>
+  </div>
+
+  <div class="gff-container col-xs-12 col-sm-4">
+    <div class="gff-content gff-center">
+      <div class="user-container">
+        <div class="user-pic">
+          <i class="fa fa-user"></i>
+        </div>
+        <ul class="user-info">
+          <li class="name">
+            <h4>{{dc.user.fullName}}</h4>
+          </li>
+          <li>
+            <p>Handicap</p>
+            <h5><span class="color-green">+</span>{{dc.user.stats.handicap}}</h5>
+          </li>
+          <li>
+            <p>Wins</p>
+            <h5>{{dc.user.stats.wins}}</h5>
+          </li>
+          <li>
+            <p>Losses</p>
+            <h5>{{dc.user.stats.losses}}</h5>
+          </li>
+          <li>
+            <p>Win Ratio</p>
+            <h5>{{dc.user.stats.winRatio}}</h5>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 

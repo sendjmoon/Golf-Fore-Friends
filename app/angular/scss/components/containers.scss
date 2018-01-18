@@ -10,18 +10,29 @@
 }
 
 .gff-container {
-  display: flex;
-  padding: 0;
+
+  .page-title {
+    font-size: 36px;
+    font-weight: 700;
+  }
+}
+
+.gff-content {
+  display: table;
+  width: 100%;
+  padding: 30px;
   background: #fff;
 
-  .gff-content {
+  &.gff-center {
     display: flex;
+    justify-content: center;
   }
 }
 
 .user-container {
   display: inline-block;
-  width: 200px;
+  min-width: 175px;
+  max-width: 200px;
   margin: 0 auto;
   margin-top: -110px;
 
@@ -29,8 +40,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
-    height: 200px;
+    max-width: 175px;
+    max-height: 175px;
+    margin: 0 auto;
     border: 5px solid #f1f1f1;
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.8);
@@ -56,12 +68,12 @@
 
       p {
         margin: 0;
-        font-size: 16px;
-        font-weight: 300;
+        font-size: 14px;
+        font-weight: 400;
       }
 
       h4, h5 {
-        font-weight: 400;
+        font-weight: 300;
       }
     }
 
