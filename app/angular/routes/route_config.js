@@ -28,6 +28,8 @@ module.exports = function($routeProvider, $locationProvider) {
     })
     .when('/', {
       template: require('../html/landing.html'),
+      controller: 'LandingController',
+      controllerAs: 'lc',
     })
     .otherwise({
       redirectTo: '/',

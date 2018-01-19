@@ -9,74 +9,51 @@ auth {
   }
 
   .form-container {
-    padding: 30px 45px;
-    border-radius: 2px;
-    background-color: rgba(0, 0, 0, 0.3);
-    color: $font-color-light;
+    color: $font-color-dark;
     text-align: center;
 
     .input-container {
+      display: table;
       width: 100%;
       min-width: 230px;
-      margin-bottom: 1px;
-      display: table;
+      margin-bottom: 10px;
 
-      .icon-box {
-        width: 50px;
-        display: table-cell;
-        background: $green-secondary;
+      .input-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: #c1c1c1;
 
         i {
-          color: $font-color-light;
-          font-size: 18px;
+          margin-right: 5px;
+          font-size: 16px;
+        }
+
+        p {
+          font-size: 12px;
+          margin: 0;
         }
       }
 
       input {
         width: 100%;
-        padding: 15px;
+        height: 30px;
+        padding: 5px;
+        padding-top: 8px;
+        // padding-bottom: 8px;
         border: none;
+        border-bottom: 1px solid #d1d1d1;
         border-radius: 0;
-
-        background-color: rgba(0, 0, 0, 0.7);
-        color: $font-color-light;
+        color: $font-color-dark;
         outline: none;
 
         &:hover {
-          background-color: rgba(0, 0, 0, 0.8);
+          border-color: #a1a1a1;
         }
 
         &:focus {
-          background-color: rgba(0, 0, 0, 0.9);
-          color: $font-color-light;
-          border-right: 3px solid $orange-opaque;
-        }
-      }
-
-      &.first {
-        // border-top-left-radius: 2px;
-        // border-top-right-radius: 2px;
-
-        .icon-box {
-          // border-top-left-radius: 2px;
-        }
-
-        input {
-          // border-top-right-radius: 2px;
-        }
-      }
-
-      &.last {
-        border-bottom: 1px solid rgba(0, 0, 0, 0);
-        // border-bottom-left-radius: 2px;
-        // border-bottom-right-radius: 2px;
-
-        .icon-box {
-          // border-bottom-left-radius: 2px;
-        }
-
-        input {
-          // border-bottom-right-radius: 2px;
+          color: $font-color-dark;
+          border-color: $orange-primary;
         }
       }
     }
