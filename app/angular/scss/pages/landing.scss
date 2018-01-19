@@ -1,14 +1,18 @@
 .landing-container {
   position: relative;
   height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
 
-  .splash-image {
-    display: inline-block;
-    width: 300px;
-    background-size: cover;
-    background-position: center;
+  //TODO: use nav-bar component
+  nav {
+    background: $font-color-dark;
+
+    .golfer-head, .golfer-body {
+      fill: #fff;
+    }
+
+    .title {
+      color: #fff;
+    }
   }
 
   .landing-content {
@@ -17,29 +21,26 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    height: calc(100% - 60px);
-    background: #f1f1f1;
+    min-height: calc(100vh - 60px);
+    background: #fff;
 
-    .title-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+    .image-container {
+      display: inline-block;
+      width: 300px;
+      background-size: cover;
+      background-position: center;
     }
 
-    .text-container {
+    .title-container {
       display: inherit;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      width: 320px;
+      align-items: flex-start;
+      // width: 320px;
       margin-left: 30px;
 
       .title {
-        margin: 5px;
-        // margin-bottom: 3px;
         display: inline-block;
-
         color: $font-color-dark;
         text-align: center;
         font-size: 32px;
@@ -58,21 +59,19 @@
 }
 
 .buttons-container {
-  margin-top: 12px;
+  margin-top: 30px;
+
+  .gff-btn {
+
+    &:first-of-type {
+      margin-right: 15px;
+    }
+  }
 
   .divider {
     margin: 0 25px;
     font-size: 16px;
     font-weight: 200;
     color: $font-color-dark;
-  }
-
-  .gff-link {
-    font-size: 14px;
-  }
-
-  .gff-btn {
-    margin-right: 10px;
-    margin-left: 10px;
   }
 }
