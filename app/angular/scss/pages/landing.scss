@@ -1,10 +1,10 @@
-.title-container {
+.landing-container {
   position: relative;
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
 
-  .landing-image {
+  .splash-image {
     display: inline-block;
     width: 250px;
     height: 250px;
@@ -13,76 +13,88 @@
     background-position: center;
   }
 
-  .title-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  // .title-background {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //
+  //   background-image: url('http://localhost:3000/imgs/golf-ball-sunset-bw-40.jpg');
+  //   background-attachment: fixed;
+  //   background-size: cover;
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  // }
 
-    background-image: url('http://localhost:3000/imgs/golf-ball-sunset-bw-40.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .title-content {
+  .landing-content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
     height: 100%;
 
-    .landing-content {
+    .title-container {
       display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    // .gff-logo-container {
+    //   margin-bottom: 15px;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    //
+    //   logo {
+    //     display: inherit;
+    //     align-items: center;
+    //   }
+    //
+    //   .golfer-head, .golfer-body {
+    //     fill: $font-color-dark;
+    //   }
+    // }
+
+    .text-container {
+      display: inherit;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-    }
+      margin-left: 30px;
 
-    .gff-logo-container {
-      margin-bottom: 15px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      .title {
+        margin: 5px;
+        margin-bottom: 3px;
+        display: inline-block;
 
-      .golfer-head, .golfer-body {
-        fill: $font-color-dark;
+        color: $font-color-dark;
+        text-align: center;
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 32px;
+      }
+
+      .description {
+        margin: 0;
+        color: $font-color-dark;
+        font-size: 16px;
+        font-weight: 300;
       }
     }
 
-    .gff-logo-full {
-      margin-right: 10px;
-      border: 2px solid #4b4e54;
-      border-radius: 5px;
-      // background: $green-secondary;
-    }
-
-    .title {
-      margin: 5px;
-      margin-bottom: 3px;
-      display: inline-block;
-
-      color: $font-color-dark;
-      text-align: center;
-      font-size: 32px;
-      font-weight: 700;
-      line-height: 32px;
-    }
-
-    .description {
-      margin: 0;
-      margin-bottom: 40px;
-      color: $font-color-dark;
-      font-size: 16px;
-      font-weight: 300;
-    }
+    // .gff-logo-full {
+    //   margin-right: 10px;
+    //   border: 2px solid #4b4e54;
+    //   border-radius: 5px;
+    // }
   }
 }
 
 .buttons-container {
+  margin-top: 30px;
 
   .gff-btn {
     margin-right: 10px;

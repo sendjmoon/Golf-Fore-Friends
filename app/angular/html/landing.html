@@ -1,17 +1,18 @@
-<div class="title-container" id="title-container">
-  <div class="title-content">
-    <div class="landing-image"></div>
-    <div class="landing-content">
-      <div class="gff-logo-container">
-        <logo></logo>
+<div class="landing-container">
+  <div class="landing-content">
+
+    <div class="title-container">
+      <div class="splash-image"></div>
+      <div class="text-container">
         <p class="title">GOLF FOR<span class="color-green">e</span> FRIENDS</p>
+        <p class="description" ng-hide="auth">TRACK, CHAT, AND ENJOY GOLF.</p>
+        <div class="buttons-container" ng-hide="auth">
+          <button class="gff-btn ghost" ng-click="auth=true; clicked='signup'">SIGNUP</button>
+          <button class="gff-btn ghost" ng-click="auth=true; clicked='signin'">SIGNIN</button>
+        </div>
+        <auth ng-show="auth" data-clicked="clicked"></auth>
       </div>
-      <p class="description" ng-hide="auth">TRACK, CHAT, AND ENJOY GOLF.</p>
-    </div><!--/landing-content-->
-    <auth ng-show="auth" data-clicked="clicked"></auth>
-  </div>
-  <div class="buttons-container" ng-hide="auth">
-    <button class="gff-btn ghost" ng-click="auth=true; clicked='signup'">SIGNUP</button>
-    <button class="gff-btn ghost" ng-click="auth=true; clicked='signin'">SIGNIN</button>
-  </div>
+    </div>
+  </div><!--/splash-content-->
+
 </div>
