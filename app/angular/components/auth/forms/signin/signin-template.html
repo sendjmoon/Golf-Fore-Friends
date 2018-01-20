@@ -1,19 +1,18 @@
 <form name="signin" data-ng-submit="ac.signin(ac.user)">
 
-  <div class="input-container first">
+  <div class="input-container">
     <div class="input-title">
-      <i class="fa fa-user" aria-hidden="true"></i><p>Email or Username</p>
+      <i class="far fa-user fa-sm" aria-hidden="true"></i><p>Email or Username</p>
     </div>
     <input class="gff-input shadow" type="text" required data-ng-model="ac.user.emailOrUsername"></input>
   </div>
 
-  <div class="input-container last">
+  <div class="input-container">
     <div class="input-title">
-      <i class="fa fa-lock" aria-hidden="true"></i><p>Password</p>
+      <i class="fas fa-unlock-alt fa-sm" aria-hidden="true"></i><p>Password</p>
     </div>
     <input class="gff-input shadow" type="password" required data-ng-model="ac.user.password"></input>
   </div>
 
   <button class="gff-btn shadow" type="submit" name="signup-btn">SIGNIN</button>
-
 </form>
