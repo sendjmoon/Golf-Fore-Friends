@@ -1,12 +1,11 @@
 nav-bar {
   width: 100%;
   height: 60px;
-  padding: 0 15px;
   display: flex;
   justify-content: center;
-  position: absolute;
-  z-index: 20;
-  transition: all 0.2s ease;
+  // z-index: 20;
+  background: $font-color-dark;
+  // transition: all 0.2s ease;
 }
 
 .gff-nav {
@@ -17,10 +16,6 @@ nav-bar {
   width: 100%;
   max-width: 1200px;
   height: 60px;
-  margin: 0 auto;
-  padding: 0 15px;
-  transition: all 0.2s ease;
-
 
   .title-container {
     display: inherit;
@@ -29,15 +24,10 @@ nav-bar {
     logo {
       display: flex;
       margin-right: 7px;
-
-      .gff-logo-full {
-        border: 2px solid #4b4e54;
-        border-radius: 5px;
-        align-items: center;
-      }
     }
 
     .title {
+      color: #fff;
       font-weight: 500;
     }
   }
@@ -61,22 +51,9 @@ nav-bar {
     p {
       margin: 0;
     }
-
-    .main-title {
-      padding-right: 15px;
-      border-right: 1px solid #ddd;
-      color: #fff;
-      // color: #2e383d;
-      font-weight: 400;
-    }
   }
 
   &.default {
-
-    h4 {
-      // color: $font-color-dark;
-      // color: #2e383d;
-    }
 
     .gff-menu {
       height: 35px;
@@ -89,9 +66,7 @@ nav-bar {
 
       li {
         height: 100%;
-        // margin: 0 5px;
         position: relative;
-        // border-bottom: 2px solid rgba(0, 0, 0, 0);
         transition: all 0.2s ease;
 
         a {
@@ -101,7 +76,6 @@ nav-bar {
           align-items: center;
 
           color: #fff;
-          // color: #2e383d;
           font-size: 12px;
           font-weight: 400;
           transition: all 0.2s ease;
@@ -116,7 +90,7 @@ nav-bar {
             border: 1px solid $orange-primary;
           }
 
-          .fa {
+          .fas {
             font-size: 18px;
           }
         }
