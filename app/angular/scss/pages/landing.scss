@@ -16,10 +16,8 @@
   }
 
   .landing-content {
-    display: flex;
+    @include flex-center-all;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     position: relative;
     min-height: calc(100vh - 60px);
     background: #fff;
@@ -51,9 +49,8 @@
     }
 
     .title-container {
-      display: inherit;
+      @include flex-center-all;
       flex-direction: column;
-      justify-content: center;
       align-items: flex-start;
       margin-left: 30px;
 
@@ -75,18 +72,16 @@
     } //title-container
 
     .features-list {
-      display: flex;
-      justify-content: center;
+      @include flex-center-all;
       width: 100%;
       padding: 0;
       margin: 0;
       list-style: none;
 
       .feature {
-        display: flex;
+        @include flex-center-all;
         flex-direction: column;
         justify-content: flex-start;
-        align-items: center;
         width: 300px;
         margin: 0 30px;
         background: #595c63;
@@ -104,17 +99,12 @@
         }
 
         .icon-box {
-          display: flex;
-          justify-content: center;
+          @include flex-center-all;
           align-items: flex-end;
           width: 100%;
           height: 175px;
           padding: 30px;
         }
-
-        // [class*="fa-"] {
-        //   display: inline-block;
-        // }
 
         .feature-content {
           padding: 15px;

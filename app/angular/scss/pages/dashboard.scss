@@ -12,13 +12,11 @@ dashboard {
     padding: 0;
 
     .title {
-      padding: 5px 20px;
-
       display: inline-block;
       position: absolute;
       top: -15px;
       left: 30px;
-
+      padding: 5px 20px;
       color: $font-color-light;
       background: $panel-bg-color-dark-primary;
     }

@@ -1,9 +1,7 @@
 auth {
-  padding: 15px;
+  @include flex-center-all;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 15px;
 
   .gff-btn {
     margin: 15px 0;
@@ -24,9 +22,8 @@ auth {
   margin-bottom: 10px;
 
   .input-title {
-    display: flex;
+    @include flex-center-all;
     flex-direction: row;
-    align-items: center;
     margin: 0 0 2px 2px;
     color: $font-color-dark;
 

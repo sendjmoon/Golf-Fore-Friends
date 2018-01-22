@@ -1,25 +1,20 @@
 nav-bar {
+  @include flex-center-all;
   width: 100%;
   height: 60px;
-  display: flex;
-  justify-content: center;
-  // z-index: 20;
   background: $font-color-dark;
-  // transition: all 0.2s ease;
 }
 
 .gff-nav {
-  display: flex;
+  @include flex-center-all;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
   max-width: 1200px;
   height: 60px;
 
   .title-container {
-    display: inherit;
-    align-items: center;
+    @include flex-center-all;
 
     logo {
       display: flex;
@@ -56,12 +51,10 @@ nav-bar {
   &.default {
 
     .gff-menu {
+      @include flex-center-all;
       height: 35px;
       margin: 0;
       padding: 0;
-
-      display: flex;
-      align-items: center;
       list-style: none;
 
       li {
@@ -70,11 +63,9 @@ nav-bar {
         transition: all 0.2s ease;
 
         a {
+          @include flex-center-all;
           height: 100%;
           padding: 0 20px;
-          display: flex;
-          align-items: center;
-
           color: #fff;
           font-size: 12px;
           font-weight: 400;
@@ -98,12 +89,10 @@ nav-bar {
     }
 
     .nav-menu {
+      @include flex-center-all;
       width: 1px;
       padding: 0;
       margin: 0;
-
-      display: flex;
-      align-items: center;
       position: absolute;
       right: 55px;
       height: 40px;
