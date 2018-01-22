@@ -13,14 +13,49 @@
       <img class="hole-image img-responsive" src="{{lc.baseUrl}}/imgs/golf-hole-iso.png" />
     </div>
     <div class="title-container">
-        <h3>WELCOME TO</h3>
-        <h2 class="title">GOLF FOR<span class="color-green">e</span> FRIENDS</h2>
+      <h3>WELCOME TO</h3>
+      <h2 class="title">GOLF FOR<span class="color-green">e</span> FRIENDS</h2>
       <div class="buttons-container" ng-hide="auth">
         <button class="gff-btn shadow" ng-click="auth=true; clicked='signup'">SIGNUP</button>
-        <!-- <span class="divider">|</span> -->
         <button class="gff-btn shadow" ng-click="auth=true; clicked='signin'">SIGNIN</button>
       </div>
       <auth ng-show="auth" data-clicked="clicked"></auth>
     </div>
   </div><!--/landing-content-->
+
+  <div class="landing-content about">
+    <!-- <h1>ABOUT</h1> -->
+    <!-- <p class="intro">Golf Fore Friends is dedicated to helping golfers of all skill-levels record and view their progress throughout their golfing career.</p> -->
+    <h1>FEATURES</h1>
+    <p class="intro">Below are some of the tools we have available to take advantage of tracking your game.</p>
+    <ul class="features-list">
+      <li class="feature">
+        <div class="icon-box">
+          <i class="fas fa-chart-line fa-9x"></i>
+        </div>
+        <div class="feature-content">
+          <h4>Stats</h4>
+          <p>Track your progress throughout the season.</p>
+        </div>
+      </li>
+      <li class="feature">
+        <div class="icon-box">
+          <i class="fas fa-calendar-alt fa-8x"></i>
+        </div>
+        <div class="feature-content">
+          <h4>Games</h4>
+          <p>View game history and their results.</p>
+        </div>
+      </li>
+      <li class="feature">
+        <div class="icon-box">
+          <i class="fas fa-users fa-9x"></i>
+        </div>
+        <div class="feature-content">
+          <h4>Friends</h4>
+          <p>See how your friends are playing.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
