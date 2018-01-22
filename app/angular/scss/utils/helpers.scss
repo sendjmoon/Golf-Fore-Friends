@@ -1,3 +1,4 @@
+//colors
 .color-orange {
   color: $orange-primary;
 }
@@ -14,10 +15,7 @@
   color: $font-color-light;
 }
 
-.weight-normal {
-  font-weight: 300;
-}
-
+//background colors
 .bg-white {
   background: #fff;
   color: #4b4e45;
@@ -30,9 +28,34 @@
   transition: all 0.2s ease;
 }
 
+
+//font
+.weight-normal {
+  font-weight: 300;
+}
+
+
+//misc properties
+.shadow {
+  position: relative;
+  background: none;
+  color: $font-color-dark;
+  box-shadow: 0 2px 2px 0 #e1e1e1, 0 0 0 1px #e1e1e1;
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 3px 8px 0 #e1e1e1, 0 0 0 1px #e1e1e1;
+    transition: box-shadow 0.2s ease;
+  }
+
+  &:active {
+    transition: box-shadow 0s ease;
+    box-shadow: 0 2px 2px 0 $orange-primary, 0 0 0 1px $orange-primary;
+  }
+}
+
+//layout
 .gff-row {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: row !important;
 }

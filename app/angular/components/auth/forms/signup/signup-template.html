@@ -1,27 +1,28 @@
 <form name="signup" data-ng-submit="ac.signup(ac.user)">
-  <div class="input-container first">
-    <div class="icon-box">
-      <i class="fa fa-tag" aria-hidden="true"></i>
+  <div class="input-container">
+    <div class="input-title">
+      <i class="far fa-envelope fa-sm" aria-hidden="true"></i><p>Email</p>
     </div>
-    <input type="text" required placeholder="Username" data-ng-model="ac.user.username"></input>
+    <input class="gff-input shadow" type="text" required data-ng-model="ac.user.email"></input>
   </div>
   <div class="input-container">
-    <div class="icon-box">
-      <i class="fa fa-user" aria-hidden="true"></i>
+    <div class="input-title">
+      <i class="far fa-user fa-sm" aria-hidden="true"></i><p>Username</p>
     </div>
-    <input type="text" required placeholder="Full Name (First &amp; Last)" data-ng-model="ac.user.fullName"></input>
+    <input class="gff-input shadow" type="text" required data-ng-model="ac.user.username"></input>
   </div>
   <div class="input-container">
-    <div class="icon-box">
-      <i class="fa fa-envelope" aria-hidden="true"></i>
+    <div class="input-title">
+      <i class="far fa-address-card fa-sm" aria-hidden="true"></i><p>Full Name (First &amp; Last)</p>
     </div>
-    <input type="text" required placeholder="Email" data-ng-model="ac.user.email"></input>
+    <input class="gff-input shadow" type="text" required data-ng-model="ac.user.fullName"></input>
   </div>
+
   <div class="input-container last">
-    <div class="icon-box">
-      <i class="fa fa-lock gff-last" aria-hidden="true"></i>
+    <div class="input-title">
+      <i class="fas fa-lock fa-sm" aria-hidden="true"></i><p>Password</p>
     </div>
-    <input class="gff-last" type="password" required placeholder="Password" data-ng-model="ac.user.password"></input>
+    <input class="gff-input shadow" type="password" required data-ng-model="ac.user.password"></input>
   </div>
-  <button class="gff-btn ghost" type="submit" name="signup-btn">SIGNUP</button>
+  <button class="gff-btn shadow" type="submit" name="signup-btn">SIGNUP</button>
 </form>

@@ -10,17 +10,37 @@ nav-bar {
 }
 
 .gff-nav {
-  width: 100%;
-  // max-width: 1200px;
-  height: 100%;
-  padding: 0;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
+  width: 100%;
+  max-width: 1200px;
+  height: 60px;
+  margin: 0 auto;
+  padding: 0 15px;
   transition: all 0.2s ease;
+
+
+  .title-container {
+    display: inherit;
+    align-items: center;
+
+    logo {
+      display: flex;
+      margin-right: 7px;
+
+      .gff-logo-full {
+        border: 2px solid #4b4e54;
+        border-radius: 5px;
+        align-items: center;
+      }
+    }
+
+    .title {
+      font-weight: 500;
+    }
+  }
 
   .gff-logo-container {
     height: 40px;
@@ -31,7 +51,6 @@ nav-bar {
     .gff-logo-full {
       margin-right: 10px;
       border: 2px solid #fff;
-      // border: 2px solid #2e383d;
       border-radius: 5px;
 
       .golfer-head, .golfer-body {

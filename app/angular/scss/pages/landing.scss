@@ -1,83 +1,149 @@
-.title-container {
+.landing-container {
   position: relative;
   height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
 
-  .title-background {
-    position: absolute;
-    top: 0;
-    left: 0;
+  //TODO: use nav-bar component
+  nav {
+    background: $font-color-dark;
 
-    width: 100%;
-    height: 100%;
+    .golfer-head, .golfer-body {
+      fill: #fff;
+    }
 
-    background-image: url('http://localhost:3000/imgs/golf-ball-sunset-bw-40.jpg');
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    .title {
+      color: #fff;
+    }
   }
 
-  .title-content {
+  .landing-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
+    min-height: calc(100vh - 60px);
+    background: #fff;
 
-    height: 100%;
+    &.about {
+      justify-content: flex-start;
+      width: 100%;
+      min-height: auto;
+      padding: 75px 30px;
+      background: #4b4e54;
+      color: #fff;
+      text-align: center;
 
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-    transform: translateZ(0);
+      h1 {
+        margin-bottom: 30px;
+      }
 
-    .landing-content {
-      display: flex;
+      .intro {
+        max-width: 500px;
+        margin-bottom: 45px;
+      }
+    }
+
+    .image-container {
+      display: inline-block;
+      width: 300px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .title-container {
+      display: inherit;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-    }
+      align-items: flex-start;
+      margin-left: 30px;
 
-    .gff-logo-container {
-      margin-bottom: 15px;
+      .title {
+        display: inline-block;
+        color: $font-color-dark;
+        text-align: center;
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 32px;
+      }
+
+      .description {
+        margin: 0;
+        color: $font-color-dark;
+        font-size: 16px;
+        font-weight: 300;
+      }
+    } //title-container
+
+    .features-list {
       display: flex;
       justify-content: center;
-      align-items: center;
-    }
-
-    .gff-logo-full {
-      margin-right: 10px;
-      border: 2px solid #fff;
-      border-radius: 5px;
-      // background: $green-secondary;
-    }
-
-    .title {
-      margin: 5px;
-      margin-bottom: 3px;
-      display: inline-block;
-
-      color: $font-color-light;
-      text-align: center;
-      font-size: 32px;
-      font-weight: 700;
-      line-height: 32px;
-    }
-
-    .description {
+      width: 100%;
+      padding: 0;
       margin: 0;
-      margin-bottom: 40px;
-      color: $font-color-light;
-      font-size: 16px;
-      font-weight: 300;
+      list-style: none;
+
+      .feature {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 300px;
+        margin: 0 30px;
+        background: #595c63;
+
+        &:first-of-type {
+          border-bottom: 10px solid $green-primary;
+        }
+
+        &:nth-child(2) {
+          border-bottom: 10px solid $green-light;
+        }
+
+        &:nth-child(3) {
+          border-bottom: 10px solid $green-light-alt;
+        }
+
+        .icon-box {
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          width: 100%;
+          height: 175px;
+          padding: 30px;
+        }
+
+        // [class*="fa-"] {
+        //   display: inline-block;
+        // }
+
+        .feature-content {
+          padding: 15px;
+          padding-top: 0;
+
+          h4 {
+            margin-bottom: 10px;
+            font-weight: 700;
+          }
+        }
+      }
     }
-  }
+  } //landing content
 }
 
 .buttons-container {
+  margin-top: 30px;
 
   .gff-btn {
-    margin-right: 10px;
-    margin-left: 10px;
+
+    &:first-of-type {
+      margin-right: 15px;
+    }
+  }
+
+  .divider {
+    margin: 0 25px;
+    font-size: 16px;
+    font-weight: 200;
+    color: $font-color-dark;
   }
 }
