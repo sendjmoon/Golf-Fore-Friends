@@ -37,7 +37,7 @@
   margin-top: -110px;
 
   .user-pic {
-    @include flex-center-all;
+    @include flex(center, center, row);
     max-width: 175px;
     max-height: 175px;
     margin: 0 auto;
@@ -57,8 +57,7 @@
     list-style: none;
 
     li {
-      @include flex-center-all;
-      justify-content: space-between;
+      @include flex(space-between, center, row);
       margin: 1px 0;
       padding: 10px;
       background: #f1f1f1;
@@ -75,9 +74,9 @@
     }
 
     .name {
+      justify-content: center;
       margin: 5px 0;
       background: none;
-      justify-content: center;
     }
   }
 }

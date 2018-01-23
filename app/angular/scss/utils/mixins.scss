@@ -1,5 +1,14 @@
-@mixin flex-center-all {
+@mixin flex($h-align, $v-align, $direction) {
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
+  @if $direction == "row" {
+    flex-direction: row;
+    justify-content: $h-align;
+    align-items: $v-align;
+  }
+  @if $direction == "col" {
+    flex-direction: column;
+    justify-content: $v-align;
+    align-items: $h-align;
+  }
+};

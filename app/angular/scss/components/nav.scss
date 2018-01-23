@@ -1,20 +1,18 @@
 nav-bar {
-  @include flex-center-all;
+  @include flex(center, center, row);
   width: 100%;
   height: 60px;
   background: $font-color-dark;
 }
 
 .gff-nav {
-  @include flex-center-all;
-  flex-direction: row;
-  justify-content: space-between;
+  @include flex(space-between, center, row);
   width: 100%;
   max-width: 1200px;
   height: 60px;
 
   .title-container {
-    @include flex-center-all;
+    @include flex(flex-start, center, row);
 
     logo {
       display: flex;
@@ -51,7 +49,7 @@ nav-bar {
   &.default {
 
     .gff-menu {
-      @include flex-center-all;
+      @include flex(center, center, row);
       height: 35px;
       margin: 0;
       padding: 0;
@@ -63,7 +61,7 @@ nav-bar {
         transition: all 0.2s ease;
 
         a {
-          @include flex-center-all;
+          @include flex(center, center, row);
           height: 100%;
           padding: 0 20px;
           color: #fff;
@@ -88,54 +86,54 @@ nav-bar {
       }
     }
 
-    .nav-menu {
-      @include flex-center-all;
-      width: 1px;
-      padding: 0;
-      margin: 0;
-      position: absolute;
-      right: 55px;
-      height: 40px;
-
-      list-style: none;
-      overflow: hidden;
-      transition: width 0.4s ease;
-
-      .menu-border {
-        width: 1px;
-        height: 20px;
-        border-left: 1px solid #eee;
-
-        &.last {
-          position: absolute;
-          right: 0;
-        }
-      }
-
-      li {
-        font-size: 16px;
-
-        a {
-          padding: 9px 15px;
-          display: inherit;
-          color: $font-color-light;
-
-          &:hover {
-            background: $orange-primary;
-            color: $font-color-light;
-          }
-        }
-
-        i {
-          font-size: 18px;
-        }
-      }
-
-      &.open {
-        width: 242px;
-        transition: width 0.4s ease;
-      }
-    }
+    // .nav-menu {
+    //   @include flex(center, center, row);
+    //   width: 1px;
+    //   padding: 0;
+    //   margin: 0;
+    //   position: absolute;
+    //   right: 55px;
+    //   height: 40px;
+    //
+    //   list-style: none;
+    //   overflow: hidden;
+    //   transition: width 0.4s ease;
+    //
+    //   .menu-border {
+    //     width: 1px;
+    //     height: 20px;
+    //     border-left: 1px solid #eee;
+    //
+    //     &.last {
+    //       position: absolute;
+    //       right: 0;
+    //     }
+    //   }
+    //
+    //   li {
+    //     font-size: 16px;
+    //
+    //     a {
+    //       padding: 9px 15px;
+    //       display: inherit;
+    //       color: $font-color-light;
+    //
+    //       &:hover {
+    //         background: $orange-primary;
+    //         color: $font-color-light;
+    //       }
+    //     }
+    //
+    //     i {
+    //       font-size: 18px;
+    //     }
+    //   }
+    //
+    //   &.open {
+    //     width: 242px;
+    //     transition: width 0.4s ease;
+    //   }
+    // }
   }
 }
 
