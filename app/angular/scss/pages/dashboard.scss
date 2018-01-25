@@ -10,16 +10,6 @@ dashboard {
   .leaderboard-container,
   .recent-game-container {
     padding: 0;
-
-    .title {
-      display: inline-block;
-      position: absolute;
-      top: -15px;
-      left: 30px;
-      padding: 5px 20px;
-      color: $font-color-light;
-      background: $panel-bg-color-dark-primary;
-    }
   }
 
   .handicap-container {
@@ -37,7 +27,6 @@ dashboard {
       width: 100%;
       padding: 15px;
       border-radius: 2px;
-
       color: $font-color-dark;
       text-align: center;
 

@@ -1,18 +1,23 @@
 .page-container {
+  @include flex(center, flex-start, row);
+  position: relative;
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
-  margin-top: 15px;
-  margin-bottom: 45px;
-
-  display: table;
-  position: relative;
+  margin: 0 auto 45px auto;
 }
 
 .gff-container {
 
+  &.main {
+    width: 100%;
+  }
+
+  &.right {
+    width: 300px;
+  }
+
   .page-title {
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 700;
   }
 }
@@ -20,63 +25,11 @@
 .gff-content {
   display: table;
   width: 100%;
-  padding: 30px;
+  padding: 15px;
   background: #fff;
 
   &.gff-center {
     display: flex;
     justify-content: center;
-  }
-}
-
-.user-container {
-  display: inline-block;
-  min-width: 175px;
-  max-width: 200px;
-  margin: 0 auto;
-  margin-top: -110px;
-
-  .user-pic {
-    @include flex(center, center, row);
-    max-width: 175px;
-    max-height: 175px;
-    margin: 0 auto;
-    border: 5px solid #f1f1f1;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.8);
-    text-align: center;
-
-    i {
-      font-size: 150px;
-    }
-  }
-
-  .user-info {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    li {
-      @include flex(space-between, center, row);
-      margin: 1px 0;
-      padding: 10px;
-      background: #f1f1f1;
-
-      p {
-        margin: 0;
-        font-size: 14px;
-        font-weight: 400;
-      }
-
-      h4, h5 {
-        font-weight: 300;
-      }
-    }
-
-    .name {
-      justify-content: center;
-      margin: 5px 0;
-      background: none;
-    }
   }
 }
