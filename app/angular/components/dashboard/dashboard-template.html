@@ -25,24 +25,22 @@
           <i class="fa fa-user"></i>
         </div>
         <ul class="user-info">
-          <li class="name">
-            <h4>{{dc.user.fullName}}</h4>
+          <li class="name">{{dc.user.fullName}}</li>
+          <li>
+            <p class="title">Handicap</p>
+            <p class="value"><span class="color-green">+</span>{{dc.user.stats.handicap}}</p>
           </li>
           <li>
-            <p>Handicap</p>
-            <h5><span class="color-green">+</span>{{dc.user.stats.handicap}}</h5>
+            <p class="title">Wins</p>
+            <p class="value">{{dc.user.stats.wins}}</p>
           </li>
           <li>
-            <p>Wins</p>
-            <h5>{{dc.user.stats.wins}}</h5>
+            <p class="title">Losses</p>
+            <p class="value">{{dc.user.stats.losses}}</p>
           </li>
           <li>
-            <p>Losses</p>
-            <h5>{{dc.user.stats.losses}}</h5>
-          </li>
-          <li>
-            <p>Win Ratio</p>
-            <h5>{{dc.user.stats.winRatio}}</h5>
+            <p class="title">Win Ratio</p>
+            <p class="value">{{dc.user.stats.winRatio}}</p>
           </li>
         </ul>
       </div>
