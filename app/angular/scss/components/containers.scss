@@ -3,7 +3,8 @@
   position: relative;
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto 45px auto;
+  padding: 0 15px;
+  margin: 30px auto 45px auto;
 }
 
 .gff-container {
@@ -23,13 +24,51 @@
 }
 
 .gff-content {
-  display: table;
+  display: block;
   width: 100%;
   padding: 15px;
   background: #fff;
 
-  &.gff-center {
-    display: flex;
-    justify-content: center;
+  &.dashboard-box {
+
+    .box-title {
+      margin-bottom: 15px;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: normal;
+    }
+  }
+}
+
+.leaderboard {
+  width: 100%;
+
+  th {
+    padding: 8px 15px;
+    background: #a1a1a1;
+    color: #fff;
+
+    &:nth-child(1) {
+      width: 15%;
+    }
+
+    &:nth-child(2) {
+      width: 70%;
+    }
+
+    &:nth-child(3) {
+      width: 15%;
+    }
+  }
+
+  td {
+    padding: 8px 15px;
+  }
+
+  tr {
+
+    &:nth-child(3), &:nth-child(5) {
+      background: #f1f1f1;
+    }
   }
 }

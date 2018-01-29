@@ -1,15 +1,20 @@
 <div class="page-container">
 
   <div class="gff-container main">
-    <div class="gff-content">
-      <h1 class="page-title">Dashboard</h1>
-      <ul>
-        <li ng-repeat="user in leaderboard | limitTo:3">
-          {{$index + 1}}
-          {{user.fullName}}
-          {{user.stats.handicap}}
-        </li>
-      </ul>
+    <div class="gff-content dashboard-box">
+      <h2 class="box-title">Leaderboard</h2>
+      <table class="leaderboard">
+        <tr>
+          <th>Position</th>
+          <th>Player</th>
+          <th>Handicap</th>
+        </tr>
+        <tr ng-repeat="user in leaderboard | limitTo:5">
+          <td>{{$index + 1}}</td>
+          <td>{{user.fullName}}</td>
+          <td><span class="color-green">+</span>{{user.stats.handicap}}</td>
+        </tr>
+      </table>
     </div>
   </div>
 
