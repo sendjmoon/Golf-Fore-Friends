@@ -23,6 +23,10 @@ module.exports = function(gameResultDao) {
     });
   };
 
+  const getAllByUserId = function(userId) {
+    return _gameResultDao.getAllByUserId(userId);
+  };
+
   const aggregate = function(matchOptions, groupOptions) {
     matchOptions = JSON.parse(matchOptions);
     groupOptions = JSON.parse(groupOptions);
@@ -32,6 +36,7 @@ module.exports = function(gameResultDao) {
 
   return {
     create: create,
+    getAllByUserId: getAllByUserId,
     aggregate: aggregate,
-  }
-}
+  };
+};

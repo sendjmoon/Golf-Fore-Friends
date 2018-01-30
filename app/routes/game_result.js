@@ -16,6 +16,18 @@ router.post('/create', function(req, res, next) {
     });
 });
 
+router.get('/:userId', function(req, res, next) {
+  gameResultService.getAllByUserId(req.params.userId)
+    .then((results) => {
+      res.json(results);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: 'Error getting game results.',
+      });
+    })
+});
+
 router.post('/aggregate', function(req, res, next) {
   gameResultService.aggregate(req.body.matchOptions, req.body.groupOptions)
     .then((aggregatedData) => {
