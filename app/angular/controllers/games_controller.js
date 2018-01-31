@@ -6,7 +6,6 @@ module.exports = function(app) {
 
     const ctrl = this;
     ctrl.user = userService.data.user;
-    $scope.gameService = gameService;
     $scope.gamesData = gameService.data.allGames;
     ctrl.creating = false;
 

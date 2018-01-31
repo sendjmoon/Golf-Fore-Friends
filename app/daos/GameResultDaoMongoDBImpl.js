@@ -22,10 +22,10 @@ module.exports = function() {
     return new Promise((resolve, reject) => {
       GameResult.find({ playerId: userId })
         .select('-__v -playerId')
-        .then((results) => {
-          resolve(results);
-        })
-        .catch(reject);
+          .then((results) => {
+            resolve(results);
+          })
+          .catch(reject);
     });
   };
 

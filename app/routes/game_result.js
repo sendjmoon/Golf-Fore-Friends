@@ -5,7 +5,7 @@ const router = express.Router();
 const gameResultService = require('../services').gameResultService;
 
 router.post('/create', function(req, res, next) {
-  gameResultService.create(req.body.gameId, req.body.resultsArray)
+  gameResultService.create(req.body.gameId, req.body.datePlayed, req.body.resultsArray)
     .then((results) => {
       res.json(results);
     })

@@ -3,10 +3,11 @@
 module.exports = function(app) {
   app.factory('ResultService', ['$rootScope', '$http', function($rs, $http) {
 
-    const create = function(gameId, playersArray) {
+    const create = function(gameId, datePlayed, playersArray) {
       return new Promise((resolve, reject) => {
         let resultsData = {
           gameId: gameId,
+          datePlayed: datePlayed,
           resultsArray: [],
         };
         calcResults(playersArray)
@@ -16,6 +17,16 @@ module.exports = function(app) {
               .then((results) => {
                 resolve(results.data);
               })
+          })
+          .catch(reject);
+      });
+    };
+
+    const getAllByUserId = function(userId) {
+      return new Promise((resolve, reject) => {
+        $http.get(`${$rs.baseUrl}/games/result/${userId}`)
+          .then((results) => {
+            resolve(results.data);
           })
           .catch(reject);
       });
@@ -86,6 +97,7 @@ module.exports = function(app) {
 
     return {
       create: create,
+      getAllByUserId: getAllByUserId,
       aggregate: aggregate,
       calcResults: calcResults,
     }

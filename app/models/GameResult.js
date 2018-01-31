@@ -19,6 +19,10 @@ const GameResultSchema = new Schema({
     required: true,
     default: 'loss',
   },
+  datePlayed: {
+    type: Date,
+    required: true,
+  },
   createdAt: {
     type: Date,
     required: true,
@@ -34,6 +38,7 @@ const GameResultSchema = new Schema({
 });
 
 GameResultSchema.index({ createdAt: 1 });
+GameResultSchema.index({ datePlayed: -1 });
 GameResultSchema.index({ strokes: -1 });
 GameResultSchema.index({ playerId: -1, gameId: 1 }, { unique: true });
 

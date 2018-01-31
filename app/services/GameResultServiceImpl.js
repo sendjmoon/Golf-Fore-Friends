@@ -6,11 +6,12 @@ const mongoose = require('mongoose');
 module.exports = function(gameResultDao) {
   const _gameResultDao = gameResultDao;
 
-  const create = function(gameId, resultsArray) {
+  const create = function(gameId, datePlayed, resultsArray) {
     return new Promise((resolve, reject) => {
       resultsArray.forEach((player) => {
         player.gameId = gameId;
         player.playerId = player._id;
+        player.datePlayed = datePlayed;
         player.createdAt = Date.now();
         player.updatedAt = Date.now();
         return delete player._id;
