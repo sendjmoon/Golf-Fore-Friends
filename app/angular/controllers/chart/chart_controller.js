@@ -9,20 +9,20 @@ module.exports = function(app) {
     ctrl.games = [];
     let strokeData = [];
     let dateData = [];
-    $scope.gamesData = gameService.data.allGames;
 
-    ctrl.parseStrokeData = function(array) {
-      array.forEach()
+    ctrl.parseData = function(array, property) {
+      return array.map((item) => {
+        return property === 'datePlayed' ? new Date(item[property]).toDateString() : item[property];
+      });
     };
 
-    ctrl.loadChart = function() {
+    ctrl.initChart = function() {
       let Chart = require('chart.js');
       let gameCtx = document.getElementById('gameChart').getContext('2d');
       // let winCtx = document.getElementById('winChart').getContext('2d');
       let chartjsPluginAnnotation = require('chartjs-plugin-annotation');
       let gameChartConfig = require('./game_chart_config');
       // let winChartConfig = require('./win_chart_config');
-      let userHandicap = ctrl.user.stats.handicap;
 
       let gameChartData = {
         labels: dateData,
@@ -32,23 +32,25 @@ module.exports = function(app) {
           }],
       };
 
-      let winChartData = {
-        labels: ['Wins', 'Losses'],
-        datasets: [{
-          data: [2, 3],
-          backgroundColor: ['#89c97a', '#ddd'],
-        }],
-      };
+      // let winChartData = {
+      //   labels: ['Wins', 'Losses'],
+      //   datasets: [{
+      //     data: [2, 3],
+      //     backgroundColor: ['#89c97a', '#ddd'],
+      //   }],
+      // };
 
       Chart.pluginService.register(chartjsPluginAnnotation);
-      let gameChart = new Chart(gameCtx, gameChartConfig(gameChartData, userHandicap));
-      let winChart = new Chart(winCtx, winChartConfig(winChartData));
+      let gameChart = new Chart(gameCtx, gameChartConfig(gameChartData, ctrl.user.stats.handicap));
+      // let winChart = new Chart(winCtx, winChartConfig(winChartData));
     };
 
     ctrl.init = function() {
       resultService.getAllByUserId(ctrl.user._id)
         .then((results) => {
-          console.log(results);
+          strokeData = ctrl.parseData(results, 'strokes');
+          dateData = ctrl.parseData(results, 'datePlayed');
+          ctrl.initChart();
         });
     };
 

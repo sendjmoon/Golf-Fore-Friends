@@ -5,8 +5,8 @@ module.exports = function(chartData, userHandicap) {
     type: 'line',
     data: chartData,
     options: {
-      defaultFontColor: '#4b4e54',
-      responsive: false,
+      defaultFontColor: '#fff',
+      responsive: true,
       legend: {
         display: false,
       },
