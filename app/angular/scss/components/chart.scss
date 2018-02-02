@@ -1,6 +1,7 @@
-.chart-container {
+canvas {
+  margin: 0 auto;
 
-  canvas {
-    margin: 0 auto;
+  &#gameChart {
+    background: rgba(0, 0, 0, 0);
   }
 }
