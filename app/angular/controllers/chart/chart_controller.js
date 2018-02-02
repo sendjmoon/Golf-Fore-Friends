@@ -19,10 +19,10 @@ module.exports = function(app) {
     ctrl.initChart = function() {
       let Chart = require('chart.js');
       let gameCtx = document.getElementById('gameChart').getContext('2d');
-      // let winCtx = document.getElementById('winChart').getContext('2d');
+      let winCtx = document.getElementById('winChart').getContext('2d');
       let chartjsPluginAnnotation = require('chartjs-plugin-annotation');
       let gameChartConfig = require('./game_chart_config');
-      // let winChartConfig = require('./win_chart_config');
+      let winChartConfig = require('./win_chart_config');
 
       let gameChartData = {
         labels: dateData,
@@ -32,17 +32,17 @@ module.exports = function(app) {
           }],
       };
 
-      // let winChartData = {
-      //   labels: ['Wins', 'Losses'],
-      //   datasets: [{
-      //     data: [2, 3],
-      //     backgroundColor: ['#89c97a', '#ddd'],
-      //   }],
-      // };
+      let winChartData = {
+        labels: ['Wins', 'Losses'],
+        datasets: [{
+          data: [ctrl.user.stats.wins, ctrl.user.stats.losses],
+          backgroundColor: ['#89c97a', '#ddd'],
+        }],
+      };
 
       Chart.pluginService.register(chartjsPluginAnnotation);
       let gameChart = new Chart(gameCtx, gameChartConfig(gameChartData, ctrl.user.stats.handicap));
-      // let winChart = new Chart(winCtx, winChartConfig(winChartData));
+      let winChart = new Chart(winCtx, winChartConfig(winChartData));
     };
 
     ctrl.init = function() {

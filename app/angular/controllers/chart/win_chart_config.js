@@ -13,6 +13,9 @@ module.exports = function(chartData) {
       },
       legend: {
         position: 'bottom',
+        labels: {
+          fontColor: '#fff',
+        },
       },
     },
   };
