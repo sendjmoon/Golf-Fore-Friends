@@ -16,23 +16,35 @@ module.exports = function() {
           reject();
         });
     });
-  }
+  };
+
+  const getAllByUserId = function(userId) {
+    return new Promise((resolve, reject) => {
+      GameResult.find({ playerId: userId })
+        .select('-__v -playerId')
+          .then((results) => {
+            resolve(results);
+          })
+          .catch(reject);
+    });
+  };
 
   const aggregate = function(matchOptions, groupOptions) {
     return new Promise((resolve, reject) => {
       GameResult.aggregate([
         { $match: matchOptions },
-        { $group: groupOptions }
+        { $group: groupOptions },
       ])
         .then((aggregatedData) => {
           resolve(aggregatedData);
         })
         .catch(reject);
     });
-  }
+  };
 
   return {
     create: create,
+    getAllByUserId: getAllByUserId,
     aggregate: aggregate,
-  }
-}
+  };
+};

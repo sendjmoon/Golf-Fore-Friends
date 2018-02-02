@@ -1,113 +1,64 @@
 <div class="page-container">
+  <div class="page-content">
 
-  <div class="gff-container col-xs-12 col-sm-8">
-    <div class="gff-content">
-      <h1 class="page-title">Dashboard</h1>
-      <ul>
-        <li ng-repeat="user in leaderboard | limitTo:3">
-          {{$index + 1}}
-          {{user.fullName}}
-          {{user.stats.handicap}}
-        </li>
-      </ul>
+    <div class="gff-container main">
+      <div class="gff-content dashboard-box">
+        <h2 class="box-title">Leaderboard</h2>
+        <table class="leaderboard">
+          <tr>
+            <th>Position</th>
+            <th>Player</th>
+            <th>Handicap</th>
+          </tr>
+          <tr ng-repeat="user in leaderboard | limitTo:5">
+            <td>{{$index + 1}}</td>
+            <td>{{user.fullName}}</td>
+            <td><span class="color-green">+</span>{{user.stats.handicap}}</td>
+          </tr>
+        </table>
+      </div>
     </div>
+
+    <div class="gff-container right">
+      <div class="gff-content">
+        <div class="user-container">
+          <div class="user-pic">
+            <i class="fa fa-user"></i>
+          </div>
+          <ul class="user-info">
+            <li class="name">{{dc.user.fullName}}</li>
+            <li>
+              <p class="title">Handicap</p>
+              <p class="value"><span class="color-green">+</span>{{dc.user.stats.handicap}}</p>
+            </li>
+            <li>
+              <p class="title">Wins</p>
+              <p class="value">{{dc.user.stats.wins}}</p>
+            </li>
+            <li>
+              <p class="title">Losses</p>
+              <p class="value">{{dc.user.stats.losses}}</p>
+            </li>
+            <li>
+              <p class="title">Win Ratio</p>
+              <p class="value">{{dc.user.stats.winRatio}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
   </div>
+</div>
 
-  <div class="gff-container col-xs-12 col-sm-4">
-    <div class="gff-content gff-center">
-      <div class="user-container">
-        <div class="user-pic">
-          <i class="fa fa-user"></i>
-        </div>
-        <ul class="user-info">
-          <li class="name">
-            <h4>{{dc.user.fullName}}</h4>
-          </li>
-          <li>
-            <p>Handicap</p>
-            <h5><span class="color-green">+</span>{{dc.user.stats.handicap}}</h5>
-          </li>
-          <li>
-            <p>Wins</p>
-            <h5>{{dc.user.stats.wins}}</h5>
-          </li>
-          <li>
-            <p>Losses</p>
-            <h5>{{dc.user.stats.losses}}</h5>
-          </li>
-          <li>
-            <p>Win Ratio</p>
-            <h5>{{dc.user.stats.winRatio}}</h5>
-          </li>
-        </ul>
+<div class="page-container dark">
+  <div class="page-content">
+
+    <div class="gff-container">
+      <div class="gff-content">
+        <game-chart></game-chart>
       </div>
     </div>
+
   </div>
-
-
-  <!-- <div class="gff-container col-md-7 col-xs-6 pull-right">
-    <div class="gff-content col-xs-12">
-
-      <div class="gff-box stats bg-white col-xs-12">
-        <div class="box-content">
-          <div class="score-box">
-            <p>Handicap</p>
-            <h3><span class="color-green">+</span>{{dc.user.stats.handicap}}</h3>
-          </div>
-        </div>
-      </div>
-      <div class="gff-box stats bg-white col-xs-12">
-        <div class="box-content gff-row">
-          <div class="score-box">
-            <p>Wins</p>
-            <h3>{{dc.user.stats.wins}}</h3>
-          </div>
-          <div class="score-box">
-            <p>Losses</p>
-            <h3>{{dc.user.stats.losses}}</h3>
-          </div>
-          <div class="score-box">
-            <p>Ties</p>
-            <h3>{{dc.user.stats.ties}}</h3>
-          </div>
-          <div class="score-box">
-            <p>Solo</p>
-            <h3>{{dc.user.stats.solo}}</h3>
-          </div>
-        </div>
-        <div class="box-content">
-          <game-chart data-chart-name="'win'"></game-chart>
-        </div>
-      </div>
-      <div class="gff-box stats bg-white col-xs-12">
-        <div class="box-content">
-          <div>
-            <game-chart data-chart-name="'game'"></game-chart>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="gff-container col-md-5 col-xs-6 pull-left">
-    <div class="gff-content bg-white col-xs-12">
-      <div class="title">
-        <h4>LEADERBOARD</h4>
-      </div>
-      <ul class="leaderboard-list col-xs-12">
-        <li ng-class-odd="'odd'" ng-class-even="'even'" ng-repeat="friend in leaderboard track by $index|limitTo:3">
-          <div class="box small">
-            <p>{{$index + 1}}</p>
-          </div>
-          <div class="box full">
-            <p>{{friend.fullName}}</p>
-          </div>
-          <div class="box small">
-            <p><span class="color-green">+</span>{{friend.stats.handicap}}</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div> -->
-
 </div>

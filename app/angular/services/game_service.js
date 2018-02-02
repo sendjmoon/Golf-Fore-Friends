@@ -23,7 +23,7 @@ module.exports = function(app) {
       return new Promise((resolve, reject) => {
         create(gameData)
           .then((newGame) => {
-            resultService.create(newGame._id, gameData.players)
+            resultService.create(newGame._id, gameData.datePlayed, gameData.players)
               .then((results) => {
                 let newGameData = {
                   gameId: newGame._id,
@@ -97,7 +97,7 @@ module.exports = function(app) {
           .then((games) => {
             games = games.data;
             data.allGames.games = games;
-            resolve();
+            resolve(games);
           })
           .catch(() => {
             alert('error getting games');
@@ -120,7 +120,7 @@ module.exports = function(app) {
       });
     };
 
-    this.getByPublicId = function(gameId) {
+    const getByPublicId = function(gameId) {
       return new Promise((resolve, reject) => {
         $http.get($rs.baseUrl + '/games/' + gameId)
           .then((game) => {

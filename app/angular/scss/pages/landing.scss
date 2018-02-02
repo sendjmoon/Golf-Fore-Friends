@@ -2,30 +2,14 @@
   position: relative;
   height: 100vh;
 
-  //TODO: use nav-bar component
-  nav {
-    background: $font-color-dark;
-
-    .golfer-head, .golfer-body {
-      fill: #fff;
-    }
-
-    .title {
-      color: #fff;
-    }
-  }
-
   .landing-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flex(center, center, row);
     position: relative;
     min-height: calc(100vh - 60px);
     background: #fff;
 
     &.about {
-      justify-content: flex-start;
+      @include flex(center, center, col);
       width: 100%;
       min-height: auto;
       padding: 75px 30px;
@@ -51,10 +35,7 @@
     }
 
     .title-container {
-      display: inherit;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
+      @include flex(flex-start, center, col);
       margin-left: 30px;
 
       .title {
@@ -75,20 +56,15 @@
     } //title-container
 
     .features-list {
-      display: flex;
-      justify-content: center;
-      width: 100%;
+      display: table;
       padding: 0;
       margin: 0;
       list-style: none;
+      border-spacing: 30px;
 
       .feature {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
+        display: table-cell;
         width: 300px;
-        margin: 0 30px;
         background: #595c63;
 
         &:first-of-type {
@@ -104,21 +80,13 @@
         }
 
         .icon-box {
-          display: flex;
-          justify-content: center;
-          align-items: flex-end;
           width: 100%;
           height: 175px;
           padding: 30px;
         }
 
-        // [class*="fa-"] {
-        //   display: inline-block;
-        // }
-
         .feature-content {
-          padding: 15px;
-          padding-top: 0;
+          padding: 0 15px 15px 15px;
 
           h4 {
             margin-bottom: 10px;
@@ -142,8 +110,8 @@
 
   .divider {
     margin: 0 25px;
+    color: $font-color-dark;
     font-size: 16px;
     font-weight: 200;
-    color: $font-color-dark;
   }
 }

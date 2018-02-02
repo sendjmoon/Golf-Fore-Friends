@@ -6,11 +6,12 @@ const mongoose = require('mongoose');
 module.exports = function(gameResultDao) {
   const _gameResultDao = gameResultDao;
 
-  const create = function(gameId, resultsArray) {
+  const create = function(gameId, datePlayed, resultsArray) {
     return new Promise((resolve, reject) => {
       resultsArray.forEach((player) => {
         player.gameId = gameId;
         player.playerId = player._id;
+        player.datePlayed = datePlayed;
         player.createdAt = Date.now();
         player.updatedAt = Date.now();
         return delete player._id;
@@ -23,6 +24,10 @@ module.exports = function(gameResultDao) {
     });
   };
 
+  const getAllByUserId = function(userId) {
+    return _gameResultDao.getAllByUserId(userId);
+  };
+
   const aggregate = function(matchOptions, groupOptions) {
     matchOptions = JSON.parse(matchOptions);
     groupOptions = JSON.parse(groupOptions);
@@ -32,6 +37,7 @@ module.exports = function(gameResultDao) {
 
   return {
     create: create,
+    getAllByUserId: getAllByUserId,
     aggregate: aggregate,
-  }
-}
+  };
+};

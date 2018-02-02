@@ -92,7 +92,7 @@ module.exports = function(app) {
         let totalLosses = 0;
         let updateData = {};
         let matchOptions = {
-            playerId: docOrUserId,
+          playerId: docOrUserId,
         };
         let groupOptions = {
           _id: null,
@@ -110,7 +110,6 @@ module.exports = function(app) {
               .then((sumLosses) => {
                 sumLosses.length < 1 ? totalLosses = 0 : totalLosses = sumLosses[0].losses;
                 updateData.winRatio = (totalWins / (totalWins + totalLosses));
-                console.log(updateData.winRatio);
                 updateByDocOrUserId(docOrUserId, updateData)
                   .then(resolve);
               })

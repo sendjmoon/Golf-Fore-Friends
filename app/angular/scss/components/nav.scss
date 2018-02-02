@@ -1,43 +1,26 @@
 nav-bar {
+  @include flex(center, center, row);
   width: 100%;
   height: 60px;
-  padding: 0 15px;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  z-index: 20;
-  transition: all 0.2s ease;
+  background: $font-color-dark;
 }
 
 .gff-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  @include flex(space-between, center, row);
   width: 100%;
   max-width: 1200px;
   height: 60px;
-  margin: 0 auto;
-  padding: 0 15px;
-  transition: all 0.2s ease;
-
 
   .title-container {
-    display: inherit;
-    align-items: center;
+    @include flex(flex-start, center, row);
 
     logo {
       display: flex;
       margin-right: 7px;
-
-      .gff-logo-full {
-        border: 2px solid #4b4e54;
-        border-radius: 5px;
-        align-items: center;
-      }
     }
 
     .title {
+      color: #fff;
       font-weight: 500;
     }
   }
@@ -61,47 +44,27 @@ nav-bar {
     p {
       margin: 0;
     }
-
-    .main-title {
-      padding-right: 15px;
-      border-right: 1px solid #ddd;
-      color: #fff;
-      // color: #2e383d;
-      font-weight: 400;
-    }
   }
 
   &.default {
 
-    h4 {
-      // color: $font-color-dark;
-      // color: #2e383d;
-    }
-
     .gff-menu {
+      @include flex(center, center, row);
       height: 35px;
       margin: 0;
       padding: 0;
-
-      display: flex;
-      align-items: center;
       list-style: none;
 
       li {
         height: 100%;
-        // margin: 0 5px;
         position: relative;
-        // border-bottom: 2px solid rgba(0, 0, 0, 0);
         transition: all 0.2s ease;
 
         a {
+          @include flex(center, center, row);
           height: 100%;
           padding: 0 20px;
-          display: flex;
-          align-items: center;
-
           color: #fff;
-          // color: #2e383d;
           font-size: 12px;
           font-weight: 400;
           transition: all 0.2s ease;
@@ -116,63 +79,61 @@ nav-bar {
             border: 1px solid $orange-primary;
           }
 
-          .fa {
+          .fas {
             font-size: 18px;
           }
         }
       }
     }
 
-    .nav-menu {
-      width: 1px;
-      padding: 0;
-      margin: 0;
-
-      display: flex;
-      align-items: center;
-      position: absolute;
-      right: 55px;
-      height: 40px;
-
-      list-style: none;
-      overflow: hidden;
-      transition: width 0.4s ease;
-
-      .menu-border {
-        width: 1px;
-        height: 20px;
-        border-left: 1px solid #eee;
-
-        &.last {
-          position: absolute;
-          right: 0;
-        }
-      }
-
-      li {
-        font-size: 16px;
-
-        a {
-          padding: 9px 15px;
-          display: inherit;
-          color: $font-color-light;
-
-          &:hover {
-            background: $orange-primary;
-            color: $font-color-light;
-          }
-        }
-
-        i {
-          font-size: 18px;
-        }
-      }
-
-      &.open {
-        width: 242px;
-        transition: width 0.4s ease;
-      }
-    }
+    // .nav-menu {
+    //   @include flex(center, center, row);
+    //   width: 1px;
+    //   padding: 0;
+    //   margin: 0;
+    //   position: absolute;
+    //   right: 55px;
+    //   height: 40px;
+    //
+    //   list-style: none;
+    //   overflow: hidden;
+    //   transition: width 0.4s ease;
+    //
+    //   .menu-border {
+    //     width: 1px;
+    //     height: 20px;
+    //     border-left: 1px solid #eee;
+    //
+    //     &.last {
+    //       position: absolute;
+    //       right: 0;
+    //     }
+    //   }
+    //
+    //   li {
+    //     font-size: 16px;
+    //
+    //     a {
+    //       padding: 9px 15px;
+    //       display: inherit;
+    //       color: $font-color-light;
+    //
+    //       &:hover {
+    //         background: $orange-primary;
+    //         color: $font-color-light;
+    //       }
+    //     }
+    //
+    //     i {
+    //       font-size: 18px;
+    //     }
+    //   }
+    //
+    //   &.open {
+    //     width: 242px;
+    //     transition: width 0.4s ease;
+    //   }
+    // }
   }
 }
 

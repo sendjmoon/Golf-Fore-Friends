@@ -1,20 +1,15 @@
 auth {
-  padding: 15px;
+  @include flex(center, center, row);
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 15px;
 
   .gff-btn {
     margin: 15px 0;
   }
 }
 
-.auth-container {
-  width: 100%;
-}
-
 .form-container {
+  width: 100%;
   color: $font-color-dark;
   text-align: center;
 }
@@ -24,9 +19,7 @@ auth {
   margin-bottom: 10px;
 
   .input-title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    @include flex(flex-start, center, row);
     margin: 0 0 2px 2px;
     color: $font-color-dark;
 

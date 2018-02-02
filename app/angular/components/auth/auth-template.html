@@ -1,10 +1,9 @@
-<div class="auth-container">
-  <div class="form-container" ng-if="ac.clicked==='signup'">
-    <signup></signup>
-    <p>Already registered? <a ng-click="ac.clicked='signin'">Click Here</a></p>
-  </div>
-  <div class="form-container" ng-if="ac.clicked==='signin'">
-    <signin></signin>
-    <p>Not registered? <a ng-click="ac.clicked='signup'">Click Here</a></p>
-  </div>
+<div class="form-container" ng-if="ac.clicked==='signup'">
+  <signup></signup>
+  <p>Already registered? <a ng-click="ac.clicked='signin'">Click Here</a></p>
+</div>
+
+<div class="form-container" ng-if="ac.clicked==='signin'">
+  <signin></signin>
+  <p>Not registered? <a ng-click="ac.clicked='signup'">Click Here</a></p>
 </div>

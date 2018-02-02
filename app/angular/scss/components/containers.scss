@@ -1,86 +1,118 @@
 .page-container {
+  @include flex(center, flex-start, row);
+  width: 100%;
+
+  &.dark {
+    background: #4b4e54;
+  }
+}
+
+.page-content {
+  @include flex(center, flex-start, row);
   width: 100%;
   max-width: 1200px;
+  padding: 60px 30px;
   margin: 0 auto;
-  margin-top: 15px;
-  margin-bottom: 45px;
-
-  display: table;
-  position: relative;
 }
 
 .gff-container {
+  width: 100%;
+
+  &.main {
+    padding-right: 30px;
+  }
+
+  &.right {
+    width: 180px;
+    padding-left: 30px;
+  }
 
   .page-title {
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 700;
   }
 }
 
 .gff-content {
-  display: table;
+  display: block;
   width: 100%;
-  padding: 30px;
-  background: #fff;
+  // background: #fff;
 
-  &.gff-center {
-    display: flex;
-    justify-content: center;
+  &.dashboard-box {
+
+    .box-title {
+      margin-bottom: 15px;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: normal;
+    }
   }
 }
 
 .user-container {
-  display: inline-block;
-  min-width: 175px;
-  max-width: 200px;
-  margin: 0 auto;
-  margin-top: -110px;
 
   .user-pic {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 175px;
-    max-height: 175px;
+    width: 150px;
+    height: 150px;
     margin: 0 auto;
-    border: 5px solid #f1f1f1;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.8);
+    background: #f1f1f1;
+    color: #c1c1c1;
+    font-size: 120px;
     text-align: center;
-
-    i {
-      font-size: 150px;
-    }
   }
 
   .user-info {
-    margin: 0;
     padding: 0;
     list-style: none;
 
     li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 1px 0;
-      padding: 10px;
-      background: #f1f1f1;
+      @include flex(space-between, center, row);
+      width: 100%;
 
       p {
-        margin: 0;
         font-size: 14px;
-        font-weight: 400;
-      }
-
-      h4, h5 {
-        font-weight: 300;
       }
     }
 
     .name {
-      margin: 5px 0;
-      background: none;
       justify-content: center;
+      padding: 10px 0;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #f1f1f1;
+      font-weight: 700;
+    }
+  }
+}
+
+.leaderboard {
+  width: 100%;
+
+  th {
+    padding: 8px 15px;
+    background: #a1a1a1;
+    color: #fff;
+
+    &:nth-child(1) {
+      width: 15%;
+    }
+
+    &:nth-child(2) {
+      width: 70%;
+    }
+
+    &:nth-child(3) {
+      width: 15%;
+    }
+  }
+
+  td {
+    padding: 8px 15px;
+  }
+
+  tr {
+
+    &:nth-child(3), &:nth-child(5) {
+      background: #f1f1f1;
     }
   }
 }
