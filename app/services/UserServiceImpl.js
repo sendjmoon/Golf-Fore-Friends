@@ -78,8 +78,8 @@ module.exports = function(userDao) {
   };
 
 
-  const getAllUsers = function(emailOrUsername) {
-    return _userDao.getAllUsers(emailOrUsername);
+  const getAllOtherUsers = function(email) {
+    return _userDao.getAllOtherUsers(email);
   };
 
 
@@ -89,6 +89,6 @@ module.exports = function(userDao) {
     updateByEmailOrUsername: updateByEmailOrUsername,
     updateManyById: updateManyById,
     authenticateUser: authenticateUser,
-    getAllUsers: getAllUsers,
+    getAllOtherUsers: getAllOtherUsers,
   };
 };

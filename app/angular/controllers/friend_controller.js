@@ -16,7 +16,7 @@ module.exports = function(app) {
 
     ctrl.init = function() {
       friendService.getAllFriends(ctrl.user.email)
-        .then(userService.getAllUsers(ctrl.user.email))
+        .then(userService.getAllOtherUsers(ctrl.user.email))
         .then(() => {
           let searchOptions = {
             searchBy: 'email',

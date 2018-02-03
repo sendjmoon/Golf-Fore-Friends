@@ -63,13 +63,14 @@ module.exports = function() {
   };
 
 
-  const getAllUsers = function(emailOrUsername) {
+  const getAllOtherUsers = function(email) {
     return new Promise((resolve, reject) => {
       User.find({
-        $or: [
-          { email: { $ne: emailOrUsername }},
-          { username: { $ne: emailOrUsername }},
-        ],
+        // $or: [
+          // { email: { $ne: emailOrUsername }},
+          // { username: { $ne: emailOrUsername }},
+        // ],
+        email: { $ne: email },
       })
         .select('_id fullName email stats')
         .exec()
@@ -85,6 +86,6 @@ module.exports = function() {
     updateByEmailOrUsername: updateByEmailOrUsername,
     updateManyById: updateManyById,
     getByEmailOrUsername: getByEmailOrUsername,
-    getAllUsers: getAllUsers,
+    getAllOtherUsers: getAllOtherUsers,
   };
 };

@@ -43,7 +43,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.post('/all', function(req, res, next) {
-  userService.getAllUsers(req.body.emailOrUsername)
+  userService.getAllOtherUsers(req.body.email)
     .then((users) => {
       res.json(users);
     })
