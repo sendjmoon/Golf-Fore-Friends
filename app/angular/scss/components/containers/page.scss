@@ -1,0 +1,16 @@
+.page-container {
+  @include flex(center, flex-start, row);
+  width: 100%;
+
+  &.dark {
+    background: #4b4e54;
+  }
+}
+
+.page-content {
+  @include flex(center, flex-start, row);
+  width: 100%;
+  max-width: 1200px;
+  padding: 60px 30px;
+  margin: 0 auto;
+}

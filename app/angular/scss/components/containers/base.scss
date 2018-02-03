@@ -1,0 +1,43 @@
+.gff-container {
+  width: 100%;
+
+  &.main {
+    padding-right: 30px;
+
+    &.left {
+      padding-right: 30px;
+    }
+
+    &.right {
+      padding-left: 30px;
+    }
+  }
+
+  &.left {
+    width: 210px;
+    padding-right: 30px;
+  }
+
+  &.right {
+    width: 210px;
+    padding-left: 30px;
+  }
+
+  .page-title {
+    font-size: 30px;
+    font-weight: 700;
+  }
+}
+
+.gff-content {
+  display: block;
+  width: 100%;
+  padding: 15px;
+
+  .box-title {
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+  }
+}
