@@ -7,9 +7,7 @@ module.exports = function(app) {
     ctrl.user = userService.data.user;
     $scope.friendsData = friendService.data;
     $scope.usersData = userService.data.allUsers;
-    $scope.userService = userService;
     $scope.searchResults = searchService.searchResults;
-    console.log($scope.userService);
 
     ctrl.addFriend = function(userId, statsId) {
       friendService.addFriend(userId, statsId)
@@ -17,16 +15,18 @@ module.exports = function(app) {
     };
 
     ctrl.init = function() {
-      let searchOptions = {
-        searchBy: 'email',
-        inputId: 'search-input-users',
-        searchArray: $scope.userService.data.allUsers,
-        compareArray: $scope.friendsData.friends,
-        compareFn: searchService.compareIfFriends,
-      };
       friendService.getAllFriends(ctrl.user.email)
         .then(userService.getAllUsers(ctrl.user.email))
-        .then(searchService.searchListener(searchOptions));
+        .then(() => {
+          let searchOptions = {
+            searchBy: 'email',
+            inputId: 'search-input-users',
+            searchArray: $scope.usersData.users,
+            compareArray: $scope.friendsData.friends,
+            compareFn: searchService.compareIfFriends,
+          };
+          searchService.searchListener(searchOptions);
+        });
     };
 
     ctrl.init();
