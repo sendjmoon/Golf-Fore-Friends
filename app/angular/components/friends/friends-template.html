@@ -21,13 +21,11 @@
       <div class="gff-content">
         <ul class="friends-list">
           <li class="friend-box shadow" ng-repeat="friend in friendsData.friends">
-            <div class="content left">
-              <h4 class="box-title">{{friend.fullName}}</h4>
+            <div class="profile-pic">
+              <i class="fa fa-user"></i>
             </div>
-            <div class="content right">
-              <div class="friend-pic">
-                <i class="fa fa-user"></i>
-              </div>
+            <div class="content">
+              <h4 class="box-title">{{friend.fullName}}</h4>
             </div>
           </li>
         </ul>
