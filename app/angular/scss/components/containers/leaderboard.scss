@@ -1,0 +1,32 @@
+.leaderboard {
+  width: 100%;
+
+  th {
+    padding: 8px 15px;
+    background: #a1a1a1;
+    color: #fff;
+
+    &:nth-child(1) {
+      width: 15%;
+    }
+
+    &:nth-child(2) {
+      width: 70%;
+    }
+
+    &:nth-child(3) {
+      width: 15%;
+    }
+  }
+
+  td {
+    padding: 8px 15px;
+  }
+
+  tr {
+
+    &:nth-child(3), &:nth-child(5) {
+      background: #f1f1f1;
+    }
+  }
+}

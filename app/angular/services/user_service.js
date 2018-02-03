@@ -62,10 +62,10 @@ module.exports = function(app) {
       });
     };
 
-    const getAllUsers = function(emailOrUsername) {
+    const getAllOtherUsers = function(email) {
       return new Promise((resolve, reject) => {
         let userData = {
-          emailOrUsername: emailOrUsername,
+          email: email,
         };
         $http.post(`${$rs.baseUrl}/users/all`, userData)
           .then((users) => {
@@ -83,7 +83,7 @@ module.exports = function(app) {
       updateByEmailOrUsername: updateByEmailOrUsername,
       updateManyById: updateManyById,
       getByEmailOrUsername: getByEmailOrUsername,
-      getAllUsers: getAllUsers,
+      getAllOtherUsers: getAllOtherUsers,
       data: data,
     }
   }]);
