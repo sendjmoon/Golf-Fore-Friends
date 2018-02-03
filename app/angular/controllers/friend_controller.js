@@ -1,18 +1,18 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('FriendController', ['$rootScope', '$scope', 'UserService', 'FriendService', 'SearchService', function($rs, $scope, UserService, FriendService, SearchService) {
+  app.controller('FriendController', ['$rootScope', '$scope', 'UserService', 'FriendService', 'SearchService', function($rs, $scope, userService, friendService, searchService) {
 
     let ctrl = this;
-    ctrl.user = UserService.data.user;
-    $scope.FriendService = FriendService;
-    $scope.UserService = UserService;
-    $scope.friendsData = FriendService.data;
-    $scope.usersData = UserService.data.allUsers;
-    $scope.searchResults = SearchService.searchResults;
+    ctrl.user = userService.data.user;
+    $scope.friendsData = friendService.data;
+    $scope.usersData = userService.data.allUsers;
+    $scope.userService = userService;
+    $scope.searchResults = searchService.searchResults;
+    console.log($scope.userService);
 
     ctrl.addFriend = function(userId, statsId) {
-      FriendService.addFriend(userId, statsId)
+      friendService.addFriend(userId, statsId)
         .then(ctrl.init());
     };
 
@@ -20,13 +20,13 @@ module.exports = function(app) {
       let searchOptions = {
         searchBy: 'email',
         inputId: 'search-input-users',
-        searchArray: $scope.usersData.users,
+        searchArray: $scope.userService.data.allUsers,
         compareArray: $scope.friendsData.friends,
-        compareFn: SearchService.compareIfFriends,
+        compareFn: searchService.compareIfFriends,
       };
-      FriendService.getAllFriends(ctrl.user.email)
-        .then(UserService.getAllUsers(ctrl.user.email))
-        .then(SearchService.searchListener(searchOptions));
+      friendService.getAllFriends(ctrl.user.email)
+        .then(userService.getAllUsers(ctrl.user.email))
+        .then(searchService.searchListener(searchOptions));
     };
 
     ctrl.init();

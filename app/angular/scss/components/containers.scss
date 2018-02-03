@@ -20,10 +20,23 @@
 
   &.main {
     padding-right: 30px;
+
+    &.left {
+      padding-right: 30px;
+    }
+
+    &.right {
+      padding-left: 30px;
+    }
+  }
+
+  &.left {
+    width: 210px;
+    padding-right: 30px;
   }
 
   &.right {
-    width: 180px;
+    width: 210px;
     padding-left: 30px;
   }
 
@@ -36,16 +49,13 @@
 .gff-content {
   display: block;
   width: 100%;
-  // background: #fff;
+  padding: 15px;
 
-  &.dashboard-box {
-
-    .box-title {
-      margin-bottom: 15px;
-      font-size: 16px;
-      font-weight: 700;
-      line-height: normal;
-    }
+  .box-title {
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
   }
 }
 

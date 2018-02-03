@@ -1,0 +1,20 @@
+.friend-box {
+  @include flex(center, flex-start, row);
+  width: 100%;
+  margin-bottom: 15px;
+
+  .content {
+    padding: 15px;
+
+    &.left {
+      width: 100%;
+    }
+
+    &.right {
+      @include flex(center, center, col);
+      width: 210px;
+      font-size: 80px;
+      background: #f1f1f1;
+    }
+  }
+}
