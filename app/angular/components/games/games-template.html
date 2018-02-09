@@ -3,19 +3,14 @@
 <div class="page-container">
   <div class="page-content">
 
-    <!-- <div class="gff-container left">
-      <div class="gff-content shadow">
-        <button class="gff-btn" ng-click="gc.creating">Create Game</button>
-      </div>
-    </div> -->
-
     <div class="gff-container" ng-hide="gc.creating">
-      <div class="gff-content shadow">
-        <ul>
-          <li ng-repeat="game in gamesData.games">
+      <div class="gff-content">
+        <ul class="games-list">
+          <li class="game-container" ng-repeat="game in gamesData.games">
             <p>{{game.name}}</p>
             <p>{{game.location}}</p>
             <p>{{game.datePlayed}}</p>
+            <p>{{game}}</p>
             <ul>
               <li ng-repeat="comment in game.comments">
                 <comment data-game-id="game._id" data-comment="comment"></comment>
