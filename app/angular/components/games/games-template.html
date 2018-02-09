@@ -1,43 +1,40 @@
+<sub-nav data-page-title="'Games'" data-creating-game="gc.creating"></sub-nav>
+
 <div class="page-container">
-  <!-- <div class="banner-container col-md-5 col-xs-6 pull-left">
-    <div class="banner-image"></div>
-  </div> -->
+  <div class="page-content">
 
-  <div class="gff-container col-md-7 col-xs-6 pull-right" ng-hide="gc.creating">
-    <div class="gff-content col-xs-12">
-      <div class="gff-box bg-white col-xs-12">
-        <div class="box-content col-xs-12">
-          <button class="gff-btn" ng-click="gc.creating=true">Create Game</button>
-        </div>
-      </div><!--/gff-box-->
+    <div class="gff-container left">
+      <div class="gff-content shadow">
+        <button class="gff-btn" ng-click="gc.creating">Create Game</button>
+      </div>
+    </div>
 
-      <div class="gff-box bg-dark col-xs-12">
-        <div class="box-content col-xs-12">
+    <div class="gff-container main" ng-hide="gc.creating">
+      <div class="gff-content shadow">
+        <ul>
+          <li ng-repeat="game in gamesData.games">
+            <p>{{game.name}}</p>
+            <p>{{game.location}}</p>
+            <p>{{game.datePlayed}}</p>
+            <ul>
+              <li ng-repeat="comment in game.comments">
+                <comment data-game-id="game._id" data-comment="comment"></comment>
+              </li>
+              <li>
+                <new-comment data-game-id="game._id"></new-comment>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--gff-content-->
+    </div><!--gff-container-->
 
-          <ul>
-            <li ng-repeat="game in gamesData.games">
-              <p>{{game.name}}</p>
-              <p>{{game.location}}</p>
-              <p>{{game.datePlayed}}</p>
-              <ul>
-                <li ng-repeat="comment in game.comments">
-                  <comment data-game-id="game._id" data-comment="comment"></comment>
-                </li>
-                <li>
-                  <new-comment data-game-id="game._id"></new-comment>
-                </li>
-              </ul>
-            </li>
-          </ul>
+    <div class="gff-container main" ng-show="gc.creating">
+      <div class="gff-content shadow">
+        <create-game ng-show="gc.creating"></create-game>
+        <button class="gff-btn" ng-show="gc.creating" ng-click="gc.creating=false">Cancel</button>
+      </div>
+    </div>
 
-        </div><!--box-content-->
-      </div><!--gff-box-->
-    </div><!--gff-content-->
-  </div><!--gff-container-->
-
-  <div class="gff-container col-md-7 col-xs-6 pull-right" ng-show="gc.creating">
-    <create-game ng-show="gc.creating"></create-game>
-    <button class="gff-btn" ng-show="gc.creating" ng-click="gc.reloadPage()">Cancel</button>
   </div>
-
 </div>
