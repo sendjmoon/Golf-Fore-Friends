@@ -7,6 +7,7 @@ module.exports = function(app) {
     const data = {
       allGames: {},
     };
+    const creatingGame = false;
 
     const newGame = function(gameData) {
       return new Promise((resolve, reject) => {
@@ -137,6 +138,7 @@ module.exports = function(app) {
       updateById: updateById,
       newGame: newGame,
       data: data,
+      creatingGame: creatingGame,
     }
   }]);
 };

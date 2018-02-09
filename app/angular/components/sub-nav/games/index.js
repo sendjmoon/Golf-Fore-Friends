@@ -1,15 +1,12 @@
 'use strict';
 
 module.exports = function(app) {
-  app.component('subNav', {
-    template: require('./sub-nav-template.html'),
+  app.component('snGames', {
+    template: require('./sub-nav-games-template.html'),
     controller: 'SubNavController',
     controllerAs: 'snc',
     bindings: {
-      pageTitle: '<',
       creatingGame: '=',
     },
   });
-
-  require('./games')(app);
 };
