@@ -7,33 +7,44 @@
       <div class="gff-content">
         <ul class="games-list">
           <li class="game-container" ng-repeat="game in gamesData.games">
-            <h4 class="game-name">{{game.name}}</h4>
-            <p class="game-location">{{game.location}}</p>
-            <p class="date-played">{{game.datePlayed}}</p>
 
-            <button data-toggle="collapse" data-target="#{{game.publicId}}-results">Results</button>
-            <div class="results-tab collapse" id="{{game.publicId}}-results">
-              <div class="results-container">
-                <ul>
-                  <li ng-repeat="result in game.results">
-                    <p>Name: {{result.playerId.fullName}}</p>
-                    <p>Strokes: {{result.strokes}}</p>
-                  </li>
-                </ul>
+            <div class="game-content">
+              <h4 class="game-name">{{game.name}}</h4>
+              <p class="game-location">{{game.location}}</p>
+              <p class="date-played">{{game.datePlayed}}</p>
+
+              <button class="gff-btn secondary" data-toggle="collapse" data-target="#{{game.publicId}}-results">Results</button>
+              <button class="gff-btn secondary" data-toggle="collapse" data-target="#{{game.publicId}}-comments">Comments</button>
+            </div>
+
+            <div class="tab-container">
+              <div class="tab collapse" id="{{game.publicId}}-results">
+                <div class="tab-content">
+                  <ul>
+                    <li ng-repeat="result in game.results">
+                      <p>Name: {{result.playerId.fullName}}</p>
+                      <p>Strokes: {{result.strokes}}</p>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
-            <button data-toggle="collapse" data-target="#{{game.publicId}}-comments">Comments</button>
-            <div class="comments-tab collapse" id="{{game.publicId}}-comments">
-              <ul>
-                <li ng-repeat="comment in game.comments">
-                  <comment data-game-id="game._id" data-comment="comment"></comment>
-                </li>
-                <li>
-                  <new-comment data-game-id="game._id"></new-comment>
-                </li>
-              </ul>
+            <div class="tab-container">
+              <div class="tab collapse" id="{{game.publicId}}-comments">
+                <div class="tab-content">
+                  <ul>
+                    <li ng-repeat="comment in game.comments">
+                      <comment data-game-id="game._id" data-comment="comment"></comment>
+                    </li>
+                    <li>
+                      <new-comment data-game-id="game._id"></new-comment>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
+
           </li>
         </ul>
       </div><!--gff-content-->

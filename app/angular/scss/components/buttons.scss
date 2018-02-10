@@ -40,4 +40,16 @@
       transition: all 0.2s ease;
     }
   }
+
+  &.secondary {
+    border: 1px solid rgba(0, 0, 0, 0);
+    background: #4b4e54;
+    color: #fff;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: #727e95;
+      transition: all 0.2s ease;
+    }
+  }
 }
