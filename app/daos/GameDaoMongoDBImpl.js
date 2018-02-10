@@ -61,7 +61,7 @@ module.exports = function() {
             options: {
               sort: { createdAt: 1 },
             },
-          }
+          },
         ])
         .exec()
           .then((games) => {

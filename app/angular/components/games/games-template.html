@@ -1,15 +1,15 @@
 <sub-nav data-page-title="'Games'" data-creating-game="gc.creating"></sub-nav>
 
-<div class="page-container">
+<div class="page-container bg-lt-gray">
   <div class="page-content">
 
     <div class="gff-container" ng-hide="gc.creating">
       <div class="gff-content">
         <ul class="games-list">
           <li class="game-container" ng-repeat="game in gamesData.games">
-            <p>{{game.name}}</p>
-            <p>{{game.location}}</p>
-            <p>{{game.datePlayed}}</p>
+            <h4 class="game-name">{{game.name}}</h4>
+            <p class="game-location">{{game.location}}</p>
+            <p class="date-played">{{game.datePlayed}}</p>
             <p>{{game}}</p>
             <ul>
               <li ng-repeat="comment in game.comments">

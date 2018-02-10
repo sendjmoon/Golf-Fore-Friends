@@ -32,7 +32,30 @@ module.exports = function(gameDao) {
   };
 
   const getAllById = function(gameIds) {
-    return _gameDao.getAllById(gameIds);
+    return new Promise((resolve, reject) => {
+      _gameDao.getAllById(gameIds)
+        .then((gamesData) => {
+          gamesData = datesToString(gamesData);
+          resolve(gamesData);
+        })
+        .catch(reject);
+    });
+  };
+
+  const datesToString = function(gamesArray) {
+    return gamesArray.map((game) => {
+      return {
+        _id: game._id,
+        publicId: game.publicId,
+        name: game.name,
+        location: game.location,
+        updatedAt: game.updatedAt.toDateString(),
+        createdAt: game.createdAt.toDateString(),
+        datePlayed: game.datePlayed.toDateString(),
+        results: game.results,
+        comments: game.comments,
+      }
+    });
   };
 
   return {
