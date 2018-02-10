@@ -50,14 +50,18 @@ module.exports = function() {
         .populate([
           {
             path: 'results',
-            select: '-__v',
+            select: '-_id strokes playerId result',
+            populate: {
+              path: 'playerId',
+              select: '-_id fullName',
+            },
           }, {
             path: 'comments',
             select: '-__v -gameId',
             options: {
               sort: { createdAt: 1 },
             },
-          }
+          },
         ])
         .exec()
           .then((games) => {
