@@ -3,7 +3,7 @@
 <form class="new-game-form" name="new-game" ng-submit="cgc.createGame(cgc.game)">
   <div class="create-game-container">
     <div class="course-container">
-      <p>Course Played</p>
+      <p class="input-title">Course Played</p>
       <div class="gff-select course">
         <select ng-model="cgc.game.name">
           <option value="Newcastle GC - China Creek">Newcastle GC - China Creek</option>
@@ -13,17 +13,17 @@
     </div>
 
     <div class="location-container">
-      <p>City, State</p>
+      <p class="input-title">City, State</p>
       <input type="text" required ng-model="cgc.game.location" placeholder="Seattle, WA"></input>
     </div>
 
     <div class="date-container">
-      <p>Date Played</p>
+      <p class="input-title">Date Played</p>
       <input type="date" required ng-model="cgc.game.datePlayed">
     </div>
 
     <div class="players-container">
-      <p>Players</p>
+      <p class="input-title">Players</p>
       <ul class="player-list">
         <li class="player-box" ng-repeat="player in cgc.players" ng-init="player.strokes=0">
           <div class="title-box">
@@ -46,7 +46,7 @@
       </ul>
 
       <div class="add-players-container">
-        <p>Add More Players</p>
+        <p class="input-title">Add More Players</p>
         <ul class="player-list">
           <li class="player-box" ng-repeat="friend in cgc.friendsData.friends">
             <div class="title-box">
