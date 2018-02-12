@@ -1,9 +1,9 @@
 <sub-nav data-page-title="'Games'" data-creating-game="gc.creating"></sub-nav>
 
-<div class="page-container bg-lt-gray">
+<div class="page-container bg-lt-gray" ng-hide="gc.creating">
   <div class="page-content">
 
-    <div class="gff-container" ng-hide="gc.creating">
+    <div class="gff-container">
       <div class="gff-content">
         <ul class="games-list">
           <li class="game-container" ng-repeat="game in gamesData.games">
@@ -13,8 +13,8 @@
               <p class="game-location">{{game.location}}</p>
               <p class="date-played">{{game.datePlayed}}</p>
 
-              <button class="gff-btn secondary" data-toggle="collapse" data-target="#{{game.publicId}}-results">Results</button>
-              <button class="gff-btn secondary" data-toggle="collapse" data-target="#{{game.publicId}}-comments">Comments</button>
+              <button class="gff-btn dark" data-toggle="collapse" data-target="#{{game.publicId}}-results">Results</button>
+              <button class="gff-btn dark" data-toggle="collapse" data-target="#{{game.publicId}}-comments">Comments</button>
             </div>
 
             <div class="tab-container">
@@ -49,13 +49,15 @@
         </ul>
       </div><!--gff-content-->
     </div><!--gff-container-->
+  </div><!--page-content-->
+</div><!--page-container-->
 
-    <div class="gff-container main" ng-show="gc.creating">
-      <div class="gff-content shadow">
-        <create-game ng-show="gc.creating"></create-game>
-        <button class="gff-btn" ng-show="gc.creating" ng-click="gc.creating=false">Cancel</button>
+<div class="page-container bg-white" ng-show="gc.creating">
+  <div class="page-content">
+    <div class="gff-container">
+      <div class="gff-content">
+        <create-game data-creating="gc.creating"></create-game>
       </div>
     </div>
-
   </div>
 </div>

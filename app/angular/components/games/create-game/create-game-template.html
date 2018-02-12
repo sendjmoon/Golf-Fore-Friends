@@ -1,72 +1,66 @@
-<div class="gff-container col-xs-12">
-  <div class="gff-content col-xs-12">
-    <div class="gff-box col-xs-12 bg-white">
-      <h2>Create a Game</h2>
-      <p>Please enter game information below.</p>
-      <form class="new-game-form col-md-12" name="new-game" ng-submit="cgc.createGame(cgc.game)">
-        <div class="create-game-container">
-          <div class="course-container">
-            <p>Course Played</p>
-            <div class="gff-select course">
-              <select ng-model="cgc.game.name">
-                <option value="Newcastle GC - China Creek">Newcastle GC - China Creek</option>
-                <option value="Newcastle GC - Coal Creek">Newcastle GC - Coal Creek</option>
-              </select>
+<h2>Create a Game</h2>
+<p>Please enter game information below.</p>
+<form class="new-game-form" name="new-game" ng-submit="cgc.createGame(cgc.game)">
+  <div class="create-game-container">
+    <div class="course-container">
+      <p>Course Played</p>
+      <div class="gff-select course">
+        <select ng-model="cgc.game.name">
+          <option value="Newcastle GC - China Creek">Newcastle GC - China Creek</option>
+          <option value="Newcastle GC - Coal Creek">Newcastle GC - Coal Creek</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="location-container">
+      <p>City, State</p>
+      <input type="text" required ng-model="cgc.game.location" placeholder="Seattle, WA"></input>
+    </div>
+
+    <div class="date-container">
+      <p>Date Played</p>
+      <input type="date" required ng-model="cgc.game.datePlayed">
+    </div>
+
+    <div class="players-container">
+      <p>Players</p>
+      <ul class="player-list">
+        <li class="player-box" ng-repeat="player in cgc.players" ng-init="player.strokes=0">
+          <div class="title-box">
+            <p>{{player.fullName}}</p>
+          </div>
+          <div class="strokes-box" ng-hide="cgc.editing">
+            <p><strong><span class="color-green">+</span></strong>{{player.strokes}}</p>
+          </div>
+          <div class="edit-box" ng-hide="cgc.editing">
+            <a ng-click="cgc.editing=true"<i class="fa fa-pencil"></i></a>
+          </div>
+          <div class="edit-box" ng-show="cgc.editing">
+            <input type="text" required ng-model="player.strokes" placeholder="{{player.strokes}}" maxlength="2"></input>
+            <a ng-click="cgc.editing=false"><i class="fa fa-floppy-o"></i></a>
+          </div>
+          <a class="remove-box" ng-click="cgc.removeUser(player)">
+            <i class="fa fa-minus-circle"></i>
+          </a>
+        </li>
+      </ul>
+
+      <div class="add-players-container">
+        <p>Add More Players</p>
+        <ul class="player-list">
+          <li class="player-box" ng-repeat="friend in cgc.friendsData.friends">
+            <div class="title-box">
+              <p>{{friend.fullName}}</p>
             </div>
-          </div>
+            <a class="add-box" ng-click="cgc.addUser(friend)">
+              <i class="fa fa-plus"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-          <div class="location-container">
-            <p>City, State</p>
-            <input type="text" required ng-model="cgc.game.location" placeholder="Seattle, WA"></input>
-          </div>
-
-          <div class="date-container">
-            <p>Date Played</p>
-            <input type="date" required ng-model="cgc.game.datePlayed">
-          </div>
-
-          <div class="players-container">
-            <p>Players</p>
-            <ul class="player-list">
-              <li class="player-box" ng-repeat="player in cgc.players" ng-init="player.strokes=0">
-                <div class="title-box">
-                  <p>{{player.fullName}}</p>
-                </div>
-                <div class="strokes-box" ng-hide="cgc.editing">
-                  <p><strong><span class="color-green">+</span></strong>{{player.strokes}}</p>
-                </div>
-                <div class="edit-box" ng-hide="cgc.editing">
-                  <a ng-click="cgc.editing=true"<i class="fa fa-pencil"></i></a>
-                </div>
-                <div class="edit-box" ng-show="cgc.editing">
-                  <input type="text" required ng-model="player.strokes" placeholder="{{player.strokes}}" maxlength="2"></input>
-                  <a ng-click="cgc.editing=false"><i class="fa fa-floppy-o"></i></a>
-                </div>
-                <a class="remove-box" ng-click="cgc.removeUser(player)">
-                  <i class="fa fa-minus-circle"></i>
-                </a>
-              </li>
-            </ul>
-
-            <div class="add-players-container">
-              <p>Add More Players</p>
-              <ul class="player-list">
-                <li class="player-box" ng-repeat="friend in cgc.friendsData.friends">
-                  <div class="title-box">
-                    <p>{{friend.fullName}}</p>
-                  </div>
-                  <a class="add-box" ng-click="cgc.addUser(friend)">
-                    <i class="fa fa-plus"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-        <button class="gff-btn" type="submit">Submit</button>
-      </form>
-
-    </div><!-- ./gff-box -->
-  </div><!-- ./gff-content -->
-</div><!-- ./gff-container -->
+  </div>
+  <button class="gff-btn dark" type="submit">Submit</button>
+  <button class="gff-btn dark" ng-click="cgc.creating=false">Cancel</button>
+</form>
