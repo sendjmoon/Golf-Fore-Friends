@@ -25,7 +25,7 @@
     <div class="players-container">
       <p class="input-title">Players</p>
       <ul class="player-list">
-        <li class="player-box" ng-repeat="player in cgc.players" ng-init="player.strokes=0">
+        <!-- <li class="player-box" ng-repeat="player in cgc.players" ng-init="player.strokes=0">
           <div class="title-box">
             <p>{{player.fullName}}</p>
           </div>
@@ -42,6 +42,9 @@
           <a class="remove-box" ng-click="cgc.removeUser(player)">
             <i class="fa fa-minus-circle"></i>
           </a>
+        </li> -->
+        <li ng-repeat="player in cgc.players" ng-init="player.strokes=0">
+          <player data-player="player"></player>
         </li>
       </ul>
 
