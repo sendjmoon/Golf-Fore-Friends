@@ -1,4 +1,10 @@
 .game-container {
+  margin-bottom: 30px;
+
+  .game-content {
+    padding: 30px;
+    background: #fff;
+  }
 
   .game-name {
     margin-bottom: 10px;
@@ -11,10 +17,5 @@
 
   .date-played {
     margin-bottom: 30px;
-  }
-
-  .game-content {
-    padding: 15px;
-    background: #fff;
   }
 }
