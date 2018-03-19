@@ -2,7 +2,6 @@
 
 module.exports = function(app) {
   require('./auth_service')(app);
-  require('./create_game_service')(app);
   require('./user_service')(app);
   require('./stats_service')(app);
   require('./friend_service')(app);
