@@ -1,12 +1,12 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('CreateGameController', ['$rootScope', '$scope', '$route', 'UserService', 'FriendService', 'CreateGameService', 'GameService', 'ResultService', 'StatsService', function($rs, $scope, $route, userService, friendService, createGameService, gameService, resultService, statsService) {
+  app.controller('CreateGameController', ['$rootScope', '$scope', '$route', 'UserService', 'FriendService', 'GameService', 'ResultService', 'StatsService', function($rs, $scope, $route, userService, friendService, gameService, resultService, statsService) {
 
     const ctrl = this;
     ctrl.user = userService.data.user;
     ctrl.friendsData = friendService.data;
-    $scope.players = createGameService.players;
+    ctrl.players = [];
     ctrl.editing = false;
 
     ctrl.createGame = function(gameData) {
@@ -38,7 +38,10 @@ module.exports = function(app) {
         fullName: ctrl.user.fullName,
         email: ctrl.user.email,
       };
-      friendService.getAllFriends(ctrl.user.email);
+      friendService.getAllFriends(ctrl.user.email)
+        .then(() => {
+          ctrl.friendsData.friends.push(userData);
+        });
     };
 
     ctrl.init();
