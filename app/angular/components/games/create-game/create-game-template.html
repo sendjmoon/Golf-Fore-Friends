@@ -29,15 +29,9 @@
           <div class="title-box">
             <p>{{player.fullName}}</p>
           </div>
-          <div class="strokes-box" ng-hide="cgc.editing">
-            <p><strong><span class="color-green">+</span></strong>{{player.strokes}}</p>
-          </div>
-          <div class="edit-box" ng-hide="cgc.editing">
-            <a ng-click="cgc.editing=true"<i class="fa fa-pencil"></i></a>
-          </div>
-          <div class="edit-box" ng-show="cgc.editing">
+          <div class="edit-box">
+            <p><strong><span class="color-green">+</span></strong></p>
             <input type="text" required ng-model="player.strokes" placeholder="{{player.strokes}}" maxlength="2"></input>
-            <a ng-click="cgc.editing=false"><i class="fa fa-floppy-o"></i></a>
           </div>
           <a class="remove-box" ng-click="cgc.removeUser(player)">
             <i class="fa fa-minus-circle"></i>
