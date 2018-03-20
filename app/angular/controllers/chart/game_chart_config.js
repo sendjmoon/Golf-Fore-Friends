@@ -49,7 +49,7 @@ module.exports = function(chartData, userHandicap) {
         yPadding: 10,
         cornerRadius: 2,
         caretSize: 8,
-        backgroundColor: 'rgba(75, 78, 84, 0.6)',
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
         titleFontSize: 14,
         titleSpacing: 4,
         titleMarginBottom: 10,
