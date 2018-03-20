@@ -1,6 +1,9 @@
 dashboard {
-  display: table;
+  display: flex;
   width: 100%;
+  max-width: 1200px;
+  height: calc(100vh - 60px);
+  margin: 0 auto;
 }
 
 .dashboard-content {

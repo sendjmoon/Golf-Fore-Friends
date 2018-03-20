@@ -1,6 +1,15 @@
 .page-container {
   @include flex(center, flex-start, row);
   width: 100%;
+  background: #fff;
+
+  &.left {
+    width: 300px;
+  }
+
+  &.right {
+    @include flex(center, flex-start, col);
+  }
 
   &.dark {
     background: #4b4e54;
@@ -11,6 +20,6 @@
   @include flex(center, flex-start, row);
   width: 100%;
   max-width: 1200px;
-  padding: 60px 30px;
+  padding: 5px;
   margin: 0 auto;
 }
