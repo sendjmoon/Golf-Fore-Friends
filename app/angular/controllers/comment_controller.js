@@ -45,7 +45,13 @@ module.exports = function(app) {
 
     ctrl.formatDate = function(comment) {
       let date = new Date(comment.createdAt);
-      comment.createdAt = date.toDateString();
+      let timeStrOptions = {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+      };
+      let timeStr = date.toLocaleString('en-US', timeStrOptions);
+      comment.createdAt = (`${date.toDateString()} @ ${timeStr}`);
     };
   }]);
 };
