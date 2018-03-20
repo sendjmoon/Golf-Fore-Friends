@@ -31,9 +31,9 @@ module.exports = function(chartData, userHandicap) {
       elements: {
         line: {
           tension: 0.1,
-          fill: false,
-          borderWidth: 2,
-          borderColor: 'rgba(75, 78, 84, 0.9)',
+          fill: true,
+          borderWidth: 1.7,
+          borderColor: '#fff',
           pointBackgroundColor: 'rgba(254, 172, 0, 1)',
           pointBorderColor: 'rgba(254, 172, 0, 1)',
         },
