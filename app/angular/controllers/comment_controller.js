@@ -42,5 +42,10 @@ module.exports = function(app) {
         .then(gameService.updateById(gameId, updateOptions))
         .then(gameService.getAllById(ctrl.user.gameIds));
     };
+
+    ctrl.formatDate = function(comment) {
+      let date = new Date(comment.createdAt);
+      comment.createdAt = date.toDateString();
+    };
   }]);
 };

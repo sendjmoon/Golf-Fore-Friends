@@ -1,4 +1,4 @@
-<div ng-hide="cc.editing">
+<div ng-hide="cc.editing" ng-init="cc.formatDate(cc.comment)">
   <p><strong>{{cc.comment.authorName}}</strong> {{cc.comment.content}}</p>
   <p>{{cc.comment.createdAt}}</p>
   <div ng-if="cc.user._id === cc.comment.authorId">
