@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('CreateGameController', ['$rootScope', '$route', 'UserService', 'FriendService', 'GameService', 'ResultService', 'StatsService', function($rs, $route, userService, friendService, gameService, resultService, statsService) {
+  app.controller('CreateGameController', ['$rootScope', '$scope', '$route', 'UserService', 'FriendService', 'GameService', 'ResultService', 'StatsService', function($rs, $scope, $route, userService, friendService, gameService, resultService, statsService) {
 
     const ctrl = this;
     ctrl.user = userService.data.user;
@@ -25,7 +25,10 @@ module.exports = function(app) {
     };
 
     ctrl.removeUser = function(user) {
-      ctrl.players.splice(ctrl.players.indexOf(user), 1);
+      let userIndex = ctrl.players.findIndex((player) => {
+        return player.email === user.email;
+      });
+      ctrl.players.splice(userIndex, 1);
       ctrl.friendsData.friends.push(user);
     };
 
@@ -35,9 +38,11 @@ module.exports = function(app) {
         fullName: ctrl.user.fullName,
         email: ctrl.user.email,
       };
-      ctrl.players.push(userData);
-      friendService.getAllFriends(ctrl.user.email);
-    }
+      friendService.getAllFriends(ctrl.user.email)
+        .then(() => {
+          ctrl.friendsData.friends.push(userData);
+        });
+    };
 
     ctrl.init();
   }]);
