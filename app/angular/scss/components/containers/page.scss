@@ -1,7 +1,6 @@
 .page-container {
   @include flex(center, flex-start, row);
   width: 100%;
-  // background: #fff;
 
   &.left {
     @include flex(center, flex-start, col);
@@ -20,11 +19,23 @@
 
 .page-content {
   @include flex(flex-start, flex-start, row);
-  // display: block;
   width: 100%;
   max-width: 1200px;
-  // padding: 5px;
   margin: 0 auto;
   margin-bottom: 5px;
   background: #fff;
+}
+
+@media screen and (max-width: 900px) {
+
+  .page-container {
+
+    &.left {
+      display: none;
+    }
+
+    &.right {
+      padding: 0 15px;
+    }
+  }
 }
