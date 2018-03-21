@@ -1,12 +1,8 @@
 <div class="page-container left">
   <sub-nav data-page-title="'Dashboard'"></sub-nav>
-  <div class="recent-comments-container">
-    <h2 class="container-title sm color-green">Recent Comments</h2>
-  </div>
 </div>
 
 <div class="page-container right">
-
   <div class="page-content">
     <div class="user-container">
       <div class="user-pic">
@@ -24,10 +20,6 @@
           </td>
         </tr>
       </table>
-      <!-- <ul class="user-info">
-        <li ng-init="dc.formatDate(dc.user)"><p>MEMBER SINCE <strong>{{dc.user.createdAt}}</strong></li>
-        <li class="name">{{dc.user.fullName}}</li>
-      </ul> -->
     </div>
   </div>
 
@@ -52,6 +44,7 @@
     </ul>
   </div>
 
+  <h2 class="tile-title">Recent Games</h2>
   <div class="page-content bg-none">
     <div class="recent-games-container">
       <ul class="recent-games-list">
@@ -70,10 +63,10 @@
     </div>
   </div>
 
+  <h2 class="tile-title">Leaderboard</h2>
   <div class="page-content">
     <div class="gff-container">
       <div class="gff-content dashboard-box">
-        <h2 class="box-title">Leaderboard</h2>
         <table class="leaderboard">
           <tr>
             <th>Position</th>
@@ -90,7 +83,8 @@
     </div>
   </div>
 
-  <div class="page-content bg-dark">
+  <h2 class="tile-title">Progress</h2>
+  <div class="page-content">
     <div class="gff-container">
       <div class="gff-content">
         <game-chart></game-chart>

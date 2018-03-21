@@ -3,13 +3,14 @@
   width: 100%;
 
   &.left {
-    @include flex(center, flex-start, col);
-    width: 300px;
+    @include flex(flex-start, flex-start, col);
+    width: auto;
     margin-right: 5px;
   }
 
   &.right {
-    @include flex(center, flex-start, col);
+    @include flex(flex-start, flex-start, col);
+    padding-right: 15px;
   }
 
   &.dark {
