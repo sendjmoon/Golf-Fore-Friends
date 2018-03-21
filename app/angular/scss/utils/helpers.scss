@@ -38,6 +38,15 @@
   font-weight: 300;
 }
 
+.container-title {
+
+  &.sm {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+}
+
 
 //misc properties
 .shadow {
