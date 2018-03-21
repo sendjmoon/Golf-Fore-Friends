@@ -78,12 +78,19 @@ module.exports = function(app) {
       });
     };
 
+    const formatDate = function(obj) {
+      let date = new Date(obj.createdAt);
+      let dateStr = date.toDateString();
+      obj.createdAt = dateStr.substr(dateStr.indexOf(' ')).toUpperCase();
+    };
+
     return {
       create: create,
       updateByEmailOrUsername: updateByEmailOrUsername,
       updateManyById: updateManyById,
       getByEmailOrUsername: getByEmailOrUsername,
       getAllOtherUsers: getAllOtherUsers,
+      formatDate: formatDate,
       data: data,
     }
   }]);

@@ -6,35 +6,50 @@
 </div>
 
 <div class="page-container right">
+
   <div class="page-content">
-    <div class="gff-container">
-      <div class="gff-content">
-        <div class="user-container">
-          <div class="user-pic">
-            <i class="fa fa-user"></i>
-          </div>
-          <ul class="user-info">
-            <li class="name">{{dc.user.fullName}}</li>
-            <li>
-              <p class="title">Handicap</p>
-              <p class="value"><span class="color-green">+</span>{{dc.user.stats.handicap}}</p>
-            </li>
-            <li>
-              <p class="title">Wins</p>
-              <p class="value">{{dc.user.stats.wins}}</p>
-            </li>
-            <li>
-              <p class="title">Losses</p>
-              <p class="value">{{dc.user.stats.losses}}</p>
-            </li>
-            <li>
-              <p class="title">Win Ratio</p>
-              <p class="value">{{dc.user.stats.winRatio}}</p>
-            </li>
-          </ul>
-        </div>
+    <div class="user-container">
+      <div class="user-pic">
+        <i class="fa fa-user"></i>
       </div>
+      <table class="user-info">
+        <tr>
+          <th ng-init="dc.formatDate(dc.user)">
+            <p>MEMBER SINCE <strong>{{dc.user.createdAt}}</strong></p>
+          </th>
+        </tr>
+        <tr>
+          <td class="name">
+            {{dc.user.fullName}}
+          </td>
+        </tr>
+      </table>
+      <!-- <ul class="user-info">
+        <li ng-init="dc.formatDate(dc.user)"><p>MEMBER SINCE <strong>{{dc.user.createdAt}}</strong></li>
+        <li class="name">{{dc.user.fullName}}</li>
+      </ul> -->
     </div>
+  </div>
+
+  <div class="page-content">
+    <ul class="user-stats">
+      <li>
+        <p class="title">HANDICAP</p>
+        <p class="value"><span class="color-green">+</span>{{dc.user.stats.handicap}}</p>
+      </li>
+      <li>
+        <p class="title">WINS</p>
+        <p class="value">{{dc.user.stats.wins}}</p>
+      </li>
+      <li>
+        <p class="title">LOSSES</p>
+        <p class="value">{{dc.user.stats.losses}}</p>
+      </li>
+      <li>
+        <p class="title">WIN RATIO</p>
+        <p class="value">{{dc.user.stats.winRatio}}</p>
+      </li>
+    </ul>
   </div>
 
   <div class="page-content">

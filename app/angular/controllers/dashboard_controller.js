@@ -10,6 +10,8 @@ module.exports = function(app) {
     $scope.statsData = statsService.data;
     $scope.leaderboard = [];
 
+    ctrl.formatDate = userService.formatDate;
+
     ctrl.sortLeaderboard = function() {
       $scope.leaderboard = $scope.friendsData.friends;
       $scope.leaderboard.push(ctrl.user);
