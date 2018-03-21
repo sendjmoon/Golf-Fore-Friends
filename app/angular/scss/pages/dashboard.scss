@@ -2,7 +2,7 @@ dashboard {
   display: flex;
   width: 100%;
   max-width: 1200px;
-  height: calc(100vh - 60px);
+  // height: 100%;
   margin: 0 auto;
 }
 
@@ -11,7 +11,7 @@ dashboard {
 
   .handicap-container,
   .leaderboard-container,
-  .recent-game-container {
+  .recent-comments-container {
     padding: 0;
   }
 

@@ -1,10 +1,12 @@
 .page-container {
   @include flex(center, flex-start, row);
   width: 100%;
-  background: #fff;
+  // background: #fff;
 
   &.left {
+    @include flex(center, flex-start, col);
     width: 300px;
+    margin-right: 5px;
   }
 
   &.right {
@@ -17,9 +19,12 @@
 }
 
 .page-content {
-  @include flex(center, flex-start, row);
+  @include flex(flex-start, flex-start, row);
+  // display: block;
   width: 100%;
   max-width: 1200px;
-  padding: 5px;
+  // padding: 5px;
   margin: 0 auto;
+  margin-bottom: 5px;
+  background: #fff;
 }
