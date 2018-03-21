@@ -52,18 +52,22 @@
     </ul>
   </div>
 
-  <div class="page-content">
-    <ul class="recent-games-list">
-      <li class="recent-game one">
-        <h2 class="game-title">Game One</h2>
-      </li>
-      <li class="recent-game two">
-        <h2 class="game-title">Game Two</h2>
-      </li>
-      <li class="recent-game three">
-        <h2 class="game-title">Game Three</h2>
-      </li>
-    </ul>
+  <div class="page-content bg-none">
+    <div class="recent-games-container">
+      <ul class="recent-games-list">
+        <li class="recent-game one" ng-repeat="game in gamesData.games|limitTo:3">
+          <p class="name">{{game.name}}</p>
+          <p class="location"><i class="fas fa-map-marker-alt"></i>{{game.location}}</p>
+          <div class="footer">
+            <p class="date">{{game.datePlayed}}</p>
+            <div class="right">
+              <p class="players"><i class="fas fa-user"></i>{{game.results.length}}</p>
+              <p class="comments"><i class="fas fa-comment"></i>{{game.comments.length}}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div class="page-content">
