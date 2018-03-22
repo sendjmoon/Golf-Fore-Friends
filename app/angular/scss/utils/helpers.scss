@@ -61,11 +61,11 @@
   position: relative;
   background: none;
   color: $font-color-dark;
-  box-shadow: 0 2px 2px 0 #e1e1e1, 0 0 0 1px #e1e1e1;
+  box-shadow: 10px 8px 8px rgba(211, 224, 235, 0.5), 0 0 0 0.8px rgba(211, 224, 235, 0.5);
   transition: box-shadow 0.2s ease;
 
   &:hover {
-    box-shadow: 0 3px 8px 0 #e1e1e1, 0 0 0 1px #e1e1e1;
+    box-shadow: 0 3px 8px 0 rgba(211, 224, 235, 0.5), 0 0 0 1px rgba(211, 224, 235, 0.5);
     transition: box-shadow 0.2s ease;
   }
 
