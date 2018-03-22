@@ -3,7 +3,10 @@ $green-primary: #4dbb33;
 $green-opaque: rgba(77, 187, 51, 0.8);
 $green-light: #6dde52;
 $green-light-alt: #abeb9c;
-$green-secondary: #89c97a;
+$green-secondary: #03ceb1;
+
+$color-green: #03ceb1;
+$color-font-gray: #878787;
 
 $orange-primary: #ffb824;
 $orange-opaque: rgba(254, 172, 0, 0.8);
@@ -16,9 +19,9 @@ $red-opaque: rgba(220, 22, 22, 0.7);
 
 //backgrounds
 $bg-color-light: #fff;
-
 $bg-color-dark: #1f1f1f;
 $bg-color-dark-opaque: rgba(0, 0, 0, 0.8);
+$color-bg-dark: #333;
 
 //fonts
 $font-color-light: #fff;
@@ -33,7 +36,6 @@ $link-color-primary: $orange-primary;
 
 //panels
 $panel-bg-color-light: #fff;
-
 $panel-bg-color-dark-primary: #333;
 $panel-bg-color-dark-gray: #4b4e54;
 $panel-bg-color-dark-opaque: rgba(75, 78, 84, 0.8);
@@ -44,4 +46,6 @@ $border-color-semi-dark: #c5c5c5;
 $border-color-dark: #5f646d;
 $border-invis: rgba(0, 0, 0, 0);
 
+//shadows
 $box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+$color-shadow-green: #d1fff8;
