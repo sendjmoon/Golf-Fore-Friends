@@ -3,6 +3,7 @@
   &.main {
     height: 100vh;
     max-height: 750px;
+    padding: 30px;
 
     .landing-content {
       @include flex(center, center, col);
