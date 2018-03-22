@@ -1,6 +1,7 @@
 game-chart {
-  @include flex(space-between, center, row);
+  @include flex(center, center, row);
   width: 100%;
+  padding: 30px 0;
 }
 
 canvas {
@@ -8,5 +9,25 @@ canvas {
 
   &#gameChart {
     background: rgba(0, 0, 0, 0);
+  }
+}
+
+.chart-container {
+  width: 50%;
+}
+
+@media screen and (max-width: 900px) {
+
+  game-chart {
+    flex-direction: column;
+  }
+
+  .chart-container {
+    width: 100%;
+    max-width: 500px;
+
+    &:first-of-type {
+      margin-bottom: 75px;
+    }
   }
 }

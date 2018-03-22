@@ -10,7 +10,7 @@ module.exports = function(app) {
     let strokeData = [];
     let dateData = [];
 
-    ctrl.parseData = function(array, property) {
+    ctrl.formatData = function(array, property) {
       return array.map((item) => {
         return property === 'datePlayed' ? new Date(item[property]).toDateString() : item[property];
       });
@@ -48,8 +48,8 @@ module.exports = function(app) {
     ctrl.init = function() {
       resultService.getAllByUserId(ctrl.user._id)
         .then((results) => {
-          strokeData = ctrl.parseData(results, 'strokes');
-          dateData = ctrl.parseData(results, 'datePlayed');
+          strokeData = ctrl.formatData(results, 'strokes');
+          dateData = ctrl.formatData(results, 'datePlayed');
           ctrl.initChart();
         });
     };

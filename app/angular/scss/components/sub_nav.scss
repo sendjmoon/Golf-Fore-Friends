@@ -1,18 +1,13 @@
 sub-nav {
   display: block;
-  // width: 100%;
-  width: 250px;
-  // height: 50px;
-  // margin: 0 auto;
+  width: 100%;
   border-bottom: 3px solid #f1f1f1;
-  // background: #4b4e54;
   color: $font-color-dark;
 }
 
 .sub-nav-content {
-  @include flex(flex-start, center, col);
+  @include flex(flex-end, flex-start, col);
   width: 100%;
-  // max-width: 1200px;
   height: 100%;
   margin: 0 auto;
   padding: 15px 30px;

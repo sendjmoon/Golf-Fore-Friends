@@ -9,17 +9,28 @@
 
   .recent-game {
     display: inline-block;
+    float: right;
     width: 50%;
+    height: 150px;
     border: 1px solid #f1f1f1;
 
-    &.one {
+    &:first-of-type {
       float: left;
       height: 300px;
     }
+  }
+}
 
-    &.two, &.three {
-      float: right;
-      height: 150px;
+@media screen and (max-width: 900px) {
+
+  .recent-games-list {
+
+    .recent-game {
+      width: 100%;
+
+      &:first-of-type {
+        height: 150px;
+      }
     }
   }
 }

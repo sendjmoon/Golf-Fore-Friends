@@ -8,7 +8,10 @@ module.exports = function(app) {
     $scope.stats = statsService.data;
     $scope.friendsData = friendService.data;
     $scope.statsData = statsService.data;
+    $scope.gamesData = gameService.data.allGames;
     $scope.leaderboard = [];
+
+    ctrl.formatDate = userService.formatDate;
 
     ctrl.sortLeaderboard = function() {
       $scope.leaderboard = $scope.friendsData.friends;
@@ -20,6 +23,7 @@ module.exports = function(app) {
     };
 
     ctrl.init = function() {
+      gameService.getAllById(ctrl.user.gameIds);
       friendService.getAllFriends(ctrl.user.email)
         .then(ctrl.sortLeaderboard);
     };

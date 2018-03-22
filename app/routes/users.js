@@ -10,12 +10,14 @@ router.get('/check-session', function(req, res, next) {
     userService.getByEmailOrUsername(req.session.user.email)
       .then((user) => {
         req.session.user = user;
+        console.log(user);
         res.json({
           userData: {
             _id: user._id,
             fullName: user.fullName,
             email: user.email,
             gameIds: user.gameIds,
+            createdAt: user.createdAt,
           },
         });
       })

@@ -5,7 +5,7 @@ module.exports = function(chartData, userHandicap) {
     type: 'line',
     data: chartData,
     options: {
-      fontColor: '#fff',
+      fontColor: '#4b4e54',
       responsive: true,
       legend: {
         display: false,
@@ -13,35 +13,40 @@ module.exports = function(chartData, userHandicap) {
       scales: {
         xAxes: [{
           gridLines: {
-            color: '#a1a1a1',
+            color: '#f1f1f1',
           },
           ticks: {
-            fontColor: '#fff',
+            fontColor: '#4b4e54',
           },
         }],
         yAxes: [{
           gridLines: {
-            color: '#a1a1a1',
+            color: '#f1f1f1',
           },
           ticks: {
-            fontColor: '#fff',
+            fontColor: '#4b4e54',
           },
         }],
       },
       elements: {
         line: {
           tension: 0.1,
-          fill: true,
-          borderWidth: 1.7,
-          borderColor: '#fff',
+          fill: false,
+          borderWidth: 2.5,
+          // borderColor: '#8fc0d2',
+          borderColor: '#4b4e54',
           pointBackgroundColor: 'rgba(254, 172, 0, 1)',
           pointBorderColor: 'rgba(254, 172, 0, 1)',
         },
         point: {
           radius: 3,
           hoverRadius: 5,
-          backgroundColor: 'rgba(254, 172, 0, 0.8)',
-          borderColor: 'rgba(254, 172, 0, 0.8)',
+          // backgroundColor: 'rgba(254, 172, 0, 0.8)',
+          // borderColor: 'rgba(254, 172, 0, 0.8)',
+          // backgroundColor: '#8fc0d2',
+          // borderColor: '#8fc0d2',
+          backgroundColor: '#4b4e54',
+          borderColor: '#4b4e54',
         },
       },
       tooltips: {
@@ -65,10 +70,12 @@ module.exports = function(chartData, userHandicap) {
           mode: 'horizontal',
           scaleID: 'y-axis-0',
           value: userHandicap,
-          borderColor: 'rgba(77, 187, 51, 0.6)',
-          borderWidth: 5,
+          borderColor: 'rgba(77, 187, 51, 0.3)',
+          // borderColor: 'rgba(75, 78, 84, 0.5)',
+          borderWidth: 4,
           label: {
             backgroundColor: 'rgba(77, 187, 51, 0.4)',
+            // borderColor: 'rgba(75, 78, 84, 0.5)',
             position: 'center',
             enabled: true,
             content: 'Handicap: ' + userHandicap,
