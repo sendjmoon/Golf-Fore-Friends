@@ -34,12 +34,11 @@
   } //main
 
   &.alt {
-    background: #f1f1f1;
+    background: #f2f7fa;
 
     .landing-content {
       @include flex(center, center, col);
       padding: 60px;
-      padding-bottom: 120px;
 
       .body {
         @include flex(center, flex-start, col);
@@ -47,7 +46,7 @@
 
       .title-container {
         width: 100%;
-        margin-bottom: 60px;
+        margin-bottom: 45px;
         text-align: center;
 
         .title {
@@ -90,6 +89,22 @@
 
         &:first-of-type {
           margin-right: 15px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+
+  .landing-container {
+
+    &.alt {
+
+      .landing-content {
+
+        .title-container {
+          margin-bottom: 30px;
         }
       }
     }

@@ -2,6 +2,7 @@
   @include flex(space-around, flex-start, row);
   width: 100%;
   padding: 0;
+  padding-bottom: 60px;
   margin: 0;
   list-style: none;
 
@@ -13,6 +14,7 @@
       height: 270px;
       padding: 30px 20px;
       margin: 0 auto;
+      background: #fff;
       text-align: center;
     }
 
@@ -60,13 +62,11 @@
 
   .features-list {
     @include flex(center, flex-start, col);
+    padding-bottom: 0;
 
-    .feature-content {
-      box-shadow: none;
-
-      .title {
-        margin-bottom: 15px;
-      }
+    .feature {
+      width: 100%;
+      margin-bottom: 30px;
     }
   }
 
