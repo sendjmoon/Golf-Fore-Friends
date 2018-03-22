@@ -1,12 +1,12 @@
 .logo-container {
   @include flex(flex-start, center, row);
-  color: $color-blue;
+  color: $color-font-gray;
 
   .golfer-head, .golfer-body {
     fill: $color-blue;
   }
 
   .title {
-    font-weight: 700;
+    font-weight: 400;
   }
 }

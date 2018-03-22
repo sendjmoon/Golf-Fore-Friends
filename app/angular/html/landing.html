@@ -4,7 +4,7 @@
     <div class="header">
       <div class="logo-container">
         <logo></logo>
-        <h4 class="title">GOLF FORe FRIENDS</h4>
+        <h4 class="title">GOLF FOR<span class="color-blue">e</span> FRIENDS</h4>
       </div>
       <div class="links-container">
         <a href="https://github.com/sendjmoon/Golf-Fore-Friends" target="_blank"><i class="fab fa-github"></i></a>
@@ -16,8 +16,8 @@
         <h2 class="title">GET STARTED</h2>
         <p class="intro">Let's connect you and your friends with the game we all love.</p>
         <div class="buttons-container">
-          <button class="gff-btn shadow" ng-click="auth=true; clicked='signup'">SIGNUP</button>
-          <button class="gff-btn shadow" ng-click="auth=true; clicked='signin'">SIGNIN</button>
+          <button class="gff-btn" ng-click="auth=true; clicked='signup'">SIGNUP</button>
+          <button class="gff-btn ghost" ng-click="auth=true; clicked='signin'">SIGNIN</button>
         </div>
       </div>
       <auth ng-show="auth" data-clicked="clicked"></auth>
