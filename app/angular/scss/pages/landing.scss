@@ -1,102 +1,132 @@
 .landing-container {
-  position: relative;
-  height: 100vh;
 
-  .landing-content {
-    @include flex(center, center, row);
-    position: relative;
-    min-height: calc(100vh - 60px);
-    background: #fff;
+  &.main {
+    height: 100vh;
+    max-height: 750px;
 
-    &.about {
-      @include flex(center, center, col);
+    .landing-content {
       width: 100%;
-      min-height: auto;
-      padding: 75px 30px;
-      background: #4b4e54;
-      color: #fff;
-      text-align: center;
+      max-width: 900px;
+      height: 100%;
+      margin: 0 auto;
 
-      h1 {
-        margin-bottom: 30px;
-      }
+      .header {
+        @include flex(space-between, center, row);
+        position: absolute;
+        top: 30px;
+        width: 100%;
 
-      .intro {
-        max-width: 500px;
-        margin-bottom: 45px;
-      }
-    }
-
-    .image-container {
-      display: inline-block;
-      width: 300px;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .title-container {
-      @include flex(flex-start, center, col);
-      margin-left: 30px;
-
-      .title {
-        display: inline-block;
-        color: $font-color-dark;
-        text-align: center;
-        font-size: 32px;
-        font-weight: 700;
-        line-height: 32px;
-      }
-
-      .description {
-        margin: 0;
-        color: $font-color-dark;
-        font-size: 16px;
-        font-weight: 300;
-      }
-    } //title-container
-
-    .features-list {
-      display: table;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      border-spacing: 30px;
-
-      .feature {
-        display: table-cell;
-        width: 300px;
-        background: #595c63;
-
-        &:first-of-type {
-          border-bottom: 10px solid $green-primary;
+        .logo-container {
+          position: relative;
+          left: -10px;
         }
 
-        &:nth-child(2) {
-          border-bottom: 10px solid $green-light;
-        }
+        .links-container {
 
-        &:nth-child(3) {
-          border-bottom: 10px solid $green-light-alt;
-        }
-
-        .icon-box {
-          width: 100%;
-          height: 175px;
-          padding: 30px;
-        }
-
-        .feature-content {
-          padding: 0 15px 15px 15px;
-
-          h4 {
-            margin-bottom: 10px;
-            font-weight: 700;
+          a {
+            font-size: 28px;
+            color: $color-font-gray;
           }
         }
       }
+
+      .body {
+        @include flex(space-around, center, row);
+        width: 100%;
+
+        .title-container {
+          @include flex(flex-start, center, col);
+          width: 300px;
+          color: $color-font-gray;
+
+          .title {
+            font-size: 28px;
+            line-height: 36px;
+            margin-bottom: 10px;
+          }
+
+          .intro {
+            width: 280px;
+            margin: 0;
+            font-size: 16px;
+            font-weight: 300;
+          }
+        }
+
+        .image-container {
+          display: inline-block;
+          width: 350px;
+        }
+      }
     }
-  } //landing content
+  }
 }
+
+.landing-content {
+  @include flex(center, center, row);
+  position: relative;
+  background: #fff;
+
+  &.about {
+    @include flex(center, center, col);
+    width: 100%;
+    min-height: auto;
+    padding: 75px 30px;
+    background: #4b4e54;
+    color: #fff;
+    text-align: center;
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .intro {
+      max-width: 500px;
+      margin-bottom: 45px;
+    }
+  }
+
+  .features-list {
+    display: table;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border-spacing: 30px;
+
+    .feature {
+      display: table-cell;
+      width: 300px;
+      background: #595c63;
+
+      &:first-of-type {
+        border-bottom: 10px solid $green-primary;
+      }
+
+      &:nth-child(2) {
+        border-bottom: 10px solid $green-light;
+      }
+
+      &:nth-child(3) {
+        border-bottom: 10px solid $green-light-alt;
+      }
+
+      .icon-box {
+        width: 100%;
+        height: 175px;
+        padding: 30px;
+      }
+
+      .feature-content {
+        padding: 0 15px 15px 15px;
+
+        h4 {
+          margin-bottom: 10px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+} //landing content
 
 .buttons-container {
   margin-top: 30px;
