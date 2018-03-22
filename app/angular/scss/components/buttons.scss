@@ -2,10 +2,17 @@
   margin: 0;
   padding: 5px 25px;
   border: 1px solid rgba(0, 0, 0, 0);
-  border-radius: 0;
-  color: $font-color-dark;
+  border-radius: 2px;
+  background: $color-blue;
+  color: $color-font-white;
   font-size: 14px;
   font-weight: 400;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: $color-blue-hover;
+    transition: all 0.2s ease;
+  }
 
   &:focus {
     outline: none;
@@ -13,13 +20,14 @@
 
   &.ghost {
     background: none;
-    color: $font-color-dark;
-    border-color: $orange-primary;
-    transition: all 0.2s ease;
+    color: $color-blue;
+    border-color: $color-blue;
+    transition: all 0.4s ease;
 
     &:hover {
-      background: $orange-primary;
-      color: #fff;
+      background: $color-blue-hover;
+      color: $color-font-white;
+      border-color: $color-opaque;
       transition: all 0.2s ease;
     }
 
@@ -39,6 +47,10 @@
       background: $orange-primary;
       transition: all 0.2s ease;
     }
+  }
+
+  &.blue {
+    background: $color-blue;
   }
 
   &.dark {

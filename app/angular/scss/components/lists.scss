@@ -1,3 +1,40 @@
+.features-list {
+  @include flex(space-around, flex-start, row);
+  width: 100%;
+  padding: 0;
+  padding-bottom: 60px;
+  margin: 0;
+  list-style: none;
+
+  .feature {
+    width: 33%;
+
+    .feature-content {
+      width: 240px;
+      height: 270px;
+      padding: 30px 20px;
+      margin: 0 auto;
+      background: #fff;
+      text-align: center;
+    }
+
+    .title {
+      margin-bottom: 45px;
+      color: $color-blue;
+      font-weight: 400;
+    }
+
+    .intro {
+      margin-bottom: 30px;
+    }
+
+    .icon-container {
+      padding: 0;
+      color: $color-blue;
+    }
+  }
+}
+
 .friends-list, .games-list, .recent-games-list {
   list-style: none;
   padding: 0;
@@ -22,6 +59,16 @@
 }
 
 @media screen and (max-width: 900px) {
+
+  .features-list {
+    @include flex(center, flex-start, col);
+    padding-bottom: 0;
+
+    .feature {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
 
   .recent-games-list {
 

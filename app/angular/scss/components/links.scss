@@ -1,0 +1,29 @@
+a, a:visited {
+  cursor: pointer;
+  color: $color-blue;
+  font-weight: 400;
+  transition: all 0.2s ease;
+
+  &:hover, &:active, &:focus {
+    color: $color-blue-hover;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+}
+
+.landing-container {
+
+  .links-container {
+
+    .svg-inline--fa {
+      color: $color-font-gray;
+      font-size: 28px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: $color-blue-hover;
+        transition: all 0.2s ease;
+      }
+    }
+  }
+}

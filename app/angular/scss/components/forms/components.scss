@@ -3,16 +3,13 @@
   height: 30px;
   padding: 16px 10px;
   margin-top: 2px;
-  border: none;
-  border-radius: 0;
+  border: 1px solid #e1e1e1;
+  border-radius: 2px;
   outline: none;
-  color: $font-color-dark;
+  color: $color-blue;
 
-  &.shadow {
-
-    &:active, &:focus {
-      box-shadow: 0 2px 2px 0 $orange-primary, 0 0 0 1px $orange-primary;
-    }
+  &:active, &:focus {
+    border-color: $color-blue-hover;
   }
 }
 

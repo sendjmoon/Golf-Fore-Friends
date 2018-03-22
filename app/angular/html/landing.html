@@ -1,54 +1,67 @@
-<div class="landing-container">
-  <nav-bar></nav-bar>
-
+<div class="landing-container main">
   <div class="landing-content">
-    <div class="image-container">
-      <img class="hole-image img-responsive" src="{{lc.baseUrl}}/imgs/golf-hole-iso.png" />
+
+    <div class="header">
+      <div class="logo-container">
+        <logo></logo>
+        <h4 class="title">GOLF FOR<span class="color-blue">e</span> FRIENDS</h4>
+      </div>
+      <div class="links-container">
+        <a href="https://github.com/sendjmoon/Golf-Fore-Friends" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
     </div>
-    <div class="title-container">
-      <h3>WELCOME TO</h3>
-      <h2 class="title">GOLF FOR<span class="color-green">e</span> FRIENDS</h2>
-      <div class="buttons-container" ng-hide="auth">
-        <button class="gff-btn shadow" ng-click="auth=true; clicked='signup'">SIGNUP</button>
-        <button class="gff-btn shadow" ng-click="auth=true; clicked='signin'">SIGNIN</button>
+
+    <div class="body">
+      <div class="title-container" ng-hide="auth">
+        <h2 class="title">GET STARTED</h2>
+        <p class="intro">Let's connect you and your friends with the game we all love.</p>
+        <div class="buttons-container">
+          <button class="gff-btn" ng-click="auth=true; clicked='signup'">SIGNUP</button>
+          <button class="gff-btn ghost" ng-click="auth=true; clicked='signin'">SIGNIN</button>
+        </div>
       </div>
       <auth ng-show="auth" data-clicked="clicked"></auth>
+      <div class="image-container">
+        <img class="hole-image img-responsive" src="{{lc.baseUrl}}/imgs/golf-hole-iso.png" />
+      </div>
     </div>
-  </div><!--/landing-content-->
 
-  <div class="landing-content about">
-    <!-- <h1>ABOUT</h1> -->
-    <!-- <p class="intro">Golf Fore Friends is dedicated to helping golfers of all skill-levels record and view their progress throughout their golfing career.</p> -->
-    <h1>FEATURES</h1>
-    <p class="intro">Below are some of the tools we have available to take advantage of tracking your game.</p>
-    <ul class="features-list">
-      <li class="feature">
-        <div class="icon-box">
-          <i class="fas fa-chart-line fa-9x"></i>
-        </div>
-        <div class="feature-content">
-          <h4>Stats</h4>
-          <p>Track your progress.</p>
-        </div>
-      </li>
-      <li class="feature">
-        <div class="icon-box">
-          <i class="fas fa-calendar-alt fa-8x"></i>
-        </div>
-        <div class="feature-content">
-          <h4>Games</h4>
-          <p>View game history and their results.</p>
-        </div>
-      </li>
-      <li class="feature">
-        <div class="icon-box">
-          <i class="fas fa-users fa-9x"></i>
-        </div>
-        <div class="feature-content">
-          <h4>Friends</h4>
-          <p>See how your friends are playing.</p>
-        </div>
-      </li>
-    </ul>
+  </div>
+</div>
+
+<div class="landing-container alt">
+  <div class="landing-content">
+    <div class="body">
+      <div class="title-container">
+        <h2 class="title">FEATURES</h2>
+        <p class="intro">Below are some of the tools we have available to take advantage of tracking your game.</p>
+      </div>
+      <ul class="features-list">
+        <li class="feature">
+          <div class="feature-content shadow">
+            <h4 class="title">Stats</h4>
+            <div class="icon-container">
+              <i class="fas fa-chart-line fa-7x"></i>
+            </div>
+          </div>
+        </li>
+        <li class="feature">
+          <div class="feature-content shadow">
+            <h4 class="title">Games</h4>
+            <div class="icon-container">
+              <i class="fas fa-calendar-alt fa-6x"></i>
+            </div>
+          </div>
+        </li>
+        <li class="feature">
+          <div class="feature-content shadow">
+            <h4 class="title">Friends</h4>
+            <div class="icon-container">
+              <i class="fas fa-users fa-7x"></i>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

@@ -24,20 +24,11 @@ h2 {
 }
 
 p, a {
-  font-size: 16px;
+  font-size: 15px;
   line-height: inherit;
 }
 
 /* ----- color -----*/
 main {
-  color: $font-color-dark;
-}
-
-a {
-  color: $link-color-primary;
-
-  &:hover, &:active, &:focus, &:visited {
-    color: $link-color-primary;
-    text-decoration: none;
-  }
+  color: $color-font-gray;
 }

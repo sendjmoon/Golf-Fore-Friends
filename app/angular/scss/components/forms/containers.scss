@@ -1,7 +1,6 @@
 auth {
   @include flex(center, center, row);
-  width: 100%;
-  padding: 15px;
+  width: 300px;
 
   .gff-btn {
     margin: 15px 0;
@@ -10,7 +9,6 @@ auth {
 
 .form-container {
   width: 100%;
-  color: $font-color-dark;
   text-align: center;
 }
 
