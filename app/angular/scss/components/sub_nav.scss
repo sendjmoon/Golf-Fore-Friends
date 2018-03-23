@@ -1,21 +1,34 @@
 sub-nav {
   display: block;
   width: 100%;
-  border-bottom: 3px solid #f1f1f1;
-  color: $font-color-dark;
 }
 
 .sub-nav-content {
-  @include flex(flex-end, flex-start, col);
+  @include flex(flex-start, flex-start, col);
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  padding: 15px 30px;
+  padding: 30px;
+
+  h2, a {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+  }
+
+  .title {
+    color: #fff;
+    margin-bottom: 15px;
+  }
+
+  .svg-inline--fa {
+    width: 20px;
+    margin-right: 5px;
+  }
 
   a {
-    padding: 5px 0;
-    color: $font-color-dark;
-    font-size: 14px;
+    margin: 9px 0;
+    color: #a3adb7;
   }
 }
 

@@ -1,7 +1,8 @@
 <div class="sub-nav-content">
-  <h2 class="container-title sm color-green">{{snc.pageTitle}}</h2>
-  <a>Profile</a>
-  <a>Leaderboard</a>
-  <a>Stats</a>
+  <h2 class="title">{{snc.pageTitle}}</h2>
+  <a><i class="far fa-user"></i>Profile</a>
+  <a><i class="far fa-calendar-alt"></i>Recent Games</a>
+  <a><i class="far fa-list-alt"></i>Leaderboard</a>
+  <a><i class="fas fa-chart-line"></i>Progress</a>
   <sn-games ng-if="snc.pageTitle==='Games'" data-creating-game="snc.creatingGame"></sn-games>
 </div>

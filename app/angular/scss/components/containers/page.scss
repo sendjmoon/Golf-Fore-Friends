@@ -5,13 +5,15 @@
 
   &.left {
     @include flex(flex-start, flex-start, col);
-    width: auto;
-    margin-right: 5px;
+    position: relative;
+    z-index: 30;
+    width: 300px;
+    background: $color-bg-dark;
   }
 
   &.right {
     @include flex(flex-start, flex-start, col);
-    padding-right: 15px;
+    padding: 15px;
   }
 
   &.dark {
