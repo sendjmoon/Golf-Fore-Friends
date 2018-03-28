@@ -13,7 +13,6 @@
 
   &.right {
     @include flex(flex-start, flex-start, col);
-    // background: #f2f7fa;
   }
 
   &.dark {
@@ -24,10 +23,10 @@
 .page-content {
   @include flex(center, flex-start, col);
   width: 100%;
-  max-width: 1200px;
-  padding: 15px 30px;
+  // max-width: 1200px;
+  // padding: 15px 30px;
   margin: 0 auto;
-  background: #fff;
+  background: #f2f5f8;
 }
 
 

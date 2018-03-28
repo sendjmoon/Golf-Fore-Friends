@@ -4,45 +4,37 @@
 
 <div class="page-container right">
   <div class="page-content">
-    <div class="tile-container shadow">
-      <div class="user-container">
-        <div class="user-pic">
-          <i class="fa fa-user"></i>
-        </div>
-        <table class="user-info">
-          <tr>
-            <th ng-init="dc.formatDate(dc.user)">
-              <p>MEMBER SINCE <strong>{{dc.user.createdAt}}</strong></p>
-            </th>
-          </tr>
-          <tr>
-            <td class="name">
-              {{dc.user.fullName}}
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
 
-    <div class="tile-container">
-      <ul class="user-stats">
-        <li>
-          <p class="title">HANDICAP</p>
-          <p class="value"><span class="color-green">+</span>{{dc.user.stats.handicap}}</p>
-        </li>
-        <li>
-          <p class="title">WINS</p>
-          <p class="value">{{dc.user.stats.wins}}</p>
-        </li>
-        <li>
-          <p class="title">LOSSES</p>
-          <p class="value">{{dc.user.stats.losses}}</p>
-        </li>
-        <li>
-          <p class="title">WIN RATIO</p>
-          <p class="value">{{dc.user.stats.winRatio}}</p>
-        </li>
-      </ul>
+    <div class="tile-container user">
+      <div class="tile-content">
+        <div class="user-container">
+          <div class="user-pic">
+            <i class="far fa-user"></i>
+          </div>
+          <div class="user-info">
+            <p ng-init="dc.formatDate(dc.user)">MEMBER SINCE <strong>{{dc.user.createdAt}}</strong></p>
+            <p class="name">{{dc.user.fullName}}</p>
+          </div>
+        </div>
+        <ul class="user-stats">
+          <li>
+            <p class="title">HANDICAP</p>
+            <p class="value"><span class="color-green">+</span>{{dc.user.stats.handicap}}</p>
+          </li>
+          <li>
+            <p class="title">WINS</p>
+            <p class="value">{{dc.user.stats.wins}}</p>
+          </li>
+          <li>
+            <p class="title">LOSSES</p>
+            <p class="value">{{dc.user.stats.losses}}</p>
+          </li>
+          <li>
+            <p class="title">WIN RATIO</p>
+            <p class="value">{{dc.user.stats.winRatio}}</p>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <h2 class="tile-title">Recent Games</h2>

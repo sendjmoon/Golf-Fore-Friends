@@ -1,8 +1,17 @@
 .tile-container {
   @include flex(flex-start, flex-start, row);
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  margin-bottom: 5px;
-  background: #fff;
+  border-bottom: 1px solid #dadeea;
+
+  .tile-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &.user {
+    @include flex(flex-start, center, row);
+    width: 100%;
+    padding: 15px;
+  }
 }
