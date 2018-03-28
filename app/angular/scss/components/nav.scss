@@ -35,11 +35,6 @@ nav-bar {
           transition: all 0.2s ease;
           color: $color-font-gray;
 
-          &:hover {
-            border-bottom: 2px solid $color-green;
-            transition: all 0.2s ease;
-          }
-
           &.gff-active {
             border: 1px solid $orange-primary;
           }

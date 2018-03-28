@@ -3,91 +3,93 @@
 </div>
 
 <div class="page-container right">
-  <div class="page-content shadow">
-    <div class="user-container">
-      <div class="user-pic">
-        <i class="fa fa-user"></i>
-      </div>
-      <table class="user-info">
-        <tr>
-          <th ng-init="dc.formatDate(dc.user)">
-            <p>MEMBER SINCE <strong>{{dc.user.createdAt}}</strong></p>
-          </th>
-        </tr>
-        <tr>
-          <td class="name">
-            {{dc.user.fullName}}
-          </td>
-        </tr>
-      </table>
-    </div>
-  </div>
-
   <div class="page-content">
-    <ul class="user-stats">
-      <li>
-        <p class="title">HANDICAP</p>
-        <p class="value"><span class="color-green">+</span>{{dc.user.stats.handicap}}</p>
-      </li>
-      <li>
-        <p class="title">WINS</p>
-        <p class="value">{{dc.user.stats.wins}}</p>
-      </li>
-      <li>
-        <p class="title">LOSSES</p>
-        <p class="value">{{dc.user.stats.losses}}</p>
-      </li>
-      <li>
-        <p class="title">WIN RATIO</p>
-        <p class="value">{{dc.user.stats.winRatio}}</p>
-      </li>
-    </ul>
-  </div>
-
-  <h2 class="tile-title">Recent Games</h2>
-  <div class="page-content bg-none">
-    <div class="recent-games-container">
-      <ul class="recent-games-list">
-        <li class="recent-game one" ng-repeat="game in gamesData.games|limitTo:3">
-          <p class="name">{{game.name}}</p>
-          <p class="location"><i class="fas fa-map-marker-alt"></i>{{game.location}}</p>
-          <div class="footer">
-            <p class="date">{{game.datePlayed}}</p>
-            <div class="right">
-              <p class="players"><i class="fas fa-user"></i>{{game.results.length}}</p>
-              <p class="comments"><i class="fas fa-comment"></i>{{game.comments.length}}</p>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <h2 class="tile-title">Leaderboard</h2>
-  <div class="page-content">
-    <div class="gff-container">
-      <div class="gff-content dashboard-box">
-        <table class="leaderboard">
+    <div class="tile-container shadow">
+      <div class="user-container">
+        <div class="user-pic">
+          <i class="fa fa-user"></i>
+        </div>
+        <table class="user-info">
           <tr>
-            <th>Position</th>
-            <th>Player</th>
-            <th>Handicap</th>
+            <th ng-init="dc.formatDate(dc.user)">
+              <p>MEMBER SINCE <strong>{{dc.user.createdAt}}</strong></p>
+            </th>
           </tr>
-          <tr ng-repeat="user in leaderboard | limitTo:5">
-            <td>{{$index + 1}}</td>
-            <td>{{user.fullName}}</td>
-            <td><span class="color-green">+</span>{{user.stats.handicap}}</td>
+          <tr>
+            <td class="name">
+              {{dc.user.fullName}}
+            </td>
           </tr>
         </table>
       </div>
     </div>
-  </div>
 
-  <h2 class="tile-title">Progress</h2>
-  <div class="page-content">
-    <div class="gff-container">
-      <div class="gff-content">
-        <game-chart></game-chart>
+    <div class="tile-container">
+      <ul class="user-stats">
+        <li>
+          <p class="title">HANDICAP</p>
+          <p class="value"><span class="color-green">+</span>{{dc.user.stats.handicap}}</p>
+        </li>
+        <li>
+          <p class="title">WINS</p>
+          <p class="value">{{dc.user.stats.wins}}</p>
+        </li>
+        <li>
+          <p class="title">LOSSES</p>
+          <p class="value">{{dc.user.stats.losses}}</p>
+        </li>
+        <li>
+          <p class="title">WIN RATIO</p>
+          <p class="value">{{dc.user.stats.winRatio}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <h2 class="tile-title">Recent Games</h2>
+    <div class="tile-container bg-none">
+      <div class="recent-games-container">
+        <ul class="recent-games-list">
+          <li class="recent-game one" ng-repeat="game in gamesData.games|limitTo:3">
+            <p class="name">{{game.name}}</p>
+            <p class="location"><i class="fas fa-map-marker-alt"></i>{{game.location}}</p>
+            <div class="footer">
+              <p class="date">{{game.datePlayed}}</p>
+              <div class="right">
+                <p class="players"><i class="fas fa-user"></i>{{game.results.length}}</p>
+                <p class="comments"><i class="fas fa-comment"></i>{{game.comments.length}}</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="tile-title">Leaderboard</h2>
+    <div class="tile-container">
+      <div class="gff-container">
+        <div class="gff-content dashboard-box">
+          <table class="leaderboard">
+            <tr>
+              <th>Position</th>
+              <th>Player</th>
+              <th>Handicap</th>
+            </tr>
+            <tr ng-repeat="user in leaderboard | limitTo:5">
+              <td>{{$index + 1}}</td>
+              <td>{{user.fullName}}</td>
+              <td><span class="color-green">+</span>{{user.stats.handicap}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="tile-title">Progress</h2>
+    <div class="tile-container">
+      <div class="gff-container">
+        <div class="gff-content">
+          <game-chart></game-chart>
+        </div>
       </div>
     </div>
   </div>
