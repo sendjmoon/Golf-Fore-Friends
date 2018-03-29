@@ -1,3 +1,33 @@
 .golfer-head, .golfer-body {
-  fill: #fff;
+  fill: $color-blue;
+}
+
+.gff-nav {
+
+  .title-container {
+    @include flex(flex-start, center, row);
+    height: 100%;
+
+    logo {
+      @include flex(center, center, row);
+      width: 60px;
+      height: 60px;
+      margin-right: 7px;
+      background: $color-blue;
+
+      .golfer-head, .golfer-body {
+        fill: #fff;
+      }
+
+      .gff-logo-full {
+        width: 35px;
+        height: 35px;
+      }
+    }
+
+    .title {
+      margin-left: 10px;
+      font-weight: 400;
+    }
+  }
 }

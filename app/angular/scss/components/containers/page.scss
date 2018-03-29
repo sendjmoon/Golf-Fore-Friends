@@ -5,13 +5,14 @@
 
   &.left {
     @include flex(flex-start, flex-start, col);
-    width: auto;
-    margin-right: 5px;
+    position: relative;
+    z-index: 30;
+    width: 300px;
+    background: $color-bg-dark;
   }
 
   &.right {
     @include flex(flex-start, flex-start, col);
-    padding-right: 15px;
   }
 
   &.dark {
@@ -20,13 +21,15 @@
 }
 
 .page-content {
-  @include flex(flex-start, flex-start, row);
+  @include flex(center, flex-start, col);
   width: 100%;
-  max-width: 1200px;
+  // max-width: 1200px;
+  // padding: 15px 30px;
   margin: 0 auto;
-  margin-bottom: 5px;
   background: #fff;
 }
+
+
 
 @media screen and (max-width: 900px) {
 
