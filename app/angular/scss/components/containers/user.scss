@@ -1,5 +1,6 @@
 .user-container {
   @include flex(flex-start, center, row);
+  width: 100%;
 
   .user-pic {
     @include flex(center, center, row);
@@ -25,8 +26,6 @@
     }
 
     .name {
-      // padding: 10px 0;
-      // margin-bottom: 10px;
       margin-top: 5px;
       font-size: 24px;
       font-weight: 400;
