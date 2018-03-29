@@ -11,6 +11,13 @@
     margin: 0 auto;
   }
 
+  .tile-title {
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+
   &.user {
     @include flex(flex-start, center, row);
     width: 100%;

@@ -42,18 +42,73 @@
 }
 
 .recent-games-list {
+  display: table;
   width: 100%;
 
   .recent-game {
     display: inline-block;
+    position: relative;
     float: right;
     width: 50%;
-    height: 150px;
-    border: 1px solid #f1f1f1;
+    height: 147px;
+    padding: 30px;
+    // border: 1px solid #dadeea;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgba(211, 224, 235, 0.8);
+    background-color: #fff;
+    color: $color-blue-dark;
 
     &:first-of-type {
       float: left;
+      width: calc(50% - 6px);
       height: 300px;
+      margin-right: 6px;
+    }
+
+    &:last-of-type {
+      margin-top: 6px;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .name {
+      margin-bottom: 3px;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 18px;
+      color: $color-blue;
+    }
+
+    .footer {
+      @include flex(space-between, center, row);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 30px;
+
+      .right {
+
+        p {
+          display: inline-block;
+        }
+
+        .players {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .svg-inline--fa {
+      margin-right: 5px;
+    }
+
+    .fa-map-marker-alt {
+      color: $color-blue;
+      // color: $green-secondary;
     }
   }
 }

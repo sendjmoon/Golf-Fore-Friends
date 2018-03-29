@@ -19,7 +19,7 @@
         <ul class="user-stats">
           <li>
             <p class="title">HANDICAP</p>
-            <p class="value"><span class="color-green">+</span>{{dc.user.stats.handicap}}</p>
+            <p class="value"><span class="color-blue">+</span>{{dc.user.stats.handicap}}</p>
           </li>
           <li>
             <p class="title">WINS</p>
@@ -58,31 +58,36 @@
       </div>
     </div>
 
-    <h2 class="tile-title">Leaderboard</h2>
     <div class="tile-container">
-      <div class="gff-container">
-        <div class="gff-content dashboard-box">
-          <table class="leaderboard">
-            <tr>
-              <th>Position</th>
-              <th>Player</th>
-              <th>Handicap</th>
-            </tr>
-            <tr ng-repeat="user in leaderboard | limitTo:5">
-              <td>{{$index + 1}}</td>
-              <td>{{user.fullName}}</td>
-              <td><span class="color-green">+</span>{{user.stats.handicap}}</td>
-            </tr>
-          </table>
+      <div class="tile-content">
+        <h2 class="tile-title">Leaderboard</h2>
+        <div class="gff-container">
+          <div class="gff-content dashboard-box">
+            <table class="leaderboard">
+              <tr>
+                <th>Position</th>
+                <th>Player</th>
+                <th>Handicap</th>
+              </tr>
+              <tr ng-repeat="user in leaderboard | limitTo:5">
+                <td>{{$index + 1}}</td>
+                <td>{{user.fullName}}</td>
+                <td><span class="color-green">+</span>{{user.stats.handicap}}</td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
+
     </div>
 
-    <h2 class="tile-title">Progress</h2>
     <div class="tile-container">
-      <div class="gff-container">
-        <div class="gff-content">
-          <game-chart></game-chart>
+      <div class="tile-content">
+        <h2 class="tile-title">Progress</h2>
+        <div class="gff-container">
+          <div class="gff-content">
+            <game-chart></game-chart>
+          </div>
         </div>
       </div>
     </div>

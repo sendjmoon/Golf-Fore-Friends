@@ -22,48 +22,8 @@
 
 .recent-games-container {
   width: 100%;
-
-  .recent-game {
-    position: relative;
-    padding: 15px;
-    background-color: #4b4e54;
-    color: #fff;
-
-    p {
-      margin: 0;
-    }
-
-    .name {
-      font-size: 20px;
-      font-weight: 400;
-    }
-
-    .footer {
-      @include flex(space-between, center, row);
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 15px;
-
-      .right {
-
-        p {
-          display: inline-block;
-        }
-
-        .players {
-          margin-right: 10px;
-        }
-      }
-    }
-
-    .svg-inline--fa {
-      margin-right: 5px;
-    }
-
-    .fa-map-marker-alt {
-      color: $green-secondary;
-    }
-  }
+  // padding: 15px;
+  // background: #fff;
+  // box-shadow: 0 1px 1px rgba(150, 150, 150, 0.3);
+  // box-shadow: 0 1px 1px rgba(211, 224, 235, 0.8);
 }
