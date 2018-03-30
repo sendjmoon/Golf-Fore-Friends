@@ -6,7 +6,6 @@
     @include flex(center, center, row);
     width: 100px;
     height: 100px;
-    // background: #f1f1f1;
     background: rgba(78, 84, 100, 0.1);
     border: 1px solid rgba(78, 84, 100, 0.1);
     border-radius: 2px;
@@ -23,6 +22,10 @@
     p {
       margin: 0;
       font-size: 12px;
+    }
+
+    .member-since {
+      color: $color-font-lt-gray;
     }
 
     .name {
