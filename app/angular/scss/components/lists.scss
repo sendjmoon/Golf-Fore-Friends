@@ -42,23 +42,102 @@
 }
 
 .recent-games-list {
+  display: table;
   width: 100%;
 
   .recent-game {
-    display: inline-block;
-    float: right;
-    width: 50%;
-    height: 150px;
-    border: 1px solid #f1f1f1;
+    @include flex(flex-start, center, row);
+    position: relative;
+    width: calc(50% - 3px);
+    height: 147px;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgba(211, 224, 235, 0.8);
+    background-color: #fff;
+    color: $color-blue-dark;
+
+    .game-image {
+      display: inline-block;
+      width: 30%;
+      min-width: 150px;
+      height: 100%;
+      background-image: url('http://localhost:3000/imgs/golf-ball-sunset.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .game-info {
+      @include flex(flex-start, space-between, col);
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+
+      p {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .name {
+        margin-bottom: 3px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 18px;
+        color: $color-blue;
+      }
+
+      .svg-inline--fa {
+        margin-right: 5px;
+        color: $color-blue;
+      }
+
+      .fa-map-marker-alt {
+        color: $color-blue;
+      }
+
+      .footer {
+        @include flex(space-between, flex-end, row);
+        width: 100%;
+
+        p {
+          color: $color-font-lt-gray;
+        }
+
+        .links {
+          @include flex(center, center, row);
+          // color: $color-font-lt-gray;
+
+          .players {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
 
     &:first-of-type {
+      flex-direction: column;
       float: left;
+      width: calc(50% - 3px);
       height: 300px;
+      margin-right: 6px;
+
+      .game-image {
+        width: 100%;
+        min-height: 200px;
+        max-height: 200px;
+        background-image: url('http://localhost:3000/imgs/golf-ball-sunset.jpg');
+      }
+
+      .game-info {
+        height: 100%;
+      }
+    }
+
+    &:last-of-type {
+      margin-top: 6px;
     }
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1024px) {
 
   .features-list {
     @include flex(center, flex-start, col);
@@ -76,7 +155,20 @@
       width: 100%;
 
       &:first-of-type {
+        flex-direction: row;
+        width: 100%;
         height: 150px;
+        margin-bottom: 6px;
+
+        .game-image {
+          display: inline-block;
+          width: 30%;
+          min-width: 150px;
+          min-height: 150px;
+          max-height: 150px;
+          background-size: cover;
+          background-position: center;
+        }
       }
     }
   }

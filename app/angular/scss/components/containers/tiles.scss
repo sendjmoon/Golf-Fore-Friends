@@ -2,13 +2,20 @@
   @include flex(flex-start, flex-start, row);
   width: 100%;
   // padding: 30px 15px;
-  border-bottom: 1px solid #dadeea;
+  border-bottom: 1px solid #ebeef7;
 
   .tile-content {
     width: 100%;
     max-width: 1200px;
     padding: 30px 15px;
     margin: 0 auto;
+  }
+
+  .tile-title {
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
   }
 
   &.user {
