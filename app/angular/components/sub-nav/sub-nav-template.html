@@ -1,8 +1,12 @@
-<div class="sub-nav-content">
+<div class="sub-nav-content" ng-show="snc.pageTitle=='DASHBOARD'">
   <h2 class="title">{{snc.pageTitle}}</h2>
   <a><i class="far fa-user"></i>Profile</a>
   <a><i class="far fa-calendar-alt"></i>Recent Games</a>
   <a><i class="far fa-list-alt"></i>Leaderboard</a>
   <a><i class="fas fa-chart-line"></i>Progress</a>
   <sn-games ng-if="snc.pageTitle==='Games'" data-creating-game="snc.creatingGame"></sn-games>
+</div>
+
+<div class="sub-nav-content" ng-show="snc.pageTitle=='FRIENDS'">
+  <h2 class="title">{{snc.pageTitle}}</h2>
 </div>

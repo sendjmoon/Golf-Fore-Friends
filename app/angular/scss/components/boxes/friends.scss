@@ -2,6 +2,7 @@
   @include flex(center, flex-start, col);
   width: 170px;
   margin-bottom: 15px;
+  border-radius: 2px;
 
   .profile-pic {
     @include flex(center, center, col);
@@ -9,6 +10,8 @@
     height: 170px;
     background: #f1f1f1;
     font-size: 80px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
   }
 
   .content {
