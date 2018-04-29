@@ -1,63 +1,56 @@
-<sub-nav data-page-title="'Games'" data-creating-game="gc.creating"></sub-nav>
+<div class="page-container left">
+  <sub-nav data-page-title="'GAMES'" data-creating-game="gc.creating"></sub-nav>
+</div>
 
-<div class="page-container bg-lt-gray" ng-hide="gc.creating">
+<div class="page-container right" ng-hide="gc.creating">
   <div class="page-content">
+    <ul class="games-list">
+      <li class="game-container shadow-sm" ng-repeat="game in gamesData.games">
 
-    <div class="gff-container">
-      <div class="gff-content">
-        <ul class="games-list">
-          <li class="game-container" ng-repeat="game in gamesData.games">
+        <div class="game-content">
+          <h4 class="game-name">{{game.name}}</h4>
+          <p class="game-location">{{game.location}}</p>
+          <p class="date-played">{{game.datePlayed}}</p>
 
-            <div class="game-content">
-              <h4 class="game-name">{{game.name}}</h4>
-              <p class="game-location">{{game.location}}</p>
-              <p class="date-played">{{game.datePlayed}}</p>
+          <button class="gff-btn dark" data-toggle="collapse" data-target="#{{game.publicId}}-results">Results</button>
+          <button class="gff-btn dark" data-toggle="collapse" data-target="#{{game.publicId}}-comments">Comments (&nbsp;{{game.comments.length}}&nbsp;)</button>
+        </div>
 
-              <button class="gff-btn dark" data-toggle="collapse" data-target="#{{game.publicId}}-results">Results</button>
-              <button class="gff-btn dark" data-toggle="collapse" data-target="#{{game.publicId}}-comments">Comments (&nbsp;{{game.comments.length}}&nbsp;)</button>
+        <div class="tab-container">
+          <div class="tab collapse" id="{{game.publicId}}-results">
+            <div class="tab-content">
+              <ul>
+                <li ng-repeat="result in game.results">
+                  <p>Name: {{result.playerId.fullName}}</p>
+                  <p>Strokes: {{result.strokes}}</p>
+                </li>
+              </ul>
             </div>
+          </div>
+        </div>
 
-            <div class="tab-container">
-              <div class="tab collapse" id="{{game.publicId}}-results">
-                <div class="tab-content">
-                  <ul>
-                    <li ng-repeat="result in game.results">
-                      <p>Name: {{result.playerId.fullName}}</p>
-                      <p>Strokes: {{result.strokes}}</p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+        <div class="tab-container">
+          <div class="tab collapse" id="{{game.publicId}}-comments">
+            <div class="tab-content">
+              <ul>
+                <li ng-repeat="comment in game.comments">
+                  <comment data-game-id="game._id" data-comment="comment"></comment>
+                </li>
+                <li>
+                  <new-comment data-game-id="game._id"></new-comment>
+                </li>
+              </ul>
             </div>
+          </div>
+        </div>
 
-            <div class="tab-container">
-              <div class="tab collapse" id="{{game.publicId}}-comments">
-                <div class="tab-content">
-                  <ul>
-                    <li ng-repeat="comment in game.comments">
-                      <comment data-game-id="game._id" data-comment="comment"></comment>
-                    </li>
-                    <li>
-                      <new-comment data-game-id="game._id"></new-comment>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-          </li>
-        </ul>
-      </div><!--gff-content-->
-    </div><!--gff-container-->
+      </li>
+    </ul>
   </div><!--page-content-->
 </div><!--page-container-->
 
-<div class="page-container bg-white" ng-show="gc.creating">
+<div class="page-container right" ng-show="gc.creating">
   <div class="page-content">
-    <div class="gff-container">
-      <div class="gff-content">
-        <create-game data-creating="gc.creating"></create-game>
-      </div>
-    </div>
+    <create-game data-creating="gc.creating"></create-game>
   </div>
 </div>

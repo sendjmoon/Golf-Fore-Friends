@@ -1,6 +1,8 @@
 .page-container {
   @include flex(center, flex-start, row);
   width: 100%;
+  // min-height: calc(100vh - 60px);
+  min-height: 100%;
   padding-bottom: 90px;
 
   &.left {
@@ -9,11 +11,13 @@
     z-index: 30;
     min-width: 250px;
     width: 250px;
+    min-height: calc(100vh - 60px);
     background: $color-bg-dark;
   }
 
   &.right {
     @include flex(flex-start, flex-start, col);
+    min-height: calc(100vh - 60px);
   }
 
   &.dark {

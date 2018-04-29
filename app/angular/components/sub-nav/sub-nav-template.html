@@ -10,3 +10,13 @@
 <div class="sub-nav-content" ng-show="snc.pageTitle=='FRIENDS'">
   <h2 class="title">{{snc.pageTitle}}</h2>
 </div>
+
+<div class="sub-nav-content" ng-show="snc.pageTitle=='GAMES'">
+  <h2 class="title">{{snc.pageTitle}}</h2>
+  <a ng-click="snc.creatingGame=false">Game List</a>
+  <a ng-click="snc.creatingGame=true">Create Game</a>
+</div>
+
+<div class="sub-nav-content" ng-show="snc.pageTitle=='SETTINGS'">
+  <h2 class="title">{{snc.pageTitle}}</h2>
+</div>

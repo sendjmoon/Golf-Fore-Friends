@@ -9,4 +9,5 @@ module.exports = function(app) {
   require('./logo')(app);
   require('./nav')(app);
   require('./sub-nav')(app);
+  require('./settings')(app);
 };

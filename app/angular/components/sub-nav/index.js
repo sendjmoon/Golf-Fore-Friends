@@ -10,6 +10,4 @@ module.exports = function(app) {
       creatingGame: '=',
     },
   });
-
-  require('./games')(app);
 };
