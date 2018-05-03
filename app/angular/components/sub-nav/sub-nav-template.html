@@ -13,7 +13,7 @@
 
 <div class="sub-nav-content" ng-show="snc.pageTitle=='GAMES'">
   <h2 class="title">{{snc.pageTitle}}</h2>
-  <a ng-click="snc.creatingGame=false"><i class="fas fa-list"></i>Game List</a>
+  <a ng-click="snc.creatingGame=false; snc.resetForm('new-game-form')"><i class="fas fa-list"></i>Game List</a>
   <a ng-click="snc.creatingGame=true"><i class="fas fa-plus-square"></i>Create Game</a>
 </div>
 
