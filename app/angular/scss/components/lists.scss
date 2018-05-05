@@ -36,9 +36,14 @@
 }
 
 .friends-list, .games-list, .recent-games-list {
-  list-style: none;
+  width: 100%;
   padding: 0;
   margin: 0;
+  list-style: none;
+}
+
+.friends-list, .games-list {
+  padding: 30px 15px;
 }
 
 .recent-games-list {
@@ -51,16 +56,23 @@
     width: calc(50% - 3px);
     height: 147px;
     border-radius: 2px;
-    box-shadow: 0 1px 1px rgba(211, 224, 235, 0.8);
+    box-shadow: 1px 1px 4px rgba(211, 224, 235, 0.8);
     background-color: #fff;
     color: $color-blue-dark;
+    overflow: hidden;
+    transition: all 0.2s ease;
+
+    // &:hover {
+    //   box-shadow: 0 2px 2px 1px #a6d3f7;
+    //   transition: all 0.2s ease;
+    // }
 
     .game-image {
       display: inline-block;
       width: 30%;
       min-width: 150px;
       height: 100%;
-      background-image: url('http://localhost:3000/imgs/golf-ball-sunset.jpg');
+      background-image: url('http://localhost:3000/imgs/golf-ball-sunset-bw-40.jpg');
       background-size: cover;
       background-position: center;
     }
@@ -103,7 +115,6 @@
 
         .links {
           @include flex(center, center, row);
-          // color: $color-font-lt-gray;
 
           .players {
             margin-right: 10px;
@@ -123,7 +134,7 @@
         width: 100%;
         min-height: 200px;
         max-height: 200px;
-        background-image: url('http://localhost:3000/imgs/golf-ball-sunset.jpg');
+        // background-image: url('http://localhost:3000/imgs/golf-ball-sunset.jpg');
       }
 
       .game-info {

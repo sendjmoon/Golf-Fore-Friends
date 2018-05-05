@@ -1,35 +1,34 @@
-<div class="page-container">
-  <div class="page-content">
-    <div class="gff-container left">
-      <div class="gff-content shadow">
-        <h2 class="box-title">add more friends</h2>
-        <div class="search-container">
-          <form autocomplete="off">
-            <input id="search-input-users" type="text" placeholder="Search By Email"></input>
-            <ul>
-              <li ng-repeat="user in searchResults">
-                <p>{{user.fullName}} <span ng-show="user.isFriend">- Already friends.</p>
-                <button class="gff-btn" ng-hide="user.isFriend" ng-click="fc.addFriend(user._id, user.stats); user.isFriend=true;">Add to Friends</button>
-              </li>
-            </ul>
-          </form>
-        </div>
+<div class="page-container left">
+  <sub-nav data-page-title="'FRIENDS'"></sub-nav>
+  <div class="gff-container">
+    <div class="gff-content shadow">
+      <h2 class="box-title">add more friends</h2>
+      <div class="search-container">
+        <form autocomplete="off">
+          <input id="search-input-users" type="text" placeholder="Search By Email"></input>
+          <ul>
+            <li ng-repeat="user in searchResults">
+              <p>{{user.fullName}} <span ng-show="user.isFriend">- Already friends.</p>
+              <button class="gff-btn" ng-hide="user.isFriend" ng-click="fc.addFriend(user._id, user.stats); user.isFriend=true;">Add to Friends</button>
+            </li>
+          </ul>
+        </form>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="gff-container main">
-      <div class="gff-content">
-        <ul class="friends-list">
-          <li class="friend-box shadow" ng-repeat="friend in friendsData.friends">
-            <div class="profile-pic">
-              <i class="fa fa-user"></i>
-            </div>
-            <div class="content">
-              <h4 class="box-title">{{friend.fullName}}</h4>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+<div class="page-container right">
+  <div class="page-content">
+    <ul class="friends-list">
+      <li class="friend-box shadow-sm" ng-repeat="friend in friendsData.friends">
+        <div class="profile-pic">
+          <i class="fa fa-user"></i>
+        </div>
+        <div class="content">
+          <h4 class="box-title">{{friend.fullName}}</h4>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>

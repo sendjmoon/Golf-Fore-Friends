@@ -1,6 +1,6 @@
 <h2>Create a Game</h2>
 <p>Please enter game information below.</p>
-<form class="new-game-form" name="new-game" ng-submit="cgc.createGame(cgc.game)">
+<form class="new-game-form" id="new-game-form" ng-submit="cgc.createGame(cgc.game)">
   <div class="create-game-container">
     <div class="course-container">
       <p class="input-title">Course Played</p>
@@ -11,17 +11,14 @@
         </select>
       </div>
     </div>
-
     <div class="location-container">
       <p class="input-title">City, State</p>
       <input type="text" required ng-model="cgc.game.location" placeholder="Seattle, WA"></input>
     </div>
-
     <div class="date-container">
       <p class="input-title">Date Played</p>
-      <input type="date" required ng-model="cgc.game.datePlayed">
+      <input type="date" required ng-model="cgc.game.datePlayed"></input>
     </div>
-
     <div class="players-container">
       <p class="input-title">Players</p>
       <ul class="player-list">
@@ -38,7 +35,6 @@
           </a>
         </li>
       </ul>
-
       <div class="add-players-container">
         <p class="input-title">Add More Players</p>
         <ul class="player-list">
@@ -53,7 +49,6 @@
         </ul>
       </div>
     </div>
-
   </div>
   <button class="gff-btn dark" type="submit">Submit</button>
   <button class="gff-btn dark" ng-click="cgc.creating=false">Cancel</button>
