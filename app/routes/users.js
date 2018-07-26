@@ -25,10 +25,12 @@ router.get('/check-session', function(req, res, next) {
           error: 'Error getting user.',
         });
       });
+  } else {
+    console.log(req.session);
+    res.status(401).json({
+      error: 'Unauthorized.',
+    });
   }
-  else res.status(401).json({
-    error: 'Unauthorized.',
-  });
 });
 
 router.post('/', function(req, res, next) {
@@ -56,7 +58,6 @@ router.post('/all', function(req, res, next) {
 });
 
 router.post('/signup', function(req, res, next) {
-  console.log(req);
   userService.create(
       req.body.username,
       req.body.fullName,
