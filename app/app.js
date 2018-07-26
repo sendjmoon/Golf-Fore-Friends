@@ -38,10 +38,11 @@ if (process.env.NODE_ENV !== 'test')
   mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/gff-dev', mongoDbOptions);
 
 if (process.env.REDISTOGO_URL) {
-  var rtg = require('url').parse(process.env.REDISTOGO_URL);
-  var redisClient = redis.createClient(rtg.port, rtg.hostname);
+  var redisUrl = url.parse(process.env.REDISTOGO_URL);
+  var redisClient = redis.createClient(redisUrl.port, redisUrl.hostname);
+  var redisAuth = redisUrl.auth.split(':');
 
-  redisClient.auth(rtg.auth.split(':')[1]);
+  // redisClient.auth(redisUrl.auth.split(':'));
 } else {
   var redisClient = redis.createClient();
 }
@@ -54,7 +55,11 @@ app.set('view engine', 'hbs');
 const sessionOptions = {
   secret: '1337',
   store: new RedisStore({
-    client: redisClient,
+    // client: redisClient,
+    host: redisUrl.hostname,
+    port: redisUrl.port,
+    db: redisAuth[0],
+    pass: redisAuth[1],
   }),
   name: 'GolfForeFriends',
   saveUninitialized: true,
@@ -64,9 +69,10 @@ const sessionOptions = {
   },
 };
 
-if (process.env.NODE_ENV === 'production')
+if (process.env.NODE_ENV === 'production') {
   sessionOptions.cookie.secure = true;
   sessionOptions.resave = false;
+}
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
