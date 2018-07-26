@@ -12,6 +12,7 @@ require('./controllers')(golfApp);
 require('./components')(golfApp);
 
 golfApp.run(['$rootScope', ($rs) => {
+  console.log(process.env.API_URL);
   $rs.baseUrl = process.env.API_URL || 'http://localhost:3000';
   $rs.userConfig = {
     Headers: {
