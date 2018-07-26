@@ -2,6 +2,7 @@ build
 node_modules
 testData
 .DS_Store
+.env
 .git
 npm-debug.log
 todo.md

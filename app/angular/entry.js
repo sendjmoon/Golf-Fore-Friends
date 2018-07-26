@@ -6,14 +6,17 @@ require('angular-middleware');
 require('./scss/base.scss');
 
 const golfApp = angular.module('golfApp', ['ngRoute', 'ngRoute.middleware']);
-const __API_URL__ = process.env.API_URL || 'http://localhost:3000';
+
+let API_URL = 'https://golf-fore-friends.herokuapp.com';
+
+if (process.env.NODE_ENV === 'test') API_URL = 'http://localhost:3000';
 
 require('./services')(golfApp);
 require('./controllers')(golfApp);
 require('./components')(golfApp);
 
 golfApp.run(['$rootScope', ($rs) => {
-  $rs.baseUrl = `${__API_URL__}`;
+  $rs.baseUrl = API_URL;
   $rs.userConfig = {
     Headers: {
       'Content-Type': 'application/json',
