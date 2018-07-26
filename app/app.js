@@ -64,7 +64,7 @@ const sessionOptions = {
   },
 };
 
-if (app.get('env') === 'production')
+if (process.env.NODE_ENV === 'production')
   sessionOptions.cookie.secure = true;
 
 app.use(logger('dev'));
