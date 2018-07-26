@@ -1896,7 +1896,7 @@ function loadLocale(name) {
             module && module.exports) {
         try {
             oldLocale = globalLocale._abbr;
-            __webpack_require__(174)("./" + name);
+            __webpack_require__(175)("./" + name);
             // because defineLocale currently also sets the global locale, we
             // want to undo that for lazy loaded locales
             getSetGlobalLocale(oldLocale);
@@ -4531,7 +4531,7 @@ return hooks;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(173)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(174)(module)))
 
 /***/ }),
 /* 1 */
@@ -4541,9 +4541,9 @@ return hooks;
 
 
 module.exports = __webpack_require__(6);
-module.exports.easing = __webpack_require__(145);
-module.exports.canvas = __webpack_require__(146);
-module.exports.options = __webpack_require__(147);
+module.exports.easing = __webpack_require__(146);
+module.exports.canvas = __webpack_require__(147);
+module.exports.options = __webpack_require__(148);
 
 
 /***/ }),
@@ -4695,10 +4695,10 @@ module.exports = Element;
 
 
 module.exports = {};
-module.exports.Arc = __webpack_require__(153);
-module.exports.Line = __webpack_require__(154);
-module.exports.Point = __webpack_require__(155);
-module.exports.Rectangle = __webpack_require__(156);
+module.exports.Arc = __webpack_require__(154);
+module.exports.Line = __webpack_require__(155);
+module.exports.Point = __webpack_require__(156);
+module.exports.Rectangle = __webpack_require__(157);
 
 
 /***/ }),
@@ -5456,12 +5456,12 @@ module.exports = function(Chart) {
 /**
  * @namespace Chart
  */
-var Chart = __webpack_require__(144)();
+var Chart = __webpack_require__(145)();
 
 Chart.helpers = __webpack_require__(1);
 
 // @todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!
-__webpack_require__(148)(Chart);
+__webpack_require__(149)(Chart);
 
 Chart.defaults = __webpack_require__(2);
 Chart.Element = __webpack_require__(3);
@@ -5469,7 +5469,6 @@ Chart.elements = __webpack_require__(4);
 Chart.Interaction = __webpack_require__(10);
 Chart.platform = __webpack_require__(11);
 
-__webpack_require__(159)(Chart);
 __webpack_require__(160)(Chart);
 __webpack_require__(161)(Chart);
 __webpack_require__(162)(Chart);
@@ -5477,39 +5476,40 @@ __webpack_require__(163)(Chart);
 __webpack_require__(164)(Chart);
 __webpack_require__(165)(Chart);
 __webpack_require__(166)(Chart);
-
 __webpack_require__(167)(Chart);
+
 __webpack_require__(168)(Chart);
 __webpack_require__(169)(Chart);
 __webpack_require__(170)(Chart);
 __webpack_require__(171)(Chart);
 __webpack_require__(172)(Chart);
+__webpack_require__(173)(Chart);
 
 // Controllers must be loaded after elements
 // See Chart.core.datasetController.dataElementType
-__webpack_require__(175)(Chart);
 __webpack_require__(176)(Chart);
 __webpack_require__(177)(Chart);
 __webpack_require__(178)(Chart);
 __webpack_require__(179)(Chart);
 __webpack_require__(180)(Chart);
 __webpack_require__(181)(Chart);
-
 __webpack_require__(182)(Chart);
+
 __webpack_require__(183)(Chart);
 __webpack_require__(184)(Chart);
 __webpack_require__(185)(Chart);
 __webpack_require__(186)(Chart);
 __webpack_require__(187)(Chart);
 __webpack_require__(188)(Chart);
+__webpack_require__(189)(Chart);
 
 // Loading built-it plugins
 var plugins = [];
 
 plugins.push(
-	__webpack_require__(189)(Chart),
 	__webpack_require__(190)(Chart),
-	__webpack_require__(191)(Chart)
+	__webpack_require__(191)(Chart),
+	__webpack_require__(192)(Chart)
 );
 
 Chart.plugins.register(plugins);
@@ -5538,8 +5538,8 @@ Chart.canvasHelpers = Chart.helpers.canvas;
 /***/ (function(module, exports, __webpack_require__) {
 
 /* MIT license */
-var convert = __webpack_require__(149);
-var string = __webpack_require__(151);
+var convert = __webpack_require__(150);
+var string = __webpack_require__(152);
 
 var Color = function (obj) {
 	if (obj instanceof Color) {
@@ -6369,8 +6369,8 @@ module.exports = {
 
 
 var helpers = __webpack_require__(1);
-var basic = __webpack_require__(157);
-var dom = __webpack_require__(158);
+var basic = __webpack_require__(158);
+var dom = __webpack_require__(159);
 
 // @TODO Make possible to select another platform at build time.
 var implementation = dom._enabled ? dom : basic;
@@ -17527,21 +17527,21 @@ return zhTw;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
 
+var angular = __webpack_require__(129);
 
-var angular = __webpack_require__(128);
-
-__webpack_require__(130);
 __webpack_require__(131);
+__webpack_require__(132);
 
 var golfApp = angular.module('golfApp', ['ngRoute', 'ngRoute.middleware']);
 
-__webpack_require__(132)(golfApp);
-__webpack_require__(142)(golfApp);
-__webpack_require__(210)(golfApp);
+__webpack_require__(133)(golfApp);
+__webpack_require__(143)(golfApp);
+__webpack_require__(211)(golfApp);
 
 golfApp.run(['$rootScope', function ($rs) {
-  $rs.baseUrl = 'http://localhost:3000';
+  $rs.baseUrl = process.env.PORT || 'http://localhost:3000';
   $rs.userConfig = {
     Headers: {
       'Content-Type': 'application/json',
@@ -17550,19 +17550,210 @@ golfApp.run(['$rootScope', function ($rs) {
   };
 }]);
 
-golfApp.config(__webpack_require__(242));
-golfApp.config(__webpack_require__(249));
+golfApp.config(__webpack_require__(243));
+golfApp.config(__webpack_require__(250));
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(128)))
 
 /***/ }),
 /* 128 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-__webpack_require__(129);
-module.exports = angular;
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
 
 
 /***/ }),
 /* 129 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(130);
+module.exports = angular;
+
+
+/***/ }),
+/* 130 */
 /***/ (function(module, exports) {
 
 /**
@@ -51758,7 +51949,7 @@ $provide.value("$locale", {
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports) {
 
 ;(function(angular) {
@@ -52122,20 +52313,19 @@ function handleMiddleware($rootScope, $state, $middleware) {
 
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = function (app) {
-  __webpack_require__(133)(app);
   __webpack_require__(134)(app);
   __webpack_require__(135)(app);
   __webpack_require__(136)(app);
@@ -52144,10 +52334,11 @@ module.exports = function (app) {
   __webpack_require__(139)(app);
   __webpack_require__(140)(app);
   __webpack_require__(141)(app);
+  __webpack_require__(142)(app);
 };
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52199,7 +52390,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52292,7 +52483,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52416,7 +52607,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52470,7 +52661,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52599,7 +52790,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52650,7 +52841,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52754,7 +52945,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52820,7 +53011,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52833,15 +53024,14 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = function (app) {
-  __webpack_require__(143)(app);
-  __webpack_require__(200)(app);
+  __webpack_require__(144)(app);
   __webpack_require__(201)(app);
   __webpack_require__(202)(app);
   __webpack_require__(203)(app);
@@ -52851,10 +53041,11 @@ module.exports = function (app) {
   __webpack_require__(207)(app);
   __webpack_require__(208)(app);
   __webpack_require__(209)(app);
+  __webpack_require__(210)(app);
 };
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52880,9 +53071,9 @@ module.exports = function (app) {
       var Chart = __webpack_require__(8);
       var gameCtx = document.getElementById('gameChart').getContext('2d');
       var winCtx = document.getElementById('winChart').getContext('2d');
-      var chartjsPluginAnnotation = __webpack_require__(192);
-      var gameChartConfig = __webpack_require__(198);
-      var winChartConfig = __webpack_require__(199);
+      var chartjsPluginAnnotation = __webpack_require__(193);
+      var gameChartConfig = __webpack_require__(199);
+      var winChartConfig = __webpack_require__(200);
 
       var gameChartData = {
         labels: dateData,
@@ -52918,7 +53109,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52974,7 +53165,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53231,7 +53422,7 @@ helpers.easingEffects = effects;
 
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53452,7 +53643,7 @@ helpers.drawRoundedRectangle = function(ctx) {
 
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53555,7 +53746,7 @@ module.exports = {
 
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54165,10 +54356,10 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var conversions = __webpack_require__(150);
+var conversions = __webpack_require__(151);
 
 var convert = function() {
    return new Converter();
@@ -54262,7 +54453,7 @@ Converter.prototype.getValues = function(space) {
 module.exports = convert;
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports) {
 
 /* MIT license */
@@ -54966,11 +55157,11 @@ for (var key in cssKeywords) {
 
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* MIT license */
-var colorNames = __webpack_require__(152);
+var colorNames = __webpack_require__(153);
 
 module.exports = {
    getRgba: getRgba,
@@ -55193,7 +55384,7 @@ for (var name in colorNames) {
 
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55352,7 +55543,7 @@ module.exports = {
 
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55466,7 +55657,7 @@ module.exports = Element.extend({
 
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55564,7 +55755,7 @@ module.exports = Element.extend({
 
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55677,7 +55868,7 @@ module.exports = Element.extend({
 
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55901,7 +56092,7 @@ module.exports = Element.extend({
 
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports) {
 
 /**
@@ -55922,7 +56113,7 @@ module.exports = {
 
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56386,7 +56577,7 @@ helpers.removeEvent = removeEventListener;
 
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56788,7 +56979,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56967,7 +57158,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 161 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57878,7 +58069,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 162 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58215,7 +58406,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 163 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58644,7 +58835,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58696,7 +58887,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59634,7 +59825,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60589,7 +60780,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60728,7 +60919,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60868,7 +61059,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 169 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61067,7 +61258,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61318,7 +61509,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61855,7 +62046,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62618,7 +62809,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -62646,7 +62837,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -62895,10 +63086,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 174;
+webpackContext.id = 175;
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63326,7 +63517,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 176 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63513,7 +63704,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63819,7 +64010,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64159,7 +64350,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64388,7 +64579,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64563,7 +64754,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64612,7 +64803,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64630,7 +64821,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64647,7 +64838,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64665,7 +64856,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64683,7 +64874,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64701,7 +64892,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64719,7 +64910,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64734,7 +64925,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65062,7 +65253,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65636,7 +65827,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65886,7 +66077,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Get the chart variable
@@ -65925,21 +66116,21 @@ Chart.Annotation.labelDefaults = {
 	content: null
 };
 
-Chart.Annotation.Element = __webpack_require__(193)(Chart);
+Chart.Annotation.Element = __webpack_require__(194)(Chart);
 
 Chart.Annotation.types = {
-	line: __webpack_require__(194)(Chart),
-	box: __webpack_require__(195)(Chart)
+	line: __webpack_require__(195)(Chart),
+	box: __webpack_require__(196)(Chart)
 };
 
-var annotationPlugin = __webpack_require__(196)(Chart);
+var annotationPlugin = __webpack_require__(197)(Chart);
 
 module.exports = annotationPlugin;
 Chart.pluginService.register(annotationPlugin);
 
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports) {
 
 module.exports = function(Chart) {
@@ -65968,7 +66159,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Line Annotation implementation
@@ -66241,7 +66432,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Box Annotation implementation
@@ -66393,14 +66584,14 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = function(Chart) {
 	var chartHelpers = Chart.helpers;
 
 	var helpers = __webpack_require__(7)(Chart);
-	var events = __webpack_require__(197)(Chart);
+	var events = __webpack_require__(198)(Chart);
 
 	var annotationTypes = Chart.Annotation.types;
 
@@ -66525,7 +66716,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = function(Chart) {
@@ -66639,7 +66830,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66734,7 +66925,7 @@ module.exports = function (chartData, userHandicap) {
 };
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66764,7 +66955,7 @@ module.exports = function (chartData) {
 };
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66787,7 +66978,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66841,7 +67032,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66893,7 +67084,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66931,7 +67122,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66968,7 +67159,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66992,7 +67183,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67005,7 +67196,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 207 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67061,7 +67252,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 208 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67093,7 +67284,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 209 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67104,25 +67295,6 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 210 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (app) {
-  __webpack_require__(211)(app);
-  __webpack_require__(218)(app);
-  __webpack_require__(220)(app);
-  __webpack_require__(222)(app);
-  __webpack_require__(224)(app);
-  __webpack_require__(234)(app);
-  __webpack_require__(236)(app);
-  __webpack_require__(238)(app);
-  __webpack_require__(240)(app);
-};
-
-/***/ }),
 /* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -67130,8 +67302,27 @@ module.exports = function (app) {
 
 
 module.exports = function (app) {
+  __webpack_require__(212)(app);
+  __webpack_require__(219)(app);
+  __webpack_require__(221)(app);
+  __webpack_require__(223)(app);
+  __webpack_require__(225)(app);
+  __webpack_require__(235)(app);
+  __webpack_require__(237)(app);
+  __webpack_require__(239)(app);
+  __webpack_require__(241)(app);
+};
+
+/***/ }),
+/* 212 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (app) {
   app.component('auth', {
-    template: __webpack_require__(212),
+    template: __webpack_require__(213),
     controller: 'AuthController',
     controllerAs: 'ac',
     bindings: {
@@ -67139,26 +67330,14 @@ module.exports = function (app) {
     }
   });
 
-  __webpack_require__(213)(app);
+  __webpack_require__(214)(app);
 };
-
-/***/ }),
-/* 212 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"form-container\" ng-if=\"ac.clicked==='signup'\">\n  <signup></signup>\n  <p>Already registered? <a ng-click=\"ac.clicked='signin'\">Click Here</a></p>\n</div>\n\n<div class=\"form-container\" ng-if=\"ac.clicked==='signin'\">\n  <signin></signin>\n  <p>Not registered? <a ng-click=\"ac.clicked='signup'\">Click Here</a></p>\n</div>\n";
 
 /***/ }),
 /* 213 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-module.exports = function (app) {
-  __webpack_require__(214)(app);
-  __webpack_require__(216)(app);
-};
+module.exports = "<div class=\"form-container\" ng-if=\"ac.clicked==='signup'\">\n  <signup></signup>\n  <p>Already registered? <a ng-click=\"ac.clicked='signin'\">Click Here</a></p>\n</div>\n\n<div class=\"form-container\" ng-if=\"ac.clicked==='signin'\">\n  <signin></signin>\n  <p>Not registered? <a ng-click=\"ac.clicked='signup'\">Click Here</a></p>\n</div>\n";
 
 /***/ }),
 /* 214 */
@@ -67168,21 +67347,33 @@ module.exports = function (app) {
 
 
 module.exports = function (app) {
+  __webpack_require__(215)(app);
+  __webpack_require__(217)(app);
+};
+
+/***/ }),
+/* 215 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (app) {
   app.component('signin', {
-    template: __webpack_require__(215),
+    template: __webpack_require__(216),
     controller: 'AuthController',
     controllerAs: 'ac'
   });
 };
 
 /***/ }),
-/* 215 */
+/* 216 */
 /***/ (function(module, exports) {
 
 module.exports = "<form name=\"signin\" data-ng-submit=\"ac.signin(ac.user)\">\n  <div class=\"input-container\">\n    <div class=\"input-title\">\n      <i class=\"far fa-user fa-sm\" aria-hidden=\"true\"></i><p>Email or Username</p>\n    </div>\n    <input class=\"gff-input\" type=\"text\" required data-ng-model=\"ac.user.emailOrUsername\"></input>\n  </div>\n\n  <div class=\"input-container\">\n    <div class=\"input-title\">\n      <i class=\"fas fa-unlock-alt fa-sm\" aria-hidden=\"true\"></i><p>Password</p>\n    </div>\n    <input class=\"gff-input\" type=\"password\" required data-ng-model=\"ac.user.password\"></input>\n  </div>\n\n  <button class=\"gff-btn\" type=\"submit\" name=\"signup-btn\">SIGNIN</button>\n</form>\n";
 
 /***/ }),
-/* 216 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67190,20 +67381,20 @@ module.exports = "<form name=\"signin\" data-ng-submit=\"ac.signin(ac.user)\">\n
 
 module.exports = function (app) {
   app.component('signup', {
-    template: __webpack_require__(217),
+    template: __webpack_require__(218),
     controller: 'AuthController',
     controllerAs: 'ac'
   });
 };
 
 /***/ }),
-/* 217 */
+/* 218 */
 /***/ (function(module, exports) {
 
 module.exports = "<form name=\"signup\" data-ng-submit=\"ac.signup(ac.user)\">\n  <div class=\"input-container\">\n    <div class=\"input-title\">\n      <i class=\"far fa-envelope fa-sm\" aria-hidden=\"true\"></i><p>Email</p>\n    </div>\n    <input class=\"gff-input\" type=\"text\" required data-ng-model=\"ac.user.email\"></input>\n  </div>\n\n  <div class=\"input-container\">\n    <div class=\"input-title\">\n      <i class=\"far fa-user fa-sm\" aria-hidden=\"true\"></i><p>Username</p>\n    </div>\n    <input class=\"gff-input\" type=\"text\" required data-ng-model=\"ac.user.username\"></input>\n  </div>\n\n  <div class=\"input-container\">\n    <div class=\"input-title\">\n      <i class=\"far fa-address-card fa-sm\" aria-hidden=\"true\"></i><p>Full Name (First &amp; Last)</p>\n    </div>\n    <input class=\"gff-input\" type=\"text\" required data-ng-model=\"ac.user.fullName\"></input>\n  </div>\n\n  <div class=\"input-container last\">\n    <div class=\"input-title\">\n      <i class=\"fas fa-lock fa-sm\" aria-hidden=\"true\"></i><p>Password</p>\n    </div>\n    <input class=\"gff-input\" type=\"password\" required data-ng-model=\"ac.user.password\"></input>\n  </div>\n\n  <button class=\"gff-btn\" type=\"submit\" name=\"signup-btn\">SIGNUP</button>\n</form>\n";
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67211,20 +67402,20 @@ module.exports = "<form name=\"signup\" data-ng-submit=\"ac.signup(ac.user)\">\n
 
 module.exports = function (app) {
   app.component('banner', {
-    template: __webpack_require__(219)
+    template: __webpack_require__(220)
     // controller: 'BannerController',
     // controllerAs: 'bc',
   });
 };
 
 /***/ }),
-/* 219 */
+/* 220 */
 /***/ (function(module, exports) {
 
 module.exports = "\n";
 
 /***/ }),
-/* 220 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67232,20 +67423,20 @@ module.exports = "\n";
 
 module.exports = function (app) {
   app.component('dashboard', {
-    template: __webpack_require__(221),
+    template: __webpack_require__(222),
     controller: 'DashboardController',
     controllerAs: 'dc'
   });
 };
 
 /***/ }),
-/* 221 */
+/* 222 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-title=\"'DASHBOARD'\"></sub-nav>\n</div>\n\n<div class=\"page-container right\">\n  <div class=\"page-content\">\n\n    <div class=\"tile-container user\">\n      <div class=\"tile-content\">\n        <div class=\"user-container\">\n          <div class=\"user-pic\">\n            <i class=\"far fa-user\"></i>\n          </div>\n          <div class=\"user-info\">\n            <p class=\"member-since\" ng-init=\"dc.formatDate(dc.user)\">MEMBER SINCE <strong>{{dc.user.createdAt}}</strong></p>\n            <p class=\"name\">{{dc.user.fullName}}</p>\n          </div>\n        </div>\n        <ul class=\"user-stats\">\n          <li>\n            <p class=\"title\">HANDICAP</p>\n            <p class=\"value\"><span class=\"color-blue\">+</span>{{dc.user.stats.handicap}}</p>\n          </li>\n          <li>\n            <p class=\"title\">WINS</p>\n            <p class=\"value\">{{dc.user.stats.wins}}</p>\n          </li>\n          <li>\n            <p class=\"title\">LOSSES</p>\n            <p class=\"value\">{{dc.user.stats.losses}}</p>\n          </li>\n          <li>\n            <p class=\"title\">WIN RATIO</p>\n            <p class=\"value\">{{dc.user.stats.winRatio}}</p>\n          </li>\n        </ul>\n      </div>\n    </div>\n\n    <div class=\"tile-container bg-none\">\n      <div class=\"tile-content\">\n        <h2 class=\"tile-title\">Recent Games</h2>\n        <div class=\"recent-games-container\">\n          <ul class=\"recent-games-list\">\n            <li class=\"recent-game\" ng-repeat=\"game in gamesData.games|limitTo:3\">\n              <div class=\"game-image\"></div>\n              <div class=\"game-info\">\n                <div class=\"header\">\n                  <p class=\"name\">{{game.name}}</p>\n                  <p class=\"location\"><i class=\"fas fa-map-marker-alt\"></i>{{game.location}}</p>\n                </div>\n                <div class=\"footer\">\n                  <p class=\"date\">{{game.datePlayed}}</p>\n                  <div class=\"links\">\n                    <p class=\"players\"><i class=\"fas fa-user\"></i>{{game.results.length}}</p>\n                    <p class=\"comments\"><i class=\"fas fa-comment\"></i>{{game.comments.length}}</p>\n                  </div>\n                </div>\n              </div>\n            </li>\n          </ul>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"tile-container\">\n      <div class=\"tile-content\">\n        <h2 class=\"tile-title\">Leaderboard</h2>\n        <div class=\"gff-container\">\n          <div class=\"gff-content dashboard-box\">\n            <table class=\"leaderboard\">\n              <tr>\n                <th>Position</th>\n                <th>Player</th>\n                <th>Handicap</th>\n              </tr>\n              <tr ng-repeat=\"user in leaderboard | limitTo:5\">\n                <td>{{$index + 1}}</td>\n                <td>{{user.fullName}}</td>\n                <td><span class=\"color-green\">+</span>{{user.stats.handicap}}</td>\n              </tr>\n            </table>\n          </div>\n        </div>\n      </div>\n\n    </div>\n\n    <div class=\"tile-container\">\n      <div class=\"tile-content\">\n        <h2 class=\"tile-title\">Progress</h2>\n        <div class=\"gff-container\">\n          <div class=\"gff-content\">\n            <game-chart></game-chart>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67253,20 +67444,20 @@ module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-titl
 
 module.exports = function (app) {
   app.component('friends', {
-    template: __webpack_require__(223),
+    template: __webpack_require__(224),
     controller: 'FriendController',
     controllerAs: 'fc'
   });
 };
 
 /***/ }),
-/* 223 */
+/* 224 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-title=\"'FRIENDS'\"></sub-nav>\n  <div class=\"gff-container\">\n    <div class=\"gff-content shadow\">\n      <h2 class=\"box-title\">add more friends</h2>\n      <div class=\"search-container\">\n        <form autocomplete=\"off\">\n          <input id=\"search-input-users\" type=\"text\" placeholder=\"Search By Email\"></input>\n          <ul>\n            <li ng-repeat=\"user in searchResults\">\n              <p>{{user.fullName}} <span ng-show=\"user.isFriend\">- Already friends.</p>\n              <button class=\"gff-btn\" ng-hide=\"user.isFriend\" ng-click=\"fc.addFriend(user._id, user.stats); user.isFriend=true;\">Add to Friends</button>\n            </li>\n          </ul>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"page-container right\">\n  <div class=\"page-content\">\n    <ul class=\"friends-list\">\n      <li class=\"friend-box shadow-sm\" ng-repeat=\"friend in friendsData.friends\">\n        <div class=\"profile-pic\">\n          <i class=\"fa fa-user\"></i>\n        </div>\n        <div class=\"content\">\n          <h4 class=\"box-title\">{{friend.fullName}}</h4>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>\n";
 
 /***/ }),
-/* 224 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67274,24 +67465,24 @@ module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-titl
 
 module.exports = function (app) {
   app.component('games', {
-    template: __webpack_require__(225),
+    template: __webpack_require__(226),
     controller: 'GamesController',
     controllerAs: 'gc'
   });
 
-  __webpack_require__(226)(app);
-  __webpack_require__(228)(app);
-  __webpack_require__(232)(app);
+  __webpack_require__(227)(app);
+  __webpack_require__(229)(app);
+  __webpack_require__(233)(app);
 };
 
 /***/ }),
-/* 225 */
+/* 226 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-title=\"'GAMES'\" data-creating-game=\"gc.creating\"></sub-nav>\n</div>\n\n<div class=\"page-container right\" ng-hide=\"gc.creating\">\n  <div class=\"page-content\">\n    <ul class=\"games-list\">\n      <li class=\"game-container shadow-sm\" ng-repeat=\"game in gamesData.games\">\n\n        <div class=\"game-content\">\n          <h4 class=\"game-name\">{{game.name}}</h4>\n          <p class=\"game-location\">{{game.location}}</p>\n          <p class=\"date-played\">{{game.datePlayed}}</p>\n\n          <button class=\"gff-btn dark\" data-toggle=\"collapse\" data-target=\"#{{game.publicId}}-results\">Results</button>\n          <button class=\"gff-btn dark\" data-toggle=\"collapse\" data-target=\"#{{game.publicId}}-comments\">Comments (&nbsp;{{game.comments.length}}&nbsp;)</button>\n        </div>\n\n        <div class=\"tab-container\">\n          <div class=\"tab collapse\" id=\"{{game.publicId}}-results\">\n            <div class=\"tab-content\">\n              <ul>\n                <li ng-repeat=\"result in game.results\">\n                  <p>Name: {{result.playerId.fullName}}</p>\n                  <p>Strokes: {{result.strokes}}</p>\n                </li>\n              </ul>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"tab-container\">\n          <div class=\"tab collapse\" id=\"{{game.publicId}}-comments\">\n            <div class=\"tab-content\">\n              <ul>\n                <li ng-repeat=\"comment in game.comments\">\n                  <comment data-game-id=\"game._id\" data-comment=\"comment\"></comment>\n                </li>\n                <li>\n                  <new-comment data-game-id=\"game._id\"></new-comment>\n                </li>\n              </ul>\n            </div>\n          </div>\n        </div>\n\n      </li>\n    </ul>\n  </div><!--page-content-->\n</div><!--page-container-->\n\n<div class=\"page-container right\" ng-show=\"gc.creating\">\n  <div class=\"page-content\">\n    <create-game data-creating=\"gc.creating\"></create-game>\n  </div>\n</div>\n";
 
 /***/ }),
-/* 226 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67299,7 +67490,7 @@ module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-titl
 
 module.exports = function (app) {
   app.component('createGame', {
-    template: __webpack_require__(227),
+    template: __webpack_require__(228),
     controller: 'CreateGameController',
     controllerAs: 'cgc',
     bindings: {
@@ -67309,13 +67500,13 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 227 */
+/* 228 */
 /***/ (function(module, exports) {
 
 module.exports = "<h2>Create a Game</h2>\n<p>Please enter game information below.</p>\n<form class=\"new-game-form\" id=\"new-game-form\" ng-submit=\"cgc.createGame(cgc.game)\">\n  <div class=\"create-game-container\">\n    <div class=\"course-container\">\n      <p class=\"input-title\">Course Played</p>\n      <div class=\"gff-select course\">\n        <select ng-model=\"cgc.game.name\">\n          <option value=\"Newcastle GC - China Creek\">Newcastle GC - China Creek</option>\n          <option value=\"Newcastle GC - Coal Creek\">Newcastle GC - Coal Creek</option>\n        </select>\n      </div>\n    </div>\n    <div class=\"location-container\">\n      <p class=\"input-title\">City, State</p>\n      <input type=\"text\" required ng-model=\"cgc.game.location\" placeholder=\"Seattle, WA\"></input>\n    </div>\n    <div class=\"date-container\">\n      <p class=\"input-title\">Date Played</p>\n      <input type=\"date\" required ng-model=\"cgc.game.datePlayed\"></input>\n    </div>\n    <div class=\"players-container\">\n      <p class=\"input-title\">Players</p>\n      <ul class=\"player-list\">\n        <li class=\"player-box\" ng-repeat=\"player in cgc.players\" ng-init=\"player.strokes=0\">\n          <div class=\"title-box\">\n            <p>{{player.fullName}}</p>\n          </div>\n          <div class=\"edit-box\">\n            <p><strong><span class=\"color-green\">+</span></strong></p>\n            <input type=\"text\" required ng-model=\"player.strokes\" placeholder=\"{{player.strokes}}\" maxlength=\"2\"></input>\n          </div>\n          <a class=\"remove-box\" ng-click=\"cgc.removeUser(player)\">\n            <i class=\"fa fa-minus-circle\"></i>\n          </a>\n        </li>\n      </ul>\n      <div class=\"add-players-container\">\n        <p class=\"input-title\">Add More Players</p>\n        <ul class=\"player-list\">\n          <li class=\"player-box\" ng-repeat=\"friend in cgc.friendsData.friends\">\n            <div class=\"title-box\">\n              <p>{{friend.fullName}}</p>\n            </div>\n            <a class=\"add-box\" ng-click=\"cgc.addUser(friend)\">\n              <i class=\"fa fa-plus\"></i>\n            </a>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n  <button class=\"gff-btn dark\" type=\"submit\">Submit</button>\n  <button class=\"gff-btn dark\" ng-click=\"cgc.creating=false\">Cancel</button>\n</form>\n";
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67323,7 +67514,7 @@ module.exports = "<h2>Create a Game</h2>\n<p>Please enter game information below
 
 module.exports = function (app) {
   app.component('comment', {
-    template: __webpack_require__(229),
+    template: __webpack_require__(230),
     controller: 'CommentController',
     controllerAs: 'cc',
     bindings: {
@@ -67332,17 +67523,17 @@ module.exports = function (app) {
     }
   });
 
-  __webpack_require__(230)(app);
+  __webpack_require__(231)(app);
 };
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, exports) {
 
 module.exports = "<div ng-hide=\"cc.editing\" ng-init=\"cc.formatDate(cc.comment)\">\n  <p><strong>{{cc.comment.authorName}}</strong> {{cc.comment.content}}</p>\n  <p>{{cc.comment.createdAt}}</p>\n  <div ng-if=\"cc.user._id === cc.comment.authorId\">\n    <a ng-click=\"cc.editing=true\">edit</a>\n    <a ng-click=\"cc.remove(cc.comment.publicId, cc.comment._id, cc.gameId)\">remove</a>\n  </div>\n</div>\n\n<div ng-show=\"cc.editing\">\n  <p><strong>Editing comment</strong></p>\n  <textarea ng-model=\"cc.comment.content\" style=\"color:black\"></textarea>\n  <button class=\"gff-btn\" ng-click=\"cc.update(cc.comment.publicId, cc.comment.content)\">Save</button>\n  <button class=\"gff-btn\">Cancel</button>\n</div>\n";
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67350,7 +67541,7 @@ module.exports = "<div ng-hide=\"cc.editing\" ng-init=\"cc.formatDate(cc.comment
 
 module.exports = function (app) {
   app.component('newComment', {
-    template: __webpack_require__(231),
+    template: __webpack_require__(232),
     controller: 'CommentController',
     controllerAs: 'cc',
     bindings: {
@@ -67360,13 +67551,13 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 231 */
+/* 232 */
 /***/ (function(module, exports) {
 
 module.exports = "<form>\n  <textarea ng-model=\"cc.newComment\" placeholder=\"Add a comment...\" style=\"color:black\"></textarea>\n  <button class=\"gff-btn\" ng-click=\"cc.create(cc.gameId, cc.newComment)\">Add Comment</button>\n</form>\n";
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67374,7 +67565,7 @@ module.exports = "<form>\n  <textarea ng-model=\"cc.newComment\" placeholder=\"A
 
 module.exports = function (app) {
   app.component('gameChart', {
-    template: __webpack_require__(233),
+    template: __webpack_require__(234),
     controller: 'ChartController',
     controllerAs: 'cc',
     bindings: {
@@ -67384,13 +67575,13 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"chart-container\">\n  <canvas id=\"gameChart\" width=\"400px\" height=\"300px\"></canvas>\n</div>\n\n<div class=\"chart-container\">\n  <canvas id=\"winChart\" width=\"250px\" height=\"250px\"></canvas>\n</div>\n";
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67398,18 +67589,18 @@ module.exports = "<div class=\"chart-container\">\n  <canvas id=\"gameChart\" wi
 
 module.exports = function (app) {
   app.component('logo', {
-    template: __webpack_require__(235)
+    template: __webpack_require__(236)
   });
 };
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, exports) {
 
 module.exports = "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<svg class=\"gff-logo-full\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"30px\" height=\"30px\" viewBox=\"-0.258 -0.548 123.547 123.539\" xml:space=\"preserve\">\n  <g>\n    <path class=\"golfer-head\" d=\"M54.477,26.043c-4.469,0-8.078,3.57-8.078,7.961c0,4.406,3.609,7.969,8.078,7.969 c4.445,0,8.055-3.562,8.055-7.969C62.531,29.613,58.922,26.043,54.477,26.043z\" />\n    <path class=\"golfer-body\" d=\"M95.406,41.793c-0.305-1.719-1.711-2.695-1.797-2.758L46.188,7.77l-4.406,6.383 c-0.82,1.258-0.461,2.93,0.797,3.75c1.25,0.828,2.922,0.492,3.742-0.766l2.578-3.688l38.516,25.414l-31.555,5.68 c-2.234,0.375-3.852,2.609-3.352,4.797l6.867,26.547l-22.211,33.312c-1.328,2.273-0.523,5.188,1.773,6.492 c2.32,1.32,5.258,0.516,6.594-1.758c0,0,23.164-34.836,23.25-35.055c0,0,1.195,4.836,1.195,4.859L66.5,109.871 c-0.438,2.602,1.328,5.031,3.953,5.469s5.117-1.305,5.555-3.891l3.594-26.883c0.109-0.688-0.031-2.195-0.188-2.859L71.492,50.23 l20.609-3.711C94.305,46.129,95.797,44.004,95.406,41.793z\" />\n  </g>\n</svg>\n";
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67417,20 +67608,20 @@ module.exports = "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE svg
 
 module.exports = function (app) {
   app.component('navBar', {
-    template: __webpack_require__(237),
+    template: __webpack_require__(238),
     controller: 'NavController',
     controllerAs: 'nc'
   });
 };
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, exports) {
 
 module.exports = "<nav class=\"gff-nav default shadow-lg\">\n  <div class=\"title-container\">\n    <logo></logo>\n    <h4 class=\"title\">GOLF FOR<span class=\"color-blue\">e</span> FRIENDS</h4>\n  </div>\n\n  <ul class=\"gff-menu\">\n    <li id=\"dashboard-link\">\n      <a href=\"/#!/dashboard\">DASHBOARD</a>\n    </li>\n    <li id=\"friends-link\">\n      <a href=\"/#!/friends\">FRIENDS</a>\n    </li>\n    <li id=\"games-link\">\n      <a href=\"/#!/games\">GAMES</a>\n    </li>\n    <li>\n      <a href=\"/#!/settings\"><i class=\"fas fa-cog fa-lg\"></i></a>\n    </li>\n    <li>\n      <a ng-click=\"nc.signout()\"><i class=\"fas fa-sign-out-alt fa-lg\"></i></a>\n    </li>\n  </ul>\n</nav>\n";
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67438,7 +67629,7 @@ module.exports = "<nav class=\"gff-nav default shadow-lg\">\n  <div class=\"titl
 
 module.exports = function (app) {
   app.component('subNav', {
-    template: __webpack_require__(239),
+    template: __webpack_require__(240),
     controller: 'SubNavController',
     controllerAs: 'snc',
     bindings: {
@@ -67449,13 +67640,13 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='DASHBOARD'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <a><i class=\"far fa-user\"></i>Profile</a>\n  <a><i class=\"far fa-calendar-alt\"></i>Recent Games</a>\n  <a><i class=\"far fa-list-alt\"></i>Leaderboard</a>\n  <a><i class=\"fas fa-chart-line\"></i>Progress</a>\n  <sn-games ng-if=\"snc.pageTitle==='Games'\" data-creating-game=\"snc.creatingGame\"></sn-games>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='FRIENDS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='GAMES'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <a ng-click=\"snc.creatingGame=false; snc.resetForm('new-game-form')\"><i class=\"fas fa-list\"></i>Game List</a>\n  <a ng-click=\"snc.creatingGame=true\"><i class=\"far fa-file\"></i>Create Game</a>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='SETTINGS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n</div>\n";
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67463,20 +67654,20 @@ module.exports = "<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='DASHB
 
 module.exports = function (app) {
   app.component('settings', {
-    template: __webpack_require__(241),
+    template: __webpack_require__(242),
     controller: 'SettingsController',
     controllerAs: 'sc'
   });
 };
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-title=\"'SETTINGS'\"></sub-nav>\n</div>\n\n<div class=\"page-container right\">\n  <div class=\"page-content\">\n    <div class=\"settings-container\">\n      <h3>Account Information</h3>\n      <h4>Avatar</h4>\n      <form name=\"avatar-form\">\n        <input class=\"gff-upload-btn\" type=\"file\" ng-model=\"sc.avatarFile\" id=\"avatar-input\" accept=\".jpg, .jpeg, .bmp, .png\"></input>\n        <button type=\"submit\" ng-click=\"sc.submit()\">submit</button>\n      </form>\n      <!-- <h4>Name</h4>\n      <input type=\"text\" name=\"fullName\" value=\"{{sc.user.fullName}}\"></input>\n      <h4>Email</h4>\n      <input type=\"text\" name=\"email\" value=\"{{sc.user.email}}\"></input>\n      <h4>Password</h4>\n      <p>****</p>\n      <button class=\"gff-btn\" type=\"button\" name=\"change-password-btn\">Change Password</button>\n      <form class=\"change-pw-form\" name=\"change-pw-form\">\n        <input type=\"text\" name=\"password\" placeholder=\"New Password\"></input>\n        <button class=\"gff-btn\">Change Password</button>\n      </form> -->\n    </div>\n  </div>\n</div>\n";
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67484,26 +67675,26 @@ module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-titl
 
 module.exports = function ($routeProvider, $locationProvider) {
   $routeProvider.when('/dashboard', {
-    template: __webpack_require__(243),
-    middleware: 'checkSessionExists'
-  }).when('/friends', {
     template: __webpack_require__(244),
     middleware: 'checkSessionExists'
-  }).when('/games', {
+  }).when('/friends', {
     template: __webpack_require__(245),
     middleware: 'checkSessionExists'
-  }).when('/games/public/:publicId', {
+  }).when('/games', {
     template: __webpack_require__(246),
+    middleware: 'checkSessionExists'
+  }).when('/games/public/:publicId', {
+    template: __webpack_require__(247),
     middleware: 'checkSessionExists',
     controller: 'GamesController',
     controllerAs: 'gc'
   }).when('/settings', {
-    template: __webpack_require__(247),
+    template: __webpack_require__(248),
     middleware: 'checkSessionExists',
     controller: 'SettingsController',
     controllerAs: 'sc'
   }).when('/', {
-    template: __webpack_require__(248),
+    template: __webpack_require__(249),
     controller: 'LandingController',
     controllerAs: 'lc'
   }).otherwise({
@@ -67512,43 +67703,43 @@ module.exports = function ($routeProvider, $locationProvider) {
 };
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports) {
 
 module.exports = "<nav-bar></nav-bar>\n<!-- <banner></banner> -->\n<dashboard></dashboard>\n";
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports) {
 
 module.exports = "<nav-bar></nav-bar>\n<friends></friends>\n";
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports) {
 
 module.exports = "<nav-bar></nav-bar>\n<!-- <banner></banner> -->\n<!-- <sub-nav data-page-title=\"'Games'\"></sub-nav> -->\n<games></games>\n";
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports) {
 
 module.exports = "<nav-bar data-page-title=\"'Games'\"></nav-bar>\n\n<div class=\"page-container\" ng-init=\"gc.getByPublicId(gc.publicId)\">\n  <div class=\"game-header\">\n    <div class=\"bg-overlay\"></div>\n    <div class=\"header-content\">\n      <div class=\"course-box\">\n        <div class=\"loc-box\">\n          <h3><i class=\"fa fa-map-marker\"></i> {{gc.gameData.location}}</h3>\n        </div>\n        <div class=\"title-box\">\n          <h2>{{gc.gameData.name}}</h2>\n        </div>\n      </div>\n    </div>\n\n    <p>{{gc.gameData}}</p>\n\n  </div>\n  <div class=\"game-content col-md-12\">\n    <div class=\"left col-md-9\">\n    </div>\n    <div class=\"right col-md-3\">\n      <ul>\n        <li>\n          <p>{{gc.gameData.totalGolfers}} <i class=\"fa fa-user\"></i></p>\n        </li>\n        <li>\n          <p><span class=\"color-green\">+</span>{{gc.gameData.yourStrokes}}</p>\n        </li>\n        <li>\n          <p>Total Score: {{gc.gameData.yourScore}}</p>\n        </li>\n      </ul>\n    </div>\n  </div>\n</div>\n";
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports) {
 
 module.exports = "<nav-bar></nav-bar>\n<settings></settings>\n";
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"landing-container main\">\n  <div class=\"landing-content\">\n\n    <div class=\"header\">\n      <div class=\"logo-container\">\n        <logo></logo>\n        <h4 class=\"title\">GOLF FOR<span class=\"color-blue\">e</span> FRIENDS</h4>\n      </div>\n      <div class=\"links-container\">\n        <a href=\"https://github.com/sendjmoon/Golf-Fore-Friends\" target=\"_blank\"><i class=\"fab fa-github\"></i></a>\n      </div>\n    </div>\n\n    <div class=\"body\">\n      <div class=\"title-container\" ng-hide=\"auth\">\n        <h2 class=\"title\">GET STARTED</h2>\n        <p class=\"intro\">Let's connect you and your friends with the game we all love.</p>\n        <div class=\"buttons-container\">\n          <button class=\"gff-btn\" ng-click=\"auth=true; clicked='signup'\">SIGNUP</button>\n          <button class=\"gff-btn ghost\" ng-click=\"auth=true; clicked='signin'\">SIGNIN</button>\n        </div>\n      </div>\n      <auth ng-show=\"auth\" data-clicked=\"clicked\"></auth>\n      <div class=\"image-container\">\n        <img class=\"hole-image img-responsive\" src=\"{{lc.baseUrl}}/imgs/golf-hole-iso.png\" />\n      </div>\n    </div>\n\n  </div>\n</div>\n\n<div class=\"landing-container alt\">\n  <div class=\"landing-content\">\n    <div class=\"body\">\n      <div class=\"title-container\">\n        <h2 class=\"title\">FEATURES</h2>\n        <p class=\"intro\">Below are some of the tools we have available to take advantage of tracking your game.</p>\n      </div>\n      <ul class=\"features-list\">\n        <li class=\"feature\">\n          <div class=\"feature-content shadow-lg\">\n            <h4 class=\"title\">Stats</h4>\n            <div class=\"icon-container\">\n              <i class=\"fas fa-chart-line fa-7x\"></i>\n            </div>\n          </div>\n        </li>\n        <li class=\"feature\">\n          <div class=\"feature-content shadow-lg\">\n            <h4 class=\"title\">Games</h4>\n            <div class=\"icon-container\">\n              <i class=\"fas fa-calendar-alt fa-6x\"></i>\n            </div>\n          </div>\n        </li>\n        <li class=\"feature\">\n          <div class=\"feature-content shadow-lg\">\n            <h4 class=\"title\">Friends</h4>\n            <div class=\"icon-container\">\n              <i class=\"fas fa-users fa-7x\"></i>\n            </div>\n          </div>\n        </li>\n      </ul>\n    </div>\n  </div>\n</div>\n";
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

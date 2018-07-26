@@ -12,7 +12,7 @@ require('./controllers')(golfApp);
 require('./components')(golfApp);
 
 golfApp.run(['$rootScope', ($rs) => {
-  $rs.baseUrl = 'http://localhost:3000';
+  $rs.baseUrl = process.env.PORT || 'http://localhost:3000';
   $rs.userConfig = {
     Headers: {
       'Content-Type': 'application/json',
