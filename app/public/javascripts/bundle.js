@@ -17535,13 +17535,14 @@ __webpack_require__(131);
 __webpack_require__(132);
 
 var golfApp = angular.module('golfApp', ['ngRoute', 'ngRoute.middleware']);
+var __API_URL__ = process.env.API_URL || 'http://localhost:3000';
 
 __webpack_require__(133)(golfApp);
 __webpack_require__(143)(golfApp);
 __webpack_require__(211)(golfApp);
 
 golfApp.run(['$rootScope', function ($rs) {
-  $rs.baseUrl = process.env.API_URL || 'http://localhost:3000';
+  $rs.baseUrl = '' + __API_URL__;
   $rs.userConfig = {
     Headers: {
       'Content-Type': 'application/json',

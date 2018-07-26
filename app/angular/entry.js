@@ -6,13 +6,14 @@ require('angular-middleware');
 require('./scss/base.scss');
 
 const golfApp = angular.module('golfApp', ['ngRoute', 'ngRoute.middleware']);
+const __API_URL__ = process.env.API_URL || 'http://localhost:3000';
 
 require('./services')(golfApp);
 require('./controllers')(golfApp);
 require('./components')(golfApp);
 
 golfApp.run(['$rootScope', ($rs) => {
-  $rs.baseUrl = process.env.API_URL || 'http://localhost:3000';
+  $rs.baseUrl = `${__API_URL__}`;
   $rs.userConfig = {
     Headers: {
       'Content-Type': 'application/json',
