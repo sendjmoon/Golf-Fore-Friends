@@ -53,6 +53,6 @@ const UserSchema = new Schema({
   collection: 'users',
 });
 
-UserSchema.createIndex({ email: 1 }, { sparse: true });
+UserSchema.index({ email: 1 }, { sparse: true });
 
 module.exports = mongoose.model('User', UserSchema);
