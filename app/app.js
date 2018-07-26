@@ -8,7 +8,8 @@ const cors = require('cors');
 const path = require('path');
 
 const redis = require('redis');
-const redisClient = redis.createClient();
+// const redisClient = redis.createClient();
+const redisClient = redis.createClient(process.env.REDIS_URL);
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 
