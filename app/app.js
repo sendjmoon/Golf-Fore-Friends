@@ -66,6 +66,7 @@ const sessionOptions = {
 
 if (process.env.NODE_ENV === 'production')
   sessionOptions.cookie.secure = true;
+  sessionOptions.resave = false;
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
