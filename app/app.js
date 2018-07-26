@@ -57,11 +57,11 @@ const sessionOptions = {
 if (app.get('env') === 'production')
   sessionOptions.cookie.secure = true;
 
-app.use(session(sessionOptions));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session(sessionOptions));
 app.use(cors());
 
 app.use(require('node-sass-middleware')({
