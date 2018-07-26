@@ -10,7 +10,6 @@ router.get('/check-session', function(req, res, next) {
     userService.getByEmailOrUsername(req.session.user.email)
       .then((user) => {
         req.session.user = user;
-        console.log(user);
         res.json({
           userData: {
             _id: user._id,
@@ -57,6 +56,7 @@ router.post('/all', function(req, res, next) {
 });
 
 router.post('/signup', function(req, res, next) {
+  console.log(req);
   userService.create(
       req.body.username,
       req.body.fullName,
@@ -72,6 +72,7 @@ router.post('/signup', function(req, res, next) {
       res.json(user);
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).json({
         error: 'Error creating user. Try again.',
       });
