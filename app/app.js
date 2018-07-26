@@ -40,9 +40,8 @@ if (process.env.NODE_ENV !== 'test')
 if (process.env.REDISTOGO_URL) {
   var redisUrl = url.parse(process.env.REDISTOGO_URL);
   var redisClient = redis.createClient(redisUrl.port, redisUrl.hostname);
-  var redisAuth = redisUrl.auth.split(':');
 
-  // redisClient.auth(redisUrl.auth.split(':'));
+  redisClient.auth(redisUrl.auth.split(':')[1]);
 } else {
   var redisClient = redis.createClient();
 }
@@ -55,11 +54,7 @@ app.set('view engine', 'hbs');
 const sessionOptions = {
   secret: '1337',
   store: new RedisStore({
-    // client: redisClient,
-    host: redisUrl.hostname,
-    port: redisUrl.port,
-    db: redisAuth[0],
-    pass: redisAuth[1],
+    client: redisClient,
   }),
   name: 'GolfForeFriends',
   saveUninitialized: true,
@@ -72,6 +67,7 @@ const sessionOptions = {
 if (process.env.NODE_ENV === 'production') {
   sessionOptions.cookie.secure = true;
   sessionOptions.resave = false;
+  sessionOptions.saveUninitialized = false;
 }
 
 app.use(logger('dev'));
