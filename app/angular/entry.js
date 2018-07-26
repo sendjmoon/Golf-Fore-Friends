@@ -7,6 +7,8 @@ require('./scss/base.scss');
 
 const golfApp = angular.module('golfApp', ['ngRoute', 'ngRoute.middleware']);
 
+console.log(process.env.PORT);
+
 require('./services')(golfApp);
 require('./controllers')(golfApp);
 require('./components')(golfApp);

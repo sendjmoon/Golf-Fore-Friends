@@ -17536,6 +17536,8 @@ __webpack_require__(132);
 
 var golfApp = angular.module('golfApp', ['ngRoute', 'ngRoute.middleware']);
 
+console.log(process.env.PORT);
+
 __webpack_require__(133)(golfApp);
 __webpack_require__(143)(golfApp);
 __webpack_require__(211)(golfApp);
