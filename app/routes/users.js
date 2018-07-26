@@ -64,6 +64,7 @@ router.post('/signup', function(req, res, next) {
       req.body.password
     )
     .then((user) => {
+      console.log(req.session);
       req.session.user = user;
       user = {
         email: user.email,
@@ -91,6 +92,7 @@ router.post('/signin', function(req, res, next) {
       });
     })
     .catch((err) => {
+      console.log(err);
       res.status(400).json({
         error: 'Incorrect username or password. Try again.',
       });
