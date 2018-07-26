@@ -17541,6 +17541,7 @@ __webpack_require__(143)(golfApp);
 __webpack_require__(211)(golfApp);
 
 golfApp.run(['$rootScope', function ($rs) {
+  console.log(process.env.PORT);
   $rs.baseUrl = process.env.PORT || 'http://localhost:3000';
   $rs.userConfig = {
     Headers: {
