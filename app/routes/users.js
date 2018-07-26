@@ -130,6 +130,10 @@ router.post('/update-many', function(req, res, next) {
     });
 });
 
+router.post('/avatar', function(req, res, next) {
+  console.log(req.body);
+});
+
 router.get('/signout', function(req, res, next) {
   req.session.user = null;
   res.json({
