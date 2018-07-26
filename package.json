@@ -4,7 +4,7 @@
   "description": "",
   "main": "",
   "scripts": {
-    "start": "nodemon ./app/bin/server.js",
+    "start": "node ./app/bin/server.js",
     "test": "mocha"
   },
   "repository": {
