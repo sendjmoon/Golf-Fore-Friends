@@ -29,6 +29,8 @@ mongoose.Promise = require('bluebird');
 if (process.env.NODE_ENV === 'test')
   mongoose.connect(process.env.DB_SERVER);
 
+console.log(process.env.MONGODB_URI);
+
 if (process.env.NODE_ENV !== 'test')
   mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/gff-dev');
 
