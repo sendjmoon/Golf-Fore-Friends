@@ -6,10 +6,10 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const url = require('url');
 
 const redis = require('redis');
 // const redisClient = redis.createClient();
-const redisClient = redis.createClient(process.env.REDIS_URL);
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 
@@ -37,6 +37,15 @@ if (process.env.NODE_ENV === 'test')
 if (process.env.NODE_ENV !== 'test')
   mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/gff-dev', mongoDbOptions);
 
+if (process.env.REDISTOGO_URL) {
+  var rtg = require('url').parse(process.env.REDISTOGO_URL);
+  var redisClient = redis.createClient(rtg.port, rtg.hostname);
+
+  redis.auth(rtg.auth.split(':')[1]);
+} else {
+  var redisClient = redis.createClient();
+}
+
 const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -51,7 +60,7 @@ const sessionOptions = {
   saveUninitialized: true,
   resave: true,
   cookie: {
-    maxAge: 86400 * 365
+    maxAge: 86400 * 365,
   },
 };
 
