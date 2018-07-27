@@ -1,6 +1,7 @@
 'use strict';
 const Promise = require('bluebird');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 module.exports = function(userDao) {
   const _userDao = userDao;
@@ -25,7 +26,7 @@ module.exports = function(userDao) {
         })
         .catch(reject);
     });
-  };
+  }
 
   const getByEmailOrUsername = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
@@ -36,15 +37,15 @@ module.exports = function(userDao) {
         })
         .catch(reject);
     });
-  };
+  }
 
   const updateByEmailOrUsername = function(emailOrUsername, updateOptions) {
     return _userDao.updateByEmailOrUsername(emailOrUsername, updateOptions);
-  };
+  }
 
   const updateManyById = function(userIds, updateOptions) {
     return _userDao.updateManyById(userIds, updateOptions);
-  };
+  }
 
 
   const authenticateUser = function(emailOrUsername, password) {
@@ -67,7 +68,7 @@ module.exports = function(userDao) {
         .then(resolve)
         .catch(reject);
     });
-  };
+  }
 
   const isMatchingPassword = function(password, hash) {
     return new Promise((resolve, reject) => {
@@ -75,13 +76,19 @@ module.exports = function(userDao) {
         .then(resolve)
         .catch(reject);
     });
-  };
-
+  }
 
   const getAllOtherUsers = function(email) {
     return _userDao.getAllOtherUsers(email);
-  };
+  }
 
+  const createJwt = function(emailOrUsername) {
+    return new Promise((resolve, reject) => {
+      let token = jwt.sign(emailOrUsername, process.env.APP_SECRET, { algorithm: 'HS256' }, (err, token) => {
+        err ? reject : resolve(token);
+      });
+    });
+  }
 
   return {
     create: create,
@@ -90,5 +97,6 @@ module.exports = function(userDao) {
     updateManyById: updateManyById,
     authenticateUser: authenticateUser,
     getAllOtherUsers: getAllOtherUsers,
+    createJwt: createJwt,
   };
 };

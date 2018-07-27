@@ -51,6 +51,7 @@
     "gridfs-stream": "^1.1.1",
     "hbs": "^4.0.1",
     "html-loader": "^0.4.5",
+    "jsonwebtoken": "^8.3.0",
     "mocha": "^3.4.2",
     "moment": "^2.19.1",
     "mongoose": "^4.11.0",

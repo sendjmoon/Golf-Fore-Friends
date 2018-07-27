@@ -3,35 +3,32 @@
 const express = require('express');
 const router = express.Router();
 const userService = require('../services').userService;
+const jwt = require('jsonwebtoken');
+const jwtAuth = require('../lib/jwt_auth');
 
-//TODO: refactor to middleware. jwt-auth?
-router.get('/check-session', function(req, res, next) {
-  if (req.session.user) {
-    userService.getByEmailOrUsername(req.session.user.email)
-      .then((user) => {
-        req.session.user = user;
-        res.json({
-          userData: {
-            _id: user._id,
-            fullName: user.fullName,
-            email: user.email,
-            gameIds: user.gameIds,
-            createdAt: user.createdAt,
-          },
-        });
-      })
-      .catch((err) => {
-        res.status(500).json({
-          error: 'Error getting user.',
-        });
-      });
-  } else {
-    console.log('CHECK SESSION');
-    console.log(req.session);
-    res.status(401).json({
-      error: 'Unauthorized.',
+router.get('/check-session', jwtAuth, function(req, res, next) {
+  if (!req.body.decoded) {
+    res.status(500).json({
+      error: 'Error authenticating user.'
     });
   }
+  userService.getByEmailOrUsername(req.body.decoded)
+    .then((user) => {
+      res.json({
+        userData: {
+          _id: user._id,
+          fullName: user.fullName,
+          email: user.email,
+          gameIds: user.gameIds,
+          createdAt: user.createdAt,
+        },
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: 'Error authenticating user.'
+      });
+    });
 });
 
 router.post('/', function(req, res, next) {
@@ -66,12 +63,20 @@ router.post('/signup', function(req, res, next) {
       req.body.password
     )
     .then((user) => {
-      req.session.user = user;
       user = {
         email: user.email,
         _id: user._id,
       }
-      res.json(user);
+      userService.createJwt(user.email)
+        .then((token) => {
+          res.cookie('token', token);
+          res.status(200).json(user);
+        })
+        .catch((err) => {
+          res.status(500).json({
+            error: 'Error creating user. Try again.',
+          });
+        });
     })
     .catch((err) => {
       res.status(500).json({
@@ -86,10 +91,16 @@ router.post('/signin', function(req, res, next) {
     req.body.password
   )
     .then((user) => {
-      req.session.user = user;
-      req.session.save((err) => {
-        res.status(200).json(user);
-      });
+      userService.createJwt(user.email)
+        .then((token) => {
+          res.cookie('token', token);
+          res.status(200).json(user);
+        })
+        .catch((err) => {
+          res.status(400).json({
+            error: 'Error authenticating user.',
+          });
+        });
     })
     .catch((err) => {
       res.status(400).json({
@@ -137,7 +148,7 @@ router.post('/avatar', function(req, res, next) {
 });
 
 router.get('/signout', function(req, res, next) {
-  req.session.user = null;
+  res.cookie('token', null);
   res.json({
     message: 'Signed out.',
   });
