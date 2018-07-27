@@ -7,10 +7,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 
-const redis = require('redis');
-const redisClient = redis.createClient();
 const session = require('express-session');
-const RedisStore = require('connect-redis')(session);
 
 const logger = require('morgan');
 const errorHandler = require('./lib/error_handler');
@@ -41,27 +38,10 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-const sessionOptions = {
-  secret: '1337',
-  store: new RedisStore({
-    client: redisClient,
-  }),
-  name: 'GolfForeFriends',
-  saveUninitialized: true,
-  resave: true,
-  cookie: {
-    maxAge: 86400 * 365
-  },
-};
-
-if (app.get('env') === 'production')
-  sessionOptions.cookie.secure = true;
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session(sessionOptions));
 app.use(cors());
 
 app.use(require('node-sass-middleware')({
