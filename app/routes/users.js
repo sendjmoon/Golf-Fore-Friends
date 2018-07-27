@@ -88,6 +88,7 @@ router.post('/signin', function(req, res, next) {
   )
     .then((user) => {
       req.session.user = user;
+      req.session.cookie.testVar = 'hello';
       res.status(200).json({
         message: 'Signin successful.',
       });
