@@ -91,8 +91,10 @@ router.post('/signin', function(req, res, next) {
     req.body.password
   )
     .then((user) => {
+      console.log('FIRST PASSED');
       userService.createJwt(user.email)
         .then((token) => {
+          console.log('SECOND PASSED');
           res.cookie('token', token);
           res.status(200).json(user);
         })
