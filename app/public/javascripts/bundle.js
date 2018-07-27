@@ -17536,8 +17536,8 @@ __webpack_require__(132);
 
 var golfApp = angular.module('golfApp', ['ngRoute', 'ngRoute.middleware']);
 
-// let API_URL = 'https://golf-fore-friends.herokuapp.com';
-var API_URL = 'http://localhost:3000';
+var API_URL = 'https://golf-fore-friends.herokuapp.com';
+// const API_URL = 'http://localhost:3000';
 
 __webpack_require__(133)(golfApp);
 __webpack_require__(143)(golfApp);
