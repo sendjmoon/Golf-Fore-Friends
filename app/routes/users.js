@@ -87,10 +87,8 @@ router.post('/signin', function(req, res, next) {
   )
     .then((user) => {
       req.session.user = user;
-      console.log('SIGNIN');
-      console.log(req.session);
-      res.status(200).json({
-        message: 'Signin successful.',
+      req.session.save((err) => {
+        res.status(200).json(user);
       });
     })
     .catch((err) => {
