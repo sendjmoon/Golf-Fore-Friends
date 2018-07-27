@@ -26,6 +26,7 @@ router.get('/check-session', function(req, res, next) {
         });
       });
   } else {
+    console.log('CHECK SESSION');
     console.log(req.session);
     res.status(401).json({
       error: 'Unauthorized.',
@@ -65,7 +66,6 @@ router.post('/signup', function(req, res, next) {
       req.body.password
     )
     .then((user) => {
-      console.log(req.session);
       req.session.user = user;
       user = {
         email: user.email,
@@ -74,7 +74,6 @@ router.post('/signup', function(req, res, next) {
       res.json(user);
     })
     .catch((err) => {
-      console.log(err);
       res.status(500).json({
         error: 'Error creating user. Try again.',
       });
@@ -88,13 +87,11 @@ router.post('/signin', function(req, res, next) {
   )
     .then((user) => {
       req.session.user = user;
-      req.session.cookie.testVar = 'hello';
       res.status(200).json({
         message: 'Signin successful.',
       });
     })
     .catch((err) => {
-      console.log(err);
       res.status(400).json({
         error: 'Incorrect username or password. Try again.',
       });
