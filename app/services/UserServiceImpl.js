@@ -85,7 +85,7 @@ module.exports = function(userDao) {
   const createJwt = function(emailOrUsername) {
     return new Promise((resolve, reject) => {
       let token = jwt.sign(emailOrUsername, process.env.APP_SECRET, { algorithm: 'HS256' }, (err, token) => {
-        err ? reject : resolve(token);
+        err ? reject(err) : resolve(token);
       });
     });
   }
