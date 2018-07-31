@@ -1,9 +1,9 @@
 <div class="sub-nav-content" ng-show="snc.pageTitle=='DASHBOARD'">
   <h2 class="title">{{snc.pageTitle}}</h2>
-  <a href="/#!/dashboard#profile-tile" class="sub-nav-link" scroll-target="profile-tile"><i class="far fa-user"></i>Profile</a>
-  <a href="/#!/dashboard#recent-games-tile" class="sub-nav-link" scroll-target="recent-games-tile"><i class="far fa-calendar-alt"></i>Recent Games</a>
-  <a href="/#!/dashboard#leaderboard-tile" class="sub-nav-link" scroll-target="leaderboard-tile"><i class="far fa-list-alt"></i>Leaderboard</a>
-  <a href="/#!/dashboard#progress-tile" class="sub-nav-link" scroll-target="progress-tile"><i class="fas fa-chart-line"></i>Progress</a>
+  <a href="/#!/dashboard#profile" class="sub-nav-link" scroll-target="profile"><i class="far fa-user"></i>Profile</a>
+  <a href="/#!/dashboard#recent-games" class="sub-nav-link" scroll-target="recent-games"><i class="far fa-calendar-alt"></i>Recent Games</a>
+  <a href="/#!/dashboard#leaderboard" class="sub-nav-link" scroll-target="leaderboard"><i class="far fa-list-alt"></i>Leaderboard</a>
+  <a href="/#!/dashboard#progress" class="sub-nav-link" scroll-target="progress"><i class="fas fa-chart-line"></i>Progress</a>
   <sn-games ng-if="snc.pageTitle==='Games'" data-creating-game="snc.creatingGame"></sn-games>
 </div>
 
