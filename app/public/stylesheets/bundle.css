@@ -100,6 +100,10 @@ h1, h2, h3, h4, h5 {
 .gff-gradient {
   display: inline-block; }
 
+add-friend {
+  display: table;
+  width: 100%; }
+
 .gff-box {
   padding: 15px;
   z-index: 2; }
@@ -178,11 +182,15 @@ h1, h2, h3, h4, h5 {
   display: block;
   width: 100%;
   padding: 15px; }
+  .gff-content.alt {
+    padding: 0; }
   .gff-content .box-title {
     margin-bottom: 15px;
     font-size: 16px;
     font-weight: 700;
     line-height: normal; }
+    .gff-content .box-title.light {
+      color: #fff; }
 
 .recent-comments-container {
   width: 100%;
@@ -593,6 +601,9 @@ canvas {
     .gff-select select:focus {
       outline-color: rgba(254, 172, 0, 0.8); }
 
+.search-container input {
+  width: 100%; }
+
 auth {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -920,9 +931,11 @@ sub-nav {
   .sub-nav-content .svg-inline--fa {
     width: 20px;
     margin-right: 5px; }
-  .sub-nav-content a {
+  .sub-nav-content .sub-nav-link {
     margin: 9px 0;
     color: #a3adb7; }
+    .sub-nav-content .sub-nav-link:visited {
+      color: #a3adb7; }
 
 .sub-nav-menu {
   width: 100%;
@@ -967,11 +980,17 @@ sub-nav {
       padding: 0;
       color: #329af0; }
 
-.friends-list, .games-list, .recent-games-list {
+.friends-list, .games-list, .recent-games-list, .users-list {
   width: 100%;
   padding: 0;
   margin: 0;
   list-style: none; }
+
+.users-list li {
+  padding: 5px;
+  margin-bottom: 5px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2); }
 
 .friends-list, .games-list {
   padding: 30px 15px; }

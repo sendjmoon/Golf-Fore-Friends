@@ -1,0 +1,16 @@
+<div class="gff-container">
+  <div class="gff-content alt">
+    <h2 class="box-title light">Add more friends.</h2>
+    <div class="search-container">
+      <form autocomplete="off">
+        <input id="search-input-users" type="text" placeholder="Search By Email"></input>
+        <ul class="users-list">
+          <li ng-repeat="user in searchResults">
+            <p>{{user.fullName}} <span ng-show="user.isFriend">- Already friends.</p>
+            <button class="gff-btn" ng-hide="user.isFriend" ng-click="fc.addFriend(user._id, user.stats); user.isFriend=true;"><i class="fas fa-user-plus"></i></button>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</div>

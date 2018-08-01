@@ -67280,13 +67280,15 @@ module.exports = function (app) {
     controller: 'FriendController',
     controllerAs: 'fc'
   });
+
+  __webpack_require__(257)(app);
 };
 
 /***/ }),
 /* 224 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-title=\"'FRIENDS'\"></sub-nav>\n  <div class=\"gff-container\">\n    <div class=\"gff-content shadow\">\n      <h2 class=\"box-title\">add more friends</h2>\n      <div class=\"search-container\">\n        <form autocomplete=\"off\">\n          <input id=\"search-input-users\" type=\"text\" placeholder=\"Search By Email\"></input>\n          <ul>\n            <li ng-repeat=\"user in searchResults\">\n              <p>{{user.fullName}} <span ng-show=\"user.isFriend\">- Already friends.</p>\n              <button class=\"gff-btn\" ng-hide=\"user.isFriend\" ng-click=\"fc.addFriend(user._id, user.stats); user.isFriend=true;\">Add to Friends</button>\n            </li>\n          </ul>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"page-container right\">\n  <div class=\"page-content\">\n    <ul class=\"friends-list\">\n      <li class=\"friend-box shadow-sm\" ng-repeat=\"friend in friendsData.friends\">\n        <div class=\"profile-pic\">\n          <i class=\"fa fa-user\"></i>\n        </div>\n        <div class=\"content\">\n          <h4 class=\"box-title\">{{friend.fullName}}</h4>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>\n";
+module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-title=\"'FRIENDS'\"></sub-nav>\n  <!-- <div class=\"gff-container\">\n    <div class=\"gff-content shadow\">\n      <h2 class=\"box-title\">add more friends</h2>\n      <div class=\"search-container\">\n        <form autocomplete=\"off\">\n          <input id=\"search-input-users\" type=\"text\" placeholder=\"Search By Email\"></input>\n          <ul>\n            <li ng-repeat=\"user in searchResults\">\n              <p>{{user.fullName}} <span ng-show=\"user.isFriend\">- Already friends.</p>\n              <button class=\"gff-btn\" ng-hide=\"user.isFriend\" ng-click=\"fc.addFriend(user._id, user.stats); user.isFriend=true;\">Add to Friends</button>\n            </li>\n          </ul>\n        </form>\n      </div>\n    </div>\n  </div> -->\n</div>\n\n<div class=\"page-container right\">\n  <div class=\"page-content\">\n    <ul class=\"friends-list\">\n      <li class=\"friend-box shadow-sm\" ng-repeat=\"friend in friendsData.friends\">\n        <div class=\"profile-pic\">\n          <i class=\"fa fa-user\"></i>\n        </div>\n        <div class=\"content\">\n          <h4 class=\"box-title\">{{friend.fullName}}</h4>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>\n";
 
 /***/ }),
 /* 225 */
@@ -67475,7 +67477,7 @@ module.exports = function (app) {
 /* 240 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='DASHBOARD'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <a href=\"/#!/dashboard#profile\" class=\"sub-nav-link\" scroll-target=\"profile\"><i class=\"far fa-user\"></i>Profile</a>\n  <a href=\"/#!/dashboard#recent-games\" class=\"sub-nav-link\" scroll-target=\"recent-games\"><i class=\"far fa-calendar-alt\"></i>Recent Games</a>\n  <a href=\"/#!/dashboard#leaderboard\" class=\"sub-nav-link\" scroll-target=\"leaderboard\"><i class=\"far fa-list-alt\"></i>Leaderboard</a>\n  <a href=\"/#!/dashboard#progress\" class=\"sub-nav-link\" scroll-target=\"progress\"><i class=\"fas fa-chart-line\"></i>Progress</a>\n  <sn-games ng-if=\"snc.pageTitle==='Games'\" data-creating-game=\"snc.creatingGame\"></sn-games>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='FRIENDS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='GAMES'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=false; snc.resetForm('new-game-form')\"><i class=\"fas fa-list\"></i>Game List</a>\n  <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=true\"><i class=\"far fa-file\"></i>Create Game</a>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='SETTINGS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n</div>\n";
+module.exports = "<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='DASHBOARD'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <a href=\"/#!/dashboard#profile\" class=\"sub-nav-link\" scroll-target=\"profile\"><i class=\"far fa-user\"></i>Profile</a>\n  <a href=\"/#!/dashboard#recent-games\" class=\"sub-nav-link\" scroll-target=\"recent-games\"><i class=\"far fa-calendar-alt\"></i>Recent Games</a>\n  <a href=\"/#!/dashboard#leaderboard\" class=\"sub-nav-link\" scroll-target=\"leaderboard\"><i class=\"far fa-list-alt\"></i>Leaderboard</a>\n  <a href=\"/#!/dashboard#progress\" class=\"sub-nav-link\" scroll-target=\"progress\"><i class=\"fas fa-chart-line\"></i>Progress</a>\n  <sn-games ng-if=\"snc.pageTitle==='Games'\" data-creating-game=\"snc.creatingGame\"></sn-games>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='FRIENDS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <add-friend></add-friend>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='GAMES'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=false; snc.resetForm('new-game-form')\"><i class=\"fas fa-list\"></i>Game List</a>\n  <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=true\"><i class=\"far fa-file\"></i>Create Game</a>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='SETTINGS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n</div>\n";
 
 /***/ }),
 /* 241 */
@@ -67591,6 +67593,33 @@ module.exports = function ($middlewareProvider) {
     }]
   });
 };
+
+/***/ }),
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (app) {
+  app.component('addFriend', {
+    template: __webpack_require__(258),
+    controller: 'FriendController',
+    controllerAs: 'fc'
+  });
+};
+
+/***/ }),
+/* 258 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"gff-container\">\n  <div class=\"gff-content alt\">\n    <h2 class=\"box-title light\">Add more friends.</h2>\n    <div class=\"search-container\">\n      <form autocomplete=\"off\">\n        <input id=\"search-input-users\" type=\"text\" placeholder=\"Search By Email\"></input>\n        <ul class=\"users-list\">\n          <li ng-repeat=\"user in searchResults\">\n            <p>{{user.fullName}} <span ng-show=\"user.isFriend\">- Already friends.</p>\n            <button class=\"gff-btn\" ng-hide=\"user.isFriend\" ng-click=\"fc.addFriend(user._id, user.stats); user.isFriend=true;\"><i class=\"fas fa-user-plus\"></i></button>\n          </li>\n        </ul>\n      </form>\n    </div>\n  </div>\n</div>\n";
 
 /***/ })
 /******/ ]);

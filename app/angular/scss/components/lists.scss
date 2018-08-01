@@ -35,11 +35,21 @@
   }
 }
 
-.friends-list, .games-list, .recent-games-list {
+.friends-list, .games-list, .recent-games-list, .users-list {
   width: 100%;
   padding: 0;
   margin: 0;
   list-style: none;
+}
+
+.users-list {
+
+  li {
+    padding: 5px;
+    margin-bottom: 5px;
+    color: $color-font-white;
+    background: rgba(255, 255, 255, 0.2);
+  }
 }
 
 .friends-list, .games-list {
@@ -61,11 +71,6 @@
     color: $color-blue-dark;
     overflow: hidden;
     transition: all 0.2s ease;
-
-    // &:hover {
-    //   box-shadow: 0 2px 2px 1px #a6d3f7;
-    //   transition: all 0.2s ease;
-    // }
 
     .game-image {
       display: inline-block;
@@ -134,7 +139,6 @@
         width: 100%;
         min-height: 200px;
         max-height: 200px;
-        // background-image: url('http://localhost:3000/imgs/golf-ball-sunset.jpg');
       }
 
       .game-info {
