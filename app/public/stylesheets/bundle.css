@@ -492,6 +492,13 @@ add-friend {
   font-weight: 400;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease; }
+  .gff-btn.disabled {
+    background: rgba(50, 50, 50, 0.5);
+    pointer-events: none; }
+    .gff-btn.disabled .fa-check {
+      color: #329af0; }
+  .gff-btn.sm {
+    padding: 5px 10px; }
   .gff-btn:hover {
     background: #63b5f7;
     -webkit-transition: all 0.2s ease;
@@ -988,9 +995,11 @@ sub-nav {
 
 .users-list li {
   padding: 5px;
-  margin-bottom: 5px;
+  margin-top: 5px;
   color: #fff;
   background: rgba(255, 255, 255, 0.2); }
+  .users-list li button {
+    width: 100%; }
 
 .friends-list, .games-list {
   padding: 30px 15px; }

@@ -10,7 +10,7 @@ module.exports = function(app) {
     }
 
     ctrl.subNavClickHandler = function() {
-      $('.sub-nav-link').on('click', function(e) {
+      $('.anchor-link').on('click', function(e) {
         ctrl.scrollToAnchor($(this).attr('scroll-target'), $(this).attr('href'));
       });
     }

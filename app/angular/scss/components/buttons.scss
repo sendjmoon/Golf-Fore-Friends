@@ -9,6 +9,20 @@
   font-weight: 400;
   transition: all 0.2s ease;
 
+  &.disabled {
+    background: rgba(50, 50, 50, 0.5);
+    // color: $color-blue;
+    pointer-events: none;
+
+    .fa-check {
+      color: $color-blue;
+    }
+  }
+
+  &.sm {
+    padding: 5px 10px;
+  }
+
   &:hover {
     background: $color-blue-hover;
     transition: all 0.2s ease;

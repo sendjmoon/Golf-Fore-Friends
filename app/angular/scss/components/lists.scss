@@ -46,9 +46,13 @@
 
   li {
     padding: 5px;
-    margin-bottom: 5px;
+    margin-top: 5px;
     color: $color-font-white;
     background: rgba(255, 255, 255, 0.2);
+
+    button {
+      width: 100%;
+    }
   }
 }
 

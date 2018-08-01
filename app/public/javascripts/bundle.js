@@ -67113,7 +67113,7 @@ module.exports = function (app) {
     };
 
     ctrl.subNavClickHandler = function () {
-      $('.sub-nav-link').on('click', function (e) {
+      $('.anchor-link').on('click', function (e) {
         ctrl.scrollToAnchor($(this).attr('scroll-target'), $(this).attr('href'));
       });
     };
@@ -67477,7 +67477,7 @@ module.exports = function (app) {
 /* 240 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='DASHBOARD'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <a href=\"/#!/dashboard#profile\" class=\"sub-nav-link\" scroll-target=\"profile\"><i class=\"far fa-user\"></i>Profile</a>\n  <a href=\"/#!/dashboard#recent-games\" class=\"sub-nav-link\" scroll-target=\"recent-games\"><i class=\"far fa-calendar-alt\"></i>Recent Games</a>\n  <a href=\"/#!/dashboard#leaderboard\" class=\"sub-nav-link\" scroll-target=\"leaderboard\"><i class=\"far fa-list-alt\"></i>Leaderboard</a>\n  <a href=\"/#!/dashboard#progress\" class=\"sub-nav-link\" scroll-target=\"progress\"><i class=\"fas fa-chart-line\"></i>Progress</a>\n  <sn-games ng-if=\"snc.pageTitle==='Games'\" data-creating-game=\"snc.creatingGame\"></sn-games>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='FRIENDS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <add-friend></add-friend>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='GAMES'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=false; snc.resetForm('new-game-form')\"><i class=\"fas fa-list\"></i>Game List</a>\n  <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=true\"><i class=\"far fa-file\"></i>Create Game</a>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='SETTINGS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n</div>\n";
+module.exports = "<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='DASHBOARD'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <a class=\"sub-nav-link anchor-link\" scroll-target=\"profile\"><i class=\"far fa-user\"></i>Profile</a>\n  <a class=\"sub-nav-link anchor-link\" scroll-target=\"recent-games\"><i class=\"far fa-calendar-alt\"></i>Recent Games</a>\n  <a class=\"sub-nav-link anchor-link\" scroll-target=\"leaderboard\"><i class=\"far fa-list-alt\"></i>Leaderboard</a>\n  <a class=\"sub-nav-link anchor-link\" scroll-target=\"progress\"><i class=\"fas fa-chart-line\"></i>Progress</a>\n  <sn-games ng-if=\"snc.pageTitle==='Games'\" data-creating-game=\"snc.creatingGame\"></sn-games>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='FRIENDS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <add-friend></add-friend>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='GAMES'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=false; snc.resetForm('new-game-form')\"><i class=\"fas fa-list\"></i>Game List</a>\n  <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=true\"><i class=\"far fa-file\"></i>Create Game</a>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='SETTINGS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n</div>\n";
 
 /***/ }),
 /* 241 */
@@ -67619,7 +67619,7 @@ module.exports = function (app) {
 /* 258 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"gff-container\">\n  <div class=\"gff-content alt\">\n    <h2 class=\"box-title light\">Add more friends.</h2>\n    <div class=\"search-container\">\n      <form autocomplete=\"off\">\n        <input id=\"search-input-users\" type=\"text\" placeholder=\"Search By Email\"></input>\n        <ul class=\"users-list\">\n          <li ng-repeat=\"user in searchResults\">\n            <p>{{user.fullName}} <span ng-show=\"user.isFriend\">- Already friends.</p>\n            <button class=\"gff-btn\" ng-hide=\"user.isFriend\" ng-click=\"fc.addFriend(user._id, user.stats); user.isFriend=true;\"><i class=\"fas fa-user-plus\"></i></button>\n          </li>\n        </ul>\n      </form>\n    </div>\n  </div>\n</div>\n";
+module.exports = "<div class=\"gff-container\">\n  <div class=\"gff-content alt\">\n    <h2 class=\"box-title light\">Add more friends.</h2>\n    <div class=\"search-container\">\n      <form class=\"add-friends-form\" name=\"add-friends-form\" autocomplete=\"off\">\n        <input id=\"search-input-users\" type=\"text\" placeholder=\"Search By Email\"></input>\n        <ul class=\"users-list\">\n          <li ng-repeat=\"user in searchResults\">\n            <p>{{user.fullName}}</p>\n            <button class=\"gff-btn disabled sm\" ng-show=\"user.isFriend\"><i class=\"fas fa-check\"></i>Friends</button>\n            <button class=\"gff-btn sm\" ng-hide=\"user.isFriend\" ng-click=\"fc.addFriend(user._id, user.stats); user.isFriend=true;\"><i class=\"fas fa-user-plus\"></i>Add Friend</button>\n          </li>\n        </ul>\n      </form>\n    </div>\n  </div>\n</div>\n";
 
 /***/ })
 /******/ ]);
