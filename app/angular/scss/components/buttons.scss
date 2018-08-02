@@ -67,6 +67,14 @@
     background: $color-blue;
   }
 
+  &.red {
+    background: $color-red;
+
+    &:hover {
+      background: $color-red-opaque;
+    }
+  }
+
   &.dark {
     background: #4b4e54;
     color: #fff;
@@ -76,5 +84,16 @@
       background: #727e95;
       transition: all 0.2s ease;
     }
+  }
+}
+
+.player-box {
+
+  .gff-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0;
+    border-top-right-radius: 5px;
   }
 }

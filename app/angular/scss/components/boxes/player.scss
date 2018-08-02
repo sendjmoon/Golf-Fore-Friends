@@ -1,3 +1,21 @@
 .player-box {
-  background: rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: table;
+  width: 275px;
+  min-height: 75px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+
+  .edit-box {
+
+    p {
+      display: inline;
+    }
+
+    input {
+      width: 25px;
+      text-align: center;
+    }
+  }
 }

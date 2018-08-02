@@ -5,7 +5,7 @@
     <div class="course-container">
       <p class="input-title">Course Played</p>
       <div class="gff-select course">
-        <select ng-model="cgc.game.name">
+        <select required ng-model="cgc.game.name">
           <option value="The Golf Club at Echo Falls">The Golf Club at Echo Falls</option>
           <option value="Harbour Pointe Golf Club">Harbour Pointe Golf Club</option>
           <option value="The Golf Club at Hawks Prairie">The Golf Club at Hawks Prairie</option>
@@ -28,31 +28,33 @@
       <input type="date" required ng-model="cgc.game.datePlayed"></input>
     </div>
     <div class="players-container">
-      <p class="input-title">Players</p>
-      <ul class="player-list">
-        <li class="player-box" ng-repeat="player in cgc.players" ng-init="player.strokes=0">
-          <div class="title-box">
-            <p>{{player.fullName}}</p>
-          </div>
-          <div class="edit-box">
-            <p><strong><span class="color-green">+</span></strong></p>
-            <input type="text" required ng-model="player.strokes" placeholder="{{player.strokes}}" maxlength="2"></input>
-          </div>
-          <a class="remove-box" ng-click="cgc.removeUser(player)">
-            <i class="fa fa-minus-circle"></i>
-          </a>
-        </li>
-      </ul>
+      <div class="current-players-container">
+        <p class="input-title">Current Players</p>
+        <ul class="player-list">
+          <li class="player-box shadow-sm" ng-repeat="player in cgc.players" ng-init="player.strokes=0">
+            <div class="title-box">
+              <p><strong>{{player.fullName}}</strong></p>
+            </div>
+            <div class="edit-box">
+              <p><strong>Total Strokes: <span class="color-green">+</span></strong></p>
+              <input type="text" required ng-model="player.strokes" placeholder="{{player.strokes}}" maxlength="2"></input>
+            </div>
+            <button class="gff-btn red" type="button" ng-click="cgc.removeUser(player)">
+              <i class="fa fa-minus-circle"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
       <div class="add-players-container">
         <p class="input-title">Add More Players</p>
         <ul class="player-list">
-          <li class="player-box" ng-repeat="friend in cgc.friendsData.friends">
+          <li class="player-box shadow-sm" ng-repeat="friend in cgc.friendsData.friends">
             <div class="title-box">
-              <p>{{friend.fullName}}</p>
+              <p><strong>{{friend.fullName}}</strong></p>
             </div>
-            <a class="add-box" ng-click="cgc.addUser(friend)">
+            <button class="gff-btn" type="button" ng-click="cgc.addUser(friend)">
               <i class="fa fa-plus"></i>
-            </a>
+            </button>
           </li>
         </ul>
       </div>

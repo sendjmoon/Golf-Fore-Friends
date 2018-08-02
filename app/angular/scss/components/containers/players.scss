@@ -1,0 +1,27 @@
+.players-container {
+  display: table;
+  width: 100%;
+  margin-bottom: 30px;
+
+  .current-players-container,
+  .add-players-container {
+    display: table-cell;
+    width: 50%;
+    padding-right: 15px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+
+  .players-container {
+
+    .current-players-container,
+    .add-players-container {
+      display: block;
+    }
+
+    .current-players-container {
+      margin-bottom: 30px;
+    }
+  }
+}
