@@ -100,16 +100,6 @@ add-friend {
   padding: 15px;
   z-index: 2; }
 
-.gff-box.stats {
-  padding: 30px; }
-  .gff-box.stats .box-content h3 {
-    font-weight: 400; }
-  .gff-box.stats .box-content p {
-    margin: 0;
-    white-space: nowrap; }
-  .gff-box.stats:nth-child(2) {
-    margin: 1px 0; }
-
 .friend-box {
   display: flex;
   flex-direction: column;
@@ -133,6 +123,19 @@ add-friend {
     padding: 15px; }
     .friend-box .content .box-title {
       margin: 0; }
+
+.player-box {
+  background: rgba(0, 0, 0, 0.1); }
+
+.gff-box.stats {
+  padding: 30px; }
+  .gff-box.stats .box-content h3 {
+    font-weight: 400; }
+  .gff-box.stats .box-content p {
+    margin: 0;
+    white-space: nowrap; }
+  .gff-box.stats:nth-child(2) {
+    margin: 1px 0; }
 
 .gff-container {
   width: 100%; }
@@ -737,7 +740,11 @@ sub-nav {
       padding: 0;
       color: #329af0; }
 
-.friends-list, .games-list, .recent-games-list, .users-list {
+.friends-list,
+.games-list,
+.player-list,
+.recent-games-list,
+.users-list {
   width: 100%;
   padding: 0;
   margin: 0;
@@ -746,8 +753,8 @@ sub-nav {
 .users-list li {
   padding: 5px;
   margin-top: 5px;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.2); }
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff; }
   .users-list li button {
     width: 100%; }
 
