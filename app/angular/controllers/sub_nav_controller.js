@@ -15,6 +15,10 @@ module.exports = function(app) {
       });
     }
 
+    ctrl.resetForm = function(el) {
+      document.getElementById(el).reset();
+    }
+
     ctrl.init = function() {
       ctrl.subNavClickHandler();
     }
