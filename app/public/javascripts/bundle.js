@@ -66951,7 +66951,7 @@ module.exports = function (app) {
     $scope.searchResults = searchService.searchResults;
 
     ctrl.addFriend = function (userId, statsId) {
-      friendService.addFriend(userId, statsId).then(ctrl.init());
+      friendService.addFriend(ctrl.user._id, ctrl.user.stats, userId, statsId).then(ctrl.init());
     };
 
     ctrl.init = function () {
