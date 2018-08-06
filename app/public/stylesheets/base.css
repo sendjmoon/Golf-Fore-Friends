@@ -92,19 +92,13 @@ h1, h2, h3, h4, h5 {
 .gff-gradient {
   display: inline-block; }
 
+add-friend {
+  display: table;
+  width: 100%; }
+
 .gff-box {
   padding: 15px;
   z-index: 2; }
-
-.gff-box.stats {
-  padding: 30px; }
-  .gff-box.stats .box-content h3 {
-    font-weight: 400; }
-  .gff-box.stats .box-content p {
-    margin: 0;
-    white-space: nowrap; }
-  .gff-box.stats:nth-child(2) {
-    margin: 1px 0; }
 
 .friend-box {
   display: flex;
@@ -130,6 +124,30 @@ h1, h2, h3, h4, h5 {
     .friend-box .content .box-title {
       margin: 0; }
 
+.player-box {
+  position: relative;
+  display: table;
+  width: 275px;
+  min-height: 75px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px; }
+  .player-box .edit-box p {
+    display: inline; }
+  .player-box .edit-box input {
+    width: 25px;
+    text-align: center; }
+
+.gff-box.stats {
+  padding: 30px; }
+  .gff-box.stats .box-content h3 {
+    font-weight: 400; }
+  .gff-box.stats .box-content p {
+    margin: 0;
+    white-space: nowrap; }
+  .gff-box.stats:nth-child(2) {
+    margin: 1px 0; }
+
 .gff-container {
   width: 100%; }
   .gff-container.main {
@@ -152,11 +170,15 @@ h1, h2, h3, h4, h5 {
   display: block;
   width: 100%;
   padding: 15px; }
+  .gff-content.alt {
+    padding: 0; }
   .gff-content .box-title {
     margin-bottom: 15px;
     font-size: 16px;
     font-weight: 700;
     line-height: normal; }
+    .gff-content .box-title.light {
+      color: #fff; }
 
 .recent-comments-container {
   width: 100%;
@@ -248,6 +270,23 @@ h1, h2, h3, h4, h5 {
     display: none; }
   .page-container.right {
     padding: 0 0 60px 0; } }
+
+.players-container {
+  display: table;
+  width: 100%;
+  margin-bottom: 30px; }
+  .players-container .current-players-container,
+  .players-container .add-players-container {
+    display: table-cell;
+    width: 50%;
+    padding-right: 15px; }
+
+@media screen and (max-width: 900px) {
+  .players-container .current-players-container,
+  .players-container .add-players-container {
+    display: block; }
+  .players-container .current-players-container {
+    margin-bottom: 30px; } }
 
 .tab-container {
   width: 100%;
@@ -356,6 +395,13 @@ h1, h2, h3, h4, h5 {
   font-size: 14px;
   font-weight: 400;
   transition: all 0.2s ease; }
+  .gff-btn.disabled {
+    background: rgba(50, 50, 50, 0.5);
+    pointer-events: none; }
+    .gff-btn.disabled .fa-check {
+      color: #329af0; }
+  .gff-btn.sm {
+    padding: 5px 10px; }
   .gff-btn:hover {
     background: #63b5f7;
     transition: all 0.2s ease; }
@@ -384,6 +430,10 @@ h1, h2, h3, h4, h5 {
       transition: all 0.2s ease; }
   .gff-btn.blue {
     background: #329af0; }
+  .gff-btn.red {
+    background: #dc1616; }
+    .gff-btn.red:hover {
+      background: rgba(220, 22, 22, 0.7); }
   .gff-btn.dark {
     background: #4b4e54;
     color: #fff;
@@ -391,6 +441,13 @@ h1, h2, h3, h4, h5 {
     .gff-btn.dark:hover {
       background: #727e95;
       transition: all 0.2s ease; }
+
+.player-box .gff-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0;
+  border-top-right-radius: 5px; }
 
 game-chart {
   display: flex;
@@ -445,6 +502,9 @@ canvas {
       outline: none; }
     .gff-select select:focus {
       outline-color: rgba(254, 172, 0, 0.8); }
+
+.search-container input {
+  width: 100%; }
 
 auth {
   display: flex;
@@ -678,9 +738,11 @@ sub-nav {
   .sub-nav-content .svg-inline--fa {
     width: 20px;
     margin-right: 5px; }
-  .sub-nav-content a {
+  .sub-nav-content .sub-nav-link {
     margin: 9px 0;
     color: #a3adb7; }
+    .sub-nav-content .sub-nav-link:visited {
+      color: #a3adb7; }
 
 .sub-nav-menu {
   width: 100%;
@@ -717,11 +779,23 @@ sub-nav {
       padding: 0;
       color: #329af0; }
 
-.friends-list, .games-list, .recent-games-list {
+.friends-list,
+.games-list,
+.player-list,
+.recent-games-list,
+.users-list {
   width: 100%;
   padding: 0;
   margin: 0;
   list-style: none; }
+
+.users-list li {
+  padding: 5px;
+  margin-top: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff; }
+  .users-list li button {
+    width: 100%; }
 
 .friends-list, .games-list {
   padding: 30px 15px; }

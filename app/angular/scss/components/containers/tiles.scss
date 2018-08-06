@@ -1,7 +1,6 @@
 .tile-container {
   @include flex(flex-start, flex-start, row);
   width: 100%;
-  // padding: 30px 15px;
   border-bottom: 1px solid #ebeef7;
 
   .tile-content {
@@ -21,7 +20,6 @@
   &.user {
     @include flex(flex-start, center, row);
     width: 100%;
-    // padding: 15px;
 
     .tile-content {
       @include flex(flex-start, center, row);

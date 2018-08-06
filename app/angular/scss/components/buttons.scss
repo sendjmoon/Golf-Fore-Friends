@@ -9,6 +9,20 @@
   font-weight: 400;
   transition: all 0.2s ease;
 
+  &.disabled {
+    background: rgba(50, 50, 50, 0.5);
+    // color: $color-blue;
+    pointer-events: none;
+
+    .fa-check {
+      color: $color-blue;
+    }
+  }
+
+  &.sm {
+    padding: 5px 10px;
+  }
+
   &:hover {
     background: $color-blue-hover;
     transition: all 0.2s ease;
@@ -53,6 +67,14 @@
     background: $color-blue;
   }
 
+  &.red {
+    background: $color-red;
+
+    &:hover {
+      background: $color-red-opaque;
+    }
+  }
+
   &.dark {
     background: #4b4e54;
     color: #fff;
@@ -62,5 +84,16 @@
       background: #727e95;
       transition: all 0.2s ease;
     }
+  }
+}
+
+.player-box {
+
+  .gff-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0;
+    border-top-right-radius: 5px;
   }
 }
