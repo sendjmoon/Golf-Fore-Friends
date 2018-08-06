@@ -5,11 +5,13 @@ module.exports = function(app) {
 
     const data = {};
 
-    const addFriend = function(userId, statsId) {
+    const addFriend = function(userId, userStatsId, friendId, friendStatsId) {
       return new Promise((resolve, reject) => {
         let friendData = {
           userId: userId,
-          statsId: statsId,
+          userStatsId: userStatsId,
+          friendId: friendId,
+          friendStatsId: friendStatsId,
         };
         $http.post(`${$rs.baseUrl}/friends/add`, friendData)
           .then(resolve)

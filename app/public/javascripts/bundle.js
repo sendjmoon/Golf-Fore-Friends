@@ -52431,11 +52431,13 @@ module.exports = function (app) {
 
     var data = {};
 
-    var addFriend = function addFriend(userId, statsId) {
+    var addFriend = function addFriend(userId, userStatsId, friendId, friendStatsId) {
       return new Promise(function (resolve, reject) {
         var friendData = {
           userId: userId,
-          statsId: statsId
+          userStatsId: userStatsId,
+          friendId: friendId,
+          friendStatsId: friendStatsId
         };
         $http.post($rs.baseUrl + '/friends/add', friendData).then(resolve).catch(reject);
       });

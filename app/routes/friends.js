@@ -18,10 +18,10 @@ router.post('/all', function(req, res, next) {
 
 router.post('/add', function(req, res, next) {
   friendService.addFriend(
-    req.body._id,
-    req.body.stats,
     req.body.userId,
-    req.body.statsId
+    req.body.userStatsId,
+    req.body.friendId,
+    req.body.friendStatsId
   )
     .then(() => {
       res.status(200).json({
