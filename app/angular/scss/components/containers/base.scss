@@ -34,10 +34,18 @@
   width: 100%;
   padding: 15px;
 
+  &.alt {
+    padding: 0;
+  }
+
   .box-title {
     margin-bottom: 15px;
     font-size: 16px;
     font-weight: 700;
     line-height: normal;
+
+    &.light {
+      color: $color-font-white;
+    }
   }
 }

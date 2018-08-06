@@ -27,9 +27,13 @@ sub-nav {
     margin-right: 5px;
   }
 
-  a {
+  .sub-nav-link {
     margin: 9px 0;
     color: #a3adb7;
+
+    &:visited {
+      color: #a3adb7;
+    }
   }
 }
 
