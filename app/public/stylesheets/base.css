@@ -217,17 +217,6 @@ add-friend {
   .leaderboard tr:nth-child(3), .leaderboard tr:nth-child(5) {
     background: #f1f1f1; }
 
-.logo-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  color: #616161; }
-  .logo-container .golfer-head, .logo-container .golfer-body {
-    fill: #329af0; }
-  .logo-container .title {
-    font-weight: 400; }
-
 .page-container {
   display: flex;
   flex-direction: row;
@@ -588,8 +577,16 @@ auth {
         width: 100%;
         margin: 0 1px; }
 
-.golfer-head, .golfer-body {
-  fill: #329af0; }
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: #616161; }
+  .logo-container .golfer-head, .logo-container .golfer-body {
+    fill: #329af0; }
+  .logo-container .title {
+    font-weight: 400; }
 
 .gff-nav .title-container {
   display: flex;
@@ -602,17 +599,15 @@ auth {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 60px;
+    width: 45px;
     height: 60px;
-    margin-right: 7px;
-    background: #329af0; }
+    background: none; }
     .gff-nav .title-container logo .golfer-head, .gff-nav .title-container logo .golfer-body {
-      fill: #fff; }
+      fill: #329af0; }
     .gff-nav .title-container logo .gff-logo-full {
       width: 35px;
       height: 35px; }
   .gff-nav .title-container .title {
-    margin-left: 10px;
     font-weight: 400; }
 
 nav-bar {
@@ -633,34 +628,59 @@ nav-bar {
   width: 100%;
   height: 60px;
   padding-right: 15px; }
-  .gff-nav.default .gff-menu {
+  .gff-nav.default .nav-menu {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 1px;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    right: 55px;
+    height: 40px;
+    list-style: none;
+    overflow: hidden;
+    transition: width 0.4s ease; }
+    .gff-nav.default .nav-menu .menu-border {
+      width: 1px;
+      height: 20px;
+      border-left: 1px solid #eee; }
+      .gff-nav.default .nav-menu .menu-border.last {
+        position: absolute;
+        right: 0; }
+    .gff-nav.default .nav-menu.open {
+      width: 242px;
+      transition: width 0.4s ease; }
+  .gff-nav.default .nav-link-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     height: 35px;
     margin: 0;
     padding: 0;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
     list-style: none; }
-    .gff-nav.default .gff-menu li {
+    .gff-nav.default .nav-link-list li {
       height: 100%;
       position: relative;
       transition: all 0.2s ease; }
-      .gff-nav.default .gff-menu li a {
+      .gff-nav.default .nav-link-list li a {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         height: 100%;
-        padding: 0 20px;
-        font-size: 12px;
+        margin: 0 20px;
+        font-size: 20px;
         font-weight: 400;
         transition: all 0.2s ease;
         color: #616161; }
-        .gff-nav.default .gff-menu li a.gff-active {
-          border: 1px solid #ffb824; }
-        .gff-nav.default .gff-menu li a .fas {
-          font-size: 18px; }
+        .gff-nav.default .nav-link-list li a:hover {
+          color: #ffb824; }
 
 .icon-container {
   padding: 0 0 0 17px; }
@@ -676,7 +696,7 @@ nav-bar {
     height: 3px;
     display: block;
     position: absolute;
-    background: #fff;
+    background: #4b4e54;
     transform: rotate(0deg);
     transition: 0.2s ease-in-out; }
     .hamburger-menu-icon span:nth-child(even) {
@@ -1116,3 +1136,7 @@ create-game {
 settings {
   display: flex;
   width: 100%; }
+
+main {
+  max-width: 1200px;
+  margin: 0 auto; }

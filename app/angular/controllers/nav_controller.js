@@ -5,6 +5,7 @@ module.exports = function(app) {
 
     let ctrl = this;
     ctrl.signout = AuthService.signout;
+    ctrl.linkTitle = 'test';
 
     let $window = $(window);
     let $hamMenu = $('#hamburger-menu-icon');

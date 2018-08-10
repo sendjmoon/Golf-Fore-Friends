@@ -17536,8 +17536,8 @@ __webpack_require__(132);
 
 var golfApp = angular.module('golfApp', ['ngRoute', 'ngRoute.middleware']);
 
-var API_URL = 'https://golf-fore-friends.herokuapp.com';
-// const API_URL = 'http://localhost:3000';
+// let API_URL = 'https://golf-fore-friends.herokuapp.com';
+var API_URL = 'http://localhost:3000';
 
 __webpack_require__(133)(golfApp);
 __webpack_require__(143)(golfApp);
@@ -67022,6 +67022,7 @@ module.exports = function (app) {
 
     var ctrl = this;
     ctrl.signout = AuthService.signout;
+    ctrl.linkTitle = 'test';
 
     var $window = $(window);
     var $hamMenu = $('#hamburger-menu-icon');
@@ -67458,7 +67459,7 @@ module.exports = function (app) {
 /* 238 */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"gff-nav default shadow-lg\">\n  <div class=\"title-container\">\n    <logo></logo>\n    <h4 class=\"title\">GOLF FOR<span class=\"color-blue\">e</span> FRIENDS</h4>\n  </div>\n\n  <ul class=\"gff-menu\">\n    <li id=\"dashboard-link\">\n      <a href=\"/#!/dashboard\">DASHBOARD</a>\n    </li>\n    <li id=\"friends-link\">\n      <a href=\"/#!/friends\">FRIENDS</a>\n    </li>\n    <li id=\"games-link\">\n      <a href=\"/#!/games\">GAMES</a>\n    </li>\n    <li>\n      <a href=\"/#!/settings\"><i class=\"fas fa-cog fa-lg\"></i></a>\n    </li>\n    <li>\n      <a ng-click=\"nc.signout()\"><i class=\"fas fa-sign-out-alt fa-lg\"></i></a>\n    </li>\n  </ul>\n</nav>\n";
+module.exports = "<nav class=\"gff-nav default shadow-lg\">\n  <div class=\"title-container\">\n    <logo></logo>\n    <h4 class=\"title\">GOLF FOR<span class=\"color-blue\">e</span> FRIENDS</h4>\n  </div>\n\n  <div class=\"hamburger-menu-icon\" id=\"hamburger-menu-icon\">\n    <span></span>\n    <span></span>\n    <span></span>\n    <span></span>\n    <span></span>\n    <span></span>\n  </div>\n\n  <div class=\"nav-menu\" id=\"nav-menu\">\n    <ul class=\"nav-link-list\">\n      <li id=\"dashboard-link\">\n        <a href=\"/#!/dashboard\" data-title=\"Dashboard\"><i class=\"fas fa-address-card\"></i></a>\n      </li>\n      <li id=\"friends-link\">\n        <a href=\"/#!/friends\" data-title=\"Friends\"><i class=\"fas fa-users\"></i></a>\n      </li>\n      <li id=\"games-link\">\n        <a href=\"/#!/games\" data-title=\"Games\"><i class=\"fas fa-calendar-alt\"></i></a>\n      </li>\n      <!-- <li>\n        <a href=\"/#!/settings\"><i class=\"fas fa-cog fa-lg\"></i></a>\n      </li> -->\n      <li>\n        <a ng-click=\"nc.signout()\" data-title=\"Signout\"><i class=\"fas fa-sign-out-alt\"></i></a>\n      </li>\n    </ul>\n  </div>\n</nav>\n";
 
 /***/ }),
 /* 239 */

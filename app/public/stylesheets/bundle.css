@@ -243,26 +243,6 @@ add-friend {
   .leaderboard tr:nth-child(3), .leaderboard tr:nth-child(5) {
     background: #f1f1f1; }
 
-.logo-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: #616161; }
-  .logo-container .golfer-head, .logo-container .golfer-body {
-    fill: #329af0; }
-  .logo-container .title {
-    font-weight: 400; }
-
 .page-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -757,8 +737,25 @@ auth {
         width: 100%;
         margin: 0 1px; }
 
-.golfer-head, .golfer-body {
-  fill: #329af0; }
+.logo-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #616161; }
+  .logo-container .golfer-head, .logo-container .golfer-body {
+    fill: #329af0; }
+  .logo-container .title {
+    font-weight: 400; }
 
 .gff-nav .title-container {
   display: -webkit-box;
@@ -789,17 +786,15 @@ auth {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    width: 60px;
+    width: 45px;
     height: 60px;
-    margin-right: 7px;
-    background: #329af0; }
+    background: none; }
     .gff-nav .title-container logo .golfer-head, .gff-nav .title-container logo .golfer-body {
-      fill: #fff; }
+      fill: #329af0; }
     .gff-nav .title-container logo .gff-logo-full {
       width: 35px;
       height: 35px; }
   .gff-nav .title-container .title {
-    margin-left: 10px;
     font-weight: 400; }
 
 nav-bar {
@@ -838,7 +833,7 @@ nav-bar {
   width: 100%;
   height: 60px;
   padding-right: 15px; }
-  .gff-nav.default .gff-menu {
+  .gff-nav.default .nav-menu {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -852,16 +847,54 @@ nav-bar {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    width: 1px;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    right: 55px;
+    height: 40px;
+    list-style: none;
+    overflow: hidden;
+    -webkit-transition: width 0.4s ease;
+    transition: width 0.4s ease; }
+    .gff-nav.default .nav-menu .menu-border {
+      width: 1px;
+      height: 20px;
+      border-left: 1px solid #eee; }
+      .gff-nav.default .nav-menu .menu-border.last {
+        position: absolute;
+        right: 0; }
+    .gff-nav.default .nav-menu.open {
+      width: 242px;
+      -webkit-transition: width 0.4s ease;
+      transition: width 0.4s ease; }
+  .gff-nav.default .nav-link-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
     height: 35px;
     margin: 0;
     padding: 0;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
     list-style: none; }
-    .gff-nav.default .gff-menu li {
+    .gff-nav.default .nav-link-list li {
       height: 100%;
       position: relative;
       -webkit-transition: all 0.2s ease;
       transition: all 0.2s ease; }
-      .gff-nav.default .gff-menu li a {
+      .gff-nav.default .nav-link-list li a {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -876,16 +909,14 @@ nav-bar {
             -ms-flex-align: center;
                 align-items: center;
         height: 100%;
-        padding: 0 20px;
-        font-size: 12px;
+        margin: 0 20px;
+        font-size: 20px;
         font-weight: 400;
         -webkit-transition: all 0.2s ease;
         transition: all 0.2s ease;
         color: #616161; }
-        .gff-nav.default .gff-menu li a.gff-active {
-          border: 1px solid #ffb824; }
-        .gff-nav.default .gff-menu li a .fas {
-          font-size: 18px; }
+        .gff-nav.default .nav-link-list li a:hover {
+          color: #ffb824; }
 
 .icon-container {
   padding: 0 0 0 17px; }
@@ -903,7 +934,7 @@ nav-bar {
     height: 3px;
     display: block;
     position: absolute;
-    background: #fff;
+    background: #4b4e54;
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
     -webkit-transition: 0.2s ease-in-out;
@@ -1488,3 +1519,7 @@ settings {
   display: -ms-flexbox;
   display: flex;
   width: 100%; }
+
+main {
+  max-width: 1200px;
+  margin: 0 auto; }
