@@ -5,49 +5,37 @@ module.exports = function(app) {
 
     let ctrl = this;
     ctrl.signout = AuthService.signout;
-    ctrl.linkTitle = 'test';
 
     let $window = $(window);
     let $hamMenu = $('#hamburger-menu-icon');
     let $navBar = $('nav-bar');
     let $navMenu = $('#nav-menu');
+    let $navLink = $('.nav-link');
+    let $linkTitle = $('.link-title');
 
     ctrl.toggleMenu = function($el) {
       $el.toggleClass('open');
       $navMenu.toggleClass('open');
-    };
-
-    ctrl.scrollListener = function() {
-      let offsetStart = $navBar.offset().top;
-      let offsetTop = 0;
-
-      $window.on('scroll', () => {
-        offsetTop = $navBar.offset().top;
-        offsetTop = offsetStart - ((offsetTop - offsetStart) * 0.2);
-
-        offsetTop < 0 ?
-          offsetTop = 0 : offsetTop = offsetTop;
-
-        offsetTop > offsetStart ?
-          offsetTop = offsetStart : offsetTop = offsetTop;
-
-        offsetTop === 0 ?
-          $navBar.addClass('gff-full') : $navBar.removeClass('gff-full');
-
-        $navBar.css('top', offsetTop + 'px');
-      });
-    };
+    }
 
     ctrl.menuListener = function() {
       $hamMenu.on('click', () => {
         ctrl.toggleMenu($hamMenu);
       });
-    };
+
+      $navLink.on({
+        mouseenter: function(e) {
+          $linkTitle.html($(this).attr('data-title'));
+        },
+        mouseleave: function(e) {
+          $linkTitle.html('');
+        },
+      });
+    }
 
     ctrl.init = function() {
-      // ctrl.scrollListener();
       ctrl.menuListener();
-    };
+    }
 
     ctrl.init();
   }]);

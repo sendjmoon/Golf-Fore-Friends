@@ -1,23 +1,31 @@
 <div class="sub-nav-content" ng-show="snc.pageTitle=='DASHBOARD'">
   <h2 class="title">{{snc.pageTitle}}</h2>
-  <a class="sub-nav-link anchor-link" scroll-target="profile"><i class="far fa-user"></i>Profile</a>
-  <a class="sub-nav-link anchor-link" scroll-target="recent-games"><i class="far fa-calendar-alt"></i>Recent Games</a>
-  <a class="sub-nav-link anchor-link" scroll-target="leaderboard"><i class="far fa-list-alt"></i>Leaderboard</a>
-  <a class="sub-nav-link anchor-link" scroll-target="progress"><i class="fas fa-chart-line"></i>Progress</a>
-  <sn-games ng-if="snc.pageTitle==='Games'" data-creating-game="snc.creatingGame"></sn-games>
+  <div class="links-container">
+    <a class="sub-nav-link anchor-link" scroll-target="profile"><i class="far fa-user"></i>Profile</a>
+    <a class="sub-nav-link anchor-link" scroll-target="recent-games"><i class="far fa-calendar-alt"></i>Recent Games</a>
+    <a class="sub-nav-link anchor-link" scroll-target="leaderboard"><i class="far fa-list-alt"></i>Leaderboard</a>
+    <a class="sub-nav-link anchor-link" scroll-target="progress"><i class="fas fa-chart-line"></i>Progress</a>
+    <sn-games ng-if="snc.pageTitle==='Games'" data-creating-game="snc.creatingGame"></sn-games>
+  </div>
 </div>
 
 <div class="sub-nav-content" ng-show="snc.pageTitle=='FRIENDS'">
   <h2 class="title">{{snc.pageTitle}}</h2>
-  <add-friend></add-friend>
+  <div class="links-container">
+    <add-friend></add-friend>
+  </div>
 </div>
 
 <div class="sub-nav-content" ng-show="snc.pageTitle=='GAMES'">
   <h2 class="title">{{snc.pageTitle}}</h2>
-  <a class="sub-nav-link" ng-click="snc.creatingGame=false; snc.resetForm('new-game-form')"><i class="fas fa-list"></i>Game List</a>
-  <a class="sub-nav-link" ng-click="snc.creatingGame=true"><i class="far fa-file"></i>Create Game</a>
+  <div class="links-container">
+    <a class="sub-nav-link" ng-click="snc.creatingGame=false; snc.resetForm('new-game-form')"><i class="fas fa-list"></i>Game List</a>
+    <a class="sub-nav-link" ng-click="snc.creatingGame=true"><i class="far fa-file"></i>Create Game</a>
+  </div>
 </div>
 
 <div class="sub-nav-content" ng-show="snc.pageTitle=='SETTINGS'">
   <h2 class="title">{{snc.pageTitle}}</h2>
+  <div class="links-container">
+  </div>
 </div>

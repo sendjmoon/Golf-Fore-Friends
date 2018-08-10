@@ -612,13 +612,13 @@ auth {
 
 nav-bar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   z-index: 25;
   width: 100%;
-  height: 60px; }
+  height: 135px; }
 
 .gff-nav {
   display: flex;
@@ -627,32 +627,42 @@ nav-bar {
   align-items: center;
   width: 100%;
   height: 60px;
-  padding-right: 15px; }
-  .gff-nav.default .nav-menu {
+  padding-right: 15px;
+  margin-top: 30px;
+  border-bottom: 1px solid #f1f1f1; }
+  .gff-nav .menu-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%; }
+  .gff-nav .link-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400; }
+  .gff-nav .nav-menu {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 1px;
     padding: 0;
-    margin: 0;
-    position: absolute;
-    right: 55px;
+    margin: 0 15px;
     height: 40px;
     list-style: none;
     overflow: hidden;
     transition: width 0.4s ease; }
-    .gff-nav.default .nav-menu .menu-border {
+    .gff-nav .nav-menu .menu-border {
       width: 1px;
       height: 20px;
       border-left: 1px solid #eee; }
-      .gff-nav.default .nav-menu .menu-border.last {
+      .gff-nav .nav-menu .menu-border.last {
         position: absolute;
         right: 0; }
-    .gff-nav.default .nav-menu.open {
+    .gff-nav .nav-menu.open {
       width: 242px;
       transition: width 0.4s ease; }
-  .gff-nav.default .nav-link-list {
+  .gff-nav .nav-link-list {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -661,14 +671,14 @@ nav-bar {
     height: 35px;
     margin: 0;
     padding: 0;
-    border-left: 1px solid rgba(0, 0, 0, 0.2);
-    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    border-left: 1px solid #c5c5c5;
+    border-right: 1px solid #c5c5c5;
     list-style: none; }
-    .gff-nav.default .nav-link-list li {
+    .gff-nav .nav-link-list li {
       height: 100%;
       position: relative;
       transition: all 0.2s ease; }
-      .gff-nav.default .nav-link-list li a {
+      .gff-nav .nav-link-list li a {
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -679,7 +689,7 @@ nav-bar {
         font-weight: 400;
         transition: all 0.2s ease;
         color: #616161; }
-        .gff-nav.default .nav-link-list li a:hover {
+        .gff-nav .nav-link-list li a:hover {
           color: #ffb824; }
 
 .icon-container {
@@ -735,25 +745,30 @@ nav-bar {
       transform: rotate(45deg); }
 
 sub-nav {
-  display: block;
-  width: 100%; }
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 45px;
+  border-bottom: 1px solid #f1f1f1; }
 
 .sub-nav-content {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 100%;
-  margin: 0 auto;
-  padding: 30px; }
+  padding-left: 15px;
+  padding-right: 15px; }
   .sub-nav-content h2, .sub-nav-content a {
     font-size: 14px;
     line-height: 16px;
     font-weight: 400; }
   .sub-nav-content .title {
-    margin-bottom: 15px;
-    color: #fff;
+    margin-bottom: 0;
+    color: #4b4e54;
     font-size: 12px; }
   .sub-nav-content .svg-inline--fa {
     width: 20px;

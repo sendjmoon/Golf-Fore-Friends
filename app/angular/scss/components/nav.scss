@@ -1,9 +1,9 @@
 nav-bar {
-  @include flex(center, center, row);
+  @include flex(center, center, col);
   position: relative;
   z-index: 25;
   width: 100%;
-  height: 60px;
+  height: 135px;
 }
 
 .gff-nav {
@@ -11,66 +11,75 @@ nav-bar {
   width: 100%;
   height: 60px;
   padding-right: 15px;
+  margin-top: 30px;
+  border-bottom: 1px solid $border-color-light;
 
-  &.default {
+  .menu-container {
+    @include flex(center, center, row);
+    height: 100%;
+  }
 
-    .nav-menu {
-      @include flex(center, center, row);
+  .link-title {
+    margin: 0;
+    // color: $color-blue;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .nav-menu {
+    @include flex(center, center, row);
+    width: 1px;
+    padding: 0;
+    margin: 0 15px;
+    height: 40px;
+
+    list-style: none;
+    overflow: hidden;
+    transition: width 0.4s ease;
+
+    .menu-border {
       width: 1px;
-      padding: 0;
-      margin: 0;
-      position: absolute;
-      right: 55px;
-      height: 40px;
+      height: 20px;
+      border-left: 1px solid #eee;
 
-      list-style: none;
-      overflow: hidden;
-      transition: width 0.4s ease;
-
-      .menu-border {
-        width: 1px;
-        height: 20px;
-        border-left: 1px solid #eee;
-
-        &.last {
-          position: absolute;
-          right: 0;
-        }
-      }
-
-      &.open {
-        width: 242px;
-        transition: width 0.4s ease;
+      &.last {
+        position: absolute;
+        right: 0;
       }
     }
 
-    .nav-link-list {
-      @include flex(center, center, row);
-      width: 100%;
-      height: 35px;
-      margin: 0;
-      padding: 0;
-      border-left: 1px solid rgba(0, 0, 0, 0.2);
-      border-right: 1px solid rgba(0, 0, 0, 0.2);
-      list-style: none;
+    &.open {
+      width: 242px;
+      transition: width 0.4s ease;
+    }
+  }
 
-      li {
+  .nav-link-list {
+    @include flex(center, center, row);
+    width: 100%;
+    height: 35px;
+    margin: 0;
+    padding: 0;
+    border-left: 1px solid $border-color-semi-dark;
+    border-right: 1px solid $border-color-semi-dark;
+    list-style: none;
+
+    li {
+      height: 100%;
+      position: relative;
+      transition: all 0.2s ease;
+
+      a {
+        @include flex(center, center, row);
         height: 100%;
-        position: relative;
+        margin: 0 20px;
+        font-size: 20px;
+        font-weight: 400;
         transition: all 0.2s ease;
+        color: $color-font-gray;
 
-        a {
-          @include flex(center, center, row);
-          height: 100%;
-          margin: 0 20px;
-          font-size: 20px;
-          font-weight: 400;
-          transition: all 0.2s ease;
-          color: $color-font-gray;
-
-          &:hover {
-            color: $color-orange;
-          }
+        &:hover {
+          color: $color-orange;
         }
       }
     }
