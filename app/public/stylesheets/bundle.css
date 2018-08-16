@@ -361,8 +361,7 @@ add-friend {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  width: 100%;
-  border-bottom: 1px solid #ebeef7; }
+  width: 100%; }
   .tile-container .tile-content {
     width: 100%;
     max-width: 1200px;

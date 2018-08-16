@@ -290,8 +290,7 @@ add-friend {
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 100%;
-  border-bottom: 1px solid #ebeef7; }
+  width: 100%; }
   .tile-container .tile-content {
     width: 100%;
     max-width: 1200px;

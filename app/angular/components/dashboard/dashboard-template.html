@@ -33,6 +33,28 @@
       </div>
     </div>
 
+    <div class="tile-container" id="leaderboard">
+      <div class="tile-content">
+        <h2 class="tile-title">Leaderboard</h2>
+        <div class="gff-container">
+          <div class="gff-content dashboard-box">
+            <table class="leaderboard">
+              <tr>
+                <th>Position</th>
+                <th>Player</th>
+                <th>Handicap</th>
+              </tr>
+              <tr ng-repeat="user in leaderboard | limitTo:5">
+                <td>{{$index + 1}}</td>
+                <td>{{user.fullName}}</td>
+                <td><span class="color-green">+</span>{{user.stats.handicap}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="tile-container bg-none" id="recent-games">
       <div class="tile-content">
         <h2 class="tile-title">Recent Games</h2>
@@ -57,29 +79,6 @@
           </ul>
         </div>
       </div>
-    </div>
-
-    <div class="tile-container" id="leaderboard">
-      <div class="tile-content">
-        <h2 class="tile-title">Leaderboard</h2>
-        <div class="gff-container">
-          <div class="gff-content dashboard-box">
-            <table class="leaderboard">
-              <tr>
-                <th>Position</th>
-                <th>Player</th>
-                <th>Handicap</th>
-              </tr>
-              <tr ng-repeat="user in leaderboard | limitTo:5">
-                <td>{{$index + 1}}</td>
-                <td>{{user.fullName}}</td>
-                <td><span class="color-green">+</span>{{user.stats.handicap}}</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-
     </div>
 
     <div class="tile-container" id="progress">
