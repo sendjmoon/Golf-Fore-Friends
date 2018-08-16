@@ -71,8 +71,9 @@
   .recent-game {
     @include flex(flex-start, center, row);
     position: relative;
-    width: calc(50% - 3px);
-    height: 147px;
+    width: 100%;
+    height: 100px;
+    margin-top: 6px;
     border-radius: 2px;
     box-shadow: 1px 1px 4px rgba(211, 224, 235, 0.8);
     background-color: #fff;
@@ -136,25 +137,7 @@
       }
     }
 
-    &:first-of-type {
-      flex-direction: column;
-      float: left;
-      width: calc(50% - 3px);
-      height: 300px;
-      margin-right: 6px;
-
-      .game-image {
-        width: 100%;
-        min-height: 200px;
-        max-height: 200px;
-      }
-
-      .game-info {
-        height: 100%;
-      }
-    }
-
-    &:last-of-type {
+    &:nth-child(2), &:last-of-type {
       margin-top: 6px;
     }
   }
