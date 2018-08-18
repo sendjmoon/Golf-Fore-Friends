@@ -845,14 +845,20 @@ sub-nav {
     color: #4e5464;
     overflow: hidden;
     transition: all 0.2s ease; }
-    .recent-games-list .recent-game .game-image {
-      display: inline-block;
+    .recent-games-list .recent-game .game-date {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       width: 30%;
       min-width: 150px;
       height: 100%;
-      background-image: url("http://localhost:3000/imgs/golf-ball-sunset-bw-40.jpg");
-      background-size: cover;
-      background-position: center; }
+      color: #329af0; }
+      .recent-games-list .recent-game .game-date p {
+        margin: 0; }
+      .recent-games-list .recent-game .game-date .date {
+        font-size: 36px;
+        line-height: 38px; }
     .recent-games-list .recent-game .game-info {
       display: flex;
       flex-direction: column;
@@ -878,7 +884,7 @@ sub-nav {
       .recent-games-list .recent-game .game-info .footer {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: flex-end;
         width: 100%; }
         .recent-games-list .recent-game .game-info .footer p {

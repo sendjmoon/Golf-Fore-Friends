@@ -81,14 +81,21 @@
     overflow: hidden;
     transition: all 0.2s ease;
 
-    .game-image {
-      display: inline-block;
+    .game-date {
+      @include flex(center, center, col);
       width: 30%;
       min-width: 150px;
       height: 100%;
-      background-image: url('http://localhost:3000/imgs/golf-ball-sunset-bw-40.jpg');
-      background-size: cover;
-      background-position: center;
+      color: $color-blue;
+
+      p {
+        margin: 0;
+      }
+
+      .date {
+        font-size: 36px;
+        line-height: 38px;
+      }
     }
 
     .game-info {
@@ -120,7 +127,7 @@
       }
 
       .footer {
-        @include flex(space-between, flex-end, row);
+        @include flex(flex-end, flex-end, row);
         width: 100%;
 
         p {

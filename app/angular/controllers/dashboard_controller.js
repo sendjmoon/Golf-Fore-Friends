@@ -20,13 +20,25 @@ module.exports = function(app) {
         return a.stats.handicapActual > b.stats.handicapActual;
       });
       $scope.$digest();
-    };
+    }
+
+    ctrl.parseDate = function(dateStr) {
+      let dateArray = dateStr.toUpperCase().split(' ');
+      let dateObj = {
+        day: dateArray[0],
+        month: dateArray[1],
+        date: dateArray[2],
+        year: dateArray[3],
+      }
+
+      return dateObj;
+    }
 
     ctrl.init = function() {
       gameService.getAllById(ctrl.user.gameIds);
       friendService.getAllFriends(ctrl.user.email)
         .then(ctrl.sortLeaderboard);
-    };
+    }
 
     ctrl.init();
   }]);

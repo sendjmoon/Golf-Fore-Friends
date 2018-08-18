@@ -40,14 +40,18 @@
           <div class="recent-games-container">
             <ul class="recent-games-list">
               <li class="recent-game" ng-repeat="game in gamesData.games|limitTo:3">
-                <div class="game-image"></div>
+                <div class="game-date" ng-init="game.dateData = dc.parseDate(game.datePlayed)">
+                  <p class="day">{{game.dateData.day}}</p>
+                  <p class="date">{{game.dateData.date}}</p>
+                  <p class="month-year">{{game.dateData.month}} {{game.dateData.year}}</p>
+                </div>
                 <div class="game-info">
                   <div class="header">
                     <p class="name">{{game.name}}</p>
                     <p class="location"><i class="fas fa-map-marker-alt"></i>{{game.location}}</p>
                   </div>
                   <div class="footer">
-                    <p class="date">{{game.datePlayed}}</p>
+                    <!-- <p class="date">{{game.datePlayed}}</p> -->
                     <div class="links">
                       <p class="players"><i class="fas fa-user"></i>{{game.results.length}}</p>
                       <p class="comments"><i class="fas fa-comment"></i>{{game.comments.length}}</p>

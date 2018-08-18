@@ -1150,14 +1150,29 @@ sub-nav {
     overflow: hidden;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease; }
-    .recent-games-list .recent-game .game-image {
-      display: inline-block;
+    .recent-games-list .recent-game .game-date {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
       width: 30%;
       min-width: 150px;
       height: 100%;
-      background-image: url("http://localhost:3000/imgs/golf-ball-sunset-bw-40.jpg");
-      background-size: cover;
-      background-position: center; }
+      color: #329af0; }
+      .recent-games-list .recent-game .game-date p {
+        margin: 0; }
+      .recent-games-list .recent-game .game-date .date {
+        font-size: 36px;
+        line-height: 38px; }
     .recent-games-list .recent-game .game-info {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -1197,9 +1212,9 @@ sub-nav {
         -webkit-box-direction: normal;
             -ms-flex-direction: row;
                 flex-direction: row;
-        -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-                justify-content: space-between;
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: flex-end;
         -webkit-box-align: end;
             -ms-flex-align: end;
                 align-items: flex-end;
