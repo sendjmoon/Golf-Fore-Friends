@@ -66,23 +66,7 @@
 
       <div class="tile-container half" id="leaderboard">
         <div class="tile-content">
-          <h2 class="tile-title">Leaderboard</h2>
-          <ul class="leaderboard-list">
-            <li ng-repeat="user in leaderboard | limitTo:5">
-              <div class="player-container">
-                <div class="left">
-                  <p class="position">{{$index + 1}}</p>
-                  <p class="name"><strong>{{user.fullName}}</strong></p>
-                </div>
-                <div class="right">
-                  <p class="handicap"><span class="color-green">+</span><strong>{{user.stats.handicap}}</strong></p>
-                </div>
-              </div>
-              <div class="gff-progress-bar">
-                <div class="gff-progress-bar-fill"></div>
-              </div>
-            </li>
-          </ul>
+          <leaderboard data-leaderboard="leaderboard"></leaderboard>
         </div>
       </div>
     </div>

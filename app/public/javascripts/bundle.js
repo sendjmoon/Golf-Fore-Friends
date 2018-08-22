@@ -52846,14 +52846,15 @@ module.exports = function (app) {
 
 
 module.exports = function (app) {
-  __webpack_require__(144)(app);
   __webpack_require__(201)(app);
+  __webpack_require__(144)(app);
   __webpack_require__(202)(app);
   __webpack_require__(203)(app);
   __webpack_require__(204)(app);
   __webpack_require__(205)(app);
   __webpack_require__(206)(app);
   __webpack_require__(207)(app);
+  __webpack_require__(259)(app);
   __webpack_require__(208)(app);
   __webpack_require__(209)(app);
   __webpack_require__(210)(app);
@@ -67269,13 +67270,15 @@ module.exports = function (app) {
     controller: 'DashboardController',
     controllerAs: 'dc'
   });
+
+  __webpack_require__(260)(app);
 };
 
 /***/ }),
 /* 222 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-container\">\n  <div class=\"page-content\">\n\n    <div class=\"tile-container user\" id=\"profile\">\n      <div class=\"tile-content\">\n        <div class=\"user-container\">\n          <div class=\"user-pic\">\n            <i class=\"fas fa-user\"></i>\n          </div>\n          <div class=\"user-info\">\n            <p class=\"member-since\" ng-init=\"dc.formatDate(dc.user)\">MEMBER SINCE <strong>{{dc.user.createdAt}}</strong></p>\n            <p class=\"name\">{{dc.user.fullName}}</p>\n          </div>\n        </div>\n        <ul class=\"user-stats\">\n          <li>\n            <p class=\"title\">HANDICAP</p>\n            <p class=\"value\"><span class=\"color-blue\">+</span>{{dc.user.stats.handicap}}</p>\n          </li>\n          <li>\n            <p class=\"title\">WINS</p>\n            <p class=\"value\">{{dc.user.stats.wins}}</p>\n          </li>\n          <li>\n            <p class=\"title\">LOSSES</p>\n            <p class=\"value\">{{dc.user.stats.losses}}</p>\n          </li>\n          <li>\n            <p class=\"title\">WIN RATIO</p>\n            <p class=\"value\">{{dc.user.stats.winRatio}}</p>\n          </li>\n        </ul>\n      </div>\n    </div>\n\n    <div class=\"tile-container double-content\">\n      <div class=\"tile-container half\" id=\"recent-games\">\n        <div class=\"tile-content\">\n          <h2 class=\"tile-title\">Recent Games</h2>\n          <div class=\"recent-games-container\">\n            <ul class=\"recent-games-list\">\n              <li class=\"recent-game\" ng-repeat=\"game in gamesData.games|limitTo:3\">\n                <div class=\"game-date\" ng-init=\"game.dateData = dc.parseDate(game.datePlayed)\">\n                  <p class=\"day\">{{game.dateData.day}}</p>\n                  <p class=\"date\">{{game.dateData.date}}</p>\n                  <p class=\"month-year\">{{game.dateData.month}} {{game.dateData.year}}</p>\n                </div>\n                <div class=\"game-info\">\n                  <div class=\"header\">\n                    <p class=\"name\">{{game.name}}</p>\n                    <p class=\"location\"><i class=\"fas fa-map-marker-alt\"></i>{{game.location}}</p>\n                  </div>\n                  <div class=\"footer\">\n                    <!-- <p class=\"date\">{{game.datePlayed}}</p> -->\n                    <div class=\"links\">\n                      <p class=\"players\"><i class=\"fas fa-user\"></i>{{game.results.length}}</p>\n                      <p class=\"comments\"><i class=\"fas fa-comment\"></i>{{game.comments.length}}</p>\n                    </div>\n                  </div>\n                </div>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"tile-container half\" id=\"leaderboard\">\n        <div class=\"tile-content\">\n          <h2 class=\"tile-title\">Leaderboard</h2>\n          <ul class=\"leaderboard-list\">\n            <li ng-repeat=\"user in leaderboard | limitTo:5\">\n              <div class=\"player-container\">\n                <div class=\"left\">\n                  <p class=\"position\">{{$index + 1}}</p>\n                  <p class=\"name\"><strong>{{user.fullName}}</strong></p>\n                </div>\n                <div class=\"right\">\n                  <p class=\"handicap\"><span class=\"color-green\">+</span><strong>{{user.stats.handicap}}</strong></p>\n                </div>\n              </div>\n              <div class=\"gff-progress-bar\">\n                <div class=\"gff-progress-bar-fill\"></div>\n              </div>\n            </li>\n          </ul>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"tile-container\" id=\"progress\">\n      <div class=\"tile-content\">\n        <h2 class=\"tile-title\">Progress</h2>\n        <game-chart></game-chart>\n      </div>\n    </div>\n  </div>\n</div>\n";
+module.exports = "<div class=\"page-container\">\n  <div class=\"page-content\">\n\n    <div class=\"tile-container user\" id=\"profile\">\n      <div class=\"tile-content\">\n        <div class=\"user-container\">\n          <div class=\"user-pic\">\n            <i class=\"fas fa-user\"></i>\n          </div>\n          <div class=\"user-info\">\n            <p class=\"member-since\" ng-init=\"dc.formatDate(dc.user)\">MEMBER SINCE <strong>{{dc.user.createdAt}}</strong></p>\n            <p class=\"name\">{{dc.user.fullName}}</p>\n          </div>\n        </div>\n        <ul class=\"user-stats\">\n          <li>\n            <p class=\"title\">HANDICAP</p>\n            <p class=\"value\"><span class=\"color-blue\">+</span>{{dc.user.stats.handicap}}</p>\n          </li>\n          <li>\n            <p class=\"title\">WINS</p>\n            <p class=\"value\">{{dc.user.stats.wins}}</p>\n          </li>\n          <li>\n            <p class=\"title\">LOSSES</p>\n            <p class=\"value\">{{dc.user.stats.losses}}</p>\n          </li>\n          <li>\n            <p class=\"title\">WIN RATIO</p>\n            <p class=\"value\">{{dc.user.stats.winRatio}}</p>\n          </li>\n        </ul>\n      </div>\n    </div>\n\n    <div class=\"tile-container double-content\">\n      <div class=\"tile-container half\" id=\"recent-games\">\n        <div class=\"tile-content\">\n          <h2 class=\"tile-title\">Recent Games</h2>\n          <div class=\"recent-games-container\">\n            <ul class=\"recent-games-list\">\n              <li class=\"recent-game\" ng-repeat=\"game in gamesData.games|limitTo:3\">\n                <div class=\"game-date\" ng-init=\"game.dateData = dc.parseDate(game.datePlayed)\">\n                  <p class=\"day\">{{game.dateData.day}}</p>\n                  <p class=\"date\">{{game.dateData.date}}</p>\n                  <p class=\"month-year\">{{game.dateData.month}} {{game.dateData.year}}</p>\n                </div>\n                <div class=\"game-info\">\n                  <div class=\"header\">\n                    <p class=\"name\">{{game.name}}</p>\n                    <p class=\"location\"><i class=\"fas fa-map-marker-alt\"></i>{{game.location}}</p>\n                  </div>\n                  <div class=\"footer\">\n                    <!-- <p class=\"date\">{{game.datePlayed}}</p> -->\n                    <div class=\"links\">\n                      <p class=\"players\"><i class=\"fas fa-user\"></i>{{game.results.length}}</p>\n                      <p class=\"comments\"><i class=\"fas fa-comment\"></i>{{game.comments.length}}</p>\n                    </div>\n                  </div>\n                </div>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"tile-container half\" id=\"leaderboard\">\n        <div class=\"tile-content\">\n          <leaderboard data-leaderboard=\"leaderboard\"></leaderboard>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"tile-container\" id=\"progress\">\n      <div class=\"tile-content\">\n        <h2 class=\"tile-title\">Progress</h2>\n        <game-chart></game-chart>\n      </div>\n    </div>\n  </div>\n</div>\n";
 
 /***/ }),
 /* 223 */
@@ -67630,6 +67633,41 @@ module.exports = function (app) {
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"gff-container\">\n  <div class=\"gff-content alt\">\n    <h2 class=\"box-title light\">Add more friends.</h2>\n    <div class=\"search-container\">\n      <form class=\"add-friends-form\" name=\"add-friends-form\" autocomplete=\"off\">\n        <input id=\"search-input-users\" type=\"text\" placeholder=\"Search By Email\"></input>\n        <ul class=\"users-list\">\n          <li ng-repeat=\"user in searchResults\">\n            <p>{{user.fullName}}</p>\n            <button class=\"gff-btn disabled sm\" ng-show=\"user.isFriend\"><i class=\"fas fa-check\"></i>Friends</button>\n            <button class=\"gff-btn sm\" ng-hide=\"user.isFriend\" ng-click=\"fc.addFriend(user._id, user.stats); user.isFriend=true;\"><i class=\"fas fa-user-plus\"></i>Add Friend</button>\n          </li>\n        </ul>\n      </form>\n    </div>\n  </div>\n</div>\n";
+
+/***/ }),
+/* 259 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (app) {
+  app.controller('LeaderboardController', ['$rootScope', '$scope', function ($rs, $scope) {}]);
+};
+
+/***/ }),
+/* 260 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (app) {
+  app.component('leaderboard', {
+    template: __webpack_require__(261),
+    controller: 'LeaderboardController',
+    controllerAs: 'lc',
+    bindings: {
+      leaderboard: '<'
+    }
+  });
+};
+
+/***/ }),
+/* 261 */
+/***/ (function(module, exports) {
+
+module.exports = "<h2 class=\"tile-title\">Leaderboard</h2>\n<ul class=\"leaderboard-list\">\n  <li ng-repeat=\"user in lc.leaderboard | limitTo:5\">\n    <div class=\"player-container\">\n      <div class=\"left\">\n        <p class=\"position\">{{$index + 1}}</p>\n        <p class=\"name\"><strong>{{user.fullName}}</strong></p>\n      </div>\n      <div class=\"right\">\n        <p class=\"handicap\"><span class=\"color-green\">+</span><strong>{{user.stats.handicap}}</strong></p>\n      </div>\n    </div>\n    <div class=\"gff-progress-bar\">\n      <div class=\"gff-progress-bar-fill\"></div>\n    </div>\n  </li>\n</ul>\n";
 
 /***/ })
 /******/ ]);
