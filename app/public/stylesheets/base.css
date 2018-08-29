@@ -200,34 +200,6 @@ add-friend {
 .recent-games-container {
   width: 100%; }
 
-.leaderboard {
-  width: 100%; }
-  .leaderboard th {
-    padding: 8px 15px;
-    background: #a1a1a1;
-    color: #fff; }
-    .leaderboard th:nth-child(1) {
-      width: 15%; }
-    .leaderboard th:nth-child(2) {
-      width: 70%; }
-    .leaderboard th:nth-child(3) {
-      width: 15%; }
-  .leaderboard td {
-    padding: 8px 15px; }
-  .leaderboard tr:nth-child(3), .leaderboard tr:nth-child(5) {
-    background: #f1f1f1; }
-
-.logo-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  color: #616161; }
-  .logo-container .golfer-head, .logo-container .golfer-body {
-    fill: #329af0; }
-  .logo-container .title {
-    font-weight: 400; }
-
 .page-container {
   display: flex;
   flex-direction: row;
@@ -301,8 +273,7 @@ add-friend {
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 100%;
-  border-bottom: 1px solid #ebeef7; }
+  width: 100%; }
   .tile-container .tile-content {
     width: 100%;
     max-width: 1200px;
@@ -313,6 +284,11 @@ add-friend {
     font-size: 16px;
     line-height: 20px;
     font-weight: 400; }
+  .tile-container.double-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start; }
   .tile-container.user {
     display: flex;
     flex-direction: row;
@@ -365,7 +341,6 @@ add-friend {
     width: 100px;
     height: 100px;
     background: rgba(78, 84, 100, 0.1);
-    border: 1px solid rgba(78, 84, 100, 0.1);
     border-radius: 2px;
     color: #fff;
     font-size: 80px;
@@ -455,7 +430,8 @@ game-chart {
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 30px 0; }
+  padding: 30px 0;
+  padding-top: 15px; }
 
 canvas {
   margin: 0 auto; }
@@ -558,38 +534,51 @@ auth {
 
 .leaderboard-list {
   margin: 0;
-  padding: 0 15px 15px 15px;
+  padding: 0;
   list-style: none; }
   .leaderboard-list li {
     width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     border: 1px solid transparent;
-    display: flex;
     transition: all 0.2s ease; }
-    .leaderboard-list li:hover {
-      border-color: #ffb824;
-      color: #ffb824;
-      cursor: pointer;
-      transition: all 0.2s ease; }
-    .leaderboard-list li.odd:hover, .leaderboard-list li.even:hover {
-      background: #fff; }
-    .leaderboard-list li.odd {
-      background: #f5f5f5; }
-    .leaderboard-list li.even {
-      background: #fafafa; }
-    .leaderboard-list li .box {
-      padding: 10px; }
-      .leaderboard-list li .box p {
-        margin-bottom: 0; }
-      .leaderboard-list li .box.small {
-        width: 70px;
-        text-align: center; }
-      .leaderboard-list li .box.full {
-        width: 100%;
-        margin: 0 1px; }
+    .leaderboard-list li .player-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px; }
+      .leaderboard-list li .player-container .position {
+        display: inline; }
+      .leaderboard-list li .player-container .name {
+        display: inline;
+        margin-left: 5px; }
+      .leaderboard-list li .player-container .handicap {
+        margin: 0; }
 
-.golfer-head, .golfer-body {
-  fill: #329af0; }
+.gff-progress-bar {
+  position: relative;
+  width: 100%;
+  height: 7px;
+  background: #f1f1f1; }
+
+.gff-progress-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 100%;
+  background: #4dbb33; }
+
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: #616161; }
+  .logo-container .golfer-head, .logo-container .golfer-body {
+    fill: #329af0; }
+  .logo-container .title {
+    font-weight: 400; }
 
 .gff-nav .title-container {
   display: flex;
@@ -602,28 +591,26 @@ auth {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 60px;
+    width: 45px;
     height: 60px;
-    margin-right: 7px;
-    background: #329af0; }
+    background: none; }
     .gff-nav .title-container logo .golfer-head, .gff-nav .title-container logo .golfer-body {
-      fill: #fff; }
+      fill: #329af0; }
     .gff-nav .title-container logo .gff-logo-full {
       width: 35px;
       height: 35px; }
   .gff-nav .title-container .title {
-    margin-left: 10px;
     font-weight: 400; }
 
 nav-bar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   z-index: 25;
   width: 100%;
-  height: 60px; }
+  height: 135px; }
 
 .gff-nav {
   display: flex;
@@ -632,35 +619,70 @@ nav-bar {
   align-items: center;
   width: 100%;
   height: 60px;
-  padding-right: 15px; }
-  .gff-nav.default .gff-menu {
+  padding-right: 15px;
+  margin-top: 30px;
+  border-bottom: 1px solid #f1f1f1; }
+  .gff-nav .menu-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    height: 100%; }
+  .gff-nav .link-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400; }
+  .gff-nav .nav-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 1px;
+    padding: 0;
+    margin: 0 15px;
+    height: 40px;
+    list-style: none;
+    overflow: hidden;
+    transition: width 0.4s ease; }
+    .gff-nav .nav-menu .menu-border {
+      width: 1px;
+      height: 20px;
+      border-left: 1px solid #eee; }
+      .gff-nav .nav-menu .menu-border.last {
+        position: absolute;
+        right: 0; }
+    .gff-nav .nav-menu.open {
+      width: 242px;
+      transition: width 0.4s ease; }
+  .gff-nav .nav-link-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     height: 35px;
     margin: 0;
     padding: 0;
+    border-left: 1px solid #f1f1f1;
+    border-right: 1px solid #f1f1f1;
     list-style: none; }
-    .gff-nav.default .gff-menu li {
+    .gff-nav .nav-link-list li {
       height: 100%;
       position: relative;
       transition: all 0.2s ease; }
-      .gff-nav.default .gff-menu li a {
+      .gff-nav .nav-link-list li a {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         height: 100%;
-        padding: 0 20px;
-        font-size: 12px;
+        margin: 0 20px;
+        font-size: 20px;
         font-weight: 400;
         transition: all 0.2s ease;
         color: #616161; }
-        .gff-nav.default .gff-menu li a.gff-active {
-          border: 1px solid #ffb824; }
-        .gff-nav.default .gff-menu li a .fas {
-          font-size: 18px; }
+        .gff-nav .nav-link-list li a:hover {
+          color: #ffb824; }
 
 .icon-container {
   padding: 0 0 0 17px; }
@@ -676,7 +698,7 @@ nav-bar {
     height: 3px;
     display: block;
     position: absolute;
-    background: #fff;
+    background: #4b4e54;
     transform: rotate(0deg);
     transition: 0.2s ease-in-out; }
     .hamburger-menu-icon span:nth-child(even) {
@@ -715,25 +737,30 @@ nav-bar {
       transform: rotate(45deg); }
 
 sub-nav {
-  display: block;
-  width: 100%; }
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 45px;
+  border-bottom: 1px solid #f1f1f1; }
 
 .sub-nav-content {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 100%;
-  margin: 0 auto;
-  padding: 30px; }
+  padding-left: 15px;
+  padding-right: 15px; }
   .sub-nav-content h2, .sub-nav-content a {
     font-size: 14px;
     line-height: 16px;
     font-weight: 400; }
   .sub-nav-content .title {
-    margin-bottom: 15px;
-    color: #fff;
+    margin-bottom: 0;
+    color: #4b4e54;
     font-size: 12px; }
   .sub-nav-content .svg-inline--fa {
     width: 20px;
@@ -809,22 +836,29 @@ sub-nav {
     justify-content: flex-start;
     align-items: center;
     position: relative;
-    width: calc(50% - 3px);
-    height: 147px;
+    width: 100%;
+    height: 100px;
+    margin-top: 6px;
     border-radius: 2px;
     box-shadow: 1px 1px 4px rgba(211, 224, 235, 0.8);
     background-color: #fff;
     color: #4e5464;
     overflow: hidden;
     transition: all 0.2s ease; }
-    .recent-games-list .recent-game .game-image {
-      display: inline-block;
+    .recent-games-list .recent-game .game-date {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       width: 30%;
       min-width: 150px;
       height: 100%;
-      background-image: url("http://localhost:3000/imgs/golf-ball-sunset-bw-40.jpg");
-      background-size: cover;
-      background-position: center; }
+      color: #329af0; }
+      .recent-games-list .recent-game .game-date p {
+        margin: 0; }
+      .recent-games-list .recent-game .game-date .date {
+        font-size: 36px;
+        line-height: 38px; }
     .recent-games-list .recent-game .game-info {
       display: flex;
       flex-direction: column;
@@ -850,7 +884,7 @@ sub-nav {
       .recent-games-list .recent-game .game-info .footer {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: flex-end;
         width: 100%; }
         .recent-games-list .recent-game .game-info .footer p {
@@ -862,19 +896,7 @@ sub-nav {
           align-items: center; }
           .recent-games-list .recent-game .game-info .footer .links .players {
             margin-right: 10px; }
-    .recent-games-list .recent-game:first-of-type {
-      flex-direction: column;
-      float: left;
-      width: calc(50% - 3px);
-      height: 300px;
-      margin-right: 6px; }
-      .recent-games-list .recent-game:first-of-type .game-image {
-        width: 100%;
-        min-height: 200px;
-        max-height: 200px; }
-      .recent-games-list .recent-game:first-of-type .game-info {
-        height: 100%; }
-    .recent-games-list .recent-game:last-of-type {
+    .recent-games-list .recent-game:nth-child(2), .recent-games-list .recent-game:last-of-type {
       margin-top: 6px; }
 
 @media screen and (max-width: 1024px) {
@@ -1116,3 +1138,7 @@ create-game {
 settings {
   display: flex;
   width: 100%; }
+
+main {
+  max-width: 1200px;
+  margin: 0 auto; }

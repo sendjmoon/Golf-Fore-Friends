@@ -1,9 +1,9 @@
 nav-bar {
-  @include flex(center, center, row);
+  @include flex(center, center, col);
   position: relative;
   z-index: 25;
   width: 100%;
-  height: 60px;
+  height: 135px;
 }
 
 .gff-nav {
@@ -11,89 +11,77 @@ nav-bar {
   width: 100%;
   height: 60px;
   padding-right: 15px;
+  margin-top: 30px;
+  border-bottom: 1px solid $border-color-light;
 
-  &.default {
+  .menu-container {
+    @include flex(center, center, row);
+    height: 100%;
+  }
 
-    .gff-menu {
-      @include flex(center, center, row);
-      height: 35px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
+  .link-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+  }
 
-      li {
-        height: 100%;
-        position: relative;
-        transition: all 0.2s ease;
+  .nav-menu {
+    @include flex(center, center, row);
+    width: 1px;
+    padding: 0;
+    margin: 0 15px;
+    height: 40px;
 
-        a {
-          @include flex(center, center, row);
-          height: 100%;
-          padding: 0 20px;
-          font-size: 12px;
-          font-weight: 400;
-          transition: all 0.2s ease;
-          color: $color-font-gray;
+    list-style: none;
+    overflow: hidden;
+    transition: width 0.4s ease;
 
-          &.gff-active {
-            border: 1px solid $orange-primary;
-          }
+    .menu-border {
+      width: 1px;
+      height: 20px;
+      border-left: 1px solid #eee;
 
-          .fas {
-            font-size: 18px;
-          }
-        }
+      &.last {
+        position: absolute;
+        right: 0;
       }
     }
 
-    // .nav-menu {
-    //   @include flex(center, center, row);
-    //   width: 1px;
-    //   padding: 0;
-    //   margin: 0;
-    //   position: absolute;
-    //   right: 55px;
-    //   height: 40px;
-    //
-    //   list-style: none;
-    //   overflow: hidden;
-    //   transition: width 0.4s ease;
-    //
-    //   .menu-border {
-    //     width: 1px;
-    //     height: 20px;
-    //     border-left: 1px solid #eee;
-    //
-    //     &.last {
-    //       position: absolute;
-    //       right: 0;
-    //     }
-    //   }
-    //
-    //   li {
-    //     font-size: 16px;
-    //
-    //     a {
-    //       padding: 9px 15px;
-    //       display: inherit;
-    //       color: $font-color-light;
-    //
-    //       &:hover {
-    //         background: $orange-primary;
-    //         color: $font-color-light;
-    //       }
-    //     }
-    //
-    //     i {
-    //       font-size: 18px;
-    //     }
-    //   }
-    //
-    //   &.open {
-    //     width: 242px;
-    //     transition: width 0.4s ease;
-    //   }
-    // }
+    &.open {
+      width: 242px;
+      transition: width 0.4s ease;
+    }
+  }
+
+  .nav-link-list {
+    @include flex(center, center, row);
+    width: 100%;
+    height: 35px;
+    margin: 0;
+    padding: 0;
+    border-left: 1px solid $border-color-light;
+    border-right: 1px solid $border-color-light;
+    list-style: none;
+
+    li {
+      height: 100%;
+      position: relative;
+      transition: all 0.2s ease;
+
+      a {
+        @include flex(center, center, row);
+        height: 100%;
+        margin: 0 20px;
+        font-size: 20px;
+        font-weight: 400;
+        transition: all 0.2s ease;
+        color: $color-font-gray;
+
+        &:hover {
+          color: $color-orange;
+        }
+      }
+    }
   }
 }
 
@@ -116,7 +104,7 @@ nav-bar {
     display: block;
     position: absolute;
 
-    background: $font-color-light;
+    background: $font-color-dark;
     transform: rotate(0deg);
     transition: 0.2s ease-in-out;
 

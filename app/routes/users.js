@@ -11,24 +11,25 @@ router.get('/check-session', jwtAuth, function(req, res, next) {
     res.status(500).json({
       error: 'Error authenticating user.'
     });
+  } else {
+    userService.getByEmailOrUsername(req.body.decoded)
+      .then((user) => {
+        res.json({
+          userData: {
+            _id: user._id,
+            fullName: user.fullName,
+            email: user.email,
+            gameIds: user.gameIds,
+            createdAt: user.createdAt,
+          },
+        });
+      })
+      .catch((err) => {
+        res.status(500).json({
+          error: 'Error authenticating user.'
+        });
+      });
   }
-  userService.getByEmailOrUsername(req.body.decoded)
-    .then((user) => {
-      res.json({
-        userData: {
-          _id: user._id,
-          fullName: user.fullName,
-          email: user.email,
-          gameIds: user.gameIds,
-          createdAt: user.createdAt,
-        },
-      });
-    })
-    .catch((err) => {
-      res.status(500).json({
-        error: 'Error authenticating user.'
-      });
-    });
 });
 
 router.post('/', function(req, res, next) {

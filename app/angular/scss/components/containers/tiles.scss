@@ -1,7 +1,6 @@
 .tile-container {
   @include flex(flex-start, flex-start, row);
   width: 100%;
-  border-bottom: 1px solid #ebeef7;
 
   .tile-content {
     width: 100%;
@@ -15,6 +14,10 @@
     font-size: 16px;
     line-height: 20px;
     font-weight: 400;
+  }
+
+  &.double-content {
+    @include flex(flex-start, flex-start, row);
   }
 
   &.user {

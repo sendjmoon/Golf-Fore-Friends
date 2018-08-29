@@ -2,3 +2,8 @@
 @import 'fonts/_fonts.scss';
 @import 'components/_components.scss';
 @import 'pages/_pages.scss';
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+}

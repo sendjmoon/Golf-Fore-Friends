@@ -52431,11 +52431,13 @@ module.exports = function (app) {
 
     var data = {};
 
-    var addFriend = function addFriend(userId, statsId) {
+    var addFriend = function addFriend(userId, userStatsId, friendId, friendStatsId) {
       return new Promise(function (resolve, reject) {
         var friendData = {
           userId: userId,
-          statsId: statsId
+          userStatsId: userStatsId,
+          friendId: friendId,
+          friendStatsId: friendStatsId
         };
         $http.post($rs.baseUrl + '/friends/add', friendData).then(resolve).catch(reject);
       });
@@ -66925,6 +66927,18 @@ module.exports = function (app) {
       $scope.$digest();
     };
 
+    ctrl.parseDate = function (dateStr) {
+      var dateArray = dateStr.toUpperCase().split(' ');
+      var dateObj = {
+        day: dateArray[0],
+        month: dateArray[1],
+        date: dateArray[2],
+        year: dateArray[3]
+      };
+
+      return dateObj;
+    };
+
     ctrl.init = function () {
       gameService.getAllById(ctrl.user.gameIds);
       friendService.getAllFriends(ctrl.user.email).then(ctrl.sortLeaderboard);
@@ -66951,7 +66965,7 @@ module.exports = function (app) {
     $scope.searchResults = searchService.searchResults;
 
     ctrl.addFriend = function (userId, statsId) {
-      friendService.addFriend(userId, statsId).then(ctrl.init());
+      friendService.addFriend(ctrl.user._id, ctrl.user.stats, userId, statsId).then(ctrl.init());
     };
 
     ctrl.init = function () {
@@ -67025,38 +67039,30 @@ module.exports = function (app) {
     var $hamMenu = $('#hamburger-menu-icon');
     var $navBar = $('nav-bar');
     var $navMenu = $('#nav-menu');
+    var $navLink = $('.nav-link');
+    var $linkTitle = $('.link-title');
 
     ctrl.toggleMenu = function ($el) {
       $el.toggleClass('open');
       $navMenu.toggleClass('open');
     };
 
-    ctrl.scrollListener = function () {
-      var offsetStart = $navBar.offset().top;
-      var offsetTop = 0;
-
-      $window.on('scroll', function () {
-        offsetTop = $navBar.offset().top;
-        offsetTop = offsetStart - (offsetTop - offsetStart) * 0.2;
-
-        offsetTop < 0 ? offsetTop = 0 : offsetTop = offsetTop;
-
-        offsetTop > offsetStart ? offsetTop = offsetStart : offsetTop = offsetTop;
-
-        offsetTop === 0 ? $navBar.addClass('gff-full') : $navBar.removeClass('gff-full');
-
-        $navBar.css('top', offsetTop + 'px');
-      });
-    };
-
     ctrl.menuListener = function () {
       $hamMenu.on('click', function () {
         ctrl.toggleMenu($hamMenu);
       });
+
+      $navLink.on({
+        mouseenter: function mouseenter(e) {
+          $linkTitle.html($(this).attr('data-title'));
+        },
+        mouseleave: function mouseleave(e) {
+          $linkTitle.html('');
+        }
+      });
     };
 
     ctrl.init = function () {
-      // ctrl.scrollListener();
       ctrl.menuListener();
     };
 
@@ -67269,7 +67275,7 @@ module.exports = function (app) {
 /* 222 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-title=\"'DASHBOARD'\"></sub-nav>\n</div>\n\n<div class=\"page-container right\">\n  <div class=\"page-content\">\n\n    <div class=\"tile-container user\" id=\"profile\">\n      <div class=\"tile-content\">\n        <div class=\"user-container\">\n          <div class=\"user-pic\">\n            <i class=\"far fa-user\"></i>\n          </div>\n          <div class=\"user-info\">\n            <p class=\"member-since\" ng-init=\"dc.formatDate(dc.user)\">MEMBER SINCE <strong>{{dc.user.createdAt}}</strong></p>\n            <p class=\"name\">{{dc.user.fullName}}</p>\n          </div>\n        </div>\n        <ul class=\"user-stats\">\n          <li>\n            <p class=\"title\">HANDICAP</p>\n            <p class=\"value\"><span class=\"color-blue\">+</span>{{dc.user.stats.handicap}}</p>\n          </li>\n          <li>\n            <p class=\"title\">WINS</p>\n            <p class=\"value\">{{dc.user.stats.wins}}</p>\n          </li>\n          <li>\n            <p class=\"title\">LOSSES</p>\n            <p class=\"value\">{{dc.user.stats.losses}}</p>\n          </li>\n          <li>\n            <p class=\"title\">WIN RATIO</p>\n            <p class=\"value\">{{dc.user.stats.winRatio}}</p>\n          </li>\n        </ul>\n      </div>\n    </div>\n\n    <div class=\"tile-container bg-none\" id=\"recent-games\">\n      <div class=\"tile-content\">\n        <h2 class=\"tile-title\">Recent Games</h2>\n        <div class=\"recent-games-container\">\n          <ul class=\"recent-games-list\">\n            <li class=\"recent-game\" ng-repeat=\"game in gamesData.games|limitTo:3\">\n              <div class=\"game-image\"></div>\n              <div class=\"game-info\">\n                <div class=\"header\">\n                  <p class=\"name\">{{game.name}}</p>\n                  <p class=\"location\"><i class=\"fas fa-map-marker-alt\"></i>{{game.location}}</p>\n                </div>\n                <div class=\"footer\">\n                  <p class=\"date\">{{game.datePlayed}}</p>\n                  <div class=\"links\">\n                    <p class=\"players\"><i class=\"fas fa-user\"></i>{{game.results.length}}</p>\n                    <p class=\"comments\"><i class=\"fas fa-comment\"></i>{{game.comments.length}}</p>\n                  </div>\n                </div>\n              </div>\n            </li>\n          </ul>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"tile-container\" id=\"leaderboard\">\n      <div class=\"tile-content\">\n        <h2 class=\"tile-title\">Leaderboard</h2>\n        <div class=\"gff-container\">\n          <div class=\"gff-content dashboard-box\">\n            <table class=\"leaderboard\">\n              <tr>\n                <th>Position</th>\n                <th>Player</th>\n                <th>Handicap</th>\n              </tr>\n              <tr ng-repeat=\"user in leaderboard | limitTo:5\">\n                <td>{{$index + 1}}</td>\n                <td>{{user.fullName}}</td>\n                <td><span class=\"color-green\">+</span>{{user.stats.handicap}}</td>\n              </tr>\n            </table>\n          </div>\n        </div>\n      </div>\n\n    </div>\n\n    <div class=\"tile-container\" id=\"progress\">\n      <div class=\"tile-content\">\n        <h2 class=\"tile-title\">Progress</h2>\n        <div class=\"gff-container\">\n          <div class=\"gff-content\">\n            <game-chart></game-chart>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
+module.exports = "<div class=\"page-container\">\n  <div class=\"page-content\">\n\n    <div class=\"tile-container user\" id=\"profile\">\n      <div class=\"tile-content\">\n        <div class=\"user-container\">\n          <div class=\"user-pic\">\n            <i class=\"fas fa-user\"></i>\n          </div>\n          <div class=\"user-info\">\n            <p class=\"member-since\" ng-init=\"dc.formatDate(dc.user)\">MEMBER SINCE <strong>{{dc.user.createdAt}}</strong></p>\n            <p class=\"name\">{{dc.user.fullName}}</p>\n          </div>\n        </div>\n        <ul class=\"user-stats\">\n          <li>\n            <p class=\"title\">HANDICAP</p>\n            <p class=\"value\"><span class=\"color-blue\">+</span>{{dc.user.stats.handicap}}</p>\n          </li>\n          <li>\n            <p class=\"title\">WINS</p>\n            <p class=\"value\">{{dc.user.stats.wins}}</p>\n          </li>\n          <li>\n            <p class=\"title\">LOSSES</p>\n            <p class=\"value\">{{dc.user.stats.losses}}</p>\n          </li>\n          <li>\n            <p class=\"title\">WIN RATIO</p>\n            <p class=\"value\">{{dc.user.stats.winRatio}}</p>\n          </li>\n        </ul>\n      </div>\n    </div>\n\n    <div class=\"tile-container double-content\">\n      <div class=\"tile-container half\" id=\"recent-games\">\n        <div class=\"tile-content\">\n          <h2 class=\"tile-title\">Recent Games</h2>\n          <div class=\"recent-games-container\">\n            <ul class=\"recent-games-list\">\n              <li class=\"recent-game\" ng-repeat=\"game in gamesData.games|limitTo:3\">\n                <div class=\"game-date\" ng-init=\"game.dateData = dc.parseDate(game.datePlayed)\">\n                  <p class=\"day\">{{game.dateData.day}}</p>\n                  <p class=\"date\">{{game.dateData.date}}</p>\n                  <p class=\"month-year\">{{game.dateData.month}} {{game.dateData.year}}</p>\n                </div>\n                <div class=\"game-info\">\n                  <div class=\"header\">\n                    <p class=\"name\">{{game.name}}</p>\n                    <p class=\"location\"><i class=\"fas fa-map-marker-alt\"></i>{{game.location}}</p>\n                  </div>\n                  <div class=\"footer\">\n                    <!-- <p class=\"date\">{{game.datePlayed}}</p> -->\n                    <div class=\"links\">\n                      <p class=\"players\"><i class=\"fas fa-user\"></i>{{game.results.length}}</p>\n                      <p class=\"comments\"><i class=\"fas fa-comment\"></i>{{game.comments.length}}</p>\n                    </div>\n                  </div>\n                </div>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"tile-container half\" id=\"leaderboard\">\n        <div class=\"tile-content\">\n          <h2 class=\"tile-title\">Leaderboard</h2>\n          <ul class=\"leaderboard-list\">\n            <li ng-repeat=\"user in leaderboard | limitTo:5\">\n              <div class=\"player-container\">\n                <div class=\"left\">\n                  <p class=\"position\">{{$index + 1}}</p>\n                  <p class=\"name\"><strong>{{user.fullName}}</strong></p>\n                </div>\n                <div class=\"right\">\n                  <p class=\"handicap\"><span class=\"color-green\">+</span><strong>{{user.stats.handicap}}</strong></p>\n                </div>\n              </div>\n              <div class=\"gff-progress-bar\">\n                <div class=\"gff-progress-bar-fill\"></div>\n              </div>\n            </li>\n          </ul>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"tile-container\" id=\"progress\">\n      <div class=\"tile-content\">\n        <h2 class=\"tile-title\">Progress</h2>\n        <game-chart></game-chart>\n      </div>\n    </div>\n  </div>\n</div>\n";
 
 /***/ }),
 /* 223 */
@@ -67292,7 +67298,7 @@ module.exports = function (app) {
 /* 224 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-title=\"'FRIENDS'\"></sub-nav>\n  <!-- <div class=\"gff-container\">\n    <div class=\"gff-content shadow\">\n      <h2 class=\"box-title\">add more friends</h2>\n      <div class=\"search-container\">\n        <form autocomplete=\"off\">\n          <input id=\"search-input-users\" type=\"text\" placeholder=\"Search By Email\"></input>\n          <ul>\n            <li ng-repeat=\"user in searchResults\">\n              <p>{{user.fullName}} <span ng-show=\"user.isFriend\">- Already friends.</p>\n              <button class=\"gff-btn\" ng-hide=\"user.isFriend\" ng-click=\"fc.addFriend(user._id, user.stats); user.isFriend=true;\">Add to Friends</button>\n            </li>\n          </ul>\n        </form>\n      </div>\n    </div>\n  </div> -->\n</div>\n\n<div class=\"page-container right\">\n  <div class=\"page-content\">\n    <ul class=\"friends-list\">\n      <li class=\"friend-box shadow-sm\" ng-repeat=\"friend in friendsData.friends\">\n        <div class=\"profile-pic\">\n          <i class=\"fa fa-user\"></i>\n        </div>\n        <div class=\"content\">\n          <h4 class=\"box-title\">{{friend.fullName}}</h4>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>\n";
+module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-title=\"'FRIENDS'\"></sub-nav>\n</div>\n\n<div class=\"page-container right\">\n  <div class=\"page-content\">\n    <ul class=\"friends-list\">\n      <li class=\"friend-box shadow-sm\" ng-repeat=\"friend in friendsData.friends\">\n        <div class=\"profile-pic\">\n          <i class=\"fa fa-user\"></i>\n        </div>\n        <div class=\"content\">\n          <h4 class=\"box-title\">{{friend.fullName}}</h4>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>\n";
 
 /***/ }),
 /* 225 */
@@ -67456,7 +67462,7 @@ module.exports = function (app) {
 /* 238 */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"gff-nav default shadow-lg\">\n  <div class=\"title-container\">\n    <logo></logo>\n    <h4 class=\"title\">GOLF FOR<span class=\"color-blue\">e</span> FRIENDS</h4>\n  </div>\n\n  <ul class=\"gff-menu\">\n    <li id=\"dashboard-link\">\n      <a href=\"/#!/dashboard\">DASHBOARD</a>\n    </li>\n    <li id=\"friends-link\">\n      <a href=\"/#!/friends\">FRIENDS</a>\n    </li>\n    <li id=\"games-link\">\n      <a href=\"/#!/games\">GAMES</a>\n    </li>\n    <li>\n      <a href=\"/#!/settings\"><i class=\"fas fa-cog fa-lg\"></i></a>\n    </li>\n    <li>\n      <a ng-click=\"nc.signout()\"><i class=\"fas fa-sign-out-alt fa-lg\"></i></a>\n    </li>\n  </ul>\n</nav>\n";
+module.exports = "<nav class=\"gff-nav default\">\n  <div class=\"title-container\">\n    <logo></logo>\n    <h4 class=\"title\">GOLF FOR<span class=\"color-blue\">e</span> FRIENDS</h4>\n  </div>\n\n  <div class=\"menu-container\">\n    <p class=\"link-title\"></p>\n    <div class=\"nav-menu\" id=\"nav-menu\">\n      <ul class=\"nav-link-list\">\n        <li>\n          <a class=\"nav-link\" href=\"/#!/dashboard\" data-title=\"Dashboard\"><i class=\"fas fa-address-card\"></i></a>\n        </li>\n        <li>\n          <a class=\"nav-link\" href=\"/#!/friends\" data-title=\"Friends\"><i class=\"fas fa-users\"></i></a>\n        </li>\n        <li>\n          <a class=\"nav-link\" href=\"/#!/games\" data-title=\"Games\"><i class=\"fas fa-calendar-alt\"></i></a>\n        </li>\n        <!-- <li>\n          <a class=\"nav-link\" href=\"/#!/settings\"><i class=\"fas fa-cog fa-lg\"></i></a>\n        </li> -->\n        <li>\n          <a class=\"nav-link\" ng-click=\"nc.signout()\" data-title=\"Signout\"><i class=\"fas fa-sign-out-alt\"></i></a>\n        </li>\n      </ul>\n    </div>\n\n    <div class=\"hamburger-menu-icon\" id=\"hamburger-menu-icon\">\n      <span></span>\n      <span></span>\n      <span></span>\n      <span></span>\n      <span></span>\n      <span></span>\n    </div>\n  </div>\n</nav>\n\n<sub-nav data-page-title=\"'DASHBOARD'\"></sub-nav>\n";
 
 /***/ }),
 /* 239 */
@@ -67481,7 +67487,7 @@ module.exports = function (app) {
 /* 240 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='DASHBOARD'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <a class=\"sub-nav-link anchor-link\" scroll-target=\"profile\"><i class=\"far fa-user\"></i>Profile</a>\n  <a class=\"sub-nav-link anchor-link\" scroll-target=\"recent-games\"><i class=\"far fa-calendar-alt\"></i>Recent Games</a>\n  <a class=\"sub-nav-link anchor-link\" scroll-target=\"leaderboard\"><i class=\"far fa-list-alt\"></i>Leaderboard</a>\n  <a class=\"sub-nav-link anchor-link\" scroll-target=\"progress\"><i class=\"fas fa-chart-line\"></i>Progress</a>\n  <sn-games ng-if=\"snc.pageTitle==='Games'\" data-creating-game=\"snc.creatingGame\"></sn-games>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='FRIENDS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <add-friend></add-friend>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='GAMES'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=false; snc.resetForm('new-game-form')\"><i class=\"fas fa-list\"></i>Game List</a>\n  <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=true\"><i class=\"far fa-file\"></i>Create Game</a>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='SETTINGS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n</div>\n";
+module.exports = "<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='DASHBOARD'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <!-- <div class=\"links-container\">\n    <a class=\"sub-nav-link anchor-link\" scroll-target=\"profile\"><i class=\"far fa-user\"></i>Profile</a>\n    <a class=\"sub-nav-link anchor-link\" scroll-target=\"recent-games\"><i class=\"far fa-calendar-alt\"></i>Recent Games</a>\n    <a class=\"sub-nav-link anchor-link\" scroll-target=\"leaderboard\"><i class=\"far fa-list-alt\"></i>Leaderboard</a>\n    <a class=\"sub-nav-link anchor-link\" scroll-target=\"progress\"><i class=\"fas fa-chart-line\"></i>Progress</a>\n    <sn-games ng-if=\"snc.pageTitle==='Games'\" data-creating-game=\"snc.creatingGame\"></sn-games>\n  </div> -->\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='FRIENDS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <div class=\"links-container\">\n    <add-friend></add-friend>\n  </div>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='GAMES'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <div class=\"links-container\">\n    <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=false; snc.resetForm('new-game-form')\"><i class=\"fas fa-list\"></i>Game List</a>\n    <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=true\"><i class=\"far fa-file\"></i>Create Game</a>\n  </div>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='SETTINGS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <div class=\"links-container\">\n  </div>\n</div>\n";
 
 /***/ }),
 /* 241 */
@@ -67544,7 +67550,7 @@ module.exports = function ($routeProvider, $locationProvider) {
 /* 244 */
 /***/ (function(module, exports) {
 
-module.exports = "<nav-bar></nav-bar>\n<!-- <banner></banner> -->\n<dashboard></dashboard>\n";
+module.exports = "<nav-bar></nav-bar>\n<dashboard></dashboard>\n";
 
 /***/ }),
 /* 245 */

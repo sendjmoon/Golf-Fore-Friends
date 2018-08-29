@@ -1,14 +1,16 @@
 sub-nav {
-  display: block;
+  @include flex(flex-start, center, row);
   width: 100%;
+  height: 45px;
+  border-bottom: 1px solid $border-color-light;
 }
 
 .sub-nav-content {
-  @include flex(flex-start, flex-start, col);
+  @include flex(space-between, center, row);
   width: 100%;
   height: 100%;
-  margin: 0 auto;
-  padding: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
 
   h2, a {
     font-size: 14px;
@@ -17,8 +19,8 @@ sub-nav {
   }
 
   .title {
-    margin-bottom: 15px;
-    color: #fff;
+    margin-bottom: 0;
+    color: $font-color-dark;
     font-size: 12px;
   }
 
