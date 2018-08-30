@@ -17529,18 +17529,18 @@ return zhTw;
 "use strict";
 
 
-var angular = __webpack_require__(129);
+var angular = __webpack_require__(128);
 
+__webpack_require__(130);
 __webpack_require__(131);
-__webpack_require__(132);
 
 var golfApp = angular.module('golfApp', ['ngRoute', 'ngRoute.middleware']);
 
 // let API_URL = 'https://golf-fore-friends.herokuapp.com';
 var API_URL = 'http://localhost:3000';
 
-__webpack_require__(133)(golfApp);
-__webpack_require__(143)(golfApp);
+__webpack_require__(132)(golfApp);
+__webpack_require__(142)(golfApp);
 __webpack_require__(211)(golfApp);
 
 golfApp.run(['$rootScope', function ($rs) {
@@ -17553,20 +17553,19 @@ golfApp.run(['$rootScope', function ($rs) {
   };
 }]);
 
-golfApp.config(__webpack_require__(243));
-golfApp.config(__webpack_require__(250));
+golfApp.config(__webpack_require__(247));
+golfApp.config(__webpack_require__(254));
 
 /***/ }),
-/* 128 */,
-/* 129 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(130);
+__webpack_require__(129);
 module.exports = angular;
 
 
 /***/ }),
-/* 130 */
+/* 129 */
 /***/ (function(module, exports) {
 
 /**
@@ -51762,7 +51761,7 @@ $provide.value("$locale", {
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ }),
-/* 131 */
+/* 130 */
 /***/ (function(module, exports) {
 
 ;(function(angular) {
@@ -52126,19 +52125,20 @@ function handleMiddleware($rootScope, $state, $middleware) {
 
 
 /***/ }),
-/* 132 */
+/* 131 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 133 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = function (app) {
+  __webpack_require__(133)(app);
   __webpack_require__(134)(app);
   __webpack_require__(135)(app);
   __webpack_require__(136)(app);
@@ -52147,11 +52147,10 @@ module.exports = function (app) {
   __webpack_require__(139)(app);
   __webpack_require__(140)(app);
   __webpack_require__(141)(app);
-  __webpack_require__(142)(app);
 };
 
 /***/ }),
-/* 134 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52203,7 +52202,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 135 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52296,7 +52295,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 136 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52420,7 +52419,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 137 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52476,7 +52475,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 138 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52605,7 +52604,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 139 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52656,7 +52655,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 140 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52760,7 +52759,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 141 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52826,7 +52825,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 142 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52839,6 +52838,28 @@ module.exports = function (app) {
 };
 
 /***/ }),
+/* 142 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (app) {
+  __webpack_require__(143)(app);
+  __webpack_require__(144)(app);
+  __webpack_require__(201)(app);
+  __webpack_require__(202)(app);
+  __webpack_require__(203)(app);
+  __webpack_require__(204)(app);
+  __webpack_require__(205)(app);
+  __webpack_require__(206)(app);
+  __webpack_require__(207)(app);
+  __webpack_require__(208)(app);
+  __webpack_require__(209)(app);
+  __webpack_require__(210)(app);
+};
+
+/***/ }),
 /* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -52846,18 +52867,19 @@ module.exports = function (app) {
 
 
 module.exports = function (app) {
-  __webpack_require__(201)(app);
-  __webpack_require__(144)(app);
-  __webpack_require__(202)(app);
-  __webpack_require__(203)(app);
-  __webpack_require__(204)(app);
-  __webpack_require__(205)(app);
-  __webpack_require__(206)(app);
-  __webpack_require__(207)(app);
-  __webpack_require__(259)(app);
-  __webpack_require__(208)(app);
-  __webpack_require__(209)(app);
-  __webpack_require__(210)(app);
+  app.controller('AuthController', ['$rootScope', 'AuthService', function ($rs, authService) {
+
+    var ctrl = this;
+
+    ctrl.signup = function (userData) {
+      authService.signup(userData).catch(function () {
+        console.log('Error signing up.');
+      });
+    };
+
+    this.signin = authService.signin;
+    this.signout = authService.signout;
+  }]);
 };
 
 /***/ }),
@@ -66778,29 +66800,6 @@ module.exports = function (chartData) {
 
 
 module.exports = function (app) {
-  app.controller('AuthController', ['$rootScope', 'AuthService', function ($rs, authService) {
-
-    var ctrl = this;
-
-    ctrl.signup = function (userData) {
-      authService.signup(userData).catch(function () {
-        console.log('Error signing up.');
-      });
-    };
-
-    this.signin = authService.signin;
-    this.signout = authService.signout;
-  }]);
-};
-
-/***/ }),
-/* 202 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (app) {
   app.controller('CommentController', ['$rootScope', '$scope', 'CommentService', 'GameService', 'UserService', function ($rs, $scope, commentService, gameService, userService) {
 
     var ctrl = this;
@@ -66848,7 +66847,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 203 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66900,7 +66899,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 204 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66950,7 +66949,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 205 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66987,7 +66986,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 206 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67011,7 +67010,7 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 207 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67020,6 +67019,23 @@ module.exports = function (app) {
 module.exports = function (app) {
   app.controller('LandingController', ['$rootScope', function ($rs) {
     this.baseUrl = $rs.baseUrl;
+  }]);
+};
+
+/***/ }),
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (app) {
+  app.controller('LeaderboardController', ['$rootScope', '$scope', function ($rs, $scope) {
+    var ctrl = this;
+
+    ctrl.fillPlayerBar = function () {
+      var $barFill = $('.gff-progress-bar-fill');
+    };
   }]);
 };
 
@@ -67148,12 +67164,12 @@ module.exports = function (app) {
   __webpack_require__(212)(app);
   __webpack_require__(219)(app);
   __webpack_require__(221)(app);
-  __webpack_require__(223)(app);
   __webpack_require__(225)(app);
-  __webpack_require__(235)(app);
-  __webpack_require__(237)(app);
+  __webpack_require__(229)(app);
   __webpack_require__(239)(app);
   __webpack_require__(241)(app);
+  __webpack_require__(243)(app);
+  __webpack_require__(245)(app);
 };
 
 /***/ }),
@@ -67271,7 +67287,7 @@ module.exports = function (app) {
     controllerAs: 'dc'
   });
 
-  __webpack_require__(260)(app);
+  __webpack_require__(223)(app);
 };
 
 /***/ }),
@@ -67288,20 +67304,21 @@ module.exports = "<div class=\"page-container\">\n  <div class=\"page-content\">
 
 
 module.exports = function (app) {
-  app.component('friends', {
+  app.component('leaderboard', {
     template: __webpack_require__(224),
-    controller: 'FriendController',
-    controllerAs: 'fc'
+    controller: 'LeaderboardController',
+    controllerAs: 'lc',
+    bindings: {
+      leaderboard: '<'
+    }
   });
-
-  __webpack_require__(257)(app);
 };
 
 /***/ }),
 /* 224 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-title=\"'FRIENDS'\"></sub-nav>\n</div>\n\n<div class=\"page-container right\">\n  <div class=\"page-content\">\n    <ul class=\"friends-list\">\n      <li class=\"friend-box shadow-sm\" ng-repeat=\"friend in friendsData.friends\">\n        <div class=\"profile-pic\">\n          <i class=\"fa fa-user\"></i>\n        </div>\n        <div class=\"content\">\n          <h4 class=\"box-title\">{{friend.fullName}}</h4>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>\n";
+module.exports = "<h2 class=\"tile-title\">Leaderboard</h2>\n<ul class=\"leaderboard-list\">\n  <li ng-repeat=\"user in lc.leaderboard | limitTo:5\">\n    <div class=\"player-container\">\n      <div class=\"left\">\n        <p class=\"position\">{{$index + 1}}</p>\n        <p class=\"name\"><strong>{{user.fullName}}</strong></p>\n      </div>\n      <div class=\"right\">\n        <p class=\"handicap\"><span class=\"color-green\">+</span><strong>{{user.stats.handicap}}</strong></p>\n      </div>\n    </div>\n    <div class=\"gff-progress-bar\">\n      <div class=\"gff-progress-bar-fill\"></div>\n    </div>\n  </li>\n</ul>\n";
 
 /***/ }),
 /* 225 */
@@ -67311,22 +67328,20 @@ module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-titl
 
 
 module.exports = function (app) {
-  app.component('games', {
+  app.component('friends', {
     template: __webpack_require__(226),
-    controller: 'GamesController',
-    controllerAs: 'gc'
+    controller: 'FriendController',
+    controllerAs: 'fc'
   });
 
   __webpack_require__(227)(app);
-  __webpack_require__(229)(app);
-  __webpack_require__(233)(app);
 };
 
 /***/ }),
 /* 226 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-title=\"'GAMES'\" data-creating-game=\"gc.creating\"></sub-nav>\n</div>\n\n<div class=\"page-container right\" ng-hide=\"gc.creating\">\n  <div class=\"page-content\">\n    <ul class=\"games-list\">\n      <li class=\"game-container shadow-sm\" ng-repeat=\"game in gamesData.games\">\n\n        <div class=\"game-content\">\n          <h4 class=\"game-name\">{{game.name}}</h4>\n          <p class=\"game-location\">{{game.location}}</p>\n          <p class=\"date-played\">{{game.datePlayed}}</p>\n\n          <button class=\"gff-btn dark\" data-toggle=\"collapse\" data-target=\"#{{game.publicId}}-results\">Results</button>\n          <button class=\"gff-btn dark\" data-toggle=\"collapse\" data-target=\"#{{game.publicId}}-comments\">Comments (&nbsp;{{game.comments.length}}&nbsp;)</button>\n        </div>\n\n        <div class=\"tab-container\">\n          <div class=\"tab collapse\" id=\"{{game.publicId}}-results\">\n            <div class=\"tab-content\">\n              <ul>\n                <li ng-repeat=\"result in game.results\">\n                  <p>Name: {{result.playerId.fullName}}</p>\n                  <p>Strokes: {{result.strokes}}</p>\n                </li>\n              </ul>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"tab-container\">\n          <div class=\"tab collapse\" id=\"{{game.publicId}}-comments\">\n            <div class=\"tab-content\">\n              <ul>\n                <li ng-repeat=\"comment in game.comments\">\n                  <comment data-game-id=\"game._id\" data-comment=\"comment\"></comment>\n                </li>\n                <li>\n                  <new-comment data-game-id=\"game._id\"></new-comment>\n                </li>\n              </ul>\n            </div>\n          </div>\n        </div>\n\n      </li>\n    </ul>\n  </div><!--page-content-->\n</div><!--page-container-->\n\n<div class=\"page-container right\" ng-show=\"gc.creating\">\n  <div class=\"page-content\">\n    <create-game data-creating=\"gc.creating\"></create-game>\n  </div>\n</div>\n";
+module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-title=\"'FRIENDS'\"></sub-nav>\n</div>\n\n<div class=\"page-container right\">\n  <div class=\"page-content\">\n    <ul class=\"friends-list\">\n      <li class=\"friend-box shadow-sm\" ng-repeat=\"friend in friendsData.friends\">\n        <div class=\"profile-pic\">\n          <i class=\"fa fa-user\"></i>\n        </div>\n        <div class=\"content\">\n          <h4 class=\"box-title\">{{friend.fullName}}</h4>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>\n";
 
 /***/ }),
 /* 227 */
@@ -67336,13 +67351,10 @@ module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-titl
 
 
 module.exports = function (app) {
-  app.component('createGame', {
+  app.component('addFriend', {
     template: __webpack_require__(228),
-    controller: 'CreateGameController',
-    controllerAs: 'cgc',
-    bindings: {
-      creating: '='
-    }
+    controller: 'FriendController',
+    controllerAs: 'fc'
   });
 };
 
@@ -67350,7 +67362,7 @@ module.exports = function (app) {
 /* 228 */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Create a Game</h2>\n<p>Please enter game information below.</p>\n<form class=\"new-game-form\" id=\"new-game-form\" name=\"new-game-form\" ng-submit=\"cgc.createGame(cgc.game)\">\n  <div class=\"create-game-container\">\n    <div class=\"course-container\">\n      <p class=\"input-title\">Course Played</p>\n      <div class=\"gff-select course\">\n        <select required ng-model=\"cgc.game.name\">\n          <option value=\"The Golf Club at Echo Falls\">The Golf Club at Echo Falls</option>\n          <option value=\"Harbour Pointe Golf Club\">Harbour Pointe Golf Club</option>\n          <option value=\"The Golf Club at Hawks Prairie\">The Golf Club at Hawks Prairie</option>\n          <option value=\"Kayak Point Golf Course\">Kayak Point Golf Course</option>\n          <option value=\"Mount Si Golf Course\">Mount Si Golf Course</option>\n          <option value=\"Newcastle GC - China Creek\">Newcastle GC - China Creek</option>\n          <option value=\"Newcastle GC - Coal Creek\">Newcastle GC - Coal Creek</option>\n          <option value=\"The Golf Club at Redmond Ridge\">Redmond Ridge</option>\n          <option value=\"Trophy Lake Golf and Casting\">Trophy Lake Golf and Casting</option>\n          <option value=\"Washington National Golf Club\">Washington National Golf Club</option>\n        </select>\n      </div>\n    </div>\n    <div class=\"location-container\">\n      <p class=\"input-title\">City, State</p>\n      <input type=\"text\" required ng-model=\"cgc.game.location\" placeholder=\"Seattle, WA\"></input>\n    </div>\n    <div class=\"date-container\">\n      <p class=\"input-title\">Date Played</p>\n      <input type=\"date\" required ng-model=\"cgc.game.datePlayed\"></input>\n    </div>\n    <div class=\"players-container\">\n      <div class=\"current-players-container\">\n        <p class=\"input-title\">Current Players</p>\n        <ul class=\"player-list\">\n          <li class=\"player-box shadow-sm\" ng-repeat=\"player in cgc.players\" ng-init=\"player.strokes=0\">\n            <div class=\"title-box\">\n              <p><strong>{{player.fullName}}</strong></p>\n            </div>\n            <div class=\"edit-box\">\n              <p><strong>Total Strokes: <span class=\"color-green\">+</span></strong></p>\n              <input type=\"text\" required ng-model=\"player.strokes\" placeholder=\"{{player.strokes}}\" maxlength=\"2\"></input>\n            </div>\n            <button class=\"gff-btn red\" type=\"button\" ng-click=\"cgc.removeUser(player)\">\n              <i class=\"fa fa-minus-circle\"></i>\n            </button>\n          </li>\n        </ul>\n      </div>\n      <div class=\"add-players-container\">\n        <p class=\"input-title\">Add More Players</p>\n        <ul class=\"player-list\">\n          <li class=\"player-box shadow-sm\" ng-repeat=\"friend in cgc.friendsData.friends\">\n            <div class=\"title-box\">\n              <p><strong>{{friend.fullName}}</strong></p>\n            </div>\n            <button class=\"gff-btn\" type=\"button\" ng-click=\"cgc.addUser(friend)\">\n              <i class=\"fa fa-plus\"></i>\n            </button>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n  <button class=\"gff-btn dark\" type=\"submit\">Submit</button>\n  <button class=\"gff-btn dark\" type=\"reset\" ng-click=\"cgc.creating=false\">Cancel</button>\n</form>\n";
+module.exports = "<div class=\"gff-container\">\n  <div class=\"gff-content alt\">\n    <h2 class=\"box-title light\">Add more friends.</h2>\n    <div class=\"search-container\">\n      <form class=\"add-friends-form\" name=\"add-friends-form\" autocomplete=\"off\">\n        <input id=\"search-input-users\" type=\"text\" placeholder=\"Search By Email\"></input>\n        <ul class=\"users-list\">\n          <li ng-repeat=\"user in searchResults\">\n            <p>{{user.fullName}}</p>\n            <button class=\"gff-btn disabled sm\" ng-show=\"user.isFriend\"><i class=\"fas fa-check\"></i>Friends</button>\n            <button class=\"gff-btn sm\" ng-hide=\"user.isFriend\" ng-click=\"fc.addFriend(user._id, user.stats); user.isFriend=true;\"><i class=\"fas fa-user-plus\"></i>Add Friend</button>\n          </li>\n        </ul>\n      </form>\n    </div>\n  </div>\n</div>\n";
 
 /***/ }),
 /* 229 */
@@ -67360,24 +67372,22 @@ module.exports = "<h2>Create a Game</h2>\n<p>Please enter game information below
 
 
 module.exports = function (app) {
-  app.component('comment', {
+  app.component('games', {
     template: __webpack_require__(230),
-    controller: 'CommentController',
-    controllerAs: 'cc',
-    bindings: {
-      gameId: '<',
-      comment: '<'
-    }
+    controller: 'GamesController',
+    controllerAs: 'gc'
   });
 
   __webpack_require__(231)(app);
+  __webpack_require__(233)(app);
+  __webpack_require__(237)(app);
 };
 
 /***/ }),
 /* 230 */
 /***/ (function(module, exports) {
 
-module.exports = "<div ng-hide=\"cc.editing\" ng-init=\"cc.formatDate(cc.comment)\">\n  <p><strong>{{cc.comment.authorName}}</strong> {{cc.comment.content}}</p>\n  <p>{{cc.comment.createdAt}}</p>\n  <div ng-if=\"cc.user._id === cc.comment.authorId\">\n    <a ng-click=\"cc.editing=true\">edit</a>\n    <a ng-click=\"cc.remove(cc.comment.publicId, cc.comment._id, cc.gameId)\">remove</a>\n  </div>\n</div>\n\n<div ng-show=\"cc.editing\">\n  <p><strong>Editing comment</strong></p>\n  <textarea ng-model=\"cc.comment.content\" style=\"color:black\"></textarea>\n  <button class=\"gff-btn\" ng-click=\"cc.update(cc.comment.publicId, cc.comment.content)\">Save</button>\n  <button class=\"gff-btn\">Cancel</button>\n</div>\n";
+module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-title=\"'GAMES'\" data-creating-game=\"gc.creating\"></sub-nav>\n</div>\n\n<div class=\"page-container right\" ng-hide=\"gc.creating\">\n  <div class=\"page-content\">\n    <ul class=\"games-list\">\n      <li class=\"game-container shadow-sm\" ng-repeat=\"game in gamesData.games\">\n\n        <div class=\"game-content\">\n          <h4 class=\"game-name\">{{game.name}}</h4>\n          <p class=\"game-location\">{{game.location}}</p>\n          <p class=\"date-played\">{{game.datePlayed}}</p>\n\n          <button class=\"gff-btn dark\" data-toggle=\"collapse\" data-target=\"#{{game.publicId}}-results\">Results</button>\n          <button class=\"gff-btn dark\" data-toggle=\"collapse\" data-target=\"#{{game.publicId}}-comments\">Comments (&nbsp;{{game.comments.length}}&nbsp;)</button>\n        </div>\n\n        <div class=\"tab-container\">\n          <div class=\"tab collapse\" id=\"{{game.publicId}}-results\">\n            <div class=\"tab-content\">\n              <ul>\n                <li ng-repeat=\"result in game.results\">\n                  <p>Name: {{result.playerId.fullName}}</p>\n                  <p>Strokes: {{result.strokes}}</p>\n                </li>\n              </ul>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"tab-container\">\n          <div class=\"tab collapse\" id=\"{{game.publicId}}-comments\">\n            <div class=\"tab-content\">\n              <ul>\n                <li ng-repeat=\"comment in game.comments\">\n                  <comment data-game-id=\"game._id\" data-comment=\"comment\"></comment>\n                </li>\n                <li>\n                  <new-comment data-game-id=\"game._id\"></new-comment>\n                </li>\n              </ul>\n            </div>\n          </div>\n        </div>\n\n      </li>\n    </ul>\n  </div><!--page-content-->\n</div><!--page-container-->\n\n<div class=\"page-container right\" ng-show=\"gc.creating\">\n  <div class=\"page-content\">\n    <create-game data-creating=\"gc.creating\"></create-game>\n  </div>\n</div>\n";
 
 /***/ }),
 /* 231 */
@@ -67387,12 +67397,12 @@ module.exports = "<div ng-hide=\"cc.editing\" ng-init=\"cc.formatDate(cc.comment
 
 
 module.exports = function (app) {
-  app.component('newComment', {
+  app.component('createGame', {
     template: __webpack_require__(232),
-    controller: 'CommentController',
-    controllerAs: 'cc',
+    controller: 'CreateGameController',
+    controllerAs: 'cgc',
     bindings: {
-      gameId: '<'
+      creating: '='
     }
   });
 };
@@ -67401,7 +67411,7 @@ module.exports = function (app) {
 /* 232 */
 /***/ (function(module, exports) {
 
-module.exports = "<form>\n  <textarea ng-model=\"cc.newComment\" placeholder=\"Add a comment...\" style=\"color:black\"></textarea>\n  <button class=\"gff-btn\" ng-click=\"cc.create(cc.gameId, cc.newComment)\">Add Comment</button>\n</form>\n";
+module.exports = "<h2>Create a Game</h2>\n<p>Please enter game information below.</p>\n<form class=\"new-game-form\" id=\"new-game-form\" name=\"new-game-form\" ng-submit=\"cgc.createGame(cgc.game)\">\n  <div class=\"create-game-container\">\n    <div class=\"course-container\">\n      <p class=\"input-title\">Course Played</p>\n      <div class=\"gff-select course\">\n        <select required ng-model=\"cgc.game.name\">\n          <option value=\"The Golf Club at Echo Falls\">The Golf Club at Echo Falls</option>\n          <option value=\"Harbour Pointe Golf Club\">Harbour Pointe Golf Club</option>\n          <option value=\"The Golf Club at Hawks Prairie\">The Golf Club at Hawks Prairie</option>\n          <option value=\"Kayak Point Golf Course\">Kayak Point Golf Course</option>\n          <option value=\"Mount Si Golf Course\">Mount Si Golf Course</option>\n          <option value=\"Newcastle GC - China Creek\">Newcastle GC - China Creek</option>\n          <option value=\"Newcastle GC - Coal Creek\">Newcastle GC - Coal Creek</option>\n          <option value=\"The Golf Club at Redmond Ridge\">Redmond Ridge</option>\n          <option value=\"Trophy Lake Golf and Casting\">Trophy Lake Golf and Casting</option>\n          <option value=\"Washington National Golf Club\">Washington National Golf Club</option>\n        </select>\n      </div>\n    </div>\n    <div class=\"location-container\">\n      <p class=\"input-title\">City, State</p>\n      <input type=\"text\" required ng-model=\"cgc.game.location\" placeholder=\"Seattle, WA\"></input>\n    </div>\n    <div class=\"date-container\">\n      <p class=\"input-title\">Date Played</p>\n      <input type=\"date\" required ng-model=\"cgc.game.datePlayed\"></input>\n    </div>\n    <div class=\"players-container\">\n      <div class=\"current-players-container\">\n        <p class=\"input-title\">Current Players</p>\n        <ul class=\"player-list\">\n          <li class=\"player-box shadow-sm\" ng-repeat=\"player in cgc.players\" ng-init=\"player.strokes=0\">\n            <div class=\"title-box\">\n              <p><strong>{{player.fullName}}</strong></p>\n            </div>\n            <div class=\"edit-box\">\n              <p><strong>Total Strokes: <span class=\"color-green\">+</span></strong></p>\n              <input type=\"text\" required ng-model=\"player.strokes\" placeholder=\"{{player.strokes}}\" maxlength=\"2\"></input>\n            </div>\n            <button class=\"gff-btn red\" type=\"button\" ng-click=\"cgc.removeUser(player)\">\n              <i class=\"fa fa-minus-circle\"></i>\n            </button>\n          </li>\n        </ul>\n      </div>\n      <div class=\"add-players-container\">\n        <p class=\"input-title\">Add More Players</p>\n        <ul class=\"player-list\">\n          <li class=\"player-box shadow-sm\" ng-repeat=\"friend in cgc.friendsData.friends\">\n            <div class=\"title-box\">\n              <p><strong>{{friend.fullName}}</strong></p>\n            </div>\n            <button class=\"gff-btn\" type=\"button\" ng-click=\"cgc.addUser(friend)\">\n              <i class=\"fa fa-plus\"></i>\n            </button>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n  <button class=\"gff-btn dark\" type=\"submit\">Submit</button>\n  <button class=\"gff-btn dark\" type=\"reset\" ng-click=\"cgc.creating=false\">Cancel</button>\n</form>\n";
 
 /***/ }),
 /* 233 */
@@ -67411,21 +67421,24 @@ module.exports = "<form>\n  <textarea ng-model=\"cc.newComment\" placeholder=\"A
 
 
 module.exports = function (app) {
-  app.component('gameChart', {
+  app.component('comment', {
     template: __webpack_require__(234),
-    controller: 'ChartController',
+    controller: 'CommentController',
     controllerAs: 'cc',
     bindings: {
-      chartName: '<'
+      gameId: '<',
+      comment: '<'
     }
   });
+
+  __webpack_require__(235)(app);
 };
 
 /***/ }),
 /* 234 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"chart-container\">\n  <canvas id=\"gameChart\" width=\"400px\" height=\"300px\"></canvas>\n</div>\n\n<div class=\"chart-container\">\n  <canvas id=\"winChart\" width=\"250px\" height=\"250px\"></canvas>\n</div>\n";
+module.exports = "<div ng-hide=\"cc.editing\" ng-init=\"cc.formatDate(cc.comment)\">\n  <p><strong>{{cc.comment.authorName}}</strong> {{cc.comment.content}}</p>\n  <p>{{cc.comment.createdAt}}</p>\n  <div ng-if=\"cc.user._id === cc.comment.authorId\">\n    <a ng-click=\"cc.editing=true\">edit</a>\n    <a ng-click=\"cc.remove(cc.comment.publicId, cc.comment._id, cc.gameId)\">remove</a>\n  </div>\n</div>\n\n<div ng-show=\"cc.editing\">\n  <p><strong>Editing comment</strong></p>\n  <textarea ng-model=\"cc.comment.content\" style=\"color:black\"></textarea>\n  <button class=\"gff-btn\" ng-click=\"cc.update(cc.comment.publicId, cc.comment.content)\">Save</button>\n  <button class=\"gff-btn\">Cancel</button>\n</div>\n";
 
 /***/ }),
 /* 235 */
@@ -67435,8 +67448,13 @@ module.exports = "<div class=\"chart-container\">\n  <canvas id=\"gameChart\" wi
 
 
 module.exports = function (app) {
-  app.component('logo', {
-    template: __webpack_require__(236)
+  app.component('newComment', {
+    template: __webpack_require__(236),
+    controller: 'CommentController',
+    controllerAs: 'cc',
+    bindings: {
+      gameId: '<'
+    }
   });
 };
 
@@ -67444,7 +67462,7 @@ module.exports = function (app) {
 /* 236 */
 /***/ (function(module, exports) {
 
-module.exports = "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<svg class=\"gff-logo-full\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"30px\" height=\"30px\" viewBox=\"-0.258 -0.548 123.547 123.539\" xml:space=\"preserve\">\n  <g>\n    <path class=\"golfer-head\" d=\"M54.477,26.043c-4.469,0-8.078,3.57-8.078,7.961c0,4.406,3.609,7.969,8.078,7.969 c4.445,0,8.055-3.562,8.055-7.969C62.531,29.613,58.922,26.043,54.477,26.043z\" />\n    <path class=\"golfer-body\" d=\"M95.406,41.793c-0.305-1.719-1.711-2.695-1.797-2.758L46.188,7.77l-4.406,6.383 c-0.82,1.258-0.461,2.93,0.797,3.75c1.25,0.828,2.922,0.492,3.742-0.766l2.578-3.688l38.516,25.414l-31.555,5.68 c-2.234,0.375-3.852,2.609-3.352,4.797l6.867,26.547l-22.211,33.312c-1.328,2.273-0.523,5.188,1.773,6.492 c2.32,1.32,5.258,0.516,6.594-1.758c0,0,23.164-34.836,23.25-35.055c0,0,1.195,4.836,1.195,4.859L66.5,109.871 c-0.438,2.602,1.328,5.031,3.953,5.469s5.117-1.305,5.555-3.891l3.594-26.883c0.109-0.688-0.031-2.195-0.188-2.859L71.492,50.23 l20.609-3.711C94.305,46.129,95.797,44.004,95.406,41.793z\" />\n  </g>\n</svg>\n";
+module.exports = "<form>\n  <textarea ng-model=\"cc.newComment\" placeholder=\"Add a comment...\" style=\"color:black\"></textarea>\n  <button class=\"gff-btn\" ng-click=\"cc.create(cc.gameId, cc.newComment)\">Add Comment</button>\n</form>\n";
 
 /***/ }),
 /* 237 */
@@ -67454,10 +67472,13 @@ module.exports = "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE svg
 
 
 module.exports = function (app) {
-  app.component('navBar', {
+  app.component('gameChart', {
     template: __webpack_require__(238),
-    controller: 'NavController',
-    controllerAs: 'nc'
+    controller: 'ChartController',
+    controllerAs: 'cc',
+    bindings: {
+      chartName: '<'
+    }
   });
 };
 
@@ -67465,7 +67486,7 @@ module.exports = function (app) {
 /* 238 */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"gff-nav default\">\n  <div class=\"title-container\">\n    <logo></logo>\n    <h4 class=\"title\">GOLF FOR<span class=\"color-blue\">e</span> FRIENDS</h4>\n  </div>\n\n  <div class=\"menu-container\">\n    <p class=\"link-title\"></p>\n    <div class=\"nav-menu\" id=\"nav-menu\">\n      <ul class=\"nav-link-list\">\n        <li>\n          <a class=\"nav-link\" href=\"/#!/dashboard\" data-title=\"Dashboard\"><i class=\"fas fa-address-card\"></i></a>\n        </li>\n        <li>\n          <a class=\"nav-link\" href=\"/#!/friends\" data-title=\"Friends\"><i class=\"fas fa-users\"></i></a>\n        </li>\n        <li>\n          <a class=\"nav-link\" href=\"/#!/games\" data-title=\"Games\"><i class=\"fas fa-calendar-alt\"></i></a>\n        </li>\n        <!-- <li>\n          <a class=\"nav-link\" href=\"/#!/settings\"><i class=\"fas fa-cog fa-lg\"></i></a>\n        </li> -->\n        <li>\n          <a class=\"nav-link\" ng-click=\"nc.signout()\" data-title=\"Signout\"><i class=\"fas fa-sign-out-alt\"></i></a>\n        </li>\n      </ul>\n    </div>\n\n    <div class=\"hamburger-menu-icon\" id=\"hamburger-menu-icon\">\n      <span></span>\n      <span></span>\n      <span></span>\n      <span></span>\n      <span></span>\n      <span></span>\n    </div>\n  </div>\n</nav>\n\n<sub-nav data-page-title=\"'DASHBOARD'\"></sub-nav>\n";
+module.exports = "<div class=\"chart-container\">\n  <canvas id=\"gameChart\" width=\"400px\" height=\"300px\"></canvas>\n</div>\n\n<div class=\"chart-container\">\n  <canvas id=\"winChart\" width=\"250px\" height=\"250px\"></canvas>\n</div>\n";
 
 /***/ }),
 /* 239 */
@@ -67475,8 +67496,48 @@ module.exports = "<nav class=\"gff-nav default\">\n  <div class=\"title-containe
 
 
 module.exports = function (app) {
+  app.component('logo', {
+    template: __webpack_require__(240)
+  });
+};
+
+/***/ }),
+/* 240 */
+/***/ (function(module, exports) {
+
+module.exports = "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<svg class=\"gff-logo-full\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"30px\" height=\"30px\" viewBox=\"-0.258 -0.548 123.547 123.539\" xml:space=\"preserve\">\n  <g>\n    <path class=\"golfer-head\" d=\"M54.477,26.043c-4.469,0-8.078,3.57-8.078,7.961c0,4.406,3.609,7.969,8.078,7.969 c4.445,0,8.055-3.562,8.055-7.969C62.531,29.613,58.922,26.043,54.477,26.043z\" />\n    <path class=\"golfer-body\" d=\"M95.406,41.793c-0.305-1.719-1.711-2.695-1.797-2.758L46.188,7.77l-4.406,6.383 c-0.82,1.258-0.461,2.93,0.797,3.75c1.25,0.828,2.922,0.492,3.742-0.766l2.578-3.688l38.516,25.414l-31.555,5.68 c-2.234,0.375-3.852,2.609-3.352,4.797l6.867,26.547l-22.211,33.312c-1.328,2.273-0.523,5.188,1.773,6.492 c2.32,1.32,5.258,0.516,6.594-1.758c0,0,23.164-34.836,23.25-35.055c0,0,1.195,4.836,1.195,4.859L66.5,109.871 c-0.438,2.602,1.328,5.031,3.953,5.469s5.117-1.305,5.555-3.891l3.594-26.883c0.109-0.688-0.031-2.195-0.188-2.859L71.492,50.23 l20.609-3.711C94.305,46.129,95.797,44.004,95.406,41.793z\" />\n  </g>\n</svg>\n";
+
+/***/ }),
+/* 241 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (app) {
+  app.component('navBar', {
+    template: __webpack_require__(242),
+    controller: 'NavController',
+    controllerAs: 'nc'
+  });
+};
+
+/***/ }),
+/* 242 */
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\"gff-nav default\">\n  <div class=\"title-container\">\n    <logo></logo>\n    <h4 class=\"title\">GOLF FOR<span class=\"color-blue\">e</span> FRIENDS</h4>\n  </div>\n\n  <div class=\"menu-container\">\n    <p class=\"link-title\"></p>\n    <div class=\"nav-menu\" id=\"nav-menu\">\n      <ul class=\"nav-link-list\">\n        <li>\n          <a class=\"nav-link\" href=\"/#!/dashboard\" data-title=\"Dashboard\"><i class=\"fas fa-address-card\"></i></a>\n        </li>\n        <li>\n          <a class=\"nav-link\" href=\"/#!/friends\" data-title=\"Friends\"><i class=\"fas fa-users\"></i></a>\n        </li>\n        <li>\n          <a class=\"nav-link\" href=\"/#!/games\" data-title=\"Games\"><i class=\"fas fa-calendar-alt\"></i></a>\n        </li>\n        <!-- <li>\n          <a class=\"nav-link\" href=\"/#!/settings\"><i class=\"fas fa-cog fa-lg\"></i></a>\n        </li> -->\n        <li>\n          <a class=\"nav-link\" ng-click=\"nc.signout()\" data-title=\"Signout\"><i class=\"fas fa-sign-out-alt\"></i></a>\n        </li>\n      </ul>\n    </div>\n\n    <div class=\"hamburger-menu-icon\" id=\"hamburger-menu-icon\">\n      <span></span>\n      <span></span>\n      <span></span>\n      <span></span>\n      <span></span>\n      <span></span>\n    </div>\n  </div>\n</nav>\n\n<sub-nav data-page-title=\"'DASHBOARD'\"></sub-nav>\n";
+
+/***/ }),
+/* 243 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (app) {
   app.component('subNav', {
-    template: __webpack_require__(240),
+    template: __webpack_require__(244),
     controller: 'SubNavController',
     controllerAs: 'snc',
     bindings: {
@@ -67487,13 +67548,13 @@ module.exports = function (app) {
 };
 
 /***/ }),
-/* 240 */
+/* 244 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='DASHBOARD'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <!-- <div class=\"links-container\">\n    <a class=\"sub-nav-link anchor-link\" scroll-target=\"profile\"><i class=\"far fa-user\"></i>Profile</a>\n    <a class=\"sub-nav-link anchor-link\" scroll-target=\"recent-games\"><i class=\"far fa-calendar-alt\"></i>Recent Games</a>\n    <a class=\"sub-nav-link anchor-link\" scroll-target=\"leaderboard\"><i class=\"far fa-list-alt\"></i>Leaderboard</a>\n    <a class=\"sub-nav-link anchor-link\" scroll-target=\"progress\"><i class=\"fas fa-chart-line\"></i>Progress</a>\n    <sn-games ng-if=\"snc.pageTitle==='Games'\" data-creating-game=\"snc.creatingGame\"></sn-games>\n  </div> -->\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='FRIENDS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <div class=\"links-container\">\n    <add-friend></add-friend>\n  </div>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='GAMES'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <div class=\"links-container\">\n    <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=false; snc.resetForm('new-game-form')\"><i class=\"fas fa-list\"></i>Game List</a>\n    <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=true\"><i class=\"far fa-file\"></i>Create Game</a>\n  </div>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='SETTINGS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <div class=\"links-container\">\n  </div>\n</div>\n";
 
 /***/ }),
-/* 241 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67501,20 +67562,20 @@ module.exports = "<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='DASHB
 
 module.exports = function (app) {
   app.component('settings', {
-    template: __webpack_require__(242),
+    template: __webpack_require__(246),
     controller: 'SettingsController',
     controllerAs: 'sc'
   });
 };
 
 /***/ }),
-/* 242 */
+/* 246 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-title=\"'SETTINGS'\"></sub-nav>\n</div>\n\n<div class=\"page-container right\">\n  <div class=\"page-content\">\n    <div class=\"settings-container\">\n      <h3>Account Information</h3>\n      <h4>Avatar</h4>\n      <form name=\"avatar-form\">\n        <input class=\"gff-upload-btn\" type=\"file\" ng-model=\"sc.avatarFile\" id=\"avatar-input\" accept=\".jpg, .jpeg, .bmp, .png\"></input>\n        <button type=\"submit\" ng-click=\"sc.submit()\">submit</button>\n      </form>\n      <!-- <h4>Name</h4>\n      <input type=\"text\" name=\"fullName\" value=\"{{sc.user.fullName}}\"></input>\n      <h4>Email</h4>\n      <input type=\"text\" name=\"email\" value=\"{{sc.user.email}}\"></input>\n      <h4>Password</h4>\n      <p>****</p>\n      <button class=\"gff-btn\" type=\"button\" name=\"change-password-btn\">Change Password</button>\n      <form class=\"change-pw-form\" name=\"change-pw-form\">\n        <input type=\"text\" name=\"password\" placeholder=\"New Password\"></input>\n        <button class=\"gff-btn\">Change Password</button>\n      </form> -->\n    </div>\n  </div>\n</div>\n";
 
 /***/ }),
-/* 243 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67522,26 +67583,26 @@ module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-titl
 
 module.exports = function ($routeProvider, $locationProvider) {
   $routeProvider.when('/dashboard', {
-    template: __webpack_require__(244),
+    template: __webpack_require__(248),
     middleware: 'checkSessionExists'
   }).when('/friends', {
-    template: __webpack_require__(245),
+    template: __webpack_require__(249),
     middleware: 'checkSessionExists'
   }).when('/games', {
-    template: __webpack_require__(246),
+    template: __webpack_require__(250),
     middleware: 'checkSessionExists'
   }).when('/games/public/:publicId', {
-    template: __webpack_require__(247),
+    template: __webpack_require__(251),
     middleware: 'checkSessionExists',
     controller: 'GamesController',
     controllerAs: 'gc'
   }).when('/settings', {
-    template: __webpack_require__(248),
+    template: __webpack_require__(252),
     middleware: 'checkSessionExists',
     controller: 'SettingsController',
     controllerAs: 'sc'
   }).when('/', {
-    template: __webpack_require__(249),
+    template: __webpack_require__(253),
     controller: 'LandingController',
     controllerAs: 'lc'
   }).otherwise({
@@ -67550,43 +67611,43 @@ module.exports = function ($routeProvider, $locationProvider) {
 };
 
 /***/ }),
-/* 244 */
+/* 248 */
 /***/ (function(module, exports) {
 
 module.exports = "<nav-bar></nav-bar>\n<dashboard></dashboard>\n";
 
 /***/ }),
-/* 245 */
+/* 249 */
 /***/ (function(module, exports) {
 
 module.exports = "<nav-bar></nav-bar>\n<friends></friends>\n";
 
 /***/ }),
-/* 246 */
+/* 250 */
 /***/ (function(module, exports) {
 
 module.exports = "<nav-bar></nav-bar>\n<!-- <banner></banner> -->\n<!-- <sub-nav data-page-title=\"'Games'\"></sub-nav> -->\n<games></games>\n";
 
 /***/ }),
-/* 247 */
+/* 251 */
 /***/ (function(module, exports) {
 
 module.exports = "<nav-bar data-page-title=\"'Games'\"></nav-bar>\n\n<div class=\"page-container\" ng-init=\"gc.getByPublicId(gc.publicId)\">\n  <div class=\"game-header\">\n    <div class=\"bg-overlay\"></div>\n    <div class=\"header-content\">\n      <div class=\"course-box\">\n        <div class=\"loc-box\">\n          <h3><i class=\"fa fa-map-marker\"></i> {{gc.gameData.location}}</h3>\n        </div>\n        <div class=\"title-box\">\n          <h2>{{gc.gameData.name}}</h2>\n        </div>\n      </div>\n    </div>\n\n    <p>{{gc.gameData}}</p>\n\n  </div>\n  <div class=\"game-content col-md-12\">\n    <div class=\"left col-md-9\">\n    </div>\n    <div class=\"right col-md-3\">\n      <ul>\n        <li>\n          <p>{{gc.gameData.totalGolfers}} <i class=\"fa fa-user\"></i></p>\n        </li>\n        <li>\n          <p><span class=\"color-green\">+</span>{{gc.gameData.yourStrokes}}</p>\n        </li>\n        <li>\n          <p>Total Score: {{gc.gameData.yourScore}}</p>\n        </li>\n      </ul>\n    </div>\n  </div>\n</div>\n";
 
 /***/ }),
-/* 248 */
+/* 252 */
 /***/ (function(module, exports) {
 
 module.exports = "<nav-bar></nav-bar>\n<settings></settings>\n";
 
 /***/ }),
-/* 249 */
+/* 253 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"landing-container main\">\n  <div class=\"landing-content\">\n\n    <div class=\"header\">\n      <div class=\"logo-container\">\n        <logo></logo>\n        <h4 class=\"title\">GOLF FOR<span class=\"color-blue\">e</span> FRIENDS</h4>\n      </div>\n      <div class=\"links-container\">\n        <a href=\"https://github.com/sendjmoon/Golf-Fore-Friends\" target=\"_blank\"><i class=\"fab fa-github\"></i></a>\n      </div>\n    </div>\n\n    <div class=\"body\">\n      <div class=\"title-container\" ng-hide=\"auth\">\n        <h2 class=\"title\">GET STARTED</h2>\n        <p class=\"intro\">Let's connect you and your friends with the game we all love.</p>\n        <div class=\"buttons-container\">\n          <button class=\"gff-btn\" ng-click=\"auth=true; clicked='signup'\">SIGNUP</button>\n          <button class=\"gff-btn ghost\" ng-click=\"auth=true; clicked='signin'\">SIGNIN</button>\n        </div>\n      </div>\n      <auth ng-show=\"auth\" data-clicked=\"clicked\"></auth>\n      <div class=\"image-container\">\n        <img class=\"hole-image img-responsive\" src=\"{{lc.baseUrl}}/imgs/golf-hole-iso.png\" />\n      </div>\n    </div>\n\n  </div>\n</div>\n\n<div class=\"landing-container alt\">\n  <div class=\"landing-content\">\n    <div class=\"body\">\n      <div class=\"title-container\">\n        <h2 class=\"title\">FEATURES</h2>\n        <p class=\"intro\">Below are some of the tools we have available to take advantage of tracking your game.</p>\n      </div>\n      <ul class=\"features-list\">\n        <li class=\"feature\">\n          <div class=\"feature-content shadow-lg\">\n            <h4 class=\"title\">Stats</h4>\n            <div class=\"icon-container\">\n              <i class=\"fas fa-chart-line fa-7x\"></i>\n            </div>\n          </div>\n        </li>\n        <li class=\"feature\">\n          <div class=\"feature-content shadow-lg\">\n            <h4 class=\"title\">Games</h4>\n            <div class=\"icon-container\">\n              <i class=\"fas fa-calendar-alt fa-6x\"></i>\n            </div>\n          </div>\n        </li>\n        <li class=\"feature\">\n          <div class=\"feature-content shadow-lg\">\n            <h4 class=\"title\">Friends</h4>\n            <div class=\"icon-container\">\n              <i class=\"fas fa-users fa-7x\"></i>\n            </div>\n          </div>\n        </li>\n      </ul>\n    </div>\n  </div>\n</div>\n";
 
 /***/ }),
-/* 250 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67606,68 +67667,6 @@ module.exports = function ($middlewareProvider) {
     }]
   });
 };
-
-/***/ }),
-/* 251 */,
-/* 252 */,
-/* 253 */,
-/* 254 */,
-/* 255 */,
-/* 256 */,
-/* 257 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (app) {
-  app.component('addFriend', {
-    template: __webpack_require__(258),
-    controller: 'FriendController',
-    controllerAs: 'fc'
-  });
-};
-
-/***/ }),
-/* 258 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"gff-container\">\n  <div class=\"gff-content alt\">\n    <h2 class=\"box-title light\">Add more friends.</h2>\n    <div class=\"search-container\">\n      <form class=\"add-friends-form\" name=\"add-friends-form\" autocomplete=\"off\">\n        <input id=\"search-input-users\" type=\"text\" placeholder=\"Search By Email\"></input>\n        <ul class=\"users-list\">\n          <li ng-repeat=\"user in searchResults\">\n            <p>{{user.fullName}}</p>\n            <button class=\"gff-btn disabled sm\" ng-show=\"user.isFriend\"><i class=\"fas fa-check\"></i>Friends</button>\n            <button class=\"gff-btn sm\" ng-hide=\"user.isFriend\" ng-click=\"fc.addFriend(user._id, user.stats); user.isFriend=true;\"><i class=\"fas fa-user-plus\"></i>Add Friend</button>\n          </li>\n        </ul>\n      </form>\n    </div>\n  </div>\n</div>\n";
-
-/***/ }),
-/* 259 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (app) {
-  app.controller('LeaderboardController', ['$rootScope', '$scope', function ($rs, $scope) {}]);
-};
-
-/***/ }),
-/* 260 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (app) {
-  app.component('leaderboard', {
-    template: __webpack_require__(261),
-    controller: 'LeaderboardController',
-    controllerAs: 'lc',
-    bindings: {
-      leaderboard: '<'
-    }
-  });
-};
-
-/***/ }),
-/* 261 */
-/***/ (function(module, exports) {
-
-module.exports = "<h2 class=\"tile-title\">Leaderboard</h2>\n<ul class=\"leaderboard-list\">\n  <li ng-repeat=\"user in lc.leaderboard | limitTo:5\">\n    <div class=\"player-container\">\n      <div class=\"left\">\n        <p class=\"position\">{{$index + 1}}</p>\n        <p class=\"name\"><strong>{{user.fullName}}</strong></p>\n      </div>\n      <div class=\"right\">\n        <p class=\"handicap\"><span class=\"color-green\">+</span><strong>{{user.stats.handicap}}</strong></p>\n      </div>\n    </div>\n    <div class=\"gff-progress-bar\">\n      <div class=\"gff-progress-bar-fill\"></div>\n    </div>\n  </li>\n</ul>\n";
 
 /***/ })
 /******/ ]);
