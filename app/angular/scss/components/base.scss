@@ -12,3 +12,12 @@ add-friend {
   display: table;
   width: 100%;
 }
+
+nav-bar,
+dashboard,
+friends,
+games,
+settings {
+  max-width: 1200px;
+  margin: 0 auto;
+}

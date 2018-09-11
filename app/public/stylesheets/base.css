@@ -96,6 +96,14 @@ add-friend {
   display: table;
   width: 100%; }
 
+nav-bar,
+dashboard,
+friends,
+games,
+settings {
+  max-width: 1200px;
+  margin: 0 auto; }
+
 .gff-box {
   padding: 15px;
   z-index: 2; }
@@ -1138,7 +1146,3 @@ create-game {
 settings {
   display: flex;
   width: 100%; }
-
-main {
-  max-width: 1200px;
-  margin: 0 auto; }

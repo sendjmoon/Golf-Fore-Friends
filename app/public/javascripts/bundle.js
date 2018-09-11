@@ -67032,9 +67032,14 @@ module.exports = function (app) {
 module.exports = function (app) {
   app.controller('LeaderboardController', ['$rootScope', '$scope', function ($rs, $scope) {
     var ctrl = this;
+    var maxHandicap = 0;
+    var fillArray = [];
 
-    ctrl.fillPlayerBar = function () {
-      var $barFill = $('.gff-progress-bar-fill');
+    ctrl.fillPlayerBar = function (user) {
+      fillArray.push(100 - user.stats.handicap + '%');
+      $('.gff-progress-bar-fill').each(function (index, val) {
+        $(this).css('width', fillArray[index]);
+      });
     };
   }]);
 };
@@ -67318,7 +67323,7 @@ module.exports = function (app) {
 /* 224 */
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"tile-title\">Leaderboard</h2>\n<ul class=\"leaderboard-list\">\n  <li ng-repeat=\"user in lc.leaderboard | limitTo:5\">\n    <div class=\"player-container\">\n      <div class=\"left\">\n        <p class=\"position\">{{$index + 1}}</p>\n        <p class=\"name\"><strong>{{user.fullName}}</strong></p>\n      </div>\n      <div class=\"right\">\n        <p class=\"handicap\"><span class=\"color-green\">+</span><strong>{{user.stats.handicap}}</strong></p>\n      </div>\n    </div>\n    <div class=\"gff-progress-bar\">\n      <div class=\"gff-progress-bar-fill\"></div>\n    </div>\n  </li>\n</ul>\n";
+module.exports = "<h2 class=\"tile-title\">Leaderboard</h2>\n<ul class=\"leaderboard-list\">\n  <li ng-repeat=\"user in lc.leaderboard | limitTo:5\" class=\"{{'lb-' + $index}}\" ng-init=\"lc.fillPlayerBar(user)\">\n    <div class=\"player-container\">\n      <div class=\"left\">\n        <p class=\"position\">{{$index + 1}}</p>\n        <p class=\"name\"><strong>{{user.fullName}}</strong></p>\n      </div>\n      <div class=\"right\">\n        <p class=\"handicap\"><span class=\"color-green\">+</span><strong>{{user.stats.handicap}}</strong></p>\n      </div>\n    </div>\n    <div class=\"gff-progress-bar\">\n      <div class=\"gff-progress-bar-fill\"></div>\n    </div>\n  </li>\n</ul>\n";
 
 /***/ }),
 /* 225 */

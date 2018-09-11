@@ -1,6 +1,6 @@
 <h2 class="tile-title">Leaderboard</h2>
 <ul class="leaderboard-list">
-  <li ng-repeat="user in lc.leaderboard | limitTo:5">
+  <li ng-repeat="user in lc.leaderboard | limitTo:5" class="{{'lb-' + $index}}" ng-init="lc.fillPlayerBar(user)">
     <div class="player-container">
       <div class="left">
         <p class="position">{{$index + 1}}</p>
