@@ -67032,7 +67032,6 @@ module.exports = function (app) {
 module.exports = function (app) {
   app.controller('LeaderboardController', ['$rootScope', '$scope', function ($rs, $scope) {
     var ctrl = this;
-    var maxHandicap = 0;
     var fillArray = [];
 
     ctrl.fillPlayerBar = function (user) {

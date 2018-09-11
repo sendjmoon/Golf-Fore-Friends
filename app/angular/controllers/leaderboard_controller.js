@@ -3,7 +3,6 @@
 module.exports = function(app) {
   app.controller('LeaderboardController', ['$rootScope', '$scope', function($rs, $scope) {
     const ctrl = this;
-    let maxHandicap = 0;
     let fillArray = [];
 
     ctrl.fillPlayerBar = function(user) {
