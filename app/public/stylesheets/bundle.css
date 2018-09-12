@@ -56,6 +56,11 @@
       -ms-flex-direction: row !important;
           flex-direction: row !important; }
 
+hr {
+  width: 80%; }
+  hr.sm {
+    margin: 5px 0; }
+
 /* ----- face -----*/
 h1, h2, h3, h4, h5, h6, a, p, input, button {
   font-family: 'Lato', sans-serif; }
@@ -109,7 +114,8 @@ settings {
 
 add-friend {
   display: table;
-  width: 100%; }
+  width: 100%;
+  min-width: 225px; }
 
 .gff-box {
   padding: 15px;
@@ -510,6 +516,8 @@ add-friend {
     pointer-events: none; }
     .gff-btn.disabled .fa-check {
       color: #329af0; }
+    .gff-btn.disabled.light {
+      background: none; }
   .gff-btn.sm {
     padding: 5px 10px; }
   .gff-btn:hover {
@@ -1139,13 +1147,30 @@ sub-nav {
 .users-list {
   position: absolute;
   background: #fff; }
-  .users-list li {
-    padding: 5px;
-    margin-top: 5px;
+  .users-list .user {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #f1f1f1;
     background: none;
     color: #616161; }
-    .users-list li button {
-      width: 100%; }
+    .users-list .user:hover {
+      background: #e9f4fd; }
+    .users-list .user p {
+      margin: 0; }
+    .users-list .user button svg {
+      margin: 0; }
 
 .friends-list, .games-list {
   padding: 30px 15px; }

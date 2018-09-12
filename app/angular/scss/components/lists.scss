@@ -50,14 +50,26 @@
   position: absolute;
   background: #fff;
 
-  li {
-    padding: 5px;
-    margin-top: 5px;
+  .user {
+    @include flex(space-between, center, row);
+    padding: 10px;
+    border-bottom: 1px solid $border-color-light;
     background: none;
     color: $color-font-gray;
 
+    &:hover {
+      background: $color-blue-ultra-light;
+    }
+
+    p {
+      margin: 0;
+    }
+
     button {
-      width: 100%;
+
+      svg {
+        margin: 0;
+      }
     }
   }
 }

@@ -11,11 +11,14 @@
 
   &.disabled {
     background: rgba(50, 50, 50, 0.5);
-    // color: $color-blue;
     pointer-events: none;
 
     .fa-check {
       color: $color-blue;
+    }
+
+    &.light {
+      background: none;
     }
   }
 

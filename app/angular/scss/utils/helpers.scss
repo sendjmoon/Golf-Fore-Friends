@@ -70,3 +70,11 @@
   display: flex;
   flex-direction: row !important;
 }
+
+hr {
+  width: 80%;
+
+  &.sm {
+    margin: 5px 0;
+  }
+}
