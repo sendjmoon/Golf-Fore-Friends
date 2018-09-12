@@ -84,25 +84,24 @@ banner {
   background-size: cover;
   background-position: center; }
 
-/* ----- headers ----- */
 h1, h2, h3, h4, h5 {
   margin: 0; }
 
-/* ----- misc ----- */
 .gff-gradient {
   display: inline-block; }
 
-add-friend {
-  display: table;
-  width: 100%; }
-
 nav-bar,
+sub-nav,
 dashboard,
 friends,
 games,
 settings {
   max-width: 1200px;
   margin: 0 auto; }
+
+add-friend {
+  display: table;
+  width: 100%; }
 
 .gff-box {
   padding: 15px;
@@ -462,11 +461,12 @@ canvas {
   width: 100%;
   height: 30px;
   padding: 16px 10px;
-  margin-top: 2px;
   border: 1px solid #e1e1e1;
   border-radius: 2px;
   outline: none;
   color: #329af0; }
+  .gff-input:hover {
+    border-color: #ffb824; }
   .gff-input:active, .gff-input:focus {
     border-color: #63b5f7; }
 
@@ -487,8 +487,10 @@ canvas {
     .gff-select select:focus {
       outline-color: rgba(254, 172, 0, 0.8); }
 
-.search-container input {
-  width: 100%; }
+.search-container {
+  position: relative; }
+  .search-container input {
+    width: 100%; }
 
 auth {
   display: flex;
@@ -616,8 +618,7 @@ nav-bar {
   align-items: center;
   position: relative;
   z-index: 25;
-  width: 100%;
-  height: 135px; }
+  width: 100%; }
 
 .gff-nav {
   display: flex;
@@ -761,7 +762,7 @@ sub-nav {
   height: 100%;
   padding-left: 15px;
   padding-right: 15px; }
-  .sub-nav-content h2, .sub-nav-content a {
+  .sub-nav-content h2, .sub-nav-content h3, .sub-nav-content a {
     font-size: 14px;
     line-height: 16px;
     font-weight: 400; }
@@ -769,6 +770,15 @@ sub-nav {
     margin-bottom: 0;
     color: #4b4e54;
     font-size: 12px; }
+    .sub-nav-content .title.sub {
+      margin-right: 15px;
+      white-space: nowrap; }
+  .sub-nav-content .links-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%; }
   .sub-nav-content .svg-inline--fa {
     width: 20px;
     margin-right: 5px; }
@@ -823,13 +833,16 @@ sub-nav {
   margin: 0;
   list-style: none; }
 
-.users-list li {
-  padding: 5px;
-  margin-top: 5px;
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff; }
-  .users-list li button {
-    width: 100%; }
+.users-list {
+  position: absolute;
+  background: #fff; }
+  .users-list li {
+    padding: 5px;
+    margin-top: 5px;
+    background: none;
+    color: #616161; }
+    .users-list li button {
+      width: 100%; }
 
 .friends-list, .games-list {
   padding: 30px 15px; }

@@ -12,7 +12,7 @@ sub-nav {
   padding-left: 15px;
   padding-right: 15px;
 
-  h2, a {
+  h2, h3, a {
     font-size: 14px;
     line-height: 16px;
     font-weight: 400;
@@ -22,6 +22,16 @@ sub-nav {
     margin-bottom: 0;
     color: $font-color-dark;
     font-size: 12px;
+
+    &.sub {
+      margin-right: 15px;
+      white-space: nowrap;
+    }
+  }
+
+  .links-container {
+    @include flex(flex-start, center, row);
+    height: 100%;
   }
 
   .svg-inline--fa {

@@ -1,23 +1,22 @@
-/* ----- headers ----- */
 h1, h2, h3, h4, h5 {
   margin: 0;
 }
 
-/* ----- misc ----- */
 .gff-gradient {
   display: inline-block;
 }
 
-add-friend {
-  display: table;
-  width: 100%;
-}
-
 nav-bar,
+sub-nav,
 dashboard,
 friends,
 games,
 settings {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+add-friend {
+  display: table;
+  width: 100%;
 }

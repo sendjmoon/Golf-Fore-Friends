@@ -1,10 +1,9 @@
 <div class="gff-container">
   <div class="gff-content alt">
-    <h2 class="box-title light">Add more friends.</h2>
     <div class="search-container">
       <form class="add-friends-form" name="add-friends-form" autocomplete="off">
-        <input id="search-input-users" type="text" placeholder="Search By Email"></input>
-        <ul class="users-list">
+        <input class="gff-input" id="search-input-users" type="text" placeholder="Search By Email"></input>
+        <ul class="users-list shadow-sm">
           <li ng-repeat="user in searchResults">
             <p>{{user.fullName}}</p>
             <button class="gff-btn disabled sm" ng-show="user.isFriend"><i class="fas fa-check"></i>Friends</button>

@@ -47,12 +47,14 @@
 }
 
 .users-list {
+  position: absolute;
+  background: #fff;
 
   li {
     padding: 5px;
     margin-top: 5px;
-    background: rgba(255, 255, 255, 0.2);
-    color: $color-font-white;
+    background: none;
+    color: $color-font-gray;
 
     button {
       width: 100%;

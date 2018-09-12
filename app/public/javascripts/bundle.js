@@ -67345,7 +67345,7 @@ module.exports = function (app) {
 /* 226 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-container left\">\n  <sub-nav data-page-title=\"'FRIENDS'\"></sub-nav>\n</div>\n\n<div class=\"page-container right\">\n  <div class=\"page-content\">\n    <ul class=\"friends-list\">\n      <li class=\"friend-box shadow-sm\" ng-repeat=\"friend in friendsData.friends\">\n        <div class=\"profile-pic\">\n          <i class=\"fa fa-user\"></i>\n        </div>\n        <div class=\"content\">\n          <h4 class=\"box-title\">{{friend.fullName}}</h4>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>\n";
+module.exports = "<div class=\"page-container right\">\n  <div class=\"page-content\">\n    <ul class=\"friends-list\">\n      <li class=\"friend-box shadow-sm\" ng-repeat=\"friend in friendsData.friends\">\n        <div class=\"profile-pic\">\n          <i class=\"fa fa-user\"></i>\n        </div>\n        <div class=\"content\">\n          <h4 class=\"box-title\">{{friend.fullName}}</h4>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>\n";
 
 /***/ }),
 /* 227 */
@@ -67366,7 +67366,7 @@ module.exports = function (app) {
 /* 228 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"gff-container\">\n  <div class=\"gff-content alt\">\n    <h2 class=\"box-title light\">Add more friends.</h2>\n    <div class=\"search-container\">\n      <form class=\"add-friends-form\" name=\"add-friends-form\" autocomplete=\"off\">\n        <input id=\"search-input-users\" type=\"text\" placeholder=\"Search By Email\"></input>\n        <ul class=\"users-list\">\n          <li ng-repeat=\"user in searchResults\">\n            <p>{{user.fullName}}</p>\n            <button class=\"gff-btn disabled sm\" ng-show=\"user.isFriend\"><i class=\"fas fa-check\"></i>Friends</button>\n            <button class=\"gff-btn sm\" ng-hide=\"user.isFriend\" ng-click=\"fc.addFriend(user._id, user.stats); user.isFriend=true;\"><i class=\"fas fa-user-plus\"></i>Add Friend</button>\n          </li>\n        </ul>\n      </form>\n    </div>\n  </div>\n</div>\n";
+module.exports = "<div class=\"gff-container\">\n  <div class=\"gff-content alt\">\n    <div class=\"search-container\">\n      <form class=\"add-friends-form\" name=\"add-friends-form\" autocomplete=\"off\">\n        <input class=\"gff-input\" id=\"search-input-users\" type=\"text\" placeholder=\"Search By Email\"></input>\n        <ul class=\"users-list shadow-sm\">\n          <li ng-repeat=\"user in searchResults\">\n            <p>{{user.fullName}}</p>\n            <button class=\"gff-btn disabled sm\" ng-show=\"user.isFriend\"><i class=\"fas fa-check\"></i>Friends</button>\n            <button class=\"gff-btn sm\" ng-hide=\"user.isFriend\" ng-click=\"fc.addFriend(user._id, user.stats); user.isFriend=true;\"><i class=\"fas fa-user-plus\"></i>Add Friend</button>\n          </li>\n        </ul>\n      </form>\n    </div>\n  </div>\n</div>\n";
 
 /***/ }),
 /* 229 */
@@ -67530,7 +67530,7 @@ module.exports = function (app) {
 /* 242 */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"gff-nav default\">\n  <div class=\"title-container\">\n    <logo></logo>\n    <h4 class=\"title\">GOLF FOR<span class=\"color-blue\">e</span> FRIENDS</h4>\n  </div>\n\n  <div class=\"menu-container\">\n    <p class=\"link-title\"></p>\n    <div class=\"nav-menu\" id=\"nav-menu\">\n      <ul class=\"nav-link-list\">\n        <li>\n          <a class=\"nav-link\" href=\"/#!/dashboard\" data-title=\"Dashboard\"><i class=\"fas fa-address-card\"></i></a>\n        </li>\n        <li>\n          <a class=\"nav-link\" href=\"/#!/friends\" data-title=\"Friends\"><i class=\"fas fa-users\"></i></a>\n        </li>\n        <li>\n          <a class=\"nav-link\" href=\"/#!/games\" data-title=\"Games\"><i class=\"fas fa-calendar-alt\"></i></a>\n        </li>\n        <!-- <li>\n          <a class=\"nav-link\" href=\"/#!/settings\"><i class=\"fas fa-cog fa-lg\"></i></a>\n        </li> -->\n        <li>\n          <a class=\"nav-link\" ng-click=\"nc.signout()\" data-title=\"Signout\"><i class=\"fas fa-sign-out-alt\"></i></a>\n        </li>\n      </ul>\n    </div>\n\n    <div class=\"hamburger-menu-icon\" id=\"hamburger-menu-icon\">\n      <span></span>\n      <span></span>\n      <span></span>\n      <span></span>\n      <span></span>\n      <span></span>\n    </div>\n  </div>\n</nav>\n\n<sub-nav data-page-title=\"'DASHBOARD'\"></sub-nav>\n";
+module.exports = "<nav class=\"gff-nav default\">\n  <div class=\"title-container\">\n    <logo></logo>\n    <h4 class=\"title\">GOLF FOR<span class=\"color-blue\">e</span> FRIENDS</h4>\n  </div>\n\n  <div class=\"menu-container\">\n    <p class=\"link-title\"></p>\n    <div class=\"nav-menu\" id=\"nav-menu\">\n      <ul class=\"nav-link-list\">\n        <li>\n          <a class=\"nav-link\" href=\"/#!/dashboard\" data-title=\"Dashboard\"><i class=\"fas fa-address-card\"></i></a>\n        </li>\n        <li>\n          <a class=\"nav-link\" href=\"/#!/friends\" data-title=\"Friends\"><i class=\"fas fa-users\"></i></a>\n        </li>\n        <li>\n          <a class=\"nav-link\" href=\"/#!/games\" data-title=\"Games\"><i class=\"fas fa-calendar-alt\"></i></a>\n        </li>\n        <!-- <li>\n          <a class=\"nav-link\" href=\"/#!/settings\"><i class=\"fas fa-cog fa-lg\"></i></a>\n        </li> -->\n        <li>\n          <a class=\"nav-link\" ng-click=\"nc.signout()\" data-title=\"Signout\"><i class=\"fas fa-sign-out-alt\"></i></a>\n        </li>\n      </ul>\n    </div>\n\n    <div class=\"hamburger-menu-icon\" id=\"hamburger-menu-icon\">\n      <span></span>\n      <span></span>\n      <span></span>\n      <span></span>\n      <span></span>\n      <span></span>\n    </div>\n  </div>\n</nav>\n";
 
 /***/ }),
 /* 243 */
@@ -67555,7 +67555,7 @@ module.exports = function (app) {
 /* 244 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='DASHBOARD'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <!-- <div class=\"links-container\">\n    <a class=\"sub-nav-link anchor-link\" scroll-target=\"profile\"><i class=\"far fa-user\"></i>Profile</a>\n    <a class=\"sub-nav-link anchor-link\" scroll-target=\"recent-games\"><i class=\"far fa-calendar-alt\"></i>Recent Games</a>\n    <a class=\"sub-nav-link anchor-link\" scroll-target=\"leaderboard\"><i class=\"far fa-list-alt\"></i>Leaderboard</a>\n    <a class=\"sub-nav-link anchor-link\" scroll-target=\"progress\"><i class=\"fas fa-chart-line\"></i>Progress</a>\n    <sn-games ng-if=\"snc.pageTitle==='Games'\" data-creating-game=\"snc.creatingGame\"></sn-games>\n  </div> -->\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='FRIENDS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <div class=\"links-container\">\n    <add-friend></add-friend>\n  </div>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='GAMES'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <div class=\"links-container\">\n    <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=false; snc.resetForm('new-game-form')\"><i class=\"fas fa-list\"></i>Game List</a>\n    <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=true\"><i class=\"far fa-file\"></i>Create Game</a>\n  </div>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='SETTINGS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <div class=\"links-container\">\n  </div>\n</div>\n";
+module.exports = "<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='DASHBOARD'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='FRIENDS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <div class=\"links-container\">\n    <h3 class=\"title sub\">ADD A FRIEND</h3>\n    <add-friend></add-friend>\n  </div>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='GAMES'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <div class=\"links-container\">\n    <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=false; snc.resetForm('new-game-form')\"><i class=\"fas fa-list\"></i>Game List</a>\n    <a class=\"sub-nav-link\" ng-click=\"snc.creatingGame=true\"><i class=\"far fa-file\"></i>Create Game</a>\n  </div>\n</div>\n\n<div class=\"sub-nav-content\" ng-show=\"snc.pageTitle=='SETTINGS'\">\n  <h2 class=\"title\">{{snc.pageTitle}}</h2>\n  <div class=\"links-container\">\n  </div>\n</div>\n";
 
 /***/ }),
 /* 245 */
@@ -67618,19 +67618,19 @@ module.exports = function ($routeProvider, $locationProvider) {
 /* 248 */
 /***/ (function(module, exports) {
 
-module.exports = "<nav-bar></nav-bar>\n<dashboard></dashboard>\n";
+module.exports = "<nav-bar></nav-bar>\n<sub-nav data-page-title=\"'DASHBOARD'\"></sub-nav>\n<dashboard></dashboard>\n";
 
 /***/ }),
 /* 249 */
 /***/ (function(module, exports) {
 
-module.exports = "<nav-bar></nav-bar>\n<friends></friends>\n";
+module.exports = "<nav-bar></nav-bar>\n<sub-nav data-page-title=\"'FRIENDS'\"></sub-nav>\n<friends></friends>\n";
 
 /***/ }),
 /* 250 */
 /***/ (function(module, exports) {
 
-module.exports = "<nav-bar></nav-bar>\n<!-- <banner></banner> -->\n<!-- <sub-nav data-page-title=\"'Games'\"></sub-nav> -->\n<games></games>\n";
+module.exports = "<nav-bar></nav-bar>\n<sub-nav data-page-title=\"'GAMES'\"></sub-nav>\n<games></games>\n";
 
 /***/ }),
 /* 251 */
