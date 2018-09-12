@@ -72,7 +72,11 @@
 }
 
 hr {
-  width: 80%;
+  width: 100%;
+
+  &.lg {
+    width: 95%;
+  }
 
   &.sm {
     margin: 5px 0;

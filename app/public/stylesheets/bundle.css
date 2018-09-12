@@ -57,7 +57,9 @@
           flex-direction: row !important; }
 
 hr {
-  width: 80%; }
+  width: 100%; }
+  hr.lg {
+    width: 95%; }
   hr.sm {
     margin: 5px 0; }
 
@@ -121,47 +123,23 @@ add-friend {
   padding: 15px;
   z-index: 2; }
 
-.friend-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 170px;
-  margin-bottom: 15px;
-  border-radius: 2px; }
-  .friend-box .profile-pic {
+.friend-container {
+  width: 100%;
+  margin-bottom: 15px; }
+  .friend-container .friend-content {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
+    -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
     -webkit-box-align: center;
         -ms-flex-align: center;
-            align-items: center;
-    width: 100%;
-    height: 170px;
-    background: #f1f1f1;
-    font-size: 80px;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px; }
-  .friend-box .content {
-    padding: 15px; }
-    .friend-box .content .box-title {
-      margin: 0; }
+            align-items: center; }
 
 .player-box {
   position: relative;
@@ -1454,6 +1432,47 @@ friends {
   display: -ms-flexbox;
   display: flex;
   width: 100%; }
+
+.friends-table {
+  width: 100%;
+  border-spacing: 25px;
+  border-collapse: separate; }
+  .friends-table p {
+    margin: 0; }
+  .friends-table th {
+    color: #aaa;
+    font-weight: 400; }
+    .friends-table th.profile-pic-header {
+      width: 100px; }
+    .friends-table th.handicap-header {
+      text-align: center; }
+  .friends-table td .profile-pic {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 75px;
+    height: 75px;
+    background: #f1f1f1;
+    font-size: 50px;
+    border-radius: 2px; }
+  .friends-table td.name p, .friends-table td.handicap p, .friends-table td.stats p {
+    font-weight: 400; }
+  .friends-table td.handicap {
+    text-align: center; }
+  .friends-table td.stats .stats-content p {
+    margin-bottom: 7px; }
+  .friends-table td.stats .stats-content span {
+    margin-right: 5px; }
 
 .landing-container.main {
   height: 100vh;

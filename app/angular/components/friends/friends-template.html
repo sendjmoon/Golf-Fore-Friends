@@ -1,14 +1,61 @@
-<div class="page-container right">
+<div class="page-container">
+  <div class="page-content">
+    <table class="friends-table">
+      <tbody>
+        <tr>
+          <th class="profile-pic-header"></th>
+          <th class="name-header">Name</th>
+          <th class="handicap-header">Handicap</th>
+          <th class="stats-header">Stats</th>
+        </tr>
+        <tr ng-repeat="friend in friendsData.friends">
+          <td>
+            <div class="profile-pic">
+              <i class="fa fa-user"></i>
+            </div>
+          </td>
+          <td class="name"><p>{{friend.fullName}}</p></td>
+          <td class="handicap"><p><span class="color-green">+</span>{{friend.stats.handicap}}</p></td>
+          <td class="stats">
+            <div class="stats-content">
+              <p><span class="color-blue">{{friend.stats.wins}}</span> wins</p>
+              <p><span class="color-blue">{{friend.stats.losses}}</span> losses</p>
+              <p><span class="color-blue">{{friend.stats.winRatio}}</span> win ratio</p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- <div class="page-container right">
   <div class="page-content">
     <ul class="friends-list">
-      <li class="friend-box shadow-sm" ng-repeat="friend in friendsData.friends">
-        <div class="profile-pic">
-          <i class="fa fa-user"></i>
+      <li class="friend-container" ng-repeat="friend in friendsData.friends">
+        <div class="friend-content">
+          <div class="profile-pic">
+            <i class="fa fa-user"></i>
+          </div>
+          <div class="name-container">
+            <h4 class="container-header">Name</h4>
+            <h4 class="name">{{friend.fullName}}</h4>
+          </div>
+          <div class="handicap-container">
+            <h4 class="container-header">Handicap</h4>
+            <h4 class="handicap"><span class="color-green">+</span>{{friend.stats.handicap}}</h4>
+          </div>
+          <div class="stats-container">
+            <h4 class="container-header">Stats</h4>
+            <div class="stats-content">
+              <h4 class="container-header">Wins&nbsp;</h4><p>{{friend.stats.wins}}</p>
+              <h4 class="container-header">Losses&nbsp;</h4><p>{{friend.stats.losses}}</p>
+              <h4 class="container-header">Win Ratio&nbsp;</h4><p>{{friend.stats.winRatio}}</p>
+            </div>
+          </div>
         </div>
-        <div class="content">
-          <h4 class="box-title">{{friend.fullName}}</h4>
-        </div>
+        <hr class="lg color-gray"></hr>
       </li>
     </ul>
   </div>
-</div>
+</div> -->
