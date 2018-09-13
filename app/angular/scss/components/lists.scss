@@ -88,19 +88,22 @@
     width: 100%;
     height: 100px;
     margin-top: 6px;
+    border: 1px solid $border-invis;
     border-radius: 2px;
     box-shadow: 1px 1px 4px rgba(211, 224, 235, 0.8);
-    background-color: #fff;
-    color: $color-blue-dark;
+    background: #fff;
     overflow: hidden;
     transition: all 0.2s ease;
+
+    &:hover {
+      border: 1px solid $color-orange;
+    }
 
     .game-date {
       @include flex(center, center, col);
       width: 30%;
       min-width: 150px;
       height: 100%;
-      color: $color-blue;
 
       p {
         margin: 0;
@@ -128,7 +131,6 @@
         font-size: 16px;
         font-weight: 400;
         line-height: 18px;
-        color: $color-blue;
       }
 
       .svg-inline--fa {

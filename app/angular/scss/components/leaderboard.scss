@@ -13,8 +13,13 @@
       @include flex(space-between, center, row);
       margin-bottom: 5px;
 
+      p {
+        font-weight: 400;
+      }
+
       .position {
         display: inline;
+        color: $color-orange;
       }
 
       .name {

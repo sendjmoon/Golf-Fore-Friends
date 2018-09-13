@@ -1,11 +1,9 @@
 dashboard {
   display: flex;
   width: 100%;
-  // min-height: calc(100vh - 60px);
 }
 
 .dashboard-content {
-  color: $font-color-light;
 
   .handicap-container,
   .leaderboard-container,

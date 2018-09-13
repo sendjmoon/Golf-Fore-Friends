@@ -8,25 +8,25 @@
             <i class="fas fa-user"></i>
           </div>
           <div class="user-info">
-            <p class="member-since" ng-init="dc.formatDate(dc.user)">MEMBER SINCE <strong>{{dc.user.createdAt}}</strong></p>
+            <p class="member-since" ng-init="dc.formatDate(dc.user)"><span class="color-blue">Member since</span> {{dc.user.createdAt}}</p>
             <p class="name">{{dc.user.fullName}}</p>
           </div>
         </div>
         <ul class="user-stats">
           <li>
-            <p class="title">HANDICAP</p>
-            <p class="value"><span class="color-blue">+</span>{{dc.user.stats.handicap}}</p>
+            <p class="title">Handicap</p>
+            <p class="value"><span class="color-green">+</span>{{dc.user.stats.handicap}}</p>
           </li>
           <li>
-            <p class="title">WINS</p>
+            <p class="title">Wins</p>
             <p class="value">{{dc.user.stats.wins}}</p>
           </li>
           <li>
-            <p class="title">LOSSES</p>
+            <p class="title">Losses</p>
             <p class="value">{{dc.user.stats.losses}}</p>
           </li>
           <li>
-            <p class="title">WIN RATIO</p>
+            <p class="title">Win Ratio</p>
             <p class="value">{{dc.user.stats.winRatio}}</p>
           </li>
         </ul>
@@ -40,7 +40,7 @@
           <div class="recent-games-container">
             <ul class="recent-games-list">
               <li class="recent-game" ng-repeat="game in gamesData.games|limitTo:3">
-                <div class="game-date" ng-init="game.dateData = dc.parseDate(game.datePlayed)">
+                <div class="game-date" ng-init="game.dateData = dc.formatRecentGamesDate(game.datePlayed)">
                   <p class="day">{{game.dateData.day}}</p>
                   <p class="date">{{game.dateData.date}}</p>
                   <p class="month-year">{{game.dateData.month}} {{game.dateData.year}}</p>
@@ -51,7 +51,6 @@
                     <p class="location"><i class="fas fa-map-marker-alt"></i>{{game.location}}</p>
                   </div>
                   <div class="footer">
-                    <!-- <p class="date">{{game.datePlayed}}</p> -->
                     <div class="links">
                       <p class="players"><i class="fas fa-user"></i>{{game.results.length}}</p>
                       <p class="comments"><i class="fas fa-comment"></i>{{game.comments.length}}</p>

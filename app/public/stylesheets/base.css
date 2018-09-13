@@ -281,6 +281,7 @@ add-friend {
     margin: 0 auto; }
   .tile-container .tile-title {
     margin-bottom: 10px;
+    color: #329af0;
     font-size: 16px;
     line-height: 20px;
     font-weight: 400; }
@@ -306,27 +307,6 @@ add-friend {
   width: 100%;
   padding: 30px 15px; }
 
-.user-stats {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  text-align: center; }
-  .user-stats li {
-    width: 25%; }
-    .user-stats li p {
-      margin: 0; }
-    .user-stats li .title {
-      font-size: 12px;
-      color: #a3adb7; }
-    .user-stats li .value {
-      font-size: 24px;
-      font-weight: 400; }
-
 .user-container {
   display: flex;
   flex-direction: row;
@@ -342,7 +322,7 @@ add-friend {
     height: 100px;
     background: rgba(78, 84, 100, 0.1);
     border-radius: 2px;
-    color: #fff;
+    color: #4b4e54;
     font-size: 80px;
     text-align: center; }
   .user-container .user-info {
@@ -351,14 +331,37 @@ add-friend {
     list-style: none; }
     .user-container .user-info p {
       margin: 0;
-      font-size: 12px; }
+      font-size: 14px;
+      font-weight: 400; }
     .user-container .user-info .member-since {
-      color: #a3adb7; }
+      color: #4b4e54; }
     .user-container .user-info .name {
       margin-top: 5px;
       font-size: 24px;
       font-weight: 400;
       line-height: 26px; }
+
+.user-stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center; }
+  .user-stats li {
+    width: 25%; }
+    .user-stats li p {
+      margin: 0;
+      font-weight: 400; }
+    .user-stats li .title {
+      font-size: 14px;
+      color: #329af0; }
+    .user-stats li .value {
+      font-size: 24px;
+      font-weight: 400; }
 
 .gff-btn {
   margin: 0;
@@ -552,8 +555,11 @@ auth {
       justify-content: space-between;
       align-items: center;
       margin-bottom: 5px; }
+      .leaderboard-list li .player-container p {
+        font-weight: 400; }
       .leaderboard-list li .player-container .position {
-        display: inline; }
+        display: inline;
+        color: #ffb824; }
       .leaderboard-list li .player-container .name {
         display: inline;
         margin-left: 5px; }
@@ -862,12 +868,14 @@ sub-nav {
     width: 100%;
     height: 100px;
     margin-top: 6px;
+    border: 1px solid transparent;
     border-radius: 2px;
     box-shadow: 1px 1px 4px rgba(211, 224, 235, 0.8);
-    background-color: #fff;
-    color: #4e5464;
+    background: #fff;
     overflow: hidden;
     transition: all 0.2s ease; }
+    .recent-games-list .recent-game:hover {
+      border: 1px solid #ffb824; }
     .recent-games-list .recent-game .game-date {
       display: flex;
       flex-direction: column;
@@ -875,8 +883,7 @@ sub-nav {
       align-items: center;
       width: 30%;
       min-width: 150px;
-      height: 100%;
-      color: #329af0; }
+      height: 100%; }
       .recent-games-list .recent-game .game-date p {
         margin: 0; }
       .recent-games-list .recent-game .game-date .date {
@@ -897,8 +904,7 @@ sub-nav {
         margin-bottom: 3px;
         font-size: 16px;
         font-weight: 400;
-        line-height: 18px;
-        color: #329af0; }
+        line-height: 18px; }
       .recent-games-list .recent-game .game-info .svg-inline--fa {
         margin-right: 5px;
         color: #329af0; }
@@ -998,62 +1004,62 @@ dashboard {
   display: flex;
   width: 100%; }
 
-.dashboard-content {
-  color: #fff; }
-  .dashboard-content .handicap-container,
-  .dashboard-content .leaderboard-container,
-  .dashboard-content .recent-comments-container {
-    padding: 0; }
-  .dashboard-content .handicap-container {
-    padding: 0 15px; }
-    .dashboard-content .handicap-container .handicap-content {
-      padding-left: 0;
-      padding-top: 10px;
-      background: #fff;
-      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); }
-    .dashboard-content .handicap-container .score-box {
-      display: inline-block;
+.dashboard-content .handicap-container,
+.dashboard-content .leaderboard-container,
+.dashboard-content .recent-comments-container {
+  padding: 0; }
+
+.dashboard-content .handicap-container {
+  padding: 0 15px; }
+  .dashboard-content .handicap-container .handicap-content {
+    padding-left: 0;
+    padding-top: 10px;
+    background: #fff;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); }
+  .dashboard-content .handicap-container .score-box {
+    display: inline-block;
+    width: 100%;
+    padding: 15px;
+    border-radius: 2px;
+    color: #4b4e54;
+    text-align: center; }
+    .dashboard-content .handicap-container .score-box h3 {
+      margin: 0;
+      font-size: 60px; }
+
+.dashboard-content .leaderboard-container {
+  padding: 0 15px; }
+  .dashboard-content .leaderboard-container .leaderboard-content {
+    padding: 30px;
+    background: #fff;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); }
+  .dashboard-content .leaderboard-container .leaderboard-list {
+    padding: 0;
+    margin: 0;
+    list-style: none; }
+    .dashboard-content .leaderboard-container .leaderboard-list li {
+      display: table;
       width: 100%;
-      padding: 15px;
+      margin-bottom: 5px;
       border-radius: 2px;
       color: #4b4e54;
-      text-align: center; }
-      .dashboard-content .handicap-container .score-box h3 {
-        margin: 0;
-        font-size: 60px; }
-  .dashboard-content .leaderboard-container {
-    padding: 0 15px; }
-    .dashboard-content .leaderboard-container .leaderboard-content {
-      padding: 30px;
-      background: #fff;
-      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); }
-    .dashboard-content .leaderboard-container .leaderboard-list {
-      padding: 0;
-      margin: 0;
-      list-style: none; }
-      .dashboard-content .leaderboard-container .leaderboard-list li {
-        display: table;
-        width: 100%;
-        margin-bottom: 5px;
-        border-radius: 2px;
-        color: #4b4e54;
-        border: 1px solid #f1f1f1; }
-        .dashboard-content .leaderboard-container .leaderboard-list li p {
-          margin: 0; }
-        .dashboard-content .leaderboard-container .leaderboard-list li .position-box,
-        .dashboard-content .leaderboard-container .leaderboard-list li .name-box,
-        .dashboard-content .leaderboard-container .leaderboard-list li .handicap-box {
-          display: table-cell;
-          padding: 10px;
-          text-align: center; }
-        .dashboard-content .leaderboard-container .leaderboard-list li .position-box {
-          width: 50px;
-          border-right: 1px solid #f1f1f1; }
-        .dashboard-content .leaderboard-container .leaderboard-list li .name-box {
-          border-right: 1px solid #f1f1f1;
-          text-align: left; }
-        .dashboard-content .leaderboard-container .leaderboard-list li .handicap-box {
-          width: 60px; }
+      border: 1px solid #f1f1f1; }
+      .dashboard-content .leaderboard-container .leaderboard-list li p {
+        margin: 0; }
+      .dashboard-content .leaderboard-container .leaderboard-list li .position-box,
+      .dashboard-content .leaderboard-container .leaderboard-list li .name-box,
+      .dashboard-content .leaderboard-container .leaderboard-list li .handicap-box {
+        display: table-cell;
+        padding: 10px;
+        text-align: center; }
+      .dashboard-content .leaderboard-container .leaderboard-list li .position-box {
+        width: 50px;
+        border-right: 1px solid #f1f1f1; }
+      .dashboard-content .leaderboard-container .leaderboard-list li .name-box {
+        border-right: 1px solid #f1f1f1;
+        text-align: left; }
+      .dashboard-content .leaderboard-container .leaderboard-list li .handicap-box {
+        width: 60px; }
 
 friends {
   display: flex;
@@ -1066,7 +1072,7 @@ friends {
   .friends-table p {
     margin: 0; }
   .friends-table th {
-    color: #aaa;
+    color: #329af0;
     font-weight: 400; }
     .friends-table th.profile-pic-header {
       width: 100px; }

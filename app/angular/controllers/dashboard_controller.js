@@ -22,7 +22,7 @@ module.exports = function(app) {
       $scope.$digest();
     }
 
-    ctrl.parseDate = function(dateStr) {
+    ctrl.formatRecentGamesDate = function(dateStr) {
       let dateArray = dateStr.toUpperCase().split(' ');
       let dateObj = {
         day: dateArray[0],

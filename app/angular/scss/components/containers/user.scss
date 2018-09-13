@@ -7,9 +7,8 @@
     width: 100px;
     height: 100px;
     background: rgba(78, 84, 100, 0.1);
-    // border: 1px solid rgba(78, 84, 100, 0.1);
     border-radius: 2px;
-    color: #fff;
+    color: $font-color-dark;
     font-size: 80px;
     text-align: center;
   }
@@ -21,11 +20,12 @@
 
     p {
       margin: 0;
-      font-size: 12px;
+      font-size: 14px;
+      font-weight: 400;
     }
 
     .member-since {
-      color: $color-font-lt-gray;
+      color: $font-color-dark;
     }
 
     .name {
@@ -33,6 +33,34 @@
       font-size: 24px;
       font-weight: 400;
       line-height: 26px;
+    }
+  }
+}
+
+.user-stats {
+  @include flex(center, center, row);
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+
+  li {
+    width: 25%;
+
+    p {
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .title {
+      font-size: 14px;
+      color: $color-blue;
+    }
+
+    .value {
+      font-size: 24px;
+      font-weight: 400;
     }
   }
 }
