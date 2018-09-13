@@ -109,7 +109,7 @@ module.exports = function(app) {
             resultService.aggregate(matchOptions, groupOptions)
               .then((sumLosses) => {
                 sumLosses.length < 1 ? totalLosses = 0 : totalLosses = sumLosses[0].losses;
-                updateData.winRatio = (totalWins / (totalWins + totalLosses));
+                updateData.winRatio = Math.round(1000 * (totalWins / (totalWins + totalLosses))) / 1000;
                 updateByDocOrUserId(docOrUserId, updateData)
                   .then(resolve);
               })
