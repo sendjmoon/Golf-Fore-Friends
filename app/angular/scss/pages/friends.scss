@@ -5,14 +5,15 @@ friends {
 
 .friends-table {
   width: 100%;
-  border-spacing: 25px;
-  border-collapse: separate;
+  margin-top: 30px;
 
   p {
     margin: 0;
   }
 
   th {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f1f1f1;
     color: $color-blue;
     font-weight: 300;
 
@@ -25,12 +26,28 @@ friends {
     }
   }
 
+  tr {
+    border-bottom: 1px solid #f1f1f1;
+
+    &:hover {
+      background: $color-blue-ultra-light;
+    }
+
+    &:nth-child(1) {
+
+      &:hover {
+        background: none;
+      }
+    }
+  }
+
   td {
 
     .profile-pic {
       @include flex(center, center, col);
       width: 75px;
       height: 75px;
+      margin: 0 auto;
       background: #f1f1f1;
       font-size: 50px;
       border-radius: 2px;
@@ -50,6 +67,7 @@ friends {
     }
 
     &.stats {
+      padding: 20px 0;
 
       .stats-content {
 

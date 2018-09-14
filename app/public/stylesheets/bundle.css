@@ -1453,17 +1453,24 @@ friends {
 
 .friends-table {
   width: 100%;
-  border-spacing: 25px;
-  border-collapse: separate; }
+  margin-top: 30px; }
   .friends-table p {
     margin: 0; }
   .friends-table th {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f1f1f1;
     color: #329af0;
     font-weight: 300; }
     .friends-table th.profile-pic-header {
       width: 100px; }
     .friends-table th.handicap-header {
       text-align: center; }
+  .friends-table tr {
+    border-bottom: 1px solid #f1f1f1; }
+    .friends-table tr:hover {
+      background: #e9f4fd; }
+    .friends-table tr:nth-child(1):hover {
+      background: none; }
   .friends-table td .profile-pic {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1480,6 +1487,7 @@ friends {
             align-items: center;
     width: 75px;
     height: 75px;
+    margin: 0 auto;
     background: #f1f1f1;
     font-size: 50px;
     border-radius: 2px; }
@@ -1487,10 +1495,12 @@ friends {
     font-weight: 300; }
   .friends-table td.handicap {
     text-align: center; }
-  .friends-table td.stats .stats-content p {
-    margin-bottom: 7px; }
-  .friends-table td.stats .stats-content span {
-    margin-right: 5px; }
+  .friends-table td.stats {
+    padding: 20px 0; }
+    .friends-table td.stats .stats-content p {
+      margin-bottom: 7px; }
+    .friends-table td.stats .stats-content span {
+      margin-right: 5px; }
 
 .landing-container.main {
   height: 100vh;
