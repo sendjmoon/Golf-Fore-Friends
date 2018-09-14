@@ -1,26 +1,26 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('CreateGameController', ['$rootScope', '$scope', '$route', 'UserService', 'FriendService', 'GameService', 'ResultService', 'StatsService', function($rs, $scope, $route, userService, friendService, gameService, resultService, statsService) {
+  app.controller('CreateGameController', ['$rootScope', '$scope', '$location', 'UserService', 'FriendService', 'GameService', 'ResultService', 'StatsService', function($rs, $scope, $location, userService, friendService, gameService, resultService, statsService) {
 
     const ctrl = this;
     ctrl.user = userService.data.user;
     ctrl.friendsData = friendService.data;
     ctrl.players = [];
+    ctrl.playersToAdd = [];
     ctrl.editing = false;
 
     ctrl.createGame = function(gameData) {
       gameData.players = ctrl.players;
       gameService.newGame(gameData)
-        .then($route.reload)
+        .then(ctrl.goTo('games'))
         .catch((err) => {
           console.log(err);
         });
     };
 
     ctrl.addUser = function(user) {
-      let friendsArray = ctrl.friendsData.friends;
-      friendsArray.splice(friendsArray.indexOf(user), 1);
+      ctrl.playersToAdd.splice(ctrl.playersToAdd.indexOf(user), 1);
       ctrl.players.push(user);
     };
 
@@ -29,8 +29,12 @@ module.exports = function(app) {
         return player.email === user.email;
       });
       ctrl.players.splice(userIndex, 1);
-      ctrl.friendsData.friends.push(user);
+      ctrl.playersToAdd.push(user);
     };
+
+    ctrl.goTo = function(location) {
+      $location.url(`/${location}`);
+    }
 
     ctrl.init = function() {
       let userData = {
@@ -40,7 +44,9 @@ module.exports = function(app) {
       };
       friendService.getAllFriends(ctrl.user.email)
         .then(() => {
-          ctrl.friendsData.friends.push(userData);
+          ctrl.playersToAdd = ctrl.friendsData.friends;
+          ctrl.playersToAdd.push(userData);
+          $scope.$apply();
         });
     };
 
