@@ -1,14 +1,25 @@
-/* ----- headers ----- */
 h1, h2, h3, h4, h5 {
   margin: 0;
 }
 
-/* ----- misc ----- */
 .gff-gradient {
   display: inline-block;
+}
+
+nav-bar,
+sub-nav,
+dashboard,
+friends,
+games,
+create-game,
+settings {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 add-friend {
   display: table;
   width: 100%;
+  min-width: 225px;
 }

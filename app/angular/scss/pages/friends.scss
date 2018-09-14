@@ -1,5 +1,84 @@
 friends {
   display: flex;
   width: 100%;
-  // min-height: calc(100vh - 60px);
+}
+
+.friends-table {
+  width: 100%;
+  margin-top: 30px;
+
+  p {
+    margin: 0;
+  }
+
+  th {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f1f1f1;
+    color: $color-blue;
+    font-weight: 300;
+
+    &.profile-pic-header {
+      width: 100px;
+    }
+
+    &.handicap-header {
+      text-align: center;
+    }
+  }
+
+  tr {
+    border-bottom: 1px solid #f1f1f1;
+
+    &:hover {
+      background: $color-blue-ultra-light;
+    }
+
+    &:nth-child(1) {
+
+      &:hover {
+        background: none;
+      }
+    }
+  }
+
+  td {
+
+    .profile-pic {
+      @include flex(center, center, col);
+      width: 75px;
+      height: 75px;
+      margin: 0 auto;
+      background: #f1f1f1;
+      font-size: 50px;
+      border-radius: 2px;
+    }
+
+    &.name,
+    &.handicap,
+    &.stats {
+
+      p {
+        font-weight: 300;
+      }
+    }
+
+    &.handicap {
+      text-align: center;
+    }
+
+    &.stats {
+      padding: 20px 0;
+
+      .stats-content {
+
+        p {
+          margin-bottom: 7px;
+        }
+
+        span {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
 }

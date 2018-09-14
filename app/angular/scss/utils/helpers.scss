@@ -70,3 +70,15 @@
   display: flex;
   flex-direction: row !important;
 }
+
+hr {
+  width: 100%;
+
+  &.lg {
+    width: 95%;
+  }
+
+  &.sm {
+    margin: 5px 0;
+  }
+}

@@ -5,8 +5,5 @@ module.exports = function(app) {
     template: require('./create-game-template.html'),
     controller: 'CreateGameController',
     controllerAs: 'cgc',
-    bindings: {
-      creating: '=',
-    },
   });
 };

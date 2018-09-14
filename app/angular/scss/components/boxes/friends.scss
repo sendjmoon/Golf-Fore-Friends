@@ -1,24 +1,8 @@
-.friend-box {
-  @include flex(center, flex-start, col);
-  width: 170px;
+.friend-container {
+  width: 100%;
   margin-bottom: 15px;
-  border-radius: 2px;
 
-  .profile-pic {
-    @include flex(center, center, col);
-    width: 100%;
-    height: 170px;
-    background: #f1f1f1;
-    font-size: 80px;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-  }
-
-  .content {
-    padding: 15px;
-
-    .box-title {
-      margin: 0;
-    }
+  .friend-content {
+    @include flex(flex-start, center, row);
   }
 }

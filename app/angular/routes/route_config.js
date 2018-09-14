@@ -11,11 +11,15 @@ module.exports = function($routeProvider, $locationProvider) {
       middleware: 'checkSessionExists',
     })
     .when('/games', {
-      template: require('../html/games/games-landing.html'),
+      template: require('../html/games/list.html'),
+      middleware: 'checkSessionExists',
+    })
+    .when('/games/create', {
+      template: require('../html/games/create.html'),
       middleware: 'checkSessionExists',
     })
     .when('/games/public/:publicId', {
-      template: require('../html/games/game-view.html'),
+      template: require('../html/games/view.html'),
       middleware: 'checkSessionExists',
       controller: 'GamesController',
       controllerAs: 'gc',

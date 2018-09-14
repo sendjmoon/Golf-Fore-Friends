@@ -1,8 +1,4 @@
-<div class="page-container left">
-  <sub-nav data-page-title="'GAMES'" data-creating-game="gc.creating"></sub-nav>
-</div>
-
-<div class="page-container right" ng-hide="gc.creating">
+<div class="page-container">
   <div class="page-content">
     <ul class="games-list">
       <li class="game-container shadow-sm" ng-repeat="game in gamesData.games">
@@ -48,9 +44,3 @@
     </ul>
   </div><!--page-content-->
 </div><!--page-container-->
-
-<div class="page-container right" ng-show="gc.creating">
-  <div class="page-content">
-    <create-game data-creating="gc.creating"></create-game>
-  </div>
-</div>

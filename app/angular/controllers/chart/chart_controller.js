@@ -29,6 +29,7 @@ module.exports = function(app) {
         datasets: [{
           label: 'Strokes',
           data: strokeData,
+          backgroundColor: 'rgba(233, 244, 253, 0.5)',
           }],
       };
 
@@ -36,7 +37,7 @@ module.exports = function(app) {
         labels: ['Wins', 'Losses'],
         datasets: [{
           data: [ctrl.user.stats.wins, ctrl.user.stats.losses],
-          backgroundColor: ['#89c97a', '#ddd'],
+          backgroundColor: ['#b2d9f9', '#eee'],
         }],
       };
 
