@@ -2,3 +2,46 @@
   width: 100%;
   padding: 15px 30px;
 }
+
+.comments-list {
+  padding: 0 15px;
+}
+
+.comment {
+  list-style: none;
+
+  comment {
+    display: table;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    // border-top: 1px solid #f1f1f1;
+    // border-left: 1px solid #f1f1f1;
+    background: $color-blue-ultra-light-hover;
+
+    .user-container {
+      margin-bottom: 10px;
+
+      .profile-pic {
+        color: $color-blue;
+
+        .fa-user {
+          font-size: 24px;
+        }
+      }
+
+      .user-info {
+
+        .author-name {
+          color: $color-blue;
+        }
+
+        .created-at {
+          font-size: 12px;
+          color: $color-font-lt-gray;
+        }
+      }
+    }
+  }
+}

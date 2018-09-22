@@ -26,6 +26,11 @@
     padding: 5px 10px;
   }
 
+  &.x-sm {
+    padding: 0 5px;
+    font-size: 10px;
+  }
+
   &:hover {
     background: $color-blue-hover;
     transition: all 0.2s ease;

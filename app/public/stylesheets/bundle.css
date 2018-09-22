@@ -118,6 +118,9 @@ settings {
   max-width: 1200px;
   margin: 0 auto; }
 
+friends {
+  padding: 0 15px; }
+
 add-friend {
   display: table;
   width: 100%;
@@ -205,18 +208,91 @@ add-friend {
   width: 100%;
   padding: 15px 30px; }
 
+.comments-list {
+  padding: 0 15px; }
+
+.comment {
+  list-style: none; }
+  .comment comment {
+    display: table;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background: #fafcfe; }
+    .comment comment .user-container {
+      margin-bottom: 10px; }
+      .comment comment .user-container .profile-pic {
+        color: #329af0; }
+        .comment comment .user-container .profile-pic .fa-user {
+          font-size: 24px; }
+      .comment comment .user-container .user-info .author-name {
+        color: #329af0; }
+      .comment comment .user-container .user-info .created-at {
+        font-size: 12px;
+        color: #a3adb7; }
+
 .game-container {
-  margin-bottom: 30px; }
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #f1f1f1; }
   .game-container .game-content {
-    padding: 30px;
-    background: #fff; }
-  .game-container .game-name {
-    margin-bottom: 10px;
-    font-weight: 700; }
-  .game-container .game-location {
-    margin: 0; }
-  .game-container .date-played {
-    margin-bottom: 30px; }
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    padding: 30px; }
+    .game-container .game-content p {
+      font-size: 15px; }
+    .game-container .game-content .game-info {
+      width: 80%; }
+      .game-container .game-content .game-info .game-name {
+        display: inline;
+        margin-bottom: 5px;
+        color: #329af0;
+        font-weight: 400; }
+      .game-container .game-content .game-info .game-location {
+        display: inline;
+        margin-left: 8px;
+        font-size: 14px;
+        white-space: nowrap; }
+        .game-container .game-content .game-info .game-location .fa-map-marker-alt {
+          margin-right: 3px;
+          color: #329af0; }
+      .game-container .game-content .game-info .date-played {
+        margin-bottom: 75px; }
+    .game-container .game-content .game-results {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-pack: start;
+          -ms-flex-pack: start;
+              justify-content: flex-start;
+      -webkit-box-align: start;
+          -ms-flex-align: start;
+              align-items: flex-start;
+      width: 20%; }
+      .game-container .game-content .game-results .results-list {
+        padding: 0;
+        list-style: none; }
+        .game-container .game-content .game-results .results-list .list-title {
+          margin-bottom: 10px; }
+        .game-container .game-content .game-results .results-list p {
+          margin-bottom: 5px;
+          white-space: nowrap; }
 
 .recent-games-container {
   width: 100%; }
@@ -319,7 +395,6 @@ add-friend {
 
 .tab-container {
   width: 100%;
-  margin-top: 1px;
   background: #fff; }
   .tab-container .tab-content {
     padding: 15px;
@@ -433,9 +508,8 @@ add-friend {
             align-items: center;
     width: 100px;
     height: 100px;
-    background: rgba(78, 84, 100, 0.1);
     border-radius: 2px;
-    color: #4b4e54;
+    color: #b2d9f9;
     font-size: 80px;
     text-align: center; }
   .user-container .user-info {
@@ -1296,6 +1370,9 @@ a, a:visited {
       background: none; }
   .gff-btn.sm {
     padding: 5px 10px; }
+  .gff-btn.x-sm {
+    padding: 0 5px;
+    font-size: 10px; }
   .gff-btn:hover {
     background: #63b5f7;
     -webkit-transition: all 0.2s ease;
@@ -1488,7 +1565,7 @@ friends {
     width: 75px;
     height: 75px;
     margin: 0 auto;
-    background: #f1f1f1;
+    color: #b2d9f9;
     font-size: 50px;
     border-radius: 2px; }
   .friends-table td.name p, .friends-table td.handicap p, .friends-table td.stats p {

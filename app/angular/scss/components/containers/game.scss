@@ -1,22 +1,61 @@
 .game-container {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #f1f1f1;
 
   .game-content {
+    @include flex(flex-start, flex-start, row);
     padding: 30px;
-    background: #fff;
-  }
 
-  .game-name {
-    margin-bottom: 10px;
-    font-weight: 700;
-  }
+    p {
+      font-size: 15px;
+    }
 
-  .game-location {
-    margin: 0;
-  }
+    .game-info {
+      width: 80%;
 
-  .date-played {
-    margin-bottom: 30px;
+      .game-name {
+        display: inline;
+        margin-bottom: 5px;
+        color: $color-blue;
+        font-weight: 400;
+      }
+
+      .game-location {
+        display: inline;
+        margin-left: 8px;
+        font-size: 14px;
+        white-space: nowrap;
+
+        .fa-map-marker-alt {
+          margin-right: 3px;
+          color: $color-blue;
+        }
+      }
+
+      .date-played {
+        margin-bottom: 75px;
+      }
+    }
+
+    .game-results {
+      @include flex(flex-start, flex-start, col);
+      width: 20%;
+
+      .results-list {
+        padding: 0;
+        list-style: none;
+
+        .list-title {
+          margin-bottom: 10px;
+        }
+
+        p {
+          margin-bottom: 5px;
+          white-space: nowrap;
+        }
+      }
+    }
   }
 }
 
