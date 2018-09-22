@@ -802,13 +802,9 @@ sub-nav {
     align-items: center;
     height: 100%; }
   .sub-nav-content .svg-inline--fa {
-    width: 20px;
-    margin-right: 5px; }
+    width: 20px; }
   .sub-nav-content .sub-nav-link {
-    margin: 9px 0;
-    color: #a3adb7; }
-    .sub-nav-content .sub-nav-link:visited {
-      color: #a3adb7; }
+    margin: 0 10px; }
 
 .sub-nav-menu {
   width: 100%;

@@ -36,16 +36,10 @@ sub-nav {
 
   .svg-inline--fa {
     width: 20px;
-    margin-right: 5px;
   }
 
   .sub-nav-link {
-    margin: 9px 0;
-    color: #a3adb7;
-
-    &:visited {
-      color: #a3adb7;
-    }
+    margin: 0 10px;
   }
 }
 
