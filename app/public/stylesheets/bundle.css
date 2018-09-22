@@ -64,7 +64,7 @@ hr {
     margin: 5px 0; }
 
 /* ----- face -----*/
-h1, h2, h3, h4, h5, h6, a, p, input, button {
+h1, h2, h3, h4, h5, h6, a, p, input, textarea, button {
   font-family: 'Lato', sans-serif; }
 
 /* ----- weight ----- */
@@ -232,10 +232,35 @@ add-friend {
         font-size: 12px;
         color: #a3adb7; }
 
+.new-comment {
+  list-style: none;
+  margin: 15px 0; }
+  .new-comment new-comment {
+    display: table;
+    width: 100%; }
+    .new-comment new-comment textarea {
+      width: 100%;
+      min-height: 75px;
+      padding: 5px 15px;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      border-color: #e1e1e1;
+      color: #a3adb7;
+      font-weight: 300;
+      resize: none; }
+      .new-comment new-comment textarea:hover {
+        border-color: #ffb824; }
+      .new-comment new-comment textarea:active, .new-comment new-comment textarea:focus {
+        border-color: #63b5f7;
+        color: #616161;
+        outline: none; }
+
 .game-container {
   margin-bottom: 15px;
   border-radius: 5px;
-  border: 1px solid #f1f1f1; }
+  border: 1px solid #f4f4f4; }
+  .game-container:hover {
+    border-color: #b2d9f9; }
   .game-container .game-content {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -394,11 +419,9 @@ add-friend {
     margin-bottom: 30px; } }
 
 .tab-container {
-  width: 100%;
-  background: #fff; }
+  width: 100%; }
   .tab-container .tab-content {
-    padding: 15px;
-    background: #fff; }
+    padding: 15px; }
 
 .tile-container {
   display: -webkit-box;

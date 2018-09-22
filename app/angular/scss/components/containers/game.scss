@@ -1,7 +1,11 @@
 .game-container {
   margin-bottom: 15px;
   border-radius: 5px;
-  border: 1px solid #f1f1f1;
+  border: 1px solid #f4f4f4;
+
+  &:hover {
+    border-color: $color-blue-light;
+  }
 
   .game-content {
     @include flex(flex-start, flex-start, row);
