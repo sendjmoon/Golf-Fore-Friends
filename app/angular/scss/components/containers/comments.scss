@@ -41,6 +41,39 @@
         }
       }
     }
+
+    .comment-footer {
+      @include flex(flex-end, center, row);
+
+      .gff-btn {
+
+        &:nth-child(1) {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 75px;
+      padding: 5px 15px;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      border-color: #e1e1e1;
+      color: $color-font-lt-gray;
+      font-weight: 300;
+      resize: none;
+
+      &:hover {
+        border-color: $color-orange;
+      }
+
+      &:active, &:focus {
+        border-color: $color-blue-hover;
+        color: $color-font-gray;
+        outline: none;
+      }
+    }
   }
 }
 

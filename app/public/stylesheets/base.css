@@ -212,6 +212,29 @@ add-friend {
       .comment comment .user-container .user-info .created-at {
         font-size: 12px;
         color: #a3adb7; }
+    .comment comment .comment-footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center; }
+      .comment comment .comment-footer .gff-btn:nth-child(1) {
+        margin-right: 5px; }
+    .comment comment textarea {
+      width: 100%;
+      min-height: 75px;
+      padding: 5px 15px;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      border-color: #e1e1e1;
+      color: #a3adb7;
+      font-weight: 300;
+      resize: none; }
+      .comment comment textarea:hover {
+        border-color: #ffb824; }
+      .comment comment textarea:active, .comment comment textarea:focus {
+        border-color: #63b5f7;
+        color: #616161;
+        outline: none; }
 
 .new-comment {
   list-style: none;
