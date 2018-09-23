@@ -6,9 +6,8 @@
     @include flex(center, center, row);
     width: 100px;
     height: 100px;
-    background: rgba(78, 84, 100, 0.1);
     border-radius: 2px;
-    color: $font-color-dark;
+    color: $color-blue-light;
     font-size: 80px;
     text-align: center;
   }

@@ -1,15 +1,23 @@
 <div ng-hide="cc.editing" ng-init="cc.formatDate(cc.comment)">
-  <p><strong>{{cc.comment.authorName}}</strong> {{cc.comment.content}}</p>
-  <p>{{cc.comment.createdAt}}</p>
-  <div ng-if="cc.user._id === cc.comment.authorId">
-    <a ng-click="cc.editing=true">edit</a>
-    <a ng-click="cc.remove(cc.comment.publicId, cc.comment._id, cc.gameId)">remove</a>
+  <div class="user-container">
+    <div class="profile-pic">
+      <i class="fa fa-user"></i>
+    </div>
+    <div class="user-info">
+      <p class="author-name"><strong>{{cc.comment.authorName}}</strong></p>
+      <p class="created-at">{{cc.comment.createdAt}}</p>
+    </div>
+  </div>
+  <p>{{cc.comment.content}}</p>
+  <div class="comment-footer" ng-if="cc.user._id === cc.comment.authorId">
+    <button class="gff-btn x-sm ghost" ng-click="cc.editing=true">EDIT</button>
+    <button class="gff-btn x-sm ghost" ng-click="cc.remove(cc.comment.publicId, cc.comment._id, cc.gameId)">REMOVE</button>
   </div>
 </div>
 
 <div ng-show="cc.editing">
-  <p><strong>Editing comment</strong></p>
-  <textarea ng-model="cc.comment.content" style="color:black"></textarea>
-  <button class="gff-btn" ng-click="cc.update(cc.comment.publicId, cc.comment.content)">Save</button>
-  <button class="gff-btn">Cancel</button>
+  <p>Editing comment...</p>
+  <textarea ng-model="cc.comment.content"></textarea>
+  <button class="gff-btn sm ghost" ng-click="cc.update(cc.comment.publicId, cc.comment.content)">Save</button>
+  <button class="gff-btn sm ghost" ng-click="cc.editing=false">Cancel</button>
 </div>

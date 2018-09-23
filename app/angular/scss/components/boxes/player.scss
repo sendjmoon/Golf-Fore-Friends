@@ -1,21 +1,48 @@
 .player-box {
-  position: relative;
-  display: table;
+  @include flex(space-between, center, row);
   width: 275px;
-  min-height: 75px;
-  padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
+  border-top: 1px solid #f1f1f1;
+  border-left: 1px solid #f1f1f1;
 
-  .edit-box {
+  .title-box {
+    padding: 10px;
 
     p {
-      display: inline;
+      margin: 0;
+    }
+  }
+
+  .buttons-container {
+    @include flex(center, center, row);
+    height: 42px;
+
+    .edit-box {
+
+      p {
+        display: inline;
+      }
+
+      input {
+        width: 40px;
+        height: 42px;
+        border-radius: 0;
+        border: none;
+        background: $color-blue-ultra-light;
+        color: $font-color-dark;
+        text-align: center;
+
+        &:active, &:focus {
+          background: $color-blue-ultra-light;
+        }
+      }
     }
 
-    input {
-      width: 25px;
-      text-align: center;
+    .gff-btn {
+      height: 100%;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
   }
 }
