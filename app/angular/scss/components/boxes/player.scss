@@ -29,12 +29,17 @@
         height: 42px;
         border-radius: 0;
         border: none;
-        background: $color-blue-ultra-light;
+        border-left: 1px solid $color-blue-ultra-light;
         color: $font-color-dark;
         text-align: center;
 
+        &:hover {
+          background: $orange-opaque-dbl;
+          border-color: $color-orange;
+        }
+
         &:active, &:focus {
-          background: $color-blue-ultra-light;
+          border-color: $color-blue-light;
         }
       }
     }

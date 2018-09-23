@@ -46,6 +46,14 @@
   list-style: none;
 }
 
+.games-list {
+  max-width: 992px;
+}
+
+.friends-list, .games-list {
+  padding: 30px 15px;
+}
+
 .users-list {
   position: absolute;
   background: #fff;
@@ -72,10 +80,6 @@
       }
     }
   }
-}
-
-.friends-list, .games-list {
-  padding: 30px 15px;
 }
 
 .recent-games-list {
