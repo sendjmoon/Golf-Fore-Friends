@@ -1,9 +1,11 @@
 <div class="page-container">
   <div class="page-content">
-    <h2>Create a Game</h2>
-    <p>Please enter game information below.</p>
+
     <form class="new-game-form" id="new-game-form" name="new-game-form" ng-submit="cgc.createGame(cgc.game)">
+
       <div class="create-game-container">
+        <h3><strong>Create a Game</strong></h3>
+        <p>Please enter game information below.</p>
         <div class="course-container">
           <p class="input-title">Course Played</p>
           <div class="gff-select course">
@@ -21,49 +23,57 @@
             </select>
           </div>
         </div>
+
         <div class="location-container">
           <p class="input-title">City, State</p>
-          <input type="text" required ng-model="cgc.game.location" placeholder="Seattle, WA"></input>
+          <input class="gff-input" type="text" required ng-model="cgc.game.location" placeholder="Seattle, WA"></input>
         </div>
+
         <div class="date-container">
           <p class="input-title">Date Played</p>
-          <input type="date" required ng-model="cgc.game.datePlayed"></input>
+          <input class="gff-input" type="date" required ng-model="cgc.game.datePlayed"></input>
         </div>
+
         <div class="players-container">
           <div class="current-players-container">
             <p class="input-title">Current Players</p>
             <ul class="player-list">
               <li class="player-box shadow-sm" ng-repeat="player in cgc.players" ng-init="player.strokes=0">
                 <div class="title-box">
-                  <p><strong>{{player.fullName}}</strong></p>
+                  <p>{{player.fullName}}</p>
                 </div>
-                <div class="edit-box">
-                  <p><strong>Total Strokes: <span class="color-green">+</span></strong></p>
-                  <input type="text" required ng-model="player.strokes" placeholder="{{player.strokes}}" maxlength="2"></input>
+                <div class="buttons-container">
+                  <div class="edit-box">
+                    <p><span class="color-green">+</span></p>
+                    <input class="gff-input" type="text" required ng-model="player.strokes" placeholder="{{player.strokes}}" maxlength="2"></input>
+                  </div>
+                  <button class="gff-btn sm red" type="button" ng-click="cgc.removeUser(player)">
+                    <i class="fa fa-minus-circle"></i>
+                  </button>
                 </div>
-                <button class="gff-btn red" type="button" ng-click="cgc.removeUser(player)">
-                  <i class="fa fa-minus-circle"></i>
-                </button>
               </li>
             </ul>
           </div>
+
           <div class="add-players-container">
             <p class="input-title">Add More Players</p>
             <ul class="player-list">
               <li class="player-box shadow-sm" ng-repeat="friend in cgc.playersToAdd">
                 <div class="title-box">
-                  <p><strong>{{friend.fullName}}</strong></p>
+                  <p>{{friend.fullName}}</p>
                 </div>
-                <button class="gff-btn" type="button" ng-click="cgc.addUser(friend)">
-                  <i class="fa fa-plus"></i>
-                </button>
+                <div class="buttons-container">
+                  <button class="gff-btn sm" type="button" ng-click="cgc.addUser(friend)">
+                    <i class="fa fa-plus"></i>
+                  </button>
+                </div>
               </li>
             </ul>
           </div>
-        </div>
-      </div>
-      <button class="gff-btn dark" type="submit">Submit</button>
-      <button class="gff-btn dark" type="reset" ng-click="cgc.goTo('games')">Cancel</button>
+        </div><!-- players-container -->
+        <button class="gff-btn sm" type="submit">Submit</button>
+        <button class="gff-btn sm ghost" type="reset" ng-click="cgc.goTo('games')">Cancel</button>
+      </div><!-- create-game-container -->
     </form>
   </div>
 </div>

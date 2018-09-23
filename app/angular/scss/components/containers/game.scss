@@ -9,10 +9,10 @@
 
   .game-content {
     @include flex(flex-start, flex-start, row);
-    padding: 30px;
+    padding: 25px;
 
     p {
-      font-size: 15px;
+      font-size: 14px;
     }
 
     .game-info {
@@ -22,7 +22,7 @@
         display: inline;
         margin-bottom: 5px;
         color: $color-blue;
-        font-weight: 400;
+        font-weight: 700;
       }
 
       .game-location {

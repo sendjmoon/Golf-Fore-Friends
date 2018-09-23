@@ -35,6 +35,12 @@ auth {
 }
 
 .create-game-container {
+  max-width: 900px;
+  margin: 0 auto;
+
+  h3, p {
+    align-self: flex-start;
+  }
 
   .course-container {
     display: block;
@@ -49,16 +55,11 @@ auth {
     width: 50%;
     padding-right: 15px;
     margin-bottom: 15px;
-
-    input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #f1f1f1;
-      border-radius: 2px;
-    }
   }
 
   .input-title {
-    font-weight: 500;
+    margin-bottom: 5px;
+    color: $color-blue;
+    font-weight: 300;
   }
 }
