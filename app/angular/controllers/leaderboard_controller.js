@@ -7,7 +7,7 @@ module.exports = function(app) {
 
     ctrl.fillPlayerBar = function(user) {
       fillArray.push(`${100 - user.stats.handicap}%`);
-      $('.gff-progress-bar-fill').each(function(index, val) {
+      $('.gff-progress-bar-fill').each(function(index) {
         $(this).css('width', fillArray[index]);
       });
     }

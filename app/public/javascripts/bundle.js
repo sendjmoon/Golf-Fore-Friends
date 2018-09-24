@@ -52159,19 +52159,31 @@ module.exports = function (app) {
 module.exports = function (app) {
   app.service('AuthService', ['$rootScope', '$http', '$location', 'UserService', 'StatsService', function ($rs, $http, $location, userService, statsService) {
 
-    //TODO: callback hell
-    var signup = function signup(userData) {
+    var createNewUserDocs = function createNewUserDocs(userData) {
       return new Promise(function (resolve, reject) {
         userService.create(userData).then(function (newUser) {
           statsService.create(newUser._id).then(function (newStatsId) {
-            var updateOptions = {
-              stats: newStatsId
+            var newDocs = {
+              newUser: newUser,
+              newStatsId: newStatsId
             };
-            userService.updateByEmailOrUsername(newUser.email, updateOptions).then(function () {
-              $location.path('/dashboard');
-              $rs.$apply();
-              resolve();
-            });
+
+            return newDocs;
+          });
+        }).catch(reject);
+      });
+    };
+
+    var signup = function signup(userData) {
+      return new Promise(function (resolve, reject) {
+        createNewUserDocs(userData).then(function (newDocs) {
+          var updateOptions = {
+            stats: newDocs.newStatsId
+          };
+          userService.updateByEmailOrUsername(newDocs.newUser.email, updateOptions).then(function () {
+            $location.path('/dashboard');
+            $rs.$apply();
+            resolve();
           });
         }).catch(reject);
       });
@@ -67038,7 +67050,7 @@ module.exports = function (app) {
 
     ctrl.fillPlayerBar = function (user) {
       fillArray.push(100 - user.stats.handicap + '%');
-      $('.gff-progress-bar-fill').each(function (index, val) {
+      $('.gff-progress-bar-fill').each(function (index) {
         $(this).css('width', fillArray[index]);
       });
     };
