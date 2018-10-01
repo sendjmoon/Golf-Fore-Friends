@@ -20,7 +20,6 @@ module.exports = function() {
             });
         })
         .catch((err) => {
-          console.log(err);
           reject();
         });
     });
@@ -34,7 +33,6 @@ module.exports = function() {
           res === null ? reject() : resolve();
         })
         .catch((err) => {
-          console.log(err);
           reject();
         });
     });

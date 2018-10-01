@@ -3,12 +3,10 @@
 module.exports = function(app) {
   app.factory('GameService', ['$rootScope', '$route', '$http', 'ResultService', 'UserService', 'StatsService', function($rs, $route, $http, resultService, userService, statsService) {
 
-    //TODO: remove property allGames from returned data obj
     const data = {
       allGames: {},
     };
-    const creatingGame = false;
-
+    
     const newGame = function(gameData) {
       return new Promise((resolve, reject) => {
         createGameAndResults(gameData)
@@ -100,10 +98,7 @@ module.exports = function(app) {
             data.allGames.games = games;
             resolve(games);
           })
-          .catch(() => {
-            alert('error getting games');
-            reject();
-          });
+          .catch(reject);
       });
     };
 

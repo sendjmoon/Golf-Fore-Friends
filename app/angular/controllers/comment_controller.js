@@ -7,12 +7,11 @@ module.exports = function(app) {
     ctrl.user = userService.data.user;
 
     ctrl.create = function(gameId, content) {
-      let updateOptions = {
-        $addToSet: { comments: null },
-      };
       commentService.create(gameId, ctrl.user._id, ctrl.user.fullName, content)
         .then((newComment) => {
-          updateOptions.$addToSet.comments = newComment._id;
+          let updateOptions = {
+            $addToSet: { comments: newComment._id },
+          };
           userService.updateByEmailOrUsername(ctrl.user.email, updateOptions)
             .then(gameService.updateById(gameId, updateOptions))
             .then(gameService.getAllById(ctrl.user.gameIds));

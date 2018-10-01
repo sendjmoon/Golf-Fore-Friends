@@ -52496,11 +52496,9 @@ module.exports = function (app) {
 module.exports = function (app) {
   app.factory('GameService', ['$rootScope', '$route', '$http', 'ResultService', 'UserService', 'StatsService', function ($rs, $route, $http, resultService, userService, statsService) {
 
-    //TODO: remove property allGames from returned data obj
     var data = {
       allGames: {}
     };
-    var creatingGame = false;
 
     var newGame = function newGame(gameData) {
       return new Promise(function (resolve, reject) {
@@ -52577,10 +52575,7 @@ module.exports = function (app) {
           games = games.data;
           data.allGames.games = games;
           resolve(games);
-        }).catch(function () {
-          alert('error getting games');
-          reject();
-        });
+        }).catch(reject);
       });
     };
 
@@ -66814,11 +66809,10 @@ module.exports = function (app) {
     ctrl.user = userService.data.user;
 
     ctrl.create = function (gameId, content) {
-      var updateOptions = {
-        $addToSet: { comments: null }
-      };
       commentService.create(gameId, ctrl.user._id, ctrl.user.fullName, content).then(function (newComment) {
-        updateOptions.$addToSet.comments = newComment._id;
+        var updateOptions = {
+          $addToSet: { comments: newComment._id }
+        };
         userService.updateByEmailOrUsername(ctrl.user.email, updateOptions).then(gameService.updateById(gameId, updateOptions)).then(gameService.getAllById(ctrl.user.gameIds));
       }).catch(function (err) {
         console.log('Error posting comment.');
@@ -67477,7 +67471,7 @@ module.exports = function (app) {
 /* 236 */
 /***/ (function(module, exports) {
 
-module.exports = "<form>\n  <textarea ng-model=\"cc.newComment\" placeholder=\"Add a comment...\" style=\"color:black\"></textarea>\n  <button class=\"gff-btn sm ghost\" ng-click=\"cc.create(cc.gameId, cc.newComment)\">Add Comment</button>\n</form>\n";
+module.exports = "<form class=\"new-comment-form\" ng-submit=\"cc.create(cc.gameId, cc.newComment)\">\n  <textarea ng-model=\"cc.newComment\" placeholder=\"Add a comment...\"></textarea>\n  <button type=\"submit\" class=\"gff-btn sm ghost\">Add Comment</button>\n</form>\n";
 
 /***/ }),
 /* 237 */
