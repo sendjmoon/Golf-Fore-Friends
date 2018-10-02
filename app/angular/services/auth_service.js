@@ -14,7 +14,7 @@ module.exports = function(app) {
                   newStatsId: newStatsId,
                 }
 
-                return newDocs;
+                resolve(newDocs);
               });
           })
           .catch(reject);
