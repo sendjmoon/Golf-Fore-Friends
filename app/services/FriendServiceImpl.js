@@ -31,13 +31,13 @@ module.exports = function(friendDao) {
   const addFriend = function(userOneId, userOneStatsId, userTwoId, userTwoStatsId) {
     return new Promise((resolve, reject) => {
       createDoc(userOneId, userTwoId, userTwoStatsId)
-        .then((friendDocTwo) => {
-          _friendDao.addFriend(userOneId, friendDocTwo._id)
+        .then((userTwoDoc) => {
+          _friendDao.addFriend(userOneId, userTwoDoc._id)
             .then((res) => {
               if (res.nModified === 0) reject();
               else createDoc(userTwoId, userOneId, userOneStatsId)
-                .then((friendDocOne) => {
-                  _friendDao.addFriend(userTwoId, friendDocOne._id)
+                .then((userOneDoc) => {
+                  _friendDao.addFriend(userTwoId, userOneDoc._id)
                     .then((res) => {
                       res.nModified === 0 ? reject() : resolve();
                     });

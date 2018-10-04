@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('FriendController', ['$rootScope', '$scope', 'UserService', 'FriendService', 'SearchService', function($rs, $scope, userService, friendService, searchService) {
+  app.controller('FriendController', ['$scope', '$route', 'UserService', 'FriendService', 'SearchService', function($scope, $route, userService, friendService, searchService) {
 
     let ctrl = this;
     ctrl.user = userService.data.user;
@@ -10,8 +10,8 @@ module.exports = function(app) {
     $scope.searchResults = searchService.searchResults;
 
     ctrl.addFriend = function(userId, statsId) {
-      friendService.addFriend(ctrl.user._id, ctrl.user.stats, userId, statsId)
-        .then(ctrl.init());
+      friendService.addFriend(ctrl.user._id, ctrl.user.statsId, userId, statsId)
+        .then($route.reload());
     };
 
     ctrl.init = function() {
@@ -27,7 +27,6 @@ module.exports = function(app) {
           }
 
           searchService.searchListener(searchOptions);
-          $scope.$apply();
         });
     };
 

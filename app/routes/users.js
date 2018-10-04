@@ -19,6 +19,7 @@ router.get('/check-session', jwtAuth, function(req, res, next) {
             _id: user._id,
             fullName: user.fullName,
             email: user.email,
+            statsId: user.stats,
             gameIds: user.gameIds,
             createdAt: user.createdAt,
           },
@@ -33,7 +34,7 @@ router.get('/check-session', jwtAuth, function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  userService.getUser(req.body.emailOrUsername)
+  userService.getByEmailOrUsername(req.body.emailOrUsername)
     .then((user) => {
       res.json(user);
     })
@@ -74,14 +75,12 @@ router.post('/signup', function(req, res, next) {
           res.status(200).json(user);
         })
         .catch((err) => {
-          console.log('broke');
           res.status(500).json({
             error: 'Error creating user. Try again.',
           });
         });
     })
     .catch((err) => {
-      console.log('broke');
       res.status(500).json({
         error: 'Error creating user. Try again.',
       });
@@ -144,10 +143,6 @@ router.post('/update-many', function(req, res, next) {
         error: 'Error updating users.',
       });
     });
-});
-
-router.post('/avatar', function(req, res, next) {
-  console.log(req.body);
 });
 
 router.get('/signout', function(req, res, next) {

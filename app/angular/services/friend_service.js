@@ -12,7 +12,8 @@ module.exports = function(app) {
           userStatsId: userStatsId,
           friendId: friendId,
           friendStatsId: friendStatsId,
-        };
+        }
+
         $http.post(`${$rs.baseUrl}/friends/add`, friendData)
           .then(resolve)
           .catch(reject);
@@ -23,7 +24,8 @@ module.exports = function(app) {
       return new Promise((resolve, reject) => {
         const userData = {
           emailOrUsername: emailOrUsername,
-        };
+        }
+
         $http.post(`${$rs.baseUrl}/friends/all`, userData)
           .then((friends) => {
             //TODO: componentize into own function
@@ -38,10 +40,7 @@ module.exports = function(app) {
             });
             resolve();
           })
-          .catch((err) => {
-            console.log('error getting all friends');
-            reject();
-          });
+          .catch(reject);
       });
     };
 
