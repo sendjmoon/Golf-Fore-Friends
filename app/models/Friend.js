@@ -22,27 +22,11 @@ const FriendSchema = new Schema({
     type: Date,
     required: true,
   },
+  //TODO: redundant? could grab stats from friendId
   stats: {
     type: Schema.Types.ObjectId,
     ref: 'UserStats',
     required: true,
-  },
-  statsAgainst: {
-    wins: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
-    losses: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
-    ties: {
-      type: Number,
-      required: true,
-      default: 0,
-    }
   },
 });
 
