@@ -74,12 +74,14 @@ router.post('/signup', function(req, res, next) {
           res.status(200).json(user);
         })
         .catch((err) => {
+          console.log('broke');
           res.status(500).json({
             error: 'Error creating user. Try again.',
           });
         });
     })
     .catch((err) => {
+      console.log('broke');
       res.status(500).json({
         error: 'Error creating user. Try again.',
       });

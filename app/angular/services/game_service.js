@@ -3,11 +3,9 @@
 module.exports = function(app) {
   app.factory('GameService', ['$rootScope', '$route', '$http', 'ResultService', 'UserService', 'StatsService', function($rs, $route, $http, resultService, userService, statsService) {
 
-    //TODO: remove property allGames from returned data obj
     const data = {
       allGames: {},
-    };
-    const creatingGame = false;
+    }
 
     const newGame = function(gameData) {
       return new Promise((resolve, reject) => {
@@ -18,7 +16,7 @@ module.exports = function(app) {
           })
           .catch(reject);
       });
-    };
+    }
 
     const createGameAndResults = function(gameData) {
       return new Promise((resolve, reject) => {
@@ -29,13 +27,14 @@ module.exports = function(app) {
                 let newGameData = {
                   gameId: newGame._id,
                   results: results,
-                };
+                }
+                
                 resolve(newGameData);
               });
           })
           .catch(reject);
       });
-    };
+    }
 
     const updateGameAndUsers = function(gameId, resultsArray) {
       return new Promise((resolve, reject) => {
@@ -67,14 +66,14 @@ module.exports = function(app) {
           .then(resolve)
           .catch(reject);
       });
-    };
+    }
 
     const updatePlayers = function(userIds) {
       userIds.forEach((userId) => {
         statsService.updateHandicap(userId)
           .then(statsService.updateWinRatio(userId));
       });
-    };
+    }
 
     const create = function(gameData) {
       return new Promise((resolve, reject) => {
@@ -82,44 +81,40 @@ module.exports = function(app) {
           .then((newGame) => {
             resolve(newGame.data);
           })
-          .catch((err) => {
-            console.log(err);
-            reject(err);
-          });
+          .catch(reject);
       });
-    };
+    }
 
     const getAllById = function(gameIds) {
       return new Promise((resolve, reject) => {
-        let gameIdData = {
+        const gameIdData = {
           gameIds: gameIds,
-        };
+        }
+
         $http.post(`${$rs.baseUrl}/games/all`, gameIdData)
           .then((games) => {
             games = games.data;
             data.allGames.games = games;
             resolve(games);
           })
-          .catch(() => {
-            alert('error getting games');
-            reject();
-          });
+          .catch(reject);
       });
-    };
+    }
 
     const updateById = function(gameId, updateOptions) {
-      const updateData = {
-        gameId: gameId,
-        updateOptions: updateOptions,
-      }
       return new Promise((resolve, reject) => {
+        const updateData = {
+          gameId: gameId,
+          updateOptions: updateOptions,
+        }
+
         $http.post(`${$rs.baseUrl}/games/update`, updateData)
           .then((newData) => {
             resolve(newData.data);
           })
           .catch(reject);
       });
-    };
+    }
 
     const getByPublicId = function(gameId) {
       return new Promise((resolve, reject) => {
@@ -129,7 +124,7 @@ module.exports = function(app) {
           })
           .catch(reject);
       });
-    };
+    }
 
 
     return {
@@ -138,7 +133,6 @@ module.exports = function(app) {
       updateById: updateById,
       newGame: newGame,
       data: data,
-      creatingGame: creatingGame,
     }
   }]);
 };

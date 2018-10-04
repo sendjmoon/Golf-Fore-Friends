@@ -5,7 +5,7 @@ module.exports = function(app) {
 
     const create = function(gameId, authorId, authorName, content) {
       return new Promise((resolve, reject) => {
-        let commentData = {
+        const commentData = {
           gameId: gameId,
           authorId: authorId,
           authorName: authorName,
@@ -21,7 +21,7 @@ module.exports = function(app) {
 
     const updateByPublicId = function(publicId, content) {
       return new Promise((resolve, reject) => {
-        let updateData = {
+        const updateData = {
           publicId: publicId,
           updateOptions: { content: content },
         };
@@ -33,7 +33,7 @@ module.exports = function(app) {
 
     const removeByPublicId = function(publicId) {
       return new Promise((resolve, reject) => {
-        let removeData = {
+        const removeData = {
           publicId: publicId,
         };
         $http.post(`${$rs.baseUrl}/games/comments/remove`, removeData)

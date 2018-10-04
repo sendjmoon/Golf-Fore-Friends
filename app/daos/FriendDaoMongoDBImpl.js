@@ -13,7 +13,6 @@ module.exports = function() {
           resolve(newFriend);
         })
         .catch((err) => {
-          console.log(err);
           reject();
         });
     });

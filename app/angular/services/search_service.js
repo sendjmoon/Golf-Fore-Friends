@@ -48,7 +48,7 @@ module.exports = function(app) {
             });
           });
         });
-    };
+    }
 
     let compareIfFriends = function(obj, compareArray) {
       compareArray.forEach((compareObj) => {
@@ -56,7 +56,7 @@ module.exports = function(app) {
         obj._id === compareObj._id ?
           obj.isFriend = true : obj.isFriend = false;
       });
-    };
+    }
 
     return {
       searchListener: searchListener,

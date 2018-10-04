@@ -18,12 +18,10 @@ module.exports = function() {
                 resolve(newComment.toObject());
               })
               .catch((err) => {
-                console.log(err);
                 reject();
               });
         })
         .catch((err) => {
-          console.log(err);
           reject();
         });
     });
@@ -40,7 +38,6 @@ module.exports = function() {
   };
 
   const removeByPublicId = function(publicId) {
-    console.log(publicId);
     return new Promise((resolve, reject) => {
       Comment.findOneAndRemove({ publicId: publicId })
         .then(resolve)

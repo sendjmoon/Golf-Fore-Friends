@@ -10,8 +10,8 @@
   </div>
   <p>{{cc.comment.content}}</p>
   <div class="comment-footer" ng-if="cc.user._id === cc.comment.authorId">
-    <button class="gff-btn x-sm ghost" ng-click="cc.editing=true">EDIT</button>
-    <button class="gff-btn x-sm ghost" ng-click="cc.remove(cc.comment.publicId, cc.comment._id, cc.gameId)">REMOVE</button>
+    <button class="gff-btn x-sm" ng-click="cc.editing=true">EDIT</button>
+    <button class="gff-btn x-sm" ng-click="cc.remove(cc.comment.publicId, cc.comment._id, cc.gameId)">REMOVE</button>
   </div>
 </div>
 

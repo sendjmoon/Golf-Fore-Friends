@@ -7,7 +7,7 @@ module.exports = function(app) {
 
     const addFriend = function(userId, userStatsId, friendId, friendStatsId) {
       return new Promise((resolve, reject) => {
-        let friendData = {
+        const friendData = {
           userId: userId,
           userStatsId: userStatsId,
           friendId: friendId,
@@ -21,7 +21,7 @@ module.exports = function(app) {
 
     const getAllFriends = function(emailOrUsername) {
       return new Promise((resolve, reject) => {
-        let userData = {
+        const userData = {
           emailOrUsername: emailOrUsername,
         };
         $http.post(`${$rs.baseUrl}/friends/all`, userData)

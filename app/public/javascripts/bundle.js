@@ -52159,19 +52159,31 @@ module.exports = function (app) {
 module.exports = function (app) {
   app.service('AuthService', ['$rootScope', '$http', '$location', 'UserService', 'StatsService', function ($rs, $http, $location, userService, statsService) {
 
-    //TODO: callback hell
-    var signup = function signup(userData) {
+    var createNewUserDocs = function createNewUserDocs(userData) {
       return new Promise(function (resolve, reject) {
         userService.create(userData).then(function (newUser) {
           statsService.create(newUser._id).then(function (newStatsId) {
-            var updateOptions = {
-              stats: newStatsId
+            var newData = {
+              user: newUser,
+              statsId: newStatsId
             };
-            userService.updateByEmailOrUsername(newUser.email, updateOptions).then(function () {
-              $location.path('/dashboard');
-              $rs.$apply();
-              resolve();
-            });
+
+            resolve(newData);
+          });
+        }).catch(reject);
+      });
+    };
+
+    var signup = function signup(userData) {
+      return new Promise(function (resolve, reject) {
+        createNewUserDocs(userData).then(function (newData) {
+          var updateOptions = {
+            stats: newData.statsId
+          };
+          userService.updateByEmailOrUsername(newData.user.email, updateOptions).then(function () {
+            $location.path('/dashboard');
+            $rs.$apply();
+            resolve();
           });
         }).catch(reject);
       });
@@ -52225,7 +52237,6 @@ module.exports = function (app) {
       });
     };
 
-    //TODO: refactor arguments to be more specific
     var updateByEmailOrUsername = function updateByEmailOrUsername(emailOrUsername, updateOptions) {
       return new Promise(function (resolve, reject) {
         var updateData = {
@@ -52484,11 +52495,9 @@ module.exports = function (app) {
 module.exports = function (app) {
   app.factory('GameService', ['$rootScope', '$route', '$http', 'ResultService', 'UserService', 'StatsService', function ($rs, $route, $http, resultService, userService, statsService) {
 
-    //TODO: remove property allGames from returned data obj
     var data = {
       allGames: {}
     };
-    var creatingGame = false;
 
     var newGame = function newGame(gameData) {
       return new Promise(function (resolve, reject) {
@@ -52506,6 +52515,7 @@ module.exports = function (app) {
               gameId: newGame._id,
               results: results
             };
+
             resolve(newGameData);
           });
         }).catch(reject);
@@ -52549,10 +52559,7 @@ module.exports = function (app) {
       return new Promise(function (resolve, reject) {
         $http.post($rs.baseUrl + '/games/create', gameData).then(function (newGame) {
           resolve(newGame.data);
-        }).catch(function (err) {
-          console.log(err);
-          reject(err);
-        });
+        }).catch(reject);
       });
     };
 
@@ -52561,23 +52568,22 @@ module.exports = function (app) {
         var gameIdData = {
           gameIds: gameIds
         };
+
         $http.post($rs.baseUrl + '/games/all', gameIdData).then(function (games) {
           games = games.data;
           data.allGames.games = games;
           resolve(games);
-        }).catch(function () {
-          alert('error getting games');
-          reject();
-        });
+        }).catch(reject);
       });
     };
 
     var updateById = function updateById(gameId, updateOptions) {
-      var updateData = {
-        gameId: gameId,
-        updateOptions: updateOptions
-      };
       return new Promise(function (resolve, reject) {
+        var updateData = {
+          gameId: gameId,
+          updateOptions: updateOptions
+        };
+
         $http.post($rs.baseUrl + '/games/update', updateData).then(function (newData) {
           resolve(newData.data);
         }).catch(reject);
@@ -52597,8 +52603,7 @@ module.exports = function (app) {
       getAllById: getAllById,
       updateById: updateById,
       newGame: newGame,
-      data: data,
-      creatingGame: creatingGame
+      data: data
     };
   }]);
 };
@@ -66802,11 +66807,11 @@ module.exports = function (app) {
     ctrl.user = userService.data.user;
 
     ctrl.create = function (gameId, content) {
-      var updateOptions = {
-        $addToSet: { comments: null }
-      };
       commentService.create(gameId, ctrl.user._id, ctrl.user.fullName, content).then(function (newComment) {
-        updateOptions.$addToSet.comments = newComment._id;
+        var updateOptions = {
+          $addToSet: { comments: newComment._id }
+        };
+
         userService.updateByEmailOrUsername(ctrl.user.email, updateOptions).then(gameService.updateById(gameId, updateOptions)).then(gameService.getAllById(ctrl.user.gameIds));
       }).catch(function (err) {
         console.log('Error posting comment.');
@@ -66826,6 +66831,7 @@ module.exports = function (app) {
       var updateOptions = {
         $pull: { comments: commentId }
       };
+
       commentService.removeByPublicId(publicId).then(userService.updateByEmailOrUsername(ctrl.user.email, updateOptions)).then(gameService.updateById(gameId, updateOptions)).then(gameService.getAllById(ctrl.user.gameIds));
     };
 
@@ -66979,7 +66985,9 @@ module.exports = function (app) {
           compareArray: $scope.friendsData.friends,
           compareFn: searchService.compareIfFriends
         };
+
         searchService.searchListener(searchOptions);
+        $scope.$apply();
       });
     };
 
@@ -67038,7 +67046,7 @@ module.exports = function (app) {
 
     ctrl.fillPlayerBar = function (user) {
       fillArray.push(100 - user.stats.handicap + '%');
-      $('.gff-progress-bar-fill').each(function (index, val) {
+      $('.gff-progress-bar-fill').each(function (index) {
         $(this).css('width', fillArray[index]);
       });
     };
@@ -67441,7 +67449,7 @@ module.exports = function (app) {
 /* 234 */
 /***/ (function(module, exports) {
 
-module.exports = "<div ng-hide=\"cc.editing\" ng-init=\"cc.formatDate(cc.comment)\">\n  <div class=\"user-container\">\n    <div class=\"profile-pic\">\n      <i class=\"fa fa-user\"></i>\n    </div>\n    <div class=\"user-info\">\n      <p class=\"author-name\"><strong>{{cc.comment.authorName}}</strong></p>\n      <p class=\"created-at\">{{cc.comment.createdAt}}</p>\n    </div>\n  </div>\n  <p>{{cc.comment.content}}</p>\n  <div class=\"comment-footer\" ng-if=\"cc.user._id === cc.comment.authorId\">\n    <button class=\"gff-btn x-sm ghost\" ng-click=\"cc.editing=true\">EDIT</button>\n    <button class=\"gff-btn x-sm ghost\" ng-click=\"cc.remove(cc.comment.publicId, cc.comment._id, cc.gameId)\">REMOVE</button>\n  </div>\n</div>\n\n<div ng-show=\"cc.editing\">\n  <p>Editing comment...</p>\n  <textarea ng-model=\"cc.comment.content\"></textarea>\n  <button class=\"gff-btn sm ghost\" ng-click=\"cc.update(cc.comment.publicId, cc.comment.content)\">Save</button>\n  <button class=\"gff-btn sm ghost\" ng-click=\"cc.editing=false\">Cancel</button>\n</div>\n";
+module.exports = "<div ng-hide=\"cc.editing\" ng-init=\"cc.formatDate(cc.comment)\">\n  <div class=\"user-container\">\n    <div class=\"profile-pic\">\n      <i class=\"fa fa-user\"></i>\n    </div>\n    <div class=\"user-info\">\n      <p class=\"author-name\"><strong>{{cc.comment.authorName}}</strong></p>\n      <p class=\"created-at\">{{cc.comment.createdAt}}</p>\n    </div>\n  </div>\n  <p>{{cc.comment.content}}</p>\n  <div class=\"comment-footer\" ng-if=\"cc.user._id === cc.comment.authorId\">\n    <button class=\"gff-btn x-sm\" ng-click=\"cc.editing=true\">EDIT</button>\n    <button class=\"gff-btn x-sm\" ng-click=\"cc.remove(cc.comment.publicId, cc.comment._id, cc.gameId)\">REMOVE</button>\n  </div>\n</div>\n\n<div ng-show=\"cc.editing\">\n  <p>Editing comment...</p>\n  <textarea ng-model=\"cc.comment.content\"></textarea>\n  <button class=\"gff-btn sm ghost\" ng-click=\"cc.update(cc.comment.publicId, cc.comment.content)\">Save</button>\n  <button class=\"gff-btn sm ghost\" ng-click=\"cc.editing=false\">Cancel</button>\n</div>\n";
 
 /***/ }),
 /* 235 */
@@ -67465,7 +67473,7 @@ module.exports = function (app) {
 /* 236 */
 /***/ (function(module, exports) {
 
-module.exports = "<form>\n  <textarea ng-model=\"cc.newComment\" placeholder=\"Add a comment...\" style=\"color:black\"></textarea>\n  <button class=\"gff-btn sm ghost\" ng-click=\"cc.create(cc.gameId, cc.newComment)\">Add Comment</button>\n</form>\n";
+module.exports = "<form class=\"new-comment-form\" ng-submit=\"cc.create(cc.gameId, cc.newComment)\">\n  <textarea ng-model=\"cc.newComment\" placeholder=\"Add a comment...\"></textarea>\n  <button type=\"submit\" class=\"gff-btn sm ghost\">Add Comment</button>\n</form>\n";
 
 /***/ }),
 /* 237 */

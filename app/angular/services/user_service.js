@@ -19,7 +19,6 @@ module.exports = function(app) {
       });
     };
 
-    //TODO: refactor arguments to be more specific
     const updateByEmailOrUsername = function(emailOrUsername, updateOptions) {
       return new Promise((resolve, reject) => {
         let updateData = {

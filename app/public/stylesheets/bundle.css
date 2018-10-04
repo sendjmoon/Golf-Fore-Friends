@@ -193,11 +193,14 @@ add-friend {
       height: 42px;
       border-radius: 0;
       border: none;
-      background: #e9f4fd;
+      border-left: 1px solid #e9f4fd;
       color: #4b4e54;
       text-align: center; }
+      .player-box .buttons-container .edit-box input:hover {
+        background: rgba(254, 172, 0, 0.3);
+        border-color: #ffb824; }
       .player-box .buttons-container .edit-box input:active, .player-box .buttons-container .edit-box input:focus {
-        background: #e9f4fd; }
+        border-color: #b2d9f9; }
     .player-box .buttons-container .gff-btn {
       height: 100%;
       border-top-left-radius: 0;
@@ -329,6 +332,7 @@ add-friend {
         outline: none; }
 
 .game-container {
+  margin: 0 auto;
   margin-bottom: 15px;
   border-radius: 5px;
   border: 1px solid #f4f4f4; }
@@ -778,7 +782,7 @@ auth {
   width: 100%; }
 
 .create-game-container {
-  max-width: 900px;
+  max-width: 992px;
   margin: 0 auto; }
   .create-game-container h3, .create-game-container p {
     -ms-flex-item-align: start;
@@ -1231,6 +1235,12 @@ sub-nav {
   margin: 0;
   list-style: none; }
 
+.games-list {
+  max-width: 992px; }
+
+.friends-list, .games-list {
+  padding: 30px 15px; }
+
 .users-list {
   position: absolute;
   background: #fff; }
@@ -1258,9 +1268,6 @@ sub-nav {
       margin: 0; }
     .users-list .user button svg {
       margin: 0; }
-
-.friends-list, .games-list {
-  padding: 30px 15px; }
 
 .recent-games-list {
   display: table;

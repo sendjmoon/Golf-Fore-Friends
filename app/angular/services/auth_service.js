@@ -3,22 +3,36 @@
 module.exports = function(app) {
   app.service('AuthService', ['$rootScope', '$http', '$location', 'UserService', 'StatsService', function($rs, $http, $location, userService, statsService) {
 
-    //TODO: callback hell
-    const signup = function(userData) {
+    const createNewUserDocs = function(userData) {
       return new Promise((resolve, reject) => {
         userService.create(userData)
           .then((newUser) => {
             statsService.create(newUser._id)
               .then((newStatsId) => {
-                const updateOptions = {
-                  stats: newStatsId,
-                };
-                userService.updateByEmailOrUsername(newUser.email, updateOptions)
-                  .then(() => {
-                    $location.path('/dashboard');
-                    $rs.$apply();
-                    resolve();
-                  });
+                const newData = {
+                  user: newUser,
+                  statsId: newStatsId,
+                }
+
+                resolve(newData);
+              });
+          })
+          .catch(reject);
+      });
+    }
+
+    const signup = function(userData) {
+      return new Promise((resolve, reject) => {
+        createNewUserDocs(userData)
+          .then((newData) => {
+            const updateOptions = {
+              stats: newData.statsId,
+            }
+            userService.updateByEmailOrUsername(newData.user.email, updateOptions)
+              .then(() => {
+                $location.path('/dashboard');
+                $rs.$apply();
+                resolve();
               });
           })
           .catch(reject);
