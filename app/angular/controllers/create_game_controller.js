@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('CreateGameController', ['$rootScope', '$scope', '$location', 'UserService', 'FriendService', 'GameService', 'ResultService', 'StatsService', function($rs, $scope, $location, userService, friendService, gameService, resultService, statsService) {
+  app.controller('CreateGameController', ['$scope', '$route', '$location', 'UserService', 'FriendService', 'GameService', 'ResultService', 'StatsService', function($scope, $route, $location, userService, friendService, gameService, resultService, statsService) {
 
     const ctrl = this;
     ctrl.user = userService.data.user;
@@ -13,7 +13,10 @@ module.exports = function(app) {
     ctrl.createGame = function(gameData) {
       gameData.players = ctrl.players;
       gameService.newGame(gameData)
-        .then(ctrl.goTo('games'))
+        .then(() => {
+          ctrl.goTo('games');
+          $route.reload();
+        })
         .catch((err) => {
           console.log(err);
         });

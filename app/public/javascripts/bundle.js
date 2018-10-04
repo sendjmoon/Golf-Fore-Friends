@@ -66855,7 +66855,7 @@ module.exports = function (app) {
 
 
 module.exports = function (app) {
-  app.controller('CreateGameController', ['$rootScope', '$scope', '$location', 'UserService', 'FriendService', 'GameService', 'ResultService', 'StatsService', function ($rs, $scope, $location, userService, friendService, gameService, resultService, statsService) {
+  app.controller('CreateGameController', ['$scope', '$route', '$location', 'UserService', 'FriendService', 'GameService', 'ResultService', 'StatsService', function ($scope, $route, $location, userService, friendService, gameService, resultService, statsService) {
 
     var ctrl = this;
     ctrl.user = userService.data.user;
@@ -66866,7 +66866,10 @@ module.exports = function (app) {
 
     ctrl.createGame = function (gameData) {
       gameData.players = ctrl.players;
-      gameService.newGame(gameData).then(ctrl.goTo('games')).catch(function (err) {
+      gameService.newGame(gameData).then(function () {
+        ctrl.goTo('games');
+        $route.reload();
+      }).catch(function (err) {
         console.log(err);
       });
     };
