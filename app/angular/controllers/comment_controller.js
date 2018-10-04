@@ -11,7 +11,8 @@ module.exports = function(app) {
         .then((newComment) => {
           let updateOptions = {
             $addToSet: { comments: newComment._id },
-          };
+          }
+
           userService.updateByEmailOrUsername(ctrl.user.email, updateOptions)
             .then(gameService.updateById(gameId, updateOptions))
             .then(gameService.getAllById(ctrl.user.gameIds));
@@ -35,7 +36,8 @@ module.exports = function(app) {
     ctrl.remove = function(publicId, commentId, gameId) {
       let updateOptions = {
         $pull: { comments: commentId },
-      };
+      }
+
       commentService.removeByPublicId(publicId)
         .then(userService.updateByEmailOrUsername(ctrl.user.email, updateOptions))
         .then(gameService.updateById(gameId, updateOptions))
@@ -48,7 +50,7 @@ module.exports = function(app) {
         hour: 'numeric',
         minute: 'numeric',
         hour12: true,
-      };
+      }
       let timeStr = date.toLocaleString('en-US', timeStrOptions);
       comment.createdAt = (`${date.toDateString()} @ ${timeStr}`);
     };

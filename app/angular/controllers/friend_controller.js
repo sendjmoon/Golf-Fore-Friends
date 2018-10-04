@@ -24,8 +24,10 @@ module.exports = function(app) {
             searchArray: $scope.usersData.users,
             compareArray: $scope.friendsData.friends,
             compareFn: searchService.compareIfFriends,
-          };
+          }
+
           searchService.searchListener(searchOptions);
+          $scope.$apply();
         });
     };
 

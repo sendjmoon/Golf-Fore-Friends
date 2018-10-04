@@ -9,12 +9,12 @@ module.exports = function(app) {
           .then((newUser) => {
             statsService.create(newUser._id)
               .then((newStatsId) => {
-                const newDocs = {
-                  newUser: newUser,
-                  newStatsId: newStatsId,
+                const newData = {
+                  user: newUser,
+                  statsId: newStatsId,
                 }
 
-                resolve(newDocs);
+                resolve(newData);
               });
           })
           .catch(reject);
@@ -24,11 +24,11 @@ module.exports = function(app) {
     const signup = function(userData) {
       return new Promise((resolve, reject) => {
         createNewUserDocs(userData)
-          .then((newDocs) => {
+          .then((newData) => {
             const updateOptions = {
-              stats: newDocs.newStatsId,
+              stats: newData.statsId,
             }
-            userService.updateByEmailOrUsername(newDocs.newUser.email, updateOptions)
+            userService.updateByEmailOrUsername(newData.user.email, updateOptions)
               .then(() => {
                 $location.path('/dashboard');
                 $rs.$apply();

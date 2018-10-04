@@ -52163,12 +52163,12 @@ module.exports = function (app) {
       return new Promise(function (resolve, reject) {
         userService.create(userData).then(function (newUser) {
           statsService.create(newUser._id).then(function (newStatsId) {
-            var newDocs = {
-              newUser: newUser,
-              newStatsId: newStatsId
+            var newData = {
+              user: newUser,
+              statsId: newStatsId
             };
 
-            return newDocs;
+            resolve(newData);
           });
         }).catch(reject);
       });
@@ -52176,11 +52176,11 @@ module.exports = function (app) {
 
     var signup = function signup(userData) {
       return new Promise(function (resolve, reject) {
-        createNewUserDocs(userData).then(function (newDocs) {
+        createNewUserDocs(userData).then(function (newData) {
           var updateOptions = {
-            stats: newDocs.newStatsId
+            stats: newData.statsId
           };
-          userService.updateByEmailOrUsername(newDocs.newUser.email, updateOptions).then(function () {
+          userService.updateByEmailOrUsername(newData.user.email, updateOptions).then(function () {
             $location.path('/dashboard');
             $rs.$apply();
             resolve();
@@ -52237,7 +52237,6 @@ module.exports = function (app) {
       });
     };
 
-    //TODO: refactor arguments to be more specific
     var updateByEmailOrUsername = function updateByEmailOrUsername(emailOrUsername, updateOptions) {
       return new Promise(function (resolve, reject) {
         var updateData = {
@@ -52516,6 +52515,7 @@ module.exports = function (app) {
               gameId: newGame._id,
               results: results
             };
+
             resolve(newGameData);
           });
         }).catch(reject);
@@ -52559,10 +52559,7 @@ module.exports = function (app) {
       return new Promise(function (resolve, reject) {
         $http.post($rs.baseUrl + '/games/create', gameData).then(function (newGame) {
           resolve(newGame.data);
-        }).catch(function (err) {
-          console.log(err);
-          reject(err);
-        });
+        }).catch(reject);
       });
     };
 
@@ -52571,6 +52568,7 @@ module.exports = function (app) {
         var gameIdData = {
           gameIds: gameIds
         };
+
         $http.post($rs.baseUrl + '/games/all', gameIdData).then(function (games) {
           games = games.data;
           data.allGames.games = games;
@@ -52580,11 +52578,12 @@ module.exports = function (app) {
     };
 
     var updateById = function updateById(gameId, updateOptions) {
-      var updateData = {
-        gameId: gameId,
-        updateOptions: updateOptions
-      };
       return new Promise(function (resolve, reject) {
+        var updateData = {
+          gameId: gameId,
+          updateOptions: updateOptions
+        };
+
         $http.post($rs.baseUrl + '/games/update', updateData).then(function (newData) {
           resolve(newData.data);
         }).catch(reject);
@@ -52604,8 +52603,7 @@ module.exports = function (app) {
       getAllById: getAllById,
       updateById: updateById,
       newGame: newGame,
-      data: data,
-      creatingGame: creatingGame
+      data: data
     };
   }]);
 };
@@ -66813,6 +66811,7 @@ module.exports = function (app) {
         var updateOptions = {
           $addToSet: { comments: newComment._id }
         };
+
         userService.updateByEmailOrUsername(ctrl.user.email, updateOptions).then(gameService.updateById(gameId, updateOptions)).then(gameService.getAllById(ctrl.user.gameIds));
       }).catch(function (err) {
         console.log('Error posting comment.');
@@ -66832,6 +66831,7 @@ module.exports = function (app) {
       var updateOptions = {
         $pull: { comments: commentId }
       };
+
       commentService.removeByPublicId(publicId).then(userService.updateByEmailOrUsername(ctrl.user.email, updateOptions)).then(gameService.updateById(gameId, updateOptions)).then(gameService.getAllById(ctrl.user.gameIds));
     };
 
@@ -66985,7 +66985,9 @@ module.exports = function (app) {
           compareArray: $scope.friendsData.friends,
           compareFn: searchService.compareIfFriends
         };
+
         searchService.searchListener(searchOptions);
+        $scope.$apply();
       });
     };
 
