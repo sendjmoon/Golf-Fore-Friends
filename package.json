@@ -36,7 +36,7 @@
     "body-parser": "^1.17.2",
     "chai": "^4.0.2",
     "chai-http": "^3.0.0",
-    "chart.js": "^2.7.1",
+    "chart.js": "^2.7.3",
     "chartjs-plugin-annotation": "^0.5.7",
     "connect-redis": "^3.3.0",
     "cookie-parser": "^1.4.3",
@@ -71,7 +71,7 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-sass": "^3.1.0",
-    "gulp-shell": "^0.6.3",
+    "gulp-shell": "^0.6.5",
     "gulp-watch": "^4.3.11",
     "webpack-dev-server": "^2.5.0"
   }
