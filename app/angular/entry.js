@@ -7,8 +7,8 @@ require('./scss/base.scss');
 
 const golfApp = angular.module('golfApp', ['ngRoute', 'ngRoute.middleware']);
 
-// let API_URL = 'https://golf-fore-friends.herokuapp.com';
-const API_URL = 'http://localhost:3000';
+let API_URL = 'https://golf-fore-friends.herokuapp.com';
+// const API_URL = 'http://localhost:3000';
 
 require('./services')(golfApp);
 require('./controllers')(golfApp);
